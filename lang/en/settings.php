@@ -1,0 +1,68 @@
+<?php
+
+return [
+    'settings' => 'Site Settings',
+    'basic_settings_section' => 'Basic Settings Section',
+    'contact_section' => 'Contact Section',
+    'media_section' => 'Media Section',
+    'socail_section' => 'socail Media Section',
+
+    //
+    'site_name_ar' => 'Site Name | ar',
+    'site_name_en' => 'Site Name | en',
+    'address_ar' => 'Site Address | ar',
+    'address_en' => 'Site Address | en',
+    'description_ar' => 'Site Description | ar',
+    'description_en' => 'Site Description | en',
+    'keywords_ar' => 'Site Keywords | ar',
+    'keywords_en' => 'Site Keywords | en',
+    'phone' => 'Phone',
+    'mobile' => 'Mobile',
+    'whatsapp' => 'Whatsapp',
+    'email' => 'Email',
+    'email_support' => 'Email Support',
+    'favicon' => 'Site Favicon',
+    'logo' => 'Site Logo',
+
+    'facebook' => 'Facebook',
+    'twitter' => 'Twitter',
+    'youtube' => 'YouTube',
+    'instegram' => 'Instegram',
+    'gmail' => 'Gmail',
+    'linkedin' => 'Linked In',
+
+    'language' => 'Site Language',
+    'maintenance_message' => 'Site Maintenance Message',
+    'lang_front_button_status' => 'Language button in the frontend',
+    'disabled_forms_button' => 'Disabled Forms Button',
+    'forms_status' => 'Forms Status',
+    'status' => 'Site Status',
+    'comments_mailList_status' => 'Comments and MailList Status',
+
+    ///
+    'enter_site_name_ar' => 'Enter Site Name | ar',
+    'enter_site_name_en' => 'Enter Site Name | en',
+    'enter_description_ar' => 'Enter Site Description | ar',
+    'enter_description_en' => 'Enter Site Description | en',
+    'enter_keywords_ar' => 'Enter Site Keywords | ar',
+    'enter_keywords_en' => 'Enter Site Keywords | en',
+    'enter_address_ar' => 'Enter Site Address | ar',
+    'enter_address_en' => 'Enter Site Address | en',
+    'enter_phone' => 'Enter  Phone',
+    'enter_mobile' => 'Enter  Mobile',
+    'enter_whatsapp' => 'Enter  WhatsApp',
+    'enter_email' => 'Enter  Email',
+    'enter_email_support' => 'Enter Email Support',
+    'enter_favicon' => 'Enter Site Favicon',
+    'enter_logo' => 'Enter Site Logo',
+
+    'enter_facebook' => 'Enter Facebook',
+    'enter_twitter' => 'Enter Twitter',
+    'enter_youtube' => 'Enter YouTube',
+    'enter_instegram' => 'Enter Instegram',
+    'enter_linkedin' => 'Enter Linked In',
+
+    'enter_status' => 'Enter Site Status',
+    'enter_language' => 'Enter Site Language',
+    'enter_maintenance_message' => 'Enter Site Maintenance Message',
+];

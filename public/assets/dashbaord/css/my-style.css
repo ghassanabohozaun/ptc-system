@@ -1,0 +1,156 @@
+
+ select {
+             appearance: none;
+             /* Hide default browser styling */
+             -webkit-appearance: none;
+             -moz-appearance: none;
+             background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+             background-repeat: no-repeat;
+             background-position: right 0.75rem center;
+             background-size: 1rem;
+             padding-right: 2rem;
+             /* Ensure space for the arrow */
+         }
+
+         table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before,
+         table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
+             margin-right: .5em;
+             display: inline-block;
+             box-sizing: border-box;
+             content: "";
+             border-top: 5px solid transparent;
+             border-left: 10px solid rgba(0, 0, 0, 0.5);
+             border-bottom: 5px solid transparent;
+             border-right: 0px solid transparent;
+         }
+
+input[type="checkbox"] {
+width: 1.0em;
+height: 1.0em;
+}
+
+#myTable td,
+#myTable th {
+vertical-align: middle
+}
+
+#statusLabel
+{
+margin-top: 35px;
+font-size: 13px
+}
+#statusLabel span
+{
+padding: 0 10px;
+}
+
+
+table.dataTable td ,th {
+font-size: 0.92em;
+}
+
+.page-item.disabled .page-link {
+color: #6B6F82;
+pointer-events: none;
+cursor: auto;
+background-color: #FFFFFF;
+border-color: #d0d1d3;
+font-size: 12px;
+}
+
+
+
+.table-image {
+width: 70px;
+height: 60px;
+border-radius: 10px;
+}
+
+
+
+/* Style the entire scrollbar */
+::-webkit-scrollbar {
+width: 5px; /* Set width for vertical scrollbar */
+height: 12px; /* Set height for horizontal scrollbar */
+}
+
+/* Style the scrollbar track */
+::-webkit-scrollbar-track {
+background: #f1f1f1;
+border-radius: 1px;
+}
+
+/* Style the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+background: #888;
+border-radius: 1px;
+}
+
+/* Style the scrollbar thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #555;
+}
+
+/* btn Style */
+.btn {
+
+padding: 0.69rem 1rem;
+font-size: 0.95rem;
+line-height: 1.25;
+
+}
+
+.badge-sm {
+font-size: 0.9rem;
+}
+
+/* form controller Style */
+
+.form-control {
+display: block;
+width: 100%;
+padding: 0.5rem 0.75rem;
+font-size: 0.975rem;
+font-weight: 400;
+line-height: 1.4rem;
+color: #495057;
+background-color: #fff;
+background-clip: padding-box;
+border: 1px solid #d2d6da;
+appearance: none;
+border-radius: 0.5rem;
+transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+
+.text-danger {
+font-size: 11px;
+}
+
+.form-control {
+font-size: 0.9rem;
+}
+
+html body a {
+color: #59597e;
+font-weight: bolder
+}
+
+label {
+display: inline-block;
+margin-bottom: .5rem;
+font-size: 0.95rem;
+}
+
+.main-menu.menu-dark .navigation li a {
+color: #dcdcdc;
+transition: all 0.2s ease;
+font-size: 0.90rem;
+font-weight: 400;
+}
+
+html body .la {
+font-size: 1.0rem;
+}
+
+
