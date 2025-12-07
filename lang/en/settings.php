@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'settings' => 'Site Settings',
+    'settings' => 'General Settings',
     'basic_settings_section' => 'Basic Settings Section',
     'contact_section' => 'Contact Section',
     'media_section' => 'Media Section',

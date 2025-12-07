@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Dashboard\{AdminsController, ChildernController, CitiesController, DashboardController, GovernoratiesController, ProductsController, RolesController, SettingsController, SponsershipOrganizationsController, SponsershipStatusesController, SponsershipTypesController};
+use App\Http\Controllers\Dashboard\{AdminsController, ChildernController, CitiesController, DailyReportsController, DashboardController, DepartmentsController, EmployeesController, EmployeeStatusesController, GovernoratiesController, ProductsController, RolesController, SettingsController, SponsershipOrganizationsController, SponsershipStatusesController, SponsershipTypesController};
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\Auth\AuthController;
 use App\Http\Controllers\Dashboard\Auth\Passowrd\ForgetPasswordController;
@@ -74,12 +74,37 @@ Route::group(
             });
 
             ########################################### products routes  ######################################################################
-
             Livewire::setUpdateRoute(function ($handle) {
                 return Route::post('/livewire/update', $handle);
             });
+            ########################################### employee statuses routes  ######################################################################
+            Route::group(['middleware' => 'can:employeeStatuses'], function () {
+                Route::resource('employeeStatuses', EmployeeStatusesController::class);
+                Route::post('/employeeStatuses/destroy', [EmployeeStatusesController::class, 'destroy'])->name('employee.statues.destroy');
+                Route::post('/employeeStatuses/status', [EmployeeStatusesController::class, 'changeStatus'])->name('employee.statues.change.status');
+            });
 
+            ########################################### departments routes  ######################################################################
+            Route::group(['middleware' => 'can:departments'], function () {
+                Route::resource('departments', DepartmentsController::class);
+                Route::post('/departments/destroy', [DepartmentsController::class, 'destroy'])->name('departments.destroy');
+                Route::post('/departments/status', [DepartmentsController::class, 'changeStatus'])->name('departments.change.status');
+            });
 
+            ########################################### employees routes  ######################################################################
+            Route::group(['middleware' => 'can:employees'], function () {
+                Route::resource('employees', EmployeesController::class);
+                Route::get('/employees-all', [EmployeesController::class, 'getAll'])->name('employees.get.all');
+                Route::post('/employees/status', [EmployeesController::class, 'changeStatus'])->name('employees.change.status');
+                Route::get('/employees/autocomplete/employee', [EmployeesController::class, 'autocompleteEmployee'])->name('employees.autocomplete.employee');
+            });
+
+            ########################################### daily reports routes  ######################################################################
+            Route::group(['middleware' => 'can:dailyReports'], function () {
+                Route::resource('dailyReports', DailyReportsController::class);
+                Route::get('/dailyReports-all', [DailyReportsController::class, 'getAll'])->name('daliy.reports.get.all');
+                Route::post('/dailyReports/status', [DailyReportsController::class, 'changeStatus'])->name('daliy.reports.change.status');
+            });
         });
     },
 );

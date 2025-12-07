@@ -59,6 +59,13 @@ font-size: 12px;
 }
 
 
+.note-editor.is-invalid-summernote-editor {
+        border: 1px solid #dc3545 !important;
+    }
+
+.note-editor.is-invalid-summernote-editor {
+        border: 1px solid #dc3545 !important;
+    }
 
 .table-image {
 width: 70px;

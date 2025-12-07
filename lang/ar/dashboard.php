@@ -16,7 +16,9 @@ return [
     'admins' => 'المديرين',
     'users' => 'المستخدمين',
     'world' => 'المناطق',
-    'settings' => 'إعدادات الموقع',
+    'settings' => 'الإعدادات ',
+    'employees_settings' => 'إعدادات الموظفين',
+    'employees' => 'الموظفين',
 
     // login
     'login' => 'تسجيل الدخول',

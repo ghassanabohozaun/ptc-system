@@ -5,9 +5,9 @@ return [
         'roles' => 'global.roles',
         'admins' => 'global.admins',
         'world' => 'global.world',
-        'children' => 'global.children',
-        'sponsershipStatuses' => 'global.sponsershipStatuses',
-        'sponsershipOrganizations' => 'global.sponsershipOrganizations',
-        'sponsershipTypes' => 'global.sponsershipTypes',
+        'employees' => 'global.employees',
+        'employeeStatuses' => 'global.employeeStatuses',
+        'departments' => 'global.departments',
+        'dailyReports' => 'global.dailyReports',
     ],
 ];

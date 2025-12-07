@@ -26,6 +26,9 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             GovernorateSeeder::class,
             CitySeeder::class,
+            EmployeeStatusSeeder::class,
+            DepartmentSeeder::class,
+            // EmployeeSeeder::class,
         ]);
     }
 }

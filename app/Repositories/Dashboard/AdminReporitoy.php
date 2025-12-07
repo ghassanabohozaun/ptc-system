@@ -46,7 +46,7 @@ class AdminReporitoy
         return $admin;
     }
 
-    // updata admin
+    // update admin
     public function updateAdmin($request, $admin)
     {
         $admin = self::getAdmin($admin->id);

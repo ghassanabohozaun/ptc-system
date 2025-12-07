@@ -7,6 +7,7 @@ return [
     'no_photo' => 'No Photo',
     'no_image' => 'No Image',
     'no_logo' => 'No Log',
+    'recored_exists' => 'Record Exists',
 
     'prev' => 'Previous',
     'more' => 'More pages',

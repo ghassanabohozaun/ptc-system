@@ -45,7 +45,6 @@ return [
             'report' => false,
         ],
 
-
         'settings' => [
             'driver' => 'local',
             'root' => public_path('/uploads/settings'),
@@ -55,16 +54,24 @@ return [
             'report' => false,
         ],
 
-        'children' => [
+        'employeesPhotos' => [
             'driver' => 'local',
-            'root' => public_path('/uploads/children'),
-            'url' => env('APP_URL') . '/uploads/children',
+            'root' => public_path('/uploads/employeesPhotos'),
+            'url' => env('APP_URL') . '/uploads/employeesPhotos',
             'visibility' => 'public',
             'throw' => false,
             'report' => false,
         ],
 
 
+        'employeesCertifications' => [
+            'driver' => 'local',
+            'root' => public_path('/uploads/employeesCertifications'),
+            'url' => env('APP_URL') . '/uploads/employeesCertifications',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
 
         's3' => [
             'driver' => 's3',

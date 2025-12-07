@@ -10,14 +10,16 @@ return [
     'back_to_home' => 'Back To Home',
     'search' => 'Search ... ',
     'hello' => 'Hello ,',
-    'welcome'=>'Welcome',
+    'welcome' => 'Welcome',
 
     // menu
     'roles' => 'Roles',
     'admins' => 'Admins',
     'users' => 'Users',
     'world' => 'World',
-    'settings' => 'Site Settings',
+    'settings' => 'Settings',
+    'employees_settings' => 'Employees Settings',
+    'employees' => 'Employees',
 
     // login
     'login' => 'Login',

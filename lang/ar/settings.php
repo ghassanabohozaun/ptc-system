@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'settings' => 'إعدادات الموقع',
+    'settings' => 'إعدادات العامة',
     'basic_settings_section' => 'قسم الإعدادات الأساسية',
     'contact_section' => 'قسم الإعدادات الاتصال ',
     'media_section' => 'قسم الميديا ',

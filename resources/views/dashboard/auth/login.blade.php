@@ -25,7 +25,7 @@
                                 <div class="card-header border-0">
                                     <div class="card-title text-center">
                                         @if (setting()->logo)
-                                            <img src="{!! asset('uploads/settings/' . setting()->logo) !!}" alt="branding logo" width="120">
+                                            <img src="{!! asset('uploads/settings/' . setting()->logo) !!}" alt="branding logo" width="150">
                                         @else
                                             <h2 style="font-weight: bolder">{!! setting()->site_name !!}</h2>
                                         @endif

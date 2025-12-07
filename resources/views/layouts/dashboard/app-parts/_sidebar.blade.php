@@ -27,7 +27,7 @@
                     <!-- begin: settings -->
                     <ul class="menu-content">
                         @can('settings')
-                            <li class="@if (str_contains(Route::currentRouteName(), 'settings.index')) active @endif">
+                            <li class="@if (str_contains(url()->current(), 'settings')) active @endif">
                                 <a class="menu-item" href="{!! route('dashboard.settings.index') !!}" data-i18n="nav.dash.settings">
                                     {!! __('settings.settings') !!}
                                 </a>
@@ -54,7 +54,7 @@
                         </a>
                         <!-- begin: roles -->
                         <ul class="menu-content">
-                            <li class="@if (str_contains(Route::currentRouteName(), 'roles.index')) active @endif">
+                            <li class="@if (str_contains(url()->current(), 'roles')) active @endif">
                                 <a class="menu-item" href="{!! route('dashboard.roles.index') !!}" data-i18n="nav.dash.roles">
                                     {!! __('roles.roles') !!}
                                 </a>
@@ -78,7 +78,7 @@
                         </a>
                         <!-- begin: admins -->
                         <ul class="menu-content">
-                            <li class="@if (str_contains(Route::currentRouteName(), 'admins.index')) active @endif">
+                            <li class="@if (str_contains(url()->current(), 'admins')) active @endif">
                                 <a class="menu-item" href="{!! route('dashboard.admins.index') !!}" data-i18n="nav.dash.admins">
                                     {!! __('admins.admins') !!}
                                 </a>
@@ -104,7 +104,7 @@
 
                         <ul class="menu-content">
                             <!-- begin: governorates -->
-                            <li class="@if (str_contains(Route::currentRouteName(), 'governorates.index')) active @endif">
+                            <li class="@if (str_contains(url()->current(), 'governorates')) active @endif">
                                 <a class="menu-item" href="{!! route('dashboard.governorates.index') !!}" data-i18n="nav.dash.governorates">
                                     {!! __('world.governorates') !!}
                                 </a>
@@ -112,7 +112,7 @@
                             <!-- end: governorates -->
 
                             <!-- begin: cities -->
-                            <li class="@if (str_contains(Route::currentRouteName(), 'cities.index')) active @endif">
+                            <li class="@if (str_contains(url()->current(), 'cities')) active @endif">
                                 <a class="menu-item" href="{!! route('dashboard.cities.index') !!}" data-i18n="nav.dash.cities">
                                     {!! __('world.cities') !!}
                                 </a>
@@ -126,6 +126,78 @@
             <!-- end: world -->
 
 
+            <!-- begin: employee settings -->
+            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+                <li class=" nav-item">
+                    <a href="#">
+                        <i class="icon-settings"></i>
+                        <span class="menu-title" data-i18n="nav.dash.brand">{!! __('dashboard.employees_settings') !!}</span>
+                        {{-- <span class="badge badge badge-info badge-pill float-right mr-2">3</span> --}}
+                    </a>
+
+                    <ul class="menu-content">
+
+                        <!-- begin: employeeStatues -->
+                        @can('employeeStatuses')
+                            <li class="@if (str_contains(url()->current(), 'employeeStatuses')) active @endif">
+                                <a class="menu-item" href="{!! route('dashboard.employeeStatuses.index') !!}" data-i18n="nav.dash.employeeStatuses">
+                                    {!! __('employees.employee_statuses') !!}
+                                </a>
+                            </li>
+                        @endcan
+                        <!-- end: employeeStatues -->
+
+                        <!-- begin: departments -->
+                        @can('departments')
+                            <li class="@if (str_contains(url()->current(), 'departments')) active @endif">
+                                <a class="menu-item" href="{!! route('dashboard.departments.index') !!}" data-i18n="nav.dash.departments">
+                                    {!! __('departments.departments') !!}
+                                </a>
+                            </li>
+                        @endcan
+                        <!-- end: departments -->
+
+                    </ul>
+
+                </li>
+            </ul>
+            <!-- end: employee settings -->
+
+
+            <!-- begin: employees -->
+            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+                <li class=" nav-item">
+                    <a href="#">
+                        <i class="icon-users"></i>
+                        <span class="menu-title" data-i18n="nav.dash.brand">{!! __('dashboard.employees') !!}</span>
+                        {{-- <span class="badge badge badge-info badge-pill float-right mr-2">3</span> --}}
+                    </a>
+
+                    <ul class="menu-content">
+
+                        @can('employees')
+                            <!-- begin: employees -->
+                            <li class="@if (str_contains(url()->current(), 'employees')) active @endif">
+                                <a class="menu-item" href="{!! route('dashboard.employees.index') !!}" data-i18n="nav.dash.employees">
+                                    {!! __('employees.employees') !!}
+                                </a>
+                            </li>
+                            <!-- end: employees -->
+                        @endcan
+                        @can('dailyReports')
+                            <!-- begin: daliy reports -->
+                            <li class="@if (str_contains(url()->current(), 'dailyReports')) active @endif">
+                                <a class="menu-item" href="{!! route('dashboard.dailyReports.index') !!}" data-i18n="nav.dash.dailyReports">
+                                    {!! __('dailyReports.daily_reports') !!}
+                                </a>
+                            </li>
+                            <!-- end: daliy reports -->
+                        @endcan
+                    </ul>
+
+                </li>
+            </ul>
+            <!-- end: employees -->
 
         </div>
     </div>
