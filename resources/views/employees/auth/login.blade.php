@@ -17,6 +17,7 @@
                                 </div>
                             @endif
 
+                            <br /><br />
                             <h6 class="fw-light">{!! __('auth.sign_in_to_continue') !!}</h6>
                             <form action="{!! route('employees.post.login') !!}" method="post" class="form-horizontal"
                                 enctype="multipart/form-data" role="form">
