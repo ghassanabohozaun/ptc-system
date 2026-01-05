@@ -19,24 +19,49 @@
     <!-- begin: card content -->
     <div class="card-content collapse show">
         <div class="card-body">
-            <div class="table-responsive"></div>
-            <table id="yajra-datatable" class="table table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>{!! __('employees.full_name') !!}</th>
-                        <th>{!! __('employees.personal_id') !!}</th>
-                        <th>{!! __('employees.gender') !!}</th>
-                        <th>{!! __('employees.birthday') !!}</th>
-                        <th>{!! __('employees.created_at') !!}</th>
-                        <th>{!! __('general.actions') !!}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>{!! __('employees.full_name') !!}</th>
+                            <th>{!! __('employees.personal_id') !!}</th>
+                            <th>{!! __('employees.gender') !!}</th>
+                            <th>{!! __('employees.basic_salary') !!} </th>
+                            <th>{!! __('employees.bank_name') !!}</th>
+                            <th>{!! __('employees.governoate_id') !!}</th>
+                            <th>{!! __('general.actions') !!}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($employees as $employee)
+                            <tr>
+                                <td>{!! $loop->iteration !!}</td>
+                                <td>{!! $employee->EmployeeShortName() !!}</td>
+                                <td>{!! $employee->personal_id !!}</td>
+                                <td>{!! $employee->EmployeeGender() !!}</td>
+                                <td>{!! $employee->basic_salary !!}
+                                    <span class="text-success">{!! $employee->currency !!}</span>
+                                </td>
+                                <td>{!! $employee->bank_name !!}</td>
+                                <td>{!! $employee->governorate->name !!}</td>
+                                <td>@include('dashboard.employees.employees.parts.actions')</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="7" class="text-center">
+                                    {!! __('employees.no_employees_found') !!}
+                                </td>
+                            </tr>
+                        @endforelse
 
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination-links float-right">
+                {!! $employees->links() !!}
+            </div>
         </div>
     </div>
+    <!-- end: card content -->
 </div>
-<!-- end: card content -->

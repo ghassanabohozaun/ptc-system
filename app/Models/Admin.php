@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -12,7 +13,7 @@ use Spatie\Translatable\HasTranslations;
 
 class Admin extends Authenticatable
 {
-    use HasFactory, Notifiable, SoftDeletes, HasTranslations,HasApiTokens;
+    use HasFactory, Notifiable, SoftDeletes, HasTranslations, HasApiTokens;
     protected $table = 'admins';
 
     // fillable
@@ -37,11 +38,25 @@ class Admin extends Authenticatable
         return $this->belongsTo(Role::class, 'role_id');
     }
 
-    // accessories
-    // public function getStatusAttribute($status)
-    // {
-    //     return $status == 1 ? 'on' : '';
-    // }
+    public function salaries()
+    {
+        return $this->hasMany(Salary::class, 'admin_id');
+    }
+
+     // accsessores
+    public function getStatusAttribute($status)
+    {
+        return $status == 1 ? 'on' : '';
+    }
+
+     public function getCreatedAtAttribute($value)
+    {
+        if (request()->wantsJson()) {
+            return $value;
+        }
+        return Carbon::parse($value)->format('d/m/Y h:i A');
+    }
+
 
     // has ability permission
     public function hasAbility($permissions)

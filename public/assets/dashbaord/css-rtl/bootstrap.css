@@ -393,7 +393,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
    font-weight: normal;
   font-style: normal;
   line-height : 1.2;
-  color : #464855;
+  color : #1b1b1f;
 }
 
 h1, .h1 {
@@ -6320,7 +6320,7 @@ a.bg-dark:hover, a.bg-dark:focus, button.bg-dark:hover, button.bg-dark:focus {
 }
 
 .border-bottom {
-  border-bottom : 1px solid #626E82 !important;
+  border-bottom : 1px solid #ccc !important;
 }
 
 .border-left {

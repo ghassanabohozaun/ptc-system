@@ -21,7 +21,7 @@
                                     </a>
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <a href="{!! route('dashboard.employeeStatuses.index') !!}">
+                                    <a href="{!! route('dashboard.departments.index') !!}">
                                         {!! __('departments.departments') !!}
                                     </a>
                                 </li>

@@ -17,7 +17,7 @@ class SettingSeeder extends Seeder
             return Setting::create([
                 'site_name' => [
                     'en' => 'PTC',
-                    'ar' => 'مركز فلسطين للصدمة النفسية',
+                    'ar' => 'PTC',
                 ],
                 'address' => [
                     'en' => '',
@@ -42,7 +42,6 @@ class SettingSeeder extends Seeder
                 'youtube' => '',
                 'logo' => '',
                 'favicon' => '',
-                'promation_video_url' => '',
             ]);
         });
     }

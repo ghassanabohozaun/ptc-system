@@ -45,9 +45,9 @@ return [
             'provider' => 'admins',
         ],
 
-        'child' => [
+        'employee' => [
             'driver' => 'session',
-            'provider' => 'children',
+            'provider' => 'employees',
         ],
     ],
 
@@ -79,9 +79,9 @@ return [
             'model' => env('AUTH_MODEL', App\Models\Admin::class),
         ],
 
-        'children' => [
+        'employees' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\Child::class),
+            'model' => env('AUTH_MODEL', App\Models\Employee::class),
         ],
     ],
 

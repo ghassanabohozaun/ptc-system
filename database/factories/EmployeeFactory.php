@@ -19,29 +19,45 @@ class EmployeeFactory extends Factory
     public function definition(): array
     {
         $gender = ['male', 'female'];
-        $material_status = ['single','married','divorced','widowed'];
+        $material_status = ['single', 'married', 'divorced', 'widowed'];
         $currency = ['ILS', 'USD', 'GBP'];
 
         return [
-            'first_name' => fake()->firstName,
-            'father_name' => fake()->sentence(1),
-            'grand_father_name' => fake()->sentence(1),
-            'family_name' => fake()->sentence(1),
-            'password'=>'',
-            'personal_id' => fake()->randomNumber( 9),
+            'first_name' => [
+                'en' => fake()->firstName,
+                'ar' => fake()->lastName,
+            ],
+
+            'father_name' => [
+                'en' => fake()->firstName,
+                'ar' => fake()->lastName,
+            ],
+            'grand_father_name' => [
+                'en' => fake()->firstName,
+                'ar' => fake()->lastName,
+            ],
+
+            'family_name' => [
+                'en' => fake()->firstName,
+                'ar' => fake()->lastName,
+            ],
+
+            'password' => '',
+            'personal_id' => fake()->randomNumber(9),
             'gender' => fake()->randomElement($gender),
             'birthday' => fake()->date,
             'marital_status' => fake()->randomElement($material_status),
-            'mobile_no' => fake()->phoneNumber,
-            'alternative_mobile_no' => fake()->phoneNumber,
+            'mobile_no' => mt_rand(1000000000, 9999999999),
+            'alternative_mobile_no' => mt_rand(1000000000, 9999999999),
             'email' => fake()->email,
             'governoate_id' => Governorate::inRandomOrder()->first()->id,
             'city_id' => City::inRandomOrder()->first()->id,
             'address_details' => fake()->sentence(10),
             'bank_name' => fake()->sentence(3),
-            'iban' => fake()->randomNumber( 5),
-            'banck_account' => fake()->randomNumber( 5),
-            'currency' => fake()->randomElement($currency),
+            'iban' => fake()->randomNumber(5),
+            'banck_account' => fake()->randomNumber(5),
+            'basic_salary' => fake()->randomNumber(3),
+            'currency' => 'USD',
             'photo' => '',
         ];
     }

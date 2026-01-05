@@ -11,8 +11,10 @@ return [
     'search' => 'Search ... ',
     'hello' => 'Hello ,',
     'welcome' => 'Welcome',
+    'employees_count' => 'Employee Count',
+    'daily_reports_count' => 'Daily Reports Count',
 
-    // menu
+    //admin  menu
     'roles' => 'Roles',
     'admins' => 'Admins',
     'users' => 'Users',
@@ -20,6 +22,10 @@ return [
     'settings' => 'Settings',
     'employees_settings' => 'Employees Settings',
     'employees' => 'Employees',
+    'salaries' => 'Salaries',
+
+    // employees menu
+    'daily_report' => 'Daily Report',
 
     // login
     'login' => 'Login',

@@ -3,7 +3,7 @@
     <div class="position-relative d-inline-block">
         @if (!empty($ticket->photo))
             <img src='{!! asset('/uploads/tickets/' . $ticket->photo) !!}' width="100" height="100" class="img-fluid img-responsive">
-            <a href="#" data-target="#fullScreenModal_{!! $ticket->id !!}" data-toggle="modal"
+            <a href="javascript:void(0)" data-target="#fullScreenModal_{!! $ticket->id !!}" data-toggle="modal"
                 class="badge badge-sm bg-info  position-absolute" style="top: 5px; left: 2px;">
                 <i class="la la-arrows"></i>
             </a>

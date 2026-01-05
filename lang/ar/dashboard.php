@@ -10,8 +10,10 @@ return [
     'back_to_home' => 'الرجوع الي الشاشة الرئيسية',
     'search' => 'بحث ...',
     'hello' => 'مرحبا ,',
+    'employees_count' => 'عدد الموظفين',
+    'daily_reports_count' => 'عدد التقارير اليومية',
 
-    // menu
+    // admin menu
     'roles' => 'الصلاحيات',
     'admins' => 'المديرين',
     'users' => 'المستخدمين',
@@ -19,6 +21,10 @@ return [
     'settings' => 'الإعدادات ',
     'employees_settings' => 'إعدادات الموظفين',
     'employees' => 'الموظفين',
+    'salaries'=>'الرواتب',
+
+    // employees menu
+    'daily_report' => 'التقرير اليومي',
 
     // login
     'login' => 'تسجيل الدخول',

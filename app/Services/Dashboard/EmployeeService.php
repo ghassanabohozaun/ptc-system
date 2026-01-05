@@ -30,23 +30,7 @@ class EmployeeService
     // get all
     public function getAll($request)
     {
-
-        $employees = $this->employeeRepository->getAll($request);
-        return DataTables::of($employees)
-            ->addIndexColumn()
-            ->addColumn('full_name', function ($employee) {
-                return $employee->EmployeeFullName();
-            })
-            ->addColumn('gender', function ($employee) {
-                return $employee->EmployeeGender();
-            })
-            ->addColumn('created_at', function ($employee) {
-                return $employee->created_at;
-            })
-            ->addColumn('actions', function ($employee) {
-                return view('dashboard.employees.employees.parts.actions', compact('employee'));
-            })
-            ->make(true);
+        return $this->employeeRepository->getAll($request);
     }
 
     // get employees
@@ -60,7 +44,6 @@ class EmployeeService
     {
         return $this->employeeRepository->getActive();
     }
-
 
     // store employee
     public function storeEmployee($data)
@@ -136,10 +119,33 @@ class EmployeeService
         return $employee;
     }
 
-     // autocomplete employee
+    // autocomplete employee
     public function autocompleteEmployee($searchValue)
     {
         return $this->employeeRepository->autocompleteEmployee($searchValue);
+    }
+
+    // change employee password
+    public function changeEmployeePassword($data)
+    {
+        $employee = $this->employeeRepository->getOne($data['employee_id']);
+
+        if (!$employee) {
+            return false;
+        }
+
+        if (!empty($data['password'])) {
+            $password = bcrypt($data['password']);
+        } else {
+            $password = $employee->password;
+        }
+
+        $employee = $this->employeeRepository->changeEmployeePassword($employee, $password);
+
+        if (!$employee) {
+            return false;
+        }
+        return $employee;
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////
@@ -226,7 +232,7 @@ class EmployeeService
 
         if (!empty($education->certification)) {
             $this->imageManagerUtils->removeImageFromLocal($education->certification, 'employeesCertifications');
-         }
+        }
 
         $education = $this->employeeRepository->deleteOneEducation($education);
         if (!$education) {

@@ -6,14 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Models\Child;
 use App\Services\Dashboard\ChildService;
 use App\Services\Dashboard\CityService;
+use App\Services\Dashboard\DailyReportService;
 use App\Services\Dashboard\GovernorateService;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    protected $childService, $governorateService, $cityService;
-    public function __construct(GovernorateService $governorateService, CityService $cityService)
+    protected $dailyReportService, $governorateService, $cityService;
+    public function __construct(DailyReportService $dailyReportService, GovernorateService $governorateService, CityService $cityService)
     {
+        $this->dailyReportService = $dailyReportService;
         $this->governorateService = $governorateService;
         $this->cityService = $cityService;
     }
@@ -22,7 +24,8 @@ class DashboardController extends Controller
     {
         $title = __('dashboard.dashboard');
 
-        return view('dashboard.index', compact( 'title'));
+        $dailyReports = $this->dailyReportService->getDailyReportsForAllEmplpoyees()->take(5);
+        return view('dashboard.index', compact('title','dailyReports'));
     }
 
     // addresses
@@ -32,8 +35,6 @@ class DashboardController extends Controller
         $cities = $this->cityService->getAllCitiesWithoutRelation();
         return view('dashboard.address', compact('governorates', 'cities'));
     }
-
-
 
     // // child registration chart function
     // public function maleChildRegistrationChart()
@@ -54,7 +55,6 @@ class DashboardController extends Controller
     //     return $maleRegistrationData;
     // }
 
-
     //   // child registration chart function
     // public function femaleChildRegistrationChart()
     // {
@@ -73,8 +73,4 @@ class DashboardController extends Controller
     //     }
     //     return $femaleRegistrationData;
     // }
-
-
-
-
 }

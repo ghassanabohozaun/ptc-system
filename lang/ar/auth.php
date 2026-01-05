@@ -47,14 +47,16 @@ return [
     'already_have_an_account' => 'أمتلك حساب مسبقاً',
     'i_agree_all_terms' => 'لقد وافقت علي جميع الشروط لـ ',
 
-    // child login
+    // employee login
     'please_accept_terms' => 'الرجاء قبول شروطنا اولاُ',
     'welcome_back' => 'أهلا بعودتك مرة أخري',
-    'enter_child_personal_id_and_passwrod_to_sign_in' => 'ادخل رقم هوية الطفل و كلمة المرور لتسجيل الدخول',
-    'child_pesonal_id' => 'رقم هوية الطفل',
-    'birthday' => 'تاريخ ميلاد الطفل',
-    'enter_child_pesonal_id' => 'ادخل رقم هوية الطفل',
-    'enter_birthday' => 'ادخل تاريخ ميلاد الطفل',
-    'register_new_orphan' => 'تسجيل يتيم جديد',
+    'enter_employee_personal_id_and_passwrod_to_sign_in' => 'ادخل رقم هوية الموظف و كلمة المرور لتسجيل الدخول',
+    'employee_pesonal_id' => 'رقم هوية الموظف',
+    'birthday' => 'تاريخ ميلاد الموظف',
+    'enter_employee_pesonal_id' => 'ادخل رقم هوية الموظف',
+    'enter_birthday' => 'ادخل تاريخ ميلاد الموظف',
+    'techenical_support' => 'الدعم الفني',
+    'sign_in_to_continue'=>'قم بتسجيل الدخول للمواصلة',
+    'hellow' => 'مرحبا ! لنبدأ الان ',
 
 ];

@@ -56,12 +56,12 @@
                 <div class="content-body">
 
                     <section id="basic-form-layouts">
-                        <div class="row match-height">
+                        <div class="row">
 
 
                             <!-- start: row  basic settings -->
                             <div class="col-md-8">
-                                <div class="card">
+                                <div class="card" style="height: 480px">
                                     <!-- begin: card header -->
                                     <div class="card-header">
                                         <h4 class="card-title" id="basic-layout-colored-form-control">
@@ -113,17 +113,18 @@
                                                 <!-- end: row site name -->
 
 
-                                                <!-- begin: row  site address-->
+
+                                                <!-- begin: row facebook twitter-->
                                                 <div class="row">
                                                     <!-- begin: input -->
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="address_ar">{!! __('settings.address_ar') !!}</label>
-                                                            <input type="text" id="address_ar" name="address[ar]"
-                                                                value="{!! old('address.ar', setting()->getTranslation('address', 'ar')) !!}" class="form-control"
-                                                                autocomplete="off" placeholder="{!! __('settings.enter_address_ar') !!}">
+                                                            <label for="facebook">{!! __('settings.facebook') !!}</label>
+                                                            <input type="text" id="facebook" name="facebook"
+                                                                value="{!! old('facebook', setting()->facebook) !!}" class="form-control"
+                                                                autocomplete="off" placeholder="{!! __('settings.enter_facebook') !!}">
                                                             <span class="text text-danger">
-                                                                <strong id="address_ar_error"></strong>
+                                                                <strong id="facebook_error"></strong>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -132,29 +133,31 @@
                                                     <!-- begin: input -->
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="address_en">{!! __('settings.address_en') !!}</label>
-                                                            <input type="text" id="address_en" name="address[en]"
-                                                                value="{!! old('address.en', setting()->getTranslation('address', 'en')) !!}" class="form-control"
-                                                                autocomplete="off" placeholder="{!! __('settings.enter_address_en') !!}">
+                                                            <label for="twitter">{!! __('settings.twitter') !!}</label>
+                                                            <input type="text" id="twitter" name="twitter"
+                                                                value="{!! old('twitter', setting()->twitter) !!}" class="form-control"
+                                                                autocomplete="off" placeholder="{!! __('settings.enter_twitter') !!}">
                                                             <span class="text text-danger">
-                                                                <strong id="address_en_error"></strong>
+                                                                <strong id="twitter_error"></strong>
                                                             </span>
                                                         </div>
                                                     </div>
                                                     <!-- end: input -->
                                                 </div>
-                                                <!-- end: row  site address-->
+                                                <!-- end: row facebook twitter -->
 
 
-                                                <!-- begin: row  site description-->
+                                                <!-- begin: row instegram youtube-->
                                                 <div class="row">
                                                     <!-- begin: input -->
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="description_ar">{!! __('settings.description_ar') !!}</label>
-                                                            <textarea rows="5" id="description_ar" name="description[ar]" class="form-control" autocomplete="off">{!! old('description.ar', setting()->getTranslation('description', 'ar')) !!}</textarea>
+                                                            <label for="instegram">{!! __('settings.instegram') !!}</label>
+                                                            <input type="text" id="instegram" name="instegram"
+                                                                value="{!! old('instegram', setting()->instegram) !!}" class="form-control"
+                                                                autocomplete="off" placeholder="{!! __('settings.enter_instegram') !!}">
                                                             <span class="text text-danger">
-                                                                <strong id="description_ar_error"></strong>
+                                                                <strong id="instegram_error"></strong>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -163,45 +166,18 @@
                                                     <!-- begin: input -->
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="description_en">{!! __('settings.description_en') !!}</label>
-                                                            <textarea rows="5" id="description_en" name="description[en]" class="form-control" autocomplete="off">{!! old('description.en', setting()->getTranslation('description', 'en')) !!}</textarea>
+                                                            <label for="youtube">{!! __('settings.youtube') !!}</label>
+                                                            <input type="text" id="youtube" name="youtube"
+                                                                value="{!! old('youtube', setting()->youtube) !!}" class="form-control"
+                                                                autocomplete="off" placeholder="{!! __('settings.enter_youtube') !!}">
                                                             <span class="text text-danger">
-                                                                <strong id="description_en_error"></strong>
+                                                                <strong id="youtube_error"></strong>
                                                             </span>
                                                         </div>
                                                     </div>
                                                     <!-- end: input -->
                                                 </div>
-                                                <!-- end: row  site description-->
-
-
-                                                <!-- begin: row  site keywords-->
-                                                <div class="row">
-                                                    <!-- begin: input -->
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="keywords_ar">{!! __('settings.keywords_ar') !!}</label>
-                                                            <textarea rows="5" id="keywords_ar" name="keywords[ar]" class="form-control" autocomplete="off">{!! old('keywords.ar', setting()->getTranslation('keywords', 'ar')) !!}</textarea>
-                                                            <span class="text text-danger">
-                                                                <strong id="keywords_ar_error"></strong>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <!-- end: input -->
-
-                                                    <!-- begin: input -->
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="keywords_en">{!! __('settings.keywords_en') !!}</label>
-                                                            <textarea rows="5" id="keywords_en" name="keywords[en]" class="form-control" autocomplete="off">{!! old('keywords.en', setting()->getTranslation('keywords', 'en')) !!}</textarea>
-                                                            <span class="text text-danger">
-                                                                <strong id="keywords_en_error"></strong>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <!-- end: input -->
-                                                </div>
-                                                <!-- end: row  site keywords-->
+                                                <!-- end: row facebook twitter -->
 
                                             </div>
                                         </div>
@@ -330,101 +306,12 @@
                             </div><!-- end: row  -->
 
 
-
-
-                            <!-- start: row  socail section-->
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <!-- begin: card header -->
-                                    <div class="card-header">
-                                        <h4 class="card-title" id="basic-layout-colored-form-control">
-                                            {!! __('settings.socail_section') !!}
-                                        </h4>
-                                    </div>
-                                    <!-- end: card header -->
-
-                                    <!-- begin: card content -->
-                                    <div class="card-content collapse show">
-                                        <div class="card-body">
-
-                                            <div class="form-body">
-
-                                                <!-- begin: row facebook twitter-->
-                                                <div class="row">
-                                                    <!-- begin: input -->
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="facebook">{!! __('settings.facebook') !!}</label>
-                                                            <input type="text" id="facebook" name="facebook"
-                                                                value="{!! old('facebook', setting()->facebook) !!}" class="form-control"
-                                                                autocomplete="off" placeholder="{!! __('settings.enter_facebook') !!}">
-                                                            <span class="text text-danger">
-                                                                <strong id="facebook_error"></strong>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <!-- end: input -->
-
-                                                    <!-- begin: input -->
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="twitter">{!! __('settings.twitter') !!}</label>
-                                                            <input type="text" id="twitter" name="twitter"
-                                                                value="{!! old('twitter', setting()->twitter) !!}" class="form-control"
-                                                                autocomplete="off" placeholder="{!! __('settings.enter_twitter') !!}">
-                                                            <span class="text text-danger">
-                                                                <strong id="twitter_error"></strong>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <!-- end: input -->
-                                                </div>
-                                                <!-- end: row facebook twitter -->
-
-
-                                                <!-- begin: row instegram youtube-->
-                                                <div class="row">
-                                                    <!-- begin: input -->
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="instegram">{!! __('settings.instegram') !!}</label>
-                                                            <input type="text" id="instegram" name="instegram"
-                                                                value="{!! old('instegram', setting()->instegram) !!}" class="form-control"
-                                                                autocomplete="off" placeholder="{!! __('settings.enter_instegram') !!}">
-                                                            <span class="text text-danger">
-                                                                <strong id="instegram_error"></strong>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <!-- end: input -->
-
-                                                    <!-- begin: input -->
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="youtube">{!! __('settings.youtube') !!}</label>
-                                                            <input type="text" id="youtube" name="youtube"
-                                                                value="{!! old('youtube', setting()->youtube) !!}" class="form-control"
-                                                                autocomplete="off" placeholder="{!! __('settings.enter_youtube') !!}">
-                                                            <span class="text text-danger">
-                                                                <strong id="youtube_error"></strong>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <!-- end: input -->
-                                                </div>
-                                                <!-- end: row facebook twitter -->
-
-
-                                            </div>
-                                        </div>
-                                        <!-- end: card content -->
-                                    </div>
-                                </div> <!-- end: card  -->
-                            </div><!-- end: row  socail section- -->
+                        </div>
 
 
 
-
+                        <!-- start: photo -->
+                        <div class="row">
                             <!-- start: row  media settings -->
                             <div class="col-md-12">
                                 <div class="card">
@@ -482,6 +369,10 @@
                                     </div>
                                 </div> <!-- end: card  -->
                             </div><!-- end: row  media settings -->
+                        </div>
+                        <!-- end: photo  -->
+
+
 
 
 

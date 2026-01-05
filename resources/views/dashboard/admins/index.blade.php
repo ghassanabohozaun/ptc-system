@@ -87,8 +87,9 @@
                                                         <th class="text-center">{!! __('admins.name') !!}</th>
                                                         <th class="text-center">{!! __('admins.email') !!}</th>
                                                         <th class="text-center">{!! __('admins.role_id') !!}</th>
-                                                        <th class="text-center">{!! __('admins.status') !!}
                                                         <th class="text-center">{!! __('admins.created_at') !!}
+                                                        <th class="text-center">{!! __('admins.status') !!}
+                                                        <th class="text-center">{!! __('admins.manage_status') !!}
                                                         <th class="text-center">{!! __('general.actions') !!}</th>
                                                     </tr>
                                                 </thead>
@@ -96,12 +97,16 @@
                                                     @forelse ($admins as $key=>$admin)
                                                         <tr id="row{{ $admin->id }}">
                                                             <th class="col-lg-1 ">{!! $loop->iteration !!} </th>
-                                                            <td class="col-lg-3 text-center">{!! $admin->name !!}</td>
+                                                            <td class="col-lg-2 text-center">{!! $admin->name !!}</td>
                                                             <td class="col-lg-2 text-center">{!! $admin->email !!}</td>
                                                             <td class="col-lg-2 text-center">{!! $admin->role->role !!}</td>
+                                                            <td class="col-lg-2 text-center">{!! $admin->created_at !!}</td>
                                                             <td class="col-lg-1 text-center">
-                                                                @include('dashboard.admins.parts.status')</td>
-                                                            <td class="col-lg-2 text-center">{!! $admin->created_at->format('Y-m-d H:i A') !!}</td>
+                                                                @include('dashboard.admins.parts.status')
+                                                            </td>
+                                                            <td class="col-lg-1 text-center">
+                                                                @include('dashboard.admins.parts.manage_status')
+                                                            </td>
                                                             <td class="col-lg-1 text-center">
                                                                 @include('dashboard.admins.parts.actions')
                                                             </td>
@@ -239,13 +244,25 @@
                 type: 'post',
                 dataType: 'JSON',
                 success: function(data) {
+                    console.log(data);
+                    $('.admin_status_' + data.data.id).empty();
+                    $('.admin_status_' + data.data.id).removeClass('badge-danger');
+                    $('.admin_status_' + data.data.id).removeClass('badge-success');
+                    if (data.data.status == 'on') {
+                        $('.admin_status_' + data.data.id).addClass('badge-success');
+                        $('.admin_status_' + data.data.id).text("{!! __('general.enable') !!}");
+                    } else if (data.data.status == '') {
+                        $('.admin_status_' + data.data.id).addClass('badge-danger');
+                        $('.admin_status_' + data.data.id).text("{!! __('general.disabled') !!}");
+                    }
+
                     if (data.status === true) {
-                        $('#myTable').load(location.href + (' #myTable'));
                         flasher.success("{!! __('general.change_status_success_message') !!}");
                     } else {
                         flasher.error("{!! __('general.change_status_error_message') !!}");
                     }
-                }, //end success
+                }
+
             })
         });
     </script>

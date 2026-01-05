@@ -18,14 +18,16 @@ class Edit extends Component
     use WithFileUploads;
 
     public $currentStep = 1;
+    public $personalIDReadOnly = 1;
+    public $locked = 'open';
 
     public $first_name_ar, $father_name_ar, $grand_father_name_ar, $family_name_ar;
     public $first_name_en, $father_name_en, $grand_father_name_en, $family_name_en;
     public $governoate_id, $city_id, $address_details;
     public $personal_id, $birthday, $gender, $password, $password_confirm, $mobile_no, $marital_status, $alternative_mobile_no;
-    public $email, $bank_name, $iban, $banck_account, $currency;
+    public $email, $bank_name, $iban, $banck_account, $basic_salary, $currency;
     public $photo, $new_photo;
-    public $title, $basic_salary, $appointment_date, $contact_expire_date, $employment_type, $department_id, $employee_status_id, $supervisor;
+    public $title, $appointment_date, $contact_expire_date, $employment_type, $department_id, $employee_status_id, $supervisor;
 
     public $governorates, $cities;
     public $employeeStatuses;
@@ -82,6 +84,7 @@ class Edit extends Component
         $this->bank_name = $this->employee->bank_name;
         $this->iban = $this->employee->iban;
         $this->banck_account = $this->employee->banck_account;
+        $this->basic_salary = $this->employee->basic_salary;
         $this->currency = $this->employee->currency;
         $this->photo = $this->employee->photo;
 
@@ -100,7 +103,6 @@ class Edit extends Component
         // job details
         if ($this->employee->employeeJobDetails) {
             $this->title = $this->employee->employeeJobDetails->title;
-            $this->basic_salary = $this->employee->employeeJobDetails->basic_salary;
             $this->appointment_date = $this->employee->employeeJobDetails->appointment_date;
             $this->contact_expire_date = $this->employee->employeeJobDetails->contact_expire_date;
             $this->employment_type = $this->employee->employeeJobDetails->employment_type;
@@ -140,6 +142,7 @@ class Edit extends Component
             'bank_name' => ['required', 'string', 'min:3'],
             'iban' => ['required', 'string', 'min:3'],
             'banck_account' => ['required', 'string', 'min:3'],
+            'basic_salary' => ['required', 'numeric'],
             'currency' => ['required', 'string', 'min:3'],
             // 'photo' => ['nullable', 'mimes:png,jpg,jpeg,gif'],
         ];
@@ -165,6 +168,7 @@ class Edit extends Component
             'bank_name' => $this->bank_name,
             'iban' => $this->iban,
             'banck_account' => $this->banck_account,
+            'basic_salary' => $this->basic_salary,
             'currency' => $this->currency,
             'photo' => $this->new_photo,
         ];
@@ -174,6 +178,7 @@ class Edit extends Component
         if (!$employeeUpdated) {
             flash()->error(message: __('general.update_error_message'));
         } else {
+            $this->personalIDReadOnly = 1;
             flash()->success(message: __('general.update_success_message'));
             // $this->resetExcept(['governorates', 'cities', 'employeeStatuses', 'employee','departments']);
         }
@@ -223,7 +228,6 @@ class Edit extends Component
     {
         $data = [
             'title' => ['required', 'string', 'min:3'],
-            'basic_salary' => ['required', 'numeric'],
             'appointment_date' => ['required', 'date'],
             'contact_expire_date' => ['required', 'date'],
             'employment_type' => ['required'],
@@ -236,7 +240,6 @@ class Edit extends Component
 
         $jobDetailsData = [
             'title' => $this->title,
-            'basic_salary' => $this->basic_salary,
             'appointment_date' => $this->appointment_date,
             'contact_expire_date' => $this->contact_expire_date,
             'employment_type' => $this->employment_type,
@@ -301,6 +304,18 @@ class Edit extends Component
             }
             flash()->success(message: __('general.delete_success_message'));
         }
+    }
+
+    public function unlockPersonalID()
+    {
+        $this->personalIDReadOnly = 0;
+        $this->locked = 'close';
+    }
+
+    public function lockedPersonalID()
+    {
+        $this->personalIDReadOnly = 1;
+        $this->locked = 'open';
     }
 
     // change governorate

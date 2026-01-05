@@ -2,9 +2,13 @@
 return [
     'create_new_employee' => 'انشاء موظف جديد',
     'update_employee' => 'تعديل الموظف',
+    'show_employee' => 'عرض الموظف',
+
     'employees' => 'الموظفين',
     'show_all_employees' => 'عرض جميع الصلاحيات',
     'profile' => 'الملف الشخصي',
+    'overview' => 'ملخص',
+    'financial' => 'مالي',
 
     'male' => 'ذكر',
     'female' => 'انثي',
@@ -108,7 +112,6 @@ return [
     'add_employee_before' => 'قم باضافة الموظف مسبقاً',
     'no_data_found' => 'لا يوجد بيانات حالياً !',
 
-
     // education
     'educational_instituation_name' => 'اسم المؤسسة',
     'education_level' => 'المستوي التعليمي',
@@ -158,4 +161,7 @@ return [
     'enter_employee_status_name_en' => 'ادخل اسم حالة الموظف بالانجليزي',
 
     'no_employee_statuses_found' => 'لا يوجد حالات للموظف حالياً !',
+
+    // dashboard
+    'change_password' => 'تغير كلمة المرور',
 ];

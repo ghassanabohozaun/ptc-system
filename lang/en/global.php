@@ -8,5 +8,6 @@ return [
     'employees' => 'Employee Managment',
     'employeeStatuses' => 'Employee Statuses Managment',
     'departments' => 'Departments Managment',
-    'dailyReports'=>'Daily Reports Managment',
+    'dailyReports' => 'Daily Reports Managment',
+    'salaries' => 'Salaries Managment',
 ];

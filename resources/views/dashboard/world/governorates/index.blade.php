@@ -72,9 +72,6 @@
                                 <!-- begin: card content -->
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <!-- begin: seach form -->
-                                        @include('dashboard.includes.search')
-                                        <!-- end: search -->
                                         <div class="table-responsive">
                                             <table class="table" id='myTable'>
                                                 <thead>
@@ -256,6 +253,7 @@
                         flasher.error("{!! __('general.change_status_error_message') !!}");
                     }
                 }
+
             });
 
         });

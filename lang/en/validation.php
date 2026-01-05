@@ -305,5 +305,7 @@ return [
         'department_id' => 'Department',
         'supervisor' => 'Supervisor',
         'employee_status' => 'Employee Status',
+
+        'employeeSalaryItem.*.amount' => 'Salary ',
     ],
 ];

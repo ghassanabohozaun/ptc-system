@@ -1,0 +1,42 @@
+.fl-flasher .fl-close {
+-webkit-box-align: center;
+-webkit-align-items: center;
+-moz-box-align: center;
+align-items: center;
+background-color: transparent;
+border: none;
+color: #a8aaab;
+cursor: pointer;
+display: -webkit-inline-box;
+display: -webkit-inline-flex;
+display: -moz-inline-box;
+display: inline-flex;
+font-size: 25px;
+-webkit-box-pack: center;
+-webkit-justify-content: center;
+-moz-box-pack: center;
+justify-content: center;
+line-height: 0;
+margin: -.5rem;
+padding: .5rem;
+position: absolute;
+left: -20rem;
+top: 1rem;
+-webkit-transition: color .3s
+ease, -webkit-transform .3s
+ease;
+transition: color .3s
+ease, -webkit-transform .3s
+ease;
+-moz-transition: color .3s ease,transform .3s ease,-moz-transform .3s ease;
+transition: color .3s
+ease, transform .3s
+ease;
+transition: color .3s
+ease, transform .3s
+ease, -webkit-transform .3s
+ease, -moz-transform .3s
+ease;
+};
+
+

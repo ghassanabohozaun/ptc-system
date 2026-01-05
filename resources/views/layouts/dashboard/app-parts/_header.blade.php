@@ -1,17 +1,18 @@
- <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow navbar-semi-dark fixed-top navbar-shadow"
+ <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow navbar-light fixed-top navbar-shadow"
      {{-- class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow navbar-semi-dark fixed-top navbar-shadow"> --}} {{--  --}}>
      <div class="navbar-wrapper">
          <div class="navbar-header">
              <ul class="nav navbar-nav flex-row">
                  <li class="nav-item mobile-menu d-md-none mr-auto"><a
-                         class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i
+                         class="nav-link nav-menu-main menu-toggle hidden-xs" href="javascript:void(0)"><i
                              class="ft-menu font-large-1"></i></a></li>
                  <li class="nav-item mr-auto site_name_logo_section">
-                     <a class="navbar-brand" href="#">
+                     <a class="navbar-brand" href="javascript:void(0)">
                          @if (setting()->logo != null)
                              <img class="brand-logo" alt="" src="{!! asset('uploads/settings/' . setting()->logo) !!}">
+                         @else
+                             <h4 class="brand-text">{!! setting()->site_name !!}</h4>
                          @endif
-                         <h4 class="brand-text">{!! setting()->site_name !!}</h4>
                      </a>
                  </li>
                  <li class="nav-item d-none d-md-block float-right"><a class="nav-link modern-nav-toggle pr-0"
@@ -27,7 +28,7 @@
              <div class="collapse navbar-collapse" id="navbar-mobile">
                  <ul class="nav navbar-nav mr-auto float-left">
 
-                     {{-- <li class="dropdown nav-item mega-dropdown"><a class="dropdown-toggle nav-link" href="#"
+                     {{-- <li class="dropdown nav-item mega-dropdown"><a class="dropdown-toggle nav-link" href="javascript:void(0)"
                              data-toggle="dropdown">Mega</a>
                          <ul class="mega-dropdown-menu dropdown-menu row">
                              <li class="col-md-2">
@@ -37,7 +38,7 @@
                                      <div>
                                          <img class="rounded img-fluid mb-1"
                                              src="{!! asset('assets/dashbaord') !!}/images/slider/slider-2.png"
-                                             alt="First slide"><a class="news-title mb-0" href="#">Poster
+                                             alt="First slide"><a class="news-title mb-0" href="javascript:void(0)">Poster
                                              Frame PSD</a>
                                          <p class="news-content">
                                              <span class="font-small-2">January 26, 2018</span>
@@ -55,33 +56,33 @@
                                                  <a class="dropdown-item" href="layout-2-columns.html"><i
                                                          class="ft-file"></i> Page layouts & Templates</a>
                                              </li>
-                                             <li><a href="#"><i class="ft-align-left"></i> Multi level
+                                             <li><a href="javascript:void(0)"><i class="ft-align-left"></i> Multi level
                                                      menu</a>
                                                  <ul>
-                                                     <li><a class="dropdown-item" href="#"><i
+                                                     <li><a class="dropdown-item" href="javascript:void(0)"><i
                                                                  class="la la-bookmark-o"></i> Second level</a></li>
-                                                     <li><a href="#"><i class="la la-lemon-o"></i> Second
+                                                     <li><a href="javascript:void(0)"><i class="la la-lemon-o"></i> Second
                                                              level menu</a>
                                                          <ul>
-                                                             <li><a class="dropdown-item" href="#"><i
+                                                             <li><a class="dropdown-item" href="javascript:void(0)"><i
                                                                          class="la la-heart-o"></i> Third level</a>
                                                              </li>
-                                                             <li><a class="dropdown-item" href="#"><i
+                                                             <li><a class="dropdown-item" href="javascript:void(0)"><i
                                                                          class="la la-file-o"></i> Third level</a>
                                                              </li>
-                                                             <li><a class="dropdown-item" href="#"><i
+                                                             <li><a class="dropdown-item" href="javascript:void(0)"><i
                                                                          class="la la-trash-o"></i> Third level</a>
                                                              </li>
-                                                             <li><a class="dropdown-item" href="#"><i
+                                                             <li><a class="dropdown-item" href="javascript:void(0)"><i
                                                                          class="la la-clock-o"></i> Third level</a>
                                                              </li>
                                                          </ul>
                                                      </li>
-                                                     <li><a class="dropdown-item" href="#"><i
+                                                     <li><a class="dropdown-item" href="javascript:void(0)"><i
                                                                  class="la la-hdd-o"></i>
                                                              Second level, third
                                                              link</a></li>
-                                                     <li><a class="dropdown-item" href="#"><i
+                                                     <li><a class="dropdown-item" href="javascript:void(0)"><i
                                                                  class="la la-floppy-o"></i> Second level, fourth
                                                              link</a></li>
                                                  </ul>
@@ -205,7 +206,7 @@
                              </li>
                          </ul>
                      </li>
-                     <li class="nav-item nav-search"><a class="nav-link nav-link-search" href="#"><i
+                     <li class="nav-item nav-search"><a class="nav-link nav-link-search" href="javascript:void(0)"><i
                                  class="ficon ft-search"></i></a>
                          <div class="search-input">
                              <input class="input" type="text" placeholder="Explore Modern...">
@@ -213,24 +214,27 @@
                      </li> --}}
                  </ul>
                  <ul class="nav navbar-nav float-right">
-                     <li class="dropdown dropdown-user nav-item">
-                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                     <li class="dropdown dropdown-user nav-item admin_name_section">
+                         <a class="dropdown-toggle nav-link dropdown-user-link" href="javascript:void(0)"
+                             data-toggle="dropdown">
                              <span class="mr-1">{!! __('dashboard.hello') !!}
-                                 <span class="user-name text-bold-700">{!! Auth::guard('admin')->name !!}</span>
+                                 <span class="user-name text-bold-700">{!! admin()->user()->getTranslation('name', Lang()) !!}</span>
                              </span>
                              <span class="avatar avatar-online">
                                  <img src="{!! asset('assets/dashbaord') !!}/images/portrait/small/avatar-s-19.png"
                                      alt="avatar"><i></i></span>
                          </a>
-                         <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i
-                                     class="ft-user"></i> Edit Profile</a>
-                             {{-- <a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a>
-                             <a class="dropdown-item" href="#"><i class="ft-check-square"></i> Task</a>
-                             <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Chats</a>
+                         <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item"
+                                 href="javascript:void(0)"><i class="ft-user"></i> Edit Profile</a>
+                             {{-- <a class="dropdown-item" href="javascript:void(0)"><i class="ft-mail"></i> My Inbox</a>
+                             <a class="dropdown-item" href="javascript:void(0)"><i class="ft-check-square"></i> Task</a>
+                             <a class="dropdown-item" href="javascript:void(0)"><i class="ft-message-square"></i> Chats</a>
                              <div class="dropdown-divider">
                              </div> --}}
-                             <a class="dropdown-item" href="{!! route('dashboard.logout') !!}"><i class="ft-power"></i>
-                                 {!! __('auth.logout') !!}</a>
+                             <a class="dropdown-item" href="{!! route('dashboard.logout') !!}">
+                                 <i class="ft-power"></i>
+                                 {!! __('auth.logout') !!}
+                             </a>
 
 
 
@@ -248,8 +252,8 @@
 
                      {{-- dropdown-language --}}
                      <li class="dropdown dropdown-notification nav-item" style="margin-top: -5px">
-                         <a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown"
-                             aria-haspopup="true" aria-expanded="false">
+                         <a class="dropdown-toggle nav-link" id="dropdown-flag" href="javascript:void(0)"
+                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                              @if (Config::get('app.locale') == 'ar')
                                  <img class="flag-icon"
                                      src="{{ asset('assets/dashbaord/media/svg/flags/العربية.svg') }}" />
@@ -278,7 +282,7 @@
 
 
                      <li class="dropdown dropdown-notification nav-item">
-                         <a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i
+                         <a class="nav-link nav-link-label" href="javascript:void(0)" data-toggle="dropdown"><i
                                  class="ficon ft-bell"></i>
                              {{-- <span
                                  class="badge badge-pill badge-default badge-danger badge-default badge-up badge-glow">5</span> --}}
@@ -376,7 +380,7 @@
                      </li>
 
                      <li class="dropdown dropdown-notification nav-item">
-                         <a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i
+                         <a class="nav-link nav-link-label" href="javascript:void(0)" data-toggle="dropdown"><i
                                  class="ficon ft-mail">
                              </i></a>
                          {{-- <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">

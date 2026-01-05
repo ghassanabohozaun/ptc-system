@@ -24,16 +24,15 @@ class EmployeesController extends Controller
     }
 
     // index
-    public function index()
+    public function index(Request $request)
     {
         $title = __('employees.employees');
-        return view('dashboard.employees.employees.index', compact('title'));
-    }
+        $employees = $this->employeeService->getAll($request);
+        if ($request->ajax()) {
+            return view('dashboard.employees.employees.partials._table', compact('employees'))->render();
+        }
 
-    // get all
-    public function getAll(Request $request)
-    {
-        return $this->employeeService->getAll($request);
+        return view('dashboard.employees.employees.index', compact('title', 'employees'));
     }
 
     // create
@@ -93,9 +92,7 @@ class EmployeesController extends Controller
         return response()->json(['status' => true, 'data' => $employee], 200);
     }
 
-
-
-     // autocomplete employee
+    // autocomplete employee
     public function autocompleteEmployee(Request $request)
     {
         $data = [];
@@ -104,5 +101,4 @@ class EmployeesController extends Controller
         }
         return response()->json($data);
     }
-
 }

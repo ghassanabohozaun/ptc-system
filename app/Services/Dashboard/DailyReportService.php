@@ -3,16 +3,18 @@
 namespace App\Services\Dashboard;
 
 use App\Repositories\Dashboard\DailyReportRepository;
+use App\Utils\ImageManagerUtils;
 use Mpdf\Tag\Th;
 use Yajra\DataTables\Facades\DataTables;
 
 class DailyReportService
 {
-    protected $dailyReportRepository;
+    protected $dailyReportRepository, $imageManagerUtils;
     // __construct
-    public function __construct(DailyReportRepository $dailyReportRepository)
+    public function __construct(DailyReportRepository $dailyReportRepository, ImageManagerUtils $imageManagerUtils)
     {
         $this->dailyReportRepository = $dailyReportRepository;
+        $this->imageManagerUtils = $imageManagerUtils;
     }
 
     // get one
@@ -26,32 +28,21 @@ class DailyReportService
     }
 
     // get all
-    public function getAll()
+    public function getAll($request)
     {
-        $dailyReports = $this->dailyReportRepository->getAll();
+        return $this->dailyReportRepository->getAll($request);
+    }
 
-        return DataTables::of($dailyReports)
-            ->addIndexColumn()
-            ->addColumn('employee_id', function ($dailyReport) {
-                return $dailyReport->employee->EmployeeFullName();
-            })
-            ->addColumn('details', function ($dailyReport) {
-                return view('dashboard.daily-reports.parts.details', compact('dailyReport'));
-            })
-            ->addColumn('created_at', function ($dailyReport) {
-                return $dailyReport->created_at;
-            })
+    // get daily reports for all employee
+    public function getDailyReportsForAllEmplpoyees()
+    {
+        return $this->dailyReportRepository->getDailyReportsForAllEmplpoyees();
+    }
 
-            ->addColumn('status', function ($dailyReport) {
-                return view('dashboard.daily-reports.parts.status', compact('dailyReport'));
-            })
-            ->addColumn('manage-status', function ($dailyReport) {
-                return view('dashboard.daily-reports.parts.manage-status', compact('dailyReport'));
-            })
-            ->addColumn('actions', function ($dailyReport) {
-                return view('dashboard.daily-reports.parts.actions', compact('dailyReport'));
-            })
-            ->make(true);
+    // get daily reports for one employee
+    public function getDailyReportsForOneEmplpoyee($employee_id)
+    {
+        return $this->dailyReportRepository->getDailyReportsForOneEmplpoyee($employee_id);
     }
 
     // create
@@ -59,6 +50,11 @@ class DailyReportService
     {
         $dailyReport = $this->dailyReportRepository->dailyReportExists($data['employee_id'], $data['date']);
         if (empty($dailyReport)) {
+            if (array_key_exists('file', $data) && $data['file'] != null) {
+                $file_name = $this->imageManagerUtils->uploadSingleImage('', $data['file'], 'dailyReports');
+                $data['file'] = $file_name;
+            }
+
             $dailyReport = $this->dailyReportRepository->create($data);
             if (!$dailyReport) {
                 return 'error';
@@ -76,6 +72,16 @@ class DailyReportService
             return false;
         }
 
+        if (array_key_exists('file', $data) && $data['file'] != null) {
+            //remove old file
+            if ($dailyReport->file) {
+                $this->imageManagerUtils->removeImageFromLocal($dailyReport->file, 'dailyReports');
+            }
+
+            $file_name = $this->imageManagerUtils->uploadSingleImage('', $data['file'], 'dailyReports');
+            $data['file'] = $file_name;
+        }
+
         $dailyReport = $this->dailyReportRepository->update($dailyReport, $data);
         if (!$dailyReport) {
             return false;
@@ -89,6 +95,12 @@ class DailyReportService
         if (!$dailyReport) {
             return false;
         }
+
+        //remove old file
+        if ($dailyReport->file != null) {
+            $this->imageManagerUtils->removeImageFromLocal($dailyReport->file, 'dailyReports');
+        }
+
         $dailyReport = $this->dailyReportRepository->destroy($dailyReport);
         if (!$dailyReport) {
             return false;
@@ -96,13 +108,13 @@ class DailyReportService
         return $dailyReport;
     }
 
-    public function changeStatus($id, $status)
+    public function changeStatus($id)
     {
         $dailyReport = self::getOne($id);
         if (!$dailyReport) {
             return false;
         }
-        $dailyReport = $this->dailyReportRepository->changeStatus($dailyReport, $status);
+        $dailyReport = $this->dailyReportRepository->changeStatus($dailyReport);
         if (!$dailyReport) {
             return false;
         }

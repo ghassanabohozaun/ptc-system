@@ -2,7 +2,7 @@
         <div class="main-menu-content">
 
             <!-- begin: Dashboard -->
-            <ul class="navigation navigation-main mt-1">
+            <ul class="navigation navigation-main mt-2">
                 <li class=" nav-item @if (Request::is('*welcome*')) active @endif">
                     <a href="{!! route('dashboard.index') !!}">
                         <i class="icon-home"></i>
@@ -16,10 +16,9 @@
 
 
             <!-- begin: settings -->
-
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class=" nav-item">
-                    <a href="#">
+                    <a href="javascript:void(0)">
                         <i class="icon-settings"></i>
                         <span class="menu-title" data-i18n="nav.dash.main">{!! __('dashboard.settings') !!}</span>
                         {{-- <span class="badge badge badge-info badge-pill float-right mr-2">3</span> --}}
@@ -47,7 +46,7 @@
             @can('roles')
                 <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                     <li class=" nav-item">
-                        <a href="#">
+                        <a href="javascript:void(0)">
                             <i class="icon-lock"></i>
                             <span class="menu-title" data-i18n="nav.dash.main">{!! __('dashboard.roles') !!}</span>
                             {{-- <span class="badge badge badge-info badge-pill float-right mr-2">3</span> --}}
@@ -71,7 +70,7 @@
             @can('admins')
                 <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                     <li class=" nav-item">
-                        <a href="#">
+                        <a href="javascript:void(0)">
                             <i class="icon-user"></i>
                             <span class="menu-title" data-i18n="nav.dash.admins">{!! __('dashboard.admins') !!}</span>
                             {{-- <span class="badge badge badge-info badge-pill float-right mr-2">{!! $admins_count !!}</span> --}}
@@ -96,7 +95,7 @@
             @can('world')
                 <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                     <li class=" nav-item">
-                        <a href="#">
+                        <a href="javascript:void(0)">
                             <i class="icon-flag"></i>
                             <span class="menu-title" data-i18n="nav.dash.brand">{!! __('dashboard.world') !!}</span>
                             {{-- <span class="badge badge badge-info badge-pill float-right mr-2">3</span> --}}
@@ -129,7 +128,7 @@
             <!-- begin: employee settings -->
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class=" nav-item">
-                    <a href="#">
+                    <a href="javascript:void(0)">
                         <i class="icon-settings"></i>
                         <span class="menu-title" data-i18n="nav.dash.brand">{!! __('dashboard.employees_settings') !!}</span>
                         {{-- <span class="badge badge badge-info badge-pill float-right mr-2">3</span> --}}
@@ -167,7 +166,7 @@
             <!-- begin: employees -->
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class=" nav-item">
-                    <a href="#">
+                    <a href="javascript:void(0)">
                         <i class="icon-users"></i>
                         <span class="menu-title" data-i18n="nav.dash.brand">{!! __('dashboard.employees') !!}</span>
                         {{-- <span class="badge badge badge-info badge-pill float-right mr-2">3</span> --}}
@@ -198,6 +197,32 @@
                 </li>
             </ul>
             <!-- end: employees -->
+
+            <!-- begin: salaries -->
+            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+                <li class=" nav-item">
+                    <a href="javascript:void(0)">
+                        <i class="icon-wallet"></i>
+                        <span class="menu-title" data-i18n="nav.dash.brand">{!! __('dashboard.salaries') !!}</span>
+                        {{-- <span class="badge badge badge-info badge-pill float-right mr-2">3</span> --}}
+                    </a>
+
+                    <ul class="menu-content">
+
+                        @can('salaries')
+                            <!-- begin: salaries -->
+                            <li class="@if (str_contains(url()->current(), 'salaries')) active @endif">
+                                <a class="menu-item" href="{!! route('dashboard.salaries.index') !!}" data-i18n="nav.dash.salaries">
+                                    {!! __('salaries.salaries') !!}
+                                </a>
+                            </li>
+                            <!-- end: salaries -->
+                        @endcan
+                    </ul>
+
+                </li>
+            </ul>
+            <!-- end: salaries -->
 
         </div>
     </div>

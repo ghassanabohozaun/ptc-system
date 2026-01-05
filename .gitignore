@@ -5,6 +5,9 @@
 /public/storage
 /public/uploads/settings/*
 /public/uploads/employeesPhotos/*
+/public/uploads/employeesCertifications/*
+/public/uploads/dailyReports/*
+
 /storage/*.key
 /storage/pail
 /vendor

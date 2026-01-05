@@ -6,7 +6,7 @@
         </a>
 
         {{-- edit --}}
-        {{-- <a href="#" class="btn btn-sm btn-outline-primary edit_role_button" title="{!! __('general.edit') !!}"
+        {{-- <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary edit_role_button" title="{!! __('general.edit') !!}"
             role-id="{!! $role->id !!}" role-ar="{!! $role->getTranslation('role', 'ar') !!}" role-en="{!! $role->getTranslation('role', 'en') !!}"
             permissions="{!! implode(' ', $role->permissions) !!}">
             <i class="la la-edit"></i>
@@ -19,8 +19,8 @@
             <i class="la la-trash"></i>
         </a> --}}
 
-        <a href="#" class="btn btn-sm btn-outline-danger delete_role_btn" data-id="{!! $role->id !!}"
-            title="{!! __('general.delete') !!}">
+        <a href="javascript:void(0)" class="btn btn-sm btn-outline-danger delete_role_btn"
+            data-id="{!! $role->id !!}" title="{!! __('general.delete') !!}">
             <i class="la la-trash"></i>
         </a>
 

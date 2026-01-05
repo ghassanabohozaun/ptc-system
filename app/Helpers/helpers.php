@@ -1,8 +1,9 @@
 <?php
 
 use App\Models\Admin;
-use App\Models\Child;
 use App\Models\City;
+use App\Models\DailyReport;
+use App\Models\Employee;
 use App\Models\Governorate;
 use Illuminate\Support\Facades\Config;
 use App\Models\Setting;
@@ -40,11 +41,11 @@ if (!function_exists('web')) {
     }
 }
 
-//  get student Helper Function
-if (!function_exists('child')) {
-    function child()
+//  get employee Helper Function
+if (!function_exists('employee')) {
+    function employee()
     {
-        return auth()->guard('child');
+        return auth()->guard('employee');
     }
 }
 
@@ -63,28 +64,6 @@ if (!function_exists('replaceHyphensWithSpaces')) {
         return $string = str_replace('-', ' ', $string); // Replaces all hyphens with spaces.
     }
 
-    //  get child count Helper Function
-    if (!function_exists('childCount')) {
-        function childCount()
-        {
-            return Child::count();
-        }
-    }
-
-    if (!function_exists('childMaleCount')) {
-        function childMaleCount()
-        {
-            return Child::where('gender', 'male')->count();
-        }
-    }
-
-    if (!function_exists('childFemaleCount')) {
-        function childFemaleCount()
-        {
-            return Child::where('gender', 'female')->count();
-        }
-    }
-
     //  get admin count Helper Function
     if (!function_exists('adminCount')) {
         function adminCount()
@@ -93,19 +72,37 @@ if (!function_exists('replaceHyphensWithSpaces')) {
         }
     }
 
-    //  get governorate count Helper Function
-    if (!function_exists('governorateCount')) {
-        function governorateCount()
+    //  get governorates count Helper Function
+    if (!function_exists('governoratesCount')) {
+        function governoratesCount()
         {
             return Governorate::count();
         }
     }
 
-    //  get city count Helper Function
-    if (!function_exists('cityCount')) {
-        function cityCount()
+    //  get cities count Helper Function
+    if (!function_exists('citiesCount')) {
+        function citiesCount()
         {
             return City::count();
         }
     }
+
+    //  get employees count Helper Function
+    if (!function_exists('employeesCount')) {
+        function employeesCount()
+        {
+            return Employee::count();
+        }
+    }
+
+     //  get daily reports count Helper Function
+    if (!function_exists('dailyReportsCount')) {
+        function dailyReportsCount()
+        {
+            return DailyReport::count();
+        }
+    }
+
+
 }

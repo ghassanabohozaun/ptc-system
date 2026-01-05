@@ -9,4 +9,5 @@ return [
     'employeeStatuses' => 'التحكم في حالات الموظف',
     'departments' => 'التحكم في الأقسام',
     'dailyReports' => 'التحكم في التقارير اليومية',
+    'salaries'=>'التحكم في الرواتب',
 ];

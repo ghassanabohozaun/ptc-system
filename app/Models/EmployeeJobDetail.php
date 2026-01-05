@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class EmployeeJobDetail extends Model
 {
     protected $table = 'employee_job_details';
-    protected $fillable = ['title', 'basic_salary', 'appointment_date', 'contact_expire_date', 'employment_type', 'department_id', 'supervisor', 'employee_status_id', 'employee_id'];
+    protected $fillable = ['title', 'appointment_date', 'contact_expire_date', 'employment_type', 'department_id', 'supervisor', 'employee_status_id', 'employee_id'];
 
     // employee type function
     public function EmploymentType()

@@ -27,7 +27,7 @@
             </div> <!-- end :content header -->
 
 
-            <!-- begin: children -->
+            <!-- begin: address -->
             <div class="content-body">
                 <section id="basic-form-layouts">
                     <div class="row match-height">
@@ -59,7 +59,7 @@
                     </div><!-- end: row  -->
                 </section><!-- end: sections  -->
             </div>
-            <!-- end: children  -->
+            <!-- end: address  -->
 
 
         </div> <!-- end: content wrapper  -->

@@ -18,22 +18,6 @@
         </div>
         <!-- end: input -->
 
-        <!-- begin: input -->
-        <div class="col-md-3">
-            <div class="form-group">
-                <label for="basic_salary">{!! __('employees.basic_salary') !!}</label>
-                <input type="number" wire:model.live="basic_salary" class="form-control" autocomplete="off"
-                    placeholder="{!! __('employees.enter_basic_salary') !!}"
-                    @error('basic_salary')  style="border-color: rgb(246, 78, 96)"  @enderror>
-                @error('basic_salary')
-                    <span class="text text-danger">
-                        <strong>{!! $message !!}</strong>
-                    </span>
-                @enderror
-            </div>
-        </div>
-        <!-- end: input -->
-
 
         <!-- begin: input -->
         <div class="col-md-3">

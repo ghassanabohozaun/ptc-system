@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             CitySeeder::class,
             EmployeeStatusSeeder::class,
             DepartmentSeeder::class,
-            // EmployeeSeeder::class,
+            EmployeeSeeder::class,
         ]);
     }
 }

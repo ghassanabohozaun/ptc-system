@@ -22,8 +22,8 @@ return Application::configure(basePath: dirname(__DIR__))
             // web
             Route::middleware('web')->group(base_path('routes/dashboard.php'));
 
-            // child
-            Route::middleware('web')->group(base_path('routes/child.php'));
+            // employee
+            Route::middleware('web')->group(base_path('routes/employee.php'));
         },
     )
     ->withMiddleware(function (Middleware $middleware) {
@@ -31,10 +31,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->redirectGuestsTo(function () {
             if (request()->is('*/dashboard/*')) {
                 return route('dashboard.get.login');
-            } elseif (request()->is('*/child/*')) {
-                return route('child.get.login');
+            } elseif (request()->is('*/employees/*')) {
+                return route('employees.get.login');
             } else {
-                return route('child.welcome');
+                return route('welcome');
             }
         });
 
@@ -42,10 +42,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->redirectUsersTo(function () {
             if (Auth::guard('admin')->check()) {
                 return route('dashboard.index');
-            } elseif (Auth::guard('child')->check()) {
-                return route('child.children.show', child()->user()->id);
+            } elseif (Auth::guard('employees')->check()) {
+                return route('employees.employees.show', employee()->user()->id);
             } else {
-                return route('child.welcome');
+                return route('welcome');
             }
         });
 

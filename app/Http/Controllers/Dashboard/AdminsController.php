@@ -97,6 +97,7 @@ class AdminsController extends Controller
         if (!$admin) {
             return response()->json(['status' => false], 500);
         }
-        return response()->json(['status' => true], 201);
+        $admin = $this->adminService->getAdmin($request->id);
+        return response()->json(['status' => true, 'data'=>$admin], 201);
     }
 }

@@ -54,10 +54,6 @@
 
                 <!--begin::modal footer-->
                 <div class="modal-footer">
-                    {{--
-                    <a href="#" class="btn btn-sm btn-light mr-1" id="excel_btn">
-                        <i class="la la-file-excel-o"></i> {!! __('general.excel') !!}
-                    </a> --}}
 
                     <button type="submit" class="btn btn-info font-weight-bold ">
                         <i class="la la-file-excel-o"></i> {!! __('general.excel') !!}
@@ -81,42 +77,6 @@
 </div>
 @push('scripts')
     <script type="text/javascript">
-        // // reset
-        // function resetCreateForm() {
-        //     $('#name_ar').css('border-color', '');
-        //     $('#name_en').css('border-color', '');
-        //     $('#email').css('border-color', '');
-        //     $('#mobile').css('border-color', '');
-        //     $('#password').css('border-color', '');
-        //     $('#password_confirm').css('border-color', '');
-        //     $('#role_id').css('border-color', '');
-        //     $('#status').css('border-color', '');
-
-        //     $('#name_ar_error').text('');
-        //     $('#name_en_error').text('');
-        //     $('#email_error').text('');
-        //     $('#mobile_error').text('');
-        //     $('#password_error').text('');
-        //     $('#password_confirm_error').text('');
-        //     $('#role_id_error').text('');
-        //     $('#status_error').text('');
-        // }
-
-        // // cancel
-        // $('body').on('click', '#cancel_admin_btn', function(e) {
-        //     $('#createAdminModal').modal('hide');
-        //     $('#create_admin_form')[0].reset();
-        //     resetCreateForm();
-        // });
-
-        // // hide
-        // $('#createAdminModal').on('hidden.bs.modal', function(e) {
-        //     $('#createAdminModal').modal('hide');
-        //     $('#create_admin_form')[0].reset();
-        //     resetCreateForm();
-        // });
-
-
         // create
         $('body').on('click', '#excel_btn', function(e) {
             e.preventDefault();

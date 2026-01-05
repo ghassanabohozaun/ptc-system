@@ -13,7 +13,6 @@ return new class extends Migration {
         Schema::create('employee_job_details', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('basic_salary');
             $table->date('appointment_date');
             $table->date('contact_expire_date');
             $table->enum('employment_type', ['full_time', 'part_time', 'contract']);

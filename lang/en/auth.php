@@ -48,12 +48,14 @@ return [
     'i_agree_all_terms' => 'I agree all terms and condition in ',
     'please_accept_terms' => 'Please Accept terms and condition',
 
-    // child login
+    // employee login
     'welcome_back' => 'Welcome Back',
-    'enter_child_personal_id_and_passwrod_to_sign_in' => 'Enter child personal id and password to sign in',
-    'child_pesonal_id' => 'Child Personal ID',
-    'birthday' => 'Child Birthday',
-    'enter_child_pesonal_id' => 'Enter Child Personal ID',
-    'enter_birthday' => 'Enter Child Birthday',
-    'register_new_orphan'=>'Register New Orphan',
+    'enter_employee_personal_id_and_passwrod_to_sign_in' => 'Enter employee personal id and password to sign in',
+    'employee_pesonal_id' => 'Employee Personal ID',
+    'birthday' => 'Employee Birthday',
+    'enter_employee_pesonal_id' => 'Enter Employee Personal ID',
+    'enter_birthday' => 'Enter Employee Birthday',
+    'techenical_support' => 'Technical Support',
+    'sign_in_to_continue' => 'Sign in to continue.',
+    'hellow' => 'Hello! let\'s get started',
 ];

@@ -1,15 +1,4 @@
 <?php
-
-use App\Http\Controllers\Website\Auth\AuthController;
-use App\Http\Controllers\Website\Auth\RegisterController;
-use App\Http\Controllers\Website\BrandsController;
-use App\Http\Controllers\Website\CategoriesController;
-use App\Http\Controllers\Website\FaqController;
-use App\Http\Controllers\Website\HomeController;
-use App\Http\Controllers\Website\PagesController;
-use App\Http\Controllers\Website\ProductsController;
-use App\Http\Controllers\Website\ProfileController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -20,14 +9,13 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
     ],
     function () {
+        ###################################### welcome  ##################################################################
+        Route::get('/welcome', function () {
+            return view('welcome');
+        })
+            ->where(['any' => '.*'])
+            ->name('welcome');
 
-
-        Route::get('/home', function(){
-            return 'home';
-        })->name('home');
-
+        ###################################### routes  ##################################################################
     },
 );
-
-// Auth::routes();
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -20,7 +20,7 @@ return new class extends Migration {
             $table->string('personal_id')->unique();
             $table->enum('gender', ['male', 'female']);
             $table->date('birthday')->nullable();
-            $table->enum('marital_status', ['single','married','divorced','widowed']);
+            $table->enum('marital_status', ['single', 'married', 'divorced', 'widowed']);
             $table->string('mobile_no')->nullable();
             $table->string('alternative_mobile_no')->nullable();
             $table->string('email')->nullable();
@@ -30,6 +30,7 @@ return new class extends Migration {
             $table->string('bank_name')->nullable();
             $table->string('iban')->nullable();
             $table->string('banck_account')->nullable();
+            $table->decimal('basic_salary', 8, 3)->nullable()->default(0);
             $table->enum('currency', ['ILS', 'USD', 'GBP'])->default('USD');
             $table->string('photo')->nullable();
             $table->softDeletes();

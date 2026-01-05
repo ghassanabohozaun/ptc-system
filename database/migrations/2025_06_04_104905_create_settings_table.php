@@ -27,8 +27,6 @@ return new class extends Migration {
             $table->string('youtube')->nullable();
             $table->string('logo')->nullable();
             $table->string('favicon')->nullable();
-            $table->string('promation_video_url', 1000)->nullable();
-
             $table->timestamps();
         });
     }

@@ -23,8 +23,7 @@ class dailyReportRequest extends FormRequest
     {
         return [
             'employee_id' => ['required'],
-            'date' => ['required'],
-            'time' => ['required'],
+            'date' => ['required', 'date'],
             'details' => ['required'],
         ];
     }

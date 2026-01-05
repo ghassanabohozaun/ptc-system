@@ -73,6 +73,15 @@ return [
             'report' => false,
         ],
 
+        'dailyReports' => [
+            'driver' => 'local',
+            'root' => public_path('/uploads/dailyReports'),
+            'url' => env('APP_URL') . '/uploads/dailyReports',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

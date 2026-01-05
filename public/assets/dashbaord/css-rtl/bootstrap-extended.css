@@ -1015,16 +1015,16 @@ padding : 0rem 0.85rem;
 transition : 300ms ease all;
 }
 .header-navbar .navbar-header .navbar-brand {
-padding : 17px 0;
+/* padding : 10px 0; */
 margin-left : 0;
 }
 .header-navbar .navbar-header .navbar-brand .brand-logo {
-width : 36px;
+width : 55px;
 }
 .header-navbar .navbar-header .navbar-brand .brand-text {
 display : inline;
 padding-right : 6px;
-font-weight : 400;
+font-weight : 600;
 vertical-align : middle;
 }
 .header-navbar .navbar-container {
@@ -1902,11 +1902,11 @@ font-size : 1.2rem;
 }
 
 .badge-md {
-font-size : 1rem;
+font-size : 0.9rem;
 }
 
 .badge-sm {
-font-size : 0.8rem;
+font-size : 0.7rem;
 }
 
 .badge-secondary {

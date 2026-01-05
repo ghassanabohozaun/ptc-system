@@ -13,13 +13,39 @@ class DailyReportRepository
     }
 
     // get all
-    public function getAll()
+    public function getAll($request)
     {
-        return DailyReport::with('employee')->orderByDesc('date')->get();
+        return DailyReport::with('employee')
+            ->when(!empty(request()->employee_id), function ($query) {
+                $query->where('employee_id', request()->employee_id);
+            })
+            ->when(!empty(request()->date), function ($query) {
+                $query->where('date', request()->date);
+            })
+            ->when(!empty(request()->to_date), function ($query) {
+                $query->where('date', '>=' , request()->from_date )->where('date', '<=' , request()->to_date );
+            })
+
+            ->latest()
+            ->paginate(10);
     }
 
-    public function dailyReportExists($employee_id, $date) {
-        return DailyReport::where('employee_id' , $employee_id)->where('date', $date)->first();
+    // daily reports exists
+    public function dailyReportExists($employee_id, $date)
+    {
+        return DailyReport::where('employee_id', $employee_id)->where('date', $date)->first();
+    }
+
+    // get daily reports for all employees
+    public function getDailyReportsForAllEmplpoyees()
+    {
+        return DailyReport::latest()->get();
+    }
+
+    // get daily reports for one employee
+    public function getDailyReportsForOneEmplpoyee($employee_id)
+    {
+        return DailyReport::where('employee_id', $employee_id)->latest()->paginate(5);
     }
 
     // create
@@ -38,10 +64,10 @@ class DailyReportRepository
         return $dailyReport->forceDelete();
     }
 
-    public function changeStatus($dailyReport, $status)
+    public function changeStatus($dailyReport)
     {
         return $dailyReport->update([
-            'status' => $status,
+            'status' => $dailyReport->status == 'on' ? 0 : 1,
         ]);
     }
 }

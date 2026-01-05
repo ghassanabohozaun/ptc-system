@@ -29,7 +29,7 @@
                                         </a>
                                     </li>
                                     <li class="breadcrumb-item active">
-                                        <a href="#">
+                                        <a href="javascript:void(0)">
                                             {!! __('admins.update_admin') !!}
                                         </a>
                                     </li>

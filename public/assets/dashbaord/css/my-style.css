@@ -76,39 +76,19 @@ border-radius: 10px;
 
 
 /* Style the entire scrollbar */
-::-webkit-scrollbar {
-width: 5px; /* Set width for vertical scrollbar */
-height: 12px; /* Set height for horizontal scrollbar */
-}
 
-/* Style the scrollbar track */
-::-webkit-scrollbar-track {
-background: #f1f1f1;
-border-radius: 1px;
-}
-
-/* Style the scrollbar thumb */
-::-webkit-scrollbar-thumb {
-background: #888;
-border-radius: 1px;
-}
-
-/* Style the scrollbar thumb on hover */
-::-webkit-scrollbar-thumb:hover {
-background: #555;
-}
 
 /* btn Style */
 .btn {
 
-padding: 0.69rem 1rem;
+padding: 0.60rem 1rem;
 font-size: 0.95rem;
-line-height: 1.25;
+line-height: 1.1;
 
 }
 
 .badge-sm {
-font-size: 0.9rem;
+font-size: 0.7rem;
 }
 
 /* form controller Style */
@@ -161,3 +141,8 @@ font-size: 1.0rem;
 }
 
 
+.nav.nav-tabs.nav-underline {
+ background: transparent;
+ position: relative;
+ border-bottom: 1px solid #1E9FF2;
+ }

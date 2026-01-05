@@ -9,8 +9,8 @@
             <i class="la la-eye"></i>
         </a>
 
-        <a href="#" data-id="{!! $employee->id !!}" class="btn btn-sm btn-outline-danger delete_employee_btn"
-            title="  {!! __('general.delete') !!}">
+        <a href="javascript:void(0)" data-id="{!! $employee->id !!}"
+            class="btn btn-sm btn-outline-danger delete_employee_btn" title="  {!! __('general.delete') !!}">
             <i class="la la-trash"></i>
         </a>
 

@@ -3,7 +3,7 @@
     <div class="row">
 
         <!-- begin: input -->
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="form-group">
                 <label for="title">{!! __('employees.title') !!}</label>
                 <input type="text" wire:model.live="title" class="form-control" autocomplete="off"
@@ -18,25 +18,9 @@
         </div>
         <!-- end: input -->
 
-        <!-- begin: input -->
-        <div class="col-md-3">
-            <div class="form-group">
-                <label for="basic_salary">{!! __('employees.basic_salary') !!}</label>
-                <input type="number" wire:model.live="basic_salary" class="form-control" autocomplete="off"
-                    placeholder="{!! __('employees.enter_basic_salary') !!}"
-                    @error('basic_salary')  style="border-color: rgb(246, 78, 96)"  @enderror>
-                @error('basic_salary')
-                    <span class="text text-danger">
-                        <strong>{!! $message !!}</strong>
-                    </span>
-                @enderror
-            </div>
-        </div>
-        <!-- end: input -->
-
 
         <!-- begin: input -->
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="form-group">
                 <label for="appointment_date">{!! __('employees.appointment_date') !!}</label>
                 <input type="date" wire:model.live="appointment_date" class="form-control" autocomplete="off"
@@ -52,7 +36,7 @@
         <!-- end: input -->
 
         <!-- begin: input -->
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="form-group">
                 <label for="contact_expire_date">{!! __('employees.contact_expire_date') !!}</label>
                 <input type="date" wire:model.live="contact_expire_date" class="form-control" autocomplete="off"

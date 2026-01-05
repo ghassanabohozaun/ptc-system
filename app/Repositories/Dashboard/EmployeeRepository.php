@@ -21,40 +21,12 @@ class EmployeeRepository
         return Employee::when(!empty(request()->personal_id), function ($query) {
             $query->where('personal_id', request()->personal_id);
         })
-            ->when(!empty(request()->first_name_en), function ($query) {
-                $query->where('first_name->en', 'like', '%' . request()->first_name_en . '%');
-            })
-
-            ->when(!empty(request()->father_name_en), function ($query) {
-                $query->where('father_name->en', 'like', '%' . request()->father_name_en . '%');
-            })
-
-            ->when(!empty(request()->grand_father_name_en), function ($query) {
-                $query->where('grand_father_name->en', 'like', '%' . request()->grand_father_name_en . '%');
-            })
-
-            ->when(!empty(request()->family_name_en), function ($query) {
-                $query->where('family_name->en', 'like', '%' . request()->family_name_en . '%');
-            })
-
-            ->when(!empty(request()->first_name_ar), function ($query) {
-                $query->where('first_name->ar', 'like', '%' . request()->first_name_ar . '%');
-            })
-
-            ->when(!empty(request()->father_name_ar), function ($query) {
-                $query->where('father_name->ar', 'like', '%' . request()->father_name_ar . '%');
-            })
-
-            ->when(!empty(request()->grand_father_name_ar), function ($query) {
-                $query->where('grand_father_name->ar', 'like', '%' . request()->grand_father_name_ar . '%');
-            })
-
-            ->when(!empty(request()->family_name_ar), function ($query) {
-                $query->where('family_name->ar', 'like', '%' . request()->family_name_ar . '%');
+            ->when(!empty(request()->employee_id), function ($query) {
+                $query->where('id', request()->employee_id);
             })
 
             ->latest()
-            ->get();
+            ->paginate(10);
     }
 
     // get employees
@@ -102,6 +74,14 @@ class EmployeeRepository
             ->where('first_name->en', 'LIKE', '%' . $searchValue . '%')
             ->orWhere('first_name->ar', 'LIKE', '%' . $searchValue . '%')
             ->get();
+    }
+
+    // change employee password
+    public function changeEmployeePassword($employee, $password)
+    {
+        return $employee->update([
+            'password' => $password,
+        ]);
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////

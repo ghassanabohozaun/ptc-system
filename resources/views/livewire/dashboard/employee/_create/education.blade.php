@@ -18,7 +18,7 @@
                     {!! __('employees.certification') !!}
                 </th>
                 <th>
-                    <a href="#" wire:click.prevent="addNewEducation" class="text-white badge badge-info">
+                    <a href="javascript:void(0)" wire:click.prevent="addNewEducation" class="text-white badge badge-info">
                         <li class="la la-plus"></li>
                     </a>
                 </th>
@@ -86,9 +86,8 @@
 
                     <td class="col-lg-4 col-md-4 col-sm-12">
                         <input type="file" wire:model="educationItems.{!! $index !!}.certification"
-                            class="form-control" placeholder="{!! __('employees.enter_certification') !!}"
+                            accept="image/*" class="form-control" placeholder="{!! __('employees.enter_certification') !!}"
                             @error('educationItems.' . $index . '.certification')  style="border-color: rgb(246, 78, 96)"  @enderror />
-
 
                         @error('educationItems.' . $index . '.certification')
                             <span class="text text-danger">
@@ -98,7 +97,7 @@
                     </td>
 
                     <td class="col-lg-1 col-md-1 col-sm-1">
-                        <a href="#" wire:click.prevent ="removeEducation({{ $index }})"
+                        <a href="javascript:void(0)" wire:click.prevent ="removeEducation({{ $index }})"
                             class="text-white  badge badge-danger">
                             <li class="la la-trash"></li>
                         </a>

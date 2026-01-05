@@ -65,11 +65,6 @@
                                 <!-- end: input -->
                             </div>
                             <!-- end: row -->
-
-
-
-
-
                             <!-- begin: row -->
                             <div class="row">
                                 <!-- begin: input -->
@@ -89,32 +84,50 @@
 
                             <!-- begin: row -->
                             <div class="row">
-                                <!-- begin: input -->
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="password">{!! __('admins.password') !!}</label>
-                                        <input type="text" id="password_edit" name="password" class="form-control"
-                                            autocomplete="off" placeholder="{!! __('admins.enter_password') !!}">
+                                        <div class="input-group">
+                                            <input type="password" id="password_edit" name="password"
+                                                class="form-control" autocomplete="off"
+                                                placeholder="{!! __('admins.enter_password') !!}" aria-describedby="basic-addon3">
+                                            <div class="input-group-append" onclick="showPasswordEdit();">
+                                                <span class="input-group-text" id="basic-addon3"
+                                                    style="color: black;font-size: 15px;cursor: pointer;">
+                                                    <i class="icon-eye"></i>
+                                                </span>
+                                            </div>
+                                        </div>
                                         <span class="text text-danger">
                                             <strong id="password_error_edit"></strong>
                                         </span>
                                     </div>
                                 </div>
-                                <!-- end: input -->
 
-                                <!-- begin: input -->
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="password_confirm">{!! __('admins.password_confirm') !!}</label>
-                                        <input type="text" id="password_confirm_edit" name="password_confirm"
-                                            class="form-control" autocomplete="off"
-                                            placeholder="{!! __('admins.enter_password_confirm') !!}">
+                                        <div class="input-group">
+                                            <input type="password" id="password_confirm_edit" name="password_confirm"
+                                                class="form-control" autocomplete="off"
+                                                placeholder="{!! __('admins.enter_password_confirm') !!}" aria-describedby="basic-addon3">
+                                            <div class="input-group-append" onclick="showPasswordConfirmEdit();">
+                                                <span class="input-group-text" id="basic-addon3"
+                                                    style="color: black;font-size: 15px;cursor: pointer;">
+                                                    <i class="icon-eye"></i>
+                                                </span>
+                                            </div>
+                                        </div>
                                         <span class="text text-danger">
                                             <strong id="password_confirm_error_edit"></strong>
                                         </span>
                                     </div>
                                 </div>
-                                <!-- end: input -->
+
+
+
 
                             </div>
                             <!-- end: row -->
@@ -183,13 +196,13 @@
 
                 <!--begin::modal footer-->
                 <div class="modal-footer">
-                    <button type="submit" id="create_admin_btn" class="btn btn-info font-weight-bold ">
+                    <button type="submit" id="create_admin_btn_edit" class="btn btn-info font-weight-bold ">
                         {{ trans('general.save') }}
                         <i class="la la-refresh spinner spinner_loading d-none">
                         </i>
                     </button>
 
-                    <button type="button" id="cancel_admin_btn" class="btn btn-light-dark font-weight-bold"
+                    <button type="button" id="cancel_admin_btn_edit" class="btn btn-light-dark font-weight-bold"
                         data-dismiss="modal">
                         {{ trans('general.cancel') }}
                     </button>
@@ -203,6 +216,28 @@
 
 @push('scripts')
     <script type="text/javascript">
+        // show password
+        function showPasswordEdit() {
+            var password_edit = document.getElementById('password_edit');
+            if (password_edit.type == 'password') {
+                password_edit.type = 'text';
+            } else {
+                password_edit.type = 'password';
+            }
+        }
+
+        // show password confirm
+        function showPasswordConfirmEdit() {
+            // body...
+            var password_confirm_edit = document.getElementById('password_confirm_edit');
+            if (password_confirm_edit.type == 'password') {
+                password_confirm_edit.type = 'text';
+            } else {
+                password_confirm_edit.type = 'password';
+            }
+        }
+
+
         // show edit modal
         $('body').on('click', '.edit_admin_button', function(e) {
             e.preventDefault();
@@ -232,13 +267,27 @@
         function resetEditForm() {
             $('#name_ar_edit').css('border-color', '');
             $('#name_en_edit').css('border-color', '');
+            $('#email_edit').css('border-color', '');
+            $('#password_confirm_edit').css('border-color', '');
+            $('#role_id_edit').css('border-color', '');
 
             $('#name_ar_error_edit').text('');
             $('#name_en_error_edit').text('');
+            $('#email_error_edit').text('');
+            $('#password_confirm_error_edit').text('');
+            $('#role_id_error_edit').text('');
+
+            // reset password type
+            var password_edit = document.getElementById('password_edit');
+            password_edit.type = 'password';
+
+            var password_confirm_edit = document.getElementById('password_confirm_edit');
+            password_confirm_edit.type = 'password';
+
         }
 
         // cancel
-        $('body').on('click', '#cancel_admin_btn', function(e) {
+        $('body').on('click', '#cancel_admin_btn_edit', function(e) {
             $('#updateAdminModal').modal('hide');
             $('#update_admin_form')[0].reset();
             resetEditForm();
@@ -282,6 +331,7 @@
                         $('#myTable').load(location.href + (' #myTable'));
                         $('#update_admin_form')[0].reset();
                         resetEditForm();
+                        $('.admin_name_section').load(location.href + ' .admin_name_section');
                         $('#updateAdminModal').modal('hide');
                         flasher.success("{!! __('general.add_success_message') !!}");
                     } else {

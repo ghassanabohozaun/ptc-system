@@ -146,7 +146,7 @@
 
     <!-- end: personal_id , birthday , gender ,password,password_confirm -->
     <div class="row">
-        <!-- begin: input -->
+        {{-- <!-- begin: input -->
         <div class="col-md-3">
             <div class="form-group">
                 <label for="personal_id">{!! __('employees.personal_id') !!}</label>
@@ -160,7 +160,41 @@
                 @enderror
             </div>
         </div>
-        <!-- end: input -->
+        <!-- end: input --> --}}
+
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="personal_id">{!! __('children.personal_id') !!}</label>
+                <div class="input-group">
+                    @if ($locked == 'open')
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon3"
+                                style="color: black;font-size: 15px;cursor: pointer;"
+                                wire:click.prevent="unlockPersonalID()">
+                                <i class="icon-lock"></i>
+                            </span>
+                        </div>
+                    @elseif($locked == 'close')
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon3"
+                                style="color:black;font-size: 15px;cursor: pointer;"
+                                wire:click.prevent="lockedPersonalID()">
+                                <i class="icon-lock-open"></i>
+                            </span>
+                        </div>
+                    @endif
+                    <input type="text" wire:model.live="personal_id" class="form-control" autocomplete="off"
+                        {!! $personalIDReadOnly ? 'readonly' : '' !!} placeholder="{!! __('children.enter_personal_id') !!}" aria-describedby="basic-addon3"
+                        @error('personal_id')  style="border-color: rgb(246, 78, 96)"  @enderror>
+                </div>
+                @error('personal_id')
+                    <span class="text text-danger">
+                        <strong>{!! $message !!}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+
 
 
         <!-- begin: input -->
@@ -428,7 +462,7 @@
         <!-- end: input -->
 
         <!-- begin: input -->
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="form-group">
                 <label for="banck_account">{!! __('employees.banck_account') !!}</label>
                 <input type="text" wire:model.live="banck_account" class="form-control" autocomplete="off"
@@ -444,7 +478,23 @@
         <!-- end: input -->
 
         <!-- begin: input -->
-        <div class="col-md-3">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="basic_salary">{!! __('employees.basic_salary') !!}</label>
+                <input type="number" wire:model.live="basic_salary" class="form-control" autocomplete="off"
+                    placeholder="{!! __('employees.enter_basic_salary') !!}"
+                    @error('basic_salary')  style="border-color: rgb(246, 78, 96)"  @enderror>
+                @error('basic_salary')
+                    <span class="text text-danger">
+                        <strong>{!! $message !!}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+        <!-- end: input -->
+
+        <!-- begin: input -->
+        <div class="col-md-2">
             <div class="form-group">
                 <label for="currency">{!! __('employees.currency') !!}</label>
                 <select wire:model.live="currency" class="form-control"
@@ -463,10 +513,8 @@
         </div>
         <!-- end: input -->
 
-
     </div>
     <!-- end: employee_status_id , bank_name  ,iban ,banck_account  -->
-
 
     <!-- begin:  photo  -->
     <div class="row">
@@ -474,9 +522,7 @@
         <div class="col-md-3">
             <div class="form-group">
                 <label for="photo">{!! __('employees.photo') !!}
-                    {{-- @if ($orphan_child_birth_certificate)
-                    <i class="la la-check" style="color: #3d9464 ;font-weight:bolder"></i>
-                @endif --}}
+
                 </label>
                 <input type="file" class="form-control" wire:model.live="new_photo" accept="image/*"
                     @error('new_photo')  style="border-color: rgb(246, 78, 96)"  @enderror>

@@ -36,6 +36,17 @@
                 </div>
                 <!-- end: content header left-->
 
+                <!-- begin: content header right-->
+                <div class="content-header-right col-md-6 col-12">
+                    <div class="float-md-right mb-2">
+                        <a href="{!! route('dashboard.employees.show', $employee->id) !!}" class="btn btn-info btn-glow px-2">
+                            <span class="la la-editF"></span>
+                            {!! __('employees.show_employee') !!}
+                        </a>
+                    </div>
+                </div>
+                <!-- end: content header right-->
+
             </div> <!-- end :content header -->
 
             <!-- begin: content body -->

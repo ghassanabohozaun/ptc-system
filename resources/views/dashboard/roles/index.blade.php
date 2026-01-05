@@ -73,6 +73,9 @@
                                 </div>
                                 <!-- end: card header -->
 
+
+
+
                                 <!-- begin: card content -->
                                 <div class="card-content collapse show">
                                     <div class="card-body">
@@ -81,17 +84,16 @@
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <th class="text-center">{!! __('roles.role_name') !!}</th>
-                                                        <th class="text-center">{!! __('roles.permissions') !!}</th>
-                                                        <th class="text-center">
-                                                            {!! __('general.actions') !!}</th>
+                                                        <th>{!! __('roles.role_name') !!}</th>
+                                                        <th>{!! __('roles.permissions') !!}</th>
+                                                        <th class="text-center">{!! __('general.actions') !!}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     @forelse ($roles as $role)
                                                         <tr>
-                                                            <th class="col-lg-1 text-center">{!! $loop->iteration !!} </th>
-                                                            <td class="col-lg-2 text-center">{!! $role->role !!}</td>
+                                                            <th class="col-lg-1">{!! $loop->iteration !!} </th>
+                                                            <td class="col-lg-1">{!! $role->role !!}</td>
                                                             <td class="col-lg-8">
                                                                 @foreach (config('global.permissions') as $name => $value)
                                                                     {{ in_array($name, $role->permissions) ? __(config('global.permissions.', $value)) . ' | ' : '' }}

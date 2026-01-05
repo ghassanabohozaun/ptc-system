@@ -319,5 +319,7 @@ return [
         'department_id' => 'الإدارة',
         'supervisor' => 'المشرف',
         'employee_status' => 'حالة الموظف',
+         'employeeSalaryItem.*.amount' => 'الراتب  :index',
+
     ],
 ];

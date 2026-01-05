@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Dashboard\{AdminsController, ChildernController, CitiesController, DailyReportsController, DashboardController, DepartmentsController, EmployeesController, EmployeeStatusesController, GovernoratiesController, ProductsController, RolesController, SettingsController, SponsershipOrganizationsController, SponsershipStatusesController, SponsershipTypesController};
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\Auth\AuthController;
 use App\Http\Controllers\Dashboard\Auth\Passowrd\ForgetPasswordController;
 use App\Http\Controllers\Dashboard\Auth\Passowrd\ResetPasswordController;
+use App\Http\Controllers\Dashboard\SalariesController;
+use App\Http\Controllers\Dashboard\{AdminsController, CitiesController, DailyReportsController, DashboardController, DepartmentsController, EmployeeSalaryController, EmployeesController, EmployeeStatusesController, GovernoratiesController, ProductsController, RolesController, SettingsController, SponsershipOrganizationsController, SponsershipStatusesController, SponsershipTypesController};
+use Illuminate\Support\Facades\Route;
 use Livewire\Livewire;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -73,7 +74,7 @@ Route::group(
                 Route::put('/settings/{id?}', [SettingsController::class, 'update'])->name('settings.update');
             });
 
-            ########################################### products routes  ######################################################################
+            ########################################### employee routes  ######################################################################
             Livewire::setUpdateRoute(function ($handle) {
                 return Route::post('/livewire/update', $handle);
             });
@@ -94,7 +95,6 @@ Route::group(
             ########################################### employees routes  ######################################################################
             Route::group(['middleware' => 'can:employees'], function () {
                 Route::resource('employees', EmployeesController::class);
-                Route::get('/employees-all', [EmployeesController::class, 'getAll'])->name('employees.get.all');
                 Route::post('/employees/status', [EmployeesController::class, 'changeStatus'])->name('employees.change.status');
                 Route::get('/employees/autocomplete/employee', [EmployeesController::class, 'autocompleteEmployee'])->name('employees.autocomplete.employee');
             });
@@ -102,8 +102,23 @@ Route::group(
             ########################################### daily reports routes  ######################################################################
             Route::group(['middleware' => 'can:dailyReports'], function () {
                 Route::resource('dailyReports', DailyReportsController::class);
-                Route::get('/dailyReports-all', [DailyReportsController::class, 'getAll'])->name('daliy.reports.get.all');
                 Route::post('/dailyReports/status', [DailyReportsController::class, 'changeStatus'])->name('daliy.reports.change.status');
+            });
+
+            ########################################### salaries routes  ######################################################################
+            Route::group(['middleware' => 'can:salaries'], function () {
+                Route::resource('salaries', SalariesController::class);
+                Route::post('/salaries/destroy', [SalariesController::class, 'destroy'])->name('salaries.destroy');
+                Route::post('/salaries/status', [SalariesController::class, 'changeStatus'])->name('salaries.change.status');
+            });
+
+            ########################################### employee salary routes  ######################################################################
+            Route::group(['middleware' => 'can:salaries'], function () {
+                // Route::resource('employeeSalary', SalariesController::class);
+                Route::get('/salaries/{id?}/employee', [EmployeeSalaryController::class, 'index'])->name('employee.salary.index');
+                Route::get('/salaries/print/{id?}', [EmployeeSalaryController::class, 'print'])->name('employee.salary.print');
+
+                // Route::post('/employee/salary/status', [EmployeeSalary::class, 'changeStatus'])->name('employee.salary.change.status');
             });
         });
     },

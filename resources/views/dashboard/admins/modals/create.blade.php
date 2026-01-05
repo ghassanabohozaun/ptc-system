@@ -72,33 +72,54 @@
 
                             <!-- begin: row -->
                             <div class="row">
-                                <!-- begin: input -->
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="password">{!! __('admins.password') !!}</label>
-                                        <input type="text" id="password" name="password" class="form-control"
-                                            autocomplete="off" placeholder="{!! __('admins.enter_password') !!}">
+                                        <div class="input-group">
+                                            <input type="password" id="password" name="password" class="form-control"
+                                                autocomplete="off" placeholder="{!! __('admins.enter_password') !!}"
+                                                aria-describedby="basic-addon3">
+                                            <div class="input-group-append" onclick="showPassword();">
+                                                <span class="input-group-text" id="basic-addon3"
+                                                    style="color: black;font-size: 15px;cursor: pointer;">
+                                                    <i class="icon-eye"></i>
+                                                </span>
+                                            </div>
+                                        </div>
                                         <span class="text text-danger">
                                             <strong id="password_error"></strong>
                                         </span>
                                     </div>
                                 </div>
-                                <!-- end: input -->
-                                <!-- begin: input -->
+
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="password_confirm">{!! __('admins.password_confirm') !!}</label>
-                                        <input type="text" id="password_confirm" name="password_confirm"
-                                            class="form-control" autocomplete="off"
-                                            placeholder="{!! __('admins.enter_password_confirm') !!}">
+                                        <div class="input-group">
+                                            <input type="password" id="password_confirm" name="password_confirm"
+                                                class="form-control" autocomplete="off"
+                                                placeholder="{!! __('admins.enter_password_confirm') !!}" aria-describedby="basic-addon3">
+                                            <div class="input-group-append" onclick="showPasswordConfirm();">
+                                                <span class="input-group-text" id="basic-addon3"
+                                                    style="color: black;font-size: 15px;cursor: pointer;">
+                                                    <i class="icon-eye"></i>
+                                                </span>
+                                            </div>
+                                        </div>
                                         <span class="text text-danger">
                                             <strong id="password_confirm_error"></strong>
                                         </span>
                                     </div>
                                 </div>
-                                <!-- end: input -->
+
+
+
+
                             </div>
                             <!-- end: row -->
+
 
                             <!-- begin: row -->
                             <div class="row">
@@ -106,7 +127,8 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="role_id">{!! __('admins.role_id') !!}</label>
-                                        <select class="form-control" id="DefaultSelect" id='role_id' name="role_id">
+                                        <select class="form-control" id="DefaultSelect" id='role_id'
+                                            name="role_id">
                                             <option value="" selected="">
                                                 {!! __('general.select_from_list') !!}</option>
                                             @foreach ($roles as $role)
@@ -183,6 +205,27 @@
 
 @push('scripts')
     <script type="text/javascript">
+        // show password
+        function showPassword() {
+            var password = document.getElementById('password');
+            if (password.type == 'password') {
+                password.type = 'text';
+            } else {
+                password.type = 'password';
+            }
+        }
+
+        // show password confirm
+        function showPasswordConfirm() {
+            // body...
+            var password_confirm = document.getElementById('password_confirm');
+            if (password_confirm.type == 'password') {
+                password_confirm.type = 'text';
+            } else {
+                password_confirm.type = 'password';
+            }
+        }
+
         // reset
         function resetCreateForm() {
             $('#name_ar').css('border-color', '');
@@ -200,6 +243,13 @@
             $('#password_confirm_error').text('');
             $('#role_id_error').text('');
             $('#status_error').text('');
+
+            // default values
+            var password = document.getElementById('password');
+            password.type = 'password';
+
+            var password_confirm = document.getElementById('password_confirm');
+            password_confirm.type = 'password';
         }
 
         // cancel

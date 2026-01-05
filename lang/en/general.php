@@ -8,6 +8,14 @@ return [
     'no_image' => 'No Image',
     'no_logo' => 'No Log',
     'recored_exists' => 'Record Exists',
+    'share' => 'Share',
+    'print' => 'Print',
+    'show_all' => 'Show All',
+    'overview' => 'Overview',
+    'profile' => 'Profile',
+    'messages' => 'Messages',
+    'notifications' => 'Notifications',
+    'loading'=>'Loading',
 
     'prev' => 'Previous',
     'more' => 'More pages',
@@ -103,6 +111,7 @@ return [
     'send_error_message' => ' Send Failed',
     'delete_image_success_message' => 'Image Deleted Successfully',
     'delete_image_error_message' => 'Image Deleted Failed',
+    'added_before_error_message'=>'Added Before',
 
     'internal_server_error_message' => 'Sorry, Internal server Error ',
     'try_catch_error_message' => 'Sorry, There is an error, please try again later',
@@ -119,10 +128,10 @@ return [
     'change_status_success_message' => 'change Status Successfully',
     'change_status_error_message' => 'change Status Faild',
     'change_password_success_message' => 'change password Successfully',
+    'change_password_error_message' => 'change password Faild',
 
     'export' => 'Export',
-    'print' => 'Print',
-    'pdf' => 'PDF',
+     'pdf' => 'PDF',
     'excel' => 'Excel',
 
     'show' => 'show',

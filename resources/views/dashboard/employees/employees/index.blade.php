@@ -3,6 +3,33 @@
     {!! $title !!}
 @endsection
 
+@push('style')
+    <style>
+        .table-container {
+            position: relative;
+        }
+
+        #loading-indicator {
+            font-size: 15px;
+            font-weight: bolder;
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            background-color: rgba(117, 112, 112, 0.8);
+            padding: 20px;
+            border-radius: 5px;
+            color: white
+        }
+
+        #spinner {
+            font-size: 20px;
+        }
+    </style>
+@endpush
+
 @section('content')
     <div class="app-content content">
         <div class="content-wrapper">
@@ -56,7 +83,19 @@
 
                                     @include('dashboard.employees.employees.partials._search')
 
-                                    @include('dashboard.employees.employees.partials._table')
+
+                                    <div class="table-container">
+                                        <div id="loading-indicator" class="loader">
+                                            <!-- You can use text, an image, or CSS-only spinners -->
+                                            <i class="la la-spinner spinner" id="spinner"></i> {!! __('general.loading') !!}
+                                            <!-- or <img src="loading.gif" alt="Loading..."> -->
+                                        </div>
+                                        <div id="table_data">
+                                            @include('dashboard.employees.employees.partials._table', [
+                                                'employees' => $employees,
+                                            ])
+                                        </div>
+                                    </div>
 
                                 </div><!-- end: row  -->
                         </section><!-- end: sections  -->
@@ -71,128 +110,61 @@
 
 @push('scripts')
     <script type="text/javascript">
-        var lang = '{{ Lang() }}';
+        $(document).ready(function() {
 
-        loadData();
+            let page = 1;
 
-        function loadData(
-            personal_id = '',
-            first_name_en = '',
-            father_name_en = '',
-            grand_father_name_en = '',
-            family_name_en = '',
+            // fetch data
+            function fetch_data(page) {
+                var employee_id = $('#employee_id').val();
+                var personal_id = $('#personal_id').val();
 
-            first_name_ar = '',
-            father_name_ar = '',
-            grand_father_name_ar = '',
-            family_name_ar = '',
-
-        ) {
-            // yajra tables
-            $('#yajra-datatable').DataTable({
-
-                // dom: 'Bfrtip',
-                processing: true,
-                serverSide: true,
-                colReorder: true,
-                fixedHeader: true,
-                "bDestroy": true,
-                "bFilter": false,
-                "bLengthChange": false, //thought this line could hide the LengthMenu
-                pageLength: 10,
-
-
-                // rowReorder: {
-                //     update: false,
-                //     // selector: 'tr',
-                // },
-                // select: true,
-                // responsive: true,
-                // scrollCollapse: true,
-                // scroller: true,
-                // scrollY: 900,
-
-                responsive: {
-                    details: {
-                        display: DataTable.Responsive.display.modal({
-                            header: function(row) {
-                                var data = row.data();
-                                return '{!! __('general.detalis_for') !!} : ' + data['name'];
-
-                            }
-                        }),
-                        renderer: DataTable.Responsive.renderer.tableAll({
-                            tableClass: 'table'
-                        })
-                    }
-                },
-
-
-                ajax: {
-                    url: '{!! route('dashboard.employees.get.all') !!}',
+                $.ajax({
+                    url: "{{ route('dashboard.employees.index') }}?page=" + page,
                     data: {
+                        employee_id: employee_id,
                         personal_id: personal_id,
-                        first_name_en: first_name_en,
-                        father_name_en: father_name_en,
-                        grand_father_name_en: grand_father_name_en,
-                        family_name_en: family_name_en,
-                        first_name_ar: first_name_ar,
-                        father_name_ar: father_name_ar,
-                        grand_father_name_ar: grand_father_name_ar,
-                        family_name_ar: family_name_ar,
-
                     },
-                    beforeSend: function() {}
-                },
-
-                columns: [{
-                        data: 'DT_RowIndex',
-                        searchable: false,
-                        orderable: false,
+                    beforeSend: function() {
+                        $('#loading-indicator').show();
+                        $('#data-table tbody').empty();
                     },
-                    {
-                        data: 'full_name',
-                        name: 'full_name',
+                    success: function(data) {
+                        $('#table_data').html(data);
                     },
-                    {
-                        data: 'personal_id',
-                        name: 'personal_id',
+                    complete: function() {
+                        $('#loading-indicator').hide();
                     },
-                    {
-                        data: 'gender',
-                        name: 'gender',
-                    },
+                });
+            }
 
-                    {
-                        data: 'birthday',
-                        name: 'birthday',
-                    },
-
-                    {
-                        data: 'created_at',
-                        name: 'created_at',
-                    },
-                    {
-                        data: 'actions',
-                        searchable: false,
-                        orderable: false,
-                    }
-                ],
-
-                layout: {
-                    // 'colvis',
-                    // topStart: {
-                    //     buttons: ['copy', 'print', 'excel', 'pdf']
-                    // }
-                },
-
-                language: lang === 'ar' ? {
-                    url: '{!! asset('vendor/datatables/ar.json') !!}',
-                } : {},
-
+            // Handle pagination link clicks
+            $(document).on('click', '.pagination a', function(event) {
+                event.preventDefault();
+                page = $(this).attr('href').split('page=')[1];
+                fetch_data(page);
             });
 
-        }
+
+            // search
+            $('body').on('click', '#employee_search_btn', function(e) {
+                fetch_data(1);
+            })
+
+
+            // reset
+            $('body').on('click', '#employee_reset_btn', function(e) {
+                e.preventDefault();
+                $("#employee_id").val('').trigger('change');
+                $('#personal_id').val('');
+                fetch_data(1);
+            });
+
+            // Handle search input (e.g., on keyup)
+            $('#search').on('keyup', function() {
+                fetch_data(1); // Reset to page 1 on new search
+            });
+        });
 
 
         // delete

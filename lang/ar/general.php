@@ -7,7 +7,15 @@ return [
     'no_photo' => 'لا يوجد صورة',
     'no_image' => 'لا يوجد صورة',
     'no_logo' => 'لا يوجد شعار',
-    'recored_exists'=>'السجل موجود مسبقاً',
+    'recored_exists' => 'السجل موجود مسبقاً',
+    'share' => 'مشاركة',
+    'print' => 'طباعة',
+    'show_all' => 'عرض الكل',
+    'overview' => 'لمحة عن ',
+    'profile' => 'الملف الشخصي',
+    'messages' => 'الرسائل',
+    'notifications' => 'الاشعارات',
+    'loading'=>'تحميل',
 
     'first' => 'الأول',
     'prev' => 'السابق',
@@ -102,6 +110,7 @@ return [
     'restore_error_message' => 'لم تتم عملية الاسترجاع',
     'delete_image_success_message' => 'تمت عملية حذف الصورة بنجاح',
     'delete_image_error_message' => 'لم تتم عملية حذف الصورة',
+    'added_before_error_message'=>'تمت الاضافة سابقاً',
 
     'upload_success_message' => 'تمت عملية الرفع بنجاح',
     'upload_error_message' => 'لم تتم عملية الرفع ',
@@ -121,6 +130,8 @@ return [
     'change_status_success_message' => 'تمت عملية تغير الحالة بنجاح',
     'change_status_error_message' => 'لم تتم عملية تغير الحالة',
     'change_password_success_message' => 'تمت عملية تغير كلمة المرور بنجاح',
+    'change_password_error_message' => 'خطأ , لم تتم عملية تغير كلمة ا لمرور',
+
     'warning' => 'تنبيه',
 
     'export' => 'تصدير',

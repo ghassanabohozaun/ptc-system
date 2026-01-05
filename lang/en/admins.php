@@ -14,6 +14,8 @@ return [
     'role_id' => 'Admin Role',
     'status' => 'Status',
     'created_at'=>'Created At',
+        'manage_status'=>'Manage Status',
+
 
     'enter_name_ar' => 'Enter Arabic Admin Name',
     'enter_name_en' => 'Enter English Admin Name',

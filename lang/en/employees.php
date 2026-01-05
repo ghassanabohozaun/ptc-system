@@ -2,15 +2,20 @@
 return [
     'create_new_employee' => 'Create New Employee',
     'update_employee' => 'Update Employee',
+    'show_employee' => 'Show Employee',
+
     'employees' => 'Employees',
     'show_all_employees' => 'Show All Employees',
-    'profile'=>'Profile',
+    'profile' => 'Profile',
+    'overview' => 'Overview',
+    'financial' => 'Financial',
+
     'male' => 'Male',
     'female' => 'Female',
     'select_from_list' => 'Select From List',
     'basic' => 'Basic Info',
     'education' => 'Education',
-    'bank_info'=>'Bank Info',
+    'bank_info' => 'Bank Info',
     'job_details' => 'Job Details',
     'single' => 'Single',
     'married' => 'Married',
@@ -33,7 +38,7 @@ return [
     'contract' => 'Contact',
 
     'id' => 'ID',
-    'full_name' => 'Employee Full Name',
+    'full_name' => 'Full Name',
     'full_name_ar' => 'Arabic Employee Full Name',
     'full_name_en' => 'English Employee Full Name',
     'first_name' => 'Employee  First Name',
@@ -52,9 +57,9 @@ return [
     'employee_status_id' => 'Employee Status',
     'password' => 'Password',
     'password_confirm' => 'Password Confirm',
-    'personal_id' => 'Employee Personal ID',
-    'birthday' => 'Employee Birthday',
-    'gender' => 'Employee Gender',
+    'personal_id' => 'Personal ID',
+    'birthday' => ' Birthday',
+    'gender' => ' Gender',
     'mobile_no' => 'Mobile No',
     'alternative_mobile_no' => 'Alternative Mobile No',
     'email' => 'Email',
@@ -76,7 +81,7 @@ return [
     'enter_father_name' => 'Enter Employee Father Name',
     'enter_grand_father_name' => 'Enter Employee  Grand Father Name',
     'enter_family_name' => 'Enter Employee  Family Name',
-    'enter_child_full_name' => 'Enter Employee Full Name',
+    'enter_employee_full_name' => 'Enter Employee Full Name',
     'enter_first_name_ar' => 'Enter Arabic Employee  First Name',
     'enter_father_name_ar' => 'Enter Arabic Employee Father Name',
     'enter_grand_father_name_ar' => 'Enter Arabic Employee  Grand Father Name',
@@ -155,4 +160,8 @@ return [
     'enter_employee_status_name_en' => 'Enter English Employee Status Name',
 
     'no_employee_statuses_found' => 'No Employee Statues Found !',
+
+    // dashboard
+
+    'change_password' => 'Change Password',
 ];

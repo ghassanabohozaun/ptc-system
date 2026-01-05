@@ -19,31 +19,32 @@ class DailyReportsController extends Controller
     }
 
     // index
-    public function index()
+    public function index(Request $request)
     {
         $title = __('dailyReports.daily_reports');
-        return view('dashboard.daily-reports.index', compact('title'));
+        $dailyReports = $this->dailyReportService->getAll($request);
+
+        if ($request->ajax()) {
+            return view('dashboard.employees.daily-reports.partials._table', compact('dailyReports'))->render();
+        }
+
+        return view('dashboard.employees.daily-reports.index', compact('title','dailyReports'));
     }
 
-    // get all
-    public function getAll()
-    {
-        return $this->dailyReportService->getAll();
-    }
+
 
     // create
     public function create()
     {
         $title = __('dailyReports.create_new_daily_report');
-        return view('dashboard.daily-reports.create', compact('title'));
+        return view('dashboard.employees.daily-reports.create', compact('title'));
     }
 
     // store
     public function store(dailyReportRequest $request)
     {
-        $data = $request->only(['employee_id', 'date', 'time', 'details']);
+        $data = $request->only(['employee_id', 'date', 'details', 'file']);
         $dailyReport = $this->dailyReportService->create($data);
-
         return response()->json(['status' => $dailyReport], 200);
     }
 
@@ -64,13 +65,13 @@ class DailyReportsController extends Controller
         }
         $employees = $this->employeeService->getEmployees();
 
-        return view('dashboard.daily-reports.edit', compact('title', 'dailyReport', 'employees'));
+        return view('dashboard.employees.daily-reports.edit', compact('title', 'dailyReport', 'employees'));
     }
 
     // update
     public function update(dailyReportRequest $request, string $id)
     {
-        $data = $request->only(['id', 'employee_id', 'date', 'time', 'details']);
+        $data = $request->only(['id', 'employee_id', 'date', 'details', 'file']);
         $dailyReport = $this->dailyReportService->update($data);
         if (!$dailyReport) {
             return response()->json(['status' => false], 500);

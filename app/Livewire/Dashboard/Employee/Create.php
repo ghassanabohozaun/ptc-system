@@ -23,8 +23,8 @@ class Create extends Component
     public $first_name_en, $father_name_en, $grand_father_name_en, $family_name_en;
     public $governoate_id, $city_id, $address_details;
     public $personal_id, $birthday, $gender, $password, $password_confirm, $mobile_no, $marital_status, $alternative_mobile_no;
-    public $email, $photo, $bank_name, $iban, $banck_account, $currency;
-    public $title, $basic_salary, $appointment_date, $contact_expire_date, $employment_type, $department_id, $employee_status_id, $supervisor;
+    public $email, $photo, $bank_name, $iban, $banck_account,$basic_salary, $currency;
+    public $title, $appointment_date, $contact_expire_date, $employment_type, $department_id, $employee_status_id, $supervisor;
     public $employeeCreatedCheck;
 
     public $governorates, $cities;
@@ -101,6 +101,7 @@ class Create extends Component
             'bank_name' => ['required', 'string', 'min:3'],
             'iban' => ['required', 'string', 'min:3'],
             'banck_account' => ['required', 'string', 'min:3'],
+            'basic_salary' => ['required', 'numeric'],
             'currency' => ['required', 'string', 'min:3'],
             'photo' => ['nullable', 'mimes:png,jpg,jpeg,gif'],
         ];
@@ -126,6 +127,7 @@ class Create extends Component
             'bank_name' => $this->bank_name,
             'iban' => $this->iban,
             'banck_account' => $this->banck_account,
+            'basic_salary' => $this->basic_salary,
             'currency' => $this->currency,
             'photo' => $this->photo ?? null,
         ];
@@ -186,7 +188,6 @@ class Create extends Component
     {
         $data = [
             'title' => ['required', 'string', 'min:3'],
-            'basic_salary' => ['required', 'numeric'],
             'appointment_date' => ['required', 'date'],
             'contact_expire_date' => ['required', 'date'],
             'employment_type' => ['required'],
@@ -199,7 +200,6 @@ class Create extends Component
 
         $jobDetailsData = [
             'title' => $this->title,
-            'basic_salary' => $this->basic_salary,
             'appointment_date' => $this->appointment_date,
             'contact_expire_date' => $this->contact_expire_date,
             'employment_type' => $this->employment_type,
