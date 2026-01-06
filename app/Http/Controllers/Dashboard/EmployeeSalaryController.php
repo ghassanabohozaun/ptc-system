@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Models\Salary;
 use App\Services\Dashboard\EmployeeService;
 use App\Services\Dashboard\SalaryService;
 use Illuminate\Http\Request;

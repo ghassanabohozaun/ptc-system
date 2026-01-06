@@ -16,9 +16,7 @@ class Employee extends Authenticatable
     use HasFactory, Notifiable, SoftDeletes, HasTranslations, HasApiTokens;
 
     protected $table = 'employees';
-    protected $fillable = ['first_name', 'father_name', 'grand_father_name', 'family_name', 'password', 'personal_id',
-     'gender', 'birthday', 'marital_status', 'mobile_no', 'alternative_mobile_no', 'email', 'governoate_id', 'city_id',
-     'address_details', 'bank_name', 'iban', 'banck_account','basic_salary', 'currency', 'photo'];
+    protected $fillable = ['first_name', 'father_name', 'grand_father_name', 'family_name', 'password', 'personal_id', 'gender', 'birthday', 'marital_status', 'mobile_no', 'alternative_mobile_no', 'email', 'governoate_id', 'city_id', 'address_details', 'bank_name', 'iban', 'banck_account', 'basic_salary', 'currency', 'photo'];
 
     public array $translatable = ['first_name', 'father_name', 'grand_father_name', 'family_name'];
 
@@ -91,13 +89,13 @@ class Employee extends Authenticatable
         return $this->hasMany(DailyReport::class, 'employee_id');
     }
 
+    public function monthlyReports()
+    {
+        return $this->hasMany(MonthlyReport::class, 'employee_id');
+    }
     public function salaries()
     {
-        return $this->belongsToMany(Salary::class, 'employee_salary')
-        ->orderByPivot('id', 'asc')->withPivot('id')
-        ->withPivot('amount')->withPivot('notes')
-        ->withPivot('status')->withPivot('employee_id')
-        ->withPivot('basic_salary');
+        return $this->belongsToMany(Salary::class, 'employee_salary')->orderByPivot('id', 'asc')->withPivot('id')->withPivot('amount')->withPivot('notes')->withPivot('status')->withPivot('employee_id')->withPivot('basic_salary');
     }
 
     // scopes

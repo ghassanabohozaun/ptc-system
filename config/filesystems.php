@@ -63,7 +63,6 @@ return [
             'report' => false,
         ],
 
-
         'employeesCertifications' => [
             'driver' => 'local',
             'root' => public_path('/uploads/employeesCertifications'),
@@ -77,6 +76,15 @@ return [
             'driver' => 'local',
             'root' => public_path('/uploads/dailyReports'),
             'url' => env('APP_URL') . '/uploads/dailyReports',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
+
+        'monthlyReports' => [
+            'driver' => 'local',
+            'root' => public_path('/uploads/monthlyReports'),
+            'url' => env('APP_URL') . '/uploads/monthlyReports',
             'visibility' => 'public',
             'throw' => false,
             'report' => false,

@@ -7,16 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
 
-class DailyReport extends Model
+class MonthlyReport extends Model
 {
     use SoftDeletes, HasTranslations;
 
-    protected $table = 'daily_reports';
-    protected $fillable = ['date', 'details', 'employee_id', 'status', 'file'];
+    protected $table = 'monthly_reports';
+    protected $fillable = ['month', 'year', 'details', 'employee_id', 'status','file'];
 
-    public $timestamps = true;
 
-    // scopes
+      // scopes
     public function scopeActive($query)
     {
         return $query->whereStatus(1);
@@ -44,4 +43,5 @@ class DailyReport extends Model
         // return  date('Y-m-d', strtotime($value));
         return Carbon::parse($value)->format('d/m/Y h:i A');
     }
+
 }

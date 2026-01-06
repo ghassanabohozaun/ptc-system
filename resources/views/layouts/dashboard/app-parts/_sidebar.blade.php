@@ -2,7 +2,7 @@
         <div class="main-menu-content">
 
             <!-- begin: Dashboard -->
-            <ul class="navigation navigation-main mt-2">
+            <ul class="navigation navigation-main mt-3">
                 <li class=" nav-item @if (Request::is('*welcome*')) active @endif">
                     <a href="{!! route('dashboard.index') !!}">
                         <i class="icon-home"></i>
@@ -12,8 +12,6 @@
                 </li>
             </ul>
             <!-- end: Dashboard -->
-
-
 
             <!-- begin: settings -->
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
@@ -192,7 +190,18 @@
                             </li>
                             <!-- end: daliy reports -->
                         @endcan
+
+                        @can('monthlyReports')
+                            <!-- begin: monthly reports -->
+                            <li class="@if (str_contains(url()->current(), 'monthlyReports')) active @endif">
+                                <a class="menu-item" href="{!! route('dashboard.monthlyReports.index') !!}" data-i18n="nav.dash.monthlyReports">
+                                    {!! __('monthlyReports.monthly_reports') !!}
+                                </a>
+                            </li>
+                            <!-- end: monthly reports -->
+                        @endcan
                     </ul>
+
 
                 </li>
             </ul>

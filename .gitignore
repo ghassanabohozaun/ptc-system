@@ -7,6 +7,7 @@
 /public/uploads/employeesPhotos/*
 /public/uploads/employeesCertifications/*
 /public/uploads/dailyReports/*
+/public/uploads/monthlyReports/*
 
 /storage/*.key
 /storage/pail

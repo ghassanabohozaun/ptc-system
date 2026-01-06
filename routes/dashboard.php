@@ -3,11 +3,13 @@
 use App\Http\Controllers\Dashboard\Auth\AuthController;
 use App\Http\Controllers\Dashboard\Auth\Passowrd\ForgetPasswordController;
 use App\Http\Controllers\Dashboard\Auth\Passowrd\ResetPasswordController;
+use App\Http\Controllers\Dashboard\MonthlyReportsController;
 use App\Http\Controllers\Dashboard\SalariesController;
-use App\Http\Controllers\Dashboard\{AdminsController, CitiesController, DailyReportsController, DashboardController, DepartmentsController, EmployeeSalaryController, EmployeesController, EmployeeStatusesController, GovernoratiesController, ProductsController, RolesController, SettingsController, SponsershipOrganizationsController, SponsershipStatusesController, SponsershipTypesController};
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\{AdminsController, CitiesController, DailyReportsController, DashboardController, DepartmentsController, EmployeeSalaryController, EmployeesController, EmployeeStatusesController, GovernoratiesController, ProductsController, RolesController, SettingsController, SponsershipOrganizationsController, SponsershipStatusesController, SponsershipTypesController};
 use Livewire\Livewire;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+
 
 Route::group(
     [
@@ -103,6 +105,12 @@ Route::group(
             Route::group(['middleware' => 'can:dailyReports'], function () {
                 Route::resource('dailyReports', DailyReportsController::class);
                 Route::post('/dailyReports/status', [DailyReportsController::class, 'changeStatus'])->name('daliy.reports.change.status');
+            });
+
+            ########################################### monthly reports routes  ######################################################################
+            Route::group(['middleware' => 'can:monthlyReports'], function () {
+                Route::resource('monthlyReports', MonthlyReportsController::class);
+                Route::post('/monthlyReports/status', [MonthlyReportsController::class, 'changeStatus'])->name('monthly.reports.change.status');
             });
 
             ########################################### salaries routes  ######################################################################

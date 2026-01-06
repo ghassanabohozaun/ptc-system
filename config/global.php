@@ -9,6 +9,7 @@ return [
         'employeeStatuses' => 'global.employeeStatuses',
         'departments' => 'global.departments',
         'dailyReports' => 'global.dailyReports',
+        'monthlyReports' => 'global.monthlyReports',
         'salaries'=>'global.salaries',
     ],
 ];

@@ -9,5 +9,6 @@ return [
     'employeeStatuses' => 'Employee Statuses Managment',
     'departments' => 'Departments Managment',
     'dailyReports' => 'Daily Reports Managment',
+    'monthlyReports' => 'Monthly Reports Managment',
     'salaries' => 'Salaries Managment',
 ];
