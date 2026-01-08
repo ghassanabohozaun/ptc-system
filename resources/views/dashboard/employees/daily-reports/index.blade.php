@@ -3,50 +3,6 @@
     {!! $title !!}
 @endsection
 
-@push('style')
-    <style>
-        .table-container {
-            position: relative;
-        }
-
-        #loading-indicator {
-            font-size: 15px;
-            font-weight: bolder;
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10;
-            background-color: rgba(117, 112, 112, 0.8);
-            padding: 20px;
-            border-radius: 5px;
-            color: white
-        }
-
-        #spinner {
-            font-size: 20px;
-        }
-
-        .modal-dialog,
-        .modal-content {
-            height: 80%;
-        }
-
-        .modal-body {
-            max-height: calc(100% - 120px);
-        }
-
-        .note-editable,
-        .note-code {
-            height: 400px;
-            min-height: 400px;
-        }
-    </style>
-@endpush
-
-
-
 @section('content')
     <div class="app-content content">
         <div class="content-wrapper">

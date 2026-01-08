@@ -26,7 +26,6 @@
                             <th>#</th>
                             <th>{!! __('monthlyReports.employee_id') !!}</th>
                             <th>{!! __('monthlyReports.month') !!}</th>
-                            <th>{!! __('monthlyReports.year') !!}</th>
                             <th>{!! __('monthlyReports.file') !!}</th>
                             <th>{!! __('monthlyReports.created_at') !!}</th>
                             <th>{!! __('monthlyReports.status') !!}</th>
@@ -38,8 +37,8 @@
                             <tr>
                                 <td>{!! $loop->iteration !!}</td>
                                 <td>{!! $monthlyReport->employee->EmployeeShortName() !!}</td>
-                                <td>{!! $monthlyReport->month !!}</td>
-                                <td>{!! $monthlyReport->year !!}</td>
+                                <td>{!! $monthlyReport->month !!} / {!! $monthlyReport->year !!}</td>
+
                                 <td>@include('dashboard.employees.monthly-reports.parts.file')</td>
                                 <td>{!! $monthlyReport->created_at !!}</td>
                                 <td>@include('dashboard.employees.monthly-reports.parts.status')</td>

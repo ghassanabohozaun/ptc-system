@@ -29,12 +29,6 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" crossorigin="anonymous">
 {{-- end file input --}}
 
-<style>
-    .strong-weight {
-        font-size: 12px;
-        font-weight: bolder;
-    }
-</style>
 
 @if (Lang() == 'ar')
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css-rtl/vendors.css') !!}">

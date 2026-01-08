@@ -16,8 +16,8 @@ return new class extends Migration {
             $table->string('year');
             $table->longText('details')->nullable();
             $table->foreignId('employee_id')->constrained('employees')->cascadeOnDelete();
-            $table->enum('status',['new' ,'pending','refuse','approved'])->default('new');
-            $table->text('file');
+            $table->string('status')->default('new');
+            $table->string('file');
             $table->softDeletes();
             $table->timestamps();
         });

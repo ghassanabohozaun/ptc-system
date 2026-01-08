@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Dashboard\MonthlyReportChangeStatusRequest;
 use App\Http\Requests\Dashboard\monthlyReportRequest;
 use App\Services\Dashboard\MonthlyReportService;
 use Illuminate\Http\Request;
@@ -33,7 +34,6 @@ class MonthlyReportsController extends Controller
     // store
     public function store(monthlyReportRequest $request)
     {
-
         $data = $request->except(['_token']);
         $monthlyReport = $this->monthlyReportService->create($data);
         return response()->json(['status' => $monthlyReport], 201);
@@ -52,15 +52,21 @@ class MonthlyReportsController extends Controller
     }
 
     // update
-    public function update(Request $request, string $id)
+    public function update(MonthlyReportChangeStatusRequest $request, string $id)
     {
-        //
+        $data = $request->except(['_token', '_method']);
+
+        $monthlyReport = $this->monthlyReportService->update($data);
+        if (!$monthlyReport) {
+            return response()->json(['status' => false], 500);
+        }
+        return response()->json(['status' => true, 'data' => $monthlyReport], 200);
     }
 
     // destroy
     public function destroy(string $id)
     {
-         $monthlyReport = $this->monthlyReportService->destroy($id);
+        $monthlyReport = $this->monthlyReportService->destroy($id);
         if (!$monthlyReport) {
             return response()->json(['status' => false], 500);
         }

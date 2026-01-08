@@ -12,19 +12,30 @@ class MonthlyReport extends Model
     use SoftDeletes, HasTranslations;
 
     protected $table = 'monthly_reports';
-    protected $fillable = ['month', 'year', 'details', 'employee_id', 'status','file'];
+    protected $fillable = ['month', 'year', 'details', 'employee_id', 'status', 'file'];
 
+    // functions
 
-      // scopes
-    public function scopeActive($query)
+    // status
+    public function monthlyReportStatus()
     {
-        return $query->whereStatus(1);
+        if ($this->status == 'new') {
+            return __('monthlyReports.new');
+        } elseif ($this->status == 'initial_review') {
+            return __('monthlyReports.initial_review');
+        } elseif ($this->status == 'initial_refuse') {
+            return __('monthlyReports.initial_refuse');
+        } elseif ($this->status == 'intital_approved') {
+            return __('monthlyReports.intital_approved');
+        } elseif ($this->status == 'final_review') {
+            return __('monthlyReports.final_review');
+        } elseif ($this->status == 'final_refuse') {
+            return __('monthlyReports.final_refuse');
+        } elseif ($this->status == 'approved') {
+            return __('monthlyReports.approved');
+        }
     }
 
-    public function scopeInactive($query)
-    {
-        return $query->whereStatus(0);
-    }
 
     // relation
     public function employee()
@@ -32,16 +43,9 @@ class MonthlyReport extends Model
         return $this->belongsTo(Employee::class, 'employee_id');
     }
 
-    // accsessores
-    public function getStatusAttribute($status)
-    {
-        return $status == 1 ? 'on' : '';
-    }
-
     public function getCreatedAtAttribute($value)
     {
         // return  date('Y-m-d', strtotime($value));
         return Carbon::parse($value)->format('d/m/Y h:i A');
     }
-
 }

@@ -49,7 +49,9 @@ class MonthlyReportRepository
 
     public function update($MonthlyReport, $data)
     {
-        return $MonthlyReport->update($data);
+        return $MonthlyReport->update([
+            'status' =>  $data['status'],
+        ]);
     }
 
     public function destroy($MonthlyReport)
@@ -57,10 +59,5 @@ class MonthlyReportRepository
         return $MonthlyReport->forceDelete();
     }
 
-    public function changeStatus($MonthlyReport)
-    {
-        return $MonthlyReport->update([
-            'status' => $MonthlyReport->status == 'on' ? 0 : 1,
-        ]);
-    }
+
 }

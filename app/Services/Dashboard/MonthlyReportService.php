@@ -47,8 +47,7 @@ class MonthlyReportService
     // create
     public function create($data)
     {
-
-        $monthlyReport = $this->monthlyReportRepository->monthlyReportExists($data['employee_id'], $data['month'] , $data['year']);
+        $monthlyReport = $this->monthlyReportRepository->monthlyReportExists($data['employee_id'], $data['month'], $data['year']);
 
         if (empty($monthlyReport)) {
             if (array_key_exists('file', $data) && $data['file'] != null) {
@@ -68,21 +67,12 @@ class MonthlyReportService
 
     public function update($data)
     {
+
         $monthlyReport = self::getOne($data['id']);
+
         if (!$monthlyReport) {
             return false;
         }
-
-        if (array_key_exists('file', $data) && $data['file'] != null) {
-            //remove old file
-            if ($monthlyReport->file) {
-                $this->imageManagerUtils->removeImageFromLocal($monthlyReport->file, 'monthlyReports');
-            }
-
-            $file_name = $this->imageManagerUtils->uploadSingleImage('', $data['file'], 'monthlyReports');
-            $data['file'] = $file_name;
-        }
-
         $monthlyReport = $this->monthlyReportRepository->update($monthlyReport, $data);
         if (!$monthlyReport) {
             return false;
@@ -109,16 +99,5 @@ class MonthlyReportService
         return $monthlyReport;
     }
 
-    public function changeStatus($id)
-    {
-        $monthlyReport = self::getOne($id);
-        if (!$monthlyReport) {
-            return false;
-        }
-        $monthlyReport = $this->monthlyReportRepository->changeStatus($monthlyReport);
-        if (!$monthlyReport) {
-            return false;
-        }
-        return $monthlyReport;
-    }
+
 }

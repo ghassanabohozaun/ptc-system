@@ -5,35 +5,35 @@
  font-style: normal;
  }
 
- select {
- appearance: none;
- /* Hide default browser styling */
- -webkit-appearance: none;
- -moz-appearance: none;
- background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24
- 24'%3E%3Cpath fill='currentColor' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
- background-repeat: no-repeat;
- background-position: left 0.75rem center;
- background-size: 1rem;
- padding-right: 2rem;
- /* Ensure space for the arrow */
- }
+  select {
+             appearance: none;
+             /* Hide default browser styling */
+             -webkit-appearance: none;
+             -moz-appearance: none;
+             background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+             background-repeat: no-repeat;
+             background-position: right 0.75rem center;
+             background-size: 1rem;
+             padding-right: 2rem;
+             /* Ensure space for the arrow */
+         }
 
- table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before,
- table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
- margin-left: .02em;
- display: inline-block;
- box-sizing: border-box;
- content: "";
- border-top: 5px solid transparent;
- border-right: 10px solid rgba(0, 0, 0, 0.5);
- border-bottom: 5px solid transparent;
- border-left: 0px solid transparent;
- }
- input[type="checkbox"] {
- width: 1.0em;
- height: 1.0em;
- }
+         table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before,
+         table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
+             margin-right: .5em;
+             display: inline-block;
+             box-sizing: border-box;
+             content: "";
+             border-top: 5px solid transparent;
+             border-left: 10px solid rgba(0, 0, 0, 0.5);
+             border-bottom: 5px solid transparent;
+             border-right: 0px solid transparent;
+         }
+
+input[type="checkbox"] {
+width: 1.0em;
+height: 1.0em;
+}
 
  #myTable td,
  #myTable th {
@@ -103,9 +103,9 @@
 
  /* btn Style */
  .btn {
-    padding: 0.60rem 0.6rem;
-    font-size: 0.95rem;
-    line-height: 1.1;
+ padding: 0.60rem 0.6rem;
+ font-size: 0.95rem;
+ line-height: 1.1;
  }
 
  .badge-sm {
@@ -166,4 +166,48 @@
  background: transparent;
  position: relative;
  border-bottom: 1px solid #1E9FF2;
+ }
+
+
+ .strong-weight {
+ font-size: 12px;
+ font-weight: bolder;
+ }
+
+ .table-container {
+ position: relative;
+ }
+
+ #loading-indicator {
+ font-size: 15px;
+ font-weight: bolder;
+ display: none;
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ z-index: 10;
+ background-color: rgba(117, 112, 112, 0.8);
+ padding: 20px;
+ border-radius: 5px;
+ color: white
+ }
+
+ #spinner {
+ font-size: 20px;
+ }
+
+ .modal-dialog,
+ .modal-content {
+ height: 80%;
+ }
+
+ .modal-body {
+ max-height: calc(100% - 120px);
+ }
+
+ .note-editable,
+ .note-code {
+ height: 400px;
+ min-height: 400px;
  }

@@ -146,25 +146,11 @@
 
     <!-- end: personal_id , birthday , gender ,password,password_confirm -->
     <div class="row">
-        {{-- <!-- begin: input -->
-        <div class="col-md-3">
-            <div class="form-group">
-                <label for="personal_id">{!! __('employees.personal_id') !!}</label>
-                <input type="text" wire:model.live="personal_id" class="form-control" autocomplete="off"
-                    placeholder="{!! __('employees.enter_personal_id') !!}"
-                    @error('personal_id')  style="border-color: rgb(246, 78, 96)"  @enderror>
-                @error('personal_id')
-                    <span class="text text-danger">
-                        <strong>{!! $message !!}</strong>
-                    </span>
-                @enderror
-            </div>
-        </div>
-        <!-- end: input --> --}}
+        <!-- begin: input -->
 
         <div class="col-md-3">
             <div class="form-group">
-                <label for="personal_id">{!! __('children.personal_id') !!}</label>
+                <label for="personal_id">{!! __('employees.personal_id') !!}</label>
                 <div class="input-group">
                     @if ($locked == 'open')
                         <div class="input-group-prepend">
@@ -184,7 +170,7 @@
                         </div>
                     @endif
                     <input type="text" wire:model.live="personal_id" class="form-control" autocomplete="off"
-                        {!! $personalIDReadOnly ? 'readonly' : '' !!} placeholder="{!! __('children.enter_personal_id') !!}" aria-describedby="basic-addon3"
+                        {!! $personalIDReadOnly ? 'readonly' : '' !!} placeholder="{!! __('employees.enter_personal_id') !!}" aria-describedby="basic-addon3"
                         @error('personal_id')  style="border-color: rgb(246, 78, 96)"  @enderror>
                 </div>
                 @error('personal_id')
@@ -194,6 +180,8 @@
                 @enderror
             </div>
         </div>
+
+        <!-- end: input -->
 
 
 
