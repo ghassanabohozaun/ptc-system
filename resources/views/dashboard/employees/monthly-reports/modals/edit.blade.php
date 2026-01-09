@@ -40,34 +40,25 @@
                             <div class="row">
 
                                 <!-- begin: input -->
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="month">{!! __('monthlyReports.employee') !!}</label>
-                                        <input type="text" id="employee_name_edit" name="employee_name_edit"
-                                            class="form-control" disabled>
+                                        <label id="employee_name_edit" name="employee_name_edit"
+                                            style="background-color: #e9e9e9" class="form-control"></label>
                                     </div>
                                 </div>
                                 <!-- end: input -->
 
                                 <!-- begin: input -->
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="month">{!! __('monthlyReports.month') !!}</label>
-                                        <input type="number" id="month_edit" name="month" class="form-control"
-                                            disabled>
+                                        <label id="month_edit" name="month" style="background-color: #e9e9e9"
+                                            class="form-control"></label>
                                     </div>
                                 </div>
                                 <!-- end: input -->
 
-                                <!-- begin: input -->
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="year">{!! __('monthlyReports.year') !!}</label>
-                                        <input type="number" id="year_edit" name="year" class="form-control"
-                                            disabled>
-                                    </div>
-                                </div>
-                                <!-- end: input -->
 
                             </div>
                             <!-- end: row -->
@@ -103,9 +94,13 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="refuse_reason">{!! __('monthlyReports.refuse_reason') !!}</label>
-                                        <textarea rows="4" id="refuese_reason_edit" name="refuse_reason" class="form-control"
+                                        <textarea rows="6" id="refuse_reason_edit" name="refuse_reason" class="form-control"
                                             placeholder="{!! __('monthlyReports.enter_refuse_reason') !!}"></textarea>
+                                        <span class="text text-danger">
+                                            <strong id="refuse_reason_error_edit"></strong>
+                                        </span>
                                     </div>
+
                                 </div>
                                 <!-- end: input -->
                             </div>
@@ -148,14 +143,15 @@
             } else {
                 $("#refuse_reason_section").hide();
             }
+
+            $('#refuse_reason_edit').css('border-color', '');
+            $('#refuse_reason_error_edit').text('');
+
         });
-
-
 
 
         // show edit modal
         $('body').on('click', '.monthly_report_change_status_button', function(e) {
-
 
             e.preventDefault();
             var monthly_report_id = $(this).attr('monthly-report-id');
@@ -163,19 +159,22 @@
             var month = $(this).attr('monthly-report-month');
             var year = $(this).attr('monthly-report-year');
             var status = $(this).attr('monthly-report-status');
+            var refuse_reason = $(this).attr('monthly-report-refuse-reason');
+
+            let monthYear = month + ' / ' + year;
 
             $('#id_edit').val(monthly_report_id);
-            $('#employee_name_edit').val(emplyee_name);
-            $('#month_edit').val(month);
-            $('#year_edit').val(year);
+            $('#employee_name_edit').text(emplyee_name);
+            $('#month_edit').text(monthYear);
             $('#status_edit').val(status);
+            $('#refuse_reason_edit').val(refuse_reason);
+
 
             if (status == 'initial_refuse' || status == 'final_refuse') {
                 $("#refuse_reason_section").show();
             } else {
                 $("#refuse_reason_section").hide();
             }
-
 
             $('#updateMonthlyReportModal').modal('show');
         })
@@ -184,8 +183,10 @@
         // reset
         function resetEditForm() {
             $('#status_edit').css('border-color', '');
+            $('#refuse_reason_edit').css('border-color', '');
 
             $('#status_error_edit').text('');
+            $('#refuse_reason_error_edit').text('');
         }
 
         // cancel

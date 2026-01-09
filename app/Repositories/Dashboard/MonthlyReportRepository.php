@@ -51,6 +51,7 @@ class MonthlyReportRepository
     {
         return $MonthlyReport->update([
             'status' =>  $data['status'],
+            'refuse_reason'=>$data['refuse_reason'] ?? '',
         ]);
     }
 

@@ -1,11 +1,11 @@
 <?php
 return [
-    'create_new_montly_report' => 'انشاء تقرير شهري جديد',
+    'create_new_monthly_report' => 'انشاء تقرير شهري جديد',
     'update_monthly_report' => 'تعديل التقرير الشهري',
-    'montly_reports' => 'التقارير الشهرية',
-    'show_all_montly_reports' => 'عرض جميع التقارير الشهرية',
+    'monthly_reports' => 'التقارير الشهرية',
+    'show_all_monthly_reports' => 'عرض جميع التقارير الشهرية',
     'show_details' => 'عرض التفاصيل',
-    'show_latest_montly_reports' => 'عرض آخر التقارير الشهرية',
+    'show_latest_monthly_reports' => 'عرض آخر التقارير الشهرية',
 
     'new' => 'جديد',
     'initial_review' => 'مراجعة مبدئية',
@@ -34,5 +34,5 @@ return [
     'enter_file' => 'ادخل الملف',
     'enter_refuse_reason' => 'ادخل سبب الرفض',
 
-    'no_montly_reports_found' => 'لا يوجد تقارير شهرية حالياً !',
+    'no_monthly_reports_found' => 'لا يوجد تقارير شهرية حالياً !',
 ];

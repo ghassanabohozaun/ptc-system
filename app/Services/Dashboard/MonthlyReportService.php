@@ -4,6 +4,7 @@ namespace App\Services\Dashboard;
 
 use App\Repositories\Dashboard\MonthlyReportRepository;
 use App\Utils\ImageManagerUtils;
+use Carbon\Carbon;
 use Mpdf\Tag\Th;
 
 class MonthlyReportService
@@ -47,6 +48,11 @@ class MonthlyReportService
     // create
     public function create($data)
     {
+        // sperate date
+        $date = Carbon::createFromFormat('Y-m', $data['month']);
+        $data['month'] = $date->format('m');
+        $data['year'] = $date->format('Y');
+
         $monthlyReport = $this->monthlyReportRepository->monthlyReportExists($data['employee_id'], $data['month'], $data['year']);
 
         if (empty($monthlyReport)) {
@@ -67,12 +73,16 @@ class MonthlyReportService
 
     public function update($data)
     {
-
         $monthlyReport = self::getOne($data['id']);
 
         if (!$monthlyReport) {
             return false;
         }
+
+        if ($data['status'] != 'initial_refuse' && $data['status'] != 'final_refuse') {
+            $data['refuse_reason'] = '';
+        }
+
         $monthlyReport = $this->monthlyReportRepository->update($monthlyReport, $data);
         if (!$monthlyReport) {
             return false;
@@ -98,6 +108,4 @@ class MonthlyReportService
         }
         return $monthlyReport;
     }
-
-
 }

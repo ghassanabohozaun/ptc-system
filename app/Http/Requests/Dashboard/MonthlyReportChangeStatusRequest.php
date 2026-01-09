@@ -23,6 +23,7 @@ class MonthlyReportChangeStatusRequest extends FormRequest
     {
         return [
             'status' => ['required'],
+            'refuse_reason' => 'required_if:status,initial_refuse,final_refuse',
         ];
     }
 }

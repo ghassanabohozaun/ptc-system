@@ -12,7 +12,7 @@ class MonthlyReport extends Model
     use SoftDeletes, HasTranslations;
 
     protected $table = 'monthly_reports';
-    protected $fillable = ['month', 'year', 'details', 'employee_id', 'status', 'file'];
+    protected $fillable = ['month', 'year', 'details', 'employee_id', 'status', 'file','refuse_reason'];
 
     // functions
 

@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Employee;
+use App\Models\EmployeeSalary;
 use App\Services\Dashboard\EmployeeService;
 use App\Services\Dashboard\SalaryService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use PDF;
+use PhpOffice\PhpWord\TemplateProcessor;
 
 class EmployeeSalaryController extends Controller
 {
@@ -37,23 +41,40 @@ class EmployeeSalaryController extends Controller
     // print
     public function print($id)
     {
-
         $salary = $this->salaryService->getOne($id);
 
-        $employeeSalary = $salary->employees()->get();
+        $template = new TemplateProcessor(storage_path('app/ptc-templates/salary.docx'));
+
+        $template->setValue('date_now', date('Y/m/d'));
+        $template->setValue('month', $salary->month ? monthNameArabic($salary->month) : '');
+        $template->setValue('year', $salary->year ? $salary->year : '');
+
+        // $employeeSalaries = Employee::get()->select('personal_id')->toArray();
+
+        $employeeSalaries = $salary
+            ->employees()
+            ->get()
+            ->map(function ($item) {
+                return [
+                    'id' => $item['id'],
+                    'first_name' => $item->EmployeeFullName(),
+                    'personal_id' => $item['personal_id'],
+                    'iban' => $item['iban'],
+                    'amount' => $item->pivot->amount,
+                ];
+            });
+
+        // dd($employeeSalaries);
+
+                $template->cloneRowAndSetValues('first_name', $employeeSalaries);
 
 
-        $data = [
+        $fileName = 'salary.doc';
+        $outputPath = storage_path('app/temp/' . $fileName);
 
-            'header' => public_path('assets/dashbaord/images/header.jpeg'),
-            'footer' => public_path('assets/dashbaord/images/footer.jpeg'),
-            'employeeSalary' => $employeeSalary,
-            'salary'=>$salary,
-        ];
+        $template->saveAs($outputPath);
 
-        $pdf = PDF::loadView('dashboard.salaries.employee-salary.print', $data);
-
-        return $pdf->stream($salary->month . '.pdf');
+        return response()->download($outputPath)->deleteFileAfterSend(true);
     }
     //create
     public function create()

@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->foreignId('employee_id')->constrained('employees')->cascadeOnDelete();
             $table->string('status')->default('new');
             $table->string('file');
+            $table->longText('refuse_reason')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

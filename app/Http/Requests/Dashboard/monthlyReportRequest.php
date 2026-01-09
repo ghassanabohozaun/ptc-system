@@ -24,7 +24,6 @@ class monthlyReportRequest extends FormRequest
         return [
             'employee_id' => ['required'],
             'month' => ['required'],
-            'year' => ['required'],
             'file' => ['required'],
         ];
     }

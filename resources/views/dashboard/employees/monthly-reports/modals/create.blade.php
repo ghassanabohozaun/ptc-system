@@ -34,33 +34,22 @@
                                         <select class="monthly_report_employee_id_select form-control" id="employee_id"
                                             name="employee_id" style="width: 100%">
                                         </select>
-                                        <span class="text text-danger" id="employee_id_error">
+                                        <span class="text text-danger">
+                                            <strong id="employee_id_error"></strong>
                                         </span>
+
                                     </div>
                                 </div>
                                 <!-- end: input -->
 
                                 <!-- begin: input -->
-                                <div class="col-md-3">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="month">{!! __('monthlyReports.month') !!}</label>
-                                        <input type="number" id="month" name="month" class="form-control"
+                                        <input type="month" id="month" name="month" class="form-control"
                                             autocomplete="off" placeholder="{!! __('monthlyReports.enter_month') !!}">
                                         <span class="text text-danger">
                                             <strong id="month_error"></strong>
-                                        </span>
-                                    </div>
-                                </div>
-                                <!-- end: input -->
-
-                                <!-- begin: input -->
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="year">{!! __('monthlyReports.year') !!}</label>
-                                        <input type="number" id="year" name="year" class="form-control"
-                                            autocomplete="off" placeholder="{!! __('monthlyReports.enter_year') !!}">
-                                        <span class="text text-danger">
-                                            <strong id="year_error"></strong>
                                         </span>
                                     </div>
                                 </div>
@@ -193,12 +182,10 @@
         function resetCreateForm() {
             $('#employee_id').css('border-color', '');
             $('#month').css('border-color', '');
-            $('#year').css('border-color', '');
             $('#file').css('border-color', '');
 
             $('#employee_id_error').text('');
             $('#month_error').text('');
-            $('#year_error').text('');
             $('#file_error').text('');
         }
 
