@@ -48,8 +48,7 @@ class EmployeeSalaryController extends Controller
         $template->setValue('date_now', date('Y/m/d'));
         $template->setValue('month', $salary->month ? monthNameArabic($salary->month) : '');
         $template->setValue('year', $salary->year ? $salary->year : '');
-
-        // $employeeSalaries = Employee::get()->select('personal_id')->toArray();
+        $template->setValue('total', $salary->employees->sum('pivot.amount'));
 
         $employeeSalaries = $salary
             ->employees()
@@ -57,17 +56,14 @@ class EmployeeSalaryController extends Controller
             ->map(function ($item) {
                 return [
                     'id' => $item['id'],
-                    'first_name' => $item->EmployeeFullName(),
+                    'full_name' => $item->EmployeeFullName(),
                     'personal_id' => $item['personal_id'],
                     'iban' => $item['iban'],
                     'amount' => $item->pivot->amount,
                 ];
             });
 
-        // dd($employeeSalaries);
-
-                $template->cloneRowAndSetValues('first_name', $employeeSalaries);
-
+        $template->cloneRowAndSetValues('full_name', $employeeSalaries);
 
         $fileName = 'salary.doc';
         $outputPath = storage_path('app/temp/' . $fileName);
