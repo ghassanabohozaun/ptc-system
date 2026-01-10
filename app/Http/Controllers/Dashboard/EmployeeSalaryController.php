@@ -65,7 +65,7 @@ class EmployeeSalaryController extends Controller
 
         $template->cloneRowAndSetValues('full_name', $employeeSalaries);
 
-        $fileName = 'salary.doc';
+        $fileName = 'Salary-' . $salary->month . '-' . $salary->year  .  '.doc';
         $outputPath = storage_path('app/temp/' . $fileName);
 
         $template->saveAs($outputPath);
