@@ -20,6 +20,7 @@ class Edit extends Component
     public $currentStep = 1;
     public $personalIDReadOnly = 1;
     public $locked = 'open';
+    public $statusAlert = '';
 
     public $first_name_ar, $father_name_ar, $grand_father_name_ar, $family_name_ar;
     public $first_name_en, $father_name_en, $grand_father_name_en, $family_name_en;
@@ -27,7 +28,7 @@ class Edit extends Component
     public $personal_id, $birthday, $gender, $password, $password_confirm, $mobile_no, $marital_status, $alternative_mobile_no;
     public $email, $bank_name, $iban, $banck_account, $basic_salary, $currency;
     public $photo, $new_photo;
-    public $title, $appointment_date, $contact_expire_date, $employment_type, $department_id, $employee_status_id, $supervisor;
+    public $title, $appointment_date, $contact_expire_date, $employment_type, $department_id, $employee_status_id, $supervisor, $submit_monthly_report;
 
     public $governorates, $cities;
     public $employeeStatuses;
@@ -109,6 +110,7 @@ class Edit extends Component
             $this->employee_status_id = $this->employee->employeeJobDetails->employee_status_id;
             $this->department_id = $this->employee->employeeJobDetails->department_id;
             $this->supervisor = $this->employee->employeeJobDetails->supervisor;
+            $this->submit_monthly_report = $this->employee->employeeJobDetails->submit_monthly_report;
         }
 
         $this->employeeStatuses = $employeeStatuses;
@@ -173,14 +175,18 @@ class Edit extends Component
             'photo' => $this->new_photo,
         ];
 
-        $employeeUpdated = $this->employeeService->updateEmployee($basicData, $this->EmployeeID);
+        $employeeUpdated = $this->employeeService->updateEmployee($this->EmployeeID,$basicData, );
 
         if (!$employeeUpdated) {
             flash()->error(message: __('general.update_error_message'));
         } else {
             $this->personalIDReadOnly = 1;
             flash()->success(message: __('general.update_success_message'));
-            // $this->resetExcept(['governorates', 'cities', 'employeeStatuses', 'employee','departments']);
+            $this->dispatch('scroll-to-top');
+            $this->password = null;
+            $this->password_confirm = null;
+            $this->lockedPersonalID();
+            $this->currentStep = 2;
         }
     }
 
@@ -215,11 +221,13 @@ class Edit extends Component
         $educationCreated = $this->employeeService->updateEducation($educationData);
 
         if ($educationCreated == 'employee_not_found') {
-            flash()->error(message: __('employees.update_employee_before'));
+            flash()->warning(message: __('employees.update_employee_before'));
         } elseif ($educationCreated == 'add_error') {
             flash()->error(message: __('general.update_error_message'));
         } elseif ($educationCreated == 'add_success') {
             flash()->success(message: __('general.update_success_message'));
+            $this->dispatch('scroll-to-top');
+            $this->currentStep = 3;
         }
     }
 
@@ -234,6 +242,7 @@ class Edit extends Component
             'employee_status_id' => ['required', 'exists:employee_statuses,id'],
             'department_id' => ['required', 'exists:departments,id'],
             'supervisor' => ['required', 'string', 'min:3'],
+            'submit_monthly_report' => ['required'],
         ];
 
         $this->validate($data);
@@ -246,17 +255,20 @@ class Edit extends Component
             'employee_status_id' => $this->employee_status_id,
             'department_id' => $this->department_id,
             'supervisor' => $this->supervisor,
+            'submit_monthly_report' => $this->submit_monthly_report,
             'employee_id' => $this->EmployeeID,
         ];
 
         $jobDetailsCreated = $this->employeeService->updateJobDetails($jobDetailsData);
 
         if ($jobDetailsCreated == 'employee_not_found') {
-            flash()->error(message: __('employees.update_employee_before'));
+            flash()->warning(message: __('employees.update_employee_before'));
         } elseif ($jobDetailsCreated == 'update_error') {
             flash()->error(message: __('general.update_error_message'));
         } elseif ($jobDetailsCreated == 'update_success') {
             flash()->success(message: __('general.update_success_message'));
+            $this->dispatch('scroll-to-top');
+            $this->currentStep = 1;
         }
     }
 
@@ -270,7 +282,8 @@ class Edit extends Component
     public function educationClick()
     {
         if ($this->EmployeeID == null) {
-            flash()->error(message: __('employees.add_employee_before'));
+            flash()->warning(message: __('employees.add_employee_before'));
+            $this->statusAlert = ['message' => __('employees.add_employee_before'), 'type' => 'alert-warning'];
         } else {
             $this->currentStep = 2;
         }
@@ -280,7 +293,8 @@ class Edit extends Component
     public function JobDetailsClick()
     {
         if ($this->EmployeeID == null) {
-            flash()->error(message: __('employees.add_employee_before'));
+            flash()->warning(message: __('employees.add_employee_before'));
+            $this->statusAlert = ['message' => __('employees.add_employee_before'), 'type' => 'alert-warning'];
         } else {
             $this->currentStep = 3;
         }
@@ -300,7 +314,7 @@ class Edit extends Component
 
             $education = $this->employeeService->deleteEducation($id);
             if (!$education) {
-                flash()->error(message: __('general.delete_error_message'));
+              //  flash()->error(message: __('general.delete_error_message'));
             }
             flash()->success(message: __('general.delete_success_message'));
         }

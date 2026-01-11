@@ -170,7 +170,8 @@
                         </div>
                     @endif
                     <input type="text" wire:model.live="personal_id" class="form-control" autocomplete="off"
-                        {!! $personalIDReadOnly ? 'readonly' : '' !!} placeholder="{!! __('employees.enter_personal_id') !!}" aria-describedby="basic-addon3"
+                        maxlength="9" {!! $personalIDReadOnly ? 'readonly' : '' !!} placeholder="{!! __('employees.enter_personal_id') !!}"
+                        aria-describedby="basic-addon3"
                         @error('personal_id')  style="border-color: rgb(246, 78, 96)"  @enderror>
                 </div>
                 @error('personal_id')
@@ -289,7 +290,7 @@
             <div class="form-group">
                 <label for="mobile_no">{!! __('employees.mobile_no') !!}</label>
                 <input type="text" wire:model.live="mobile_no" class="form-control" autocomplete="off"
-                    placeholder="{!! __('employees.enter_mobile_no') !!}"
+                    maxlength="10" placeholder="{!! __('employees.enter_mobile_no') !!}"
                     @error('mobile_no')  style="border-color: rgb(246, 78, 96)"  @enderror>
                 @error('mobile_no')
                     <span class="text text-danger">
@@ -306,7 +307,7 @@
         <div class="col-md-3">
             <div class="form-group">
                 <label for="alternative_mobile_no">{!! __('employees.alternative_mobile_no') !!}</label>
-                <input type="text" wire:model.live="alternative_mobile_no" class="form-control"
+                <input type="text" wire:model.live="alternative_mobile_no" class="form-control" maxlength="10"
                     autocomplete="off" placeholder="{!! __('employees.enter_alternative_mobile_no') !!}"
                     @error('alternative_mobile_no')  style="border-color: rgb(246, 78, 96)"  @enderror>
                 @error('alternative_mobile_no')

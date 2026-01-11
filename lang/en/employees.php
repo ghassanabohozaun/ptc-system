@@ -9,6 +9,10 @@ return [
     'profile' => 'Profile',
     'overview' => 'Overview',
     'financial' => 'Financial',
+    'yes' => 'Yes',
+    'no' => 'No',
+    'employee_not_found'=>'Employee Not Found',
+
 
     'male' => 'Male',
     'female' => 'Female',
@@ -118,6 +122,7 @@ return [
     'education_aveage' => 'Average',
     'certification' => 'Certification',
     'employee_id' => 'Employee',
+    'submit_monthly_report' => 'Submit Monthly Report',
 
     'enter_educational_instituation_name' => 'Enter Instituation Name',
     'enter_education_level' => 'Enter Level',
@@ -125,6 +130,7 @@ return [
     'enter_education_aveage' => 'Enter Average',
     'enter_certification' => 'Enter Certification',
     'enter_employee_id' => 'Enter Employee',
+    'enter_submit_monthly_report' => 'Enter Submit Monthly Report',
 
     // job details
     'title' => 'Title',

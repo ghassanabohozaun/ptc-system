@@ -144,7 +144,8 @@
         // delete
         $('body').on('click', '.delete_employee_btn', function(e) {
             e.preventDefault();
-            var currentPage = $('#yajra-datatable').DataTable().page();
+
+            var $tr = $(this).closest('tr');
             var id = $(this).data('id');
 
             swal({
@@ -176,8 +177,12 @@
                         type: 'DELETE',
                         dataType: 'json',
                         success: function(data) {
-                            $('#yajra-datatable').DataTable().page(currentPage).draw(false);
+
                             if (data.status == true) {
+                                $tr.fadeOut(700, function() {
+                                    $tr.remove();
+                                });
+
                                 swal({
                                     title: "{!! __('general.deleted') !!} ",
                                     text: "{!! __('general.delete_success_message') !!} ",

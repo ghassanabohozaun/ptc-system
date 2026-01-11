@@ -18,14 +18,15 @@ class Create extends Component
     use WithFileUploads;
 
     public $currentStep = 1;
+    public $statusAlert = '';
 
     public $first_name_ar, $father_name_ar, $grand_father_name_ar, $family_name_ar;
     public $first_name_en, $father_name_en, $grand_father_name_en, $family_name_en;
     public $governoate_id, $city_id, $address_details;
     public $personal_id, $birthday, $gender, $password, $password_confirm, $mobile_no, $marital_status, $alternative_mobile_no;
-    public $email, $photo, $bank_name, $iban, $banck_account,$basic_salary, $currency;
-    public $title, $appointment_date, $contact_expire_date, $employment_type, $department_id, $employee_status_id, $supervisor;
-    public $employeeCreatedCheck;
+    public $email, $photo, $bank_name, $iban, $banck_account, $basic_salary, $currency;
+    public $title, $appointment_date, $contact_expire_date, $employment_type, $department_id, $employee_status_id, $supervisor, $submit_monthly_report;
+    public $employeeCreatedID;
 
     public $governorates, $cities;
     public $employeeStatuses;
@@ -61,6 +62,19 @@ class Create extends Component
         $this->educationItems[] = ['educational_instituation_name' => '', 'education_level' => '', 'education_year' => '', 'education_aveage' => '', 'certification' => ''];
     }
 
+    protected function rules()
+    {
+        return [
+            'personal_id' => ['required', 'numeric', 'digits:9', Rule::unique('employees')->ignore($this->employee)],
+        ];
+    }
+
+    // updated hock
+    public function updated()
+    {
+        $this->validate();
+    }
+
     // change governorate
     public function changeGovernorate($id)
     {
@@ -72,6 +86,12 @@ class Create extends Component
             $this->city_id = 0;
             $this->cities = [];
         }
+    }
+
+    // reset reset status alert
+    public function resetStatusAlert()
+    {
+        $this->statusAlert = ['message' => '', 'type' => ''];
     }
 
     // submit basic form
@@ -103,7 +123,7 @@ class Create extends Component
             'banck_account' => ['required', 'string', 'min:3'],
             'basic_salary' => ['required', 'numeric'],
             'currency' => ['required', 'string', 'min:3'],
-            'photo' => ['nullable', 'mimes:png,jpg,jpeg,gif'],
+            'photo' => ['required', 'mimes:png,jpg,jpeg,gif'],
         ];
 
         $this->validate($data);
@@ -129,18 +149,32 @@ class Create extends Component
             'banck_account' => $this->banck_account,
             'basic_salary' => $this->basic_salary,
             'currency' => $this->currency,
-            'photo' => $this->photo ?? null,
+            'photo' => $this->photo,
         ];
 
-        $employeeCreated = $this->employeeService->storeEmployee($basicData);
-
-        $this->employeeCreatedCheck = $employeeCreated->id;
-
-        if (!$employeeCreated) {
-            flash()->error(message: __('general.add_error_message'));
+        if ($this->employeeCreatedID == null) {
+            // create
+            $childCreated = $this->employeeService->storeEmployee($basicData);
+            if ($childCreated == 'save_error') {
+                flash()->error(message: __('general.add_error_message'));
+            } else {
+                flash()->success(message: __(key: 'general.add_success_message'));
+                $this->employeeCreatedID = $childCreated->id;
+                $this->dispatch('scroll-to-top');
+                $this->currentStep = 2;
+                $this->resetStatusAlert();
+            }
         } else {
-            flash()->success(message: __('general.add_success_message'));
-           // $this->resetExcept(['governorates', 'cities', 'employeeStatuses', 'employee', 'employeeCreatedCheck','departments']);
+            $childCreated = $this->employeeService->updateEmployee($this->employeeCreatedID, $basicData);
+            if ($childCreated == 'employee_not_found') {
+                flash()->warning(message: __('employees.employee_not_found'));
+            } elseif ($childCreated == 'save_error') {
+                flash()->error(message: __('general.update_error_message'));
+            } elseif ($childCreated == 'save_success') {
+                flash()->success(message: __('general.update_success_message'));
+                $this->resetStatusAlert();
+                $this->dispatch('scroll-to-top');
+            }
         }
     }
 
@@ -162,7 +196,7 @@ class Create extends Component
         $educationData = [];
         foreach ($this->educationItems as $index => $name) {
             $educationData[] = [
-                'employee_id' => $this->employeeCreatedCheck,
+                'employee_id' => $this->employeeCreatedID,
                 'educational_instituation_name' => $this->educationItems[$index]['educational_instituation_name'] ?? 0,
                 'education_level' => $this->educationItems[$index]['education_level'] ?? 0,
                 'education_year' => $this->educationItems[$index]['education_year'] ?? 0,
@@ -174,14 +208,13 @@ class Create extends Component
         $educationCreated = $this->employeeService->storeEducation($educationData);
 
         if ($educationCreated == 'employee_not_found') {
-            flash()->error(message: __('employees.add_employee_before'));
+            flash()->warning(message: __('employees.add_employee_before'));
         } elseif ($educationCreated == 'add_error') {
             flash()->error(message: __('general.add_error_message'));
         } elseif ($educationCreated == 'add_success') {
             flash()->success(message: __('general.add_success_message'));
         }
     }
-
 
     // submit job details form
     public function submitJobDetailsFrom()
@@ -194,6 +227,7 @@ class Create extends Component
             'employee_status_id' => ['required', 'exists:employee_statuses,id'],
             'department_id' => ['required', 'exists:departments,id'],
             'supervisor' => ['required', 'string', 'min:3'],
+            'submit_monthly_report' => ['required'],
         ];
 
         $this->validate($data);
@@ -206,13 +240,14 @@ class Create extends Component
             'employee_status_id' => $this->employee_status_id,
             'department_id' => $this->department_id,
             'supervisor' => $this->supervisor,
-            'employee_id' => $this->employeeCreatedCheck,
+            'submit_monthly_report' => $this->submit_monthly_report,
+            'employee_id' => $this->employeeCreatedID,
         ];
 
         $jobDetailsCreated = $this->employeeService->storeJobDetails($jobDetailsData);
 
         if ($jobDetailsCreated == 'employee_not_found') {
-            flash()->error(message: __('employees.add_employee_before'));
+            flash()->warning(message: __('employees.add_employee_before'));
         } elseif ($jobDetailsCreated == 'add_error') {
             flash()->error(message: __('general.add_error_message'));
         } elseif ($jobDetailsCreated == 'add_success') {
@@ -229,8 +264,9 @@ class Create extends Component
     // education click
     public function educationClick()
     {
-        if ($this->employeeCreatedCheck == null) {
-            flash()->error(message: __('employees.add_employee_before'));
+        if ($this->employeeCreatedID == null) {
+            flash()->warning(message: __('employees.add_employee_before'));
+            $this->statusAlert = ['message' => __('employees.add_employee_before'), 'type' => 'alert-warning'];
         } else {
             $this->currentStep = 2;
         }
@@ -239,8 +275,9 @@ class Create extends Component
     // job details click
     public function JobDetailsClick()
     {
-        if ($this->employeeCreatedCheck == null) {
-            flash()->error(message: __('employees.add_employee_before'));
+        if ($this->employeeCreatedID == null) {
+            flash()->warning(message: __('employees.add_employee_before'));
+            $this->statusAlert = ['message' => __('employees.add_employee_before'), 'type' => 'alert-warning'];
         } else {
             $this->currentStep = 3;
         }

@@ -4,7 +4,7 @@
         <!-- begin: input -->
         <div class="col-md-12 d-none">
             <div class="form-group">
-                <input type="hidden" wire:model.live="employeeCreatedCheck" class="form-control" autocomplete="off">
+                <input type="hidden" wire:model.live="employeeCreatedID" class="form-control" autocomplete="off">
             </div>
         </div>
         <!-- end: input -->
@@ -161,7 +161,7 @@
             <div class="form-group">
                 <label for="personal_id">{!! __('employees.personal_id') !!}</label>
                 <input type="text" wire:model.live="personal_id" class="form-control" autocomplete="off"
-                    placeholder="{!! __('employees.enter_personal_id') !!}"
+                    maxlength="9" placeholder="{!! __('employees.enter_personal_id') !!}"
                     @error('personal_id')  style="border-color: rgb(246, 78, 96)"  @enderror>
                 @error('personal_id')
                     <span class="text text-danger">
@@ -277,7 +277,7 @@
             <div class="form-group">
                 <label for="mobile_no">{!! __('employees.mobile_no') !!}</label>
                 <input type="text" wire:model.live="mobile_no" class="form-control" autocomplete="off"
-                    placeholder="{!! __('employees.enter_mobile_no') !!}"
+                    maxlength="10" placeholder="{!! __('employees.enter_mobile_no') !!}"
                     @error('mobile_no')  style="border-color: rgb(246, 78, 96)"  @enderror>
                 @error('mobile_no')
                     <span class="text text-danger">
@@ -294,7 +294,7 @@
         <div class="col-md-3">
             <div class="form-group">
                 <label for="alternative_mobile_no">{!! __('employees.alternative_mobile_no') !!}</label>
-                <input type="text" wire:model.live="alternative_mobile_no" class="form-control"
+                <input type="text" wire:model.live="alternative_mobile_no" class="form-control" maxlength="10"
                     autocomplete="off" placeholder="{!! __('employees.enter_alternative_mobile_no') !!}"
                     @error('alternative_mobile_no')  style="border-color: rgb(246, 78, 96)"  @enderror>
                 @error('alternative_mobile_no')
@@ -538,8 +538,7 @@
 
     <div class="row {!! Lang() == 'ar' ? 'pull-left' : 'pull-right' !!} mt-3">
         <div class="col-md-12">
-            <button type="button" wire:click ="submitBasicFrom" class="btn btn-primary  btn-glow"
-                @if ($employeeCreatedCheck) disabled @endif>
+            <button type="button" wire:click ="submitBasicFrom" class="btn btn-primary btn-glow">
                 {!! __('employees.save') !!}
                 <span wire:loading wire:target="submitBasicFrom">
                     <i class="la la-refresh spinner">

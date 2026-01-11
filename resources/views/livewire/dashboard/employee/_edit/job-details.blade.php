@@ -51,12 +51,6 @@
         </div>
         <!-- end: input -->
 
-    </div>
-    <!-- end:  title,basic_salary , appointment_date ,contact_expire_date -->
-
-
-    <!-- begin: employment_type , employee_status_id , department_id , supervisor -->
-    <div class="row">
 
         <!-- begin: input -->
         <div class="col-md-3">
@@ -77,6 +71,17 @@
             </div>
         </div>
         <!-- end: input -->
+
+
+    </div>
+    <!-- end:  title,basic_salary , appointment_date ,contact_expire_date -->
+
+
+    <!-- begin: employment_type , employee_status_id , department_id , supervisor -->
+    <div class="row">
+
+
+
 
         <!-- begin: input -->
         <div class="col-md-3">
@@ -136,6 +141,25 @@
                     placeholder="{!! __('employees.enter_supervisor') !!}"
                     @error('supervisor')  style="border-color: rgb(246, 78, 96)"  @enderror>
                 @error('supervisor')
+                    <span class="text text-danger">
+                        <strong>{!! $message !!}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+        <!-- end: input -->
+
+        <!-- begin: input -->
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="submit_monthly_report">{!! __('employees.submit_monthly_report') !!}</label>
+                <select wire:model.live="submit_monthly_report" class="form-control"
+                    @error('submit_monthly_report')  style="border-color: rgb(246, 78, 96)"  @enderror>
+                    <option value="" selected>{!! __('employees.select_from_list') !!}</option>
+                    <option value="0">{!! __('employees.no') !!}</option>
+                    <option value="1">{!! __('employees.yes') !!}</option>
+                </select>
+                @error('submit_monthly_report')
                     <span class="text text-danger">
                         <strong>{!! $message !!}</strong>
                     </span>

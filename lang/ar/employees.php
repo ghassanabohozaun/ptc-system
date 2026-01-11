@@ -9,6 +9,9 @@ return [
     'profile' => 'الملف الشخصي',
     'overview' => 'ملخص',
     'financial' => 'مالي',
+    'yes' => 'نعم',
+    'no' => 'لا',
+    'employee_not_found' => 'الموظف غير موجود',
 
     'male' => 'ذكر',
     'female' => 'انثي',
@@ -136,6 +139,7 @@ return [
     'department_id' => 'الإدارة',
     'supervisor' => 'المشرف',
     'employee_status' => 'حالة الموظف',
+    'submit_monthly_report' => 'هل يرفع تقرير شهري',
 
     'enter_title' => 'ادخل المسمي الوظيفي',
     'enter_basic_salary' => 'ادخل الراتب الأساسي',
@@ -145,6 +149,7 @@ return [
     'enter_department_id' => 'ادخل الإدارة',
     'enter_supervisor' => 'ادخل المشرف',
     'enter_employee_status' => 'ادخل حالة الموظف',
+    'enter_submit_monthly_report' => 'ادخل هل يرفع تقرير شهري',
 
     // employee statuses
     'create_new_employee_status' => 'انشاء حالة موظف جديد',

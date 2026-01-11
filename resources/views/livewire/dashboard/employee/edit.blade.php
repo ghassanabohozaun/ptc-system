@@ -1,4 +1,12 @@
 <div>
+    @if (!empty($statusAlert))
+        <div class="container-fluid mt-2 mb-2 ">
+            <div class="alert {!! $statusAlert['type'] !!}">
+                {!! $statusAlert['message'] !!}
+            </div>
+        </div>
+    @endif
+
     <ul class="nav nav-tabs nav-underline no-hover-bg">
         <li class="nav-item" wire:click ="basicClick">
             <a class="nav-link {!! $currentStep == 1 ? 'active' : '' !!}">{!! __('employees.basic') !!}</a>

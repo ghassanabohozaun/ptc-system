@@ -48,28 +48,29 @@ class EmployeeService
     // store employee
     public function storeEmployee($data)
     {
+
         if (array_key_exists('photo', $data) && $data['photo'] != null) {
-            $data['photo'] = $this->imageManagerUtils->saveResizeImage($data['photo'], 'employeesPhotos', 600, 600);
+            $data['photo'] = $this->imageManagerUtils->saveResizeImage($data['photo'], 'employeesPhotos', 500, 500);
         }
 
         $employee = $this->employeeRepository->storeEmployee($data);
         if (!$employee) {
-            return false;
+            return 'save_error';
         }
         return $employee;
     }
 
     // update employee
-    public function updateEmployee($data, $employeeID)
+    public function updateEmployee($employeeID, $data)
     {
         $employee = self::getOne($employeeID);
         if (!$employee) {
-            return false;
+            return 'employee_not_found';
         }
 
         if (array_key_exists('photo', $data) && $data['photo'] != null) {
             $this->imageManagerUtils->removeImageFromLocal($employee->photo, 'employeesPhotos');
-            $data['photo'] = $this->imageManagerUtils->saveResizeImage($data['photo'], 'employeesPhotos', 1700, 1000);
+            $data['photo'] = $this->imageManagerUtils->saveResizeImage($data['photo'], 'employeesPhotos', 500, 500);
         } else {
             if ($employee->photo != null) {
                 $data['photo'] = $employee->photo;
@@ -80,9 +81,9 @@ class EmployeeService
 
         $employee = $this->employeeRepository->updateEmployee($employee, $data);
         if (!$employee) {
-            return false;
+            return 'save_error';
         }
-        return $employee;
+        return 'save_success';
     }
 
     // destroy
@@ -148,8 +149,9 @@ class EmployeeService
         return $employee;
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
     // Education
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
     // store education
     public function storeEducation($data)
@@ -241,8 +243,11 @@ class EmployeeService
 
         return true;
     }
-    //////////////////////////////////////////////////////////////////////////////////////////
+
+
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
     // Job Details
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
     // store job details
     public function storeJobDetails($data)

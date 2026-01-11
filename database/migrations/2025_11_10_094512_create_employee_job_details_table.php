@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->date('contact_expire_date');
             $table->enum('employment_type', ['full_time', 'part_time', 'contract']);
             $table->string('supervisor')->nullable();
+            $table->boolean('submit_monthly_report')->default(0);
             $table->foreignId('department_id')->nullable()->constrained('departments')->cascadeOnDelete();
             $table->foreignId('employee_status_id')->nullable()->constrained('employee_statuses')->cascadeOnDelete();
             $table->foreignId('employee_id')->constrained('employees')->cascadeOnDelete();

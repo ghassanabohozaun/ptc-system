@@ -3,6 +3,14 @@
     {!! $title !!}
 @endsection
 
+@push('style')
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+@endpush
+
 @section('content')
     <div class="app-content content">
 
@@ -62,14 +70,13 @@
     </div><!-- end: content app  -->
 @endsection
 
-
-
-{{-- @push('scripts')
+@push('scripts')
     <script>
-        document.addEventListener('livewire:init', () => {
-            Livewire.on('showFullScreenModal', () => {
-                $('#fullScreenModal').modal('show');
+        window.addEventListener('scroll-to-top', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
         });
     </script>
-@endpush --}}
+@endpush
