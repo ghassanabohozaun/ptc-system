@@ -16,20 +16,6 @@ class DepartmentSeeder extends Seeder
         $departments = [
             [
                 'name' => [
-                    'ar' => 'الدعم النفسي',
-                    'en' => 'Psychological support',
-                ],
-            ],
-
-            [
-                'name' => [
-                    'ar' => 'التعليم',
-                    'en' => 'education',
-                ],
-            ],
-
-            [
-                'name' => [
                     'ar' => 'الإدارة',
                     'en' => 'Managment',
                 ],
@@ -38,7 +24,21 @@ class DepartmentSeeder extends Seeder
             [
                 'name' => [
                     'ar' => 'قسم المالية',
-                    'en' => 'finance department',
+                    'en' => 'Finance department',
+                ],
+            ],
+
+            [
+                'name' => [
+                    'ar' => 'الدعم النفسي',
+                    'en' => 'Psychological support',
+                ],
+            ],
+
+            [
+                'name' => [
+                    'ar' => 'أيام الفرح',
+                    'en' => 'Days Of Joy',
                 ],
             ],
         ];
