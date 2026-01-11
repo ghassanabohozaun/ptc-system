@@ -276,8 +276,8 @@
         <div class="col-md-3">
             <div class="form-group">
                 <label for="mobile_no">{!! __('employees.mobile_no') !!}</label>
-                <input type="text" wire:model.live="mobile_no" class="form-control" autocomplete="off"
-                    maxlength="10" placeholder="{!! __('employees.enter_mobile_no') !!}"
+                <input type="text" wire:model.live="mobile_no" maxlength="9" class="form-control"
+                    autocomplete="off" maxlength="10" placeholder="{!! __('employees.enter_mobile_no') !!}"
                     @error('mobile_no')  style="border-color: rgb(246, 78, 96)"  @enderror>
                 @error('mobile_no')
                     <span class="text text-danger">
@@ -294,8 +294,8 @@
         <div class="col-md-3">
             <div class="form-group">
                 <label for="alternative_mobile_no">{!! __('employees.alternative_mobile_no') !!}</label>
-                <input type="text" wire:model.live="alternative_mobile_no" class="form-control" maxlength="10"
-                    autocomplete="off" placeholder="{!! __('employees.enter_alternative_mobile_no') !!}"
+                <input type="text" wire:model.live="alternative_mobile_no" maxlength="9" class="form-control"
+                    maxlength="10" autocomplete="off" placeholder="{!! __('employees.enter_alternative_mobile_no') !!}"
                     @error('alternative_mobile_no')  style="border-color: rgb(246, 78, 96)"  @enderror>
                 @error('alternative_mobile_no')
                     <span class="text text-danger">
