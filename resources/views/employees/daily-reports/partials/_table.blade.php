@@ -4,7 +4,7 @@
             <h4 class="card-title card-title-dash">{!! __('dailyReports.show_all_daily_reports') !!}</h4>
         </div>
 
-        <div class="table-responsive mt-3">
+        <div class="table-responsive mt-4">
             <table class="table table-striped" id="myTable">
                 <thead>
                     <tr>

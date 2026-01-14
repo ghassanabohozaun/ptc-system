@@ -25,7 +25,8 @@ return [
     'salaries' => 'Salaries',
 
     // employees menu
-    'daily_report' => 'Daily Report',
+    'daily_reports' => 'Daily Reports',
+    'monthly_reports' => 'Monthly Reports',
 
     // login
     'login' => 'Login',

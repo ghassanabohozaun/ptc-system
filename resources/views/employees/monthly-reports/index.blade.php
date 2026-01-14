@@ -29,12 +29,12 @@
 
                         <div>
                             <div class="btn-wrapper">
-                                <button type="button" class="btn btn-primary text-white me-0" id="create_daily_report_btn">
+                                <button type="button" class="btn btn-primary text-white me-0" id="create_monthly_report_btn">
                                     <i class="fa fa-plus-circle"></i>
                                     {!! __('general.add') !!}
                                 </button>
-                                @include('employees.daily-reports.modals.create')
-                                @include('employees.daily-reports.modals.edit')
+                                @include('employees.monthly-reports.modals.create')
+                                @include('employees.monthly-reports.modals.edit')
                             </div>
                         </div>
                     </div>
@@ -52,8 +52,8 @@
                                             <!-- or <img src="loading.gif" alt="Loading..."> -->
                                         </div>
                                         <div id="table_data">
-                                            @include('employees.daily-reports.partials._table', [
-                                                'dailyReports' => $dailyReports,
+                                            @include('employees.monthly-reports.partials._table', [
+                                                'monthlyReports' => $monthlyReports,
                                             ])
                                         </div>
                                     </div>
@@ -77,7 +77,7 @@
             function fetch_data(page) {
 
                 $.ajax({
-                    url: "{{ route('employees.dailyReports.index') }}?page=" + page,
+                    url: "{{ route('employees.monthlyReports.index') }}?page=" + page,
                     data: {},
                     beforeSend: function() {
                         $('#loading-indicator').show();
@@ -110,7 +110,7 @@
 
 
         // delete
-        $('body').on('click', '.delete_employees_daily_report_btn', function(e) {
+        $('body').on('click', '.delete_employees_monthly_report_btn', function(e) {
             e.preventDefault();
 
 
@@ -138,7 +138,7 @@
             }).then(isConfirm => {
                 if (isConfirm) {
                     $.ajax({
-                        url: '{!! route('employees.dailyReports.destroy', ':id') !!}'.replace(':id', id),
+                        url: '{!! route('employees.monthlyReports.destroy', ':id') !!}'.replace(':id', id),
                         data: {
                             '_token': "{!! csrf_token() !!}"
                         },

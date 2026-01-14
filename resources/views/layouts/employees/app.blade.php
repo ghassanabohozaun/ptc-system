@@ -52,6 +52,17 @@
         .note-editor.is-invalid-summernote-editor {
             border: 1px solid #dc3545 !important;
         }
+
+        .custom-close-btn {
+            color: #ff0000;
+            /* Change to your desired color */
+            /* other styles like background-color, etc. */
+        }
+
+        /* Change color on hover */
+        .custom-close-btn:hover {
+            color: #0000ff;
+        }
     </style>
 
     @stack('style')

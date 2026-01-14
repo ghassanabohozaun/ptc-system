@@ -24,7 +24,7 @@ class MonthlyReportRepository
     }
 
     // monthly reports exists
-    public function monthlyReportExists($employee_id, $month,$year)
+    public function monthlyReportExists($employee_id, $month, $year)
     {
         return MonthlyReport::where('employee_id', $employee_id)->where('month', $month)->where('year', $year)->first();
     }
@@ -47,18 +47,22 @@ class MonthlyReportRepository
         return MonthlyReport::create($data);
     }
 
-    public function update($MonthlyReport, $data)
-    {
-        return $MonthlyReport->update([
-            'status' =>  $data['status'],
-            'refuse_reason'=>$data['refuse_reason'] ?? '',
-        ]);
+    // update
+    public function update($monthlyReport ,$data){
+        return $monthlyReport->update($data);
     }
-
+    // destroy
     public function destroy($MonthlyReport)
     {
         return $MonthlyReport->forceDelete();
     }
 
-
+    // change status
+    public function changeStatus($MonthlyReport, $data)
+    {
+        return $MonthlyReport->update([
+            'status' => $data['status'],
+            'refuse_reason' => $data['refuse_reason'] ?? '',
+        ]);
+    }
 }

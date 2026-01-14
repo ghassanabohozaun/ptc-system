@@ -21,7 +21,7 @@ class DepartmentRepository
     // get active all
     public function getActiveAll()
     {
-        return Department::orderByDesc('id')->select('id', 'name', 'status')->active()->get();
+        return Department::select('id', 'name', 'status')->active()->get();
     }
 
     // create

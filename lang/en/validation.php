@@ -307,5 +307,8 @@ return [
         'employee_status' => 'Employee Status',
 
         'employeeSalaryItem.*.amount' => 'Salary ',
+        'file' => 'File',
+        'year' => 'Year',
+        'month' => 'Month',
     ],
 ];

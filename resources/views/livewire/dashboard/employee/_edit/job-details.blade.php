@@ -150,7 +150,7 @@
         <!-- end: input -->
 
         <!-- begin: input -->
-        <div class="col-md-2">
+        <div class="col-md-3">
             <div class="form-group">
                 <label for="submit_monthly_report">{!! __('employees.submit_monthly_report') !!}</label>
                 <select wire:model.live="submit_monthly_report" class="form-control"

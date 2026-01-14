@@ -110,8 +110,9 @@ Route::group(
             ########################################### monthly reports routes  ######################################################################
             Route::group(['middleware' => 'can:monthlyReports'], function () {
                 Route::resource('monthlyReports', MonthlyReportsController::class);
-                Route::post('/monthlyReports/status', [MonthlyReportsController::class, 'changeStatus'])->name('monthly.reports.change.status');
-            });
+                // Route::post('/monthlyReports/status', [MonthlyReportsController::class, 'changeStatus'])->name('monthly.reports.change.status');
+
+                });
 
             ########################################### salaries routes  ######################################################################
             Route::group(['middleware' => 'can:salaries'], function () {

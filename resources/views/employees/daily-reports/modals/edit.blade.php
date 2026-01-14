@@ -33,7 +33,6 @@
                                 </div>
                                 <!-- end: input -->
 
-
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <input type="text" name="employee_id" id="employee_id" class="form-control"
@@ -53,8 +52,9 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="date">{!! __('dailyReports.date') !!}</label>
-                                        <input type="date" id="date_edit" name="date"
-                                            value="{!! old('date') !!}" class="form-control" autocomplete="off"
+                                        <input type="date" id="date_edit" name="date" readonly
+                                            style="background-color: rgb(228, 225, 225)" value="{!! old('date') !!}"
+                                            class="form-control" autocomplete="off"
                                             placeholder="{!! __('dailyReports.enter_date') !!}">
                                         <span class="text text-danger" id="date_error_edit">
                                         </span>

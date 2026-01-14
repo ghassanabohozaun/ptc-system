@@ -178,7 +178,7 @@ font-size: 1.0rem;
 
     .modal-dialog,
     .modal-content {
-        height: 80%;
+        max-height: calc(100% - 120px);
     }
 
     .modal-body {

@@ -21,7 +21,7 @@ class EmployeeStatusRepository
     // get active all
     public function getActiveAll()
     {
-        return EmployeeStatus::orderByDesc('id')->select('id', 'name', 'status')->active()->get();
+        return EmployeeStatus::select('id', 'name', 'status')->active()->get();
     }
 
     // create

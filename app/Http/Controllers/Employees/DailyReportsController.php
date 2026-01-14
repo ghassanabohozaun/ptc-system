@@ -20,7 +20,7 @@ class DailyReportsController extends Controller
         $title = __('dailyReports.daily_reports');
         $dailyReports = $this->dailyReportService->getDailyReportsForOneEmplpoyee(employee()->user()->id);
 
-         if ($request->ajax()) {
+        if ($request->ajax()) {
             return view('employees.daily-reports.partials._table', compact('dailyReports'))->render();
         }
 
@@ -36,7 +36,7 @@ class DailyReportsController extends Controller
     // store
     public function store(dailyReportRequest $request)
     {
-        $data = $request->only(['employee_id', 'date', 'details' , 'file']);
+        $data = $request->only(['employee_id', 'date', 'details', 'file']);
         $dailyReport = $this->dailyReportService->create($data);
         if (!$dailyReport) {
             return response()->json(['status' => false], 500);
@@ -59,8 +59,7 @@ class DailyReportsController extends Controller
     // update
     public function update(dailyReportRequest $request, string $id)
     {
-
-        $data = $request->only(['id', 'employee_id', 'date',  'details', 'file']);
+        $data = $request->only(['id', 'employee_id', 'date', 'details', 'file']);
         $dailyReport = $this->dailyReportService->update($data);
         if (!$dailyReport) {
             return response()->json(['status' => false], 500);
@@ -89,17 +88,4 @@ class DailyReportsController extends Controller
         return response()->json(['status' => true, 'data' => $dailyReport]);
     }
 
-    // change status
-    // public function changeStatus(Request $request)
-    // {
-
-    //     if ($request->ajax()) {
-    //         $status = $this->dailyReportService->changeStatus($request->id, $request->statusSwitch);
-    //         if (!$status) {
-    //             return response()->json(['status' => false], 500);
-    //         }
-    //         $status = $this->dailyReportService->getOne($request->id);
-    //         return response()->json(['status' => true, 'data' => $status], 200);
-    //     }
-    // }
 }

@@ -24,7 +24,9 @@ return [
     'salaries'=>'الرواتب',
 
     // employees menu
-    'daily_report' => 'التقرير اليومي',
+    'daily_reports' => 'التقارير اليومية',
+    'monthly_reports' => 'التقارير الشهرية',
+
 
     // login
     'login' => 'تسجيل الدخول',

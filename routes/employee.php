@@ -3,6 +3,7 @@
 use App\Http\Controllers\Employees\Auth\AuthController;
 use App\Http\Controllers\Employees\DailyReportsController;
 use App\Http\Controllers\Employees\EmployeesController;
+use App\Http\Controllers\Employees\MonthlyReportsController;
 use App\Http\Controllers\Employees\OverviewController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Livewire;
@@ -39,7 +40,9 @@ Route::group(
             Route::resource('dailyReports', DailyReportsController::class);
             Route::get('/dailyReports/status/{id?}', [DailyReportsController::class, 'changeStatus'])->name('daliy.reports.change.status');
 
-
+            ########################################### monthly reports routes  ######################################################################
+            Route::resource('monthlyReports', MonthlyReportsController::class);
+            Route::get('/monthlyReports/status/{id?}', [MonthlyReportsController::class, 'changeStatus'])->name('monthly.reports.change.status');
         });
     },
 );

@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Employees;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Dashboard\MonthlyReportChangeStatusRequest;
-use App\Http\Requests\Dashboard\monthlyReportRequest;
+use App\Http\Requests\Employees\monthlyReportRequest;
 use App\Services\Dashboard\MonthlyReportService;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class MonthlyReportsController extends Controller
@@ -21,16 +19,21 @@ class MonthlyReportsController extends Controller
     // index
     public function index(Request $request)
     {
-        $title = __('monthlyReports.monthly_reports');
-        $monthlyReports = $this->monthlyReportService->getAll($request);
+        $title = __('MonthlyReports.monthly_reports');
+        $monthlyReports = $this->monthlyReportService->getMonthlyReportsForOneEmplpoyee(employee()->user()->id);
+
         if ($request->ajax()) {
-            return view('dashboard.employees.monthly-reports.partials._table', compact('monthlyReports'))->render();
+            return view('employees.monthly-reports.partials._table', compact('monthlyReports'))->render();
         }
-        return view('dashboard.employees.monthly-reports.index', compact('title', 'monthlyReports'));
+
+        return view('employees.monthly-reports.index', compact('title', 'monthlyReports'));
     }
 
     // create
-    public function create() {}
+    public function create()
+    {
+        //
+    }
 
     // store
     public function store(monthlyReportRequest $request)
@@ -46,22 +49,18 @@ class MonthlyReportsController extends Controller
         //
     }
 
-    // edid
+    // edit
     public function edit(string $id)
     {
         //
     }
 
     // update
-    public function update(MonthlyReportChangeStatusRequest $request, string $id)
+    public function update(monthlyReportRequest $request, string $id)
     {
-        $data = $request->except(['_token', '_method']);
-
-        $monthlyReport = $this->monthlyReportService->changeStatus($data);
-        if (!$monthlyReport) {
-            return response()->json(['status' => false], 500);
-        }
-        return response()->json(['status' => true, 'data' => $monthlyReport], 200);
+        $data = $request->except(['_token']);
+        $monthlyReport = $this->monthlyReportService->update($data);
+        return response()->json(['status' => $monthlyReport], 200);
     }
 
     // destroy

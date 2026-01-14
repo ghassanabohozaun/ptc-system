@@ -279,7 +279,7 @@ return [
         'available' => 'مُتاح',
         'size' => 'الحجم',
         'desc' => 'نبذه',
-         'q' => 'البحث',
+        'q' => 'البحث',
         'link' => 'رابط',
         'first_name_ar' => 'الاسم الاول بالعربي',
         'father_name_ar' => 'اسم الاب بالعربي',
@@ -319,7 +319,8 @@ return [
         'department_id' => 'الإدارة',
         'supervisor' => 'المشرف',
         'employee_status' => 'حالة الموظف',
-         'employeeSalaryItem.*.amount' => 'الراتب  :index',
+        'employeeSalaryItem.*.amount' => 'الراتب  :index',
 
+        'file' => 'الملف',
     ],
 ];

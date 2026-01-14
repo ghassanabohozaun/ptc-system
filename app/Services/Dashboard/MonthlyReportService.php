@@ -71,23 +71,54 @@ class MonthlyReportService
         }
     }
 
+    // update
     public function update($data)
     {
+        // sperate date
+        $date = Carbon::createFromFormat('Y-m', $data['month']);
+        $data['month'] = $date->format('m');
+        $data['year'] = $date->format('Y');
+
         $monthlyReport = self::getOne($data['id']);
 
         if (!$monthlyReport) {
             return false;
         }
 
-        if ($data['status'] != 'initial_refuse' && $data['status'] != 'final_refuse') {
-            $data['refuse_reason'] = '';
+        if (array_key_exists('file', $data) && $data['file'] != null) {
+            $this->imageManagerUtils->removeImageFromLocal($monthlyReport->file, 'monthlyReports');
+            $file_name = $this->imageManagerUtils->uploadSingleImage('', $data['file'], 'monthlyReports');
+            $data['file'] = $file_name;
+        } else {
+            if ($monthlyReport->file != null) {
+                $data['file'] = $monthlyReport->file;
+            } else {
+                $data['file'] = '';
+            }
         }
 
         $monthlyReport = $this->monthlyReportRepository->update($monthlyReport, $data);
         if (!$monthlyReport) {
             return false;
         }
-        return $monthlyReport;
+        return true;
+
+        // $monthlyReport = $this->monthlyReportRepository->monthlyReportExists($data['employee_id'], $data['month'], $data['year']);
+
+        // if (empty($monthlyReport)) {
+        //     if (array_key_exists('file', $data) && $data['file'] != null) {
+        //         $file_name = $this->imageManagerUtils->uploadSingleImage('', $data['file'], 'monthlyReports');
+        //         $data['file'] = $file_name;
+        //     }
+
+        //     $monthlyReport = $this->monthlyReportRepository->create($data);
+        //     if (!$monthlyReport) {
+        //         return 'error';
+        //     }
+        //     return 'added';
+        // } else {
+        //     return 'exists';
+        // }
     }
 
     public function destroy($id)
@@ -103,6 +134,26 @@ class MonthlyReportService
         }
 
         $monthlyReport = $this->monthlyReportRepository->destroy($monthlyReport);
+        if (!$monthlyReport) {
+            return false;
+        }
+        return $monthlyReport;
+    }
+
+    // change status
+    public function changeStatus($data)
+    {
+        $monthlyReport = self::getOne($data['id']);
+
+        if (!$monthlyReport) {
+            return false;
+        }
+
+        if ($data['status'] != 'initial_refuse' && $data['status'] != 'final_refuse') {
+            $data['refuse_reason'] = '';
+        }
+
+        $monthlyReport = $this->monthlyReportRepository->changeStatus($monthlyReport, $data);
         if (!$monthlyReport) {
             return false;
         }

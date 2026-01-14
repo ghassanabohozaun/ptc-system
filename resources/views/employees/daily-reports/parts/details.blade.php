@@ -49,3 +49,24 @@
     </div>
 </div>
 <!-- end: modal-->
+@push('scripts')
+    <script>
+        $('body').on('click', '#show_daily_report_details_btn', function(e) {
+            e.preventDefault();
+
+            var daily_report_details = $(this).attr('daily-report-details');
+
+            $('.daily_report_details_summernote').summernote({
+                placeholder: '{!! __('general.write_here') !!}',
+                tabsize: 2,
+                height: 370,
+                toolbar: [
+
+                ]
+            });
+            $('.daily_report_details_summernote').summernote('code', daily_report_details);
+            $('.daily_report_details_summernote').summernote('disable');
+            $('#detailsModal').modal('show');
+        })
+    </script>
+@endpush

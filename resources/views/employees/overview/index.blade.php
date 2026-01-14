@@ -24,11 +24,6 @@
                         <div>
                             <div class="btn-wrapper">
 
-                                {{-- <a href="javascript:void(0)" class="btn btn-otline-dark align-items-center">
-                                    <i class="icon-share"></i>
-                                    {!! __('general.share') !!}
-                                </a> --}}
-
                                 <a href="javascript:void(0)" class="btn btn-otline-dark" id="employee_change_password_btn">
                                     <i class="fa fa-key"></i>
                                     {!! __('employees.change_password') !!}

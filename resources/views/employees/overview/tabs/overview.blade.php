@@ -2,8 +2,64 @@
 
     <!-- begin: row -->
     <div class="row">
-        <!-- begin: col-lg-8 -->
-        <div class="col-lg-8 d-flex flex-column">
+        <!-- begin: col-lg-6 -->
+        <div class="col-lg-6 d-flex flex-column">
+            <div class="row flex-grow">
+                <div class="col-12 grid-margin stretch-card">
+                    <div class="card card-rounded">
+                        <div class="card-body">
+                            <div class="d-sm-flex justify-content-between align-items-start">
+                                <div>
+                                    <h4 class="card-title card-title-dash">{!! __('monthlyReports.show_latest_monthly_reports') !!}</h4>
+                                </div>
+                                <a href="{!! route('employees.monthlyReports.index') !!}" class="btn btn-otline-dark align-items-center">
+                                    <i class="fa fa-link"></i>
+                                    {!! __('general.show_all') !!}
+                                </a>
+                            </div>
+                            <div class="table-responsive  mt-3">
+                                <table class="table select-table">
+                                    <thead>
+                                        <tr>
+                                            <th>{!! __('monthlyReports.month') !!}</th>
+                                            <th>{!! __('monthlyReports.refuse_reason') !!}</th>
+                                            <th>{!! __('monthlyReports.file') !!}</th>
+                                            <th>{!! __('monthlyReports.status') !!}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($monthlyReports as $monthlyReport)
+                                            <tr>
+
+                                                <td> {!! $monthlyReport->month !!}</td>
+                                                @if ($monthlyReport->status == 'initial_refuse' || $monthlyReport->status == 'final_refuse')
+                                                    <td>@include('employees.monthly-reports.parts.refuse-reason')</td>
+                                                @else
+                                                    <td></td>
+                                                @endif
+                                                <td> @include('employees.monthly-reports.parts.file') </td>
+                                                <td> @include('employees.monthly-reports.parts.status')</td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="5" class="text-center">
+                                                    {!! __('monthlyReports.no_monthly_reports_found') !!}
+                                                </td>
+                                            </tr>
+                                        @endforelse
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end: col-lg-8 -->
+
+        <!-- begin: col-lg-6 -->
+        <div class="col-lg-6 d-flex flex-column">
             <div class="row flex-grow">
                 <div class="col-12 grid-margin stretch-card">
                     <div class="card card-rounded">
@@ -71,49 +127,9 @@
         <!-- end: col-lg-8 -->
 
 
-        <!-- begin: col-lg-4 -->
-        <div class="col-lg-4 d-flex flex-column">
-            <div class="row flex-grow">
-                <div class="col-12 grid-margin stretch-card">
-                    <div class="card card-rounded">
-                        <div class="card-body">
-                            <div class="d-sm-flex justify-content-between align-items-start">
-                                <div>
-                                    <h4 class="card-title card-title-dash"></h4>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end: col-lg-4 -->
 
 
     </div>
     <!-- end: row -->
 
 </div>
-@push('scripts')
-    <script>
-        $('body').on('click', '#show_daily_report_details_btn', function(e) {
-            e.preventDefault();
-
-            var daily_report_details = $(this).attr('daily-report-details');
-
-            $('.daily_report_details_summernote').summernote({
-                placeholder: '{!! __('general.write_here') !!}',
-                tabsize: 2,
-                height: 370,
-                toolbar: [
-
-                ]
-            });
-            $('.daily_report_details_summernote').summernote('code', daily_report_details);
-            $('.daily_report_details_summernote').summernote('disable');
-            $('#detailsModal').modal('show');
-        })
-    </script>
-@endpush
