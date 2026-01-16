@@ -88,7 +88,7 @@
                     <div class="card">
                         <div class="card-content">
                             <div class="media align-items-stretch">
-                                <div class="bg-danger p-2 media-middle rounded-left">
+                                <div class="bg-secondary p-2 media-middle rounded-left">
                                     <i class="la la-money font-large-2 text-white"></i>
                                 </div>
                                 <div class="media-body p-2 mt-1">
