@@ -5,6 +5,8 @@ use App\Models\City;
 use App\Models\DailyReport;
 use App\Models\Employee;
 use App\Models\Governorate;
+use App\Models\MonthlyReport;
+use App\Models\Salary;
 use Illuminate\Support\Facades\Config;
 use App\Models\Setting;
 
@@ -96,7 +98,7 @@ if (!function_exists('replaceHyphensWithSpaces')) {
         }
     }
 
-     //  get daily reports count Helper Function
+    //  get daily reports count Helper Function
     if (!function_exists('dailyReportsCount')) {
         function dailyReportsCount()
         {
@@ -104,16 +106,41 @@ if (!function_exists('replaceHyphensWithSpaces')) {
         }
     }
 
-   // month name  in arabic
-    if (!function_exists('monthNameArabic')) {
-    function monthNameArabic($monthNumber) {
-        $months = [
-            1 => 'يناير', 2 => 'فبراير', 3 => 'مارس', 4 => 'أبريل',
-            5 => 'مايو', 6 => 'يونيو', 7 => 'يوليو', 8 => 'أغسطس',
-            9 => 'سبتمبر', 10 => 'أكتوبر', 11 => 'نوفمبر', 12 => 'ديسمبر'
-        ];
-        return $months[$monthNumber] ?? null; // يعيد الاسم أو null إذا لم يكن الرقم صحيحاً
+    //  get monthly reports count Helper Function
+    if (!function_exists('monthlyReportsCount')) {
+        function monthlyReportsCount()
+        {
+            return MonthlyReport::count();
+        }
     }
-}
 
+        //  get salaries count Helper Function
+        if (!function_exists('salariesCount')) {
+            function salariesCount()
+            {
+                return Salary::count();
+            }
+        }
+
+    // month name  in arabic
+    if (!function_exists('monthNameArabic')) {
+        function monthNameArabic($monthNumber)
+        {
+            $months = [
+                1 => 'يناير',
+                2 => 'فبراير',
+                3 => 'مارس',
+                4 => 'أبريل',
+                5 => 'مايو',
+                6 => 'يونيو',
+                7 => 'يوليو',
+                8 => 'أغسطس',
+                9 => 'سبتمبر',
+                10 => 'أكتوبر',
+                11 => 'نوفمبر',
+                12 => 'ديسمبر',
+            ];
+            return $months[$monthNumber] ?? null; // يعيد الاسم أو null إذا لم يكن الرقم صحيحاً
+        }
+    }
 }

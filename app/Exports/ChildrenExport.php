@@ -3,10 +3,6 @@
 namespace App\Exports;
 
 use App\Models\Admin;
-use App\Models\Child;
-use App\Models\ChildGuardian;
-use App\Models\FlightTicket;
-use App\Models\Order;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\RegistersEventListeners;

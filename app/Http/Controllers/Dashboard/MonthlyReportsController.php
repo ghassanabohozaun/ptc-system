@@ -22,6 +22,17 @@ class MonthlyReportsController extends Controller
     public function index(Request $request)
     {
         $title = __('monthlyReports.monthly_reports');
+
+        if ($request->ajax()) {
+            if ($request->month) {
+                $date = Carbon::createFromFormat('Y-m', $request['month']);
+                $request->merge([
+                    'month' => $date->format('m'),
+                    'year' => $date->format('Y'),
+                ]);
+            }
+        }
+        
         $monthlyReports = $this->monthlyReportService->getAll($request);
         if ($request->ajax()) {
             return view('dashboard.employees.monthly-reports.partials._table', compact('monthlyReports'))->render();

@@ -12,6 +12,7 @@ return [
     'hello' => 'مرحبا ,',
     'employees_count' => 'عدد الموظفين',
     'daily_reports_count' => 'عدد التقارير اليومية',
+    'salaries_count' => 'عدد الرواتب',
 
     // admin menu
     'roles' => 'الصلاحيات',

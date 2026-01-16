@@ -3,18 +3,21 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Models\Child;
-use App\Services\Dashboard\ChildService;
 use App\Services\Dashboard\CityService;
 use App\Services\Dashboard\DailyReportService;
+use App\Services\Dashboard\EmployeeService;
 use App\Services\Dashboard\GovernorateService;
+use App\Services\Dashboard\MonthlyReportService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    protected $dailyReportService, $governorateService, $cityService;
-    public function __construct(DailyReportService $dailyReportService, GovernorateService $governorateService, CityService $cityService)
+    protected $employeeService, $monthlyReportService, $dailyReportService, $governorateService, $cityService;
+    public function __construct(EmployeeService $employeeService, MonthlyReportService $monthlyReportService, DailyReportService $dailyReportService, GovernorateService $governorateService, CityService $cityService)
     {
+        $this->employeeService = $employeeService;
+        $this->monthlyReportService = $monthlyReportService;
         $this->dailyReportService = $dailyReportService;
         $this->governorateService = $governorateService;
         $this->cityService = $cityService;
@@ -22,10 +25,12 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $title = __('dashboard.dashboard');
+        $employees = $this->employeeService->getActive();
 
+        $title = __('dashboard.dashboard');
+        $monthlyReports = $this->monthlyReportService->getMonthlyReportsForAllEmplpoyees()->take(5);
         $dailyReports = $this->dailyReportService->getDailyReportsForAllEmplpoyees()->take(5);
-        return view('dashboard.index', compact('title','dailyReports'));
+        return view('dashboard.home.index', compact('title', 'employees', 'monthlyReports', 'dailyReports'));
     }
 
     // addresses
@@ -36,41 +41,48 @@ class DashboardController extends Controller
         return view('dashboard.address', compact('governorates', 'cities'));
     }
 
-    // // child registration chart function
-    // public function maleChildRegistrationChart()
-    // {
-    //     $childRegistration = Child::where('gender', 'male')->selectRaw('COUNT(*) as count, YEAR(created_at) as year, MONTH(created_at) as month')->groupBy('year', 'month')->orderBy('year')->orderBy('month')->get();
+    // get monthly report employees
+    public function getmonthlyReportEmployees(Request $request)
+    {
+        if ($request->ajax()) {
+            if ($request->month) {
+                $date = Carbon::createFromFormat('Y-m', $request['month']);
+                $month = $date->format('m');
+                $year = $date->format('Y');
+            } else {
+                $currentMonthYear = now()->format('F Y');
+                $month = now()->format('m');
+                $year = now()->format('Y');
+            }
 
-    //     $childCount = [];
-    //     $months = [];
-    //     foreach ($childRegistration as $key => $item) {
-    //         $childCount[$key] = $item['count'];
-    //         $months[$key] = $item['month'];
-    //     }
+            // get active employees
+            $employees = $this->employeeService->getActive();
 
-    //     $maleRegistrationData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    //     foreach ($months as $index => $month) {
-    //         $maleRegistrationData[$month - 1] = $childCount[$index];
-    //     }
-    //     return $maleRegistrationData;
-    // }
+            // map employees collection
+            $employees = $employees->map(function ($item) use ($month, $year) {
+                $monthlyReport = $item->monthlyReports()->where('month', $month)->where('year', $year);
+                $item['full_name'] = $item->EmployeeFullName();
+                $item['month'] = $month . ' / ' . $year;
+                $item['report_status'] = $monthlyReport->exists() ? '<i class="la la-check text-success font-boder"><i>' : '<i class="la la-close text-danger font-boder"></i>';
 
-    //   // child registration chart function
-    // public function femaleChildRegistrationChart()
-    // {
-    //     $childRegistration = Child::where('gender', 'female')->selectRaw('COUNT(*) as count, YEAR(created_at) as year, MONTH(created_at) as month')->groupBy('year', 'month')->orderBy('year')->orderBy('month')->get();
+                if ($monthlyReport->first()) {
+                    $output =
+                        '<a class="btn btn-outline-info"
+                         target="_blank" href="' .
+                        asset('uploads/monthlyReports/' . $monthlyReport->first()->file) .
+                        '"><i class="ft-download font-boder"></i></a>';
+                } else {
+                    $output = '<a href="#" class="btn btn-outline-danger"><i class="ft-x"></i></a>';
+                }
 
-    //     $childCount = [];
-    //     $months = [];
-    //     foreach ($childRegistration as $key => $item) {
-    //         $childCount[$key] = $item['count'];
-    //         $months[$key] = $item['month'];
-    //     }
+                $item['file'] = $output;
 
-    //     $femaleRegistrationData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    //     foreach ($months as $index => $month) {
-    //         $femaleRegistrationData[$month - 1] = $childCount[$index];
-    //     }
-    //     return $femaleRegistrationData;
-    // }
+                return $item;
+            });
+
+            $activeEmployees = $employees->select('id', 'full_name', 'month', 'report_status', 'file');
+
+            return response()->json(['status' => true, 'data' => $activeEmployees]);
+        }
+    }
 }

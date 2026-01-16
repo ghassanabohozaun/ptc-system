@@ -92,18 +92,14 @@
             function fetch_data(page) {
 
                 var employee_id = $('#employee_id').val();
-                var date = $('#date').val();
-                var from_date = $('#from_date').val();
-                var to_date = $('#to_date').val();
+                var month = $('#month').val();
 
 
                 $.ajax({
                     url: "{{ route('dashboard.monthlyReports.index') }}?page=" + page,
                     data: {
                         employee_id: employee_id,
-                        date: date,
-                        from_date: from_date,
-                        to_date: to_date,
+                        month: month,
                     },
                     beforeSend: function() {
                         // Show the loading indicator before the request is sent
@@ -137,9 +133,7 @@
             $('body').on('click', '#monthly_report_reset_btn', function(e) {
                 e.preventDefault();
                 $("#employee_id").val('').trigger('change');
-                $('#date').val('');
-                $('#from_date').val('');
-                $('#to_date').val('');
+                $('#month').val('');
                 fetch_data(1);
             });
 

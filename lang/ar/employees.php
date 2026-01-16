@@ -12,6 +12,9 @@ return [
     'yes' => 'نعم',
     'no' => 'لا',
     'employee_not_found' => 'الموظف غير موجود',
+    'monthly_report_status'=>'حالة التقرير الشهري',
+    'file'=>'الملف',
+    'month'=>'الشهر',
 
     'male' => 'ذكر',
     'female' => 'انثي',

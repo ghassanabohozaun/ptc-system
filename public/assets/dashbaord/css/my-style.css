@@ -190,3 +190,8 @@ font-size: 1.0rem;
         height: 400px;
         min-height: 400px;
     }
+
+    .font-boder{
+        font-weight: 700;
+        font-size: 1rem;
+    }

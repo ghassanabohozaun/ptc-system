@@ -16,7 +16,7 @@
     <!-- end: card header -->
 
     <!-- begin: card content  show-->
-    <div class="card-content collapse  hide">
+    <div class="card-content collapse hide">
         <div class="card-body">
             <form class="form">
                 <div class="form-body">
@@ -25,7 +25,7 @@
 
                         <!-- begin: input -->
                         <div class="form-group col-md-3">
-                            <label for="employee_id">{!! __('dailyReports.employee_id') !!}</label>
+                            <label for="employee_id">{!! __('monthlyReports.employee_id') !!}</label>
                             <select class="employee_id_select form-control" id="employee_id" name="employee_id"
                                 style="width: 100%">
                             </select>
@@ -33,37 +33,22 @@
                         <!-- end: input -->
 
 
-                        {{-- <!-- begin: input -->
+                        <!-- begin: input -->
                         <div class="form-group col-md-3">
-                            <label for="date">{!! __('dailyReports.date') !!}</label>
-                            <input type="date" id="date" name="date" class="form-control" autocomplete="off"
-                                placeholder="{!! __('dailyReports.enter_date') !!}">
+                            <label for="month">{!! __('monthlyReports.month') !!}</label>
+                            <input type="month" id="month" name="month" class="form-control" autocomplete="off"
+                                placeholder="{!! __('monthlyReports.enter_month') !!}">
                         </div>
                         <!-- end: input -->
 
 
-                        <!-- begin: input -->
-                        <div class="form-group col-md-3">
-                            <label for="date">{!! __('dailyReports.from_date') !!}</label>
-                            <input type="date" id="from_date" name="from_date" class="form-control"
-                                autocomplete="off" placeholder="{!! __('dailyReports.enter_from_date') !!}">
-                        </div>
-                        <!-- end: input -->
-
-                        <!-- begin: input -->
-                        <div class="form-group col-md-3">
-                            <label for="date">{!! __('dailyReports.to_date') !!}</label>
-                            <input type="date" id="to_date" name="to_date" class="form-control" autocomplete="off"
-                                placeholder="{!! __('dailyReports.enter_to_date') !!}">
-                        </div>
-                        <!-- end: input --> --}}
 
                     </div>
                     <div class="form-actions" style="margin-top: -8px">
-                        <button type="button" class="btn btn-sm btn-secondary mr-1" id="daily_report_search_btn">
+                        <button type="button" class="btn btn-sm btn-secondary mr-1" id="monthly_report_search_btn">
                             <i class="la la-search"></i> {!! __('general.search') !!}
                         </button>
-                        <button type="submit" class="btn btn-sm btn-light-dark mr-1" id="daily_report_reset_btn">
+                        <button type="submit" class="btn btn-sm btn-light-dark mr-1" id="monthly_report_reset_btn">
                             <i class="la la-close"></i> {!! __('general.reset') !!}
                         </button>
                     </div>

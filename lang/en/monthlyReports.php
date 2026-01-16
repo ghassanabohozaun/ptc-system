@@ -6,6 +6,7 @@ return [
     'show_all_monthly_reports' => 'Show All Monthly Reports',
     'show_details' => 'Show Details',
     'show_latest_monthly_reports' => 'Show Latest Monthly Reports',
+    'show_employees' => 'Show Employees',
 
     'new' =>'New',
     'initial_review'=>'Inital Review',

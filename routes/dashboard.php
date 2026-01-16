@@ -41,6 +41,8 @@ Route::group(
         Route::group(['middleware' => 'auth:admin'], function () {
             ########################################### welcome  ##########################################################################
             Route::get('/welcome', [DashboardController::class, 'index'])->name('index');
+            Route::get('/monthly-reports/employees', [DashboardController::class, 'getmonthlyReportEmployees'])->name('get.monthly.reports.employees');
+
 
             ########################################### roles routes ######################################################################
             Route::group(['middleware' => 'can:roles'], function () {

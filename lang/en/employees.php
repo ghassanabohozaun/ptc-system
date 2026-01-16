@@ -40,6 +40,9 @@ return [
     'full_time' => 'Full Time',
     'part_time' => 'Part Time',
     'contract' => 'Contact',
+    'monthly_report_status'=>'Monthly Report Status',
+    'file'=>'File',
+    'month'=>'Month',
 
     'id' => 'ID',
     'full_name' => 'Full Name',

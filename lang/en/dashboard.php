@@ -13,6 +13,9 @@ return [
     'welcome' => 'Welcome',
     'employees_count' => 'Employee Count',
     'daily_reports_count' => 'Daily Reports Count',
+    'monthly_reports_count' => 'Monthly Reports Count',
+    'salaries_count' => 'Salaries Count',
+
 
     //admin  menu
     'roles' => 'Roles',

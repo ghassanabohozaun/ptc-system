@@ -19,6 +19,10 @@ class MonthlyReportRepository
             ->when(!empty(request()->employee_id), function ($query) {
                 $query->where('employee_id', request()->employee_id);
             })
+            ->when(!empty(request()->month), function ($query) use ($request) {
+                $query->where('month', request()->month)->where('year', request()->year);
+            })
+
             ->latest()
             ->paginate(10);
     }
@@ -48,7 +52,8 @@ class MonthlyReportRepository
     }
 
     // update
-    public function update($monthlyReport ,$data){
+    public function update($monthlyReport, $data)
+    {
         return $monthlyReport->update($data);
     }
     // destroy

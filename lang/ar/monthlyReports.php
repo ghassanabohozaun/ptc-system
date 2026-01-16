@@ -6,6 +6,7 @@ return [
     'show_all_monthly_reports' => 'عرض جميع التقارير الشهرية',
     'show_details' => 'عرض التفاصيل',
     'show_latest_monthly_reports' => 'عرض آخر التقارير الشهرية',
+    'show_employees' => 'عرض الموظفين',
 
     'new' => 'جديد',
     'initial_review' => 'مراجعة مبدئية',

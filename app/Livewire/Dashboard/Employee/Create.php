@@ -154,23 +154,23 @@ class Create extends Component
 
         if ($this->employeeCreatedID == null) {
             // create
-            $childCreated = $this->employeeService->storeEmployee($basicData);
-            if ($childCreated == 'save_error') {
+            $employeeCreated = $this->employeeService->storeEmployee($basicData);
+            if ($employeeCreated == 'save_error') {
                 flash()->error(message: __('general.add_error_message'));
             } else {
                 flash()->success(message: __(key: 'general.add_success_message'));
-                $this->employeeCreatedID = $childCreated->id;
+                $this->employeeCreatedID = $employeeCreated->id;
                 $this->dispatch('scroll-to-top');
                 $this->currentStep = 2;
                 $this->resetStatusAlert();
             }
         } else {
-            $childCreated = $this->employeeService->updateEmployee($this->employeeCreatedID, $basicData);
-            if ($childCreated == 'employee_not_found') {
+            $employeeCreated = $this->employeeService->updateEmployee($this->employeeCreatedID, $basicData);
+            if ($employeeCreated == 'employee_not_found') {
                 flash()->warning(message: __('employees.employee_not_found'));
-            } elseif ($childCreated == 'save_error') {
+            } elseif ($employeeCreated == 'save_error') {
                 flash()->error(message: __('general.update_error_message'));
-            } elseif ($childCreated == 'save_success') {
+            } elseif ($employeeCreated == 'save_success') {
                 flash()->success(message: __('general.update_success_message'));
                 $this->resetStatusAlert();
                 $this->dispatch('scroll-to-top');
