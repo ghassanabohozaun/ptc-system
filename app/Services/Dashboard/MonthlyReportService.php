@@ -102,23 +102,6 @@ class MonthlyReportService
             return false;
         }
         return true;
-
-        // $monthlyReport = $this->monthlyReportRepository->monthlyReportExists($data['employee_id'], $data['month'], $data['year']);
-
-        // if (empty($monthlyReport)) {
-        //     if (array_key_exists('file', $data) && $data['file'] != null) {
-        //         $file_name = $this->imageManagerUtils->uploadSingleImage('', $data['file'], 'monthlyReports');
-        //         $data['file'] = $file_name;
-        //     }
-
-        //     $monthlyReport = $this->monthlyReportRepository->create($data);
-        //     if (!$monthlyReport) {
-        //         return 'error';
-        //     }
-        //     return 'added';
-        // } else {
-        //     return 'exists';
-        // }
     }
 
     public function destroy($id)

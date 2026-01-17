@@ -38,34 +38,20 @@
 
                             <!-- begin: row -->
                             <div class="row">
+
                                 <!-- begin: input -->
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="month">{!! __('salaries.month') !!}</label>
-                                        <input type="number" id="month_edit" name="month" class="form-control"
-                                            autocomplete="off" placeholder="{!! __('salaries.enter_month') !!}" readonly>
-                                        <span class="text text-danger">
-                                            <strong id="month_error_edit"></strong>
-                                        </span>
+                                        <label for="month">{!! __('monthlyReports.month') !!}</label>
+                                        <input type="month" id="month_edit" name="month" readonly
+                                            style="background-color: rgb(228, 225, 225)" class="form-control"></label>
                                     </div>
                                 </div>
                                 <!-- end: input -->
 
-                                <!-- begin: input -->
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="year">{!! __('salaries.year') !!}</label>
-                                        <input type="number" id="year_edit" name="year" class="form-control"
-                                            autocomplete="off" placeholder="{!! __('salaries.enter_year') !!}" readonly>
-                                        <span class="text text-danger">
-                                            <strong id="year_error_edit"></strong>
-                                        </span>
-                                    </div>
-                                </div>
-                                <!-- end: input -->
 
                                 <!-- begin: input -->
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="release_date">{!! __('salaries.release_date') !!}</label>
                                         <input type="date" id="release_date_edit" name="release_date"
@@ -151,13 +137,13 @@
             var salary_id = $(this).attr('salary-id');
             var salary_month = $(this).attr('salary-month');
             var salary_year = $(this).attr('salary-year');
+            var formattedMonth = salary_year + '-' + salary_month;
             var salary_release_date = $(this).attr('salary-release-date');
             var salary_details = $(this).attr('salary-details');
             var salary_notes = $(this).attr('salary-notes');
 
             $('#id_edit').val(salary_id);
-            $('#month_edit').val(salary_month);
-            $('#year_edit').val(salary_year);
+            $('#month_edit').val(formattedMonth);
             $('#release_date_edit').val(salary_release_date);
             $('#details_edit').val(salary_details);
             $('.notes_summernote_edit').summernote('code', salary_notes);
@@ -185,12 +171,8 @@
 
         // reset
         function resetEditForm() {
-            $('#month_edit').css('border-color', '');
-            $('#year_edit').css('border-color', '');
             $('#release_date_edit').css('border-color', '');
 
-            $('#month_error_edit').text('');
-            $('#year_error_edit').text('');
             $('#release_date_error_edit').text('');
         }
 

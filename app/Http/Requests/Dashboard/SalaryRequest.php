@@ -23,7 +23,6 @@ class SalaryRequest extends FormRequest
     {
         return [
             'month' => ['required'],
-            'year' => ['required', 'numeric'],
             'release_date' => ['required', 'date'],
         ];
     }

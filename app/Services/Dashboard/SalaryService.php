@@ -3,6 +3,7 @@
 namespace App\Services\Dashboard;
 
 use App\Repositories\Dashboard\SalaryRepository;
+use Carbon\Carbon;
 
 class SalaryService
 {
@@ -34,6 +35,11 @@ class SalaryService
     // create
     public function create($data)
     {
+        // sperate date
+        $date = Carbon::createFromFormat('Y-m', $data['month']);
+        $data['month'] = $date->format('m');
+        $data['year'] = $date->format('Y');
+
         $salary = $this->salaryRepository->salaryExists($data['month'], $data['year']);
         if (empty($salary)) {
             $data['admin_id'] = admin()->user()->id;
@@ -50,6 +56,11 @@ class SalaryService
     // update
     public function update($data)
     {
+        // sperate date
+        $date = Carbon::createFromFormat('Y-m', $data['month']);
+        $data['month'] = $date->format('m');
+        $data['year'] = $date->format('Y');
+
         $salary = self::getOne($data['id']);
 
         if (!$salary) {

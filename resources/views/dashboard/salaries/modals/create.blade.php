@@ -28,11 +28,12 @@
 
                             <!-- begin: row -->
                             <div class="row">
+
                                 <!-- begin: input -->
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="month">{!! __('salaries.month') !!}</label>
-                                        <input type="number" id="month" name="month" class="form-control"
+                                        <input type="month" id="month" name="month" class="form-control"
                                             autocomplete="off" placeholder="{!! __('salaries.enter_month') !!}">
                                         <span class="text text-danger">
                                             <strong id="month_error"></strong>
@@ -42,20 +43,7 @@
                                 <!-- end: input -->
 
                                 <!-- begin: input -->
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="year">{!! __('salaries.year') !!}</label>
-                                        <input type="number" id="year" name="year" class="form-control"
-                                            autocomplete="off" placeholder="{!! __('salaries.enter_year') !!}">
-                                        <span class="text text-danger">
-                                            <strong id="year_error"></strong>
-                                        </span>
-                                    </div>
-                                </div>
-                                <!-- end: input -->
-
-                                <!-- begin: input -->
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="release_date">{!! __('salaries.release_date') !!}</label>
                                         <input type="date" id="release_date" name="release_date" class="form-control"
@@ -154,11 +142,9 @@
         // reset
         function resetCreateForm() {
             $('#month').css('border-color', '');
-            $('#year').css('border-color', '');
             $('#release_date').css('border-color', '');
 
             $('#name_ar_error').text('');
-            $('#year_error').text('');
             $('#release_date_error').text('');
         }
 
