@@ -11,7 +11,7 @@ return [
     'search' => 'Search ... ',
     'hello' => 'Hello ,',
     'welcome' => 'Welcome',
-    'employees_count' => 'Employee Count',
+    'employees_count' => 'Employees Count',
     'daily_reports_count' => 'Daily Reports Count',
     'monthly_reports_count' => 'Monthly Reports Count',
     'salaries_count' => 'Salaries Count',
