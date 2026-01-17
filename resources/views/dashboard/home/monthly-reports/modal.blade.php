@@ -86,7 +86,13 @@
     <script type="text/javascript">
         $(document).ready(function() {
 
-            // search
+            // var currentDate = new Date();
+            // var year = currentDate.getFullYear();
+            // var month = currentDate.getMonth() + 1;
+            // var monthYeaar = year + '-' + month;
+            // $('#month').val(monthYeaar);
+
+
 
             // fetch data
             function fetch_data() {

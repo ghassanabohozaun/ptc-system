@@ -2157,7 +2157,7 @@ a:hover {
 .line-on-side {
   border-bottom: 1px solid #dadada;
   line-height: 0.1em;
-  margin: 10px 0 20px; }
+  margin: 10px 0 1px; }
 
 .line-on-side span {
   background: #fff;

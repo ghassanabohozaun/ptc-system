@@ -15,12 +15,12 @@
 @section('content')
     <div class="app-content content" style="margin-right: 0 !important;">
         <div class="content-wrapper">
-            <div class="content-header row">
-            </div>
+
             <div class="content-body">
-                <section class="flexbox-container">
+
+                <div class="row">
                     <div class="col-12 d-flex align-items-center justify-content-center">
-                        <div class="col-md-3 col-10 box-shadow-2 p-0 mt-5">
+                        <div class="col-md-4 col-10  p-0 mt-5">
                             <div class="card border-grey border-lighten-3 m-0">
                                 <div class="card-header border-0">
                                     <div class="card-title text-center">
@@ -30,7 +30,7 @@
                                             <h2 style="font-weight: bolder">{!! setting()->site_name !!}</h2>
                                         @endif
                                     </div>
-                                    <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
+                                    <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-1">
                                         <span>{!! __('auth.login_dashboard') !!}</span>
                                     </h6>
                                 </div>
@@ -121,7 +121,9 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
+
+
             </div>
         </div>
     </div>

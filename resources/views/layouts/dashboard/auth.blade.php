@@ -59,8 +59,8 @@
     data-menu="vertical-menu-modern" data-col="1-column">
     <!-- fixed-top ////////////////////////////////////////////////////////////////////////////-->
 
-    <nav
-        class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-light navbar-border navbar-shadow">
+    {{-- <nav
+        class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-light navbar-border">
 
         @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
             <li class="nav-item text-bold-800 " style="justify-content : end">
@@ -74,12 +74,12 @@
                 </a>
             </li>
         @endforeach
-    </nav>
+    </nav> --}}
     <!-- content ////////////////////////////////////////////////////////////////////////////-->
     @yield('content')
 
     <!-- footer ////////////////////////////////////////////////////////////////////////////-->
-    <footer class="footer footer-static footer-light navbar-border navbar-shadow"
+    <footer class="footer footer-static footer-light navbar-border"
         style="  margin-right: 0px !important; margin-top: -12px;">
         <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
             <span class="float-md-left d-block d-md-inline-block">{!! __('dashboard.copyright') !!} &copy;
