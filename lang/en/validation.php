@@ -281,6 +281,8 @@ return [
         'gender' => 'Gender',
         'governoate_id' => 'Governoate',
         'address_details' => 'Address Details',
+        'address_details_ar' => 'Arabic Address Details',
+        'address_details_en' => 'English Address Details',
         'marital_status' => 'Martial Status',
         'employee_status_id' => 'Employee Status',
         'mobile_no' => 'Mobile No',

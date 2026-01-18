@@ -77,6 +77,9 @@ return [
     'governoate_id' => 'المحافظة',
     'city_id' => 'المدينة',
     'address_details' => 'تفاصيل العنوان',
+    'address_details_en' => 'تفاصيل العنوان بالانجليزي',
+    'address_details_ar' => 'تفاصيل العنوان بالعربي',
+
     'status' => 'حالة',
     'freeze' => 'تجميد',
     'created_at' => 'تاريخ الاضافة',
@@ -110,7 +113,8 @@ return [
     'enter_email' => 'ادخل الايميل',
     'enter_governoate_id' => 'ادخل المحافظة',
     'enter_city_id' => 'ادخل المدينة',
-    'enter_address_details' => 'ادخل تفاصيل العنوان',
+    'enter_address_details_ar' => 'ادخل تفاصيل العنوان بالعربي',
+    'enter_address_details_en' => 'ادخل تفاصيل العنوان بالانجليزي',
     'enter_status' => 'ادخل حالة',
     'enter_freeze' => 'ادخل تجميد',
 

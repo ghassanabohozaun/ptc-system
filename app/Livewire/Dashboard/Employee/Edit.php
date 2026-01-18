@@ -24,7 +24,7 @@ class Edit extends Component
 
     public $first_name_ar, $father_name_ar, $grand_father_name_ar, $family_name_ar;
     public $first_name_en, $father_name_en, $grand_father_name_en, $family_name_en;
-    public $governoate_id, $city_id, $address_details;
+    public $governoate_id, $city_id, $address_details_ar, $address_details_en;
     public $personal_id, $birthday, $gender, $password, $password_confirm, $mobile_no, $marital_status, $alternative_mobile_no;
     public $email, $bank_name, $iban, $banck_account, $basic_salary, $currency;
     public $photo, $new_photo;
@@ -81,7 +81,8 @@ class Edit extends Component
         $this->email = $this->employee->email;
         $this->governoate_id = $this->employee->governoate_id;
         $this->city_id = $this->employee->city_id;
-        $this->address_details = $this->employee->address_details;
+        $this->address_details_ar = $this->employee->getTranslation('address_details', 'ar');
+        $this->address_details_en = $this->employee->getTranslation('address_details', 'en');
         $this->bank_name = $this->employee->bank_name;
         $this->iban = $this->employee->iban;
         $this->banck_account = $this->employee->banck_account;
@@ -136,7 +137,8 @@ class Edit extends Component
             'gender' => ['required'],
             'governoate_id' => ['required', 'exists:governorates,id'],
             'city_id' => ['required', 'exists:cities,id'],
-            'address_details' => ['required', 'string', 'min:5'],
+            'address_details_ar' => ['required', 'string', 'min:5'],
+            'address_details_en' => ['required', 'string', 'min:5'],
             'marital_status' => ['required'],
             'mobile_no' => ['required', 'string', 'min:5', 'max:10'],
             'alternative_mobile_no' => ['required', 'string', 'min:5', 'max:10'],
@@ -162,7 +164,7 @@ class Edit extends Component
             'gender' => $this->gender,
             'governoate_id' => $this->governoate_id,
             'city_id' => $this->city_id,
-            'address_details' => $this->address_details,
+            'address_details' => ['ar' => $this->address_details_ar, 'en' => $this->address_details_en],
             'marital_status' => $this->marital_status,
             'mobile_no' => $this->mobile_no,
             'alternative_mobile_no' => $this->alternative_mobile_no,
@@ -175,7 +177,7 @@ class Edit extends Component
             'photo' => $this->new_photo,
         ];
 
-        $employeeUpdated = $this->employeeService->updateEmployee($this->EmployeeID,$basicData, );
+        $employeeUpdated = $this->employeeService->updateEmployee($this->EmployeeID, $basicData);
 
         if (!$employeeUpdated) {
             flash()->error(message: __('general.update_error_message'));
@@ -314,7 +316,7 @@ class Edit extends Component
 
             $education = $this->employeeService->deleteEducation($id);
             if (!$education) {
-              //  flash()->error(message: __('general.delete_error_message'));
+                //  flash()->error(message: __('general.delete_error_message'));
             }
             flash()->success(message: __('general.delete_success_message'));
         }

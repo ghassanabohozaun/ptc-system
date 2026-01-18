@@ -395,13 +395,30 @@
 
 
         <!-- begin: input -->
-        <div class="col-md-6">
+        <div class="col-md-3">
             <div class="form-group">
-                <label for="address_details">{!! __('employees.address_details') !!}</label>
-                <input type="text" wire:model.live="address_details" class="form-control" autocomplete="off"
-                    placeholder="{!! __('employees.enter_address_details') !!}"
-                    @error('address_details')  style="border-color: rgb(246, 78, 96)"  @enderror>
-                @error('address_details')
+                <label for="address_details_ar">{!! __('employees.address_details_ar') !!}</label>
+                <input type="text" wire:model.live="address_details_ar" class="form-control" autocomplete="off"
+                    placeholder="{!! __('employees.enter_address_details_ar') !!}"
+                    @error('address_details_ar')  style="border-color: rgb(246, 78, 96)"  @enderror>
+                @error('address_details_ar')
+                    <span class="text text-danger">
+                        <strong>{!! $message !!}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+        <!-- end: input -->
+
+
+        <!-- begin: input -->
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="address_details_en">{!! __('employees.address_details_en') !!}</label>
+                <input type="text" wire:model.live="address_details_en" class="form-control" autocomplete="off"
+                    placeholder="{!! __('employees.enter_address_details_en') !!}"
+                    @error('address_details_en')  style="border-color: rgb(246, 78, 96)"  @enderror>
+                @error('address_details_en')
                     <span class="text text-danger">
                         <strong>{!! $message !!}</strong>
                     </span>

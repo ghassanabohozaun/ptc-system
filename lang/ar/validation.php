@@ -294,6 +294,8 @@ return [
         'class' => 'الفصل الدراسي',
         'governoate_id' => 'المحافظة',
         'address_details' => 'تفاصيل العنوان',
+            'address_details_en' => 'تفاصيل العنوان بالانجليزي',
+    'address_details_ar' => 'تفاصيل العنوان بالعربي',
         'marital_status' => 'الحالة الاجتماعية',
         'employee_status_id' => 'حالة الموظف',
         'bank_name' => 'اسم البنك',

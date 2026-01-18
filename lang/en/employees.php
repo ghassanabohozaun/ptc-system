@@ -11,8 +11,7 @@ return [
     'financial' => 'Financial',
     'yes' => 'Yes',
     'no' => 'No',
-    'employee_not_found'=>'Employee Not Found',
-
+    'employee_not_found' => 'Employee Not Found',
 
     'male' => 'Male',
     'female' => 'Female',
@@ -40,9 +39,9 @@ return [
     'full_time' => 'Full Time',
     'part_time' => 'Part Time',
     'contract' => 'Contact',
-    'monthly_report_status'=>'Monthly Report Status',
-    'file'=>'File',
-    'month'=>'Month',
+    'monthly_report_status' => 'Monthly Report Status',
+    'file' => 'File',
+    'month' => 'Month',
 
     'id' => 'ID',
     'full_name' => 'Full Name',
@@ -73,6 +72,8 @@ return [
     'governoate_id' => 'Governoate',
     'city_id' => 'City',
     'address_details' => 'Address Details',
+    'address_details_ar' => 'Arabic Address Details',
+    'address_details_en' => 'English Address Details',
     'bank_name' => 'Bank Name',
     'iban' => 'IBAN',
     'banck_account' => 'Bank Account',
@@ -112,7 +113,8 @@ return [
     'enter_email' => 'Enter Email',
     'enter_governoate_id' => 'Enter Governoate',
     'enter_city_id' => 'Enter City',
-    'enter_address_details' => 'Enter Address Details',
+    'enter_address_details_ar' => 'Enter Arabic Address Details',
+    'enter_address_details_en' => 'Enter English Address Details',
 
     'no_employees_found' => 'No Employees Found !',
     'add_employee_before' => 'Added Employee Before',

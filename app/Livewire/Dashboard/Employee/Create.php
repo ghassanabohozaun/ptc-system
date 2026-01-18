@@ -22,7 +22,7 @@ class Create extends Component
 
     public $first_name_ar, $father_name_ar, $grand_father_name_ar, $family_name_ar;
     public $first_name_en, $father_name_en, $grand_father_name_en, $family_name_en;
-    public $governoate_id, $city_id, $address_details;
+    public $governoate_id, $city_id, $address_details_ar, $address_details_en;
     public $personal_id, $birthday, $gender, $password, $password_confirm, $mobile_no, $marital_status, $alternative_mobile_no;
     public $email, $photo, $bank_name, $iban, $banck_account, $basic_salary, $currency;
     public $title, $appointment_date, $contact_expire_date, $employment_type, $department_id, $employee_status_id, $supervisor, $submit_monthly_report;
@@ -113,7 +113,8 @@ class Create extends Component
             'gender' => ['required'],
             'governoate_id' => ['required', 'exists:governorates,id'],
             'city_id' => ['required', 'exists:cities,id'],
-            'address_details' => ['required', 'string', 'min:5'],
+            'address_details_ar' => ['required', 'string', 'min:5'],
+            'address_details_en' => ['required', 'string', 'min:5'],
             'marital_status' => ['required'],
             'mobile_no' => ['required', 'string', 'min:5', 'max:10'],
             'alternative_mobile_no' => ['required', 'string', 'min:5', 'max:10'],
@@ -139,7 +140,7 @@ class Create extends Component
             'gender' => $this->gender,
             'governoate_id' => $this->governoate_id,
             'city_id' => $this->city_id,
-            'address_details' => $this->address_details,
+            'address_details' => ['ar' => $this->address_details_ar, 'en' => $this->address_details_en],
             'marital_status' => $this->marital_status,
             'mobile_no' => $this->mobile_no,
             'alternative_mobile_no' => $this->alternative_mobile_no,
