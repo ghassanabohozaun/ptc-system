@@ -148,6 +148,7 @@
         $('body').on('click', '.delete_monthly_report_btn', function(e) {
             e.preventDefault();
 
+            var $tr = $(this).closest('tr');
             var id = $(this).data('id');
 
             swal({
@@ -179,8 +180,11 @@
                         type: 'DELETE',
                         dataType: 'json',
                         success: function(data) {
-                            $('#myTable').load(location.href + (' #myTable'));
+
                             if (data.status == true) {
+                                $tr.fadeOut(700, function() {
+                                    $tr.remove();
+                                });
                                 swal({
                                     title: "{!! __('general.deleted') !!} ",
                                     text: "{!! __('general.delete_success_message') !!} ",

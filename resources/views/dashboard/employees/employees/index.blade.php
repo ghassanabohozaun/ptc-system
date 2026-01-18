@@ -238,7 +238,6 @@
         $('body').on('change', '.change_status', function(e) {
             e.preventDefault();
 
-            var currentPage = $('#yajra-datatable').DataTable().page();
             var id = $(this).data('id');
 
             if ($(this).is(':checked')) {
@@ -257,7 +256,6 @@
                 dataType: 'JSON',
                 success: function(data) {
 
-                    $('#yajra-datatable').DataTable().page(currentPage).draw(false);
                     if (data.status == true) {
                         flasher.success("{!! __('general.change_status_success_message') !!}");
                     } else {

@@ -103,7 +103,6 @@
                             <span class="visually-hidden">Loading...</span>
                         </div>
                     </button>
-
                     <button type="button" id="cancel_monthly_report_btn" class="btn btn-light-dark font-weight-bold">
                         {{ __('general.cancel') }}
                     </button>

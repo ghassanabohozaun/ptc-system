@@ -5,8 +5,8 @@
             <i class="la la-edit"></i>
         </a> --}}
 
-        <a href="javascript:void(0)" data-id="{!! $dailyReport->id !!}"
-            class="btn btn-sm btn-outline-danger delete_daily_report_btn" title="  {!! __('general.delete') !!}">
+        <a href="#" data-id="{!! $dailyReport->id !!}" class="btn btn-sm btn-outline-danger delete_daily_report_btn"
+            title="  {!! __('general.delete') !!}">
             <i class="la la-trash"></i>
         </a>
 

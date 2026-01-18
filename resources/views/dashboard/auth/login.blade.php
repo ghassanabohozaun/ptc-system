@@ -20,7 +20,7 @@
 
                 <div class="row">
                     <div class="col-12 d-flex align-items-center justify-content-center">
-                        <div class="col-md-4 col-10  p-0 mt-5">
+                        <div class="col-md-3 col-12  p-0 mt-5">
                             <div class="card border-grey border-lighten-3 m-0">
                                 <div class="card-header border-0">
                                     <div class="card-title text-center">

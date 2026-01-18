@@ -24,11 +24,11 @@
                         <div class="col-lg-12">
 
                             <!-- begin: row -->
-                            <div class="row">
+                            <div class="row d-none">
                                 <!-- begin: input -->
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="text" id="id_edit" name="id" class="form-control">
+                                        <input type="hidden" id="id_edit" name="id" class="form-control">
                                     </div>
                                 </div>
                                 <!-- end: input -->
@@ -42,7 +42,7 @@
                                 <!-- begin: input -->
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="month">{!! __('monthlyReports.employee') !!}</label>
+                                        <label for="month">{!! __('monthlyReports.employee_id') !!}</label>
                                         <label id="employee_name_edit" name="employee_name_edit"
                                             style="background-color: #e9e9e9" class="form-control"></label>
                                     </div>
@@ -59,10 +59,8 @@
                                 </div>
                                 <!-- end: input -->
 
-
                             </div>
                             <!-- end: row -->
-
 
                             <!-- begin: row -->
                             <div class="row">
@@ -89,6 +87,7 @@
                             </div>
                             <!-- end: row -->
 
+                            <!-- begin: row -->
                             <div class="row" id="refuse_reason_section">
                                 <!-- begin: input -->
                                 <div class="col-md-12">
@@ -104,6 +103,7 @@
                                 </div>
                                 <!-- end: input -->
                             </div>
+                            <!-- end: row -->
 
                         </div>
                     </div>
@@ -143,10 +143,8 @@
             } else {
                 $("#refuse_reason_section").hide();
             }
-
             $('#refuse_reason_edit').css('border-color', '');
             $('#refuse_reason_error_edit').text('');
-
         });
 
 
