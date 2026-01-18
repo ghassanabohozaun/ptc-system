@@ -33,6 +33,8 @@ return [
     'phd' => 'PhD',
     'masters' => 'Masters',
     'university' => 'University',
+    'deplom' => 'Deplom',
+
     'preparatory' => 'Preparatory',
     'secondary' => 'Secondary',
     'etc' => 'etc',

@@ -53,6 +53,7 @@
                             <option value="phd">{!! __('employees.phd') !!}</option>
                             <option value="masters">{!! __('employees.masters') !!}</option>
                             <option value="university">{!! __('employees.university') !!}</option>
+                            <option value="deplom">{!! __('employees.deplom') !!}</option>
                             <option value="preparatory">{!! __('employees.preparatory') !!}</option>
                             <option value="secondary">{!! __('employees.secondary') !!}</option>
                             <option value="etc">{!! __('employees.etc') !!}</option>
