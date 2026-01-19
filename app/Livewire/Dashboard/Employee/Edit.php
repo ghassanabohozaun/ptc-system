@@ -160,7 +160,7 @@ class Edit extends Component
             'father_name' => ['ar' => $this->father_name_ar, 'en' => $this->father_name_en],
             'grand_father_name' => ['ar' => $this->grand_father_name_ar, 'en' => $this->grand_father_name_en],
             'family_name' => ['ar' => $this->family_name_ar, 'en' => $this->family_name_en],
-            'password' => $this->password,
+            'password' => $this->password == null ? $this->employee->password : $this->password,
             'personal_id' => $this->personal_id,
             'birthday' => $this->birthday,
             'gender' => $this->gender,
