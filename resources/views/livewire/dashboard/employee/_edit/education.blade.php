@@ -30,7 +30,7 @@
                 <tr wire:key="row-{{ $index }}">
 
                     <td class="col-lg-3 col-md-3 col-sm-12">
-                        <input type="text" wire:model="educationItems.{!! $index !!}.id" class="form-control">
+                        <input type="hidden" wire:model="educationItems.{!! $index !!}.id" class="form-control">
 
 
                         <input type="text"
