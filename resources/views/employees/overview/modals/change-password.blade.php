@@ -36,30 +36,49 @@
                             <!-- begin: row -->
                             <div class="row">
 
-                                <!-- begin: input -->
+
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="password">{!! __('employees.password') !!}</label>
-                                        <input type="text" id="password" name="password" class="form-control"
-                                            autocomplete="off" placeholder="{!! __('employees.enter_password') !!}">
-                                        <span class="text text-danger" id="password_error">
+                                        <div class="input-group">
+                                            <input type="password" id="password" name="password" class="form-control"
+                                                autocomplete="off" placeholder="{!! __('employees.enter_password') !!}"
+                                                aria-describedby="basic-addon3">
+                                            <div class="input-group-append" onclick="showPassword();">
+                                                <span class="input-group-text" id="basic-addon3"
+                                                    style="color: black;font-size: 15px;cursor: pointer;">
+                                                    <i class="icon-eye"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <span class="text text-danger">
+                                            <strong id="password_error"></strong>
                                         </span>
                                     </div>
                                 </div>
-                                <!-- end: input -->
 
-                                <!-- begin: input -->
+
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="password_confirm">{!! __('employees.password_confirm') !!}</label>
-                                        <input type="text" id="password_confirm" name="password_confirm"
-                                            class="form-control" autocomplete="off"
-                                            placeholder="{!! __('employees.enter_password_confirm') !!}">
-                                        <span class="text text-danger" id="password_confirm_error">
+                                        <div class="input-group">
+                                            <input type="password" id="password_confirm" name="password_confirm"
+                                                class="form-control" autocomplete="off"
+                                                placeholder="{!! __('employees.enter_password_confirm') !!}" aria-describedby="basic-addon3">
+                                            <div class="input-group-append" onclick="showPasswordConfirm();">
+                                                <span class="input-group-text" id="basic-addon3"
+                                                    style="color: black;font-size: 15px;cursor: pointer;">
+                                                    <i class="icon-eye"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <span class="text text-danger">
+                                            <strong id="password_confirm_error"></strong>
                                         </span>
                                     </div>
                                 </div>
-                                <!-- end: input -->
+
+
 
                             </div>
                             <!-- end: row -->
@@ -78,11 +97,13 @@
                         </div>
                     </button>
 
-                    <button type="button" id="cancel_daily_report_btn" class="btn btn-light-dark font-weight-bold">
+                    <button type="button" id="cancel_employee_change_password_btn"
+                        class="btn btn-light-dark font-weight-bold">
                         {{ __('general.cancel') }}
                     </button>
                 </div>
                 <!--end::modal footer-->
+
 
             </div>
         </form>
@@ -92,7 +113,32 @@
 
 @push('scripts')
     <script type="text/javascript">
+        // show password
+        function showPassword() {
+            var password = document.getElementById('password');
+            if (password.type == 'password') {
+                password.type = 'text';
+            } else {
+                password.type = 'password';
+            }
+        }
+
+        // show password confirm
+        function showPasswordConfirm() {
+            var password_confirm = document.getElementById('password_confirm');
+            if (password_confirm.type == 'password') {
+                password_confirm.type = 'text';
+            } else {
+                password_confirm.type = 'password';
+            }
+        }
+
+
         $(document).ready(function() {
+
+
+
+
 
             // open create modal
             $('body').on('click', '#employee_change_password_btn', function(e) {
@@ -111,7 +157,7 @@
             }
 
             // cancel
-            $('body').on('click', '#cancel_daily_report_btn', function(e) {
+            $('body').on('click', '#cancel_employee_change_password_btn', function(e) {
                 $('#employeeChangePasswordModal').modal('hide');
                 $('#employee_change_password_form')[0].reset();
                 resetCreateForm();

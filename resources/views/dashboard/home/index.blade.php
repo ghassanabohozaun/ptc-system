@@ -130,7 +130,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                                @include('dashboard.home.monthly-reports.modal')
+
                             </div>
                         </div>
                         <div class="card-content mt-2">
@@ -225,9 +225,8 @@
                 <!-- end :daily reports -->
             </div>
 
-
-
-
         </div> <!-- end: content wrapper  -->
     </div><!-- end: content app  -->
+
+    @include('dashboard.home.monthly-reports.modal')
 @endsection

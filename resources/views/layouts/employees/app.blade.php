@@ -44,6 +44,8 @@
     @endif
 
 
+
+
     <style>
         .note-editor.is-invalid-summernote-editor {
             border: 1px solid #dc3545 !important;

@@ -173,7 +173,7 @@ class EmployeeService
 
         foreach ($data as $item) {
             if (array_key_exists('certification', $item) && $item['certification'] != null) {
-                $item['certification'] = $this->imageManagerUtils->saveResizeImage($item['certification'], 'employeesCertifications', 1700, 1000);
+                $item['certification'] = $this->imageManagerUtils->saveResizeImage($item['certification'], 'employeesCertifications', 1500, 1300);
             }
             $education = $this->employeeRepository->storeEducation($item);
             if (!$education) {
@@ -202,7 +202,7 @@ class EmployeeService
                 // update certiciation
                 if (array_key_exists('certification', $educationItem) && $educationItem['certification'] != null) {
                     $this->imageManagerUtils->removeImageFromLocal($education->certification, 'employeesCertifications');
-                    $educationItem['certification'] = $this->imageManagerUtils->saveResizeImage($educationItem['certification'], 'employeesCertifications', 1700, 1000);
+                    $educationItem['certification'] = $this->imageManagerUtils->saveResizeImage($educationItem['certification'], 'employeesCertifications', 1500, 1300);
                 } else {
                     if ($education->certification != null) {
                         $educationItem['certification'] = $education->certification;
@@ -215,7 +215,7 @@ class EmployeeService
             } else {
                 /// inset new education
                 if (array_key_exists('certification', $educationItem) && $educationItem['certification'] != null) {
-                    $educationItem['certification'] = $this->imageManagerUtils->saveResizeImage($educationItem['certification'], 'employeesCertifications', 1700, 1000);
+                    $educationItem['certification'] = $this->imageManagerUtils->saveResizeImage($educationItem['certification'], 'employeesCertifications', 1500, 1300);
                 }
                 $this->employeeRepository->storeEducation($educationItem);
             }

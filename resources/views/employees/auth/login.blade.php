@@ -12,8 +12,10 @@
                             @if (setting()->logo)
                                 <div class="brand-logo">
                                     <img src="{!! asset('uploads/settings/' . setting()->logo) !!}" alt="logo">
-                                @else
-                                    <h4 class="brand-text">{!! setting()->site_name !!}</h4>
+                                </div>
+                            @else
+                                <div class="brand-logo">
+                                    <h2 class="brand-text">{!! setting()->site_name !!}</h2>
                                 </div>
                             @endif
 

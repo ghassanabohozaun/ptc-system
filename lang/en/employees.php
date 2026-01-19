@@ -34,7 +34,6 @@ return [
     'masters' => 'Masters',
     'university' => 'University',
     'deplom' => 'Deplom',
-
     'preparatory' => 'Preparatory',
     'secondary' => 'Secondary',
     'etc' => 'etc',
@@ -124,20 +123,27 @@ return [
 
     // education
     'educational_instituation_name' => 'Instituation Name',
+    'educational_instituation_name_ar' => 'Arabic Instituation Name',
+    'educational_instituation_name_en' => 'English Instituation Name',
+    'education_specialization' => 'Education Specialization',
+    'education_specialization_ar' => 'Arabic Education Specialization',
+    'education_specialization_en' => 'English Education Specialization',
     'education_level' => 'Level',
     'education_year' => 'Year',
     'education_aveage' => 'Average',
     'certification' => 'Certification',
     'employee_id' => 'Employee',
-    'submit_monthly_report' => 'Submit Monthly Report',
 
     'enter_educational_instituation_name' => 'Enter Instituation Name',
+    'enter_educational_instituation_name_ar' => 'Enter Arabic Instituation Name',
+    'enter_educational_instituation_name_en' => 'Enter English Instituation Name',
+    'enter_education_specialization' => 'Education Specialization',
+    'enter_education_specialization_ar' => 'Enter Arabic Education Specialization',
+    'enter_education_specialization_en' => 'Enter English Education Specialization',
     'enter_education_level' => 'Enter Level',
     'enter_education_year' => 'Enter Year',
-    'enter_education_aveage' => 'Enter Average',
     'enter_certification' => 'Enter Certification',
     'enter_employee_id' => 'Enter Employee',
-    'enter_submit_monthly_report' => 'Enter Submit Monthly Report',
 
     // job details
     'title' => 'Title',
@@ -148,6 +154,7 @@ return [
     'department_id' => 'Department',
     'supervisor' => 'Supervisor',
     'employee_status' => 'Employee Status',
+    'submit_monthly_report' => 'Submit Monthly Report',
 
     'enter_title' => 'Enter Title',
     'enter_basic_salary' => 'Enter Basic Salary',
@@ -157,6 +164,7 @@ return [
     'enter_department_id' => 'Enter Department',
     'enter_supervisor' => 'Enter Supervisor',
     'enter_employee_status' => 'Enter Employee Status',
+    'enter_submit_monthly_report' => 'Enter Submit Monthly Report',
 
     // employee statuses
     'create_new_employee_status' => 'Create New Employee Status',

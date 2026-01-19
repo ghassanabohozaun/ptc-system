@@ -53,8 +53,19 @@ class EmployeesController extends Controller
     //  show
     public function show(string $id)
     {
+        if (!$id) {
+            flash()->error(__('general.no_record_found'));
+            return redirect()->route('dashboard.employees.index');
+        }
+
         $title = __('employees.profile');
         $employee = $this->employeeService->getOne($id);
+
+        if (!$employee) {
+            flash()->error(__('general.no_record_found'));
+            return redirect()->route('dashboard.employees.index');
+        }
+
         if (!$employee) {
             flash()->error(__('general.no_record_found'));
             return redirect()->back();
@@ -65,8 +76,18 @@ class EmployeesController extends Controller
     // edit
     public function edit(string $id)
     {
+        if (!$id) {
+            flash()->error(__('general.no_record_found'));
+            return redirect()->back();
+        }
         $title = __('employees.update_employee');
         $employee = $this->employeeService->getOne($id);
+
+        if (!$employee) {
+            flash()->error(__('general.no_record_found'));
+            return redirect()->route('dashboard.employees.index');
+        }
+
         $governorates = $this->governorateService->getAllGovernoratesWithoutRelations();
         $cities = $this->cityService->getAllCitiesWithoutRelation();
         $employeeStatuses = $this->employeeStatusService->getActiveAll();

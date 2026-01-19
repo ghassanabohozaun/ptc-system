@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('employee_education', function (Blueprint $table) {
             $table->id();
-            $table->string('educational_instituation_name');
-            $table->enum('education_level',['phd', 'masters', 'university', 'preparatory', 'secondary','etc']);
-            $table->string('education_year');
-            $table->string('education_aveage');
+            $table->string('educational_instituation_name')->nullable();
+            $table->string('education_specialization')->nullable();
+            $table->enum('education_level',['phd', 'masters', 'university','deplom', 'preparatory', 'secondary','etc'])->default('university');
+            $table->string('education_year')->nullable();
             $table->string('certification')->nullable();
-            $table->foreignId('employee_id')->constrained('employees')->cascadeOnDelete();
+            $table->foreignId('employee_id')->nullable()->constrained('employees')->cascadeOnDelete();
             $table->softDeletes();
             $table->timestamps();
         });

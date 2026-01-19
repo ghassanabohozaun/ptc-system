@@ -1,4 +1,5 @@
 <div class="table_responsive">
+
     <table class="table">
         <thead>
             <tr>
@@ -6,17 +7,18 @@
                     {!! __('employees.educational_instituation_name') !!}
                 </th>
                 <th>
-                    {!! __('employees.education_level') !!}
+                    {!! __('employees.education_specialization') !!}
                 </th>
                 <th>
                     {!! __('employees.education_year') !!}
                 </th>
                 <th>
-                    {!! __('employees.education_aveage') !!}
+                    {!! __('employees.education_level') !!}
                 </th>
                 <th>
                     {!! __('employees.certification') !!}
                 </th>
+                <th> {!! __('employees.certification') !!}</th>
                 <th>
                     <a href="javascript:void(0)" wire:click.prevent="addNewEducation" class="text-white badge badge-info">
                         <li class="la la-plus"></li>
@@ -29,20 +31,47 @@
                 <tr wire:key="row-{{ $index }}">
 
                     <td class="col-lg-3 col-md-3 col-sm-12">
-                        <input type="text"
-                            wire:model="educationItems.{!! $index !!}.educational_instituation_name"
-                            class="form-control" placeholder="{!! __('employees.enter_educational_instituation_name') !!}"
-                            @error('educationItems.' . $index . '.educational_instituation_name')  style="border-color: rgb(246, 78, 96)"  @enderror>
+                        <input type="hidden" wire:model="educationItems.{!! $index !!}.id" class="form-control">
 
-                        @error('educationItems.' . $index . '.educational_instituation_name')
-                            <span class="text text-danger">
-                                <strong>{!! $message !!}</strong>
-                            </span>
-                        @enderror
+                        <input type="text"
+                            wire:model="educationItems.{!! $index !!}.educational_instituation_name_ar"
+                            class="form-control" placeholder="{!! __('employees.enter_educational_instituation_name_ar') !!}"
+                            @error('educationItems.' . $index . '.educational_instituation_name_ar')  style="border-color: rgb(246, 78, 96)"  @enderror>
+
+
+                        <input type="text"
+                            wire:model="educationItems.{!! $index !!}.educational_instituation_name_en"
+                            class="form-control mt-1" placeholder="{!! __('employees.enter_educational_instituation_name_en') !!}"
+                            @error('educationItems.' . $index . '.educational_instituation_name_en')  style="border-color: rgb(246, 78, 96)"  @enderror>
+
                     </td>
 
+
                     <td class="col-lg-2 col-md-2 col-sm-12">
-                        <select wire:model="educationItems.{!! $index !!}.education_level" class="form-control"
+                        <input type="text"
+                            wire:model="educationItems.{!! $index !!}.education_specialization_ar"
+                            class="form-control" placeholder="{!! __('employees.enter_education_specialization_ar') !!}"
+                            @error('educationItems.' . $index . '.education_specialization_ar')  style="border-color: rgb(246, 78, 96)"  @enderror />
+
+                        <input type="text"
+                            wire:model="educationItems.{!! $index !!}.education_specialization_en"
+                            class="form-control mt-1" placeholder="{!! __('employees.enter_education_specialization_en') !!}"
+                            @error('educationItems.' . $index . '.education_specialization_en')  style="border-color: rgb(246, 78, 96)"  @enderror />
+
+                    </td>
+
+
+                    <td class="col-lg-2 col-md-2 col-sm-12">
+                        <input type="number" wire:model="educationItems.{!! $index !!}.education_year"
+                            class="form-control" placeholder="{!! __('employees.enter_education_year') !!}"
+                            @error('educationItems.' . $index . '.education_year')  style="border-color: rgb(246, 78, 96)"  @enderror />
+                    </td>
+
+
+
+                    <td class="col-lg-2 col-md-2 col-sm-12">
+                        <select wire:model="educationItems.{!! $index !!}.education_level"
+                            class="form-control"
                             @error('educationItems.' . $index . '.education_level')  style="border-color: rgb(246, 78, 96)"  @enderror>
                             <option value="" selected>{!! __('employees.select_from_list') !!}</option>
                             <option value="phd">{!! __('employees.phd') !!}</option>
@@ -54,47 +83,22 @@
                             <option value="etc">{!! __('employees.etc') !!}</option>
 
                         </select>
-                        @error('educationItems.' . $index . '.education_level')
-                            <span class="text text-danger">
-                                <strong>{!! $message !!}</strong>
-                            </span>
-                        @enderror
                     </td>
 
-                    <td class="col-lg-2 col-md-2 col-sm-12">
-                        <input type="number" wire:model="educationItems.{!! $index !!}.education_year"
-                            class="form-control" placeholder="{!! __('employees.enter_education_year') !!}"
-                            @error('educationItems.' . $index . '.education_year')  style="border-color: rgb(246, 78, 96)"  @enderror />
-
-                        @error('educationItems.' . $index . '.education_year')
-                            <span class="text text-danger">
-                                <strong>{!! $message !!}</strong>
-                            </span>
-                        @enderror
-                    </td>
-
-                    <td class="col-lg-2 col-md-2 col-sm-12">
-                        <input type="number" wire:model="educationItems.{!! $index !!}.education_aveage"
-                            class="form-control" placeholder="{!! __('employees.enter_education_aveage') !!}"
-                            @error('educationItems.' . $index . '.education_aveage')  style="border-color: rgb(246, 78, 96)"  @enderror />
-
-                        @error('educationItems.' . $index . '.education_aveage')
-                            <span class="text text-danger">
-                                <strong>{!! $message !!}</strong>
-                            </span>
-                        @enderror
-                    </td>
-
-                    <td class="col-lg-4 col-md-4 col-sm-12">
+                    <td class="col-lg-3 col-md-3 col-sm-12">
                         <input type="file" wire:model="educationItems.{!! $index !!}.certification"
-                            accept="image/*" class="form-control" placeholder="{!! __('employees.enter_certification') !!}"
-                            @error('educationItems.' . $index . '.certification')  style="border-color: rgb(246, 78, 96)"  @enderror />
+                            accept="image/*" class="form-control" />
 
-                        @error('educationItems.' . $index . '.certification')
-                            <span class="text text-danger">
-                                <strong>{!! $message !!}</strong>
-                            </span>
-                        @enderror
+                    </td>
+
+                    <td>
+
+                        @if ($row['certification'])
+                            <div class="position-relative d-inline-block">
+                                <img src="{!! $row['certification']->temporaryUrl() !!}" alt="{!! __('employees.photo') !!}"
+                                    class="img-fluid img-thumbnail round-md" style="width: 70px  ; height: 70px" />
+                            </div>
+                        @endif
                     </td>
 
                     <td class="col-lg-1 col-md-1 col-sm-1">
@@ -108,6 +112,9 @@
         </tbody>
 
     </table>
+
+
+
 </div>
 
 

@@ -126,7 +126,13 @@ class EmployeeRepository
     // delete all employee educations
     public function deleteAllEmloyeeEducations($employee)
     {
-        return $employee->employeeEducation()->forceDelete();
+        $employeeEducations = EmployeeEducation::where('employee_id', $employee->id)->get();
+
+        if ($employeeEducations->isNotEmpty()) {
+            return $employee->employeeEducation()->forceDelete();
+        } else {
+            return false;
+        }
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////

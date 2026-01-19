@@ -124,17 +124,25 @@ return [
     'no_data_found' => 'لا يوجد بيانات حالياً !',
 
     // education
-    'educational_instituation_name' => 'اسم المؤسسة',
+    'educational_instituation_name' => 'اسم الجامعة',
+    'educational_instituation_name_ar' => 'اسم الجامعة بالعربي',
+    'educational_instituation_name_en' => 'اسم الجامعة بالانجليزي',
+    'education_specialization' => 'التخصص الجامعي',
+    'education_specialization_ar' => 'التخصص الجامعي بالعربي',
+    'education_specialization_en' => 'التخصص الجامعي بالانجليزي',
     'education_level' => 'المستوي التعليمي',
     'education_year' => 'سنة التخرج',
-    'education_aveage' => 'المعدل الجامعي',
     'certification' => 'الشهادة',
     'employee_id' => 'الموظف',
 
     'enter_educational_instituation_name' => ' ادخل اسم المؤسسة',
+    'enter_educational_instituation_name_ar' => ' ادخل اسم الجامعة بالعربي',
+    'enter_educational_instituation_name_en' => ' ادخل اسم الجامعة بالانجليزي',
+    'enter_education_specialization' => 'ادخل التخصص الجامعي',
+    'enter_education_specialization_ar' => 'ادخل التخصص الجامعي بالعربي',
+    'enter_education_specialization_en' => 'ادخل التخصص الجامعي بالانجليزي',
     'enter_education_level' => ' ادخل المستوي التعليمي',
     'enter_education_year' => ' ادخل سنة التخرج',
-    'enter_education_aveage' => ' ادخل المعدل الجامعي',
     'enter_certification' => ' ادخل الشهادة',
     'enter_employee_id' => ' ادخل الموظف',
 

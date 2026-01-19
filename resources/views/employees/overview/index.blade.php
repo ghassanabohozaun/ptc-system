@@ -21,6 +21,7 @@
                                     role="tab" aria-selected="false" tabindex="-1">{!! __('general.profile') !!}</a>
                             </li>
                         </ul>
+
                         <div>
                             <div class="btn-wrapper">
 
@@ -28,6 +29,9 @@
                                     <i class="fa fa-key"></i>
                                     {!! __('employees.change_password') !!}
                                 </a>
+
+                                @include('employees.overview.modals.change-password')
+
 
                                 <a href="javascript:void(0)" class="btn btn-primary text-white me-0">
                                     <i class="icon-download"></i>
@@ -45,6 +49,4 @@
             </div>
         </div>
     </div>
-
-    @include('employees.overview.modals.change-password')
 @endsection

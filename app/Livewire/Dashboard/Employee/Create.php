@@ -59,7 +59,7 @@ class Create extends Component
         $this->governoate_id ?? ($this->cities = []);
         $this->employeeStatuses = $employeeStatuses;
         $this->departments = $departments;
-        $this->educationItems[] = ['educational_instituation_name' => '', 'education_level' => '', 'education_year' => '', 'education_aveage' => '', 'certification' => ''];
+        $this->educationItems[] = ['educational_instituation_name_ar' => '', 'educational_instituation_name_en' => '', 'education_specialization_ar' => '', 'education_specialization_en' => '', 'education_level' => '', 'education_year' => '', 'certification' => ''];
     }
 
     protected function rules()
@@ -162,7 +162,7 @@ class Create extends Component
                 flash()->success(message: __(key: 'general.add_success_message'));
                 $this->employeeCreatedID = $employeeCreated->id;
                 $this->dispatch('scroll-to-top');
-                $this->currentStep = 2;
+                // $this->currentStep = 2;
                 $this->resetStatusAlert();
             }
         } else {
@@ -184,10 +184,12 @@ class Create extends Component
     {
         $data = [
             'educationItems' => ['required', 'array'],
-            'educationItems.*.educational_instituation_name' => ['required', 'string', 'min:3', 'max:255'],
+            'educationItems.*.educational_instituation_name_ar' => ['required', 'string', 'min:3', 'max:255'],
+            'educationItems.*.educational_instituation_name_en' => ['required', 'string', 'min:3', 'max:255'],
+            'educationItems.*.education_specialization_ar' => ['required', 'string', 'min:3', 'max:255'],
+            'educationItems.*.education_specialization_en' => ['required', 'string', 'min:3', 'max:255'],
             'educationItems.*.education_level' => ['required'],
             'educationItems.*.education_year' => ['required', 'numeric'],
-            'educationItems.*.education_aveage' => ['required', 'numeric'],
             'educationItems.*.certification' => ['nullable', 'image', 'mimes:png,jpg,jpeg,gif,svg,webp'],
         ];
 
@@ -198,10 +200,10 @@ class Create extends Component
         foreach ($this->educationItems as $index => $name) {
             $educationData[] = [
                 'employee_id' => $this->employeeCreatedID,
-                'educational_instituation_name' => $this->educationItems[$index]['educational_instituation_name'] ?? 0,
+                'educational_instituation_name' => ['ar' => $this->educationItems[$index]['educational_instituation_name_ar'], 'en' => $this->educationItems[$index]['educational_instituation_name_en']] ?? null,
+                'education_specialization' => ['ar' => $this->educationItems[$index]['education_specialization_ar'], 'en' => $this->educationItems[$index]['education_specialization_en']] ?? null,
                 'education_level' => $this->educationItems[$index]['education_level'] ?? 0,
                 'education_year' => $this->educationItems[$index]['education_year'] ?? 0,
-                'education_aveage' => $this->educationItems[$index]['education_aveage'] ?? 0,
                 'certification' => $this->educationItems[$index]['certification'] ?? 0,
             ];
         }
@@ -283,16 +285,18 @@ class Create extends Component
             $this->currentStep = 3;
         }
     }
-
     // add new euduction
     public function addNewEducation()
     {
-        $this->educationItems[] = ['educational_instituation_name' => '', 'education_level' => '', 'education_year' => '', 'education_aveage' => '', 'certification' => ''];
+        $this->educationItems[] = ['id' => 0, 'educational_instituation_name_ar' => '', 'educational_instituation_name_en' => '', 'education_specialization_ar' => '', 'education_specialization_en' => '', 'education_level' => '', 'education_year' => '', 'certification' => ''];
     }
 
     // remove euduction
     public function removeEducation($index)
     {
+        if (count($this->educationItems) == 1) {
+            $this->addNewEducation();
+        }
         if (count($this->educationItems) > 1) {
             unset($this->educationItems[$index]);
         }

@@ -10,7 +10,6 @@ use App\Http\Controllers\Dashboard\{AdminsController, CitiesController, DailyRep
 use Livewire\Livewire;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale() . '/dashboard',
@@ -42,7 +41,6 @@ Route::group(
             ########################################### welcome  ##########################################################################
             Route::get('/welcome', [DashboardController::class, 'index'])->name('index');
             Route::get('/monthly-reports/employees', [DashboardController::class, 'getmonthlyReportEmployees'])->name('get.monthly.reports.employees');
-
 
             ########################################### roles routes ######################################################################
             Route::group(['middleware' => 'can:roles'], function () {
@@ -113,8 +111,7 @@ Route::group(
             Route::group(['middleware' => 'can:monthlyReports'], function () {
                 Route::resource('monthlyReports', MonthlyReportsController::class);
                 // Route::post('/monthlyReports/status', [MonthlyReportsController::class, 'changeStatus'])->name('monthly.reports.change.status');
-
-                });
+            });
 
             ########################################### salaries routes  ######################################################################
             Route::group(['middleware' => 'can:salaries'], function () {

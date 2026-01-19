@@ -22,9 +22,9 @@
                                     <thead>
                                         <tr>
                                             <th>{!! __('monthlyReports.month') !!}</th>
-                                            <th>{!! __('monthlyReports.refuse_reason') !!}</th>
                                             <th>{!! __('monthlyReports.file') !!}</th>
                                             <th>{!! __('monthlyReports.status') !!}</th>
+                                            <th>{!! __('monthlyReports.refuse_reason') !!}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -32,13 +32,13 @@
                                             <tr>
 
                                                 <td> {!! $monthlyReport->month !!}</td>
+                                                <td> @include('employees.monthly-reports.parts.file') </td>
+                                                <td> @include('employees.monthly-reports.parts.status')</td>
                                                 @if ($monthlyReport->status == 'initial_refuse' || $monthlyReport->status == 'final_refuse')
                                                     <td>@include('employees.monthly-reports.parts.refuse-reason')</td>
                                                 @else
                                                     <td></td>
                                                 @endif
-                                                <td> @include('employees.monthly-reports.parts.file') </td>
-                                                <td> @include('employees.monthly-reports.parts.status')</td>
                                             </tr>
                                         @empty
                                             <tr>

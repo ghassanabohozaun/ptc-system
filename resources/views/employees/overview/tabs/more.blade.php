@@ -175,7 +175,7 @@
                                     <tbody>
                                         @forelse ($employee->employeeEducation as $key=> $item)
                                             <tr class="text-center">
-                                                <td class="col-lg-2">{!! $item->educational_instituation_name !!}</td>
+                                                <td class="col-lg-3">{!! $item->educational_instituation_name !!}</td>
                                                 <td class="col-lg-2"> {!! $item->education_level !!}</td>
                                                 <td class="col-lg-2"> {!! $item->education_year !!}</td>
                                                 <td class="col-lg-2"> {!! $item->education_aveage !!}</td>
@@ -186,6 +186,11 @@
                                                                 alt="{!! __('employees.photo') !!}"
                                                                 class="shadow-sm img-fluid img-thumbnail round-md "
                                                                 style="width: 40px ;height: 40px ;" />
+                                                            <br />
+                                                            <a href="{!! asset('uploads/employeesCertifications/' . $item->certification) !!}" target="_blank"
+                                                                class="text-sm">
+                                                                {!! __('general.download') !!}
+                                                            </a>
                                                         @else
                                                             <img src="{!! asset('assets\dashbaord\images\no_image.jpg') !!}"
                                                                 alt="{!! __('employees.photo') !!}"

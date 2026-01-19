@@ -94,10 +94,12 @@ class Edit extends Component
         $this->employeeEducations = $this->employee->employeeEducation;
         foreach ($this->employeeEducations as $key => $educationItem) {
             $this->educationItems[$key]['id'] = $educationItem->id;
-            $this->educationItems[$key]['educational_instituation_name'] = $educationItem->educational_instituation_name;
+            $this->educationItems[$key]['educational_instituation_name_ar'] = $educationItem->getTranslation('educational_instituation_name', 'ar');
+            $this->educationItems[$key]['educational_instituation_name_en'] = $educationItem->getTranslation('educational_instituation_name', 'en');
+            $this->educationItems[$key]['education_specialization_ar'] = $educationItem->getTranslation('education_specialization', 'ar');
+            $this->educationItems[$key]['education_specialization_en'] = $educationItem->getTranslation('education_specialization', 'en');
             $this->educationItems[$key]['education_level'] = $educationItem->education_level;
             $this->educationItems[$key]['education_year'] = $educationItem->education_year;
-            $this->educationItems[$key]['education_aveage'] = $educationItem->education_aveage;
             $this->educationItems[$key]['certification'] = $educationItem->certification;
             $this->educationItems[$key]['new_certification'] = '';
         }
@@ -116,7 +118,7 @@ class Edit extends Component
 
         $this->employeeStatuses = $employeeStatuses;
         $this->departments = $departments;
-        //  $this->educationItems[] = ['educational_instituation_name' => '', 'education_level' => '', 'education_year' => '', 'education_aveage' => '', 'certification' => ''];
+        //  $this->educationItems[] = ['educational_instituation_name' => '', 'education_level' => '', 'education_year' => '', 'certification' => ''];
     }
 
     // submit basic form
@@ -188,7 +190,7 @@ class Edit extends Component
             $this->password = null;
             $this->password_confirm = null;
             $this->lockedPersonalID();
-            $this->currentStep = 2;
+            // $this->currentStep = 2;
         }
     }
 
@@ -197,10 +199,12 @@ class Edit extends Component
     {
         $data = [
             'educationItems' => ['required', 'array'],
-            'educationItems.*.educational_instituation_name' => ['required', 'string', 'min:3', 'max:255'],
+            'educationItems.*.educational_instituation_name_ar' => ['required', 'string', 'min:3', 'max:255'],
+            'educationItems.*.educational_instituation_name_en' => ['required', 'string', 'min:3', 'max:255'],
+            'educationItems.*.education_specialization_ar' => ['required', 'string', 'min:3', 'max:255'],
+            'educationItems.*.education_specialization_en' => ['required', 'string', 'min:3', 'max:255'],
             'educationItems.*.education_level' => ['required'],
             'educationItems.*.education_year' => ['required', 'numeric'],
-            'educationItems.*.education_aveage' => ['required', 'numeric'],
             //'educationItems.*.certification' => ['nullable', 'image', 'mimes:png,jpg,jpeg,gif,svg,webp'],
         ];
 
@@ -211,10 +215,10 @@ class Edit extends Component
         foreach ($this->educationItems as $index => $name) {
             $educationData[] = [
                 'id' => $this->educationItems[$index]['id'] ?? 0,
-                'educational_instituation_name' => $this->educationItems[$index]['educational_instituation_name'] ?? 0,
+                'educational_instituation_name' => ['ar' => $this->educationItems[$index]['educational_instituation_name_ar'], 'en' => $this->educationItems[$index]['educational_instituation_name_en']] ?? null,
+                'education_specialization' => ['ar' => $this->educationItems[$index]['education_specialization_ar'], 'en' => $this->educationItems[$index]['education_specialization_en']] ?? null,
                 'education_level' => $this->educationItems[$index]['education_level'] ?? 0,
                 'education_year' => $this->educationItems[$index]['education_year'] ?? 0,
-                'education_aveage' => $this->educationItems[$index]['education_aveage'] ?? 0,
                 'certification' => $this->educationItems[$index]['new_certification'] ?? 0,
                 'employee_id' => $this->EmployeeID,
             ];
@@ -229,7 +233,7 @@ class Edit extends Component
         } elseif ($educationCreated == 'add_success') {
             flash()->success(message: __('general.update_success_message'));
             $this->dispatch('scroll-to-top');
-            $this->currentStep = 3;
+            // $this->currentStep = 3;
         }
     }
 
@@ -270,7 +274,7 @@ class Edit extends Component
         } elseif ($jobDetailsCreated == 'update_success') {
             flash()->success(message: __('general.update_success_message'));
             $this->dispatch('scroll-to-top');
-            $this->currentStep = 1;
+            // $this->currentStep = 1;
         }
     }
 
@@ -305,7 +309,7 @@ class Edit extends Component
     // add new euduction
     public function addNewEducation()
     {
-        $this->educationItems[] = ['id' => 0, 'educational_instituation_name' => '', 'education_level' => '', 'education_year' => '', 'education_aveage' => '', 'certification' => '', 'new_certification' => ''];
+        $this->educationItems[] = ['id' => 0, 'educational_instituation_name_ar' => '', 'educational_instituation_name_en' => '', 'education_specialization_ar' => '', 'education_specialization_en' => '', 'education_level' => '', 'education_year' => '', 'certification' => '', 'new_certification' => ''];
     }
 
     // remove euduction
@@ -314,11 +318,14 @@ class Edit extends Component
         if (count($this->educationItems) > 1) {
             unset($this->educationItems[$index]);
 
-            $education = $this->employeeService->deleteEducation($id);
-            if (!$education) {
-                //  flash()->error(message: __('general.delete_error_message'));
+            if ($id != 0) {
+                unset($this->educationItems[$index]);
+                $education = $this->employeeService->deleteEducation($id);
+                if (!$education) {
+                    flash()->error(message: __('general.delete_error_message'));
+                }
+                flash()->success(message: __('general.delete_success_message'));
             }
-            flash()->success(message: __('general.delete_success_message'));
         }
     }
 

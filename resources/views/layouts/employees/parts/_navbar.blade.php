@@ -120,7 +120,7 @@
                     <i class="icon-bell"></i>
                     <span class="count"></span>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
+                {{-- <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
                     aria-labelledby="notificationDropdown">
                     <a class="dropdown-item py-3 border-bottom">
                         <p class="mb-0 fw-medium float-start">You have 4 new notifications </p>
@@ -135,7 +135,7 @@
                             <p class="fw-light small-text mb-0"> contetn </p>
                         </div>
                     </a>
-                    {{-- <a class="dropdown-item preview-item py-3">
+                    <a class="dropdown-item preview-item py-3">
                         <div class="preview-thumbnail">
                             <i class="mdi mdi-lock-outline m-auto text-primary"></i>
                         </div>
@@ -152,8 +152,8 @@
                             <h6 class="preview-subject fw-normal text-dark mb-1">New user registration</h6>
                             <p class="fw-light small-text mb-0"> 2 days ago </p>
                         </div>
-                    </a> --}}
-                </div>
+                    </a>
+                </div> --}}
             </li>
             <!-- end notifications -->
 
@@ -164,14 +164,14 @@
                     data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="icon-mail icon-lg"></i>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
+                {{-- <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
                     aria-labelledby="countDropdown">
                     <a class="dropdown-item py-3">
                         <p class="mb-0 fw-medium float-start">You have 7 unread mails </p>
                         <span class="badge badge-pill badge-primary float-end">View all</span>
                     </a>
                     <div class="dropdown-divider"></div>
-                    {{-- <a class="dropdown-item preview-item">
+                    <a class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
                             <img src="{!! asset('assets/employees/') !!}/images/faces/face10.jpg" alt="image"
                                 class="img-sm profile-pic">
@@ -190,7 +190,7 @@
                             <p class="preview-subject ellipsis fw-medium text-dark">Name </p>
                             <p class="fw-light small-text mb-0"> Message </p>
                         </div>
-                    </a> --}}
+                    </a>
                     <a class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
                             <img src="{!! asset('assets/employees/') !!}/images/faces/face1.jpg" alt="image"
@@ -201,7 +201,7 @@
                             <p class="fw-light small-text mb-0"> Message </p>
                         </div>
                     </a>
-                </div>
+                </div> --}}
             </li>
             <!-- begin message -->
 
@@ -210,12 +210,11 @@
             <li class="nav-item dropdown     user-dropdown">
                 <a class="nav-link" id="UserDropdown"href="javascript:void(0)" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                    <img class="img-xs rounded-circle" src="{!! asset('assets/employees/') !!}/images/faces/face8.jpg"
-                        alt="Profile image"> </a>
+                    <img class="img-xs rounded-circle" src="{!! asset('uploads/employeesPhotos/' . employee()->user()->photo) !!} " alt="Profile image"> </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                     <div class="dropdown-header text-center">
-                        <img class="img-md rounded-circle" src="{!! asset('assets/employees/') !!}/images/faces/face8.jpg"
-                            alt="Profile image">
+                        <img class="img-md rounded-circle" src="{!! asset('uploads/employeesPhotos/' . employee()->user()->photo) !!}" alt="Profile image"
+                            width="70">
                         <p class="mb-1 mt-3 fw-semibold">{!! employee()->user()->EmployeeShortName() !!}</p>
                         <p class="fw-light text-muted mb-0">{!! employee()->user()->email !!}</p>
                     </div>
