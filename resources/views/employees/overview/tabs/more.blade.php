@@ -166,8 +166,8 @@
                                         <tr>
                                             <th>{!! __('employees.educational_instituation_name') !!}</th>
                                             <th>{!! __('employees.education_specialization') !!}</th>
+                                            <th>{!! __('employees.education_level') !!}</th>
                                             <th>{!! __('employees.education_year') !!}</th>
-                                            <th>{!! __('employees.education_aveage') !!}</th>
                                             <th>{!! __('employees.certification') !!}</th>
 
                                         </tr>
