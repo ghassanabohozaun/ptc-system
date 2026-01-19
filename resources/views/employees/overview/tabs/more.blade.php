@@ -114,7 +114,7 @@
 
                                         <tr>
                                             <td> {!! __('employees.basic_salary') !!} </td>
-                                            <td>{!! $employee->employeeJobDetails->basic_salary ?? '' !!}
+                                            <td>{!! $employee->basic_salary ?? '' !!}
                                                 <span class="text-danger"> {!! $employee->currency ?? '' !!} </span>
                                             </td>
                                         </tr>
