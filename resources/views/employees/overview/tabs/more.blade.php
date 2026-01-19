@@ -6,7 +6,7 @@
 
                 <!--begin::first-->
 
-                <div class="col-lg-3 grid-margin stretch-card">
+                <div class="col-lg-4 grid-margin stretch-card">
                     <div class="card card-rounded">
                         <div class="card-body">
                             <div class="d-sm-flex  ps-2 align-items-start" style="font-weight: 600">
@@ -152,7 +152,7 @@
                 <!--end::secend-->
 
                 <!--begin::third-->
-                <div class="col-lg-5 grid-margin stretch-card">
+                <div class="col-lg-4 grid-margin stretch-card">
                     <div class="card card-rounded">
                         <div class="card-body">
                             <div class="d-sm-flex align-items-start" style="font-weight: 600">
