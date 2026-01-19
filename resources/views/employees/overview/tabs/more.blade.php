@@ -10,7 +10,7 @@
                     <div class="card card-rounded">
                         <div class="card-body">
                             <div class="d-sm-flex  ps-2 align-items-start" style="font-weight: 600">
-                                <i class="fa fa-check-square-o"></i> &nbsp;
+                                <i class="fa fa-check-square-o mt-1"></i> &nbsp;
                                 {!! __('employees.basic') !!}
                             </div>
 
@@ -80,7 +80,7 @@
                     <div class="card card-rounded">
                         <div class="card-body">
                             <div class="d-sm-flex align-items-start" style="font-weight: 600">
-                                <i class="fa fa-check-square-o"></i> &nbsp;
+                                <i class="fa fa-check-square-o mt-1"></i> &nbsp;
                                 {!! __('employees.job_details') !!}
                             </div>
 
@@ -156,7 +156,7 @@
                     <div class="card card-rounded">
                         <div class="card-body">
                             <div class="d-sm-flex align-items-start" style="font-weight: 600">
-                                <i class="fa fa-check-square-o"></i> &nbsp;
+                                <i class="fa fa-check-square-o mt-1"></i> &nbsp;
                                 {!! __('employees.education') !!}
                             </div>
 
