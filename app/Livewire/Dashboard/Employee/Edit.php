@@ -242,8 +242,8 @@ class Edit extends Component
     {
         $data = [
             'title' => ['required', 'string', 'min:3'],
-            'appointment_date' => ['required', 'date'],
-            'contact_expire_date' => ['required', 'date'],
+            // 'appointment_date' => ['required', 'date'],
+            // 'contact_expire_date' => ['required', 'date'],
             'employment_type' => ['required'],
             'employee_status_id' => ['required', 'exists:employee_statuses,id'],
             'department_id' => ['required', 'exists:departments,id'],
@@ -255,8 +255,8 @@ class Edit extends Component
 
         $jobDetailsData = [
             'title' => $this->title,
-            'appointment_date' => $this->appointment_date,
-            'contact_expire_date' => $this->contact_expire_date,
+            'appointment_date' => $this->appointment_date ?? null,
+            'contact_expire_date' => $this->contact_expire_date ?? null,
             'employment_type' => $this->employment_type,
             'employee_status_id' => $this->employee_status_id,
             'department_id' => $this->department_id,

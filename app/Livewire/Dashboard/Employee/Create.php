@@ -224,8 +224,8 @@ class Create extends Component
     {
         $data = [
             'title' => ['required', 'string', 'min:3'],
-            'appointment_date' => ['required', 'date'],
-            'contact_expire_date' => ['required', 'date'],
+            // 'appointment_date' => ['required', 'date'],
+            // 'contact_expire_date' => ['required', 'date'],
             'employment_type' => ['required'],
             'employee_status_id' => ['required', 'exists:employee_statuses,id'],
             'department_id' => ['required', 'exists:departments,id'],

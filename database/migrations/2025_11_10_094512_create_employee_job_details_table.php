@@ -12,9 +12,9 @@ return new class extends Migration {
     {
         Schema::create('employee_job_details', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->date('appointment_date');
-            $table->date('contact_expire_date');
+            $table->string('title')->nullable();
+            $table->date('appointment_date')->nullable();
+            $table->date('contact_expire_date')->nullable();
             $table->enum('employment_type', ['full_time', 'part_time', 'contract']);
             $table->string('supervisor')->nullable();
             $table->boolean('submit_monthly_report')->default(0);
