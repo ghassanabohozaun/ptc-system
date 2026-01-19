@@ -141,7 +141,7 @@
                                         </tr>
                                         <tr>
                                             <td> {!! __('employees.supervisor') !!} </td>
-                                            <td>{!! $employee->employeeJobDetails->supervisor->name ?? '' !!}</td>
+                                            <td>{!! $employee->employeeJobDetails->supervisor ?? '' !!}</td>
                                         </tr>
                                     </tbody>
                                 </table>
