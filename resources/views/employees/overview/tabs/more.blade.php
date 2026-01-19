@@ -176,8 +176,8 @@
                                         @forelse ($employee->employeeEducation as $key=> $item)
                                             <tr class="text-center">
                                                 <td class="col-lg-3">{!! $item->educational_instituation_name !!}</td>
-                                                <td class="col-lg-2"> {!! $item->EmployeEducationSpecialization() !!}</td>
-                                                <td class="col-lg-2"> {!! $item->education_level !!}</td>
+                                                <td class="col-lg-2"> {!! $item->education_specialization !!}</td>
+                                                <td class="col-lg-2"> {!! $item->EmployeEducationLevel() !!}</td>
                                                 <td class="col-lg-2"> {!! $item->education_year !!}</td>
                                                 <td class="col-lg-2">
                                                     <div class="position-relative d-inline-block mt-1 mb-2">

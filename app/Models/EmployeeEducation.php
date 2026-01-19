@@ -15,22 +15,22 @@ class EmployeeEducation extends Model
 
     public array $translatable = ['educational_instituation_name', 'education_specialization'];
 
-    // employee education specialization function
-    public function EmployeEducationSpecialization()
+    // employee education level function
+    public function EmployeEducationLevel()
     {
-        if ($this->education_specialization == 'phd') {
+        if ($this->education_level == 'phd') {
             return __('employees.phd');
-        } else if ($this->education_specialization == 'masters') {
+        } else if ($this->education_level == 'masters') {
             return __('employees.masters');
-        }else if ($this->education_specialization == 'university') {
+        }else if ($this->education_level == 'university') {
             return __('employees.university');
-        }else if ($this->education_specialization == 'deplom') {
+        }else if ($this->education_level == 'deplom') {
             return __('employees.deplom');
-        }else if ($this->education_specialization == 'preparatory') {
+        }else if ($this->education_level == 'preparatory') {
             return __('employees.preparatory');
-        }else if ($this->education_specialization == 'secondary') {
+        }else if ($this->education_level == 'secondary') {
             return __('employees.secondary');
-        }else if ($this->education_specialization == 'etc') {
+        }else if ($this->education_level == 'etc') {
             return __('employees.etc');
         }
     }
