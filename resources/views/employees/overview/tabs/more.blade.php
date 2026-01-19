@@ -48,7 +48,7 @@
                                         </tr>
 
                                         <tr>
-                                            <td> {!! __('employees.governorate_id') !!} </td>
+                                            <td> {!! __('employees.governoate_id') !!} </td>
                                             <td>{!! $employee->governorate->name !!}</td>
                                         </tr>
 
@@ -165,7 +165,7 @@
                                     <thead>
                                         <tr>
                                             <th>{!! __('employees.educational_instituation_name') !!}</th>
-                                            <th>{!! __('employees.education_level') !!}</th>
+                                            <th>{!! __('employees.education_specialization') !!}</th>
                                             <th>{!! __('employees.education_year') !!}</th>
                                             <th>{!! __('employees.education_aveage') !!}</th>
                                             <th>{!! __('employees.certification') !!}</th>
@@ -176,9 +176,9 @@
                                         @forelse ($employee->employeeEducation as $key=> $item)
                                             <tr class="text-center">
                                                 <td class="col-lg-3">{!! $item->educational_instituation_name !!}</td>
+                                                <td class="col-lg-2"> {!! $item->education_specialization !!}</td>
                                                 <td class="col-lg-2"> {!! $item->education_level !!}</td>
                                                 <td class="col-lg-2"> {!! $item->education_year !!}</td>
-                                                <td class="col-lg-2"> {!! $item->education_aveage !!}</td>
                                                 <td class="col-lg-2">
                                                     <div class="position-relative d-inline-block mt-1 mb-2">
                                                         @if ($item->certification)
