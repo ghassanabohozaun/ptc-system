@@ -30,6 +30,7 @@ return [
     'GBP' => 'GBP',
     'uploading' => 'Uploading ..',
     'save' => 'Save',
+
     'phd' => 'PhD',
     'masters' => 'Masters',
     'university' => 'University',
@@ -37,6 +38,7 @@ return [
     'preparatory' => 'Preparatory',
     'secondary' => 'Secondary',
     'etc' => 'etc',
+    
     'full_time' => 'Full Time',
     'part_time' => 'Part Time',
     'contract' => 'Contact',
