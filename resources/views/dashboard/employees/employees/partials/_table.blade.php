@@ -27,6 +27,7 @@
                             <th>{!! __('employees.full_name') !!}</th>
                             <th>{!! __('employees.personal_id') !!}</th>
                             <th>{!! __('employees.title') !!}</th>
+                            <th>{!! __('employees.department_id') !!}</th>
                             <th>{!! __('employees.gender') !!}</th>
                             <th>{!! __('employees.basic_salary') !!} </th>
                             <th>{!! __('employees.bank_name') !!}</th>
@@ -41,7 +42,7 @@
                                 <td>{!! $employee->EmployeeShortName() !!}</td>
                                 <td>{!! $employee->personal_id !!}</td>
                                 <td>{!! $employee->employeeJobDetails->title ?? '' !!}</td>
-
+                                <td>{!! $employee->employeeJobDetails->department->name ?? '' !!}</td>
                                 <td>{!! $employee->EmployeeGender() !!}</td>
                                 <td>{!! $employee->basic_salary !!}
                                     <span class="text-success">{!! $employee->currency !!}</span>
