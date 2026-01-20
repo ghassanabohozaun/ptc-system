@@ -41,6 +41,14 @@ class EmployeeRepository
         return Employee::latest()->active()->get();
     }
 
+       // get active employees
+    public function getEmployeesWhoSendReports()
+    {
+        return Employee::whereHas('employeeJobDetails', function ($query) {
+            $query->where('submit_monthly_report', 1);
+        })->get();
+    }
+
     //  sotre employee
     public function storeEmployee($data)
     {

@@ -56,7 +56,7 @@ class DashboardController extends Controller
             }
 
             // get active employees
-            $employees = $this->employeeService->getActive();
+            $employees = $this->employeeService->getEmployeesWhoSendReports();
 
             // map employees collection
             $employees = $employees->map(function ($item) use ($month, $year) {

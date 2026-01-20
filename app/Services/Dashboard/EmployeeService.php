@@ -39,6 +39,11 @@ class EmployeeService
         return $this->employeeRepository->getEmployees();
     }
 
+    // get employees who send reports
+    public function getEmployeesWhoSendReports(){
+        return $this->employeeRepository->getEmployeesWhoSendReports();
+    }
+
     // get active employees
     public function getActive()
     {
