@@ -42,7 +42,7 @@
                                 <td>{!! $employee->EmployeeShortName() !!}</td>
                                 <td>{!! $employee->personal_id !!}</td>
                                 <td>{!! $employee->employeeJobDetails->title ?? '' !!}</td>
-                                <td>{!! $employee->employeeJobDetails->department->getTranslation('name', Lang()) ?? '' !!}</td>
+                                <td>{!! $employee->employeeJobDetails->department->name ?? '' !!}</td>
                                 <td>{!! $employee->EmployeeGender() !!}</td>
                                 <td>{!! $employee->basic_salary !!}
                                     <span class="text-success">{!! $employee->currency !!}</span>
