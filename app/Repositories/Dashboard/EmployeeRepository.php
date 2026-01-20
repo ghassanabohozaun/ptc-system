@@ -46,7 +46,7 @@ class EmployeeRepository
     {
         return Employee::whereHas('employeeJobDetails', function ($query) {
             $query->where('submit_monthly_report', 1);
-        })->get();
+        })->active()->get();
     }
 
     //  sotre employee
