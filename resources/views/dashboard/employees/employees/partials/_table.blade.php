@@ -39,7 +39,7 @@
                             <tr>
                                 <td>{!! $loop->iteration !!}</td>
                                 <td>{!! $employee->EmployeeShortName() !!}</td>
-                                <td>{!! $employee->employeeJobDetails->department()->name !!}</td>
+                                <td>{!! $employee->employeeJobDetails->department_id !!}</td>
                                 <th>{!! __('employees.personal_id') !!}</th>
                                 <td>{!! $employee->EmployeeGender() !!}</td>
                                 <td>{!! $employee->basic_salary !!}
