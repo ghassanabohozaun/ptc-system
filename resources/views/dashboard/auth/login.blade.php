@@ -81,7 +81,7 @@
                                             </fieldset>
 
                                             {{-- NoCaptcha --}}
-                                            <fieldset class="form-group position-relative">
+                                            {{-- <fieldset class="form-group position-relative">
                                                 <div style="display: flex ; justify-content: center;">
                                                     {!! NoCaptcha::display() !!}
                                                 </div>
@@ -91,7 +91,7 @@
                                                         <strong class="text-danger"> {!! $message !!}</strong>
                                                     @enderror
                                                 </div>
-                                            </fieldset>
+                                            </fieldset> --}}
 
 
                                             <div class="form-group row">
