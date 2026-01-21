@@ -24,7 +24,7 @@
                             <td>@include('employees.monthly-reports.parts.status')</td>
                             <td>{!! $monthlyReport->details !!}</td>
                             @if ($monthlyReport->status == 'initial_refuse' || $monthlyReport->status == 'final_refuse')
-                                <td>@include('employees.monthly-reports.parts.refuse-reason')</td>
+                                <td>{!! $monthlyReport->refuse_reason !!}</td>
                             @else
                                 <td></td>
                             @endif
