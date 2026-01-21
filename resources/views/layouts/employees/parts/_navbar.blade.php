@@ -10,7 +10,7 @@
                 <a class="navbar-brand brand-logo" href="{!! route('employees.overview') !!}">
                     <img src="{!! asset('uploads/settings/' . setting()->logo) !!}" alt="logo" />
                 </a>
-                <a class="navbar-brand brand-logo-mini" href="index.html">
+                <a class="navbar-brand brand-logo-mini" href="{!! route('employees.overview') !!}">
                     <img src="{!! asset('uploads/settings/' . setting()->logo) !!}" alt="logo" />
                 </a>
             @endif
