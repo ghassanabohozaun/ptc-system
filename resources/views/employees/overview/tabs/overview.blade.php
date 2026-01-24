@@ -3,7 +3,7 @@
     <!-- begin: row -->
     <div class="row">
         <!-- begin: col-lg-6 -->
-        <div class="col-lg-6 d-flex flex-column">
+        <div class="col-lg-12 d-flex flex-column">
             <div class="row flex-grow">
                 <div class="col-12 grid-margin stretch-card">
                     <div class="card card-rounded">
@@ -59,7 +59,7 @@
         <!-- end: col-lg-8 -->
 
         <!-- begin: col-lg-6 -->
-        <div class="col-lg-6 d-flex flex-column">
+        {{-- <div class="col-lg-6 d-flex flex-column">
             <div class="row flex-grow">
                 <div class="col-12 grid-margin stretch-card">
                     <div class="card card-rounded">
@@ -123,7 +123,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- end: col-lg-8 -->
 
 
