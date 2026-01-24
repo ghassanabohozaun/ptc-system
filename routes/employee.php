@@ -18,7 +18,6 @@ Route::group(
     function () {
         ###################################### Auth  ##################################################################
         Route::get('login', [AuthController::class, 'getLogin'])->name('get.login');
-        Route::post('login', [AuthController::class, 'postLogin'])->name('post.login');
         Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
         ########################################### Livewire routes ################################################################
@@ -29,6 +28,9 @@ Route::group(
 
         ########################################### employees routes  ######################################################################
         Route::group(['middleware' => 'auth:employee'], function () {
+
+            Route::post('login', [AuthController::class, 'postLogin'])->name('post.login');
+
             ########################################### overview routes  ######################################################################
             Route::get('/overview', [OverviewController::class, 'index'])->name('overview');
             Route::post('/overview/change/password', [OverviewController::class, 'changeEmployeePassword'])->name('overview.change.password');
