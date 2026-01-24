@@ -43,7 +43,7 @@ return Application::configure(basePath: dirname(__DIR__))
             if (Auth::guard('admin')->check()) {
                 return route('dashboard.index');
             } elseif (Auth::guard('employees')->check()) {
-                return route('employees.employees.show', employee()->user()->id);
+                return route('employees.overview');
             } else {
                 return route('welcome');
             }
