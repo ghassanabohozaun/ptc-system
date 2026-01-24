@@ -26,13 +26,11 @@
                                             <th>{!! __('monthlyReports.status') !!}</th>
                                             <th>{!! __('monthlyReports.refuse_reason') !!}</th>
                                             <th style="width:20%"> {!! __('monthlyReports.details') !!} </th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @forelse ($monthlyReports as $monthlyReport)
                                             <tr>
-
                                                 <td> {!! $monthlyReport->month !!}</td>
                                                 <td> @include('employees.monthly-reports.parts.file') </td>
                                                 <td> @include('employees.monthly-reports.parts.status')</td>
@@ -42,7 +40,6 @@
                                                     <td></td>
                                                 @endif
                                                 <td>{!! $monthlyReport->details !!}</td>
-
                                             </tr>
                                         @empty
                                             <tr>
@@ -51,7 +48,6 @@
                                                 </td>
                                             </tr>
                                         @endforelse
-
                                     </tbody>
                                 </table>
                             </div>
