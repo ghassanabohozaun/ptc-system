@@ -25,6 +25,8 @@
                                             <th>{!! __('monthlyReports.file') !!}</th>
                                             <th>{!! __('monthlyReports.status') !!}</th>
                                             <th>{!! __('monthlyReports.refuse_reason') !!}</th>
+                                            <th style="width:20%"> {!! __('monthlyReports.details') !!} </th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -39,6 +41,8 @@
                                                 @else
                                                     <td></td>
                                                 @endif
+                                                <td>{!! $monthlyReport->details !!}</td>
+
                                             </tr>
                                         @empty
                                             <tr>
