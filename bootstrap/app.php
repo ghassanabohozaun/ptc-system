@@ -27,9 +27,7 @@ return Application::configure(basePath: dirname(__DIR__))
         },
     )
     ->withMiddleware(function (Middleware $middleware) {
-
         $middleware->append(\App\Http\Middleware\PreventBackHistory::class);
-
 
         // redirect if not auth
         $middleware->redirectGuestsTo(function () {
@@ -46,11 +44,11 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->redirectUsersTo(function () {
             if (Auth::guard('admin')->check()) {
                 return route('dashboard.index');
-            } elseif (Auth::guard('employees')->check()) {
-                return route('employees.overview');
-            } else {
-                return route('welcome');
             }
+            if (Auth::guard('employees')->check()) {
+                return route('employees.overview');
+            }
+            return route('welcome');
         });
 
         $middleware->alias([
