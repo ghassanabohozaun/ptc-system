@@ -8,13 +8,13 @@
                 <span class="menu-title">{!! __('dashboard.dashboard') !!}</span>
             </a>
         </li>
-
+{{--
         <li class="nav-item">
             <a class="nav-link" href="{{ route('employees.dailyReports.index') }}">
                 <i class="menu-icon fa fa-bookmark"></i>
                 <span class="menu-title">{!! __('dashboard.daily_reports') !!}</span>
             </a>
-        </li>
+        </li> --}}
 
         <li class="nav-item">
             <a class="nav-link" href="{{ route('employees.monthlyReports.index') }}">
