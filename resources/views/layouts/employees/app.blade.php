@@ -138,6 +138,14 @@
         });
     </script>
 
+    <script>
+        window.addEventListener("pageshow", function(event) {
+            if (event.persisted) {
+                window.location.href = "{{ route('employees.logout') }}";
+            }
+        });
+    </script>
+
     @stack('scripts')
 </body>
 
