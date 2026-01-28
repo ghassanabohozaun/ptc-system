@@ -255,7 +255,6 @@
                         $('.admin_status_' + data.data.id).addClass('badge-danger');
                         $('.admin_status_' + data.data.id).text("{!! __('general.disabled') !!}");
                     }
-
                     if (data.status === true) {
                         flasher.success("{!! __('general.change_status_success_message') !!}");
                     } else {
