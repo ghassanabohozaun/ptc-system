@@ -70,6 +70,7 @@
                                     <div class="form-group">
                                         <label for="currency">{!! __('monthlyReports.status') !!}</label>
                                         <select id="status_edit" name="status" class="form-control">
+                                            <option value="" selected>{!! __('employees.select_from_list') !!}</option>
                                             {{-- <option value="new">{!! __('monthlyReports.new') !!}</option> --}}
                                             @if (admin()->user()->role->getTranslation('role', 'en') == 'SEO')
                                                 <option value="initial_review">{!! __('monthlyReports.initial_review') !!}</option>
