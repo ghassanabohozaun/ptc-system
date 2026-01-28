@@ -43,20 +43,19 @@ class Admin extends Authenticatable
         return $this->hasMany(Salary::class, 'admin_id');
     }
 
-     // accsessores
-    public function getStatusAttribute($status)
-    {
-        return $status == 1 ? 'on' : '';
-    }
+    // accsessores
+    // public function getStatusAttribute($status)
+    // {
+    //     return $status == 1 ? 'on' : '';
+    // }
 
-     public function getCreatedAtAttribute($value)
+    public function getCreatedAtAttribute($value)
     {
         if (request()->wantsJson()) {
             return $value;
         }
         return Carbon::parse($value)->format('d/m/Y h:i A');
     }
-
 
     // has ability permission
     public function hasAbility($permissions)

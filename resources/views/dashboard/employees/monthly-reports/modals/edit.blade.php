@@ -62,6 +62,7 @@
                             </div>
                             <!-- end: row -->
 
+
                             <!-- begin: row -->
                             <div class="row">
                                 <!-- begin: input -->
@@ -70,12 +71,16 @@
                                         <label for="currency">{!! __('monthlyReports.status') !!}</label>
                                         <select id="status_edit" name="status" class="form-control">
                                             <option value="new">{!! __('monthlyReports.new') !!}</option>
-                                            <option value="initial_review">{!! __('monthlyReports.initial_review') !!}</option>
-                                            <option value="initial_refuse">{!! __('monthlyReports.initial_refuse') !!}</option>
-                                            <option value="intital_approved">{!! __('monthlyReports.intital_approved') !!}</option>
-                                            <option value="final_review">{!! __('monthlyReports.final_review') !!}</option>
-                                            <option value="final_refuse">{!! __('monthlyReports.final_refuse') !!}</option>
-                                            <option value="approved">{!! __('monthlyReports.approved') !!}</option>
+                                            @if (admin()->user()->role->getTranslation('role', 'en') == 'SEO')
+                                                <option value="initial_review">{!! __('monthlyReports.initial_review') !!}</option>
+                                                <option value="initial_refuse">{!! __('monthlyReports.initial_refuse') !!}</option>
+                                                <option value="intital_approved">{!! __('monthlyReports.intital_approved') !!}</option>
+                                            @endif
+                                            @if (admin()->user()->role->getTranslation('role', 'en') == 'Manger')
+                                                <option value="final_review">{!! __('monthlyReports.final_review') !!}</option>
+                                                <option value="final_refuse">{!! __('monthlyReports.final_refuse') !!}</option>
+                                                <option value="approved">{!! __('monthlyReports.approved') !!}</option>
+                                            @endif
                                         </select>
                                         <span class="text text-danger">
                                             <strong id="status_error_edit"></strong>

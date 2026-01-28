@@ -23,7 +23,6 @@
 
                     <div class="row">
 
-
                         <!-- begin: input -->
                         <div class="form-group col-md-3">
                             <label for="employee_id">{!! __('dailyReports.employee_id') !!}</label>
@@ -40,7 +39,6 @@
                                 id="personal_id">
                         </div>
                         <!-- end: input -->
-
 
                     </div>
                     <div class="form-actions" style="margin-top: -8px">
