@@ -101,17 +101,14 @@
                     console.log(data);
                     return {
                         results: $.map(data, function(item) {
-                            if ('{!! Lang() !!}' === 'en') {
-                                return {
-                                    text: item.employee_en,
-                                    id: item.id
-                                }
-                            } else {
-                                return {
-                                    text: item.employee_ar,
-                                    id: item.id
-                                }
+
+                            return {
+                                text: "{{ app()->getLocale() }}" === 'en' ? item.employee_en : item
+                                    .employee_ar,
+
+                                id: item.id,
                             }
+
                         })
                     };
                 },

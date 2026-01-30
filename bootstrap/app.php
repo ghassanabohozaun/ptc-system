@@ -28,8 +28,6 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
 
-        $middleware->append(\App\Http\Middleware\PreventBackHistory::class);
-
         // redirect if not auth
         $middleware->redirectGuestsTo(function () {
             if (request()->is('*/dashboard/*')) {

@@ -41,12 +41,14 @@ class EmployeeRepository
         return Employee::latest()->active()->get();
     }
 
-       // get active employees
+    // get active employees
     public function getEmployeesWhoSendReports()
     {
         return Employee::whereHas('employeeJobDetails', function ($query) {
             $query->where('submit_monthly_report', 1);
-        })->active()->get();
+        })
+            ->active()
+            ->get();
     }
 
     //  sotre employee
@@ -78,9 +80,23 @@ class EmployeeRepository
     // autocomplete employee
     public function autocompleteEmployee($searchValue)
     {
-        return Employee::select('first_name->en as employee_en', 'first_name->ar as employee_ar', 'id')
-            ->where('first_name->en', 'LIKE', '%' . $searchValue . '%')
-            ->orWhere('first_name->ar', 'LIKE', '%' . $searchValue . '%')
+        // return Employee::select('first_name->en as employee_en', 'first_name->ar as employee_ar', 'id')
+        //     ->where('first_name->en', 'LIKE', '%' . $searchValue . '%')
+        //     ->orWhere('first_name->ar', 'LIKE', '%' . $searchValue . '%')
+        //     ->get();
+
+        return Employee::selectRaw(
+            "
+        CONCAT(first_name->>'$.en', ' ', family_name->>'$.en') AS employee_en,
+        CONCAT(first_name->>'$.ar', ' ', family_name->>'$.ar') AS employee_ar,
+        id
+    ",
+        )
+            ->where('first_name->en', 'LIKE', "%{$searchValue}%")
+            ->orWhere('first_name->ar', 'LIKE', "%{$searchValue}%")
+            ->orWhere('family_name->en', 'LIKE', "%{$searchValue}%")
+            ->orWhere('family_name->ar', 'LIKE', "%{$searchValue}%")
+            ->limit(20)
             ->get();
     }
 
