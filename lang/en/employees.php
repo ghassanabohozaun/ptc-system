@@ -189,4 +189,5 @@ return [
 
     // export
     'employees_reports' => 'Employees Reports',
+    'employees_export'=>'Employees Export',
 ];

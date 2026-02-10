@@ -187,5 +187,6 @@ return [
     'change_password' => 'تغير كلمة المرور',
 
     // export
-    'employees_export' => 'تقارير الموظفين',
+    'employees_reports' => 'تقارير الموظفين',
+    'employees_export' => 'تصدير الموظفين',
 ];

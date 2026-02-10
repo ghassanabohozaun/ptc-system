@@ -184,7 +184,7 @@
                             <!-- begin: employees export -->
                             <li class="@if (Request::routeIs('dashboard.employees.reports.*')) active @endif">
                                 <a class="menu-item" href="{!! route('dashboard.employees.reports.show') !!}" data-i18n="nav.dash.employees_export">
-                                    {!! __('employees.reports') !!}
+                                    {!! __('employees.employees_export') !!}
                                 </a>
                             </li>
                             <!-- end: employees export-->
