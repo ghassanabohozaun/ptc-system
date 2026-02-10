@@ -87,15 +87,20 @@ class EmployeeRepository
 
         return Employee::selectRaw(
             "
-        CONCAT(first_name->>'$.en', ' ', family_name->>'$.en') AS employee_en,
-        CONCAT(first_name->>'$.ar', ' ', family_name->>'$.ar') AS employee_ar,
+        CONCAT(JSON_VALUE(first_name, '$.en'), ' ', JSON_VALUE(family_name, '$.en')) AS employee_en,
+        CONCAT(JSON_VALUE(first_name, '$.ar'), ' ', JSON_VALUE(family_name, '$.ar')) AS employee_ar,
         id
     ",
         )
-            ->where('first_name->en', 'LIKE', "%{$searchValue}%")
-            ->orWhere('first_name->ar', 'LIKE', "%{$searchValue}%")
-            ->orWhere('family_name->en', 'LIKE', "%{$searchValue}%")
-            ->orWhere('family_name->ar', 'LIKE', "%{$searchValue}%")
+            ->where(function ($query) use ($searchValue) {
+                $term = "%{$searchValue}%";
+                // Use whereRaw to ensure MariaDB's JSON_VALUE or ->> is used correctly
+                $query
+                    ->whereRaw("JSON_VALUE(first_name, '$.en') LIKE ?", [$term])
+                    ->orWhereRaw("JSON_VALUE(first_name, '$.ar') LIKE ?", [$term])
+                    ->orWhereRaw("JSON_VALUE(family_name, '$.en') LIKE ?", [$term])
+                    ->orWhereRaw("JSON_VALUE(family_name, '$.ar') LIKE ?", [$term]);
+            })
             ->limit(20)
             ->get();
     }
