@@ -18,7 +18,7 @@
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-top">
         <ul class="navbar-nav">
-            <li class="nav-item fw-semibold  d-lg-block ms-0">
+            <li class="nav-item fw-semibold d-none d-lg-block ms-0">
                 <h5 class="welcome-text">{!! greeting() !!}, <span
                         class="text-black fw-bold">{!! employee()->user()->EmployeeShortName() !!}</span>
                 </h5>
