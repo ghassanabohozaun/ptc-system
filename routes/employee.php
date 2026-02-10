@@ -45,6 +45,7 @@ Route::group(
             ########################################### monthly reports routes  ######################################################################
             Route::resource('monthlyReports', MonthlyReportsController::class);
             Route::post('/monthlyReports/destroy', [MonthlyReportsController::class, 'destroy'])->name('monthly.reports.destroy');
+
             Route::get('/monthlyReports/status/{id?}', [MonthlyReportsController::class, 'changeStatus'])->name('monthly.reports.change.status');
 
             ########################################### messages routes ######################################################################
