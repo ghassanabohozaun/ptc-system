@@ -2,20 +2,12 @@
     <script src="{!! asset('assets/dashbaord') !!}/vendors/js/vendors.min.js" type="text/javascript"></script>
     <script src="{!! asset('assets/dashbaord') !!}/vendors/js/extensions/sweetalert.min.js" type="text/javascript"></script>
 
-    <!-- BEGIN BOOTSTRAP DATEPICKER -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js">
-    </script>
-    @if (Lang() == 'ar')
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/locales/bootstrap-datepicker.ar.min.js">
-        </script>
-    @endif
-    <!-- END BOOTSTRAP DATEPICKER -->
     <!-- BEGIN PAGE VENDOR JS-->
-    {{-- <script src="{!! asset('assets/dashbaord') !!}/vendors/js/charts/chartist.min.js" type="text/javascript"></script> --}}
-    {{-- <script src="{!! asset('assets/dashbaord') !!}/vendors/js/charts/chartist-plugin-tooltip.min.js" type="text/javascript"></script>
-    <script src="{!! asset('assets/dashbaord') !!}/vendors/js/charts/raphael-min.js" type="text/javascript"></script>
-    <script src="{!! asset('assets/dashbaord') !!}/vendors/js/charts/morris.min.js" type="text/javascript"></script>
-    <script src="{!! asset('assets/dashbaord') !!}/vendors/js/timeline/horizontal-timeline.js" type="text/javascript"></script> --}}
+    <script src="{!! asset('assets/dashbaord/vendors/js/charts/chartist.min.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('assets/dashbaord/vendors/js/charts/chartist-plugin-tooltip.min.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('assets/dashbaord/vendors/js/charts/raphael-min.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('assets/dashbaord/vendors/js/charts/morris.min.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('assets/dashbaord/vendors/js/timeline/horizontal-timeline.js') !!}" type="text/javascript"></script>
     <!-- END PAGE VENDOR JS-->
     <!-- BEGIN MODERN JS-->
     <script src="{!! asset('assets/dashbaord') !!}/js/core/app-menu.js" type="text/javascript"></script>
@@ -23,7 +15,7 @@
     <script src="{!! asset('assets/dashbaord') !!}/js/scripts/customizer.js" type="text/javascript"></script>
     <!-- END MODERN JS-->
     <!-- BEGIN PAGE LEVEL JS-->
-    <script src="{!! asset('assets/dashbaord') !!}/js/scripts/pages/dashboard-ecommerce.js" type="text/javascript"></script>
+    <script src="{!! asset('assets/dashbaord/js/scripts/pages/dashboard-ecommerce.js') !!}" type="text/javascript"></script>
     {{-- <script src="{!! asset('assets/dashbaord') !!}/js/scripts/sweetalert2@11.js" type="text/javascript"></script> --}}
 
     <!-- BEGIN PAGE LEVEL JS-->
@@ -32,8 +24,6 @@
     <script src="{!! asset('vendor/flasher/flasher.min.js') !!}" type="text/javascript"></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
     <script src="{!! asset('vendor/summernote/summernote.js') !!}"></script>
-
-
 
 
     {{--  file input --}}
