@@ -22,7 +22,7 @@
                 <h5 class="welcome-text">{!! greeting() !!}, <span
                         class="text-black fw-bold">{!! employee()->user()->EmployeeShortName() !!}</span>
                 </h5>
-                <h3 class="welcome-sub-text">Your performance summary this week </h3>
+                <h3 class="welcome-sub-text">{!! __('general.your_performance_summary_this_week') !!} </h3>
             </li>
         </ul>
 

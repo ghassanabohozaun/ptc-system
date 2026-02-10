@@ -22,6 +22,7 @@ return [
     'good_afternoon' => 'طاب مساؤك',
     'good_evening' => 'مساء الخير',
     'good_night' => 'تصبح على خير',
+    'your_performance_summary_this_week'=>'ملخص أدائك هذا الأسبوع',
 
     'first' => 'الأول',
     'prev' => 'السابق',

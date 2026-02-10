@@ -21,6 +21,7 @@ return [
     'good_afternoon' => 'Good Afternoon',
     'good_evening' => 'Good Evening',
     'good_night' => 'Good Night',
+    'your_performance_summary_this_week'=>'Your performance summary this week',
 
     'prev' => 'Previous',
     'more' => 'More pages',
