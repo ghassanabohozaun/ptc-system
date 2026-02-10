@@ -100,13 +100,16 @@ class MonthlyReportsController extends Controller
         return response()->json(['status' => true, 'data' => $monthlyReport], 200);
     }
 
+
     // destroy
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        $monthlyReport = $this->monthlyReportService->destroy($id);
+        $monthlyReport = $this->monthlyReportService->destroy($request->id);
         if (!$monthlyReport) {
             return response()->json(['status' => false], 500);
         }
         return response()->json(['status' => true, 'data' => $monthlyReport], 200);
     }
+
+
 }

@@ -10,11 +10,10 @@
 
 
     {{-- delete --}}
-    <a href="javascript:void(0)" class="delete-confirm btn btn-outline-danger btn-fw text-dark!!} "
-        data-id="{!! $monthlyReport->id !!}" data-route="{!! route('employees.monthly.reports.destroy') !!}" data-title="{!! __('general.ask_delete_record') !!}"
-        data-text="{!! __('general.delete_warning_text') !!}" data-confirm-btn="{!! __('general.yes') !!}"
-        data-cancel-btn="{!! __('general.no') !!}" data-success-title="{!! __('general.deleted') !!}"
-        data-success-text="{!! __('general.delete_success_message') !!}">
+    <a href="#" class="delete-confirm btn btn-outline-danger btn-fw text-dark!!} " data-id="{!! $monthlyReport->id !!}"
+        data-route="{!! route('employees.monthly.reports.destroy') !!}" data-title="{!! __('general.ask_delete_record') !!}" data-text="{!! __('general.delete_warning_text') !!}"
+        data-confirm-btn="{!! __('general.yes') !!}" data-cancel-btn="{!! __('general.no') !!}"
+        data-success-title="{!! __('general.deleted') !!}" data-success-text="{!! __('general.delete_success_message') !!}">
         <i class="fa fa-trash"></i>
     </a>
 
