@@ -84,7 +84,9 @@
     @livewireStyles
 </head>
 
-<body class="{!! Lang() == 'en' ? 'with-welcome-text' : 'rtl' !!}">
+
+<body class="with-welcome-text {!! Lang() == 'ar' ? 'rtl' : '' !!}">
+
     <div class="container-scroller">
 
         <!-- _navbar -->
