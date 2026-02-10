@@ -185,4 +185,7 @@ return [
 
     // dashboard
     'change_password' => 'تغير كلمة المرور',
+
+    // export
+    'employees_export' => 'تقارير الموظفين',
 ];

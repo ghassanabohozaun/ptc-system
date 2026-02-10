@@ -65,6 +65,17 @@ class MonthlyReportService
             if (!$monthlyReport) {
                 return 'error';
             }
+
+            // notify
+            $admins = \App\Models\Admin::all();
+            \Illuminate\Support\Facades\Notification::send($admins, new \App\Notifications\NewMonthlyReportNotification($monthlyReport));
+
+            // notify employee
+            $employee = \App\Models\Employee::find($data['employee_id']);
+            if ($employee) {
+                $employee->notify(new \App\Notifications\NewMonthlyReportNotification($monthlyReport));
+            }
+
             return 'added';
         } else {
             return 'exists';

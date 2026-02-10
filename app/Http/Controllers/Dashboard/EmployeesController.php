@@ -104,9 +104,9 @@ class EmployeesController extends Controller
     }
 
     // destroy
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        $employee = $this->employeeService->destroy($id);
+        $employee = $this->employeeService->destroy($request->id);
         if (!$employee) {
             return response()->json(['status' => false], 500);
         }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Employees\Auth\AuthController;
 use App\Http\Controllers\Employees\DailyReportsController;
 use App\Http\Controllers\Employees\EmployeesController;
+use App\Http\Controllers\Employees\MessagesController;
 use App\Http\Controllers\Employees\MonthlyReportsController;
 use App\Http\Controllers\Employees\OverviewController;
 use Illuminate\Support\Facades\Route;
@@ -38,11 +39,16 @@ Route::group(
 
             ########################################### daily reports routes  ######################################################################
             Route::resource('dailyReports', DailyReportsController::class);
+            Route::post('/dailyReports/destroy', [DailyReportsController::class, 'destroy'])->name('daily.reports.destroy');
             Route::get('/dailyReports/status/{id?}', [DailyReportsController::class, 'changeStatus'])->name('daliy.reports.change.status');
 
             ########################################### monthly reports routes  ######################################################################
             Route::resource('monthlyReports', MonthlyReportsController::class);
+            Route::post('/monthlyReports/destroy', [MonthlyReportsController::class, 'destroy'])->name('monthly.reports.destroy');
             Route::get('/monthlyReports/status/{id?}', [MonthlyReportsController::class, 'changeStatus'])->name('monthly.reports.change.status');
+
+            ########################################### messages routes ######################################################################
+            Route::get('/messages', [MessagesController::class, 'index'])->name('messages.index');
         });
     },
 );

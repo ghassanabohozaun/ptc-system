@@ -8,7 +8,7 @@
                 <span class="menu-title">{!! __('dashboard.dashboard') !!}</span>
             </a>
         </li>
-{{--
+        {{--
         <li class="nav-item">
             <a class="nav-link" href="{{ route('employees.dailyReports.index') }}">
                 <i class="menu-icon fa fa-bookmark"></i>
@@ -22,6 +22,13 @@
                 <span class="menu-title">{!! __('dashboard.monthly_reports') !!}</span>
             </a>
 
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link @if (Request::routeIs('employees.messages.*')) active @endif" href="{!! route('employees.messages.index') !!}">
+                <i class="mdi mdi-email-outline menu-icon"></i>
+                <span class="menu-title">{!! __('dashboard.messages') !!}</span>
+            </a>
         </li>
 
 

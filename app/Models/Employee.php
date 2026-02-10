@@ -24,6 +24,12 @@ class Employee extends Authenticatable
     // hidden
     protected $hidden = ['password'];
 
+    // Accessors
+    public function getNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->family_name;
+    }
+
     // Get the attributes that should be cast.
     protected function casts(): array
     {
@@ -125,5 +131,24 @@ class Employee extends Authenticatable
             return $value;
         }
         return Carbon::parse($value)->format('d/m/Y h:i A');
+    }
+
+    // Message Relationships
+    public function sentMessages()
+    {
+        return $this->morphMany(Message::class, 'sender');
+    }
+
+    public function receivedMessages()
+    {
+        return $this->morphMany(Message::class, 'receiver');
+    }
+
+    public function unreadMessagesCount()
+    {
+        return $this->receivedMessages()
+                    ->where('is_read', false)
+                    ->where('receiver_deleted', false)
+                    ->count();
     }
 }

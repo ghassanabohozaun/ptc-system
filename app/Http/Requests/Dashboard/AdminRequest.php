@@ -26,7 +26,7 @@ class AdminRequest extends FormRequest
         return [
             'name.*' => ['required', 'string', 'max:50', 'min : 2'],
             'email' => ['required', 'email', 'max:120', Rule::unique('admins', 'email')->ignore($this->id)],
-            'role_id' => ['required', 'exists:admins,id'],
+            'role_id' => ['required', 'exists:roles,id'],
             'password' => ['required_without:id'],
             'password_confirm' => ['required_without:id', 'same:password'],
             'status' => ['required', 'in:1,0'],

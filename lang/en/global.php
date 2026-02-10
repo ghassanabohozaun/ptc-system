@@ -11,4 +11,6 @@ return [
     'dailyReports' => 'Daily Reports Managment',
     'monthlyReports' => 'Monthly Reports Managment',
     'salaries' => 'Salaries Managment',
+        'messages'=>'Messages Managment',
+
 ];

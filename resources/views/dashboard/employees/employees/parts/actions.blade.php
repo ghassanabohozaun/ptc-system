@@ -9,8 +9,12 @@
             <i class="la la-eye"></i>
         </a>
 
-        <a href="javascript:void(0)" data-id="{!! $employee->id !!}"
-            class="btn btn-sm btn-outline-danger delete_employee_btn" title="  {!! __('general.delete') !!}">
+        {{-- delete --}}
+        <a href="javascript:void(0)" class="btn btn-sm delete-confirm btn-outline-danger !!} "
+            data-id="{!! $employee->id !!}" data-route="{!! route('dashboard.employees.destroy') !!}" data-title="{!! __('general.ask_delete_record') !!}"
+            data-text="{!! __('general.delete_warning_text') !!}" data-confirm-btn="{!! __('general.yes') !!}"
+            data-cancel-btn="{!! __('general.no') !!}" data-success-title="{!! __('general.deleted') !!}"
+            data-success-text="{!! __('general.delete_success_message') !!}">
             <i class="la la-trash"></i>
         </a>
 

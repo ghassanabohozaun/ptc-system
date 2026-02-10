@@ -11,5 +11,6 @@ return [
         'dailyReports' => 'global.dailyReports',
         'monthlyReports' => 'global.monthlyReports',
         'salaries'=>'global.salaries',
+        'messages'=>'global.messages'
     ],
 ];

@@ -28,10 +28,8 @@ class DailyReportsController extends Controller
             return view('dashboard.employees.daily-reports.partials._table', compact('dailyReports'))->render();
         }
 
-        return view('dashboard.employees.daily-reports.index', compact('title','dailyReports'));
+        return view('dashboard.employees.daily-reports.index', compact('title', 'dailyReports'));
     }
-
-
 
     // create
     public function create()
@@ -80,13 +78,13 @@ class DailyReportsController extends Controller
     }
 
     // destory
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        $dailyReport = $this->dailyReportService->destroy($id);
+        $dailyReport = $this->dailyReportService->destroy($request->id);
         if (!$dailyReport) {
             return response()->json(['status' => false], 500);
         }
-        return response()->json(['status' => true, 'data' => $dailyReport], 200);
+        return response()->json(['status' => true], 201);
     }
 
     // change status

@@ -312,5 +312,9 @@ return [
         'file' => 'File',
         'year' => 'Year',
         'month' => 'Month',
+
+        // messages
+        'recipient' => 'Recipient',
+        'body' => 'Message Body',
     ],
 ];

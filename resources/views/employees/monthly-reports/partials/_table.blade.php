@@ -41,7 +41,7 @@
             </table>
 
         </div>
-        <div class="{!! Lang() == 'ar' ? 'pull-left' : 'pull-right' !!} mt-3">
+        <div class="pagination-container mt-3">
             {!! $monthlyReports->links() !!}
         </div>
     </div>

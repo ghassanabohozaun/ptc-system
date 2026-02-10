@@ -15,12 +15,13 @@ return [
     'profile' => 'Profile',
     'messages' => 'Messages',
     'notifications' => 'Notifications',
-    'loading'=>'Loading',
+    'loading' => 'Loading ...',
+    'replay' => 'Replay',
 
     'prev' => 'Previous',
     'more' => 'More pages',
     'input' => 'Page number',
-    'select' => 'Select page size',
+    'select' => 'Select',
     'select_from_list' => 'Selection From List',
     'save' => 'Save',
     'saveing' => 'Saveing ...',
@@ -86,6 +87,7 @@ return [
     'user_update' => 'User Update',
     'admin_update' => 'Admin Update',
     'sign_out' => 'Sign Out',
+    'employee' => 'Employee',
 
     'change_image' => 'Change image',
     'image_format_allow' => 'Allowed file types jpg,jpeg,png',
@@ -111,7 +113,7 @@ return [
     'send_error_message' => ' Send Failed',
     'delete_image_success_message' => 'Image Deleted Successfully',
     'delete_image_error_message' => 'Image Deleted Failed',
-    'added_before_error_message'=>'Added Before',
+    'added_before_error_message' => 'Added Before',
 
     'internal_server_error_message' => 'Sorry, Internal server Error ',
     'try_catch_error_message' => 'Sorry, There is an error, please try again later',
@@ -121,7 +123,8 @@ return [
     'warning' => 'Warning',
     'success' => 'Success',
 
-    'ask_delete_record' => 'Do You Want To Delete This Record ? ',
+    'delete_warning_text' => "You won't be able to revert this!",
+    'ask_delete_record' => 'Are you sure you want to delete this record?',
     'ask_permanent_delete_record' => 'Do You Want To Permanent Delete This Record ? ',
     'move_to_trash' => 'Record Moved To Trash',
     'trash' => 'Trash',
@@ -131,7 +134,7 @@ return [
     'change_password_error_message' => 'change password Faild',
 
     'export' => 'Export',
-     'pdf' => 'PDF',
+    'pdf' => 'PDF',
     'excel' => 'Excel',
 
     'show' => 'show',
@@ -178,4 +181,16 @@ return [
     'character_limit_reached' => 'character limit reached',
     'character_limit' => 'character limit',
     'remaining' => 'remaining',
+    'select_all' => 'Select All',
+    'deselect_all' => 'Deselect All',
+    'select_columns' => 'Select Columns',
+
+    // Notifications
+    'new_monthly_report' => 'New Monthly Report',
+    'no_new_notifications' => 'No new notifications',
+    'new' => 'New',
+    'report_sent_waiting_admin' => 'Report Sent (Waiting Admin)',
+    'report_status_updated' => 'Report Status Updated',
+
+    'mark_all_as_read' => 'Make All As Read',
 ];

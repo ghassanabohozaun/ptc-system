@@ -65,9 +65,21 @@
         .custom-close-btn:hover {
             color: #0000ff;
         }
+
+        /* Global pagination fix for employee dashboard */
+        .pagination-container nav>div:first-child {
+            display: none !important;
+        }
+
+        .pagination-container nav>div:last-child {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
     </style>
 
     @stack('style')
+    @livewireStyles
 </head>
 
 <body class="{!! Lang() == 'en' ? 'with-welcome-text' : 'rtl' !!}">
@@ -87,7 +99,11 @@
             <!-- partial -->
             <div class="main-panel">
 
-                @yield('content')
+                @isset($slot)
+                    {{ $slot }}
+                @else
+                    @yield('content')
+                @endisset
 
                 <!-- content-wrapper ends -->
 
@@ -147,6 +163,7 @@
     </script>
 
     @stack('scripts')
+    @livewireScripts
 </body>
 
 </html>

@@ -42,7 +42,7 @@
             </table>
 
         </div>
-        <div class="{!! Lang() == 'ar' ? 'pull-left' : 'pull-right' !!} mt-3">
+        <div class="pagination-container mt-3">
             {!! $dailyReports->links() !!}
         </div>
     </div>

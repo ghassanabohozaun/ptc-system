@@ -21,7 +21,26 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Paginator::useBootstrap();
+
+       Paginator::useBootstrap();
+
+     // Dynamic Flasher Position
+        $position = app()->getLocale() == 'ar' ? 'top-left' : 'top-right';
+
+        // Update configuration for multiple adapters
+        config([
+            // Default flasher (notyf/native)
+            'flasher.options.position' => $position,
+
+            // SweetAlert2
+            'flasher.plugins.sweetalert.position' => $position == 'top-left' ? 'top-start' : 'top-end',
+
+            // Toastr (if used)
+            'flasher.plugins.toastr.positionClass' => 'toast-' . $position,
+        ]);
+
+
+
 
         foreach (config('global.permissions') as $ability => $value) {
             Gate::define($ability, function ($auth) use ($ability) {

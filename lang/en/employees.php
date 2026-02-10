@@ -38,7 +38,7 @@ return [
     'preparatory' => 'Preparatory',
     'secondary' => 'Secondary',
     'etc' => 'etc',
-    
+
     'full_time' => 'Full Time',
     'part_time' => 'Part Time',
     'contract' => 'Contact',
@@ -185,6 +185,8 @@ return [
     'no_employee_statuses_found' => 'No Employee Statues Found !',
 
     // dashboard
-
     'change_password' => 'Change Password',
+
+    // export
+    'employees_reports' => 'Employees Reports',
 ];

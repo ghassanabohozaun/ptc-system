@@ -6,7 +6,7 @@
     @include('layouts.dashboard.app-parts._head')
 
     @stack('style')
-    {{-- @livewireStyles --}}
+    @livewireStyles
 </head>
 
 <body class="vertical-layout vertical-menu-modern 2-columns  menu-expanded fixed-navbar" data-open="click"
@@ -18,7 +18,11 @@
     @include('layouts.dashboard.app-parts._sidebar')
 
 
-    @yield('content')
+    @isset($slot)
+        {{ $slot }}
+    @else
+        @yield('content')
+    @endisset
 
     @include('layouts.dashboard.app-parts._footer')
 
@@ -27,7 +31,7 @@
 
 
     @stack('scripts')
-    {{-- @livewireScripts --}}
+    @livewireScripts
 </body>
 
 </html>

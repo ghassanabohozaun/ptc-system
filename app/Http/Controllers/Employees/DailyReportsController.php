@@ -68,13 +68,13 @@ class DailyReportsController extends Controller
     }
 
     // destroy
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        $dailyReport = $this->dailyReportService->destroy($id);
+        $dailyReport = $this->dailyReportService->destroy($request->id);
         if (!$dailyReport) {
             return response()->json(['status' => false], 500);
         }
-        return response()->json(['status' => true, 'data' => $dailyReport], 200);
+        return response()->json(['status' => true], 200);
     }
 
     // change status

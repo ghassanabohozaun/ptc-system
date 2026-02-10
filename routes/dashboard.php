@@ -3,10 +3,12 @@
 use App\Http\Controllers\Dashboard\Auth\AuthController;
 use App\Http\Controllers\Dashboard\Auth\Passowrd\ForgetPasswordController;
 use App\Http\Controllers\Dashboard\Auth\Passowrd\ResetPasswordController;
+use App\Http\Controllers\Dashboard\EmployeesExportController;
+use App\Http\Controllers\Dashboard\EmployeesReportsController;
 use App\Http\Controllers\Dashboard\MonthlyReportsController;
 use App\Http\Controllers\Dashboard\SalariesController;
+use App\Http\Controllers\Dashboard\{AdminsController, CitiesController, DailyReportsController, DashboardController, DepartmentsController, EmployeeSalaryController, EmployeesController, EmployeeStatusesController, GovernoratiesController, MessagesController, ProductsController, RolesController, SettingsController, SponsershipOrganizationsController, SponsershipStatusesController, SponsershipTypesController};
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Dashboard\{AdminsController, CitiesController, DailyReportsController, DashboardController, DepartmentsController, EmployeeSalaryController, EmployeesController, EmployeeStatusesController, GovernoratiesController, ProductsController, RolesController, SettingsController, SponsershipOrganizationsController, SponsershipStatusesController, SponsershipTypesController};
 use Livewire\Livewire;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -97,20 +99,28 @@ Route::group(
             ########################################### employees routes  ######################################################################
             Route::group(['middleware' => 'can:employees'], function () {
                 Route::resource('employees', EmployeesController::class);
+                Route::post('/employees/destroy', [EmployeesController::class, 'destroy'])->name('employees.destroy');
                 Route::post('/employees/status', [EmployeesController::class, 'changeStatus'])->name('employees.change.status');
                 Route::get('/employees/autocomplete/employee', [EmployeesController::class, 'autocompleteEmployee'])->name('employees.autocomplete.employee');
+            });
+
+            ########################################### employee reports routes  ######################################################################
+            Route::group(['middleware' => 'can:employees'], function () {
+                Route::get('/employees/reports/show', [EmployeesReportsController::class, 'showReport'])->name('employees.reports.show');
+                Route::post('/employees/reports/export/excel', [EmployeesReportsController::class, 'exportExcel'])->name('employees.reports.export.excel');
             });
 
             ########################################### daily reports routes  ######################################################################
             Route::group(['middleware' => 'can:dailyReports'], function () {
                 Route::resource('dailyReports', DailyReportsController::class);
+                Route::post('/dailyReports/destroy', [DailyReportsController::class, 'destroy'])->name('daliy.reports.destroy');
                 Route::post('/dailyReports/status', [DailyReportsController::class, 'changeStatus'])->name('daliy.reports.change.status');
             });
 
             ########################################### monthly reports routes  ######################################################################
             Route::group(['middleware' => 'can:monthlyReports'], function () {
                 Route::resource('monthlyReports', MonthlyReportsController::class);
-                // Route::post('/monthlyReports/status', [MonthlyReportsController::class, 'changeStatus'])->name('monthly.reports.change.status');
+                Route::post('/monthlyReports/destroy', [MonthlyReportsController::class, 'destroy'])->name('monthly.reports.destroy');
             });
 
             ########################################### salaries routes  ######################################################################
@@ -125,8 +135,12 @@ Route::group(
                 // Route::resource('employeeSalary', SalariesController::class);
                 Route::get('/salaries/{id?}/employee', [EmployeeSalaryController::class, 'index'])->name('employee.salary.index');
                 Route::get('/salaries/print/{id?}', [EmployeeSalaryController::class, 'print'])->name('employee.salary.print');
+            });
 
-                // Route::post('/employee/salary/status', [EmployeeSalary::class, 'changeStatus'])->name('employee.salary.change.status');
+            ########################################### messages routes ######################################################################
+            Route::group(['middleware' => 'can:messages'], function () {
+                // Route::resource('employeeSalary', SalariesController::class);
+                Route::get('/messages', [MessagesController::class, 'index'])->name('messages.index');
             });
         });
     },

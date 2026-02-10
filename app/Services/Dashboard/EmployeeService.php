@@ -103,6 +103,8 @@ class EmployeeService
             $this->imageManagerUtils->removeImageFromLocal($employee->photo, 'employeesPhotos');
         }
 
+        // delete certifications
+
         $employee = $this->employeeRepository->destroy($employee);
         if (!$employee) {
             return false;

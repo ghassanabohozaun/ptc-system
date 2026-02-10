@@ -24,7 +24,7 @@
                     <!-- begin: settings -->
                     <ul class="menu-content">
                         @can('settings')
-                            <li class="@if (str_contains(url()->current(), 'settings')) active @endif">
+                            <li class="@if (Request::routeIs('dashboard.settings.*')) active @endif">
                                 <a class="menu-item" href="{!! route('dashboard.settings.index') !!}" data-i18n="nav.dash.settings">
                                     {!! __('settings.settings') !!}
                                 </a>
@@ -51,7 +51,7 @@
                         </a>
                         <!-- begin: roles -->
                         <ul class="menu-content">
-                            <li class="@if (str_contains(url()->current(), 'roles')) active @endif">
+                            <li class="@if (Request::routeIs('dashboard.roles.*')) active @endif">
                                 <a class="menu-item" href="{!! route('dashboard.roles.index') !!}" data-i18n="nav.dash.roles">
                                     {!! __('roles.roles') !!}
                                 </a>
@@ -75,7 +75,7 @@
                         </a>
                         <!-- begin: admins -->
                         <ul class="menu-content">
-                            <li class="@if (str_contains(url()->current(), 'admins')) active @endif">
+                            <li class="@if (Request::routeIs('dashboard.admins.*')) active @endif">
                                 <a class="menu-item" href="{!! route('dashboard.admins.index') !!}" data-i18n="nav.dash.admins">
                                     {!! __('admins.admins') !!}
                                 </a>
@@ -101,7 +101,7 @@
 
                         <ul class="menu-content">
                             <!-- begin: governorates -->
-                            <li class="@if (str_contains(url()->current(), 'governorates')) active @endif">
+                            <li class="@if (Request::routeIs('dashboard.governorates.*')) active @endif">
                                 <a class="menu-item" href="{!! route('dashboard.governorates.index') !!}" data-i18n="nav.dash.governorates">
                                     {!! __('world.governorates') !!}
                                 </a>
@@ -109,7 +109,7 @@
                             <!-- end: governorates -->
 
                             <!-- begin: cities -->
-                            <li class="@if (str_contains(url()->current(), 'cities')) active @endif">
+                            <li class="@if (Request::routeIs('dashboard.cities.*')) active @endif">
                                 <a class="menu-item" href="{!! route('dashboard.cities.index') !!}" data-i18n="nav.dash.cities">
                                     {!! __('world.cities') !!}
                                 </a>
@@ -136,7 +136,7 @@
 
                         <!-- begin: employeeStatues -->
                         @can('employeeStatuses')
-                            <li class="@if (str_contains(url()->current(), 'employeeStatuses')) active @endif">
+                            <li class="@if (Request::routeIs('dashboard.employeeStatuses.*')) active @endif">
                                 <a class="menu-item" href="{!! route('dashboard.employeeStatuses.index') !!}" data-i18n="nav.dash.employeeStatuses">
                                     {!! __('employees.employee_statuses') !!}
                                 </a>
@@ -146,7 +146,7 @@
 
                         <!-- begin: departments -->
                         @can('departments')
-                            <li class="@if (str_contains(url()->current(), 'departments')) active @endif">
+                            <li class="@if (Request::routeIs('dashboard.departments.*')) active @endif">
                                 <a class="menu-item" href="{!! route('dashboard.departments.index') !!}" data-i18n="nav.dash.departments">
                                     {!! __('departments.departments') !!}
                                 </a>
@@ -174,16 +174,24 @@
 
                         @can('employees')
                             <!-- begin: employees -->
-                            <li class="@if (str_contains(url()->current(), 'employees')) active @endif">
+                            <li class="@if (Request::routeIs('dashboard.employees.*') && !Request::routeIs('dashboard.employees.reports.*')) active @endif">
                                 <a class="menu-item" href="{!! route('dashboard.employees.index') !!}" data-i18n="nav.dash.employees">
                                     {!! __('employees.employees') !!}
                                 </a>
                             </li>
                             <!-- end: employees -->
+
+                            <!-- begin: employees export -->
+                            <li class="@if (Request::routeIs('dashboard.employees.reports.*')) active @endif">
+                                <a class="menu-item" href="{!! route('dashboard.employees.reports.show') !!}" data-i18n="nav.dash.employees_export">
+                                    {!! __('employees.reports') !!}
+                                </a>
+                            </li>
+                            <!-- end: employees export-->
                         @endcan
                         @can('dailyReports')
                             <!-- begin: daliy reports -->
-                            <li class="@if (str_contains(url()->current(), 'dailyReports')) active @endif">
+                            <li class="@if (Request::routeIs('dashboard.dailyReports.*')) active @endif">
                                 <a class="menu-item" href="{!! route('dashboard.dailyReports.index') !!}" data-i18n="nav.dash.dailyReports">
                                     {!! __('dailyReports.daily_reports') !!}
                                 </a>
@@ -193,7 +201,7 @@
 
                         @can('monthlyReports')
                             <!-- begin: monthly reports -->
-                            <li class="@if (str_contains(url()->current(), 'monthlyReports')) active @endif">
+                            <li class="@if (Request::routeIs('dashboard.monthlyReports.*')) active @endif">
                                 <a class="menu-item" href="{!! route('dashboard.monthlyReports.index') !!}" data-i18n="nav.dash.monthlyReports">
                                     {!! __('monthlyReports.monthly_reports') !!}
                                 </a>
@@ -220,7 +228,7 @@
 
                         @can('salaries')
                             <!-- begin: salaries -->
-                            <li class="@if (str_contains(url()->current(), 'salaries')) active @endif">
+                            <li class="@if (Request::routeIs('dashboard.salaries.*')) active @endif">
                                 <a class="menu-item" href="{!! route('dashboard.salaries.index') !!}" data-i18n="nav.dash.salaries">
                                     {!! __('salaries.salaries') !!}
                                 </a>
@@ -232,6 +240,19 @@
                 </li>
             </ul>
             <!-- end: salaries -->
+
+            <!-- begin: messages -->
+            @can('messages')
+                <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+                    <li class="nav-item @if (Request::routeIs('dashboard.messages.*')) active @endif">
+                        <a href="{!! route('dashboard.messages.index') !!}">
+                            <i class="icon-envelope"></i>
+                            <span class="menu-title" data-i18n="nav.dash.messages">{!! __('messages.messages') !!}</span>
+                        </a>
+                    </li>
+                </ul>
+            @endcan
+            <!-- end: messages -->
 
         </div>
     </div>

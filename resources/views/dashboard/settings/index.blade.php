@@ -3,6 +3,9 @@
     {!! $title !!}
 @endsection
 
+
+
+
 @section('content')
     <div class="app-content content">
         <form class="form" id="settings_form" action="" method="post" enctype="multipart/form-data">

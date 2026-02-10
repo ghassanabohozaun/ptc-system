@@ -27,6 +27,8 @@ return [
     // employees menu
     'daily_reports' => 'التقارير اليومية',
     'monthly_reports' => 'التقارير الشهرية',
+    'messages'=>'الرسائل',
+
 
 
     // login

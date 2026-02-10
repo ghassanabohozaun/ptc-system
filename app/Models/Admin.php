@@ -43,11 +43,6 @@ class Admin extends Authenticatable
         return $this->hasMany(Salary::class, 'admin_id');
     }
 
-    // accsessores
-    // public function getStatusAttribute($status)
-    // {
-    //     return $status == 1 ? 'on' : '';
-    // }
 
     public function getCreatedAtAttribute($value)
     {
@@ -72,5 +67,24 @@ class Admin extends Authenticatable
             }
         }
         return false;
+    }
+
+    // Message Relationships
+    public function sentMessages()
+    {
+        return $this->morphMany(Message::class, 'sender');
+    }
+
+    public function receivedMessages()
+    {
+        return $this->morphMany(Message::class, 'receiver');
+    }
+
+    public function unreadMessagesCount()
+    {
+        return $this->receivedMessages()
+                    ->where('is_read', false)
+                    ->where('receiver_deleted', false)
+                    ->count();
     }
 }

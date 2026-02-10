@@ -324,5 +324,10 @@ return [
         'employeeSalaryItem.*.amount' => 'الراتب  :index',
 
         'file' => 'الملف',
+
+
+        // messages
+        'recipient' => 'المتلقي',
+        'body' => 'محتوي الرسالة',
     ],
 ];

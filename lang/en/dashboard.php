@@ -30,6 +30,8 @@ return [
     // employees menu
     'daily_reports' => 'Daily Reports',
     'monthly_reports' => 'Monthly Reports',
+    'messages'=>'Messages',
+
 
     // login
     'login' => 'Login',

@@ -114,95 +114,12 @@
 
 
             <!-- begin notifications -->
-            <li class="nav-item dropdown">
-                <a class="nav-link count-indicator" id="notificationDropdown"href="javascript:void(0)"
-                    data-bs-toggle="dropdown">
-                    <i class="icon-bell"></i>
-                    <span class="count"></span>
-                </a>
-                {{-- <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-                    aria-labelledby="notificationDropdown">
-                    <a class="dropdown-item py-3 border-bottom">
-                        <p class="mb-0 fw-medium float-start">You have 4 new notifications </p>
-                        <span class="badge badge-pill badge-primary float-end">View all</span>
-                    </a>
-                    <a class="dropdown-item preview-item py-3">
-                        <div class="preview-thumbnail">
-                            <i class="mdi mdi-airballoon m-auto text-primary"></i>
-                        </div>
-                        <div class="preview-item-content">
-                            <h6 class="preview-subject fw-normal text-dark mb-1">notify type</h6>
-                            <p class="fw-light small-text mb-0"> contetn </p>
-                        </div>
-                    </a>
-                    <a class="dropdown-item preview-item py-3">
-                        <div class="preview-thumbnail">
-                            <i class="mdi mdi-lock-outline m-auto text-primary"></i>
-                        </div>
-                        <div class="preview-item-content">
-                            <h6 class="preview-subject fw-normal text-dark mb-1">Settings</h6>
-                            <p class="fw-light small-text mb-0"> Private message </p>
-                        </div>
-                    </a>
-                    <a class="dropdown-item preview-item py-3">
-                        <div class="preview-thumbnail">
-                            <i class="mdi mdi-airballoon m-auto text-primary"></i>
-                        </div>
-                        <div class="preview-item-content">
-                            <h6 class="preview-subject fw-normal text-dark mb-1">New user registration</h6>
-                            <p class="fw-light small-text mb-0"> 2 days ago </p>
-                        </div>
-                    </a>
-                </div> --}}
-            </li>
+            <livewire:dashboard.notification />
             <!-- end notifications -->
 
 
             <!-- begin message -->
-            <li class="nav-item dropdown">
-                <a class="nav-link count-indicator" id="countDropdown"href="javascript:void(0)"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="icon-mail icon-lg"></i>
-                </a>
-                {{-- <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-                    aria-labelledby="countDropdown">
-                    <a class="dropdown-item py-3">
-                        <p class="mb-0 fw-medium float-start">You have 7 unread mails </p>
-                        <span class="badge badge-pill badge-primary float-end">View all</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item preview-item">
-                        <div class="preview-thumbnail">
-                            <img src="{!! asset('assets/employees/') !!}/images/faces/face10.jpg" alt="image"
-                                class="img-sm profile-pic">
-                        </div>
-                        <div class="preview-item-content flex-grow py-2">
-                            <p class="preview-subject ellipsis fw-medium text-dark">Name </p>
-                            <p class="fw-light small-text mb-0"> Message </p>
-                        </div>
-                    </a>
-                    <a class="dropdown-item preview-item">
-                        <div class="preview-thumbnail">
-                            <img src="{!! asset('assets/employees/') !!}/images/faces/face12.jpg" alt="image"
-                                class="img-sm profile-pic">
-                        </div>
-                        <div class="preview-item-content flex-grow py-2">
-                            <p class="preview-subject ellipsis fw-medium text-dark">Name </p>
-                            <p class="fw-light small-text mb-0"> Message </p>
-                        </div>
-                    </a>
-                    <a class="dropdown-item preview-item">
-                        <div class="preview-thumbnail">
-                            <img src="{!! asset('assets/employees/') !!}/images/faces/face1.jpg" alt="image"
-                                class="img-sm profile-pic">
-                        </div>
-                        <div class="preview-item-content flex-grow py-2">
-                            <p class="preview-subject ellipsis fw-medium text-dark">Name </p>
-                            <p class="fw-light small-text mb-0"> Message </p>
-                        </div>
-                    </a>
-                </div> --}}
-            </li>
+            <livewire:message-notification guard="employee" iconClass="icon-mail icon-lg" />
             <!-- begin message -->
 
 

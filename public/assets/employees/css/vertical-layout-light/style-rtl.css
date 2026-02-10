@@ -17,6 +17,14 @@ border-bottom-right-radius: 5px;
 
 
 
+.breadcrumb-item + .breadcrumb-item::before {
+    float: right;
+    padding-right: var(--bs-breadcrumb-item-padding-x);
+    color: var(--bs-breadcrumb-divider-color);
+    content: var(--bs-breadcrumb-divider, "/") /* rtl: var(--bs-breadcrumb-divider, "/") */;
+}
+
+
 .fl-flasher .fl-close {
     -webkit-box-align: center;
     -webkit-align-items: center;

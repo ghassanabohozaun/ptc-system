@@ -15,7 +15,8 @@ return [
     'profile' => 'الملف الشخصي',
     'messages' => 'الرسائل',
     'notifications' => 'الاشعارات',
-    'loading'=>'تحميل',
+    'loading' => 'تحميل ...',
+    'replay'=>'الرد',
 
     'first' => 'الأول',
     'prev' => 'السابق',
@@ -23,7 +24,7 @@ return [
     'last' => 'الأخير',
     'more' => 'المزيد',
     'input' => 'رقم الصفحة',
-    'select' => 'اختار ججم الصفحة',
+    'select' => 'اختار من ',
     'select_from_list' => 'اختار من القائمة',
     'save' => 'حفظ',
     'saveing' => 'يتم الحفظ ...',
@@ -41,7 +42,7 @@ return [
     'yes' => 'نعم',
     'no' => 'لا',
     'open' => 'مفتوح',
-    'close' => 'مغلق',
+    'close' => 'اغلاق',
     'cancel' => 'الغاء',
     'copy' => 'نسخ',
     'copied' => 'تم النسخ',
@@ -89,6 +90,7 @@ return [
     'user_update' => 'تعديل المستخدم',
     'admin_update' => 'تعديل المدير',
     'sign_out' => 'تسجيل الخروج',
+    'employee' => 'الموظف',
 
     'change_image' => 'تغير الصورة',
     'image_format_allow' => 'صيغ الصور المسموح بها هي jpg ,jpeg, png فقط',
@@ -110,7 +112,7 @@ return [
     'restore_error_message' => 'لم تتم عملية الاسترجاع',
     'delete_image_success_message' => 'تمت عملية حذف الصورة بنجاح',
     'delete_image_error_message' => 'لم تتم عملية حذف الصورة',
-    'added_before_error_message'=>'تمت الاضافة سابقاً',
+    'added_before_error_message' => 'تمت الاضافة سابقاً',
 
     'upload_success_message' => 'تمت عملية الرفع بنجاح',
     'upload_error_message' => 'لم تتم عملية الرفع ',
@@ -123,6 +125,7 @@ return [
     'cancelled_message' => 'عذراً , لقد قمت بالغاء الامر',
     'error' => 'خطأ',
     'success' => 'نجاح',
+    'delete_warning_text' => 'لن تكون قادراً على استرجاع هذا!',
     'ask_delete_record' => 'هل تريد حذف هذا السجل ؟ ',
     'ask_permanent_delete_record' => 'هل تريد حذف هذا السجل نهائياً؟ ',
     'move_to_trash' => 'ثم نقل  السجل الي المحذوفات',
@@ -135,7 +138,6 @@ return [
     'warning' => 'تنبيه',
 
     'export' => 'تصدير',
-    'print' => 'طباعة',
     'pdf' => 'PDF',
     'excel' => 'إكسل',
     'previous' => 'السابق',
@@ -178,4 +180,15 @@ return [
     'character_limit_reached' => 'تم الوصول الي عدد الحروف المسموح به',
     'character_limit' => 'عدد الحروف المسموح بها',
     'remaining' => 'متبقي',
+    'select_all' => 'تحديد الكل',
+    'deselect_all' => 'إلغاء تحديد الكل',
+    'select_columns' => 'تحديد الأعمدة',
+
+    // الاشعارات
+    'new_monthly_report' => 'تقرير شهري جديد',
+    'no_new_notifications' => 'لا يوجد إشعارات جديدة',
+    'new' => 'جديد',
+    'report_sent_waiting_admin' => 'تم إرسال التقرير (بانتظار المدير)',
+    'report_status_updated' => 'تم تحديث حالة التقرير',
+    'mark_all_as_read' => 'ضع علامة "مقروء" على الكل',
 ];
