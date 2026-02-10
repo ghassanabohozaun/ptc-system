@@ -30,7 +30,7 @@ class EmployeesReportsController extends Controller
     // show report
     public function showReport()
     {
-        $title = __('employees.reports');
+        $title = __('employees.employees_export');
 
         $employeeColumnNames = $this->employeeColumnNamesFunction();
         $jobDetailsColumnNames = $this->columnNamesFunction('employee_job_details');
