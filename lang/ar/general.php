@@ -16,7 +16,12 @@ return [
     'messages' => 'الرسائل',
     'notifications' => 'الاشعارات',
     'loading' => 'تحميل ...',
-    'replay'=>'الرد',
+    'replay' => 'الرد',
+
+    'good_morning' => 'صباح الخير',
+    'good_afternoon' => 'طاب مساؤك',
+    'good_evening' => 'مساء الخير',
+    'good_night' => 'تصبح على خير',
 
     'first' => 'الأول',
     'prev' => 'السابق',

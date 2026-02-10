@@ -17,6 +17,10 @@ return [
     'notifications' => 'Notifications',
     'loading' => 'Loading ...',
     'replay' => 'Replay',
+    'good_morning' => 'Good Morning',
+    'good_afternoon' => 'Good Afternoon',
+    'good_evening' => 'Good Evening',
+    'good_night' => 'Good Night',
 
     'prev' => 'Previous',
     'more' => 'More pages',

@@ -114,13 +114,13 @@ if (!function_exists('replaceHyphensWithSpaces')) {
         }
     }
 
-        //  get salaries count Helper Function
-        if (!function_exists('salariesCount')) {
-            function salariesCount()
-            {
-                return Salary::count();
-            }
+    //  get salaries count Helper Function
+    if (!function_exists('salariesCount')) {
+        function salariesCount()
+        {
+            return Salary::count();
         }
+    }
 
     // month name  in arabic
     if (!function_exists('monthNameArabic')) {
@@ -141,6 +141,23 @@ if (!function_exists('replaceHyphensWithSpaces')) {
                 12 => 'ديسمبر',
             ];
             return $months[$monthNumber] ?? null; // يعيد الاسم أو null إذا لم يكن الرقم صحيحاً
+        }
+    }
+
+    // greeting
+    if (!function_exists('greeting')) {
+        function greeting()
+        {
+            $hour = now()->format('H');
+            if ($hour >= 5 && $hour < 12) {
+                return __('general.good_morning');
+            } elseif ($hour >= 12 && $hour < 17) {
+                return __('general.good_afternoon');
+            } elseif ($hour >= 17 && $hour < 21) {
+                return __('general.good_evening');
+            } else {
+                return __('general.good_night');
+            }
         }
     }
 }
