@@ -231,7 +231,10 @@
                 success: function(data) {
                     console.log(data);
                     if (data.status == 'added') {
-                        $('#myTable').load(location.href + (' #myTable'));
+                        // Refresh table with current filters, returning to page 1 to see the new entry
+                        if (typeof fetch_data === 'function') {
+                            fetch_data(1);
+                        }
                         $('#create_monthly_report_form')[0].reset();
                         $(".monthly_report_employee_id_select").val('').trigger('change');
                         resetCreateForm();

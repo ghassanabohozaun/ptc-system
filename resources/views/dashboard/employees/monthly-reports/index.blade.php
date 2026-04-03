@@ -84,43 +84,41 @@
 
 @push('scripts')
     <script type="text/javascript">
+        // Global variables to preserve state
+        window.currentPage = 1;
+
+        // Global fetch_data function
+        window.fetch_data = function(page) {
+            window.currentPage = page; // Store current page globally
+
+            var employee_id = $('#employee_id').val();
+            var month = $('#month').val();
+
+            $.ajax({
+                url: "{{ route('dashboard.monthlyReports.index') }}?page=" + page,
+                data: {
+                    employee_id: employee_id,
+                    month: month,
+                },
+                beforeSend: function() {
+                    $('#loading-indicator').show();
+                    $('#data-table tbody').empty();
+                },
+                success: function(data) {
+                    $('#table_data').html(data);
+                },
+                complete: function() {
+                    $('#loading-indicator').hide();
+                },
+            });
+        }
+
         $(document).ready(function() {
-
-            let page = 1;
-
-            // fetch data
-            function fetch_data(page) {
-
-                var employee_id = $('#employee_id').val();
-                var month = $('#month').val();
-
-
-                $.ajax({
-                    url: "{{ route('dashboard.monthlyReports.index') }}?page=" + page,
-                    data: {
-                        employee_id: employee_id,
-                        month: month,
-                    },
-                    beforeSend: function() {
-                        // Show the loading indicator before the request is sent
-                        $('#loading-indicator').show();
-                        // Optional: clear previous table data
-                        $('#data-table tbody').empty();
-                    },
-                    success: function(data) {
-                        $('#table_data').html(data);
-                    },
-                    complete: function() {
-                        // Hide the loading indicator when the request is complete (whether success or error)
-                        $('#loading-indicator').hide();
-                    },
-                });
-            }
 
             // Handle pagination link clicks
             $(document).on('click', '.pagination a', function(event) {
                 event.preventDefault();
-                page = $(this).attr('href').split('page=')[1];
+                var page = $(this).attr('href').split('page=')[1];
                 fetch_data(page);
             });
 

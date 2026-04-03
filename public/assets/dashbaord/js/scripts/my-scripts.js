@@ -58,16 +58,18 @@ $(document).ready(function () {
                                 timer: 2000,
                                 buttons: false,
                             });
-                            // Reload table div or datatable
-                            // Assuming a standard table with id 'myTable' or similar, we can try to reload the container.
-                            // Ideally, pass the target selector.
-                            var targetTable = "#myTable";
-                            if ($(targetTable).length) {
-                                $(targetTable).load(
-                                    location.href + " " + targetTable,
-                                );
+                            // Reload table div or datatable gracefully
+                            if (typeof fetch_data === 'function') {
+                                fetch_data(window.currentPage || 1);
                             } else {
-                                location.reload();
+                                var targetTable = "#myTable";
+                                if ($(targetTable).length) {
+                                    $(targetTable).load(
+                                        location.href + " " + targetTable,
+                                    );
+                                } else {
+                                    location.reload();
+                                }
                             }
                         } else {
                             swal("Error!", "Something went wrong.", "error");

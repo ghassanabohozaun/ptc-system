@@ -234,7 +234,10 @@
                 success: function(data) {
                     if (data.status == true) {
                         console.log(data);
-                        $('#myTable').load(location.href + (' #myTable'));
+                        // Refresh table with current filters and page
+                        if (typeof fetch_data === 'function') {
+                            fetch_data(window.currentPage);
+                        }
                         resetEditForm();
                         $('#updateMonthlyReportModal').modal('hide');
                         flasher.success("{!! __('general.update_success_message') !!}");
