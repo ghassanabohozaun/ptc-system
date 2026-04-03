@@ -287,9 +287,6 @@
                     series: [{
                         name: '{!! __('dashboard.monthly_reports') !!}',
                         data: @json($reportTrends['monthly'] ?? [])
-                    }, {
-                        name: '{!! __('dashboard.daily_reports') !!}',
-                        data: @json($reportTrends['daily'] ?? [])
                     }],
                     chart: {
                         type: 'area',

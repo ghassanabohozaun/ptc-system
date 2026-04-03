@@ -46,10 +46,8 @@ class DashboardController extends Controller
             $months[] = $date->translatedFormat('M Y');
 
             $monthlyCount = MonthlyReport::where('month', $monthNum)->where('year', $yearNum)->count();
-            $dailyCount = DailyReport::whereMonth('date', $monthNum)->whereYear('date', $yearNum)->count();
 
             $reportTrends['monthly'][] = $monthlyCount;
-            $reportTrends['daily'][] = $dailyCount;
         }
 
         // 2. Department Distribution (Donut Chart)
