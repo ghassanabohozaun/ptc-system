@@ -310,6 +310,13 @@ return [
         'submit_monthly_report' => 'تقديم التقرير الشهري',
         'supervisor_ar' => 'المشرف بالعربي',
         'supervisor_en' => 'المشرف بالإنجليزي',
+        'weekly_working_hours_and_days' => 'ساعات وأيام العمل الأسبوعية',
+        'holidays_and_festivals' => 'الإجازات والأعياد',
+        'job_duties' => 'المهام الوظيفية',
+        'contract_terms' => 'شروط العقد',
+        'education_contract' => 'التعليم (حسب العقد)',
+        'experiences_contract' => 'الخبرات (حسب العقد)',
+        'other_requirements' => 'متطلبات أخرى',
 
         'educationItems.*.educational_instituation_name' => 'اسم المؤسسة :index',
         'educationItems.*.education_level' => 'المستوي التعليمي :index',

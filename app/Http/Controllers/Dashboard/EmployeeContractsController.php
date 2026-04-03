@@ -106,13 +106,13 @@ class EmployeeContractsController extends Controller
         $template = new TemplateProcessor($template_path);
 
         $template->setValue('employee_name', $contract->employee->EmployeeFullName());
-        $template->setValue('employee_personal_id', $contract->employee->personal_id);
+        $template->setValue('personal_id', $contract->employee->personal_id);
         $template->setValue('employee_job_title', $contract->employee->employeeJobDetails->title ?? '');
         $template->setValue('contract_duration', $contract->contract_duration);
         $template->setValue('contract_start_date', $contract->contract_start_date);
         $template->setValue('contract_expiry_date', $contract->contract_expiry_date);
         $template->setValue('monthly_salary', intval($contract->monthly_salary));
-        
+
         // Tafqeet for salary (Whole number in USD)
         $template->setValue('monthly_salary_ar', tafqeet(intval($contract->monthly_salary), 'دولار'));
 
@@ -120,18 +120,18 @@ class EmployeeContractsController extends Controller
 
         // Additional fields from EmployeeContractDetails
         $contractDetails = $contract->employee->employeeContractDetails;
-        
-        $template->setComplexValue('weekly_working_hours_and_days', $this->getComplexHtmlValue($contractDetails?->weekly_working_hours_and_days));
-        $template->setComplexValue('holidays_and_festivals', $this->getComplexHtmlValue($contractDetails?->holidays_and_festivals));
-        $template->setComplexValue('job_duties', $this->getComplexHtmlValue($contractDetails?->job_duties));
-        $template->setComplexValue('contract_terms', $this->getComplexHtmlValue($contractDetails?->contract_terms));
-        $template->setComplexValue('education_contract', $this->getComplexHtmlValue($contractDetails?->education_contract));
-        $template->setComplexValue('experiences_contract', $this->getComplexHtmlValue($contractDetails?->experiences_contract));
-        $template->setComplexValue('other_requirements', $this->getComplexHtmlValue($contractDetails?->other_requirements));
 
-        $employeeEnName = $contract->employee->getTranslation('first_name', 'en') . '-' . 
-                          $contract->employee->getTranslation('father_name', 'en') . '-' . 
-                          $contract->employee->getTranslation('grand_father_name', 'en') . '-' . 
+        $template->setComplexValue('weekly_working_hours_and_days', $this->getComplexHtmlValue($contractDetails?->weekly_working_hours_and_days, 11));
+        $template->setComplexValue('holidays_and_festivals', $this->getComplexHtmlValue($contractDetails?->holidays_and_festivals, 11));
+        $template->setComplexValue('job_duties', $this->getComplexHtmlValue($contractDetails?->job_duties, 11));
+        $template->setComplexValue('contract_terms', $this->getComplexHtmlValue($contractDetails?->contract_terms, 9));
+        $template->setComplexValue('education_contract', $this->getComplexHtmlValue($contractDetails?->education_contract, 11));
+        $template->setComplexValue('experiences_contract', $this->getComplexHtmlValue($contractDetails?->experiences_contract, 11));
+        $template->setComplexValue('other_requirements', $this->getComplexHtmlValue($contractDetails?->other_requirements, 11));
+
+        $employeeEnName = $contract->employee->getTranslation('first_name', 'en') . '-' .
+                          $contract->employee->getTranslation('father_name', 'en') . '-' .
+                          $contract->employee->getTranslation('grand_father_name', 'en') . '-' .
                           $contract->employee->getTranslation('family_name', 'en');
 
         $fileName = 'Contract-' . $employeeEnName . '-' . $contract->contract_start_date . '.docx';
@@ -152,44 +152,66 @@ class EmployeeContractsController extends Controller
      * Convert Summernote HTML content to a Word Complex Value with robust RTL support.
      * This method avoids using addHtml() to prevent OOXML corruption caused by nested block elements.
      */
-    private function getComplexHtmlValue($html)
+    private function getComplexHtmlValue($html, $fontSize = 10)
     {
         $textRun = new \PhpOffice\PhpWord\Element\TextRun();
         $textRun->getParagraphStyle()->setBidi(true);
-        $textRun->getParagraphStyle()->setAlignment(\PhpOffice\PhpWord\SimpleType\Jc::RIGHT);
+        $textRun->getParagraphStyle()->setAlignment(\PhpOffice\PhpWord\SimpleType\Jc::END);
+        $textRun->getParagraphStyle()->setIndentation(['right' => 0, 'left' => 0, 'firstLine' => 0]);
 
         if (!$html) {
             return $textRun;
         }
 
-        // 1. Pre-process lists and blocks to text with manual formatting
-        $html = str_replace(['<ul>', '</ul>', '<ol>', '</ol>', '<table>', '</table>', '<tbody>', '</tbody>'], '', $html);
-        $html = str_replace(['<li>', '<td>', '<tr>'], "\n• ", $html);
-        $html = str_replace(['</li>', '</p>', '</div>', '</td>', '</tr>', '<br>', '<br />'], "\n", $html);
-        
-        // 2. Strip tags and decode entities
-        $html = strip_tags($html);
-        $html = html_entity_decode($html);
-        
-        // 3. Add text parts safely
-        $lines = explode("\n", $html);
-        $first = true;
-        foreach ($lines as $line) {
-            $line = trim($line);
-            if ($line === '') continue;
+        // Clean any inline justify styles
+        $html = str_replace(['text-align: justify;', 'text-align:justify;'], '', $html);
 
-            if (!$first) {
-                $textRun->addTextBreak();
+        // 1. Normalize tags to a single newline strategy
+        $html = str_replace(['<strong>', '</strong>'], ['<b>', '</b>'], $html);
+        $html = str_replace(['<br>', '<br />', '<br/>', '<p>', '<div>', '<li>'], "\n", $html);
+        $html = str_replace(['</p>', '</div>', '</li>', '<ul>', '</ul>', '<ol>', '</ol>'], "", $html);
+
+        // 2. Collapse multiple newlines into one to avoid double spacing
+        $html = preg_replace("/\n+/", "\n", $html);
+        $html = trim($html, "\n");
+
+        // 3. Strip remaining tags except <b>
+        $html = strip_tags($html, '<b>');
+        $html = html_entity_decode($html);
+
+        // 4. Split by Bold tags and the normalized newlines
+        $parts = preg_split('/(<b>.*?<\/b>|\n)/u', $html, -1, PREG_SPLIT_DELIM_CAPTURE);
+
+        $first = true;
+        foreach ($parts as $part) {
+            if ($part === "") continue;
+
+            // Handle Newline token - now guaranteed to be single thanks to preg_replace
+            if ($part === "\n") {
+                if (!$first) {
+                    $textRun->addTextBreak();
+                }
+                continue;
             }
-            
-            // Add text with explicit RTL/Bidi formatting for each line
-            $textRun->addText(htmlspecialchars($line), [
-                'rtl' => true, 
-                'bidi' => true,
-                'name' => 'Simplified Arabic', // Common Arabic font for better rendering
-                'size' => 12
-            ]);
-            $first = false;
+
+            $isBold = false;
+            $text = $part;
+
+            if (preg_match('/<b>(.*?)<\/b>/u', $part, $matches)) {
+                $isBold = true;
+                $text = $matches[1];
+            }
+
+            if ($text !== '' || $text === "0") {
+                $textRun->addText(htmlspecialchars($text), [
+                    'rtl' => true,
+                    'bidi' => true,
+                    'name' => 'Calibri',
+                    'size' => $fontSize,
+                    'bold' => $isBold
+                ]);
+                $first = false;
+            }
         }
 
         return $textRun;

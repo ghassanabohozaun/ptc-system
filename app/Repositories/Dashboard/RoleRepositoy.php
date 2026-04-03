@@ -24,7 +24,7 @@ class RoleRepositoy
     // get roles
     public function getRoles()
     {
-        $roles = Role::orderByDesc('created_at')->select('id', 'role', 'permissions')->paginate(5);
+        $roles = Role::orderByDesc('created_at')->select('id', 'role', 'permissions')->paginate(config('app.pagination'));
         return $roles;
     }
 

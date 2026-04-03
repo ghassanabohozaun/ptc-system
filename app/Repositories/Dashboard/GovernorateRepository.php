@@ -28,7 +28,7 @@ class GovernorateRepository
                 $q->where('name', 'like', '%' . request()->keyword . '%');
             })
             ->orderByDesc('id')
-            ->paginate(10);
+            ->paginate(config('app.pagination'));
 
         return $governorates;
     }

@@ -24,7 +24,7 @@ class MonthlyReportRepository
             })
 
             ->latest()
-            ->paginate(10);
+            ->paginate(config('app.pagination'));
     }
 
     // monthly reports exists

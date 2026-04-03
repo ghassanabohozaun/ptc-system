@@ -27,7 +27,7 @@ class EmployeeRepository
             })
 
             ->latest()
-            ->paginate(10);
+             ->paginate(config('app.pagination'));
     }
 
     // get employees

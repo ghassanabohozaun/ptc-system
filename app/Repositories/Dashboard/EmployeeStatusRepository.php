@@ -15,7 +15,7 @@ class EmployeeStatusRepository
     // get all
     public function getAll()
     {
-        return EmployeeStatus::orderByDesc('id')->select('id', 'name', 'status')->paginate(10);
+        return EmployeeStatus::orderByDesc('id')->select('id', 'name', 'status')->paginate(config('app.pagination'));
     }
 
     // get active all

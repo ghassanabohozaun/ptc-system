@@ -6,7 +6,7 @@ use App\Models\Setting;
 
 class SettingRepository
 {
-      // get setting
+    // get setting
     public function getSetting($id)
     {
         return Setting::find($id);

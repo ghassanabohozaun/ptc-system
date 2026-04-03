@@ -15,7 +15,7 @@ class DepartmentRepository
     // get all
     public function getAll()
     {
-        return Department::orderByDesc('id')->select('id', 'name', 'status')->paginate(10);
+        return Department::orderByDesc('id')->select('id', 'name', 'status')->paginate(config('app.pagination'));
     }
 
     // get active all

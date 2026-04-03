@@ -23,11 +23,11 @@ class DailyReportRepository
                 $query->where('date', request()->date);
             })
             ->when(!empty(request()->to_date), function ($query) {
-                $query->where('date', '>=' , request()->from_date )->where('date', '<=' , request()->to_date );
+                $query->where('date', '>=', request()->from_date)->where('date', '<=', request()->to_date);
             })
 
             ->latest()
-            ->paginate(10);
+            ->paginate(config('app.pagination'));
     }
 
     // daily reports exists
