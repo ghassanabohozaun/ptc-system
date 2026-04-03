@@ -267,7 +267,6 @@ class Edit extends Component
             'employment_type' => ['required'],
             'employee_status_id' => ['required', 'exists:employee_statuses,id'],
             'department_id' => ['required', 'exists:departments,id'],
-            'supervisor' => ['required', 'string', 'min:3'],
             'submit_monthly_report' => ['required'],
         ];
 
