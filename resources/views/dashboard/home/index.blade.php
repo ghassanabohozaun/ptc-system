@@ -103,6 +103,50 @@
                 </div>
             </div>
             <!-- end :statistics -->
+            
+            <!-- begin :analytics insights -->
+            <div class="row mt-3">
+                <div class="col-xl-8 col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">{!! __('dashboard.reports_analytics') !!}</h4>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div id="reports-trends-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">{!! __('dashboard.department_distribution') !!}</h4>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div id="dept-distribution-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">{!! __('dashboard.salary_analytics') !!}</h4>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div id="salary-history-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end :analytics insights -->
 
             <div class="row mt-2">
                 <!-- begin :monthly reports -->
@@ -231,4 +275,147 @@
     </div><!-- end: content app  -->
 
     @include('dashboard.home.monthly-reports.modal')
+
+    @push('scripts')
+    <script>
+        $(window).on("load", function() {
+            // Shared Colors
+            const colors = ['#1E9FF2', '#FF9149', '#28D094', '#FF4961', '#666EE8', '#cc90c3'];
+
+            // 1. Report Trends (Area Chart)
+            const reportTrendsOptions = {
+                series: [{
+                    name: '{!! __("dashboard.monthly_reports") !!}',
+                    data: @json($reportTrends['monthly'] ?? [])
+                }, {
+                    name: '{!! __("dashboard.daily_reports") !!}',
+                    data: @json($reportTrends['daily'] ?? [])
+                }],
+                chart: {
+                    type: 'area',
+                    height: 350,
+                    toolbar: { show: false },
+                    fontFamily: 'Tajawal, sans-serif'
+                },
+                colors: ['#1E9FF2', '#28D094'],
+                dataLabels: { enabled: false },
+                stroke: { curve: 'smooth', width: 3 },
+                fill: {
+                    type: 'gradient',
+                    gradient: {
+                        shadeIntensity: 1,
+                        opacityFrom: 0.45,
+                        opacityTo: 0.05,
+                        stops: [20, 100]
+                    }
+                },
+                xaxis: {
+                    categories: @json($months ?? []),
+                },
+                tooltip: {
+                    y: {
+                        formatter: function (val) { return val + " {!! __('dashboard.report') !!}" }
+                    },
+                    x: { format: 'MMM yyyy' }
+                },
+                legend: { position: 'top', horizontalAlign: 'right' }
+            };
+
+            const reportTrendsChart = new ApexCharts(document.querySelector("#reports-trends-chart"), reportTrendsOptions);
+            reportTrendsChart.render();
+
+            // 2. Department Distribution (Donut Chart)
+            const deptOptions = {
+                series: @json($deptData['series'] ?? []),
+                chart: {
+                    type: 'donut',
+                    height: 350,
+                    fontFamily: 'Tajawal, sans-serif'
+                },
+                labels: @json($deptData['labels'] ?? []),
+                colors: colors,
+                legend: { position: 'bottom' },
+                responsive: [{
+                    breakpoint: 480,
+                    options: {
+                        chart: { width: 200 },
+                        legend: { position: 'bottom' }
+                    }
+                }],
+                plotOptions: {
+                    pie: {
+                        donut: {
+                            labels: {
+                                show: true,
+                                total: {
+                                    show: true,
+                                    label: '{!! __("dashboard.total_employees") !!}',
+                                    formatter: function (w) {
+                                        return w.globals.seriesTotals.reduce((a, b) => a + b, 0)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            const deptChart = new ApexCharts(document.querySelector("#dept-distribution-chart"), deptOptions);
+            deptChart.render();
+
+            // 3. Salary History (Column Chart)
+            const salaryHistoryOptions = {
+                series: [{
+                    name: '{!! __("dashboard.total_salaries") !!}',
+                    data: @json($salaryHistory['series'] ?? [])
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 350,
+                    toolbar: { show: false },
+                    fontFamily: 'Tajawal, sans-serif'
+                },
+                colors: ['#FF9149'],
+                plotOptions: {
+                    bar: {
+                        borderRadius: 10,
+                        columnWidth: '45%',
+                        distributed: true,
+                        dataLabels: { position: 'top' }
+                    }
+                },
+                dataLabels: {
+                    enabled: true,
+                    formatter: function (val) { return "{!! __('dashboard.currency') !!} " + val.toLocaleString() },
+                    offsetY: -20,
+                    style: { fontSize: '12px', colors: ["#304758"] }
+                },
+                xaxis: {
+                    categories: @json($months ?? []),
+                    position: 'bottom',
+                    axisBorder: { show: false },
+                    axisTicks: { show: false }
+                },
+                yaxis: {
+                    axisBorder: { show: false },
+                    axisTicks: { show: false },
+                    labels: {
+                        show: true,
+                        formatter: function (val) { return "{!! __('dashboard.currency') !!} " + val.toLocaleString() }
+                    }
+                },
+                title: {
+                    text: '{!! __("dashboard.monthly_budget_analysis") !!}',
+                    floating: true,
+                    offsetY: 0,
+                    align: 'center',
+                    style: { color: '#444' }
+                }
+            };
+
+            const salaryChart = new ApexCharts(document.querySelector("#salary-history-chart"), salaryHistoryOptions);
+            salaryChart.render();
+        });
+    </script>
+    @endpush
 @endsection

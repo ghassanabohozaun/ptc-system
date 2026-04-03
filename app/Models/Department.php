@@ -28,13 +28,8 @@ class Department extends Model
     }
 
     // relation
-    public function employees()
-    {
-        return $this->hasMany(Employee::class, 'department_id');
-    }
-
     public function employeeJobDetails()
     {
-        return $this->hasOne(EmployeeJobDetail::class, 'department_id');
+        return $this->hasMany(EmployeeJobDetail::class, 'department_id');
     }
 }

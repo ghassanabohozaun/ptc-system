@@ -15,8 +15,6 @@
 <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/vendors/css/weather-icons/climacons.min.css') !!}">
 <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/fonts/meteocons/style.css') !!}">
 <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/vendors/css/charts/morris.css') !!}">
-<link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/vendors/css/charts/chartist.css') !!}">
-<link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/vendors/css/charts/chartist-plugin-tooltip.css') !!}">
 <link rel="stylesheet" type="text/css" href="{!! asset(path: 'assets/dashbaord/fonts/simple-line-icons/style.css') !!}">
 <link rel="stylesheet" href="{!! asset('vendor/flasher/flasher.min.css') !!}" rel="stylesheet">
 <link href="{!! asset('vendor/summernote/summernote-bs4.css') !!}" rel="stylesheet">

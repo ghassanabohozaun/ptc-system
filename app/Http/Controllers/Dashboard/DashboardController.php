@@ -8,6 +8,10 @@ use App\Services\Dashboard\DailyReportService;
 use App\Services\Dashboard\EmployeeService;
 use App\Services\Dashboard\GovernorateService;
 use App\Services\Dashboard\MonthlyReportService;
+use App\Models\Department;
+use App\Models\MonthlyReport;
+use App\Models\DailyReport;
+use App\Models\Salary;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -26,11 +30,64 @@ class DashboardController extends Controller
     public function index()
     {
         $employees = $this->employeeService->getActive();
-
         $title = __('dashboard.dashboard');
         $monthlyReports = $this->monthlyReportService->getMonthlyReportsForAllEmplpoyees()->take(5);
         $dailyReports = $this->dailyReportService->getDailyReportsForAllEmplpoyees()->take(5);
-        return view('dashboard.home.index', compact('title', 'employees', 'monthlyReports', 'dailyReports'));
+
+        // --- ApexCharts Data Preparation ---
+
+        // 1. Report Trends (Last 6 Months)
+        $reportTrends = [];
+        $months = [];
+        for ($i = 5; $i >= 0; $i--) {
+            $date = now()->subMonths($i);
+            $monthNum = $date->format('m');
+            $yearNum = $date->format('Y');
+            $months[] = $date->translatedFormat('M Y');
+
+            $monthlyCount = MonthlyReport::where('month', $monthNum)->where('year', $yearNum)->count();
+            $dailyCount = DailyReport::whereMonth('date', $monthNum)->whereYear('date', $yearNum)->count();
+
+            $reportTrends['monthly'][] = $monthlyCount;
+            $reportTrends['daily'][] = $dailyCount;
+        }
+
+        // 2. Department Distribution (Donut Chart)
+        $departments = Department::active()->withCount('employeeJobDetails')->get();
+        $deptData = [
+            'labels' => $departments->pluck('name')->toArray(),
+            'series' => $departments->pluck('employee_job_details_count')->toArray()
+        ];
+
+        // 3. Salary History (Last 6 Months)
+        $salaryHistory = [];
+        for ($i = 5; $i >= 0; $i--) {
+            $date = now()->subMonths($i);
+            $monthNum = $date->format('m');
+            $yearNum = $date->format('Y');
+
+            $totalSalary = Salary::where('month', $monthNum)
+                ->where('year', $yearNum)
+                ->with('employees')
+                ->get()
+                ->flatMap(function($salary) {
+                    return $salary->employees->pluck('pivot.amount');
+                })
+                ->sum();
+
+            $salaryHistory['series'][] = (float)$totalSalary;
+        }
+
+        return view('dashboard.home.index', compact(
+            'title',
+            'employees',
+            'monthlyReports',
+            'dailyReports',
+            'reportTrends',
+            'months',
+            'deptData',
+            'salaryHistory'
+        ));
     }
 
     // addresses

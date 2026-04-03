@@ -3,8 +3,7 @@
     <script src="{!! asset('assets/dashbaord') !!}/vendors/js/extensions/sweetalert.min.js" type="text/javascript"></script>
 
     <!-- BEGIN PAGE VENDOR JS-->
-    <script src="{!! asset('assets/dashbaord/vendors/js/charts/chartist.min.js') !!}" type="text/javascript"></script>
-    <script src="{!! asset('assets/dashbaord/vendors/js/charts/chartist-plugin-tooltip.min.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('assets/dashbaord/vendors/js/charts/apexcharts.min.js') !!}" type="text/javascript"></script>
     <script src="{!! asset('assets/dashbaord/vendors/js/charts/raphael-min.js') !!}" type="text/javascript"></script>
     <script src="{!! asset('assets/dashbaord/vendors/js/charts/morris.min.js') !!}" type="text/javascript"></script>
     <script src="{!! asset('assets/dashbaord/vendors/js/timeline/horizontal-timeline.js') !!}" type="text/javascript"></script>

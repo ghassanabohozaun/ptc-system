@@ -34,4 +34,12 @@ return [
 
     // login
     'login' => 'Login',
+    'reports_analytics' => 'Reports Analytics',
+    'department_distribution' => 'Department Distribution',
+    'salary_analytics' => 'Salary Analytics',
+    'report' => 'Report',
+    'total_employees' => 'Total Employees',
+    'total_salaries' => 'Total Salaries',
+    'currency' => '$',
+    'monthly_budget_analysis' => 'Monthly Budget Analysis',
 ];

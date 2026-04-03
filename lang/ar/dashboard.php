@@ -35,4 +35,13 @@ return [
 
     // login
     'login' => 'تسجيل الدخول',
+    'reports_analytics' => 'تحليلات التقارير',
+    'department_distribution' => 'توزيع الموظفين حسب الأقسام',
+    'salary_analytics' => 'تحليلات الرواتب والميزانية',
+    'report' => 'تقرير',
+    'total_employees' => 'إجمالي الموظفين',
+    'total_salaries' => 'إجمالي الرواتب',
+    'currency' => '$',
+    'monthly_budget_analysis' => 'تحليل الميزانية الشهرية',
+    'monthly_reports_count' => 'عدد التقارير الشهرية',
 ];
