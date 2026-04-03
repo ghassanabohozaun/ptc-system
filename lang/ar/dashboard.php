@@ -44,4 +44,8 @@ return [
     'currency' => '$',
     'monthly_budget_analysis' => 'تحليل الميزانية الشهرية',
     'monthly_reports_count' => 'عدد التقارير الشهرية',
+    'good_morning' => 'صباح الخير',
+    'good_afternoon' => 'طاب يومك',
+    'good_evening' => 'مساء الخير',
+    'good_night' => 'تصبح على خير',
 ];

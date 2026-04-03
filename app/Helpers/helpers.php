@@ -65,112 +65,128 @@ if (!function_exists('replaceHyphensWithSpaces')) {
     {
         return $string = str_replace('-', ' ', $string); // Replaces all hyphens with spaces.
     }
+}
 
-    //  get admin count Helper Function
-    if (!function_exists('adminCount')) {
-        function adminCount()
-        {
-            return Admin::count();
-        }
+//  get admin count Helper Function
+if (!function_exists('adminCount')) {
+    function adminCount()
+    {
+        return Admin::count();
     }
+}
 
-    //  get governorates count Helper Function
-    if (!function_exists('governoratesCount')) {
-        function governoratesCount()
-        {
-            return Governorate::count();
-        }
+//  get governorates count Helper Function
+if (!function_exists('governoratesCount')) {
+    function governoratesCount()
+    {
+        return Governorate::count();
     }
+}
 
-    //  get cities count Helper Function
-    if (!function_exists('citiesCount')) {
-        function citiesCount()
-        {
-            return City::count();
-        }
+//  get cities count Helper Function
+if (!function_exists('citiesCount')) {
+    function citiesCount()
+    {
+        return City::count();
     }
+}
 
-    //  get employees count Helper Function
-    if (!function_exists('employeesCount')) {
-        function employeesCount()
-        {
-            return Employee::count();
-        }
+//  get employees count Helper Function
+if (!function_exists('employeesCount')) {
+    function employeesCount()
+    {
+        return Employee::count();
     }
+}
 
-    //  get daily reports count Helper Function
-    if (!function_exists('dailyReportsCount')) {
-        function dailyReportsCount()
-        {
-            return DailyReport::count();
-        }
+//  get daily reports count Helper Function
+if (!function_exists('dailyReportsCount')) {
+    function dailyReportsCount()
+    {
+        return DailyReport::count();
     }
+}
 
-    //  get monthly reports count Helper Function
-    if (!function_exists('monthlyReportsCount')) {
-        function monthlyReportsCount()
-        {
-            return MonthlyReport::count();
-        }
+//  get monthly reports count Helper Function
+if (!function_exists('monthlyReportsCount')) {
+    function monthlyReportsCount()
+    {
+        return MonthlyReport::count();
     }
+}
 
-    //  get salaries count Helper Function
-    if (!function_exists('salariesCount')) {
-        function salariesCount()
-        {
-            return Salary::count();
-        }
+//  get salaries count Helper Function
+if (!function_exists('salariesCount')) {
+    function salariesCount()
+    {
+        return Salary::count();
     }
+}
 
-    // month name  in arabic
-    if (!function_exists('monthNameArabic')) {
-        function monthNameArabic($monthNumber)
-        {
-            $months = [
-                1 => 'يناير',
-                2 => 'فبراير',
-                3 => 'مارس',
-                4 => 'أبريل',
-                5 => 'مايو',
-                6 => 'يونيو',
-                7 => 'يوليو',
-                8 => 'أغسطس',
-                9 => 'سبتمبر',
-                10 => 'أكتوبر',
-                11 => 'نوفمبر',
-                12 => 'ديسمبر',
-            ];
-            return $months[$monthNumber] ?? null; // يعيد الاسم أو null إذا لم يكن الرقم صحيحاً
-        }
+// month name  in arabic
+if (!function_exists('monthNameArabic')) {
+    function monthNameArabic($monthNumber)
+    {
+        $months = [
+            1 => 'يناير',
+            2 => 'فبراير',
+            3 => 'مارس',
+            4 => 'أبريل',
+            5 => 'مايو',
+            6 => 'يونيو',
+            7 => 'يوليو',
+            8 => 'أغسطس',
+            9 => 'سبتمبر',
+            10 => 'أكتوبر',
+            11 => 'نوفمبر',
+            12 => 'ديسمبر',
+        ];
+        return $months[$monthNumber] ?? null; // يعيد الاسم أو null إذا لم يكن الرقم صحيحاً
     }
+}
 
-    // tafqeet function (Convert numbers to Arabic words)
-    if (!function_exists('tafqeet')) {
-        function tafqeet($number, $currency = 'دولار', $subCurrency = 'سنت')
-        {
-            $before_comma = trim($number);
-            if (strpos($before_comma, '.') !== false) {
-                $after_comma = explode('.', $before_comma);
-                $before_comma = $after_comma[0];
-                $after_comma = $after_comma[1];
-                if (strlen($after_comma) > 2) {
-                    $after_comma = substr($after_comma, 0, 2);
-                }
-            } else {
-                $after_comma = "";
+// tafqeet function (Convert numbers to Arabic words)
+if (!function_exists('tafqeet')) {
+    function tafqeet($number, $currency = 'دولار', $subCurrency = 'سنت')
+    {
+        $before_comma = trim($number);
+        if (strpos($before_comma, '.') !== false) {
+            $after_comma = explode('.', $before_comma);
+            $before_comma = $after_comma[0];
+            $after_comma = $after_comma[1];
+            if (strlen($after_comma) > 2) {
+                $after_comma = substr($after_comma, 0, 2);
             }
+        } else {
+            $after_comma = "";
+        }
 
-            $obj = new \App\Helpers\TafqeetHelper();
-            $result = $obj->convert($before_comma);
+        $obj = new \App\Helpers\TafqeetHelper();
+        $result = $obj->convert($before_comma);
 
-            $text = $result . ' ' . $currency;
+        $text = $result . ' ' . $currency;
 
-            if ($after_comma != "" && intval($after_comma) > 0) {
-                $result2 = $obj->convert($after_comma);
-                $text .= ' و ' . $result2 . ' ' . $subCurrency;
-            }
+        if ($after_comma != "" && intval($after_comma) > 0) {
+            $result2 = $obj->convert($after_comma);
+            $text .= ' و ' . $result2 . ' ' . $subCurrency;
+        }
 
-            return $text . ' فقط لا غير';
+        return $text . ' فقط لا غير';
+    }
+}
+
+if (!function_exists('greeting')) {
+    function greeting()
+    {
+        $hour = date('H');
+        if ($hour >= 5 && $hour < 12) {
+            return __('dashboard.good_morning');
+        } elseif ($hour >= 12 && $hour < 17) {
+            return __('dashboard.good_afternoon');
+        } elseif ($hour >= 17 && $hour < 21) {
+            return __('dashboard.good_evening');
+        } else {
+            return __('dashboard.good_night');
         }
     }
 }

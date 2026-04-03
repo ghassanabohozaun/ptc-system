@@ -30,11 +30,22 @@ class ImageManagerUtils
     }
 
     // upload single image
-    public function uploadSingleImage($path, $image, $disk)
+    public function uploadSingleImage($path, $image, $disk, $file_name = null)
     {
-        $file_name = $this->generateImageName($image);
+        if (!$file_name) {
+            $file_name = $this->generateImageName($image);
+        }
+
         self::storeImageInLocal($image, $path, $file_name, $disk);
         return $file_name;
+    }
+
+    // generate file name
+    public function generateFileName($file, $employeeName, $month, $year)
+    {
+        $extension = $file->getClientOriginalExtension();
+        $cleanName = Str::slug($employeeName, '_');
+        return $cleanName . '_' . $month . '_' . $year . '_' . time() . '.' . $extension;
     }
 
     // generate image name

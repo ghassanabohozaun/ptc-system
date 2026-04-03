@@ -57,7 +57,9 @@ class MonthlyReportService
 
         if (empty($monthlyReport)) {
             if (array_key_exists('file', $data) && $data['file'] != null) {
-                $file_name = $this->imageManagerUtils->uploadSingleImage('', $data['file'], 'monthlyReports');
+                $employee = \App\Models\Employee::find($data['employee_id']);
+                $custom_file_name = $this->imageManagerUtils->generateFileName($data['file'], $employee->EmployeeFullName(), $data['month'], $data['year']);
+                $file_name = $this->imageManagerUtils->uploadSingleImage('', $data['file'], 'monthlyReports', $custom_file_name);
                 $data['file'] = $file_name;
             }
 
@@ -98,7 +100,10 @@ class MonthlyReportService
 
         if (array_key_exists('file', $data) && $data['file'] != null) {
             $this->imageManagerUtils->removeImageFromLocal($monthlyReport->file, 'monthlyReports');
-            $file_name = $this->imageManagerUtils->uploadSingleImage('', $data['file'], 'monthlyReports');
+            
+            $employee = \App\Models\Employee::find($monthlyReport->employee_id);
+            $custom_file_name = $this->imageManagerUtils->generateFileName($data['file'], $employee->EmployeeFullName(), $data['month'], $data['year']);
+            $file_name = $this->imageManagerUtils->uploadSingleImage('', $data['file'], 'monthlyReports', $custom_file_name);
             $data['file'] = $file_name;
         } else {
             if ($monthlyReport->file != null) {

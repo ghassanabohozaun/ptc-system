@@ -42,4 +42,8 @@ return [
     'total_salaries' => 'Total Salaries',
     'currency' => '$',
     'monthly_budget_analysis' => 'Monthly Budget Analysis',
+    'good_morning' => 'Good Morning',
+    'good_afternoon' => 'Good Afternoon',
+    'good_evening' => 'Good Evening',
+    'good_night' => 'Good Night',
 ];
