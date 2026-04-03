@@ -48,12 +48,41 @@ font-size: 0.92em;
 }
 
 .page-item.disabled .page-link {
-color: #6B6F82;
-pointer-events: none;
-cursor: auto;
-background-color: #FFFFFF;
-border-color: #d0d1d3;
-font-size: 12px;
+    background-color: #fff !important;
+    color: #ced4da !important;
+    border-color: #f0f2f5 !important;
+    pointer-events: none !important;
+    font-size: 0.85rem !important;
+}
+
+/* Premium Global Pagination Style - LTR */
+.pagination {
+    margin-top: 1.5rem !important;
+}
+
+.page-item .page-link {
+    border: 1px solid #f0f2f5 !important;
+    margin: 0 4px !important;
+    padding: 10px 18px !important;
+    border-radius: 8px !important;
+    color: #495057 !important;
+    font-weight: 500 !important;
+    background-color: #fff !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    font-size: 0.9rem !important;
+}
+
+.page-item.active .page-link {
+    background-color: #1e9ff2 !important; /* Primary project color */
+    border-color: #1e9ff2 !important;
+    color: #fff !important;
+    box-shadow: 0 5px 15px rgba(30, 159, 242, 0.35) !important;
+}
+
+.page-item .page-link:hover {
+    background-color: #f8f9fa !important;
+    border-color: #1e9ff2 !important;
+    transform: translateY(-2px) !important;
 }
 
 
@@ -193,4 +222,58 @@ font-size: 1.0rem;
 
 .fl-flasher{
     font-size: 16px;
+}
+
+/* SweetAlert 1 LTR Button Order Fix: Confirm on Left, Cancel on Right */
+.swal-footer {
+    display: flex !important;
+    justify-content: center !important;
+    flex-direction: row-reverse !important;
+}
+
+.swal-button-container {
+    margin: 5px !important;
+}
+
+/* Premium Global Table Style - LTR */
+.table {
+    border-collapse: separate !important;
+    border-spacing: 0 2px !important; 
+    margin-bottom: 2rem !important;
+    background: transparent !important;
+}
+
+.table thead th {
+    background-color: #f8f9fa !important;
+    color: #495057 !important;
+    font-weight: 700 !important;
+    border-top: none !important;
+    border-bottom: 2px solid #e9ecef !important;
+    padding: 12px 15px !important;
+    font-size: 1.05rem !important; /* Increased by 2px (from 0.88rem) */
+}
+
+.table tbody tr {
+    transition: all 0.25s ease !important;
+    background-color: #fff !important;
+}
+
+.table tbody tr:hover {
+    background-color: #fcfcfc !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05) !important;
+    transform: scale(1.002);
+}
+
+.table tbody td {
+    padding: 14px 15px !important;
+    vertical-align: middle !important;
+    border-top: 1px solid #f1f3f5 !important;
+    font-size: 1rem !important; /* Increased by 2px (from 0.9rem) */
+    color: #555 !important;
+}
+
+/* Responsive Table Container Styling */
+.table-responsive {
+    border-radius: 10px !important;
+    overflow: hidden !important;
 }

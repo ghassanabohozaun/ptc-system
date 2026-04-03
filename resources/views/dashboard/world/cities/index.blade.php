@@ -85,7 +85,7 @@
                                                 <tbody>
                                                     @forelse ($cities as $city)
                                                         <tr>
-                                                            <th class="col-lg-1">{!! $loop->iteration !!} </th>
+                                                            <td class="col-lg-1">{!! $loop->iteration !!} </td>
                                                             <td class="col-lg-5">{!! $city->name !!}</td>
                                                             <td class="col-lg-5">{!! $city->governorate->name !!}</td>
                                                             <td class="col-lg-1">

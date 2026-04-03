@@ -86,7 +86,7 @@
                                                 <tbody>
                                                     @forelse ($departments as $department)
                                                         <tr>
-                                                            <th class="col-lg-1">{!! $loop->iteration !!} </th>
+                                                            <td class="col-lg-1">{!! $loop->iteration !!} </td>
                                                             <td class="col-lg-8">{!! $department->name !!}</td>
                                                             <td class="col-lg-1 text-center">
                                                                 @include('dashboard.employees.departments.parts.status')

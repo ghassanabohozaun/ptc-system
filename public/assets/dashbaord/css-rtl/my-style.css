@@ -56,12 +56,41 @@ height: 1.0em;
  }
 
  .page-item.disabled .page-link {
- color: #6B6F82;
- pointer-events: none;
- cursor: auto;
- background-color: #FFFFFF;
- border-color: #d0d1d3;
- font-size: 12px;
+    background-color: #fff !important;
+    color: #ced4da !important;
+    border-color: #f0f2f5 !important;
+    pointer-events: none !important;
+    font-size: 0.85rem !important;
+ }
+
+ /* Premium Global Pagination Style - RTL */
+ .pagination {
+     margin-top: 1.5rem !important;
+ }
+
+ .page-item .page-link {
+     border: 1px solid #f0f2f5 !important;
+     margin: 0 4px !important;
+     padding: 10px 18px !important;
+     border-radius: 8px !important;
+     color: #495057 !important;
+     font-weight: 500 !important;
+     background-color: #fff !important;
+     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+     font-size: 0.9rem !important;
+ }
+
+ .page-item.active .page-link {
+     background-color: #1e9ff2 !important; /* Primary project color */
+     border-color: #1e9ff2 !important;
+     color: #fff !important;
+     box-shadow: 0 5px 15px rgba(30, 159, 242, 0.35) !important;
+ }
+
+ .page-item .page-link:hover {
+     background-color: #f8f9fa !important;
+     border-color: #1e9ff2 !important;
+     transform: translateY(-2px) !important;
  }
 
 
@@ -215,4 +244,103 @@ height: 1.0em;
  .font-boder{
     font-weight: 700;
     font-size: 1rem;
+}
+
+/* Select2 RTL Clear Button Fix */
+[data-textdirection="rtl"] .select2-container--default .select2-selection--single .select2-selection__clear {
+    position: absolute !important;
+    left: 20px !important; /* Move it next to the arrow */
+    right: auto !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    margin: 0 !important;
+    margin-top: -1px !important; /* Move up by 2px as requested */
+    cursor: pointer;
+    font-weight: bold;
+    color: #999;
+}
+
+[data-textdirection="rtl"] .select2-container--default .select2-selection--single .select2-selection__arrow {
+    left: 1px !important;
+    right: auto !important;
+    position: absolute !important;
+}
+
+/* Select2 RTL selection padding fix */
+[data-textdirection="rtl"] .select2-container--default .select2-selection--single .select2-selection__rendered {
+    padding-right: 12px !important;
+    padding-left: 45px !important; /* Sufficient space for both icons on the left */
+}
+
+/* Native Date Input RTL Styling */
+[data-textdirection="rtl"] input[type="date"] {
+    text-align: right !important;
+    direction: rtl !important;
+    position: relative;
+    padding-left: 35px !important; /* Space for the calendar icon on the left */
+}
+
+/* Move the calendar icon to the left and center it vertically */
+[data-textdirection="rtl"] input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    position: absolute;
+    left: 8px; /* Target left side */
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 !important;
+}
+
+/* Premium Global Table Style - RTL */
+.table {
+    border-collapse: separate !important;
+    border-spacing: 0 2px !important; 
+    margin-bottom: 2rem !important;
+    background: transparent !important;
+}
+
+.table thead th {
+    background-color: #f8f9fa !important;
+    color: #495057 !important;
+    font-weight: 700 !important;
+    border-top: none !important;
+    border-bottom: 2px solid #e9ecef !important;
+    padding: 12px 15px !important;
+    font-size: 0.88rem !important;
+}
+
+.table tbody tr {
+    transition: all 0.25s ease !important;
+    background-color: #fff !important;
+}
+
+.table tbody tr:hover {
+    background-color: #fcfcfc !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05) !important;
+    transform: scale(1.002);
+}
+
+.table tbody td {
+    padding: 14px 15px !important;
+    vertical-align: middle !important;
+    border-top: 1px solid #f1f3f5 !important;
+    font-size: 0.9rem !important;
+    color: #555 !important;
+}
+
+/* Responsive Table Container Styling */
+.table-responsive {
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    /* border: 1px solid #eef0f2 !important; */
+}
+
+/* SweetAlert 1 RTL Button Order Fix */
+.swal-footer {
+    display: flex !important;
+    justify-content: center !important;
+    flex-direction: row-reverse !important;
+}
+
+.swal-button-container {
+    margin: 5px !important;
 }

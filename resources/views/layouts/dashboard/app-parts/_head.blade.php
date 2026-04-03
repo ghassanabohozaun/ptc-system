@@ -8,9 +8,7 @@
 <title>{!! __('dashboard.dashboard') !!} | @yield('title')</title>
 <link rel="apple-touch-icon" href="{!! asset('uploads/settings/' . setting()->favicon) !!}">
 <link rel="shortcut icon" type="image/x-icon" href="{!! asset('uploads/settings/' . setting()->favicon) !!}">
-<link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
-    rel="stylesheet">
+<link href="{!! asset('assets/dashbaord/fonts/google/font.css') !!}" rel="stylesheet">
 
 <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/fonts/line-awesome/css/line-awesome.min.css') !!}">
 
@@ -26,7 +24,7 @@
 
 {{-- file input --}}
 <link rel="stylesheet" href="{!! asset(path: 'vendor/fileInput/css/fileinput.min.css') !!}">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" crossorigin="anonymous">
+<link rel="stylesheet" href="{!! asset('assets/dashbaord/vendors/fontawesome/css/all.min.css') !!}">
 
 
 
@@ -40,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css-rtl/pages/timeline.css') !!}">
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css-rtl/pages/dashboard-ecommerce.css') !!}">
     <link rel="stylesheet" href="{!! asset('assets/dashbaord/css-rtl/child-wizard.css') !!}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap">
+    {{-- Local Tajawal already in font.css --}}
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css-rtl/my-style.css') !!}">
 @else
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/vendors.css') !!}">

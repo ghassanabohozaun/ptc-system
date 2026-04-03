@@ -87,7 +87,7 @@
                                                 <tbody>
                                                     @forelse ($governorates as $governorate)
                                                         <tr class="row_{!! $governorate->id !!}">
-                                                            <th class="col-lg-1">{!! $loop->iteration !!} </th>
+                                                            <td class="col-lg-1">{!! $loop->iteration !!} </td>
                                                             <td class="col-lg-6">{!! $governorate->name !!}</td>
                                                             <td class="col-lg-1 text-center">
                                                                 @include('dashboard.world.governorates.parts.cites_count')

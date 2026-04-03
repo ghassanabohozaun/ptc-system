@@ -43,11 +43,11 @@
                     <div class="content-header-right col-md-6 col-12">
                         <div class="float-md-right mb-2">
 
-                            <a href="" class="btn btn-sm btn-dark mr-1" id="employees_reset_btn">
-                                <i class="la la-close"></i> {!! __('general.reset') !!}
+                            <a href="" class="btn btn-sm btn-outline-danger mr-1" id="employees_reset_btn" style="border-radius: 8px; padding: 8px 15px;">
+                                <i class="la la-refresh"></i> {!! __('general.reset') !!}
                             </a>
 
-                            <button class="btn btn-success btn-glow px-2" type="submit">
+                            <button class="btn btn-success btn-glow px-2" type="submit" style="border-radius: 8px; padding: 8px 15px; box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2);">
                                 <i class="la la-file-excel-o"></i> {!! __('general.excel') !!}
                             </button>
                         </div>
@@ -79,38 +79,47 @@
 
 @push('scripts')
     <script type="text/javascript">
-        // address dependency
-        $('#governoate_id').on('change', function() {
-            var id = $(this).val();
-            if (id) {
-                $.ajax({
-                    url: '{!! route('dashboard.governorates.get.cities.by.governorate.id', ':id') !!}'.replace(':id', id),
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function(data) {
-                        $('#city_id').empty().append(
-                            '<option value=""> {!! __('employees.select') !!} {!! __('employees.city_id') !!}</option>'
-                        );
-                        $.each(data, function(key, value) {
-                            $('#city_id').append('<option value="' + key +
-                                '">' + value + '</option>');
-                        });
-                        $('#city_id').prop('disabled', false);
-                    }
-                });
-            } else {
-                $('#city_id').empty().append(
-                    '<option value=""> {!! __('employees.select') !!} {!! __('employees.city_id') !!}</option>').prop(
-                    'disabled', true);
-            }
-        });
+        $(document).ready(function() {
+            // Initialize Select2 for all select elements
+            $('select').select2({
+                width: '100%',
+                placeholder: "{!! __('general.select') !!}"
+            });
 
-        // Reset button
-        $('#employees_reset_btn').on('click', function(e) {
-            e.preventDefault();
-            $('#exportEmployeesForm')[0].reset();
-            $('#city_id').prop('disabled', true);
-            $('input[type="checkbox"]').prop('checked', false);
+            // address dependency
+            $('#governoate_id').on('change', function() {
+                var id = $(this).val();
+                if (id) {
+                    $.ajax({
+                        url: '{!! route('dashboard.governorates.get.cities.by.governorate.id', ':id') !!}'.replace(':id', id),
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            $('#city_id').empty().append(
+                                '<option value=""> {!! __('employees.select') !!} {!! __('employees.city_id') !!}</option>'
+                            );
+                            $.each(data, function(key, value) {
+                                $('#city_id').append('<option value="' + key +
+                                    '">' + value + '</option>');
+                            });
+                            $('#city_id').prop('disabled', false).trigger('change');
+                        }
+                    });
+                } else {
+                    $('#city_id').empty().append(
+                        '<option value=""> {!! __('employees.select') !!} {!! __('employees.city_id') !!}</option>').prop(
+                        'disabled', true).trigger('change');
+                }
+            });
+
+            // Reset button
+            $('#employees_reset_btn').on('click', function(e) {
+                e.preventDefault();
+                $('#exportEmployeesForm')[0].reset();
+                $('#city_id').prop('disabled', true).trigger('change');
+                $('select').val(null).trigger('change');
+                $('input[type="checkbox"]').prop('checked', false);
+            });
         });
     </script>
 @endpush

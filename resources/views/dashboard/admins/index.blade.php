@@ -93,7 +93,7 @@
                                                 <tbody>
                                                     @forelse ($admins as $key=>$admin)
                                                         <tr id="row{{ $admin->id }}">
-                                                            <th class="col-lg-1 ">{!! $loop->iteration !!} </th>
+                                                            <td class="col-lg-1 ">{!! $loop->iteration !!} </td>
                                                             <td class="col-lg-2 text-center">{!! $admin->name !!}</td>
                                                             <td class="col-lg-2 text-center">{!! $admin->email !!}</td>
                                                             <td class="col-lg-2 text-center">{!! $admin->role->role !!}</td>

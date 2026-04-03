@@ -37,7 +37,7 @@
                     <tbody>
                         @forelse ($salaries as $salary)
                             <tr>
-                                <th class="col-lg-1">{!! $loop->iteration !!} </th>
+                                <td class="col-lg-1">{!! $loop->iteration !!} </td>
                                 <td class="col-lg-2">{!! $salary->month !!} / {!! $salary->year !!}</td>
                                 <td class="col-lg-2">{!! $salary->admin->name !!}</td>
                                 <td class="col-lg-2 text-center">{!! $salary->employees->count() !!}</td>

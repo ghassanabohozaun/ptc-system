@@ -92,7 +92,7 @@
                                                 <tbody>
                                                     @forelse ($roles as $role)
                                                         <tr>
-                                                            <th class="col-lg-1">{!! $loop->iteration !!} </th>
+                                                            <td class="col-lg-1">{!! $loop->iteration !!} </td>
                                                             <td class="col-lg-1">{!! $role->role !!}</td>
                                                             <td class="col-lg-8">
                                                                 @foreach (config('global.permissions') as $name => $value)
