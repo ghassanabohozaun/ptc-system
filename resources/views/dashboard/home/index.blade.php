@@ -107,7 +107,7 @@
             <!-- begin :analytics insights -->
             <div class="row mt-3">
                 <div class="col-xl-8 col-lg-12">
-                    <div class="card">
+                    <div class="card h-100">
                         <div class="card-header">
                             <h4 class="card-title">{!! __('dashboard.monthly_reports_analytics') !!}</h4>
                         </div>
@@ -119,7 +119,7 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-12">
-                    <div class="card">
+                    <div class="card h-100">
                         <div class="card-header">
                             <h4 class="card-title">{!! __('dashboard.department_distribution') !!}</h4>
                         </div>
@@ -132,7 +132,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">

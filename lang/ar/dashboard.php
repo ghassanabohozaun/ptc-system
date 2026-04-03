@@ -35,7 +35,7 @@ return [
 
     // login
     'login' => 'تسجيل الدخول',
-    'reports_analytics' => 'تحليلات التقارير',
+    'monthly_reports_analytics' => 'تحليلات التقارير الشهرية',
     'department_distribution' => 'توزيع الموظفين حسب الأقسام',
     'salary_analytics' => 'تحليلات الرواتب والميزانية',
     'report' => 'تقرير',

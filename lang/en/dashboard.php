@@ -34,7 +34,7 @@ return [
 
     // login
     'login' => 'Login',
-    'reports_analytics' => 'Reports Analytics',
+    'monthly_reports_analytics' => 'Monthly Reports Analytics',
     'department_distribution' => 'Department Distribution',
     'salary_analytics' => 'Salary Analytics',
     'report' => 'Report',

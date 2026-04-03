@@ -34,47 +34,13 @@ class DashboardController extends Controller
         $monthlyReports = $this->monthlyReportService->getMonthlyReportsForAllEmplpoyees()->take(5);
         $dailyReports = $this->dailyReportService->getDailyReportsForAllEmplpoyees()->take(5);
 
-        // --- ApexCharts Data Preparation ---
-
-        // 1. Report Trends (Last 6 Months)
-        $reportTrends = [];
-        $months = [];
-        for ($i = 5; $i >= 0; $i--) {
-            $date = now()->subMonths($i);
-            $monthNum = $date->format('m');
-            $yearNum = $date->format('Y');
-            $months[] = $date->translatedFormat('M Y');
-
-            $monthlyCount = MonthlyReport::where('month', $monthNum)->where('year', $yearNum)->count();
-
-            $reportTrends['monthly'][] = $monthlyCount;
-        }
-
-        // 2. Department Distribution (Donut Chart)
-        $departments = Department::active()->withCount('employeeJobDetails')->get();
-        $deptData = [
-            'labels' => $departments->pluck('name')->toArray(),
-            'series' => $departments->pluck('employee_job_details_count')->toArray()
-        ];
-
-        // 3. Salary History (Last 6 Months)
-        $salaryHistory = [];
-        for ($i = 5; $i >= 0; $i--) {
-            $date = now()->subMonths($i);
-            $monthNum = $date->format('m');
-            $yearNum = $date->format('Y');
-
-            $totalSalary = Salary::where('month', $monthNum)
-                ->where('year', $yearNum)
-                ->with('employees')
-                ->get()
-                ->flatMap(function($salary) {
-                    return $salary->employees->pluck('pivot.amount');
-                })
-                ->sum();
-
-            $salaryHistory['series'][] = (float)$totalSalary;
-        }
+        // Fetch Analytics Data via dedicated methods
+        $reportTrendsData = $this->getReportTrendsData();
+        $reportTrends = $reportTrendsData['trends'];
+        $months = $reportTrendsData['months'];
+        
+        $deptData = $this->getDepartmentDistributionData();
+        $salaryHistory = $this->getSalaryHistoryData();
 
         return view('dashboard.home.index', compact(
             'title',
@@ -86,6 +52,63 @@ class DashboardController extends Controller
             'deptData',
             'salaryHistory'
         ));
+    }
+
+    /**
+     * Get Report Trends data for the last 6 months (Monthly Reports only).
+     */
+    private function getReportTrendsData()
+    {
+        $trends = [];
+        $months = [];
+        for ($i = 5; $i >= 0; $i--) {
+            $date = now()->subMonths($i);
+            $monthNum = $date->format('m');
+            $yearNum = $date->format('Y');
+            $months[] = $date->translatedFormat('M Y');
+
+            $trends['monthly'][] = MonthlyReport::where('month', $monthNum)
+                ->where('year', $yearNum)
+                ->count();
+        }
+        return ['trends' => $trends, 'months' => $months];
+    }
+
+    /**
+     * Get employee distribution per department.
+     */
+    private function getDepartmentDistributionData()
+    {
+        $departments = Department::active()->withCount('employeeJobDetails')->get();
+        return [
+            'labels' => $departments->pluck('name')->toArray(),
+            'series' => $departments->pluck('employee_job_details_count')->toArray()
+        ];
+    }
+
+    /**
+     * Get total salary expenses for the last 6 months.
+     */
+    private function getSalaryHistoryData()
+    {
+        $history = [];
+        for ($i = 5; $i >= 0; $i--) {
+            $date = now()->subMonths($i);
+            $monthNum = $date->format('m');
+            $yearNum = $date->format('Y');
+
+            $totalSalary = Salary::where('month', $monthNum)
+                ->where('year', $yearNum)
+                ->with('employees')
+                ->get()
+                ->flatMap(function ($salary) {
+                    return $salary->employees->pluck('pivot.amount');
+                })
+                ->sum();
+
+            $history['series'][] = (float)$totalSalary;
+        }
+        return $history;
     }
 
     // addresses
