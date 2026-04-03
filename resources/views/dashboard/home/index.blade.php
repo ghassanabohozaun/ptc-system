@@ -109,7 +109,7 @@
                 <div class="col-xl-8 col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">{!! __('dashboard.reports_analytics') !!}</h4>
+                            <h4 class="card-title">{!! __('dashboard.monthly_reports_analytics') !!}</h4>
                         </div>
                         <div class="card-content">
                             <div class="card-body">
@@ -296,7 +296,7 @@
                         },
                         fontFamily: 'Tajawal, sans-serif'
                     },
-                    colors: ['#1E9FF2', '#28D094'],
+                    colors: ['#1E9FF2'],
                     dataLabels: {
                         enabled: false
                     },
@@ -327,8 +327,7 @@
                         }
                     },
                     legend: {
-                        position: 'top',
-                        horizontalAlign: 'right'
+                        show: false
                     }
                 };
 
