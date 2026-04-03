@@ -25,7 +25,7 @@ class Create extends Component
     public $governoate_id, $city_id, $address_details_ar, $address_details_en;
     public $personal_id, $birthday, $gender, $password, $password_confirm, $mobile_no, $marital_status, $alternative_mobile_no;
     public $email, $photo, $bank_name, $iban, $banck_account, $basic_salary, $currency;
-    public $title, $appointment_date, $contact_expire_date, $employment_type, $department_id, $employee_status_id, $supervisor, $submit_monthly_report;
+    public $title_ar, $title_en, $appointment_date, $contact_expire_date, $employment_type, $department_id, $employee_status_id, $supervisor_ar, $supervisor_en, $submit_monthly_report;
     public $employeeCreatedID;
 
     public $governorates, $cities;
@@ -223,7 +223,10 @@ class Create extends Component
     public function submitJobDetailsFrom()
     {
         $data = [
-            'title' => ['required', 'string', 'min:3'],
+            'title_ar' => ['required', 'string', 'min:3'],
+            'title_en' => ['required', 'string', 'min:3'],
+            'supervisor_ar' => ['required', 'string', 'min:3'],
+            'supervisor_en' => ['required', 'string', 'min:3'],
             // 'appointment_date' => ['required', 'date'],
             // 'contact_expire_date' => ['required', 'date'],
             'employment_type' => ['required'],
@@ -236,13 +239,13 @@ class Create extends Component
         $this->validate($data);
 
         $jobDetailsData = [
-            'title' => $this->title,
+            'title' => ['ar' => $this->title_ar, 'en' => $this->title_en],
             'appointment_date' => $this->appointment_date,
             'contact_expire_date' => $this->contact_expire_date,
             'employment_type' => $this->employment_type,
             'employee_status_id' => $this->employee_status_id,
             'department_id' => $this->department_id,
-            'supervisor' => $this->supervisor,
+            'supervisor' => ['ar' => $this->supervisor_ar, 'en' => $this->supervisor_en],
             'submit_monthly_report' => $this->submit_monthly_report,
             'employee_id' => $this->employeeCreatedID,
         ];

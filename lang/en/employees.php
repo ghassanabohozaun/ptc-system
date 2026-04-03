@@ -157,6 +157,10 @@ return [
     'supervisor' => 'Supervisor',
     'employee_status' => 'Employee Status',
     'submit_monthly_report' => 'Submit Monthly Report',
+    'title_ar' => 'Arabic Job Title',
+    'title_en' => 'English Job Title',
+    'supervisor_ar' => 'Arabic Supervisor',
+    'supervisor_en' => 'English Supervisor',
 
     'enter_title' => 'Enter Title',
     'enter_basic_salary' => 'Enter Basic Salary',
@@ -167,6 +171,10 @@ return [
     'enter_supervisor' => 'Enter Supervisor',
     'enter_employee_status' => 'Enter Employee Status',
     'enter_submit_monthly_report' => 'Enter Submit Monthly Report',
+    'enter_title_ar' => 'Enter Arabic Job Title',
+    'enter_title_en' => 'Enter English Job Title',
+    'enter_supervisor_ar' => 'Enter Arabic Supervisor',
+    'enter_supervisor_en' => 'Enter English Supervisor',
 
     // employee statuses
     'create_new_employee_status' => 'Create New Employee Status',
@@ -190,4 +198,22 @@ return [
     // export
     'employees_reports' => 'Employees Reports',
     'employees_export'=>'Employees Export',
+
+    // contract details
+    'contract_details' => 'Contract Details',
+    'weekly_working_hours_and_days' => 'Weekly Working Hours and Days',
+    'holidays_and_festivals' => 'Holidays and Festivals',
+    'job_duties' => 'Job Duties',
+    'contract_terms' => 'Contract Terms',
+    'education_contract' => 'Education (Contract)',
+    'experiences_contract' => 'Experiences (Contract)',
+    'other_requirements' => 'Other Requirements',
+
+    'enter_weekly_working_hours_and_days' => 'Enter Weekly Working Hours and Days',
+    'enter_holidays_and_festivals' => 'Enter Holidays and Festivals',
+    'enter_job_duties' => 'Enter Job Duties',
+    'enter_contract_terms' => 'Enter Contract Terms',
+    'enter_education_contract' => 'Enter Education (Contract)',
+    'enter_experiences_contract' => 'Enter Experiences (Contract)',
+    'enter_other_requirements' => 'Enter Other Requirements',
 ];

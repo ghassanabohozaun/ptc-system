@@ -144,20 +144,33 @@ if (!function_exists('replaceHyphensWithSpaces')) {
         }
     }
 
-    // greeting
-    if (!function_exists('greeting')) {
-        function greeting()
+    // tafqeet function (Convert numbers to Arabic words)
+    if (!function_exists('tafqeet')) {
+        function tafqeet($number, $currency = 'دولار', $subCurrency = 'سنت')
         {
-            $hour = now()->format('H');
-            if ($hour >= 5 && $hour < 12) {
-                return __('general.good_morning');
-            } elseif ($hour >= 12 && $hour < 17) {
-                return __('general.good_afternoon');
-            } elseif ($hour >= 17 && $hour < 21) {
-                return __('general.good_evening');
+            $before_comma = trim($number);
+            if (strpos($before_comma, '.') !== false) {
+                $after_comma = explode('.', $before_comma);
+                $before_comma = $after_comma[0];
+                $after_comma = $after_comma[1];
+                if (strlen($after_comma) > 2) {
+                    $after_comma = substr($after_comma, 0, 2);
+                }
             } else {
-                return __('general.good_night');
+                $after_comma = "";
             }
+
+            $obj = new \App\Helpers\TafqeetHelper();
+            $result = $obj->convert($before_comma);
+
+            $text = $result . ' ' . $currency;
+
+            if ($after_comma != "" && intval($after_comma) > 0) {
+                $result2 = $obj->convert($after_comma);
+                $text .= ' و ' . $result2 . ' ' . $subCurrency;
+            }
+
+            return $text . ' فقط لا غير';
         }
     }
 }

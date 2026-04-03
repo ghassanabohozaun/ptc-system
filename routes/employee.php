@@ -3,6 +3,7 @@
 use App\Http\Controllers\Employees\Auth\AuthController;
 use App\Http\Controllers\Employees\DailyReportsController;
 use App\Http\Controllers\Employees\EmployeesController;
+use App\Http\Controllers\Employees\EmployeeTaskController;
 use App\Http\Controllers\Employees\MessagesController;
 use App\Http\Controllers\Employees\MonthlyReportsController;
 use App\Http\Controllers\Employees\OverviewController;
@@ -50,6 +51,9 @@ Route::group(
 
             ########################################### messages routes ######################################################################
             Route::get('/messages', [MessagesController::class, 'index'])->name('messages.index');
+
+            ########################################### tasks routes ######################################################################
+            Route::get('/tasks', [EmployeeTaskController::class, 'index'])->name('tasks.index');
         });
     },
 );

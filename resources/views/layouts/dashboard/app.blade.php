@@ -13,7 +13,6 @@
     data-menu="vertical-menu-modern" data-col="2-columns" style="font-family: 'Tajawal', sans-serif;">
 
 
-
     @include('layouts.dashboard.app-parts._header')
     @include('layouts.dashboard.app-parts._sidebar')
 
@@ -27,7 +26,6 @@
     @include('layouts.dashboard.app-parts._footer')
 
     @include('layouts.dashboard.app-parts._scripts')
-
 
 
     @stack('scripts')

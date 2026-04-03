@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Dashboard\Employee;
 
-use App\Models\Department;
 use App\Models\Employee;
 use App\Services\Dashboard\CityService;
 use App\Services\Dashboard\DepartmentService;
@@ -28,7 +27,8 @@ class Edit extends Component
     public $personal_id, $birthday, $gender, $password, $password_confirm, $mobile_no, $marital_status, $alternative_mobile_no;
     public $email, $bank_name, $iban, $banck_account, $basic_salary, $currency;
     public $photo, $new_photo;
-    public $title, $appointment_date, $contact_expire_date, $employment_type, $department_id, $employee_status_id, $supervisor, $submit_monthly_report;
+    public $title_ar, $title_en, $appointment_date, $contact_expire_date, $employment_type, $department_id, $employee_status_id, $supervisor_ar, $supervisor_en, $submit_monthly_report;
+    public $weekly_working_hours_and_days, $holidays_and_festivals, $job_duties, $contract_terms, $education_contract, $experiences_contract, $other_requirements;
 
     public $governorates, $cities;
     public $employeeStatuses;
@@ -104,16 +104,33 @@ class Edit extends Component
             $this->educationItems[$key]['new_certification'] = '';
         }
 
+        if (count($this->educationItems) == 0) {
+            $this->addNewEducation();
+        }
+
         // job details
         if ($this->employee->employeeJobDetails) {
-            $this->title = $this->employee->employeeJobDetails->title;
+            $this->title_ar = $this->employee->employeeJobDetails->getTranslation('title', 'ar');
+            $this->title_en = $this->employee->employeeJobDetails->getTranslation('title', 'en');
             $this->appointment_date = $this->employee->employeeJobDetails->appointment_date;
             $this->contact_expire_date = $this->employee->employeeJobDetails->contact_expire_date;
             $this->employment_type = $this->employee->employeeJobDetails->employment_type;
             $this->employee_status_id = $this->employee->employeeJobDetails->employee_status_id;
             $this->department_id = $this->employee->employeeJobDetails->department_id;
-            $this->supervisor = $this->employee->employeeJobDetails->supervisor;
+            $this->supervisor_ar = $this->employee->employeeJobDetails->getTranslation('supervisor', 'ar');
+            $this->supervisor_en = $this->employee->employeeJobDetails->getTranslation('supervisor', 'en');
             $this->submit_monthly_report = $this->employee->employeeJobDetails->submit_monthly_report;
+        }
+
+        // contract details
+        if ($this->employee->employeeContractDetails) {
+            $this->weekly_working_hours_and_days = $this->employee->employeeContractDetails->weekly_working_hours_and_days;
+            $this->holidays_and_festivals = $this->employee->employeeContractDetails->holidays_and_festivals;
+            $this->job_duties = $this->employee->employeeContractDetails->job_duties;
+            $this->contract_terms = $this->employee->employeeContractDetails->contract_terms;
+            $this->education_contract = $this->employee->employeeContractDetails->education_contract;
+            $this->experiences_contract = $this->employee->employeeContractDetails->experiences_contract;
+            $this->other_requirements = $this->employee->employeeContractDetails->other_requirements;
         }
 
         $this->employeeStatuses = $employeeStatuses;
@@ -241,7 +258,10 @@ class Edit extends Component
     public function submitJobDetailsFrom()
     {
         $data = [
-            'title' => ['required', 'string', 'min:3'],
+            'title_ar' => ['required', 'string', 'min:3'],
+            'title_en' => ['required', 'string', 'min:3'],
+            'supervisor_ar' => ['required', 'string', 'min:3'],
+            'supervisor_en' => ['required', 'string', 'min:3'],
             // 'appointment_date' => ['required', 'date'],
             // 'contact_expire_date' => ['required', 'date'],
             'employment_type' => ['required'],
@@ -254,13 +274,13 @@ class Edit extends Component
         $this->validate($data);
 
         $jobDetailsData = [
-            'title' => $this->title,
+            'title' => ['ar' => $this->title_ar, 'en' => $this->title_en],
             'appointment_date' => $this->appointment_date ?? null,
             'contact_expire_date' => $this->contact_expire_date ?? null,
             'employment_type' => $this->employment_type,
             'employee_status_id' => $this->employee_status_id,
             'department_id' => $this->department_id,
-            'supervisor' => $this->supervisor,
+            'supervisor' => ['ar' => $this->supervisor_ar, 'en' => $this->supervisor_en],
             'submit_monthly_report' => $this->submit_monthly_report,
             'employee_id' => $this->EmployeeID,
         ];
@@ -275,6 +295,45 @@ class Edit extends Component
             flash()->success(message: __('general.update_success_message'));
             $this->dispatch('scroll-to-top');
             // $this->currentStep = 1;
+        }
+    }
+
+    // submit contract details form
+    public function submitContractDetailsForm()
+    {
+        $data = [
+            'weekly_working_hours_and_days' => ['required', 'string', 'min:3'],
+            'holidays_and_festivals' => ['required', 'string', 'min:3'],
+            'job_duties' => ['required', 'string', 'min:3'],
+            'contract_terms' => ['required', 'string', 'min:3'],
+            'education_contract' => ['required', 'string', 'min:3'],
+            'experiences_contract' => ['required', 'string', 'min:3'],
+            'other_requirements' => ['required', 'string', 'min:3'],
+        ];
+
+        $this->validate($data);
+
+        $contractDetailsData = [
+            'weekly_working_hours_and_days' => $this->weekly_working_hours_and_days,
+            'holidays_and_festivals' => $this->holidays_and_festivals,
+            'job_duties' => $this->job_duties,
+            'contract_terms' => $this->contract_terms,
+            'education_contract' => $this->education_contract,
+            'experiences_contract' => $this->experiences_contract,
+            'other_requirements' => $this->other_requirements,
+            'employee_id' => $this->EmployeeID,
+        ];
+
+        $contractDetailsUpdated = $this->employeeService->updateContractDetails($contractDetailsData);
+
+        if ($contractDetailsUpdated == 'employee_not_found') {
+            flash()->warning(message: __('employees.update_employee_before'));
+        } elseif ($contractDetailsUpdated == 'update_error') {
+            flash()->error(message: __('general.update_error_message'));
+        } elseif ($contractDetailsUpdated == 'update_success') {
+            flash()->success(message: __('general.update_success_message'));
+            $this->dispatch('scroll-to-top');
+            $this->dispatch('reinit-summernote');
         }
     }
 
@@ -306,6 +365,17 @@ class Edit extends Component
         }
     }
 
+    // contract details click
+    public function ContractDetailsClick()
+    {
+        if ($this->EmployeeID == null) {
+            flash()->warning(message: __('employees.add_employee_before'));
+            $this->statusAlert = ['message' => __('employees.add_employee_before'), 'type' => 'alert-warning'];
+        } else {
+            $this->currentStep = 4;
+        }
+    }
+
     // add new euduction
     public function addNewEducation()
     {
@@ -319,12 +389,12 @@ class Edit extends Component
             unset($this->educationItems[$index]);
 
             if ($id != 0) {
-                unset($this->educationItems[$index]);
-                $education = $this->employeeService->deleteEducation($id);
-                if (!$education) {
+                $educationDeleted = $this->employeeService->deleteEducation($id);
+                if (!$educationDeleted) {
                     flash()->error(message: __('general.delete_error_message'));
+                } else {
+                    flash()->success(message: __('general.delete_success_message'));
                 }
-                flash()->success(message: __('general.delete_success_message'));
             }
         }
     }

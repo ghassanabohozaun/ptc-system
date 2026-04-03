@@ -4,9 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Spatie\Translatable\HasTranslations;
+
 class EmployeeJobDetail extends Model
 {
+    use HasTranslations;
+
     protected $table = 'employee_job_details';
+    public $translatable = ['title', 'supervisor'];
     protected $fillable = ['title', 'appointment_date', 'contact_expire_date', 'employment_type', 'department_id', 'supervisor', 'submit_monthly_report','employee_status_id', 'employee_id'];
 
     // employee type function

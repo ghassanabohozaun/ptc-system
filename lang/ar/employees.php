@@ -156,6 +156,10 @@ return [
     'supervisor' => 'المشرف',
     'employee_status' => 'حالة الموظف',
     'submit_monthly_report' => 'هل يرفع تقرير شهري',
+    'title_ar' => 'المسمى الوظيفي بالعربي',
+    'title_en' => 'المسمى الوظيفي بالانجليزي',
+    'supervisor_ar' => 'المشرف بالعربي',
+    'supervisor_en' => 'المشرف بالانجليزي',
 
     'enter_title' => 'ادخل المسمي الوظيفي',
     'enter_basic_salary' => 'ادخل الراتب الأساسي',
@@ -166,6 +170,10 @@ return [
     'enter_supervisor' => 'ادخل المشرف',
     'enter_employee_status' => 'ادخل حالة الموظف',
     'enter_submit_monthly_report' => 'ادخل هل يرفع تقرير شهري',
+    'enter_title_ar' => 'ادخل المسمى الوظيفي بالعربي',
+    'enter_title_en' => 'ادخل المسمى الوظيفي بالانجليزي',
+    'enter_supervisor_ar' => 'ادخل المشرف بالعربي',
+    'enter_supervisor_en' => 'ادخل المشرف بالانجليزي',
 
     // employee statuses
     'create_new_employee_status' => 'انشاء حالة موظف جديد',
@@ -189,4 +197,22 @@ return [
     // export
     'employees_reports' => 'تقارير الموظفين',
     'employees_export' => 'تصدير الموظفين',
+
+    // contract details
+    'contract_details' => 'تفاصيل العقد',
+    'weekly_working_hours_and_days' => 'ساعات وأيام العمل الأسبوعية',
+    'holidays_and_festivals' => 'الإجازات والأعياد',
+    'job_duties' => 'المهام الوظيفية',
+    'contract_terms' => 'شروط العقد',
+    'education_contract' => 'التعليم (حسب العقد)',
+    'experiences_contract' => 'الخبرات (حسب العقد)',
+    'other_requirements' => 'متطلبات أخرى',
+
+    'enter_weekly_working_hours_and_days' => 'أدخل ساعات وأيام العمل الأسبوعية',
+    'enter_holidays_and_festivals' => 'أدخل الإجازات والأعياد',
+    'enter_job_duties' => 'أدخل المهام الوظيفية',
+    'enter_contract_terms' => 'أدخل شروط العقد',
+    'enter_education_contract' => 'أدخل التعليم (حسب العقد)',
+    'enter_experiences_contract' => 'أدخل الخبرات (حسب العقد)',
+    'enter_other_requirements' => 'أدخل متطلبات أخرى',
 ];

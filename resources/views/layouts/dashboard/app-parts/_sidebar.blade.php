@@ -208,6 +208,13 @@
                             </li>
                             <!-- end: monthly reports -->
                         @endcan
+                        <!-- begin: employee contracts -->
+                        <li class="@if (Request::routeIs('dashboard.employeeContracts.*')) active @endif">
+                            <a class="menu-item" href="{!! route('dashboard.employeeContracts.index') !!}" data-i18n="nav.dash.employeeContracts">
+                                {!! __('employeeContracts.employee_contracts') !!}
+                            </a>
+                        </li>
+                        <!-- end: employee contracts -->
                     </ul>
 
 

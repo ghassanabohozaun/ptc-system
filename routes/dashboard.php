@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\Auth\Passowrd\ResetPasswordController;
 use App\Http\Controllers\Dashboard\EmployeesExportController;
 use App\Http\Controllers\Dashboard\EmployeesReportsController;
 use App\Http\Controllers\Dashboard\MonthlyReportsController;
+use App\Http\Controllers\Dashboard\EmployeeContractsController;
 use App\Http\Controllers\Dashboard\SalariesController;
 use App\Http\Controllers\Dashboard\{AdminsController, CitiesController, DailyReportsController, DashboardController, DepartmentsController, EmployeeSalaryController, EmployeesController, EmployeeStatusesController, GovernoratiesController, MessagesController, ProductsController, RolesController, SettingsController, SponsershipOrganizationsController, SponsershipStatusesController, SponsershipTypesController};
 use Illuminate\Support\Facades\Route;
@@ -121,6 +122,14 @@ Route::group(
             Route::group(['middleware' => 'can:monthlyReports'], function () {
                 Route::resource('monthlyReports', MonthlyReportsController::class);
                 Route::post('/monthlyReports/destroy', [MonthlyReportsController::class, 'destroy'])->name('monthly.reports.destroy');
+            });
+
+            ########################################### employee contracts routes  ######################################################################
+            // You can wrap this in a permission middleware if needed, e.g., 'can:employeeContracts'
+            Route::group([], function () {
+                Route::resource('employeeContracts', EmployeeContractsController::class);
+                Route::post('/employeeContracts/destroy', [EmployeeContractsController::class, 'destroy'])->name('employeeContracts.destroy');
+                Route::get('/employeeContracts/print/{id?}', [EmployeeContractsController::class, 'print'])->name('employeeContracts.print');
             });
 
             ########################################### salaries routes  ######################################################################

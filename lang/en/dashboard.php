@@ -16,7 +16,6 @@ return [
     'monthly_reports_count' => 'Monthly Reports Count',
     'salaries_count' => 'Salaries Count',
 
-
     //admin  menu
     'roles' => 'Roles',
     'admins' => 'Admins',
@@ -30,8 +29,8 @@ return [
     // employees menu
     'daily_reports' => 'Daily Reports',
     'monthly_reports' => 'Monthly Reports',
-    'messages'=>'Messages',
-
+    'messages' => 'Messages',
+    'tasks' => 'Tasks',
 
     // login
     'login' => 'Login',

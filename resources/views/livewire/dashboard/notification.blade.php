@@ -87,7 +87,7 @@
                         {{ __('general.new') }}</span>
                 @endif
             </li>
-            <li class="scrollable-container media-list w-100">
+            <li class="scrollable-container media-list w-100" style="max-height: 300px; overflow-y: auto;">
                 @forelse($notifications as $notification)
                     <a href="javascript:void(0)" wire:click="markAsRead('{{ $notification->id }}')">
                         <div class="media">

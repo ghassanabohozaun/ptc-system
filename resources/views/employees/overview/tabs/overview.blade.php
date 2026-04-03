@@ -2,8 +2,16 @@
 
     <!-- begin: row -->
     <div class="row">
+
+        <div class="col-lg-6 d-flex flex-column">
+            <div class="row flex-grow">
+                @livewire('employee.tasks.todo-list')
+
+            </div>
+        </div>
+
         <!-- begin: col-lg-6 -->
-        <div class="col-lg-12 d-flex flex-column">
+        <div class="col-lg-6 d-flex flex-column">
             <div class="row flex-grow">
                 <div class="col-12 grid-margin stretch-card">
                     <div class="card card-rounded">

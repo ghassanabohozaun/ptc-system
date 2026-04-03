@@ -28,6 +28,8 @@ return [
     'daily_reports' => 'التقارير اليومية',
     'monthly_reports' => 'التقارير الشهرية',
     'messages'=>'الرسائل',
+        'tasks' => 'المهام',
+
 
 
 

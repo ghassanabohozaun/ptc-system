@@ -5,6 +5,7 @@ namespace App\Repositories\Dashboard;
 use App\Models\Employee;
 use App\Models\EmployeeEducation;
 use App\Models\EmployeeJobDetail;
+use App\Models\EmployeeContractDetails;
 use Symfony\Component\CssSelector\Node\FunctionNode;
 
 class EmployeeRepository
@@ -182,5 +183,25 @@ class EmployeeRepository
     public function destoryJobDetails($jobDetail)
     {
         return $jobDetail->forceDelete();
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+    // contract details
+
+    // get one employee contract detials
+    public function getOneEmployeeContractDetails($employee_id)
+    {
+        return EmployeeContractDetails::where('employee_id', $employee_id)->first();
+    }
+
+    // store contract details
+    public function storeContractDetails($data)
+    {
+        return EmployeeContractDetails::create($data);
+    }
+
+    public function destoryContractDetails($contractDetail)
+    {
+        return $contractDetail->forceDelete();
     }
 }

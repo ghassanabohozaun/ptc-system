@@ -5,11 +5,27 @@
         <!-- begin: input -->
         <div class="col-md-3">
             <div class="form-group">
-                <label for="title">{!! __('employees.title') !!}</label>
-                <input type="text" wire:model.live="title" class="form-control" autocomplete="off"
-                    placeholder="{!! __('employees.enter_title') !!}"
-                    @error('title')  style="border-color: rgb(246, 78, 96)"  @enderror>
-                @error('title')
+                <label for="title_ar">{!! __('employees.title_ar') !!}</label>
+                <input type="text" wire:model.live="title_ar" class="form-control" autocomplete="off"
+                    placeholder="{!! __('employees.enter_title_ar') !!}"
+                    @error('title_ar')  style="border-color: rgb(246, 78, 96)"  @enderror>
+                @error('title_ar')
+                    <span class="text text-danger">
+                        <strong>{!! $message !!}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+        <!-- end: input -->
+
+        <!-- begin: input -->
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="title_en">{!! __('employees.title_en') !!}</label>
+                <input type="text" wire:model.live="title_en" class="form-control" autocomplete="off"
+                    placeholder="{!! __('employees.enter_title_en') !!}"
+                    @error('title_en')  style="border-color: rgb(246, 78, 96)"  @enderror>
+                @error('title_en')
                     <span class="text text-danger">
                         <strong>{!! $message !!}</strong>
                     </span>
@@ -20,7 +36,7 @@
 
 
         <!-- begin: input -->
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="form-group">
                 <label for="appointment_date">{!! __('employees.appointment_date') !!}</label>
                 <input type="date" wire:model.live="appointment_date" class="form-control" autocomplete="off"
@@ -36,7 +52,7 @@
         <!-- end: input -->
 
         <!-- begin: input -->
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="form-group">
                 <label for="contact_expire_date">{!! __('employees.contact_expire_date') !!}</label>
                 <input type="date" wire:model.live="contact_expire_date" class="form-control" autocomplete="off"
@@ -53,7 +69,7 @@
 
 
         <!-- begin: input -->
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="form-group">
                 <label for="employment_type">{!! __('employees.employment_type') !!}</label>
                 <select wire:model.live="employment_type" class="form-control"
@@ -134,13 +150,13 @@
 
 
         <!-- begin: input -->
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="form-group">
-                <label for="supervisor">{!! __('employees.supervisor') !!}</label>
-                <input type="text" wire:model.live="supervisor" class="form-control" autocomplete="off"
-                    placeholder="{!! __('employees.enter_supervisor') !!}"
-                    @error('supervisor')  style="border-color: rgb(246, 78, 96)"  @enderror>
-                @error('supervisor')
+                <label for="supervisor_ar">{!! __('employees.supervisor_ar') !!}</label>
+                <input type="text" wire:model.live="supervisor_ar" class="form-control" autocomplete="off"
+                    placeholder="{!! __('employees.enter_supervisor_ar') !!}"
+                    @error('supervisor_ar')  style="border-color: rgb(246, 78, 96)"  @enderror>
+                @error('supervisor_ar')
                     <span class="text text-danger">
                         <strong>{!! $message !!}</strong>
                     </span>
@@ -150,7 +166,23 @@
         <!-- end: input -->
 
         <!-- begin: input -->
-        <div class="col-md-3">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="supervisor_en">{!! __('employees.supervisor_en') !!}</label>
+                <input type="text" wire:model.live="supervisor_en" class="form-control" autocomplete="off"
+                    placeholder="{!! __('employees.enter_supervisor_en') !!}"
+                    @error('supervisor_en')  style="border-color: rgb(246, 78, 96)"  @enderror>
+                @error('supervisor_en')
+                    <span class="text text-danger">
+                        <strong>{!! $message !!}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+        <!-- end: input -->
+
+        <!-- begin: input -->
+        <div class="col-md-2">
             <div class="form-group">
                 <label for="submit_monthly_report">{!! __('employees.submit_monthly_report') !!}</label>
                 <select wire:model.live="submit_monthly_report" class="form-control"

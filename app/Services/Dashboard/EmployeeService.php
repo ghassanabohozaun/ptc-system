@@ -307,4 +307,35 @@ class EmployeeService
 
         return 'update_success';
     }
+
+
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+    // Contract Details
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+    // update contract details
+    public function updateContractDetails($data)
+    {
+        $employee = self::getOne($data['employee_id']);
+
+        if (!$employee) {
+            return 'employee_not_found';
+        }
+
+        $contractDetails = $this->employeeRepository->getOneEmployeeContractDetails($data['employee_id']);
+
+        // delete old
+        if ($contractDetails) {
+            $this->employeeRepository->destoryContractDetails($contractDetails);
+        }
+
+        // store
+        $contractDetails = $this->employeeRepository->storeContractDetails($data);
+
+        if (!$contractDetails) {
+            return 'update_error';
+        }
+
+        return 'update_success';
+    }
 }

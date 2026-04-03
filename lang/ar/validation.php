@@ -305,6 +305,11 @@ return [
         'photo' => 'صورة  الموظف',
         'mobile_no' => 'رقم الموبايل ',
         'alternative_mobile_no' => 'رقم موبايل بديل ',
+        'title_ar' => 'المسمى الوظيفي بالعربي',
+        'title_en' => 'المسمى الوظيفي بالإنجليزي',
+        'submit_monthly_report' => 'تقديم التقرير الشهري',
+        'supervisor_ar' => 'المشرف بالعربي',
+        'supervisor_en' => 'المشرف بالإنجليزي',
 
         'educationItems.*.educational_instituation_name' => 'اسم المؤسسة :index',
         'educationItems.*.education_level' => 'المستوي التعليمي :index',
@@ -322,6 +327,12 @@ return [
         'supervisor' => 'المشرف',
         'employee_status' => 'حالة الموظف',
         'employeeSalaryItem.*.amount' => 'الراتب  :index',
+
+        'employee_id' => 'الموظف',
+        'contract_duration' => 'مدة العقد',
+        'contract_start_date' => 'تاريخ بداية العقد',
+        'contract_expiry_date' => 'تاريخ انتهاء العقد',
+        'monthly_salary' => 'الراتب الشهري',
 
         'file' => 'الملف',
 

@@ -17,6 +17,9 @@
         <li class="nav-item" wire:click ="JobDetailsClick">
             <a class="nav-link {!! $currentStep == 3 ? 'active' : '' !!}">{!! __('employees.job_details') !!}</a>
         </li>
+        <li class="nav-item" wire:click ="ContractDetailsClick">
+            <a class="nav-link {!! $currentStep == 4 ? 'active' : '' !!}">{!! __('employees.contract_details') !!}</a>
+        </li>
     </ul>
 
     <div class="tab-content px-1 pt-1">
@@ -29,6 +32,10 @@
         <div class="tab-pane {!! $currentStep == 3 ? 'active' : '' !!}" aria-labelledby="base-job-details">
             @include('livewire.dashboard.employee._edit.job-details')
         </div>
+        <div class="tab-pane {!! $currentStep == 4 ? 'active' : '' !!}" aria-labelledby="base-contract-details">
+            @include('livewire.dashboard.employee._edit.contract-details')
+        </div>
     </div>
+
 
 </div>

@@ -31,6 +31,14 @@
             </a>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link @if (Request::routeIs('employees.tasks.*')) active @endif" href="{!! route('employees.tasks.index') !!}">
+                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                <span class="menu-title">{!! __('dashboard.tasks') !!}</span>
+            </a>
+        </li>
+
+
 
         {{-- <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
