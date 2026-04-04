@@ -1,8 +1,8 @@
     <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow expanded" data-scroll-to-active="true">
         <div class="main-menu-content">
 
-            <!-- begin: Dashboard -->
-            <ul class="navigation navigation-main mt-3">
+            <ul class="navigation navigation-main mt-3" id="main-menu-navigation" data-menu="menu-navigation">
+                <!-- begin: Dashboard -->
                 <li class=" nav-item @if (Request::is('*welcome*')) active @endif">
                     <a href="{!! route('dashboard.index') !!}">
                         <i class="icon-home"></i>
@@ -10,11 +10,9 @@
                         {{-- <span class="badge badge badge-info badge-pill float-right mr-2">3</span> --}}
                     </a>
                 </li>
-            </ul>
             <!-- end: Dashboard -->
 
             <!-- begin: settings -->
-            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class=" nav-item">
                     <a href="javascript:void(0)">
                         <i class="icon-settings"></i>
@@ -34,15 +32,10 @@
                     </ul>
                     <!-- end: settings -->
                 </li>
-            </ul>
-
             <!-- end: settings -->
-
-
 
             <!-- begin: roles -->
             @can('roles')
-                <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                     <li class=" nav-item">
                         <a href="javascript:void(0)">
                             <i class="icon-lock"></i>
@@ -60,13 +53,11 @@
                         </ul>
                         <!-- end: roles -->
                     </li>
-                </ul>
             @endcan
             <!-- end: roles -->
 
             <!-- begin: admins -->
             @can('admins')
-                <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                     <li class=" nav-item">
                         <a href="javascript:void(0)">
                             <i class="icon-user"></i>
@@ -84,14 +75,11 @@
                         </ul>
                         <!-- end: admins -->
                     </li>
-                </ul>
             @endcan
             <!-- end: admins -->
 
-
             <!-- begin: world -->
             @can('world')
-                <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                     <li class=" nav-item">
                         <a href="javascript:void(0)">
                             <i class="icon-flag"></i>
@@ -118,13 +106,10 @@
                         </ul>
 
                     </li>
-                </ul>
             @endcan
             <!-- end: world -->
 
-
             <!-- begin: employee settings -->
-            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class=" nav-item">
                     <a href="javascript:void(0)">
                         <i class="icon-settings"></i>
@@ -157,12 +142,9 @@
                     </ul>
 
                 </li>
-            </ul>
             <!-- end: employee settings -->
 
-
             <!-- begin: employees -->
-            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class=" nav-item">
                     <a href="javascript:void(0)">
                         <i class="icon-users"></i>
@@ -219,11 +201,9 @@
 
 
                 </li>
-            </ul>
             <!-- end: employees -->
 
             <!-- begin: salaries -->
-            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class=" nav-item">
                     <a href="javascript:void(0)">
                         <i class="icon-wallet"></i>
@@ -245,21 +225,18 @@
                     </ul>
 
                 </li>
-            </ul>
             <!-- end: salaries -->
 
             <!-- begin: messages -->
             @can('messages')
-                <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                     <li class="nav-item @if (Request::routeIs('dashboard.messages.*')) active @endif">
                         <a href="{!! route('dashboard.messages.index') !!}">
                             <i class="icon-envelope"></i>
                             <span class="menu-title" data-i18n="nav.dash.messages">{!! __('messages.messages') !!}</span>
                         </a>
                     </li>
-                </ul>
             @endcan
             <!-- end: messages -->
-
+            </ul>
         </div>
     </div>

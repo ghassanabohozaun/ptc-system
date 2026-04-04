@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="{!! asset('assets/dashbaord/css-rtl/child-wizard.css') !!}" rel="stylesheet">
     {{-- Local Tajawal already in font.css --}}
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css-rtl/my-style.css') !!}">
+    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css-rtl/sidebar-navy-rtl.css') !!}">
 @else
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/vendors.css') !!}">
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/app.css') !!}">
@@ -49,4 +50,5 @@
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/pages/dashboard-ecommerce.css') !!}">
     <link rel="stylesheet" href="{!! asset('assets/dashbaord/css/child-wizard.css') !!}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/my-style.css') !!}">
+    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/sidebar-navy.css') !!}">
 @endif
