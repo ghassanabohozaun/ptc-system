@@ -5,7 +5,7 @@
     body.vertical-layout.vertical-menu-modern .main-menu.menu-fixed {
         top: 0 !important;
         height: 100vh !important;
-        padding-top: 5.5rem !important; /* Move the menu items below the taller logo area! */
+        padding-top: 5.125rem !important; /* Unified header height (~82px) */
         z-index: 1030 !important;
     }
     
@@ -16,8 +16,9 @@
     }
     
     body.vertical-layout.vertical-menu-modern .header-navbar .navbar-wrapper .navbar-header {
-        background: #0f172a !important; 
-        height: 5.5rem !important; /* Make the logo area taller for a huge logo */
+        background: #ffffff !important; 
+        height: 5.125rem !important; /* Unified header height (~82px) */
+        border-bottom: 1px solid #f1f5f9; /* Subtle separator from the sidebar below */
     }
 
     /* Vertically align inside the taller header without breaking Bootstrap framework */
@@ -29,29 +30,29 @@
     body.vertical-layout.vertical-menu-modern .header-navbar .navbar-wrapper .navbar-container {
         background: #ffffff !important;
         box-shadow: 4px 4px 16px rgba(0,0,0,0.05) !important;
-        border-bottom-right-radius: 12px;
+        height: 5.125rem !important; /* Unified header height (~82px) */
     }
 
     body.vertical-layout.vertical-menu-modern .header-navbar .navbar-header .nav-link i,
     body.vertical-layout.vertical-menu-modern .header-navbar .navbar-header .navbar-brand .brand-text {
-        color: #ffffff !important;
+        color: #475569 !important; /* Dark slate text for white background */
     }
 
-    /* Clean up the navbar-brand wrapper to act as the white background pill */
+    /* Clean up the navbar-brand wrapper */
     body.vertical-layout.vertical-menu-modern .header-navbar .navbar-header .site_name_logo_section .navbar-brand {
-        background: rgba(255, 255, 255, 0.98);
-        padding: 8px 25px !important; 
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        background: transparent !important;
+        padding: 0 !important; 
+        box-shadow: none !important;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-top: 5px;
+        width: 100%;
+        height: 100%; /* Take full height of parent */
     }
 
     /* Make the actual image large and clear without internal padding squashing it */
     body.vertical-layout.vertical-menu-modern .header-navbar .navbar-header .navbar-brand .brand-logo {
-        max-height: 60px !important; 
+        max-height: 65px !important; 
         height: auto !important;
         max-width: 180px !important; 
         width: auto !important;
@@ -60,7 +61,7 @@
         box-shadow: none !important;
         background: transparent !important;
         object-fit: contain;
-        transform: scale(1.1); 
+        transform: scale(1); 
         transition: all 0.3s ease;
     }
 
@@ -72,12 +73,11 @@
     }
 
     body.vertical-layout.vertical-menu-modern.menu-collapsed .header-navbar .navbar-header .navbar-brand .brand-logo {
-        background: rgba(255, 255, 255, 0.98) !important;
-        padding: 5px !important;
-        border-radius: 8px !important;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
-        max-height: 35px !important; /* Shrink drastically for collapsed state */
-        max-width: 35px !important;
+        background: transparent !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        max-height: 40px !important; 
+        max-width: 40px !important;
         transform: scale(1) !important;
     }
 
@@ -114,27 +114,99 @@ body.vertical-layout.vertical-menu-modern.menu-expanded .main-menu.menu-dark {
     padding: 5px 0;
 }
 
-/* Text & Icon Colors & Pill Structure */
-.main-menu.menu-dark .navigation-main > li > a {
-    color: #cbd5e1 !important;
-    transition: all 0.3s ease;
-    margin: 4px 15px; /* Pill layout gap */
-    border-radius: 8px;
-    padding-right: 20px; /* RTL padding balance */
+/* --- Expanded State: Pill Layout & Flex Alignment --- */
+body .main-menu.expanded .navigation-main > li,
+.main-menu.expanded .navigation-main > li {
+    display: block !important;
+    width: 100% !important; /* Ensure li occupies full sidebar width */
+    text-align: right !important;
 }
 
-.main-menu.menu-dark .navigation-main ul.menu-content > li > a {
+body .main-menu.expanded .navigation-main > li > a,
+.main-menu.expanded .navigation-main > li > a {
     color: #cbd5e1 !important;
     transition: all 0.3s ease;
-    padding: 10px 15px;
-    margin: 2px 10px;
-    border-radius: 6px;
+    margin: 4px 15px !important; /* Pill layout gap */
+    border-radius: 8px;
+    padding: 12px 15px !important; 
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important; /* Force Right Alignment (in RTL) */
+    flex-direction: row !important;
+    text-align: right !important;
+    gap: 12px !important;
+    line-height: 1 !important;
+    width: auto !important;
+    box-sizing: border-box !important;
+}
+
+body .main-menu.expanded .navigation-main > li > a > i,
+.main-menu.expanded .navigation-main > li > a > i {
+    font-size: 1.4rem !important;
+    width: 30px !important; 
+    min-width: 30px !important;
+    display: block !important;
+    text-align: right !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+}
+
+body .main-menu.expanded .navigation-main .menu-title,
+.main-menu.expanded .navigation-main .menu-title {
+    position: relative !important;
+    flex: 1 1 auto !important; /* Take remaining space */
+    display: block !important;
+    text-align: right !important; /* STRICTLY RIGHT */
+    margin: 0 !important;
+    line-height: 1 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* --- Collapsed State: Restore Original Icon Centering --- */
+.main-menu:not(.expanded) .navigation-main > li > a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 12px 0 !important;
+    margin: 4px 10px !important;
+    border-radius: 8px;
+}
+
+.main-menu:not(.expanded) .navigation-main > li > a i {
+    font-size: 1.6rem !important;
+    margin: 0 !important;
+}
+
+.main-menu:not(.expanded) .navigation-main .menu-title {
+    display: none !important; /* Force hide text in collapse */
 }
 
 .main-menu.menu-dark .navigation-main a i, 
 .main-menu.menu-dark .navigation-main a:after {
     color: #94a3b8 !important;
     transition: all 0.3s ease;
+}
+
+/* Ensure sub-menu items also align correctly in expanded state */
+.main-menu.expanded .navigation-main ul.menu-content > li > a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    padding: 10px 18px !important;
+    margin: 2px 10px;
+    border-radius: 6px;
+    line-height: 1 !important;
+    color: #cbd5e1 !important;
+}
+
+.main-menu.expanded .navigation-main ul.menu-content > li > a i {
+    margin: 0 !important;
+    width: 20px;
+    display: flex !important;
+    align-items: center !important; 
+    justify-content: center !important;
 }
 
 /* Hover and Focus States */
@@ -183,9 +255,30 @@ body.vertical-layout.vertical-menu-modern.menu-expanded .main-menu.menu-dark {
     background: rgba(0, 212, 255, 0.05); /* very soft highlight */
 }
 
+/* Fix exact centering for active item in collapsed state */
+body.menu-collapsed .main-menu .navigation-main > li.active > a,
+.main-menu:not(.expanded) .navigation-main > li.active > a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 12px 0 !important;
+}
+
+body.menu-collapsed .main-menu .navigation-main > li.active > a i,
+.main-menu:not(.expanded) .navigation-main > li.active > a i {
+    float: none !important; /* Kill theme float */
+    margin: 0 !important;   /* Kill theme margin */
+    display: inline-block !important;
+}
+
+body.menu-collapsed .main-menu .navigation-main > li.active > a .menu-title,
+.main-menu:not(.expanded) .navigation-main > li.active > a .menu-title {
+    display: none !important; /* Ensure title doesn't push the icon */
+}
+
 /* Ensure Logo/Brand area matches the flow naturally */
 .main-menu.menu-dark .navbar-header {
-    background: #0f172a !important;
+    background: #ffffff !important;
 }
 
 /* Custom Scrollbar for Sidebar */
