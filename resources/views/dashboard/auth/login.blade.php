@@ -1,129 +1,104 @@
 @extends('layouts.dashboard.auth')
+
 @section('title')
-    {!! __('dashboard.login') !!}
+    {!! __('auth.login') !!}
 @endsection
+
 @push('style')
-    <style type="text/css">
-        .g-recaptcha {
-            transform: scale(0.77);
-            -webkit-transform: scale(0.77);
-            transform-origin: 0 0;
-            -webkit-transform-origin: 0 0;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/login-modern.css') }}">
 @endpush
+
 @section('content')
-    <div class="app-content content" style="margin-right: 0 !important;">
-        <div class="content-wrapper">
+    <div class="login-page" dir="{{ Config::get('app.locale') == 'ar' ? 'rtl' : 'ltr' }}"
+        data-textdirection="{{ Config::get('app.locale') == 'ar' ? 'rtl' : 'ltr' }}">
 
-            <div class="content-body">
+        <!-- Language Toggle -->
+        <div class="lang-toggle-wrapper">
+            @php
+                $currentLocale = Lang();
+                $targetLocale = $currentLocale == 'ar' ? 'en' : 'ar';
+                $targetNative = LaravelLocalization::getSupportedLocales()[$targetLocale]['native'];
+            @endphp
+            <a href="{{ LaravelLocalization::getLocalizedURL($targetLocale, null, [], true) }}" class="enterprise-lang-toggle"
+                id="login-rtl-toggle">
+                <i class="la la-language" style="font-size: 1.2rem;"></i>
+                <span>{{ $targetNative }}</span>
+            </a>
+        </div>
 
-                <div class="row">
-                    <div class="col-12 d-flex align-items-center justify-content-center">
-                        <div class="col-md-3 col-12  p-0 mt-5">
-                            <div class="card border-grey border-lighten-3 m-0">
-                                <div class="card-header border-0">
-                                    <div class="card-title text-center">
-                                        @if (setting()->logo)
-                                            <img src="{!! asset('uploads/settings/' . setting()->logo) !!}" alt="branding logo" width="150">
-                                        @else
-                                            <h2 style="font-weight: bolder">{!! setting()->site_name !!}</h2>
-                                        @endif
-                                    </div>
-                                    <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-1">
-                                        <span>{!! __('auth.login_dashboard') !!}</span>
-                                    </h6>
-                                </div>
-                                <div class="card-content">
-                                    <div class="card-body">
-                                        @if (session('success'))
-                                            <div class="alert alert-success">
-                                                {{ session('success') }}
-                                            </div>
-                                        @endif
-
-                                        @if (session('error'))
-                                            <div class=" alert alert-danger">
-                                                {{ session('error') }}
-                                            </div>
-                                        @endif
-
-                                        <form action="{!! route('dashboard.post.login') !!}" method="post" class="form-horizontal"
-                                            enctype="multipart/form-data" novalidate>
-
-                                            @csrf
-                                            {{-- Email --}}
-                                            <fieldset class="form-group position-relative has-icon-left">
-                                                <input type="text" class="form-control input-lg" id="email"
-                                                    name='email' placeholder="{!! __('auth.enter_you_email') !!}" tabindex="1">
-                                                <div class="form-control-position">
-                                                    <i class="ft-user"></i>
-                                                </div>
-                                                <div class="help-block font-small-3">
-                                                    @error('email')
-                                                        <strong class="text-danger"> {!! $message !!} </strong>
-                                                    @enderror
-                                                </div>
-                                            </fieldset>
-
-                                            {{-- password --}}
-                                            <fieldset class="form-group position-relative has-icon-left">
-                                                <input type="password" class="form-control input-lg" id="password"
-                                                    name="password" placeholder="{!! __('auth.enter_you_password') !!}" tabindex="2">
-                                                <div class="form-control-position">
-                                                    <i class="la la-key"></i>
-                                                </div>
-                                                <div class="help-block font-small-3">
-                                                    @error('password')
-                                                        <strong class="text-danger"> {!! $message !!} </strong>
-                                                    @enderror
-                                                </div>
-                                            </fieldset>
-
-                                            {{-- NoCaptcha --}}
-                                            {{-- <fieldset class="form-group position-relative">
-                                                <div style="display: flex ; justify-content: center;">
-                                                    {!! NoCaptcha::display() !!}
-                                                </div>
-
-                                                <div class="display: flex ; justify-content: center;">
-                                                    @error('g-recaptcha-response')
-                                                        <strong class="text-danger"> {!! $message !!}</strong>
-                                                    @enderror
-                                                </div>
-                                            </fieldset> --}}
-
-
-                                            <div class="form-group row">
-                                                {{-- remmber me --}}
-                                                <div class="col-md-6 col-12 text-center text-md-left">
-                                                    <fieldset>
-                                                        <input type="checkbox" id="remember-me" name="remmber"
-                                                            class="chk-remember">
-                                                        <label for="remember-me"> {!! __('auth.remmber_me') !!}</label>
-                                                    </fieldset>
-                                                </div>
-                                                {{-- forget password --}}
-                                                <div class="col-md-6 col-12 text-center text-md-right"><a
-                                                        href="{!! route('dashboard.password.get.email') !!}"
-                                                        class="card-link">{!! __('auth.forget_password') !!}</a>
-                                                </div>
-                                            </div>
-                                            {{-- login --}}
-                                            <button type="submit" class="btn btn-info btn-block btn-lg">
-                                                <i class="ft-unlock"></i> {!! __('auth.login') !!}</button>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="card-footer border-0">
-
-                                </div>
-                            </div>
-                        </div>
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <div class="login-logo">
+                        @if (setting()->logo)
+                            <img src="{!! asset('uploads/settings/' . setting()->logo) !!}" alt="{{ setting()->site_name }}">
+                        @else
+                            <h2 class="login-title" style="font-weight: bolder;">{!! setting()->site_name !!}</h2>
+                        @endif
                     </div>
+                    <p class="login-subtitle">{!! __('auth.login_dashboard') !!}</p>
                 </div>
 
+                @if (session('success'))
+                    <div class="alert-modern alert-success-modern">
+                        <i class="la la-check-circle"></i>
+                        <span>{{ session('success') }}</span>
+                    </div>
+                @endif
 
+                @if (session('error'))
+                    <div class="alert-modern alert-danger-modern">
+                        <i class="la la-exclamation-circle"></i>
+                        <span>{{ session('error') }}</span>
+                    </div>
+                @endif
+
+                <form action="{!! route('dashboard.post.login') !!}" method="post" class="modern-form" novalidate autocomplete="off">
+                    @csrf
+
+                    {{-- Email --}}
+                    <div class="form-group">
+                        <label class="form-label">{!! __('auth.enter_you_email') !!}</label>
+                        <div class="input-wrapper">
+                            <input type="text" class="form-control-modern @error('email') is-invalid @enderror"
+                                id="email" name="email" placeholder="email@example.com" required autofocus
+                                tabindex="1" autocomplete="off">
+                            <i class="la la-user input-icon"></i>
+                        </div>
+                        @error('email')
+                            <span class="error-text">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    {{-- Password --}}
+                    <div class="form-group">
+                        <label class="form-label">{!! __('auth.enter_you_password') !!}</label>
+                        <div class="input-wrapper">
+                            <input type="password" class="form-control-modern @error('password') is-invalid @enderror"
+                                id="password" name="password" placeholder="••••••••" required tabindex="2"
+                                autocomplete="new-password">
+                            <i class="la la-lock input-icon"></i>
+                        </div>
+                        @error('password')
+                            <span class="error-text">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="login-options">
+                        <label class="remember-me">
+                            <input type="checkbox" id="remember-me" name="remmber" {{ old('remmber') ? 'checked' : '' }}>
+                            <span>{!! __('auth.remmber_me') !!}</span>
+                        </label>
+                        <a href="{!! route('dashboard.password.get.email') !!}" class="forgot-password">
+                            {!! __('auth.forget_password') !!}
+                        </a>
+                    </div>
+
+                    <button type="submit" class="login-btn">
+                        <span>{!! __('auth.login') !!}</span>
+                        <i class="la la-arrow-right"></i>
+                    </button>
+                </form>
             </div>
         </div>
     </div>

@@ -1,76 +1,89 @@
 @extends('layouts.dashboard.auth')
+
 @section('title')
     {!! __('auth.confirm') !!}
 @endsection
 
+@push('style')
+    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/login-modern.css') }}">
+@endpush
+
 @section('content')
-    <div class="app-content content" style="margin-right: 0 !important;">
-        <div class="content-wrapper">
-            <div class="content-header row">
-            </div>
-            <div class="content-body">
-                <section class="flexbox-container">
-                    <div class="col-12 d-flex align-items-center justify-content-center">
-                        <div class="col-md-3 col-10 box-shadow-2 p-0 mt-5">
-                            <div class="card border-grey border-lighten-3 m-0">
-                                <div class="card-header border-0">
-                                    <div class="card-title text-center">
-                                        <h2 style="font-weight: bolder">{!! setting()->site_name !!}</h2>
-                                    </div>
-                                    <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
-                                        <span>{!! __('auth.login_dashboard') !!}</span>
-                                    </h6>
-                                </div>
-                                <div class="card-content">
-                                    <div class="card-body">
+    <div class="login-page" dir="{{ Config::get('app.locale') == 'ar' ? 'rtl' : 'ltr' }}"
+        data-textdirection="{{ Config::get('app.locale') == 'ar' ? 'rtl' : 'ltr' }}">
 
-                                        @if ($errors->has('error'))
-                                            <div class=" alert alert-danger">
-                                                {!! $errors->first('error') !!}
-                                            </div>
-                                        @endif
+        <!-- Language Toggle -->
+        <div class="lang-toggle-wrapper">
+            @php
+                $currentLocale = Lang();
+                $targetLocale = $currentLocale == 'ar' ? 'en' : 'ar';
+                $targetNative = LaravelLocalization::getSupportedLocales()[$targetLocale]['native'];
+            @endphp
+            <a href="{{ LaravelLocalization::getLocalizedURL($targetLocale, null, [], true) }}"
+                class="enterprise-lang-toggle" id="login-rtl-toggle">
+                <i class="la la-language" style="font-size: 1.2rem;"></i>
+                <span>{{ $targetNative }}</span>
+            </a>
+        </div>
 
-                                        <form class="form-horizontal" action="{!! route('dashboard.password.post.verify') !!}" method="post"
-                                            enctype="multipart/form-data">
-                                            @csrf
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <div class="login-logo">
+                        @if (setting()->logo)
+                            <img src="{!! asset('uploads/settings/' . setting()->logo) !!}" alt="{{ setting()->site_name }}">
+                        @else
+                            <h2 class="login-title" style="font-weight: bolder;">{!! setting()->site_name !!}</h2>
+                        @endif
+                    </div>
+                    <h1 class="login-title">{!! __('auth.verify_password') !!}</h1>
+                    <p class="login-subtitle">{!! __('auth.reset_password_verification_code') !!}</p>
+                </div>
 
-                                            <fieldset class="form-group position-relative has-icon-left">
-                                                <input type="email" class="form-control form-control-lg input-lg"
-                                                    id="email" name="email" value="{{ $email }}" readonly
-                                                    placeholder="{!! __('auth.you_email_address') !!}">
-                                                <div class="form-control-position"> <i class="ft-mail"></i> </div>
-                                            </fieldset>
+                @if ($errors->has('error'))
+                    <div class="alert-modern alert-danger-modern">
+                        <i class="la la-exclamation-circle"></i>
+                        <span>{!! $errors->first('error') !!}</span>
+                    </div>
+                @endif
 
-                                            <fieldset class="form-group position-relative has-icon-left">
-                                                <input type="text" class="form-control form-control-lg input-lg"
-                                                    id="code" name="code" placeholder="{!! __('auth.enter_reset_code') !!}">
-                                                <div class="form-control-position"> <i class="la la-key"></i> </div>
-                                                @error('code')
-                                                    <strong class="text text-danger">{!! $message !!}</strong>
-                                                @enderror
-                                            </fieldset>
+                <form action="{!! route('dashboard.password.post.verify') !!}" method="post" class="modern-form" novalidate autocomplete="off">
+                    @csrf
 
-
-                                            <button type="submit" class="btn btn-outline-primary btn-lg btn-block">
-                                                <i class="la la-lock"></i>
-                                                {!! __('auth.verify_password') !!}
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="card-footer border-0">
-                                    <p class="float-sm-left text-center">
-                                        <a href="{!! route('dashboard.get.login') !!}" class="card-link btn btn-info ">
-                                            <i class="ft-unlock"></i> {!! __('auth.login') !!}
-                                        </a>
-                                    </p>
-                                </div>
-
-                            </div>
+                    <div class="form-group">
+                        <label class="form-label">{!! __('auth.you_email_address') !!}</label>
+                        <div class="input-wrapper">
+                            <input type="email" class="form-control-modern" id="email" name="email"
+                                placeholder="email@example.com" autocomplete="off">
+                            <i class="la la-envelope input-icon"></i>
                         </div>
                     </div>
-                </section>
+
+                    <div class="form-group">
+                        <label class="form-label">{!! __('auth.enter_reset_code') !!}</label>
+                        <div class="input-wrapper">
+                            <input type="text" class="form-control-modern @error('code') is-invalid @enderror"
+                                id="code" name="code" placeholder="123456" required autofocus autocomplete="off">
+                            <i class="la la-key input-icon"></i>
+                        </div>
+                        @error('code')
+                            <span class="error-text">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <button type="submit" class="login-btn">
+                        <span>{!! __('auth.verify_password') !!}</span>
+                        <i class="la la-shield-alt"></i>
+                    </button>
+
+                    <div style="text-align: center; margin-top: 24px;">
+                        <a href="{!! route('dashboard.get.login') !!}" class="forgot-password">
+                            {!! __('auth.login') !!}
+                        </a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 @endsection
+

@@ -15,17 +15,11 @@
 
     <link rel="apple-touch-icon" href="{!! asset('uploads/settings/' . setting()->favicon) !!}">
     <link rel="shortcut icon" type="image/x-icon" href="{!! asset('uploads/settings/' . setting()->favicon) !!}">
-
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
-        rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord') !!}/fonts/line-awesome/css/line-awesome.min.css">
-
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord') !!}/vendors/css/forms/icheck/icheck.css">
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord') !!}/vendors/css/forms/icheck/custom.css">
     <link rel="stylesheet" type="text/css"
         href="{!! asset('assets/dashbaord') !!}/css-rtl/core/menu/menu-types/vertical-menu-modern.css">
-
 
     @if (Config::get('app.locale') == 'ar')
         <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord') !!}/css-rtl/vendors.css">
@@ -33,16 +27,6 @@
         <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord') !!}/css-rtl/custom-rtl.css">
         <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord') !!}/css-rtl/core/colors/palette-gradient.css">
         <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord') !!}/css-rtl/pages/login-register.css">
-        {{-- <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord') !!}/css/style-rtl.css"> --}}
-        <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet" />
-        <style>
-            body,
-            html {
-                font-family: "Poppins", "ArbFONTSBEINNormalAR", sans-serif;
-                font-weight: normal;
-                font-style: normal;
-            }
-        </style>
     @else
         <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord') !!}/css/vendors.css">
         <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord') !!}/css/app.css">
@@ -52,32 +36,14 @@
 
     <link rel="stylesheet" type="text/css" href="{!! asset(path: 'assets/dashbaord/css/my-style.css') !!}">
 
-
+    @stack('style')
 </head>
 
 <body class="vertical-layout vertical-menu-modern 1-column bg-lighten-2 menu-expanded fixed-navbar" data-open="click"
     data-menu="vertical-menu-modern" data-col="1-column">
-    <!-- fixed-top ////////////////////////////////////////////////////////////////////////////-->
 
-    {{-- <nav
-        class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-light navbar-border">
-
-        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-            <li class="nav-item text-bold-800 " style="justify-content : end">
-                <a class="nav-link me-2  text-info" style="justify-content : center" hreflang="{{ $localeCode }}"
-                    href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                    @if ($localeCode != Lang())
-                        <span style="padding: 10px ;font-size: 16px; font-weight: 700; ">
-                            {{ $properties['native'] }} <i class="la la-flag"></i>
-                        </span>
-                    @endif
-                </a>
-            </li>
-        @endforeach
-    </nav> --}}
     <!-- content ////////////////////////////////////////////////////////////////////////////-->
     @yield('content')
-
     <!-- footer ////////////////////////////////////////////////////////////////////////////-->
     <footer class="footer footer-static footer-light navbar-border"
         style="  margin-right: 0px !important; margin-top: -12px;">
@@ -105,8 +71,7 @@
     <script src="{!! asset('assets/dashbaord') !!}/js/scripts/forms/form-login-register.js" type="text/javascript"></script>
     <!-- END PAGE LEVEL JS-->
 
-    {!! NoCaptcha::renderJs() !!}
-
+    @stack('js')
 </body>
 
 </html>
