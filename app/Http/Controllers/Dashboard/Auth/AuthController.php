@@ -7,6 +7,9 @@ use App\Http\Requests\Dashboard\AdminLoginRequest;
 use App\Services\Auth\AuthService;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller implements HasMiddleware
 {
@@ -19,7 +22,7 @@ class AuthController extends Controller implements HasMiddleware
 
     public static function middleware()
     {
-        return [new Middleware(middleware: 'guest:admin', except: ['logout'])];
+        return [new Middleware(middleware: 'guest:admin', except: ['logout', 'lockScreen', 'unlock'])];
     }
 
     // get login function
@@ -39,6 +42,7 @@ class AuthController extends Controller implements HasMiddleware
             flash()->error(__('general.login_faild'));
             return redirect()->back();
         } else {
+            session(['is_locked' => false]); // Reset lock on login
             flash()->success(__('general.login_success'));
             return redirect()->intended(route('dashboard.index'));
         }
@@ -46,6 +50,38 @@ class AuthController extends Controller implements HasMiddleware
     public function logout()
     {
         $this->authService->logout('admin');
+        session(['is_locked' => false]);
         return redirect()->route('dashboard.get.login');
+    }
+
+    // lock screen function
+    public function lockScreen()
+    {
+        session()->put('is_locked', true);
+        session()->save();
+        return view('dashboard.auth.lock-screen');
+    }
+
+    // unlock screen function
+    public function unlock(Request $request)
+    {
+        $request->validate([
+            'password' => 'required'
+        ]);
+
+        if (Hash::check($request->password, Auth::guard('admin')->user()->password)) {
+            session()->forget('is_locked');
+            session()->save();
+            return response()->json([
+                'status' => true,
+                'message' => 'Success',
+                'redirect' => route('dashboard.index')
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => __('auth.failed')
+        ], 422);
     }
 }

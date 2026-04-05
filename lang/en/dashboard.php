@@ -46,4 +46,6 @@ return [
     'good_afternoon' => 'Good Afternoon',
     'good_evening' => 'Good Evening',
     'good_night' => 'Good Night',
+    'lock_screen' => 'Lock Screen',
+    'active_session' => 'Active Secured Session',
 ];

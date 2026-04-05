@@ -61,7 +61,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'ability' => CheckForAnyAbility::class,
             'PDF' => Mccarlosen\LaravelMpdf\Facades\LaravelMpdf::class,
             'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-
+            'checkLockScreen' => \App\Http\Middleware\CheckLockScreen::class,
             //'setLanguage' => SetLangMiddleware::class,
         ]);
 

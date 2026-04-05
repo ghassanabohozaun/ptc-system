@@ -28,6 +28,13 @@
     @include('layouts.dashboard.app-parts._scripts')
 
 
+    <script>
+        window.LockScreenConfig = {
+            lock_route: "{{ route('dashboard.lock.screen') }}",
+            idle_limit: 60 // 60 seconds
+        };
+    </script>
+    <script src="{{ asset('assets/dashboard/js/lock-screen-modern.js') }}"></script>
     @stack('scripts')
     @livewireScripts
 </body>

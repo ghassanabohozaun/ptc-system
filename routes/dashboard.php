@@ -40,7 +40,11 @@ Route::group(
         });
 
         ########################################### protected routes  #####################################################################
-        Route::group(['middleware' => 'auth:admin'], function () {
+        Route::group(['middleware' => ['auth:admin', 'checkLockScreen']], function () {
+            ########################################### Auth Protected #######################################################
+            Route::get('lock-screen', [AuthController::class, 'lockScreen'])->name('lock.screen');
+            Route::post('unlock-screen', [AuthController::class, 'unlock'])->name('unlock.screen');
+
             ########################################### welcome  ##########################################################################
             Route::get('/welcome', [DashboardController::class, 'index'])->name('index');
             Route::get('/monthly-reports/employees', [DashboardController::class, 'getmonthlyReportEmployees'])->name('get.monthly.reports.employees');

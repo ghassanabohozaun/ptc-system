@@ -58,5 +58,8 @@ return [
     'techenical_support' => 'الدعم الفني',
     'sign_in_to_continue'=>'قم بتسجيل الدخول للمواصلة',
     'hellow' => 'مرحبا ! لنبدأ الان ',
-
+    'unlock' => 'فتح القفل',
+    'unlocking' => 'جاري فتح القفل...',
+    'unlock_success' => 'تم فتح الجلسة بنجاح.',
+    'sign_in_different_account' => 'تسجيل الدخول بحساب آخر',
 ];

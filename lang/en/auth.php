@@ -58,5 +58,8 @@ return [
     'technical_support' => 'Technical Support',
     'sign_in_to_continue' => 'Sign in to continue.',
     'hello' => 'Hello! Let\'s get started.',
-
+    'unlock' => 'Unlock',
+    'unlocking' => 'Unlocking...',
+    'unlock_success' => 'Session unlocked successfully.',
+    'sign_in_different_account' => 'Sign in with a different account',
 ];

@@ -48,4 +48,6 @@ return [
     'good_afternoon' => 'طاب يومك',
     'good_evening' => 'مساء الخير',
     'good_night' => 'تصبح على خير',
+    'lock_screen' => 'قفل الشاشة',
+    'active_session' => 'جلسة عمل مؤمنة ونشطة',
 ];

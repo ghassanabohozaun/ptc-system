@@ -231,6 +231,11 @@
                              <a class="dropdown-item" href="javascript:void(0)"><i class="ft-message-square"></i> Chats</a>
                              <div class="dropdown-divider">
                              </div> --}}
+                             <a class="dropdown-item" href="{!! route('dashboard.lock.screen') !!}">
+                                 <i class="la la-lock"></i>
+                                 {!! __('dashboard.lock_screen') !!}
+                             </a>
+
                              <a class="dropdown-item" href="{!! route('dashboard.logout') !!}">
                                  <i class="ft-power"></i>
                                  {!! __('auth.logout') !!}
