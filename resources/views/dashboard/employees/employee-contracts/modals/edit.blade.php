@@ -1,4 +1,4 @@
-<div class="modal fade" id="editEmployeeContractModal" tabindex="-1" role="dialog"
+<div class="modal modal-pop fade" id="editEmployeeContractModal" tabindex="-1" role="dialog"
     aria-labelledby="editEmployeeContractModalLabel" aria-hidden="true">
 
     <div class="modal-dialog modal-lg" role="document">
@@ -313,3 +313,7 @@
         });
     </script>
 @endpush
+
+
+
+

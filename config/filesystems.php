@@ -90,6 +90,16 @@ return [
             'report' => false,
         ],
 
+
+        'admins' => [
+            'driver' => 'local',
+            'root' => public_path('/uploads/admins'),
+            'url' => env('APP_URL') . '/uploads/admins',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

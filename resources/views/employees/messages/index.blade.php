@@ -162,7 +162,7 @@
         </div>
 
         <!-- Compose Modal -->
-        <div class="modal fade" id="composeModal" tabindex="-1" role="dialog" aria-labelledby="composeModalLabel"
+        <div class="modal modal-pop fade" id="composeModal" tabindex="-1" role="dialog" aria-labelledby="composeModalLabel"
             aria-hidden="true" wire:ignore.self>
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -227,3 +227,7 @@
         });
     </script>
 @endpush
+
+
+
+

@@ -83,7 +83,7 @@
     </div>
 
     <!-- Message Details Modal -->
-    <div class="modal fade" id="messageDetailsModal" tabindex="-1" role="dialog"
+    <div class="modal modal-pop fade" id="messageDetailsModal" tabindex="-1" role="dialog"
         aria-labelledby="messageDetailsModalLabel" aria-hidden="true" wire:ignore.self>
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content border-0 shadow-lg" style="border-radius: 15px;">
@@ -157,3 +157,7 @@
         </script>
     @endpush
 </div>
+
+
+
+

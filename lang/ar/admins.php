@@ -25,5 +25,6 @@ return [
     'enter_role_id' => 'ادخل صلاحية المدير',
 
     'permissions' => 'الصلاحيات',
-    'no_admins_found' => 'لا يوجد صلاحيات حالياً !',
+    'no_admins_found' => 'لا يوجد مديرين حالياً !',
+    'photo' => 'صورة المدير',
 ];

@@ -1,4 +1,4 @@
-<div class="modal fade" id="createSalaryModal" tabindex="-1" role="dialog" aria-labelledby="createSalaryModalLabel"
+<div class="modal modal-pop fade" id="createSalaryModal" tabindex="-1" role="dialog" aria-labelledby="createSalaryModalLabel"
     aria-hidden="true">
 
     <div class="modal-dialog modal-lg" role="document">
@@ -216,3 +216,7 @@
         });
     </script>
 @endpush
+
+
+
+

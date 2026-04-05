@@ -16,7 +16,6 @@
     @include('layouts.dashboard.app-parts._header')
     @include('layouts.dashboard.app-parts._sidebar')
 
-
     @isset($slot)
         {{ $slot }}
     @else
@@ -24,9 +23,7 @@
     @endisset
 
     @include('layouts.dashboard.app-parts._footer')
-
     @include('layouts.dashboard.app-parts._scripts')
-
 
     <script>
         window.LockScreenConfig = {

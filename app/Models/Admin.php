@@ -17,7 +17,7 @@ class Admin extends Authenticatable
     protected $table = 'admins';
 
     // fillable
-    protected $fillable = ['name', 'email', 'password', 'role_id', 'status'];
+    protected $fillable = ['name', 'email', 'password', 'role_id', 'status', 'photo'];
 
     public array $translatable = ['name'];
 
@@ -86,5 +86,23 @@ class Admin extends Authenticatable
                     ->where('is_read', false)
                     ->where('receiver_deleted', false)
                     ->count();
+    }
+
+    public function getInitialsAttribute()
+    {
+        $name = $this->getTranslation('name', app()->getLocale()) ?: $this->name;
+        $words = explode(' ', $name);
+        if (count($words) >= 2) {
+            return mb_strtoupper(mb_substr($words[0], 0, 1) . mb_substr($words[1], 0, 1));
+        }
+        return mb_strtoupper(mb_substr($name, 0, 1));
+    }
+
+    public function adminPhoto()
+    {
+        if ($this->photo && file_exists(public_path('uploads/admins/' . $this->photo))) {
+            return asset('uploads/admins/' . $this->photo);
+        }
+        return null; // Return null to indicate no photo
     }
 }

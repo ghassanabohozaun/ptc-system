@@ -6,7 +6,8 @@
         <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary edit_admin_button"
             title="{!! __('general.edit') !!}" admin-id="{!! $admin->id !!}" admin-name-ar="{!! $admin->getTranslation('name', 'ar') !!}"
             admin-name-en="{!! $admin->getTranslation('name', 'en') !!}" admin-email="{!! $admin->email !!}"
-            admin-role-id="{!! $admin->role_id !!}" admin-status="{!! $admin->status !!}">
+            admin-role-id="{!! $admin->role_id !!}" admin-status="{!! $admin->status !!}"
+            admin-photo="{!! $admin->photo !!}" admin-photo-url="{!! $admin->adminPhoto() !!}">
             <i class="la la-edit"></i>
         </a>
 

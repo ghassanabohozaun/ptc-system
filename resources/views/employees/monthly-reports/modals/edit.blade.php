@@ -1,4 +1,4 @@
-<div class="modal fade" id="updateMonthlyReportModal" tabindex="-1" role="dialog"
+<div class="modal modal-pop fade" id="updateMonthlyReportModal" tabindex="-1" role="dialog"
     aria-labelledby="updateMonthlyReportModalLabel" aria-hidden="true">
 
     <div class="modal-dialog modal-md" role="document">
@@ -222,3 +222,7 @@
         });
     </script>
 @endpush
+
+
+
+

@@ -5,6 +5,23 @@
  font-style: normal;
  }
 
+ /* Modern Scrollbar Styling */
+ ::-webkit-scrollbar {
+     width: 8px;
+     height: 8px;
+ }
+ ::-webkit-scrollbar-track {
+     background: #f1f5f9;
+ }
+ ::-webkit-scrollbar-thumb {
+     background: #cbd5e1;
+     border-radius: 10px;
+     border: 2px solid #f1f5f9;
+ }
+ ::-webkit-scrollbar-thumb:hover {
+     background: #94a3b8;
+ }
+
   select {
              appearance: none;
              /* Hide default browser styling */
@@ -226,14 +243,7 @@ height: 1.0em;
  font-size: 20px;
  }
 
- .modal-dialog,
- .modal-content {
-     max-height: calc(100% - 120px);
- }
-
- .modal-body {
-    max-height: calc(100% - 120px);
- }
+ /* Removed broken max-height constraints */
 
  .note-editable,
  .note-code {
@@ -345,4 +355,60 @@ height: 1.0em;
 
 .swal-button-container {
     margin: 5px !important;
+}
+
+/* Modal Pop Animation - Smoother & Simpler */
+.modal-pop.fade .modal-dialog {
+    transform: scale(0.92);
+    opacity: 0;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease-in-out;
+}
+
+.modal-pop.show .modal-dialog {
+    transform: scale(1) !important;
+    opacity: 1 !important;
+}
+
+/* Minimalist Modal Styling */
+.modal-content {
+    border: none !important;
+    border-radius: 20px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+    background-color: #ffffff !important;
+}
+
+.modal-header {
+    border-bottom: none !important;
+    padding: 1.25rem 1.5rem 0.5rem 1.5rem !important;
+    background-color: transparent !important;
+}
+
+.modal-footer {
+    border-top: none !important;
+    padding: 0.5rem 1.5rem 1.25rem 1.5rem !important;
+    background-color: transparent !important;
+}
+
+.modal-body {
+    padding: 0.5rem 1.5rem !important;
+}
+
+.modal .form-group {
+    margin-bottom: 0.8rem !important;
+}
+
+.modal .row {
+    margin-bottom: 0.2rem !important;
+}
+
+.modal-title {
+    font-weight: 800 !important;
+    color: #1a1a1a !important;
+    font-size: 1.25rem !important;
+    letter-spacing: -0.5px;
+}
+
+/* Ensure backdrop is subtle */
+.modal-backdrop.show {
+    opacity: 0.4 !important;
 }

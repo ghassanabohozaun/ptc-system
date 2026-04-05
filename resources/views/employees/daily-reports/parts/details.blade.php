@@ -4,7 +4,7 @@
 </a>
 
 <!-- begin: modal-->
-<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="createDailyReportModalLabel" aria-hidden="true"
+<div class="modal modal-pop fade" id="detailsModal" tabindex="-1" aria-labelledby="createDailyReportModalLabel" aria-hidden="true"
     data-bs-backdrop="static" data-bs-keyboard="false">
 
     <div class="modal-dialog modal-md" role="document">
@@ -70,3 +70,7 @@
         })
     </script>
 @endpush
+
+
+
+

@@ -5,7 +5,7 @@
 
 
 <!-- begin: modal-->
-<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="dailyReportDetailModalLabel"
+<div class="modal modal-pop fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="dailyReportDetailModalLabel"
     aria-hidden="true" style="z-index: 10001">
 
     <div class="modal-dialog modal-lg" role="document">
@@ -55,3 +55,7 @@
         })
     </script>
 @endpush
+
+
+
+

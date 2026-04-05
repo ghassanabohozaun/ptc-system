@@ -1,4 +1,4 @@
-<div class="modal fade" id="selectCloumnsModal" tabindex="-1" role="dialog" aria-labelledby="selectCloumnsModalLabel"
+<div class="modal modal-pop fade" id="selectCloumnsModal" tabindex="-1" role="dialog" aria-labelledby="selectCloumnsModalLabel"
     aria-hidden="true">
 
     <div class="modal-dialog modal-lg" role="document">
@@ -153,3 +153,7 @@
         });
     </script>
 @endpush
+
+
+
+

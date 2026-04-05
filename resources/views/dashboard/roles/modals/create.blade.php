@@ -1,4 +1,4 @@
-<div class="modal fade" id="createRoleModal" tabindex="-1" role="dialog" aria-labelledby="createRoleModalLabel"
+<div class="modal modal-pop fade" id="createRoleModal" tabindex="-1" role="dialog" aria-labelledby="createRoleModalLabel"
     aria-hidden="true">
 
     <div class="modal-dialog modal-lg" role="document">
@@ -190,3 +190,7 @@
         });
     </script>
 @endpush
+
+
+
+

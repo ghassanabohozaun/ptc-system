@@ -26,4 +26,5 @@ return [
 
     'permissions' => 'Permissions',
     'no_admins_found' => 'No Admins Found !',
+    'photo' => 'Admin Photo',
 ];

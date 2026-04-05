@@ -1,4 +1,4 @@
-<div class="modal fade" id="updateAdminModal" tabindex="-1" role="dialog" aria-labelledby="updateAdminModalLabel"
+<div class="modal modal-pop fade" id="updateAdminModal" tabindex="-1" role="dialog" aria-labelledby="updateAdminModalLabel"
     aria-hidden="true">
 
     <div class="modal-dialog modal-lg" role="document">
@@ -65,22 +65,7 @@
                                 <!-- end: input -->
                             </div>
                             <!-- end: row -->
-                            <!-- begin: row -->
-                            <div class="row">
-                                <!-- begin: input -->
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="email">{!! __('admins.email') !!}</label>
-                                        <input type="text" id="email_edit" name="email" class="form-control"
-                                            autocomplete="off" placeholder="{!! __('admins.enter_email') !!}">
-                                        <span class="text text-danger">
-                                            <strong id="email_error_edit"></strong>
-                                        </span>
-                                    </div>
-                                </div>
-                                <!-- end: input -->
-                            </div>
-                            <!-- end: row -->
+
 
                             <!-- begin: row -->
                             <div class="row">
@@ -126,16 +111,25 @@
                                     </div>
                                 </div>
 
-
-
-
                             </div>
                             <!-- end: row -->
 
                             <!-- begin: row -->
                             <div class="row">
                                 <!-- begin: input -->
-                                <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">{!! __('admins.email') !!}</label>
+                                        <input type="text" id="email_edit" name="email" class="form-control"
+                                            autocomplete="off" placeholder="{!! __('admins.enter_email') !!}">
+                                        <span class="text text-danger">
+                                            <strong id="email_error_edit"></strong>
+                                        </span>
+                                    </div>
+                                </div>
+                                <!-- end: input -->
+                                <!-- begin: input -->
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="role_id">{!! __('admins.role_id') !!}</label>
                                         <select class="form-control" id='role_id_edit' name="role_id">
@@ -150,6 +144,26 @@
                                         <span class="text text-danger">
                                             <strong id="role_id_error_edit"></strong>
                                         </span>
+                                    </div>
+                                </div>
+                                <!-- end: input -->
+                            </div>
+                            <!-- end: row -->
+
+                            <!-- begin: row -->
+                            <div class="row">
+                                <!-- begin: input -->
+                                <div class="col-md-12">
+                                    <div class="form-group mb-3">
+                                        <div class="field-header">
+                                            <i class="la la-image"></i>
+                                            <label for="admin_photo_edit"
+                                                class="font-weight-bold text-dark">{!! __('admins.photo') !!}</label>
+                                        </div>
+                                        <input type="file" name="photo" id="admin_photo_edit"
+                                            class="form-control" accept="image/*" data-show-caption="true"
+                                            data-show-upload="false">
+                                        <span class="text-danger"><strong id="photo_error_edit"></strong></span>
                                     </div>
                                 </div>
                                 <!-- end: input -->
@@ -260,6 +274,26 @@
                 $('#status_inactive_edit').prop('checked', true);
             }
 
+            // Photo Preview
+            var admin_photo = $(this).attr('admin-photo');
+            var admin_photo_url = $(this).attr('admin-photo-url');
+
+            $("#admin_photo_edit").fileinput('destroy');
+            $("#admin_photo_edit").fileinput({
+                theme: 'fa5',
+                language: lang,
+                allowedFileTypes: ['image'],
+                maxFileCount: 1,
+                showCancel: false,
+                showUpload: false,
+                initialPreview: admin_photo ? [admin_photo_url] : [],
+                initialPreviewAsData: true,
+                browseClass: "btn btn-sm btn-primary",
+                removeClass: "btn btn-sm btn-danger",
+                removeLabel: "{!! __('general.delete') !!}",
+                browseLabel: "{!! __('general.choose_file') !!}"
+            });
+
             $('#updateAdminModal').modal('show');
         })
 
@@ -270,12 +304,14 @@
             $('#email_edit').css('border-color', '');
             $('#password_confirm_edit').css('border-color', '');
             $('#role_id_edit').css('border-color', '');
+            $('#photo_edit').css('border-color', '');
 
             $('#name_ar_error_edit').text('');
             $('#name_en_error_edit').text('');
             $('#email_error_edit').text('');
             $('#password_confirm_error_edit').text('');
             $('#role_id_error_edit').text('');
+            $('#photo_error_edit').text('');
 
             // reset password type
             var password_edit = document.getElementById('password_edit');
@@ -358,3 +394,6 @@
         });
     </script>
 @endpush
+
+
+

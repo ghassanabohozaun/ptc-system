@@ -1,4 +1,4 @@
-<div class="modal fade" id="createGovernorateModal" tabindex="-1" role="dialog"
+<div class="modal modal-pop fade" id="createGovernorateModal" tabindex="-1" role="dialog"
     aria-labelledby="createGovernorateModalLabel" aria-hidden="true">
 
     <div class="modal-dialog modal-md" role="document">
@@ -164,3 +164,7 @@
         });
     </script>
 @endpush
+
+
+
+

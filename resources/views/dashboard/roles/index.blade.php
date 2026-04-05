@@ -3,6 +3,10 @@
     {!! $title !!}
 @endsection
 
+@push('style')
+    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/permissions.css') !!}">
+@endpush
+
 @section('content')
     <div class="app-content content">
         <div class="content-wrapper">
@@ -95,9 +99,22 @@
                                                             <td class="col-lg-1">{!! $loop->iteration !!} </td>
                                                             <td class="col-lg-1">{!! $role->role !!}</td>
                                                             <td class="col-lg-8">
-                                                                @foreach (config('global.permissions') as $name => $value)
-                                                                    {{ in_array($name, $role->permissions) ? __(config('global.permissions.', $value)) . ' | ' : '' }}
-                                                                @endforeach
+                                                                <div class="permissions-container">
+                                                                    @foreach (config('global.permissions') as $name => $translationKey)
+                                                                        @if (in_array($name, $role->permissions))
+                                                                            @php
+                                                                                $badgeClass = 'badge-permission';
+                                                                                if (in_array($name, ['settings', 'roles', 'admins'])) $badgeClass .= ' badge-critical';
+                                                                                elseif (in_array($name, ['salaries', 'monthlyReports', 'dailyReports'])) $badgeClass .= ' badge-info';
+                                                                                elseif (in_array($name, ['employees', 'departments'])) $badgeClass .= ' badge-success';
+                                                                                elseif ($name == 'messages') $badgeClass .= ' badge-warning';
+                                                                            @endphp
+                                                                            <span class="{{ $badgeClass }}">
+                                                                                {{ __($translationKey) }}
+                                                                            </span>
+                                                                        @endif
+                                                                    @endforeach
+                                                                </div>
                                                             </td>
                                                             <td class="col-lg-1 text-center">
                                                                 @include('dashboard.roles.parts.actions')

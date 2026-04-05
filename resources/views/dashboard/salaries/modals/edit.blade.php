@@ -1,4 +1,4 @@
-<div class="modal fade" id="updateSalaryModal" tabindex="-1" role="dialog" aria-labelledby="updateSalaryModalLabel"
+<div class="modal modal-pop fade" id="updateSalaryModal" tabindex="-1" role="dialog" aria-labelledby="updateSalaryModalLabel"
     aria-hidden="true">
 
     <div class="modal-dialog modal-lg" role="document">
@@ -239,3 +239,7 @@
         });
     </script>
 @endpush
+
+
+
+

@@ -1,4 +1,4 @@
-<div class="modal fade" id="employeeChangePasswordModal" tabindex="-1" aria-labelledby="employeeChangePasswordModalLabel"
+<div class="modal modal-pop fade" id="employeeChangePasswordModal" tabindex="-1" aria-labelledby="employeeChangePasswordModalLabel"
     aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
 
     <div class="modal-dialog modal-md" role="document">
@@ -221,3 +221,7 @@
         });
     </script>
 @endpush
+
+
+
+

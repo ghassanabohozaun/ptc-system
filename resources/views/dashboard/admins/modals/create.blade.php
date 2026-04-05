@@ -1,4 +1,4 @@
-<div class="modal fade" id="createAdminModal" tabindex="-1" role="dialog" aria-labelledby="createAdminModalLabel"
+<div class="modal modal-pop fade" id="createAdminModal" tabindex="-1" role="dialog" aria-labelledby="createAdminModalLabel"
     aria-hidden="true">
 
     <div class="modal-dialog modal-lg" role="document">
@@ -19,7 +19,6 @@
 
                 <!--begin::modal body-->
                 <div class="modal-body">
-
                     <!--begin: form-->
                     <div class="row">
                         <div class="col-lg-12">
@@ -53,22 +52,7 @@
                             </div>
                             <!-- end: row -->
 
-                            <!-- begin: row -->
-                            <div class="row">
-                                <!-- begin: input -->
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="email">{!! __('admins.email') !!}</label>
-                                        <input type="text" id="email" name="email" class="form-control"
-                                            autocomplete="off" placeholder="{!! __('admins.enter_email') !!}">
-                                        <span class="text text-danger">
-                                            <strong id="email_error"></strong>
-                                        </span>
-                                    </div>
-                                </div>
-                                <!-- end: input -->
-                            </div>
-                            <!-- end: row -->
+
 
                             <!-- begin: row -->
                             <div class="row">
@@ -124,11 +108,10 @@
                             <!-- begin: row -->
                             <div class="row">
                                 <!-- begin: input -->
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="role_id">{!! __('admins.role_id') !!}</label>
-                                        <select class="form-control" id="DefaultSelect" id='role_id'
-                                            name="role_id">
+                                        <select class="form-control" id="DefaultSelect" id='role_id' name="role_id">
                                             <option value="" selected="">
                                                 {!! __('general.select_from_list') !!}</option>
                                             @foreach ($roles as $role)
@@ -140,6 +123,37 @@
                                         <span class="text text-danger">
                                             <strong id="role_id_error"></strong>
                                         </span>
+                                    </div>
+                                </div>
+                                <!-- end: input -->
+                                <!-- begin: input -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">{!! __('admins.email') !!}</label>
+                                        <input type="text" id="email" name="email" class="form-control"
+                                            autocomplete="off" placeholder="{!! __('admins.enter_email') !!}">
+                                        <span class="text text-danger">
+                                            <strong id="email_error"></strong>
+                                        </span>
+                                    </div>
+                                </div>
+                                <!-- end: input -->
+                            </div>
+                            <!-- end: row -->
+
+                            <!-- begin: row -->
+                            <div class="row">
+                                <!-- begin: input -->
+                                <div class="col-md-12">
+                                    <div class="form-group mb-3">
+                                        <div class="field-header">
+                                            <i class="la la-image"></i>
+                                            <label for="admin_photo"
+                                                class="font-weight-bold text-dark">{!! __('admins.photo') !!}</label>
+                                        </div>
+                                        <input type="file" name="photo" id="admin_photo" class="form-control"
+                                            accept="image/*" data-show-caption="true" data-show-upload="false">
+                                        <span class="text-danger"><strong id="photo_error"></strong></span>
                                     </div>
                                 </div>
                                 <!-- end: input -->
@@ -235,6 +249,7 @@
             $('#password_confirm').css('border-color', '');
             $('#role_id').css('border-color', '');
             $('#status').css('border-color', '');
+            $('#photo').css('border-color', '');
 
             $('#name_ar_error').text('');
             $('#name_en_error').text('');
@@ -243,6 +258,7 @@
             $('#password_confirm_error').text('');
             $('#role_id_error').text('');
             $('#status_error').text('');
+            $('#photo_error').text('');
 
             // default values
             var password = document.getElementById('password');
@@ -250,6 +266,9 @@
 
             var password_confirm = document.getElementById('password_confirm');
             password_confirm.type = 'password';
+
+            // Reset FileInput
+            $('#admin_photo').fileinput('clear');
         }
 
         // cancel
@@ -319,5 +338,23 @@
             });
 
         });
+
+        // Initialize FileInput
+        var lang = "{!! Lang() !!}";
+        $("#admin_photo").fileinput({
+            theme: 'fa5',
+            language: lang,
+            allowedFileTypes: ['image'],
+            maxFileCount: 1,
+            showCancel: false,
+            showUpload: false,
+            browseClass: "btn btn-primary d-block w-100",
+            removeClass: "btn btn-danger",
+            removeLabel: "{!! __('general.delete') !!}",
+            browseLabel: "{!! __('general.choose_file') !!}"
+        });
     </script>
 @endpush
+
+
+

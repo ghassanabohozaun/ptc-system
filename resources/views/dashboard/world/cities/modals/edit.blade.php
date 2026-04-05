@@ -1,4 +1,4 @@
-<div class="modal fade" id="updateCityModal" tabindex="-1" role="dialog" aria-labelledby="updateCityModalLabel"
+<div class="modal modal-pop fade" id="updateCityModal" tabindex="-1" role="dialog" aria-labelledby="updateCityModalLabel"
     aria-hidden="true">
 
     <div class="modal-dialog modal-md" role="document">
@@ -219,3 +219,7 @@
         });
     </script>
 @endpush
+
+
+
+

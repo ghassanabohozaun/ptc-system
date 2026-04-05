@@ -48,4 +48,5 @@ return [
     'good_night' => 'Good Night',
     'lock_screen' => 'Lock Screen',
     'active_session' => 'Active Secured Session',
+    'profile' => 'Profile',
 ];

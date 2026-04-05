@@ -8,15 +8,13 @@
     <link rel="stylesheet" href="{{ asset('assets/dashboard/css/login-modern.css') }}">
     <style>
         .lock-avatar-wrapper {
-            width: 110px;
-            height: 110px;
             margin: 0 auto 1.5rem;
-            position: relative;
-            padding: 5px;
+            width: fit-content;
+            padding: 6px;
             background: #fff;
             border-radius: 50%;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.04);
         }
         .lock-avatar {
             width: 100%;
@@ -73,50 +71,57 @@
 
         <div class="login-container">
             <div class="login-card">
-                    <div class="login-header">
-                        @php
-                            $user = admin()->user();
-                            $userPhoto = $user && $user->photo
-                                ? asset('uploads/adminsPhotos/' . $user->photo)
-                                : asset('assets/dashbaord/images/portrait/small/avatar-s-19.png');
-                        @endphp
-                        
-                        <div class="lock-avatar-wrapper">
-                            <img src="{{ $userPhoto }}" alt="User Avatar" class="lock-avatar">
+                <div class="login-header">
+                    @php
+                        $user = admin()->user();
+                        $photoUrl = $user->adminPhoto();
+                        $colors = ['#5A8DEE', '#FDAC41', '#FF5B5C', '#39DA8A', '#00CFDD', '#7117EA', '#272727'];
+                        $charIndex = abs(crc32($user->name)) % count($colors);
+                        $bgColor = $colors[$charIndex];
+                    @endphp
+                    
+                    <div class="lock-avatar-wrapper" style="width: 85px; height: 85px; padding: 4px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); margin-bottom: 1.2rem;">
+                        @if ($photoUrl)
+                            <img src="{!! $photoUrl !!}" alt="User Avatar" class="lock-avatar">
+                        @else
+                            <div class="lock-avatar d-flex align-items-center justify-content-center text-white font-weight-bold"
+                                style="background-color: {!! $bgColor !!}; font-size: 32px; text-transform: uppercase;">
+                                {!! $user->initials !!}
+                            </div>
+                        @endif
+                    </div>
+                    
+                    <h2 class="login-title" style="font-size: 22px; margin-bottom: 4px;">{{ $user ? $user->getTranslation('name', Lang()) : 'Admin' }}</h2>
+                    <div class="lock-status" style="margin-bottom: 1.5rem;">
+                        <span class="status-indicator"></span>
+                        <span style="font-size: 13px; color: var(--text-muted);">{!! __('dashboard.active_session') ?? 'Secured Session' !!}</span>
+                    </div>
+                </div>
+
+                <form id="lock-form" action="{{ route('dashboard.unlock.screen') }}" method="POST" novalidate autocomplete="off" class="modern-form">
+                    @csrf
+                    <div class="form-group">
+                        <label class="form-label">{!! __('auth.enter_you_password') !!}</label>
+                        <div class="input-wrapper">
+                            <input type="password" class="form-control-modern" id="lock-password" name="password"
+                                placeholder="••••••••" required autofocus autocomplete="new-password">
+                            <i class="la la-lock input-icon"></i>
                         </div>
-                        
-                        <h2 class="lock-user-name">{{ $user ? $user->getTranslation('name', Lang()) : 'Admin' }}</h2>
-                        <div class="lock-status">
-                            <span class="status-indicator"></span>
-                            <span>{!! __('dashboard.active_session') ?? 'Secured Session' !!}</span>
-                        </div>
+                        <div id="lock-error" class="error-text mt-2 d-none"></div>
                     </div>
 
-                    <form id="lock-form" action="{{ route('dashboard.unlock.screen') }}" method="POST" novalidate autocomplete="off" class="modern-form">
-                        @csrf
-                        <div class="form-group">
-                            <label class="form-label">{!! __('auth.enter_you_password') !!}</label>
-                            <div class="input-wrapper">
-                                <input type="password" class="form-control-modern" id="lock-password" name="password"
-                                    placeholder="••••••••" required autofocus autocomplete="new-password">
-                                <i class="la la-lock input-icon"></i>
-                            </div>
-                            <div id="lock-error" class="error-text mt-2 d-none"></div>
-                        </div>
+                    <button type="submit" id="unlock-btn" class="login-btn">
+                        <span>{!! __('auth.unlock') !!}</span>
+                        <i class="la la-key"></i>
+                    </button>
 
-                        <button type="submit" id="unlock-btn" class="login-btn">
-                            <span>{!! __('auth.unlock') !!}</span>
-                            <i class="la la-key"></i>
-                        </button>
-
-                        <div class="login-footer">
-                            <a href="{{ route('dashboard.logout') }}" class="forgot-link">
-                                <i class="la la-user-friends"></i>
-                                {!! __('auth.sign_in_different_account') !!}
-                            </a>
-                        </div>
-                    </form>
-                </div>
+                    <div class="login-footer" style="margin-top: 1.5rem; text-align: center;">
+                        <a href="{{ route('dashboard.logout') }}" class="forgot-password" style="font-size: 13px;">
+                            <i class="la la-user-friends"></i>
+                            {!! __('auth.sign_in_different_account') !!}
+                        </a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

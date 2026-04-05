@@ -114,3 +114,24 @@
 .content-header-title {
     font-weight: bold !important;
 }
+
+/* Arabic (RTL) Font Size Adjustments (-2px approx) */
+[data-textdirection="rtl"] .settings-section-title {
+    font-size: 1.225rem !important;
+}
+
+[data-textdirection="rtl"] .field-header i {
+    font-size: 1.175rem !important;
+}
+
+[data-textdirection="rtl"] .field-header label {
+    font-size: 1.025rem !important;
+}
+
+[data-textdirection="rtl"] .form-control-custom {
+    font-size: 0.975rem !important;
+}
+
+[data-textdirection="rtl"] .content-header-title {
+    font-size: 1.5rem !important; /* Slightly smaller for RTL */
+}

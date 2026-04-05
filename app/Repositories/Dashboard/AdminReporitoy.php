@@ -24,41 +24,43 @@ class AdminReporitoy
     // get admins
     public function getAdmins()
     {
-        $admins = Admin::orderByDesc('created_at')->select('id', 'name', 'email', 'password', 'status', 'role_id', 'created_at')->paginate(5);
+        $admins = Admin::orderByDesc('created_at')->select('id', 'name', 'email', 'password', 'status', 'role_id', 'photo', 'created_at')->paginate(20);
         return $admins;
     }
 
     // store admin
 
-    public function storeAdmin($request)
+    public function storeAdmin($data)
     {
         $admin = Admin::create([
             'name' => [
-                'ar' => $request->name['ar'],
-                'en' => $request->name['en'],
+                'ar' => $data['name']['ar'],
+                'en' => $data['name']['en'],
             ],
-            'email' => $request->email,
-            'password' => $request->password,
-            'role_id' => $request->role_id,
-            'status' => empty($request->input('status')) ? 0 : 1,
+            'email' => $data['email'],
+            'password' => $data['password'],
+            'role_id' => $data['role_id'],
+            'status' => $data['status'] ?? 0,
+            'photo' => $data['photo'] ?? null,
         ]);
 
         return $admin;
     }
 
     // update admin
-    public function updateAdmin($request, $admin)
+    public function updateAdmin($data, $admin)
     {
         $admin = self::getAdmin($admin->id);
         $admin->update([
             'name' => [
-                'ar' => $request->name['ar'],
-                'en' => $request->name['en'],
+                'ar' => $data['name']['ar'],
+                'en' => $data['name']['en'],
             ],
-            'email' => $request->email,
-            'password' => empty($request->input('password')) ? $admin->password : $request->password,
-            'role_id' => $request->role_id,
-            'status' => empty($request->input('status')) ? 0 : 1,
+            'email' => $data['email'],
+            'password' => empty($data['password']) ? $admin->password : $data['password'],
+            'role_id' => $data['role_id'],
+            'status' => $data['status'] ?? 0,
+            'photo' => $data['photo'] ?? $admin->photo,
         ]);
 
         return $admin;

@@ -15,7 +15,7 @@
 </div>
 
 <!-- begin: modal-->
-<div class="modal fade" id="fullScreenModal_{!! $ticket->id !!}" tabindex="-1" role="dialog"
+<div class="modal modal-pop fade" id="fullScreenModal_{!! $ticket->id !!}" tabindex="-1" role="dialog"
     aria-labelledby="fullScreenModalLabel" aria-hidden="true" style="z-index: 10001">
 
     <div class="modal-dialog modal-lg" role="document">
@@ -49,3 +49,7 @@
     </div>
 </div>
 <!-- end: modal-->
+
+
+
+

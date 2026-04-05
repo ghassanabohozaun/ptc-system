@@ -35,9 +35,6 @@
                 <!-- begin: content header right-->
                 <div class="content-header-right col-md-6 col-12">
                     <div class="float-md-right mb-1">
-                        {{-- <a href="{{ route('dashboard.admins.create') }}" class="btn btn-info  btn-glow px-2" i>
-                            {!! __('admins.create_new_admin') !!}</a> --}}
-
                         <button type="button" class="btn btn-info  btn-glow px-2" data-toggle="modal"
                             data-target="#createAdminModal">
                             {!! __('admins.create_new_admin') !!}
@@ -80,21 +77,23 @@
                                             <table class="table" id='myTable'>
                                                 <thead>
                                                     <tr>
-                                                        <th>#</th>
+                                                        <th class="text-center">{!! __('admins.photo') !!}</th>
                                                         <th class="text-center">{!! __('admins.name') !!}</th>
                                                         <th class="text-center">{!! __('admins.email') !!}</th>
                                                         <th class="text-center">{!! __('admins.role_id') !!}</th>
-                                                        <th class="text-center">{!! __('admins.created_at') !!}
-                                                        <th class="text-center">{!! __('admins.status') !!}
-                                                        <th class="text-center">{!! __('admins.manage_status') !!}
+                                                        <th class="text-center">{!! __('admins.created_at') !!}</th>
+                                                        <th class="text-center">{!! __('admins.status') !!}</th>
+                                                        <th class="text-center">{!! __('admins.manage_status') !!}</th>
                                                         <th class="text-center">{!! __('general.actions') !!}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     @forelse ($admins as $key=>$admin)
                                                         <tr id="row{{ $admin->id }}">
-                                                            <td class="col-lg-1 ">{!! $loop->iteration !!} </td>
-                                                            <td class="col-lg-2 text-center">{!! $admin->name !!}</td>
+                                                            <td class="col-lg-1 text-center">
+                                                                @include('dashboard.admins.parts.photo')
+                                                            </td>
+                                                            <td class="col-lg-1 text-center">{!! $admin->name !!}</td>
                                                             <td class="col-lg-2 text-center">{!! $admin->email !!}</td>
                                                             <td class="col-lg-2 text-center">{!! $admin->role->role !!}</td>
                                                             <td class="col-lg-2 text-center">{!! $admin->created_at !!}</td>

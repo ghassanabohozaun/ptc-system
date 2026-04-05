@@ -22,16 +22,13 @@ return [
     'settings' => 'الإعدادات ',
     'employees_settings' => 'إعدادات الموظفين',
     'employees' => 'الموظفين',
-    'salaries'=>'الرواتب',
+    'salaries' => 'الرواتب',
 
     // employees menu
     'daily_reports' => 'التقارير اليومية',
     'monthly_reports' => 'التقارير الشهرية',
-    'messages'=>'الرسائل',
-        'tasks' => 'المهام',
-
-
-
+    'messages' => 'الرسائل',
+    'tasks' => 'المهام',
 
     // login
     'login' => 'تسجيل الدخول',
@@ -50,4 +47,5 @@ return [
     'good_night' => 'تصبح على خير',
     'lock_screen' => 'قفل الشاشة',
     'active_session' => 'جلسة عمل مؤمنة ونشطة',
+    'profile'=>'الملف الشخصي',
 ];
