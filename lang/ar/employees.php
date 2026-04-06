@@ -49,7 +49,7 @@ return [
     'contract_duration' => 'مدة العقد',
     'contract_start_date' => 'تاريخ البداية',
     'monthly_salary' => 'الراتب الشهري',
-    'export' => 'تصدير كملف Word',
+    'export' => 'تصدير ',
 
     'id' => 'الرقم المتسلسل',
     'full_name' => 'اسم الموظف  كاملاً',

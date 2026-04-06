@@ -1,6 +1,6 @@
 <!-- Personal Info Grid -->
 <div class="mb-4">
-    <h3 class="mb-3 font-weight-bold" style="color: #0f172a; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; display: inline-block; font-size: 1.25rem;">
+    <h3 class="mb-3 font-weight-bold section-header-title">
         <i class="la la-user text-primary mr-1"></i> {!! __('employees.basic') !!}
     </h3>
     <div class="row">
@@ -60,7 +60,7 @@
 
 <!-- Contact Info Grid -->
 <div class="mb-4">
-    <h3 class="mb-3 font-weight-bold" style="color: #0f172a; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; display: inline-block; font-size: 1.25rem;">
+    <h3 class="mb-3 font-weight-bold section-header-title">
         <i class="la la-phone text-primary mr-1"></i> {!! __('employees.contact_info') !!}
     </h3>
     <div class="row">
@@ -105,12 +105,12 @@
         
         <!-- Tile Full Width -->
         <div class="col-xl-12 col-lg-12 mb-3">
-            <div class="premium-tile" style="padding: 12px 18px;">
-                <div class="tile-icon-wrapper bg-glass-orange" style="width: 35px; height: 35px;">
-                    <i class="la la-map" style="font-size: 1.2rem;"></i>
+            <div class="premium-tile tile-padding">
+                <div class="tile-icon-wrapper bg-glass-orange tile-icon-small">
+                    <i class="la la-map font-1-2rem"></i>
                 </div>
                 <div class="tile-content flex-row align-items-center gap-3">
-                    <span class="tile-label m-0" style="white-space: nowrap;">{!! __('employees.address_details') !!}:</span>
+                    <span class="tile-label m-0 white-nowrap">{!! __('employees.address_details') !!}:</span>
                     <span class="tile-value m-0 font-weight-normal">{!! $employee->address_details !!}</span>
                 </div>
             </div>
@@ -120,19 +120,19 @@
 
 <!-- Education Grid Tiles -->
 <div class="mb-4">
-    <h3 class="mb-3 font-weight-bold" style="color: #0f172a; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; display: inline-block; font-size: 1.25rem;">
+    <h3 class="mb-3 font-weight-bold section-header-title">
         <i class="la la-graduation-cap text-primary mr-1"></i> {!! __('employees.education') !!}
     </h3>
     <div class="row">
         @forelse ($employee->employeeEducation as $key => $item)
             <div class="col-xl-6 col-lg-12 mb-3">
-                <div class="premium-tile" style="align-items: flex-start;">
+                <div class="premium-tile tile-start-aligned">
                     <div class="tile-icon-wrapper bg-glass-purple">
                         <i class="la la-university"></i>
                     </div>
-                    <div class="tile-content" style="width: 100%;">
+                    <div class="tile-content tile-w-100">
                         <div class="d-flex justify-content-between align-items-center mb-1">
-                            <h4 class="m-0 font-weight-bold text-dark" style="font-size: 1.05rem;">{!! $item->educational_instituation_name !!}</h4>
+                            <h4 class="m-0 font-weight-bold text-dark font-1-05rem">{!! $item->educational_instituation_name !!}</h4>
                             <span class="badge badge-light-primary px-2 py-1">{!! $item->education_level !!}</span>
                         </div>
                         
@@ -150,7 +150,7 @@
                         <div>
                             @if ($item->certification)
                                 <a href="{!! asset('uploads/employeesCertifications/' . $item->certification) !!}" target="_blank" 
-                                    class="btn btn-sm btn-info round px-3 shadow-sm border-0" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">
+                                    class="btn btn-sm btn-info round px-3 shadow-sm border-0 btn-gradient-blue">
                                     <i class="la la-download"></i> {!! __('general.download') !!}
                                 </a>
                             @else
@@ -165,7 +165,7 @@
                 <div class="premium-tile justify-content-center py-4">
                     <div class="text-muted d-flex flex-column align-items-center">
                         <i class="la la-inbox la-2x text-light mb-2"></i>
-                        <span style="font-size: 1rem;">{!! __('employees.no_data_found') !!}</span>
+                        <span class="font-1rem">{!! __('employees.no_data_found') !!}</span>
                     </div>
                 </div>
             </div>

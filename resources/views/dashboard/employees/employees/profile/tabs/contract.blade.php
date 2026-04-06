@@ -1,6 +1,6 @@
 <!-- Contract Details Grid -->
 <div class="mb-4">
-    <h3 class="mb-3 font-weight-bold" style="color: #0f172a; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; display: inline-block; font-size: 1.25rem;">
+    <h3 class="mb-3 font-weight-bold section-header-title">
         <i class="la la-file-text text-primary mr-1"></i> {!! __('employees.contract_details') !!}
     </h3>
     
@@ -33,13 +33,13 @@
 
         <!-- Full Width Text Content Tiles -->
         <div class="col-xl-12 mb-3">
-            <div class="premium-tile" style="align-items: flex-start;">
+            <div class="premium-tile tile-start-aligned">
                 <div class="tile-icon-wrapper bg-glass-slate">
                     <i class="la la-tasks"></i>
                 </div>
-                <div class="tile-content" style="width: 100%;">
+                <div class="tile-content tile-w-100">
                     <p class="tile-label">{!! __('employees.job_duties') !!}</p>
-                    <div class="tile-value text-muted" style="font-weight: 500; font-size: 1rem; line-height: 1.4; max-height: 180px; overflow-y: auto;">
+                    <div class="tile-value text-muted text-muted-scroll">
                         {!! $employee->employeeContractDetails->job_duties ?? '--' !!}
                     </div>
                 </div>
@@ -47,13 +47,13 @@
         </div>
 
         <div class="col-xl-12 mb-3">
-            <div class="premium-tile" style="align-items: flex-start;">
+            <div class="premium-tile tile-start-aligned">
                 <div class="tile-icon-wrapper bg-glass-green">
                     <i class="la la-gavel"></i>
                 </div>
-                <div class="tile-content" style="width: 100%;">
+                <div class="tile-content tile-w-100">
                     <p class="tile-label">{!! __('employees.contract_terms') !!}</p>
-                    <div class="tile-value text-muted" style="font-weight: 500; font-size: 1rem; line-height: 1.4; max-height: 180px; overflow-y: auto;">
+                    <div class="tile-value text-muted text-muted-scroll">
                         {!! $employee->employeeContractDetails->contract_terms ?? '--' !!}
                     </div>
                 </div>

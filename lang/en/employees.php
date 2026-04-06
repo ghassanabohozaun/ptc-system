@@ -48,7 +48,7 @@ return [
     'contract_duration' => 'Contract Duration',
     'contract_start_date' => 'Contract Start Date',
     'monthly_salary' => 'Monthly Salary',
-    'export' => 'Export Word',
+    'export' => 'Export',
     'monthly_report_status' => 'Monthly Report Status',
     'file' => 'File',
     'month' => 'Month',

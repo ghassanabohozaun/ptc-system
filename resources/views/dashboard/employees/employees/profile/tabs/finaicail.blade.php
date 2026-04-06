@@ -4,8 +4,7 @@
     <div class="row">
         <!-- Bank Information Section -->
         <div class="col-xl-6 col-lg-6 mb-3">
-            <h3 class="mb-3 font-weight-bold"
-                style="color: #0f172a; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; display: inline-block; font-size: 1.25rem;">
+            <h3 class="mb-3 font-weight-bold section-header-title">
                 <i class="la la-bank text-primary mr-1"></i> {!! __('employees.bank_info') !!}
             </h3>
 
@@ -31,7 +30,7 @@
                         </div>
                         <div class="tile-content">
                             <p class="tile-label">{!! __('employees.iban') !!}</p>
-                            <p class="tile-value font-small-3" style="letter-spacing: 1px;">{!! $employee->iban !!}</p>
+                            <p class="tile-value font-small-3 letter-spacing-1">{!! $employee->iban !!}</p>
                         </div>
                     </div>
                 </div>
@@ -53,15 +52,14 @@
 
         <!-- Job Details / Salary Section -->
         <div class="col-xl-6 col-lg-6 mb-3">
-            <h3 class="mb-3 font-weight-bold"
-                style="color: #0f172a; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; display: inline-block; font-size: 1.25rem;">
+            <h3 class="mb-3 font-weight-bold section-header-title">
                 <i class="la la-money text-primary mr-1"></i> {!! __('employees.job_details') !!}
             </h3>
 
             <div class="row">
                 <!-- Tile -->
                 <div class="col-md-12 mb-3">
-                    <div class="premium-tile" style="border-color: #10b981;">
+                    <div class="premium-tile border-success-custom">
                         <div class="tile-icon-wrapper bg-glass-green">
                             <i class="la la-dollar"></i>
                         </div>
