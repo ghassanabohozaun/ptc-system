@@ -49,4 +49,5 @@ return [
     'lock_screen' => 'Lock Screen',
     'active_session' => 'Active Secured Session',
     'profile' => 'Profile',
+    'welcome_subtitle' => "Here's what's happening with your system today.",
 ];

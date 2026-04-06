@@ -48,4 +48,5 @@ return [
     'lock_screen' => 'قفل الشاشة',
     'active_session' => 'جلسة عمل مؤمنة ونشطة',
     'profile'=>'الملف الشخصي',
+    'welcome_subtitle' => 'إليك ما يحدث في نظامك اليوم.',
 ];

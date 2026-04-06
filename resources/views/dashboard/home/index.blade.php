@@ -3,100 +3,99 @@
     {!! $title !!}
 @endsection
 
+@push('style')
+    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashboard/css/dashboard-home.css') !!}">
+@endpush
+
 @section('content')
     <div class="app-content content">
         <div class="content-wrapper">
             <!-- begin: content header -->
             <div class="content-header row">
-
-                <!-- begin: content header left-->
-                <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
-                    <h3 class="content-header-title mb-0 d-inline-block">{!! __('dashboard.dashboard') !!}</h3>
-                    <div class="row breadcrumbs-top d-inline-block">
-                        <div class="breadcrumb-wrapper col-12">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item">
-                                    <a href="{!! route('dashboard.index') !!}">
-                                        {!! __('dashboard.home') !!}
-                                    </a>
-                                </li>
-                            </ol>
+                <div class="col-12 welcome-section animate-up">
+                    <div class="d-flex justify-content-between align-items-end flex-wrap gap-4">
+                        <div>
+                            <h1 class="welcome-title">{!! greeting() !!}, {!! auth()->user()->name ?? 'Admin' !!}! 👋</h1>
+                            {{-- <p class="welcome-subtitle">{!! __('dashboard.welcome_subtitle') !!}</p> --}}
+                        </div>
+                        <div class="welcome-date mb-1">
+                            <i class="icon-calendar"></i>
+                            {!! date('l, d F Y') !!}
                         </div>
                     </div>
                 </div>
-                <!-- end: content header left-->
             </div> <!-- end :content header -->
 
 
             <!-- begin :statistics -->
             <div class="row">
-                <div class="col-xl-3 col-md-12">
-                    <div class="card overflow-hidden">
-                        <div class="card-content">
-                            <div class="media align-items-stretch">
-                                <div class="bg-info p-2 media-middle">
-                                    <i class="icon-users font-large-2 text-white"></i>
-                                </div>
-                                <div class="media-body p-2  mt-1">
-                                    <h4>{!! __('dashboard.employees_count') !!}</h4>
-
-                                </div>
-                                <div class="media-right p-1  mt-1 media-middle">
-                                    <h1 class="info">{!! employeesCount() !!}</h1>
-                                </div>
+                <!-- Employees Card -->
+                <div class="col-xl-3 col-lg-6 col-md-6 mb-4 animate-up delay-1">
+                    <div class="elite-stat-card">
+                        <div class="stat-icon-glow glow-blue">
+                            <i class="icon-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-label">{!! __('dashboard.employees_count') !!}</span>
+                            <div class="d-flex align-items-baseline gap-2">
+                                <span class="stat-value">{!! employeesCount() !!}</span>
+                            </div>
+                            <div class="stat-trend trend-up">
+                                <i class="icon-arrow-up"></i> Active Personnel
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-md-12">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="media align-items-stretch">
-                                <div class="bg-warning p-2 media-middle rounded-left">
-                                    <i class="la la-pencil-square font-large-2 text-white"></i>
-                                </div>
-                                <div class="media-body p-2 mt-1">
-                                    <h4>{!! __('dashboard.daily_reports_count') !!}</h4>
 
-                                </div>
-                                <div class="media-right p-1 mt-1 media-middle">
-                                    <h1 class="warning">{!! dailyReportsCount() !!}</h1>
-                                </div>
+                <!-- Daily Reports Card -->
+                <div class="col-xl-3 col-lg-6 col-md-6 mb-4 animate-up delay-2">
+                    <div class="elite-stat-card">
+                        <div class="stat-icon-glow glow-orange">
+                            <i class="icon-pencil"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-label">{!! __('dashboard.daily_reports_count') !!}</span>
+                            <div class="d-flex align-items-baseline gap-2">
+                                <span class="stat-value">{!! dailyReportsCount() !!}</span>
+                            </div>
+                            <div class="stat-trend trend-stable">
+                                <i class="icon-check"></i> Today's Updates
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-md-12">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="media align-items-stretch">
-                                <div class="bg-primary p-2 media-middle rounded-left">
-                                    <i class="la la-file-text font-large-2 text-white"></i>
-                                </div>
-                                <div class="media-body p-2 mt-1">
-                                    <h4>{!! __('dashboard.monthly_reports_count') !!}</h4>
 
-                                </div>
-                                <div class="media-right p-1 mt-1 media-middle">
-                                    <h1 class="warning">{!! monthlyReportsCount() !!}</h1>
-                                </div>
+                <!-- Monthly Reports Card -->
+                <div class="col-xl-3 col-lg-6 col-md-6 mb-4 animate-up delay-3">
+                    <div class="elite-stat-card">
+                        <div class="stat-icon-glow glow-purple">
+                            <i class="icon-docs"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-label">{!! __('dashboard.monthly_reports_count') !!}</span>
+                            <div class="d-flex align-items-baseline gap-2">
+                                <span class="stat-value">{!! monthlyReportsCount() !!}</span>
+                            </div>
+                            <div class="stat-trend trend-up">
+                                <i class="icon-graph"></i> Processed
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-md-12">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="media align-items-stretch">
-                                <div class="bg-blue-grey p-2 media-middle rounded-left">
-                                    <i class="la la-money font-large-2 text-white"></i>
-                                </div>
-                                <div class="media-body p-2 mt-1">
-                                    <h4>{!! __('dashboard.salaries_count') !!}</h4>
-                                </div>
-                                <div class="media-right p-1 mt-1 media-middle">
-                                    <h1 class="warning">{!! salariesCount() !!}</h1>
-                                </div>
+
+                <!-- Salaries Card -->
+                <div class="col-xl-3 col-lg-6 col-md-6 mb-4 animate-up delay-4">
+                    <div class="elite-stat-card">
+                        <div class="stat-icon-glow glow-green">
+                            <i class="icon-wallet"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-label">{!! __('dashboard.salaries_count') !!}</span>
+                            <div class="d-flex align-items-baseline gap-2">
+                                <span class="stat-value">{!! salariesCount() !!}</span>
+                            </div>
+                            <div class="stat-trend trend-up">
+                                <i class="icon-energy"></i> Paid this month
                             </div>
                         </div>
                     </div>
@@ -105,7 +104,7 @@
             <!-- end :statistics -->
 
             <!-- begin :analytics insights -->
-            <div class="row mt-3">
+            <div class="row">
                 <div class="col-xl-8 col-lg-12">
                     <div class="card h-100">
                         <div class="card-header">
@@ -159,9 +158,8 @@
                                 <ul class="list-inline mb-0">
                                     <li>
                                         <button type="button"
-                                            class="btn btn-outline-primary btn-min-width mr-1 mr-1 mb-1  pull-right"
-                                            style="line-height :0.8rem" data-toggle="modal"
-                                            data-target="#monthlyReportsEmployeesModal">
+                                            class="btn btn-outline-primary btn-min-width mr-1 mr-1 mb-1  pull-right btn-line-height-small"
+                                            data-toggle="modal" data-target="#monthlyReportsEmployeesModal">
                                             {!! __('monthlyReports.show_employees') !!}
                                         </button>
                                     </li>
