@@ -27,72 +27,73 @@
             <div class="collapse navbar-collapse" id="navbar-mobile">
                 <ul class="nav navbar-nav mr-auto float-left">
                 </ul>
+
                 <ul class="nav navbar-nav float-right">
                     <li class="dropdown dropdown-user nav-item admin_name_section">
-                        <a class="dropdown-toggle nav-link dropdown-user-link" href="javascript:void(0)"
+                        <a class="dropdown-toggle nav-link dropdown-user-link p-0" href="javascript:void(0)"
                             data-toggle="dropdown">
-                            <span class="mr-1">{!! __('dashboard.hello') !!}
-                                <span class="user-name text-bold-700">{!! admin()->user()->getTranslation('name', Lang()) !!}</span>
-                            </span>
-                            @php
-                                $user = admin()->user();
-                                $photoUrl = $user->adminPhoto();
-                                $colors = ['#5A8DEE', '#FDAC41', '#FF5B5C', '#39DA8A', '#00CFDD', '#7117EA', '#272727'];
-                                $charIndex = abs(crc32($user->name)) % count($colors);
-                                $bgColor = $colors[$charIndex];
-                            @endphp
-                            <span class="avatar avatar-online">
-                                @if ($photoUrl)
-                                    <img src="{!! $photoUrl !!}" alt="avatar">
-                                @else
-                                    <span class="rounded-circle d-flex align-items-center justify-content-center text-white"
-                                        style="width: 30px; height: 30px; background-color: {!! $bgColor !!}; font-size: 11px; font-weight: 600; text-transform: uppercase;">
-                                        {!! $user->initials !!}
-                                    </span>
-                                @endif
-                                <i></i>
-                            </span>
+                            <div class="premium-user-pill">
+                                <div class="user-info-text d-none d-lg-flex">
+                                    <span class="greeting-text">{!! __('dashboard.hello') !!}</span>
+                                    <span class="user-name-text">{!! admin()->user()->getTranslation('name', Lang()) !!}</span>
+                                </div>
+                                @php
+                                    $user = admin()->user();
+                                    $photoUrl = $user->adminPhoto();
+                                    $colors = ['#5A8DEE', '#FDAC41', '#FF5B5C', '#39DA8A', '#00CFDD', '#7117EA', '#272727'];
+                                    $charIndex = abs(crc32($user->name)) % count($colors);
+                                    $bgColor = $colors[$charIndex];
+                                @endphp
+                                <div class="avatar-wrapper-premium">
+                                    @if ($photoUrl)
+                                        <img src="{!! $photoUrl !!}" alt="avatar"
+                                            class="avatar-img-premium shadow-sm">
+                                    @else
+                                        <span class="avatar-initials-premium shadow-sm"
+                                            style="background: linear-gradient(135deg, {!! $bgColor !!}, {!! $bgColor !!}dd);">
+                                            {!! $user->initials !!}
+                                        </span>
+                                    @endif
+                                    <span class="avatar-status-online"></span>
+                                </div>
+                                <i class="la la-angle-down ml-1 chevron-icon d-none d-lg-block"></i>
+                            </div>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item"
-                                href="javascript:void(0)"><i class="ft-user"></i>{!! __('dashboard.profile') !!}</a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-header text-center pb-2 border-bottom mb-1 d-md-none">
+                                <h6 class="text-bold-700 mb-0">{!! admin()->user()->name !!}</h6>
+                            </div>
+                            <a class="dropdown-item" href="javascript:void(0)">
+                                <i class="ft-user"></i> {!! __('dashboard.profile') !!}
+                            </a>
                             <a class="dropdown-item" href="{!! route('dashboard.lock.screen') !!}">
-                                <i class="la la-lock"></i>
-                                {!! __('dashboard.lock_screen') !!}
+                                <i class="la la-lock"></i> {!! __('dashboard.lock_screen') !!}
                             </a>
-                            <a class="dropdown-item" href="{!! route('dashboard.logout') !!}">
-                                <i class="ft-power"></i>
-                                {!! __('auth.logout') !!}
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-danger" href="{!! route('dashboard.logout') !!}">
+                                <i class="ft-power"></i> {!! __('auth.logout') !!}
                             </a>
-
                         </div>
                     </li>
 
-                    {{-- dropdown-language --}}
-                    <li class="dropdown dropdown-notification nav-item" style="margin-top: -5px">
-                        <a class="dropdown-toggle nav-link" id="dropdown-flag" href="javascript:void(0)"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            @if (Config::get('app.locale') == 'ar')
-                                <img class="flag-icon"
-                                    src="{{ asset('assets/dashbaord/media/svg/flags/العربية.svg') }}" />
-                            @else
-                                <img class="flag-icon"
-                                    src="{{ asset('assets/dashbaord/media/svg/flags/English.svg') }}" />
-                            @endif
+                    {{-- Premium Language Switcher Toggle --}}
+                    @php
+                        $currentLocale = Lang();
+                        $targetLocale = $currentLocale == 'ar' ? 'en' : 'ar';
+                        $targetNative = LaravelLocalization::getSupportedLocales()[$targetLocale]['native'];
+                        $flagPath =
+                            $targetLocale == 'ar'
+                                ? asset('assets/dashbaord/media/svg/flags/العربية.svg')
+                                : asset('assets/dashbaord/media/svg/flags/English.svg');
+                    @endphp
+                    <li class="nav-item">
+                        <a href="{{ LaravelLocalization::getLocalizedURL($targetLocale, null, [], true) }}"
+                            class="nav-link p-0 d-flex align-items-center h-100">
+                            <div class="language-switcher-premium">
+                                <img src="{!! $flagPath !!}" class="flag-icon" alt="{!! $targetNative !!}">
+                                <span class="lang-name">{{ $targetNative }}</span>
+                            </div>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown-flag">
-                            @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}"
-                                    href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                    <i class="flag-icon">
-                                        <img src="{{ asset('assets/dashbaord/media/svg/flags/' . $properties['native'] . '.svg') }}"
-                                            alt="" />
-                                    </i>
-                                    <span style="padding: 10px">
-                                        {{ $properties['native'] }}
-                                    </span>
-                                </a>
-                            @endforeach
-                        </div>
                     </li>
 
                     <livewire:dashboard.notification />
