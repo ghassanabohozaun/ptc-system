@@ -98,7 +98,7 @@
                 </div>
                 <div class="tile-content">
                     <p class="tile-label">{!! __('employees.governoate_id') !!} / {!! __('employees.city_id') !!}</p>
-                    <p class="tile-value">{!! $employee->governorate->name !!} - {!! $employee->city->name !!}</p>
+                    <p class="tile-value">{!! $employee->governorate?->name ?? '--' !!} - {!! $employee->city?->name ?? '--' !!}</p>
                 </div>
             </div>
         </div>

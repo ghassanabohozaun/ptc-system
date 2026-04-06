@@ -13,7 +13,7 @@
                 </div>
                 <div class="tile-content">
                     <p class="tile-label">{!! __('employees.weekly_working_hours_and_days') !!}</p>
-                    <p class="tile-value">{!! $employee->employeeContractDetails->weekly_working_hours_and_days ?? '--' !!}</p>
+                    <p class="tile-value">{!! $employee->employeeContractDetails?->weekly_working_hours_and_days ?? '--' !!}</p>
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="tile-content">
                     <p class="tile-label">{!! __('employees.holidays_and_festivals') !!}</p>
-                    <p class="tile-value">{!! $employee->employeeContractDetails->holidays_and_festivals ?? '--' !!}</p>
+                    <p class="tile-value">{!! $employee->employeeContractDetails?->holidays_and_festivals ?? '--' !!}</p>
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@
                 <div class="tile-content tile-w-100">
                     <p class="tile-label">{!! __('employees.job_duties') !!}</p>
                     <div class="tile-value text-muted text-muted-scroll">
-                        {!! $employee->employeeContractDetails->job_duties ?? '--' !!}
+                        {!! $employee->employeeContractDetails?->job_duties ?? '--' !!}
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                 <div class="tile-content tile-w-100">
                     <p class="tile-label">{!! __('employees.contract_terms') !!}</p>
                     <div class="tile-value text-muted text-muted-scroll">
-                        {!! $employee->employeeContractDetails->contract_terms ?? '--' !!}
+                        {!! $employee->employeeContractDetails?->contract_terms ?? '--' !!}
                     </div>
                 </div>
             </div>
@@ -68,7 +68,7 @@
                 </div>
                 <div class="tile-content">
                     <p class="tile-label">{!! __('employees.education_contract') !!}</p>
-                    <p class="tile-value font-small-3">{!! $employee->employeeContractDetails->education_contract ?? '--' !!}</p>
+                    <p class="tile-value font-small-3">{!! $employee->employeeContractDetails?->education_contract ?? '--' !!}</p>
                 </div>
             </div>
         </div>
@@ -80,7 +80,7 @@
                 </div>
                 <div class="tile-content">
                     <p class="tile-label">{!! __('employees.experiences_contract') !!}</p>
-                    <p class="tile-value font-small-3">{!! $employee->employeeContractDetails->experiences_contract ?? '--' !!}</p>
+                    <p class="tile-value font-small-3">{!! $employee->employeeContractDetails?->experiences_contract ?? '--' !!}</p>
                 </div>
             </div>
         </div>
@@ -92,7 +92,7 @@
                 </div>
                 <div class="tile-content">
                     <p class="tile-label">{!! __('employees.other_requirements') !!}</p>
-                    <p class="tile-value font-small-3">{!! $employee->employeeContractDetails->other_requirements ?? '--' !!}</p>
+                    <p class="tile-value font-small-3">{!! $employee->employeeContractDetails?->other_requirements ?? '--' !!}</p>
                 </div>
             </div>
         </div>

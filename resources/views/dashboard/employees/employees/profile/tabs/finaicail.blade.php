@@ -81,7 +81,7 @@
                         </div>
                         <div class="tile-content">
                             <p class="tile-label">{!! __('employees.employment_type') !!}</p>
-                            <p class="tile-value">{!! $employee->employeeJobDetails->EmploymentType() ?? '--' !!}</p>
+                            <p class="tile-value">{!! $employee->employeeJobDetails?->EmploymentType() ?? '--' !!}</p>
                         </div>
                     </div>
                 </div>
@@ -106,7 +106,7 @@
                         </div>
                         <div class="tile-content">
                             <p class="tile-label">{!! __('employees.appointment_date') ?? 'تاريخ التعيين' !!}</p>
-                            <p class="tile-value">{!! $employee->employeeJobDetails->appointment_date ?? '--' !!}</p>
+                            <p class="tile-value">{!! $employee->employeeJobDetails?->appointment_date ?? '--' !!}</p>
                         </div>
                     </div>
                 </div>
@@ -119,7 +119,7 @@
                         </div>
                         <div class="tile-content">
                             <p class="tile-label">{!! __('employees.contact_expire_date') ?? 'تاريخ انتهاء العقد' !!}</p>
-                            <p class="tile-value">{!! $employee->employeeJobDetails->contact_expire_date ?? '--' !!}</p>
+                            <p class="tile-value">{!! $employee->employeeJobDetails?->contact_expire_date ?? '--' !!}</p>
                         </div>
                     </div>
                 </div>

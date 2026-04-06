@@ -28,7 +28,7 @@
                         </h2>
                         <p class="elite-employee-title">
                             <i class="la la-diamond"></i>
-                            {!! $employee->employeeJobDetails->title ?? '--' !!}
+                            {!! $employee->employeeJobDetails?->title ?? '--' !!}
                         </p>
                         
                         <!-- Floating Action Button -->
@@ -48,7 +48,7 @@
                         </div>
                         <div class="elite-stat-content">
                             <p class="elite-stat-label">{!! __('employees.department_id') !!}</p>
-                            <p class="elite-stat-value">{!! $employee->employeeJobDetails->department->name ?? '--' !!}</p>
+                            <p class="elite-stat-value">{!! $employee->employeeJobDetails?->department?->name ?? '--' !!}</p>
                         </div>
                     </div>
 
@@ -58,7 +58,7 @@
                         </div>
                         <div class="elite-stat-content">
                             <p class="elite-stat-label">{!! __('employees.supervisor') !!}</p>
-                            <p class="elite-stat-value">{!! $employee->employeeJobDetails->supervisor ?? '--' !!}</p>
+                            <p class="elite-stat-value">{!! $employee->employeeJobDetails?->supervisor ?? '--' !!}</p>
                         </div>
                     </div>
                     
@@ -68,7 +68,7 @@
                         </div>
                         <div class="elite-stat-content">
                             <p class="elite-stat-label">{!! __('employees.appointment_date') !!}</p>
-                            <p class="elite-stat-value">{!! $employee->employeeJobDetails->appointment_date ?? '--' !!}</p>
+                            <p class="elite-stat-value">{!! $employee->employeeJobDetails?->appointment_date ?? '--' !!}</p>
                         </div>
                     </div>
                 </div>
