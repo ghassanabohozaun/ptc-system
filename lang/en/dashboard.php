@@ -50,4 +50,8 @@ return [
     'active_session' => 'Active Secured Session',
     'profile' => 'Profile',
     'welcome_subtitle' => "Here's what's happening with your system today.",
+    'active_personnel' => 'Active Personnel',
+    'todays_updates' => "Today's Updates",
+    'processed' => 'Processed',
+    'paid_this_month' => 'Paid this month',
 ];

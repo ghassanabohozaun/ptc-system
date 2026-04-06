@@ -26,7 +26,7 @@ Route::group(
         ########################################### Livewire routes ################################################################
 
         Livewire::setUpdateRoute(function ($handle) {
-            return Route::post('/livewire/update', $handle);
+            return Route::match(['get', 'post'], '/livewire/update', $handle);
         });
 
         ########################################### employees routes  ######################################################################

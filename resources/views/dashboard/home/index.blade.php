@@ -41,7 +41,7 @@
                                 <span class="stat-value">{!! employeesCount() !!}</span>
                             </div>
                             <div class="stat-trend trend-up">
-                                <i class="icon-arrow-up"></i> Active Personnel
+                                <i class="icon-arrow-up"></i> {!! __('dashboard.active_personnel') !!}
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                                 <span class="stat-value">{!! dailyReportsCount() !!}</span>
                             </div>
                             <div class="stat-trend trend-stable">
-                                <i class="icon-check"></i> Today's Updates
+                                <i class="icon-check"></i> {!! __('dashboard.todays_updates') !!}
                             </div>
                         </div>
                     </div>
@@ -77,7 +77,7 @@
                                 <span class="stat-value">{!! monthlyReportsCount() !!}</span>
                             </div>
                             <div class="stat-trend trend-up">
-                                <i class="icon-graph"></i> Processed
+                                <i class="icon-graph"></i> {!! __('dashboard.processed') !!}
                             </div>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                                 <span class="stat-value">{!! salariesCount() !!}</span>
                             </div>
                             <div class="stat-trend trend-up">
-                                <i class="icon-energy"></i> Paid this month
+                                <i class="icon-energy"></i> {!! __('dashboard.paid_this_month') !!}
                             </div>
                         </div>
                     </div>

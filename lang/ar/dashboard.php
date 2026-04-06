@@ -49,4 +49,8 @@ return [
     'active_session' => 'جلسة عمل مؤمنة ونشطة',
     'profile'=>'الملف الشخصي',
     'welcome_subtitle' => 'إليك ما يحدث في نظامك اليوم.',
+    'active_personnel' => 'الموظفون النشطون',
+    'todays_updates' => 'تحديثات اليوم',
+    'processed' => 'تمت المعالجة',
+    'paid_this_month' => 'تم الدفع هذا الشهر',
 ];

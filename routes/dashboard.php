@@ -85,7 +85,7 @@ Route::group(
 
             ########################################### employee routes  ######################################################################
             Livewire::setUpdateRoute(function ($handle) {
-                return Route::post('/livewire/update', $handle);
+                return Route::match(['get', 'post'], '/livewire/update', $handle);
             });
             ########################################### employee statuses routes  ######################################################################
             Route::group(['middleware' => 'can:employeeStatuses'], function () {
