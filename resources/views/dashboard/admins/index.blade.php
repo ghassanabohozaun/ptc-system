@@ -3,6 +3,10 @@
     {!! $title !!}
 @endsection
 
+@push('style')
+    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/ajax-table.css') }}">
+@endpush
+
 @section('content')
     <div class="app-content content">
         <div class="content-wrapper">
@@ -73,52 +77,13 @@
                                 <!-- begin: card content -->
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table" id='myTable'>
-                                                <thead>
-                                                    <tr>
-                                                        <th class="text-center">{!! __('admins.photo') !!}</th>
-                                                        <th class="text-center">{!! __('admins.name') !!}</th>
-                                                        <th class="text-center">{!! __('admins.email') !!}</th>
-                                                        <th class="text-center">{!! __('admins.role_id') !!}</th>
-                                                        <th class="text-center">{!! __('admins.created_at') !!}</th>
-                                                        <th class="text-center">{!! __('admins.status') !!}</th>
-                                                        <th class="text-center">{!! __('admins.manage_status') !!}</th>
-                                                        <th class="text-center">{!! __('general.actions') !!}</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @forelse ($admins as $key=>$admin)
-                                                        <tr id="row{{ $admin->id }}">
-                                                            <td class="col-lg-1 text-center">
-                                                                @include('dashboard.admins.parts.photo')
-                                                            </td>
-                                                            <td class="col-lg-1 text-center">{!! $admin->name !!}</td>
-                                                            <td class="col-lg-2 text-center">{!! $admin->email !!}</td>
-                                                            <td class="col-lg-2 text-center">{!! $admin->role->role !!}</td>
-                                                            <td class="col-lg-2 text-center">{!! $admin->created_at !!}</td>
-                                                            <td class="col-lg-1 text-center">
-                                                                @include('dashboard.admins.parts.status')
-                                                            </td>
-                                                            <td class="col-lg-1 text-center">
-                                                                @include('dashboard.admins.parts.manage_status')
-                                                            </td>
-                                                            <td class="col-lg-1 text-center">
-                                                                @include('dashboard.admins.parts.actions')
-                                                            </td>
-                                                        </tr>
-                                                    @empty
-                                                        <tr>
-                                                            <td colspan="6" class="text-center">
-                                                                {!! __('admins.no_admins_found') !!}
-                                                            </td>
-                                                        </tr>
-                                                    @endforelse
-                                                </tbody>
-
-                                            </table>
-                                            <div class="float-right">
-                                                {!! $admins->links() !!}
+                                        <!-- Container with Loader -->
+                                        <div class="table-loader-container">
+                                            <div class="table-loader-overlay">
+                                                <span class="premium-loader"></span>
+                                            </div>
+                                            <div id="table_data">
+                                                @include('dashboard.admins.partials._table')
                                             </div>
                                         </div>
                                     </div>
@@ -133,49 +98,54 @@
     </div><!-- end: content app  -->
     @include('dashboard.admins.modals.create')
     @include('dashboard.admins.modals.edit')
+
+    @include('dashboard.admins.modals.details')
 @endsection
 @push('scripts')
+    <script src="{{ asset('assets/dashboard/js/ajax-table.js') }}"></script>
     <script type="text/javascript">
-        //  change status
-        var statusSwitch = false;
-        $('body').on('change', '.change_status', function(e) {
-            e.preventDefault();
-            var id = $(this).data('id');
+        $(document).ready(function() {
+            console.log('Admin Index Table Initializing...');
+            // Initialize AJAX Table
+            window.initIndexTable({
+                container: '#table_data',
+                loader: '.table-loader-overlay',
+                detailsControl: '.details-control'
+            });
 
-            if ($(this).is(':checked')) {
-                statusSwitch = 1;
-            } else {
-                statusSwitch = 0;
-            }
+            // Status Change Handler (preserving existing logic)
+            $('body').on('change', '.change_status', function(e) {
+                e.preventDefault();
+                var id = $(this).data('id');
+                var statusSwitch = $(this).is(':checked') ? 1 : 0;
 
-            $.ajax({
-                url: "{{ route('dashboard.admins.change.status') }}",
-                data: {
-                    statusSwitch: statusSwitch,
-                    id: id
-                },
-                type: 'post',
-                dataType: 'JSON',
-                success: function(data) {
-                    console.log(data);
-                    $('.admin_status_' + data.data.id).empty();
-                    $('.admin_status_' + data.data.id).removeClass('badge-danger');
-                    $('.admin_status_' + data.data.id).removeClass('badge-success');
-                    if (data.data.status == 1) {
-                        $('.admin_status_' + data.data.id).addClass('badge-success');
-                        $('.admin_status_' + data.data.id).text("{!! __('general.enable') !!}");
-                    } else if (data.data.status == '') {
-                        $('.admin_status_' + data.data.id).addClass('badge-danger');
-                        $('.admin_status_' + data.data.id).text("{!! __('general.disabled') !!}");
+                $.ajax({
+                    url: "{{ route('dashboard.admins.change.status') }}",
+                    data: {
+                        statusSwitch: statusSwitch,
+                        id: id
+                    },
+                    type: 'post',
+                    dataType: 'JSON',
+                    success: function(data) {
+                        $('.admin_status_' + data.data.id).empty();
+                        $('.admin_status_' + data.data.id).removeClass(
+                            'badge-danger badge-success');
+                        if (data.data.status == 1) {
+                            $('.admin_status_' + data.data.id).addClass('badge-success').text(
+                                "{!! __('general.enable') !!}");
+                        } else {
+                            $('.admin_status_' + data.data.id).addClass('badge-danger').text(
+                                "{!! __('general.disabled') !!}");
+                        }
+                        if (data.status === true) {
+                            flasher.success("{!! __('general.change_status_success_message') !!}");
+                        } else {
+                            flasher.error("{!! __('general.change_status_error_message') !!}");
+                        }
                     }
-                    if (data.status === true) {
-                        flasher.success("{!! __('general.change_status_success_message') !!}");
-                    } else {
-                        flasher.error("{!! __('general.change_status_error_message') !!}");
-                    }
-                }
-
-            })
+                });
+            });
         });
     </script>
 @endpush

@@ -3,6 +3,10 @@
     {!! $title !!}
 @endsection
 
+@push('style')
+    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/ajax-table.css') }}">
+@endpush
+
 @section('content')
     <div class="app-content content">
         <div class="content-wrapper">
@@ -72,48 +76,12 @@
                                 <!-- begin: card content -->
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table" id='myTable'>
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>{!! __('world.governorate_name') !!}</th>
-                                                        <th class="text-center">{!! __('world.cites_count') !!}</th>
-                                                        <th class="text-center">{!! __('world.status') !!}</th>
-                                                        <th class="text-center">{!! __('world.manage_status') !!}</th>
-                                                        <th class="text-center">{!! __('general.actions') !!}</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @forelse ($governorates as $governorate)
-                                                        <tr class="row_{!! $governorate->id !!}">
-                                                            <td class="col-lg-1">{!! $loop->iteration !!} </td>
-                                                            <td class="col-lg-6">{!! $governorate->name !!}</td>
-                                                            <td class="col-lg-1 text-center">
-                                                                @include('dashboard.world.governorates.parts.cites_count')
-                                                            </td>
-                                                            <td class="col-lg-1 text-center">
-                                                                @include('dashboard.world.governorates.parts.status')
-                                                            </td>
-                                                            <td class="col-lg-1 text-center">
-                                                                @include('dashboard.world.governorates.parts.manage_status')
-                                                            </td>
-                                                            <td class="col-lg-1">
-                                                                @include('dashboard.world.governorates.parts.actions')
-                                                            </td>
-                                                        </tr>
-                                                    @empty
-                                                        <tr>
-                                                            <td colspan="9" class="text-center">
-                                                                {!! __('world.no_governorates_found') !!}
-                                                            </td>
-                                                        </tr>
-                                                    @endforelse
-                                                </tbody>
-
-                                            </table>
-                                            <div class="float-right">
-                                                {!! $governorates->links() !!}
+                                        <div class="table-loader-container">
+                                            <div class="table-loader-overlay" id="tableLoader">
+                                                <span class="premium-loader"></span>
+                                            </div>
+                                            <div id="table_data">
+                                                @include('dashboard.world.governorates.partials._table')
                                             </div>
                                         </div>
                                     </div>
@@ -129,93 +97,16 @@
 
     @include('dashboard.world.governorates.modals.create')
     @include('dashboard.world.governorates.modals.edit')
+    @include('dashboard.world.governorates.modals.details')
 @endsection
+
 @push('scripts')
-    <script type="text/javascript">
-        // delete governorate
-        $('body').on('click', '.delete_governorate_btn', function(e) {
-            e.preventDefault();
-            var id = $(this).data('id');
-
-            swal({
-                title: "{{ __('general.ask_delete_record') }}",
-                icon: "warning",
-                buttons: {
-                    cancel: {
-                        text: "{{ __('general.no') }}",
-                        value: null,
-                        visible: true,
-                        className: "btn-danger",
-                        closeModal: false,
-                    },
-                    confirm: {
-                        text: "{{ __('general.yes') }}",
-                        value: true,
-                        visible: true,
-                        className: "btn-info",
-                        closeModal: false
-                    }
-                }
-            }).then(isConfirm => {
-                if (isConfirm) {
-                    $.ajax({
-                        url: '{!! route('dashboard.governorates.destroy') !!}',
-                        data: {
-                            id,
-                            id
-                        },
-                        type: 'post',
-                        dataType: 'json',
-                        success: function(data) {
-
-                            $('#myTable').load(location.href + (' #myTable'));
-                            if (data.status == true) {
-
-                                swal({
-                                    title: "{!! __('general.deleted') !!} ",
-                                    text: "{!! __('general.delete_success_message') !!} ",
-                                    icon: "success",
-                                    buttons: {
-                                        confirm: {
-                                            text: "{!! __('general.yes') !!}",
-                                            visible: true,
-                                            closeModal: true
-                                        }
-                                    }
-                                });
-                                // $('.row_' + id).remove();
-                            } else if (data.status == false) {
-                                swal({
-                                    title: "{!! __('general.warning') !!} ",
-                                    text: "{!! __('general.delete_error_message') !!} ",
-                                    icon: "warning",
-                                    buttons: {
-                                        confirm: {
-                                            text: "{!! __('general.yes') !!}",
-                                            visible: true,
-                                            closeModal: true
-                                        }
-                                    }
-                                });
-                            }
-                        }, //end success
-                    });
-
-                } else {
-                    swal({
-                        title: "{!! __('general.cancelled') !!} ",
-                        text: "{!! __('general.delete_error_message') !!} ",
-                        icon: "error",
-                        buttons: {
-                            confirm: {
-                                text: "{!! __('general.yes') !!}",
-                                visible: true,
-                                closeModal: true
-                            }
-                        }
-                    });
-                }
-            });
+    <script src="{{ asset('assets/dashboard/js/ajax-table.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            if (typeof initIndexTable === "function") {
+                initIndexTable();
+            }
         });
 
         // change status
@@ -257,57 +148,5 @@
             });
 
         });
-
-        // get all cities by governorate
-        // $('body').on('click', '.get_all_cities_by_governorate_btn', function(e) {
-
-        //     e.preventDefault();
-        //     var id = $(this).data('id');
-
-        //     $.ajax({
-        //         url: '{!! route('dashboard.governorates.get.all.cities') !!}',
-        //         data: {
-        //             id,
-        //             id
-        //         },
-        //         method: 'get',
-        //         dataType: 'json',
-
-        //         success: function(data) {
-
-        //             trHTML = "";
-        //             if (!$.trim(data.data)) {
-        //                 $("#cities_tbody").empty();
-        //                 trHTML += '<tr class="notfound" id="notfound">' +
-        //                     '<td colspan="10">' + '{{ __('general.no_record_found') }}' + '</td>' +
-        //                     '</tr>';
-        //             } else {
-        //                 $("#cities_tbody").empty();
-        //                 $.each(data.data, function(i, item) {
-        //                     var lang = '{!! Config::get('app.locale') !!}';
-
-        //                     var itration = i + 1;
-        //                     if (lang === 'en') {
-        //                         trHTML += '<tr id="row_' + item.id +
-        //                             '">' +
-        //                             '<td class="col-1">' + itration + '</td>' +
-        //                             '<td class="col-6">' + item.name.en + '</td>' +
-        //                             '</tr>';
-        //                     } else {
-        //                         trHTML += '<tr id="row_' + item.id +
-        //                             '">' +
-        //                             '<td class="col-1">' + itration + '</td>' +
-        //                             '<td class="col-6">' + item.name.ar + '</td>' +
-        //                             '</tr>';
-        //                     }
-        //                 });
-        //             }
-
-        //             $('#cities_tbody').append(trHTML);
-        //             $('#cities_modal').modal('show');
-        //         }
-
-        //     });
-        // });
     </script>
 @endpush

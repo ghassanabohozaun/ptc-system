@@ -19,10 +19,15 @@ class DepartmentsController extends Controller
     }
 
     // index
-    public function index()
+    public function index(Request $request)
     {
         $title = __('departments.departments');
         $departments = $this->departmentService->getAll();
+
+        if ($request->ajax()) {
+            return view('dashboard.employees.departments.partials._table', compact('departments'))->render();
+        }
+
         return view('dashboard.employees.departments.index', compact('title', 'departments'));
     }
 

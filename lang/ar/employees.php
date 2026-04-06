@@ -178,10 +178,10 @@ return [
     // employee statuses
     'create_new_employee_status' => 'انشاء حالة موظف جديد',
     'update_employee_status' => 'تعديل حالة الموظف',
-    'employee_statuses' => 'حالات الموظف',
+    'employee_statuses' => 'Employees Statuses',
+    'employee_status_name' => 'اسم حالة الموظف',
     'show_all_employee_statuses' => 'عرض جميع حالات الموظف',
 
-    'employee_status_name' => 'اسم حالة  الموظف',
     'employee_status_name_ar' => 'اسم حالة الموظف  بالعربي',
     'employee_status_name_en' => 'اسم حالة الموظف بالانجليزي',
 

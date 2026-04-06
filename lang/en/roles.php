@@ -13,4 +13,5 @@ return [
     'permissions' => 'Permissions',
     'no_roles_found' => 'No Roles Found !',
     'role_have_admins' => 'Sorry , can not be able to delete role because  have Admins',
+    'role' => 'Role',
 ];

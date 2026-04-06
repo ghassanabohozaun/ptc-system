@@ -59,8 +59,9 @@ class EmployeeStatusService
     // destroy
     public function destroy($id)
     {
-        $employeeStatus = self::getOne($id);
-        if (!$employeeStatus) {
+        $employeeStatus = $this->getOne($id);
+
+        if (!$employeeStatus || $employeeStatus->employeeJobDetails->count() > 0) {
             return false;
         }
 

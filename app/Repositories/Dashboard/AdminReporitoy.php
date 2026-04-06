@@ -24,7 +24,9 @@ class AdminReporitoy
     // get admins
     public function getAdmins()
     {
-        $admins = Admin::orderByDesc('created_at')->select('id', 'name', 'email', 'password', 'status', 'role_id', 'photo', 'created_at')->paginate(20);
+        $admins = Admin::orderByDesc('created_at')
+        ->select('id', 'name', 'email', 'password', 'status', 'role_id', 'photo', 'created_at')
+        ->paginate(10);
         return $admins;
     }
 

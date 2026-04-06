@@ -5,6 +5,7 @@
 
 @push('style')
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/permissions.css') !!}">
+    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/ajax-table.css') }}">
 @endpush
 
 @section('content')
@@ -39,9 +40,6 @@
                 <!-- begin: content header right-->
                 <div class="content-header-right col-md-6 col-12">
                     <div class="float-md-right mb-1">
-                        {{-- <a href="{{ route('dashboard.roles.create') }}" class="btn btn-info  btn-glow px-2" i>
-                            {!! __('roles.create_new_role') !!}</a> --}}
-
                         <button type="button" class="btn btn-info  btn-glow px-2" data-toggle="modal"
                             data-target="#createRoleModal">
                             {!! __('roles.create_new_role') !!}
@@ -78,67 +76,15 @@
                                 <!-- end: card header -->
 
 
-
-
                                 <!-- begin: card content -->
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table" id='myTable'>
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>{!! __('roles.role_name') !!}</th>
-                                                        <th>{!! __('roles.permissions') !!}</th>
-                                                        <th class="text-center">{!! __('general.actions') !!}</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @forelse ($roles as $role)
-                                                        <tr>
-                                                            <td class="col-lg-1">{!! $loop->iteration !!} </td>
-                                                            <td class="col-lg-1">{!! $role->role !!}</td>
-                                                            <td class="col-lg-8">
-                                                                <div class="permissions-container">
-                                                                    @foreach (config('global.permissions') as $name => $translationKey)
-                                                                        @if (in_array($name, $role->permissions))
-                                                                            @php
-                                                                                $badgeClass = 'badge-permission';
-                                                                                if (in_array($name, ['settings', 'roles', 'admins'])) $badgeClass .= ' badge-critical';
-                                                                                elseif (in_array($name, ['salaries', 'monthlyReports', 'dailyReports'])) $badgeClass .= ' badge-info';
-                                                                                elseif (in_array($name, ['employees', 'departments'])) $badgeClass .= ' badge-success';
-                                                                                elseif ($name == 'messages') $badgeClass .= ' badge-warning';
-                                                                            @endphp
-                                                                            <span class="{{ $badgeClass }}">
-                                                                                {{ __($translationKey) }}
-                                                                            </span>
-                                                                        @endif
-                                                                    @endforeach
-                                                                </div>
-                                                            </td>
-                                                            <td class="col-lg-1 text-center">
-                                                                @include('dashboard.roles.parts.actions')
-                                                            </td>
-                                                        </tr>
-                                                        <!-- begin: delete form -->
-                                                        {{-- <form id='delete_form_{{ $role->id }}'
-                                                            action=" {!! route('dashboard.roles.destroy', $role->id) !!}" method="post"
-                                                            enctype="multipart/form-data">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                        </form> --}}
-                                                    @empty
-                                                        <tr>
-                                                            <td colspan="4" class="text-center">
-                                                                {!! __('roles.no_roles_found') !!}
-                                                            </td>
-                                                        </tr>
-                                                    @endforelse
-                                                </tbody>
-
-                                            </table>
-                                            <div class="float-right">
-                                                {!! $roles->links() !!}
+                                        <div class="table-loader-container">
+                                            <div class="table-loader-overlay" id="tableLoader">
+                                                <span class="premium-loader"></span>
+                                            </div>
+                                            <div id="table_data">
+                                                @include('dashboard.roles.partials._table')
                                             </div>
                                         </div>
                                     </div>
@@ -153,6 +99,16 @@
     </div><!-- end: content app  -->
     @include('dashboard.roles.modals.create')
     @include('dashboard.roles.modals.edit')
-
-
+    @include('dashboard.roles.modals.details')
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('assets/dashboard/js/ajax-table.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            if (typeof initIndexTable === "function") {
+                initIndexTable();
+            }
+        });
+    </script>
+@endpush

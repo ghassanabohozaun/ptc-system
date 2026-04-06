@@ -19,11 +19,16 @@ class AdminsController extends Controller
     }
 
     //  admin index
-    public function index()
+    public function index(Request $request)
     {
         $title = __('admins.admins');
         $admins = $this->adminService->getAdmins();
         $roles = $this->roleService->getRoles();
+
+        if ($request->ajax()) {
+            return view('dashboard.admins.partials._table', compact('admins', 'roles'))->render();
+        }
+
         return view('dashboard.admins.index', compact('title', 'admins', 'roles'));
     }
 

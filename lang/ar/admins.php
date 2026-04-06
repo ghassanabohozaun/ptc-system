@@ -27,4 +27,5 @@ return [
     'permissions' => 'الصلاحيات',
     'no_admins_found' => 'لا يوجد مديرين حالياً !',
     'photo' => 'صورة المدير',
+    'admin' => 'مدير',
 ];

@@ -198,4 +198,6 @@ return [
     'report_status_updated' => 'Report Status Updated',
 
     'mark_all_as_read' => 'Make All As Read',
+    'details' => 'Details',
+    'system_id' => 'System ID',
 ];

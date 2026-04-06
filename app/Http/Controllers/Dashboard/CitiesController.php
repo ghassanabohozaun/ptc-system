@@ -18,11 +18,14 @@ class CitiesController extends Controller
         $this->governorateService = $governorateService;
     }
     // index
-    public function index()
+    public function index(Request $request)
     {
         $title = __('world.cities');
         $governorates = $this->governorateService->getAllGovernoratesWithoutRelations();
         $cities = $this->cityService->getCities();
+        if ($request->ajax()) {
+            return view('dashboard.world.cities.partials._table', compact('cities'))->render();
+        }
         return view('dashboard.world.cities.index', compact('title', 'cities', 'governorates'));
     }
 

@@ -60,9 +60,9 @@ class DepartmentService
     // destroy
     public function destroy($id)
     {
-        $department = self::getOne($id);
+        $department = $this->getOne($id);
 
-        if (!$department) {
+        if (!$department || $department->employeeJobDetails->count() > 0) {
             return false;
         }
 

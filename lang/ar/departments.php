@@ -3,6 +3,7 @@ return [
     'create_new_department' => 'انشاء قسم جديد',
     'update_department' => 'تعديل القسم',
     'departments' => 'الاقسام',
+    'department' => 'قسم',
     'show_all_departments' => 'عرض جميع الاقسام',
 
     'name' => 'اسم القسم',

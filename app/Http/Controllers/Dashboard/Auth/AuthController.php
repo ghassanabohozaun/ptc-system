@@ -44,6 +44,15 @@ class AuthController extends Controller implements HasMiddleware
         } else {
             session(['is_locked' => false]); // Reset lock on login
             flash()->success(__('general.login_success'));
+
+            // Retrieve intended URL
+            $intended = session()->get('url.intended');
+            
+            // If intended is the lock screen, fall back to dashboard home
+            if ($intended && str_contains($intended, 'lock-screen')) {
+                return redirect()->route('dashboard.index');
+            }
+
             return redirect()->intended(route('dashboard.index'));
         }
     }
@@ -57,6 +66,12 @@ class AuthController extends Controller implements HasMiddleware
     // lock screen function
     public function lockScreen()
     {
+        // Save where we came from if it's not the lock screen or login
+        $previous = url()->previous();
+        if (!session()->has('url.intended') && !str_contains($previous, 'lock-screen') && !str_contains($previous, 'login')) {
+            session()->put('url.intended', $previous);
+        }
+
         session()->put('is_locked', true);
         session()->save();
         return view('dashboard.auth.lock-screen');
@@ -71,11 +86,20 @@ class AuthController extends Controller implements HasMiddleware
 
         if (Hash::check($request->password, Auth::guard('admin')->user()->password)) {
             session()->forget('is_locked');
+            
+            // Retrieve intended URL and fallback to dashboard home
+            $redirectUrl = session()->pull('url.intended', route('dashboard.index'));
+            
+            // Safety check: if for some reason the intended URL is still the lock screen, go to home
+            if (str_contains($redirectUrl, 'lock-screen')) {
+                $redirectUrl = route('dashboard.index');
+            }
+            
             session()->save();
             return response()->json([
                 'status' => true,
                 'message' => 'Success',
-                'redirect' => route('dashboard.index')
+                'redirect' => $redirectUrl
             ]);
         }
 

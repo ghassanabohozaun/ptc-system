@@ -28,7 +28,7 @@
     <script>
         window.LockScreenConfig = {
             lock_route: "{{ route('dashboard.lock.screen') }}",
-            idle_limit: 60 // 60 seconds
+            idle_limit: 300 // 5 minutes
         };
     </script>
     <script src="{{ asset('assets/dashboard/js/lock-screen-modern.js') }}"></script>

@@ -16,10 +16,13 @@ class GovernoratiesController extends Controller
         $this->governorateService = $governorateService;
     }
     // index
-    public function index()
+    public function index(Request $request)
     {
         $title = __('world.governorates');
         $governorates = $this->governorateService->getGovernoraties();
+        if ($request->ajax()) {
+            return view('dashboard.world.governorates.partials._table', compact('governorates'))->render();
+        }
         return view('dashboard.world.governorates.index', compact('title', 'governorates'));
     }
 

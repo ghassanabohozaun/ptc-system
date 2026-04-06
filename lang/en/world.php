@@ -58,4 +58,6 @@ return [
     'no_cities_found' => 'No Cities Found !',
 
     'show_all_users' => 'Show All Users',
+    'governorate' => 'Governorate',
+    'city' => 'City',
 ];

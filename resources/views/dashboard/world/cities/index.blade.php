@@ -3,6 +3,10 @@
     {!! $title !!}
 @endsection
 
+@push('style')
+    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/ajax-table.css') }}">
+@endpush
+
 @section('content')
     <div class="app-content content">
         <div class="content-wrapper">
@@ -72,38 +76,12 @@
                                 <!-- begin: card content -->
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table" id='myTable'>
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>{!! __('world.city_name') !!}</th>
-                                                        <th>{!! __('world.governorate_name') !!}</th>
-                                                        <th style="text-align: center">{!! __('general.actions') !!}</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @forelse ($cities as $city)
-                                                        <tr>
-                                                            <td class="col-lg-1">{!! $loop->iteration !!} </td>
-                                                            <td class="col-lg-5">{!! $city->name !!}</td>
-                                                            <td class="col-lg-5">{!! $city->governorate->name !!}</td>
-                                                            <td class="col-lg-1">
-                                                                @include('dashboard.world.cities.parts.actions')
-                                                            </td>
-                                                        </tr>
-                                                    @empty
-                                                        <tr>
-                                                            <td colspan="5" class="text-center">
-                                                                {!! __('world.no_cities_found') !!}
-                                                            </td>
-                                                        </tr>
-                                                    @endforelse
-                                                </tbody>
-
-                                            </table>
-                                            <div class="float-right">
-                                                {!! $cities->links() !!}
+                                        <div class="table-loader-container">
+                                            <div class="table-loader-overlay" id="tableLoader">
+                                                <span class="premium-loader"></span>
+                                            </div>
+                                            <div id="table_data">
+                                                @include('dashboard.world.cities.partials._table')
                                             </div>
                                         </div>
                                     </div>
@@ -119,90 +97,17 @@
 
     @include('dashboard.world.cities.modals.create')
     @include('dashboard.world.cities.modals.edit')
+    @include('dashboard.world.cities.modals.details')
 @endsection
+
 @push('scripts')
-    <script type="text/javascript">
-        // delete city
-        $('body').on('click', '.delete_city_btn', function(e) {
-            e.preventDefault();
-            var id = $(this).data('id');
-
-            swal({
-                title: "{{ __('general.ask_delete_record') }}",
-                icon: "warning",
-                buttons: {
-                    cancel: {
-                        text: "{{ __('general.no') }}",
-                        value: null,
-                        visible: true,
-                        className: "btn-danger",
-                        closeModal: false,
-                    },
-                    confirm: {
-                        text: "{{ __('general.yes') }}",
-                        value: true,
-                        visible: true,
-                        className: "btn-info",
-                        closeModal: false
-                    }
-                }
-            }).then(isConfirm => {
-                if (isConfirm) {
-                    $.ajax({
-                        url: '{!! route('dashboard.cities.destroy') !!}',
-                        data: {
-                            id,
-                            id
-                        },
-                        type: 'post',
-                        dataType: 'json',
-                        success: function(data) {
-                            $('#myTable').load(location.href + (' #myTable'));
-                            if (data.status == true) {
-                                swal({
-                                    title: "{!! __('general.deleted') !!} ",
-                                    text: "{!! __('general.delete_success_message') !!} ",
-                                    icon: "success",
-                                    buttons: {
-                                        confirm: {
-                                            text: "{!! __('general.yes') !!}",
-                                            visible: true,
-                                            closeModal: true
-                                        }
-                                    }
-                                });
-                            } else if (data.status == false) {
-                                swal({
-                                    title: "{!! __('general.warning') !!} ",
-                                    text: "{!! __('general.delete_error_message') !!} ",
-                                    icon: "warning",
-                                    buttons: {
-                                        confirm: {
-                                            text: "{!! __('general.yes') !!}",
-                                            visible: true,
-                                            closeModal: true
-                                        }
-                                    }
-                                });
-                            }
-                        }, //end success
-                    });
-
-                } else {
-                    swal({
-                        title: "{!! __('general.cancelled') !!} ",
-                        text: "{!! __('general.delete_error_message') !!} ",
-                        icon: "error",
-                        buttons: {
-                            confirm: {
-                                text: "{!! __('general.yes') !!}",
-                                visible: true,
-                                closeModal: true
-                            }
-                        }
-                    });
-                }
-            });
+    <script src="{{ asset('assets/dashboard/js/ajax-table.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            if (typeof initIndexTable === "function") {
+                initIndexTable();
+            }
         });
     </script>
 @endpush
+

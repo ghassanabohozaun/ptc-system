@@ -19,10 +19,15 @@ class EmployeeStatusesController extends Controller
     }
 
     // index
-    public function index()
+    public function index(Request $request)
     {
         $title = __('employees.employee_statuses');
         $employeeStatuses = $this->employeeStatusService->getAll();
+
+        if ($request->ajax()) {
+            return view('dashboard.employees.statuses.partials._table', compact('employeeStatuses'))->render();
+        }
+
         return view('dashboard.employees.statuses.index', compact('title', 'employeeStatuses'));
     }
 

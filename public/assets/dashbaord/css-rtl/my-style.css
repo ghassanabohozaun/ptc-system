@@ -305,7 +305,7 @@ height: 1.0em;
 /* Premium Global Table Style - RTL */
 .table {
     border-collapse: separate !important;
-    border-spacing: 0 2px !important; 
+    border-spacing: 0 2px !important;
     margin-bottom: 2rem !important;
     background: transparent !important;
 }

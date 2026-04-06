@@ -28,13 +28,8 @@ class EmployeeStatus extends Model
     }
 
     // relation
-    public function employees()
-    {
-        return $this->hasMany(Employee::class, 'employee_status_id');
-    }
-
     public function employeeJobDetails()
     {
-        return $this->hasOne(EmployeeJobDetail::class, 'employee_status_id');
+        return $this->hasMany(EmployeeJobDetail::class, 'employee_status_id');
     }
 }

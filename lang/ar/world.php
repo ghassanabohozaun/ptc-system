@@ -59,4 +59,6 @@ return [
     'no_cities_found' => 'لا يوجد مدن حالياً !',
 
     'show_all_users' => 'عرض جميع المستخدمين',
+    'governorate' => 'محافظة',
+    'city' => 'مدينة',
 ];

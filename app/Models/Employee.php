@@ -91,7 +91,7 @@ class Employee extends Authenticatable
         return $this->belongsTo(EmployeeStatus::class, 'employee_status_id');
     }
 
-    public function depatment()
+    public function department()
     {
         return $this->belongsTo(Department::class, 'department_id');
     }

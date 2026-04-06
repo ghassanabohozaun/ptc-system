@@ -3,6 +3,10 @@
     {!! $title !!}
 @endsection
 
+@push('style')
+    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/ajax-table.css') }}">
+@endpush
+
 @section('content')
     <div class="app-content content">
         <div class="content-wrapper">
@@ -72,44 +76,12 @@
                                 <!-- begin: card content -->
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table" id='myTable'>
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>{!! __('departments.name') !!}</th>
-                                                        <th class="text-center">{!! __('departments.status') !!}</th>
-                                                        <th class="text-center">{!! __('departments.manage_status') !!}</th>
-                                                        <th class="text-center">{!! __('general.actions') !!}</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @forelse ($departments as $department)
-                                                        <tr>
-                                                            <td class="col-lg-1">{!! $loop->iteration !!} </td>
-                                                            <td class="col-lg-8">{!! $department->name !!}</td>
-                                                            <td class="col-lg-1 text-center">
-                                                                @include('dashboard.employees.departments.parts.status')
-                                                            </td>
-                                                            <td class="col-lg-1 text-center">
-                                                                @include('dashboard.employees.departments.parts.manage_status')
-                                                            </td>
-                                                            <td class="col-lg-1">
-                                                                @include('dashboard.employees.departments.parts.actions')
-                                                            </td>
-                                                        </tr>
-                                                    @empty
-                                                        <tr>
-                                                            <td colspan="5" class="text-center">
-                                                                {!! __('departments.no_departments_found') !!}
-                                                            </td>
-                                                        </tr>
-                                                    @endforelse
-                                                </tbody>
-
-                                            </table>
-                                            <div class="float-right">
-                                                {!! $departments->links() !!}
+                                        <div class="table-loader-container">
+                                            <div class="table-loader-overlay" id="tableLoader">
+                                                <span class="premium-loader"></span>
+                                            </div>
+                                            <div id="table_data">
+                                                @include('dashboard.employees.departments.partials._table')
                                             </div>
                                         </div>
                                     </div>
@@ -122,11 +94,21 @@
             </div><!-- end: content body  -->
         </div> <!-- end: content wrapper  -->
     </div><!-- end: content app  -->
+
     @include('dashboard.employees.departments.modals.create')
     @include('dashboard.employees.departments.modals.edit')
+    @include('dashboard.employees.departments.modals.details')
 @endsection
+
 @push('scripts')
+    <script src="{{ asset('assets/dashboard/js/ajax-table.js') }}"></script>
     <script type="text/javascript">
+        $(document).ready(function() {
+            if (typeof initIndexTable === "function") {
+                initIndexTable();
+            }
+        });
+
         // change status
         $(document).on('change', '.change_status', function(e) {
             // e.preventDefault();

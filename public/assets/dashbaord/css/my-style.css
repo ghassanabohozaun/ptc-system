@@ -122,7 +122,7 @@ border-radius: 10px;
 .btn {
 
 padding: 0.60rem 1rem;
-font-size: 0.95rem;
+font-size: 1.075rem; /* Increased by 2px (from 0.95rem) */
 line-height: 1.1;
 
 }
@@ -151,11 +151,11 @@ transition: box-shadow 0.15s ease, border-color 0.15s ease;
 
 
 .text-danger {
-font-size: 11px;
+font-size: 13px; /* Increased by 2px (from 11px) */
 }
 
 .form-control {
-font-size: 0.9rem;
+font-size: 1.025rem; /* Increased by 2px (from 0.9rem) */
 }
 
 html body a {
@@ -166,13 +166,13 @@ font-weight: bolder
 label {
 display: inline-block;
 margin-bottom: .5rem;
-font-size: 0.95rem;
+font-size: 1.075rem; /* Increased by 2px (from 0.95rem) */
 }
 
 .main-menu.menu-dark .navigation li a {
 color: #dcdcdc;
 transition: all 0.2s ease;
-font-size: 0.90rem;
+font-size: 1.025rem; /* Increased by 2px (from 0.90rem) */
 font-weight: 400;
 }
 
@@ -259,7 +259,7 @@ font-size: 1.0rem;
     border-top: none !important;
     border-bottom: 2px solid #e9ecef !important;
     padding: 12px 15px !important;
-    font-size: 1.05rem !important; /* Increased by 2px (from 0.88rem) */
+    font-size: 1.175rem !important; /* Increased by 2px (from 1.05rem) */
 }
 
 .table tbody tr {
@@ -277,7 +277,7 @@ font-size: 1.0rem;
     padding: 14px 15px !important;
     vertical-align: middle !important;
     border-top: 1px solid #f1f3f5 !important;
-    font-size: 1rem !important; /* Increased by 2px (from 0.9rem) */
+    font-size: 1.125rem !important; /* Increased by 2px (from 1rem) */
     color: #555 !important;
 }
 

@@ -197,4 +197,6 @@ return [
     'report_sent_waiting_admin' => 'تم إرسال التقرير (بانتظار المدير)',
     'report_status_updated' => 'تم تحديث حالة التقرير',
     'mark_all_as_read' => 'ضع علامة "مقروء" على الكل',
+    'details' => 'التفاصيل',
+    'system_id' => 'معرف النظام',
 ];

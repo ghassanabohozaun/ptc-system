@@ -3,6 +3,7 @@ return [
     'create_new_department' => 'Create New Department',
     'update_department' => 'Update Department',
     'departments' => 'Departments',
+    'department' => 'Department',
     'show_all_departments' => 'Show All Departments',
 
     'name' => 'Department Name',

@@ -48,9 +48,9 @@ class CityService
     // destroy city
     public function destroyCity($id)
     {
-        $city = self::getCity($id);
+        $city = $this->getCity($id);
 
-        if (!$city) {
+        if (!$city || $city->employees->count() > 0) {
             return false;
         }
 
