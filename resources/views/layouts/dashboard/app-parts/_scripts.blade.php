@@ -18,8 +18,8 @@
     {{-- <script src="{!! asset('assets/dashbaord') !!}/js/scripts/sweetalert2@11.js" type="text/javascript"></script> --}}
 
     <!-- BEGIN PAGE LEVEL JS-->
-    <script src="{!! asset(path: 'assets/dashbaord') !!}/js/scripts/extensions/sweet-alerts.js" type="text/javascript"></script>
-    <script src="{!! asset(path: 'assets/dashbaord') !!}/js/scripts/my-scripts.js" type="text/javascript"></script>
+    <script src="{!! asset('assets/dashbaord') !!}/js/scripts/extensions/sweet-alerts.js" type="text/javascript"></script>
+    <script src="{!! asset('assets/dashbaord') !!}/js/scripts/my-scripts.js" type="text/javascript"></script>
     <script src="{!! asset('vendor/flasher/flasher.min.js') !!}" type="text/javascript"></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
     <script src="{!! asset('vendor/summernote/summernote.js') !!}"></script>
@@ -33,6 +33,7 @@
         <script src="{!! asset('vendor/fileInput/js/locales/LANG.js') !!}" type="text/javascript"></script>
         <script src="{!! asset('vendor/fileInput/js/locales/ar.js') !!}" type="text/javascript"></script>
     @endif
+    <script src="{!! asset('assets/dashboard/js/ajax-table.js') !!}" type="text/javascript"></script>
     {{-- end dataTables --}}
     <script type="text/javascript">
         $.ajaxSetup({

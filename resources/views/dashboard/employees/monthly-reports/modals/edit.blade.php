@@ -236,7 +236,7 @@
                         console.log(data);
                         // Refresh table with current filters and page
                         if (typeof fetch_data === 'function') {
-                            fetch_data(window.currentPage);
+                            fetch_data();
                         }
                         resetEditForm();
                         $('#updateMonthlyReportModal').modal('hide');

@@ -126,6 +126,7 @@ Route::group(
             Route::group(['middleware' => 'can:monthlyReports'], function () {
                 Route::resource('monthlyReports', MonthlyReportsController::class);
                 Route::post('/monthlyReports/destroy', [MonthlyReportsController::class, 'destroy'])->name('monthly.reports.destroy');
+                Route::post('/monthlyReports/status/{id}', [MonthlyReportsController::class, 'update'])->name('monthly-reports.change-status');
             });
 
             ########################################### employee contracts routes  ######################################################################

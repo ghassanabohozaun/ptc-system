@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
-@section('title')
-    {!! $title !!}
-@endsection
+@push('style')
+    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/ajax-table.css') }}">
+@endpush
 
 @section('content')
     <div class="app-content content">
@@ -54,11 +54,9 @@
 
                             @include('dashboard.salaries.partials._search')
 
-                            <div class="table-container">
-                                <div id="loading-indicator" class="loader">
-                                    <!-- You can use text, an image, or CSS-only spinners -->
-                                    <i class="la la-spinner spinner" id="spinner"></i> {!! __('general.loading') !!}
-                                    <!-- or <img src="loading.gif" alt="Loading..."> -->
+                            <div class="table-loader-container">
+                                <div class="table-loader-overlay" id="tableLoader">
+                                    <span class="premium-loader"></span>
                                 </div>
                                 <div id="table_data">
                                     @include('dashboard.salaries.partials._table', [
@@ -76,54 +74,39 @@
     </div><!-- end: content app  -->
     @include('dashboard.salaries.modals.create')
     @include('dashboard.salaries.modals.edit')
+    @include('dashboard.salaries.modals.details')
 @endsection
 @push('scripts')
+    <script src="{{ asset('assets/dashboard/js/ajax-table.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-
-            let page = 1;
-
-            // fetch data
-            function fetch_data(page) {
-                var month = $('#month').val();
-                var year = $('#year').val();
-
-                $.ajax({
-                    url: "{{ route('dashboard.salaries.index') }}?page=" + page,
-                    data: {
-                        month: month,
-                        year: year,
-                    },
-                    beforeSend: function() {
-                        // Show the loading indicator before the request is sent
-                        $('#loading-indicator').show();
-                        // Optional: clear previous table data
-                        $('#data-table tbody').empty();
-                    },
-                    success: function(data) {
-                        $('#table_data').html(data);
-                    },
-                    complete: function() {
-                        // Hide the loading indicator when the request is complete (whether success or error)
-                        $('#loading-indicator').hide();
-                    },
+            // Initialize Standard AJAX Table
+            if (typeof initIndexTable === "function") {
+                initIndexTable({
+                    container: "#table_data",
+                    loader: "#tableLoader"
                 });
             }
 
-            // Handle pagination link clicks
-            $(document).on('click', '.pagination a', function(event) {
-                event.preventDefault();
-                page = $(this).attr('href').split('page=')[1];
-                fetch_data(page);
-            });
-
-
+            // Specific Fetch for Search/Refresh
+            window.fetch_data = function(page = 1) {
+                $.ajax({
+                    url: "{{ route('dashboard.salaries.index') }}?page=" + page,
+                    data: {
+                        month: $('#month').val(),
+                        year: $('#year').val(),
+                    },
+                    beforeSend: function() { $('#tableLoader').fadeIn(200); },
+                    success: function(data) { $('#table_data').html(data); },
+                    complete: function() { $('#tableLoader').fadeOut(200); },
+                });
+            }
 
             // search
             $('body').on('click', '#salaries_search_btn', function(e) {
+                e.preventDefault();
                 fetch_data(1);
             })
-
 
             // reset
             $('body').on('click', '#salaries_reset_btn', function(e) {
@@ -131,11 +114,6 @@
                 $('#month').val('');
                 $('#year').val('');
                 fetch_data(1);
-            });
-
-            // Handle search input (e.g., on keyup)
-            $('#search').on('keyup', function() {
-                fetch_data(1); // Reset to page 1 on new search
             });
         });
 

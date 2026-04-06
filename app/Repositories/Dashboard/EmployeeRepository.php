@@ -19,15 +19,20 @@ class EmployeeRepository
     // get all
     public function getAll($request)
     {
-        return Employee::when(!empty(request()->personal_id), function ($query) {
-            $query->where('personal_id', request()->personal_id);
-        })
+        return Employee::with([
+            'employeeJobDetails.department',
+            'employeeJobDetails.employeeStatus',
+            'governorate',
+            'city'
+        ])
+            ->when(!empty(request()->personal_id), function ($query) {
+                $query->where('personal_id', request()->personal_id);
+            })
             ->when(!empty(request()->employee_id), function ($query) {
                 $query->where('id', request()->employee_id);
             })
-
             ->latest()
-             ->paginate(config('app.pagination'));
+            ->paginate(config('app.pagination'));
     }
 
     // get employees

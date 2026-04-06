@@ -1,5 +1,4 @@
-<div class="modal modal-pop fade" id="createEmployeeContractModal" role="dialog" aria-labelledby="createEmployeeContractModalLabel"
-    aria-hidden="true">
+<div class="modal modal-pop fade text-left" id="createEmployeeContractModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel35" aria-hidden="true">
 
     <div class="modal-dialog modal-lg" role="document">
         <form class="form" action="{!! route('dashboard.employeeContracts.store') !!}" method="POST" enctype="multipart/form-data"
@@ -243,7 +242,9 @@
                     $('.spinner_loading').removeClass('d-none');
                 },
                 success: function(data) {
-                    $('#myTable').load(location.href + (' #myTable'));
+                    if (typeof fetch_data === 'function') {
+                        fetch_data();
+                    }
                     $('#create_employee_contract_form')[0].reset();
                     $(".employee_contract_employee_id_select").val('').trigger('change');
                     resetCreateForm();

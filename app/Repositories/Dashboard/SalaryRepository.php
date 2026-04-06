@@ -15,7 +15,8 @@ class SalaryRepository
     // get all
     public function getAll($request)
     {
-        return Salary::with('admin')
+        return Salary::with(['admin', 'employees'])
+            ->withCount('employees')
             ->when(!empty(request()->month), function ($query) {
                 $query->where('month', request()->month);
             })

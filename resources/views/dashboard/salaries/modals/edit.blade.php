@@ -216,13 +216,14 @@
                 },
                 success: function(data) {
                     if (data.status == true) {
-                        console.log(data);
-                        $('#myTable').load(location.href + (' #myTable'));
+                        if (typeof fetch_data === 'function') {
+                            fetch_data();
+                        }
                         resetEditForm();
                         $('#updateSalaryModal').modal('hide');
-                        flasher.success("{!! __('general.add_success_message') !!}");
+                        flasher.success("{!! __('general.update_success_message') !!}");
                     } else {
-                        flasher.error("{!! __('general.add_error_message') !!}");
+                        flasher.error("{!! __('general.update_error_message') !!}");
                     }
                 },
                 error: function(reject) {

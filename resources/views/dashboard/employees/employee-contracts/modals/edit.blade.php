@@ -1,5 +1,5 @@
-<div class="modal modal-pop fade" id="editEmployeeContractModal" tabindex="-1" role="dialog"
-    aria-labelledby="editEmployeeContractModalLabel" aria-hidden="true">
+<div class="modal modal-pop fade text-left" id="editEmployeeContractModal" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel35" aria-hidden="true">
 
     <div class="modal-dialog modal-lg" role="document">
         <form class="form" action="" method="POST" enctype="multipart/form-data" id='update_employee_contract_form'>
@@ -283,7 +283,9 @@
                 },
                 success: function(data) {
                     if (data.status == true) {
-                        $('#myTable').load(location.href + (' #myTable'));
+                        if (typeof fetch_data === 'function') {
+                            fetch_data();
+                        }
                         resetEditForm();
                         $('#editEmployeeContractModal').modal('hide');
                         if (typeof flasher !== 'undefined') {

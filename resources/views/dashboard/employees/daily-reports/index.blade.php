@@ -3,6 +3,10 @@
     {!! $title !!}
 @endsection
 
+@push('style')
+    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/ajax-table.css') }}">
+@endpush
+
 @section('content')
     <div class="app-content content">
         <div class="content-wrapper">
@@ -55,80 +59,61 @@
                                     @include('dashboard.employees.daily-reports.partials._search')
 
 
-                                    <div class="table-container">
-                                        <div id="loading-indicator" class="loader">
-                                            <!-- You can use text, an image, or CSS-only spinners -->
-                                            <i class="la la-spinner spinner" id="spinner"></i> {!! __('general.loading') !!}
-                                            <!-- or <img src="loading.gif" alt="Loading..."> -->
+                                    <div class="table-loader-container">
+                                        <div class="table-loader-overlay" id="tableLoader">
+                                            <span class="premium-loader"></span>
                                         </div>
                                         <div id="table_data">
-                                            @include('dashboard.employees.daily-reports.partials._table', [
-                                                'dailyReports' => $dailyReports,
-                                            ])
+                                            @include('dashboard.employees.daily-reports.partials._table')
                                         </div>
                                     </div>
 
                                 </div><!-- end: row  -->
-                        </section><!-- end: sections  -->
+                        </section><!-- end : sections  -->
                     </div>
                 </div>
             </div>
             <!-- end: content body  -->
         </div> <!-- end: content wrapper  -->
     </div><!-- end: content app  -->
+
+    @include('dashboard.employees.daily-reports.modals.details')
 @endsection
 
 
 @push('scripts')
+    <script src="{{ asset('assets/dashboard/js/ajax-table.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-
-            let page = 1;
-
-            // fetch data
-            function fetch_data(page) {
-
-                var employee_id = $('#employee_id').val();
-                var date = $('#date').val();
-                var from_date = $('#from_date').val();
-                var to_date = $('#to_date').val();
-
-
-                $.ajax({
-                    url: "{{ route('dashboard.dailyReports.index') }}?page=" + page,
-                    data: {
-                        employee_id: employee_id,
-                        date: date,
-                        from_date: from_date,
-                        to_date: to_date,
-                    },
-                    beforeSend: function() {
-                        // Show the loading indicator before the request is sent
-                        $('#loading-indicator').show();
-                        // Optional: clear previous table data
-                        $('#data-table tbody').empty();
-                    },
-                    success: function(data) {
-                        $('#table_data').html(data);
-                    },
-                    complete: function() {
-                        // Hide the loading indicator when the request is complete (whether success or error)
-                        $('#loading-indicator').hide();
-                    },
+            // Initialize Standard AJAX Table
+            if (typeof initIndexTable === "function") {
+                initIndexTable({
+                    container: "#table_data",
+                    loader: "#tableLoader"
                 });
             }
 
-            // Handle pagination link clicks
-            $(document).on('click', '.pagination a', function(event) {
-                event.preventDefault();
-                page = $(this).attr('href').split('page=')[1];
-                fetch_data(page);
-            });
+            // Specific Fetch for Search/Filter/Refresh
+            window.fetch_data = function(page = 1) {
+                $.ajax({
+                    url: "{{ route('dashboard.dailyReports.index') }}?page=" + page,
+                    data: {
+                        employee_id: $('#employee_id').val(),
+                        date: $('#date').val(),
+                        from_date: $('#from_date').val(),
+                        to_date: $('#to_date').val(),
+                    },
+                    beforeSend: function() { $('#tableLoader').fadeIn(200); },
+                    success: function(data) { $('#table_data').html(data); },
+                    complete: function() { $('#tableLoader').fadeOut(200); },
+                });
+            }
 
             // search
             $('body').on('click', '#daily_report_search_btn', function(e) {
+                e.preventDefault();
                 fetch_data(1);
-            })
+            });
 
             // reset
             $('body').on('click', '#daily_report_reset_btn', function(e) {
@@ -139,46 +124,27 @@
                 $('#to_date').val('');
                 fetch_data(1);
             });
-
-            // Handle search input (e.g., on keyup)
-            $('#search').on('keyup', function() {
-                fetch_data(1); // Reset to page 1 on new search
-            });
-
         });
 
-
-
-        //  change status
-        var statusSwitch = false;
-        $('body').on('change', '.change_status', function(e) {
+        // change status
+        $(document).on('change', '.change_status', function(e) {
             e.preventDefault();
-
             var id = $(this).data('id');
-
-            if ($(this).is(':checked')) {
-                statusSwitch = 1;
-            } else {
-                statusSwitch = 0;
-            }
+            var statusSwitch = $(this).is(':checked') ? 1 : 0;
 
             $.ajax({
                 url: "{{ route('dashboard.daliy.reports.change.status') }}",
-                data: {
-                    statusSwitch: statusSwitch,
-                    id: id
-                },
+                data: { statusSwitch: statusSwitch, id: id },
                 type: 'post',
                 dataType: 'JSON',
                 success: function(data) {
-
                     if (data.status == true) {
                         flasher.success("{!! __('general.change_status_success_message') !!}");
                     } else {
                         flasher.error("{!! __('general.change_status_error_message') !!}");
                     }
-                }, //end success
-            })
+                },
+            });
         });
     </script>
 @endpush

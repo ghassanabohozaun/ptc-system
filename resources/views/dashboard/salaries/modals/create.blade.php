@@ -186,9 +186,10 @@
                     $('.spinner_loading').removeClass('d-none');
                 },
                 success: function(data) {
-                    console.log(data);
                     if (data.status == 'added') {
-                        $('#myTable').load(location.href + (' #myTable'));
+                        if (typeof fetch_data === 'function') {
+                            fetch_data();
+                        }
                         $('#create_salary_form')[0].reset();
                         $('.notes_summernote').summernote('code', '');
                         resetCreateForm();

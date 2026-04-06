@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
-@section('title')
-    {!! $title !!}
-@endsection
+@push('style')
+    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/ajax-table.css') }}">
+@endpush
 @section('content')
     <div class="app-content content">
         <div class="content-wrapper">
@@ -29,16 +29,15 @@
             </div>
 
             <!-- begin: content body -->
-            <div class="row" style="display: flex; justify-content: center;">
                 <div class="col-md-12">
                     <div class="content-body">
                         <section id="basic-form-layouts">
                             <div class="row match-height">
                                 <div class="col-md-12">
                                     @include('dashboard.employees.employee-contracts.partials._search')
-                                    <div class="table-container">
-                                        <div id="loading-indicator" class="loader">
-                                            <i class="la la-spinner spinner" id="spinner"></i> {!! __('general.loading') !!}
+                                    <div class="table-loader-container">
+                                        <div class="table-loader-overlay" id="tableLoader">
+                                            <span class="premium-loader"></span>
                                         </div>
                                         <div id="table_data">
                                             @include('dashboard.employees.employee-contracts.partials._table', ['employeeContracts' => $employeeContracts])
@@ -55,53 +54,46 @@
 
     @include('dashboard.employees.employee-contracts.modals.create')
     @include('dashboard.employees.employee-contracts.modals.edit')
-
+    @include('dashboard.employees.employee-contracts.modals.details')
 @endsection
 
 @push('scripts')
+    <script src="{{ asset('assets/dashboard/js/ajax-table.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            let page = 1;
-
-            function fetch_data(page) {
-                var employee_id = $('#employee_id').val();
-                $.ajax({
-                    url: "{{ route('dashboard.employeeContracts.index') }}?page=" + page,
-                    data: {
-                        employee_id: employee_id,
-                    },
-                    beforeSend: function() {
-                        $('#loading-indicator').show();
-                        $('#data-table tbody').empty();
-                    },
-                    success: function(data) {
-                        $('#table_data').html(data);
-                    },
-                    complete: function() {
-                        $('#loading-indicator').hide();
-                    },
+            // Initialize Standard AJAX Table
+            if (typeof initIndexTable === "function") {
+                initIndexTable({
+                    container: "#table_data",
+                    loader: "#tableLoader"
                 });
             }
 
-            $(document).on('click', '.pagination a', function(event) {
-                event.preventDefault();
-                page = $(this).attr('href').split('page=')[1];
-                fetch_data(page);
-            });
+            // Specific Fetch for Search/Refresh
+            window.fetch_data = function(page = 1) {
+                $.ajax({
+                    url: "{{ route('dashboard.employeeContracts.index') }}?page=" + page,
+                    data: {
+                        employee_id: $('#employee_id').val(),
+                    },
+                    beforeSend: function() { $('#tableLoader').fadeIn(200); },
+                    success: function(data) { $('#table_data').html(data); },
+                    complete: function() { $('#tableLoader').fadeOut(200); },
+                });
+            }
 
+            // search
             $('body').on('click', '#employee_contract_search_btn', function(e) {
+                e.preventDefault();
                 fetch_data(1);
             });
 
+            // reset
             $('body').on('click', '#employee_contract_reset_btn', function(e) {
                 e.preventDefault();
                 $("#employee_id").val('').trigger('change');
                 fetch_data(1);
             });
-
-
-
-            // Delete action is now handled globally by .delete-confirm in my-scripts.js
         });
     </script>
 @endpush

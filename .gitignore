@@ -8,6 +8,7 @@
 /public/uploads/employeesCertifications/*
 /public/uploads/dailyReports/*
 /public/uploads/monthlyReports/*
+/public/uploads/admins/*
 
 /storage/*.key
 /storage/pail

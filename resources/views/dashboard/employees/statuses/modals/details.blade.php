@@ -1,5 +1,5 @@
 <!-- Details Modal for Employee Statuses -->
-<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+<div class="modal modal-pop fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content shadow-lg border-0" style="border-radius: 15px;">
             <div class="modal-header bg-primary white" style="border-top-left-radius: 15px; border-top-right-radius: 15px;">

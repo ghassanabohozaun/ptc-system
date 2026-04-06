@@ -3,6 +3,9 @@
     {!! $title !!}
 @endsection
 
+@push('style')
+    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/ajax-table.css') }}">
+@endpush
 
 @section('content')
     <div class="app-content content">
@@ -37,7 +40,7 @@
                 <div class="content-header-right col-md-6 col-12">
                     <div class="float-md-right mb-2">
                         <a href="{{ route('dashboard.employees.create') }}" class="btn btn-info btn-glow px-2">
-                            <span class="la la-pencil"></span>
+                            <i class="la la-plus"></i>
                             {!! __('employees.create_new_employee') !!}
                         </a>
                     </div>
@@ -58,12 +61,11 @@
                                     @include('dashboard.employees.employees.partials._search')
 
 
-                                    <div class="table-container">
-                                        <div id="loading-indicator" class="loader">
-                                            <!-- You can use text, an image, or CSS-only spinners -->
-                                            <i class="la la-spinner spinner" id="spinner"></i> {!! __('general.loading') !!}
-                                            <!-- or <img src="loading.gif" alt="Loading..."> -->
+                                    <div class="table-loader-container">
+                                        <div class="table-loader-overlay" id="tableLoader">
+                                            <span class="premium-loader"></span>
                                         </div>
+
                                         <div id="table_data">
                                             @include('dashboard.employees.employees.partials._table', [
                                                 'employees' => $employees,
@@ -79,100 +81,61 @@
             <!-- end: content body  -->
         </div> <!-- end: content wrapper  -->
     </div><!-- end: content app  -->
+
+    <!-- Details Modal -->
+    @include('dashboard.employees.employees.modals.details')
 @endsection
 
 
 @push('scripts')
+    <script src="{{ asset('assets/dashboard/js/ajax-table.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
+            // Initialize the Premium AJAX Table
+            initIndexTable();
 
-            let page = 1;
-
-            // fetch data
-            function fetch_data(page) {
-                var employee_id = $('#employee_id').val();
-                var personal_id = $('#personal_id').val();
-
-                $.ajax({
-                    url: "{{ route('dashboard.employees.index') }}?page=" + page,
-                    data: {
-                        employee_id: employee_id,
-                        personal_id: personal_id,
-                    },
-                    beforeSend: function() {
-                        $('#loading-indicator').show();
-                        $('#data-table tbody').empty();
-                    },
-                    success: function(data) {
-                        $('#table_data').html(data);
-                    },
-                    complete: function() {
-                        $('#loading-indicator').hide();
-                    },
-                });
-            }
-
-            // Handle pagination link clicks
-            $(document).on('click', '.pagination a', function(event) {
-                event.preventDefault();
-                page = $(this).attr('href').split('page=')[1];
-                fetch_data(page);
+            // Search button trigger
+            $('body').on('click', '#employee_search_btn', function(e) {
+                e.preventDefault();
+                if (typeof fetch_data === 'function') {
+                    fetch_data(1);
+                }
             });
 
-
-            // search
-            $('body').on('click', '#employee_search_btn', function(e) {
-                fetch_data(1);
-            })
-
-
-            // reset
+            // Reset button trigger
             $('body').on('click', '#employee_reset_btn', function(e) {
                 e.preventDefault();
                 $("#employee_id").val('').trigger('change');
                 $('#personal_id').val('');
-                fetch_data(1);
+                if (typeof fetch_data === 'function') {
+                    fetch_data(1);
+                }
             });
 
-            // Handle search input (e.g., on keyup)
-            $('#search').on('keyup', function() {
-                fetch_data(1); // Reset to page 1 on new search
+            //  change status
+            var statusSwitch = false;
+            $('body').on('change', '.change_status', function(e) {
+                e.preventDefault();
+                var id = $(this).data('id');
+                statusSwitch = $(this).is(':checked') ? 1 : 0;
+
+                $.ajax({
+                    url: "{{ route('dashboard.employees.change.status') }}",
+                    data: {
+                        statusSwitch: statusSwitch,
+                        id: id
+                    },
+                    type: 'post',
+                    dataType: 'JSON',
+                    success: function(data) {
+                        if (data.status == true) {
+                            flasher.success("{!! __('general.change_status_success_message') !!}");
+                        } else {
+                            flasher.error("{!! __('general.change_status_error_message') !!}");
+                        }
+                    },
+                });
             });
-        });
-
-
-
-
-        //  change status
-        var statusSwitch = false;
-        $('body').on('change', '.change_status', function(e) {
-            e.preventDefault();
-
-            var id = $(this).data('id');
-
-            if ($(this).is(':checked')) {
-                statusSwitch = 1;
-            } else {
-                statusSwitch = 0;
-            }
-
-            $.ajax({
-                url: "{{ route('dashboard.employees.change.status') }}",
-                data: {
-                    statusSwitch: statusSwitch,
-                    id: id
-                },
-                type: 'post',
-                dataType: 'JSON',
-                success: function(data) {
-
-                    if (data.status == true) {
-                        flasher.success("{!! __('general.change_status_success_message') !!}");
-                    } else {
-                        flasher.error("{!! __('general.change_status_error_message') !!}");
-                    }
-                }, //end success
-            })
         });
     </script>
 @endpush

@@ -1,4 +1,4 @@
-<!-- Details Modal for Roles -->
+<!-- Details Modal -->
 <div class="modal modal-pop fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content" style="border-radius: 15px;">
@@ -8,11 +8,13 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body" id="modalBody">
-                <!-- Content loaded from row-details via AJAX JS -->
+            <div class="modal-body p-0" id="modalBody">
+                <!-- Data will be injected here from .row-details -->
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{!! __('general.close') !!}</button>
+                <button type="button" class="btn btn-secondary btn-glow px-3" data-dismiss="modal">
+                    {{ __('general.close') }}
+                </button>
             </div>
         </div>
     </div>

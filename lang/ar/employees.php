@@ -178,7 +178,7 @@ return [
     // employee statuses
     'create_new_employee_status' => 'انشاء حالة موظف جديد',
     'update_employee_status' => 'تعديل حالة الموظف',
-    'employee_statuses' => 'Employees Statuses',
+    'employee_statuses' => 'حالات الموظفين',
     'employee_status_name' => 'اسم حالة الموظف',
     'show_all_employee_statuses' => 'عرض جميع حالات الموظف',
 

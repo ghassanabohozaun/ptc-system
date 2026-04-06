@@ -200,4 +200,5 @@ return [
     'mark_all_as_read' => 'Make All As Read',
     'details' => 'Details',
     'system_id' => 'System ID',
+    'usd' => 'USD',
 ];
