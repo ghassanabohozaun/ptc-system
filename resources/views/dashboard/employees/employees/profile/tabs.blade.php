@@ -1,45 +1,54 @@
-<ul class="nav nav-tabs nav-underline nav-justified">
-    <li class="nav-item">
-        <a class="nav-link active" id="baseVerticalLeft1-tab1" data-toggle="tab" aria-controls="tabVerticalLeft11"
-            href="#tabVerticalLeft11" aria-expanded="true">{!! __('employees.overview') !!}</a>
-    </li>
+<div class="ios-segmented-tabs-wrapper">
+    <ul class="nav nav-tabs ios-segmented-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="base-tab1" data-toggle="tab" aria-controls="tab1"
+                href="#tab1" aria-expanded="true">
+                <i class="la la-user"></i> {!! __('employees.overview') !!}
+            </a>
+        </li>
 
-    <li class="nav-item">
-        <a class="nav-link" id="baseVerticalLeft1-tab2" data-toggle="tab" aria-controls="tabVerticalLeft12"
-            href="#tabVerticalLeft12" aria-expanded="false">{!! __('employees.financial') !!}</a>
-    </li>
+        <li class="nav-item">
+            <a class="nav-link" id="base-tab2" data-toggle="tab" aria-controls="tab2"
+                href="#tab2" aria-expanded="false">
+                <i class="la la-money"></i> {!! __('employees.financial') !!}
+            </a>
+        </li>
 
-    <li class="nav-item">
-        <a class="nav-link" id="baseVerticalLeft1-tab3" data-toggle="tab" aria-controls="tabVerticalLeft13"
-            href="#tabVerticalLeft13" aria-expanded="false">tab 3</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="baseVerticalLeft1-tab4" data-toggle="tab" aria-controls="tabVerticalLeft14"
-            href="#tabVerticalLeft14" aria-expanded="false">tab 4</a>
-    </li>
-</ul>
+        <li class="nav-item">
+            <a class="nav-link" id="base-tab3" data-toggle="tab" aria-controls="tab3"
+                href="#tab3" aria-expanded="false">
+                <i class="la la-file-text"></i> {!! __('employees.contract_details') !!}
+            </a>
+        </li>
 
-<div class="tab-content px-1 pt-1">
-    <!--------------------------------------- basic info ------------------------>
-    <div role="tabpanel" class="tab-pane active" id="tabVerticalLeft11" aria-expanded="true"
-        aria-labelledby="baseVerticalLeft1-tab1">
+        <li class="nav-item">
+            <a class="nav-link" id="base-tab4" data-toggle="tab" aria-controls="tab4"
+                href="#tab4" aria-expanded="false">
+                <i class="la la-folder-open"></i> {!! __('employees.contracts') ?? 'العقود' !!}
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="tab-content">
+    <!--------------------------------------- Overview ------------------------>
+    <div role="tabpanel" class="tab-pane active" id="tab1" aria-expanded="true" aria-labelledby="base-tab1">
         @include('dashboard/employees/employees/profile/tabs/overview')
     </div>
 
-    <!--------------------------------------- bank info ------------------------>
-    <div role="tabpanel" class="tab-pane" id="tabVerticalLeft12" aria-expanded="true"
-        aria-labelledby="baseVerticalLeft1-tab2">
+    <!--------------------------------------- Financial ------------------------>
+    <div role="tabpanel" class="tab-pane" id="tab2" aria-labelledby="base-tab2">
         @include('dashboard/employees/employees/profile/tabs/finaicail')
     </div>
 
-    <!--------------------------------------- education info ------------------------>
-    <div class="tab-pane" id="tabVerticalLeft13" aria-labelledby="baseVerticalLeft1-tab3">
-
+    <!--------------------------------------- Contract Details ------------------------>
+    <div role="tabpanel" class="tab-pane" id="tab3" aria-labelledby="base-tab3">
+        @include('dashboard/employees/employees/profile/tabs/contract')
     </div>
 
-    <!--------------------------------------- job details info ------------------------>
-    <div class="tab-pane" id="tabVerticalLeft14" aria-labelledby="baseVerticalLeft1-tab4">
-
-
+    <!--------------------------------------- Contracts Table ------------------------>
+    <div role="tabpanel" class="tab-pane" id="tab4" aria-labelledby="base-tab4">
+        @include('dashboard/employees/employees/profile/tabs/employee_contracts')
     </div>
 </div>
+

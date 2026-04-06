@@ -86,6 +86,11 @@ class Employee extends Authenticatable
         return $this->hasOne(EmployeeContractDetails::class, 'employee_id');
     }
 
+    public function employeeContracts()
+    {
+        return $this->hasMany(EmployeeContract::class, 'employee_id');
+    }
+
     public function employeeStatus()
     {
         return $this->belongsTo(EmployeeStatus::class, 'employee_status_id');
