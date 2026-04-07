@@ -30,7 +30,7 @@ class RolesController extends Controller
     // role create
     public function create()
     {
-        $title = __('roles.create_role');
+        $title = __('roles.create_new_role');
         return view('dashboard.roles.create', compact('title'));
     }
 
