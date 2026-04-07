@@ -38,8 +38,9 @@
                 <!-- begin: content header right-->
                 <div class="content-header-right col-md-6 col-12">
                     <div class="float-md-right mb-1">
-                        <button type="button" class="btn btn-info  btn-glow px-2" data-toggle="modal"
+                        <button type="button" class="btn btn-premium-add" data-toggle="modal"
                             data-target="#createSalaryModal">
+                            <i class="la la-plus"></i>
                             {!! __('salaries.create_new_salary') !!}
                         </button>
                     </div>

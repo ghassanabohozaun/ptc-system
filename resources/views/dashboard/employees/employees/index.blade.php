@@ -38,7 +38,8 @@
                 <!-- begin: content header right-->
                 <div class="content-header-right col-md-6 col-12">
                     <div class="float-md-right mb-1">
-                        <a href="{!! route('dashboard.employees.create') !!}" class="btn btn-info btn-glow px-2">
+                        <a href="{!! route('dashboard.employees.create') !!}" class="btn btn-premium-add">
+                            <i class="la la-plus"></i>
                             {!! __('employees.create_new_employee') !!}
                         </a>
                     </div>

@@ -1,13 +1,7 @@
-@push('style')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="{!! asset('assets/dashbaord/vendors/select2/select2.min.css') !!}">
-    <link rel="stylesheet" href="{!! asset('assets/dashbaord/css/filter.css') !!}">
-@endpush
-
 <div class="query-bar-container">
     <div class="query-bar js-query-bar">
         <span class="query-bar-label">
-            <i class="mdi mdi-filter-variant"></i> {!! __('general.filters') !!}:
+            <i class="la la-filter"></i> {!! __('general.filters') !!}:
         </span>
 
         <form class="js-filter-form d-flex align-items-center gap-2" data-container="#table_data" data-loader=".table-loader-overlay">
@@ -28,7 +22,7 @@
                     </div>
                     <div class="popover-actions">
                         <button type="button" class="btn btn-primary btn-sm text-white js-apply-filter">
-                            {!! __('general.submit') !!}
+                            {!! __('general.apply') !!}
                         </button>
                     </div>
                 </div>
@@ -53,7 +47,7 @@
                     </div>
                     <div class="popover-actions">
                         <button type="button" class="btn btn-primary btn-sm text-white js-apply-filter">
-                            {!! __('general.submit') !!}
+                            {!! __('general.apply') !!}
                         </button>
                     </div>
                 </div>
@@ -78,7 +72,7 @@
                     </div>
                     <div class="popover-actions">
                         <button type="button" class="btn btn-primary btn-sm text-white js-apply-filter">
-                            {!! __('general.submit') !!}
+                            {!! __('general.apply') !!}
                         </button>
                     </div>
                 </div>
@@ -103,7 +97,7 @@
                     </div>
                     <div class="popover-actions">
                         <button type="button" class="btn btn-primary btn-sm text-white js-apply-filter">
-                            {!! __('general.submit') !!}
+                            {!! __('general.apply') !!}
                         </button>
                     </div>
                 </div>
@@ -128,7 +122,7 @@
                     </div>
                     <div class="popover-actions">
                         <button type="button" class="btn btn-primary btn-sm text-white js-apply-filter">
-                            {!! __('general.submit') !!}
+                            {!! __('general.apply') !!}
                         </button>
                     </div>
                 </div>

@@ -18,7 +18,7 @@ class Role extends Model
     // accessories
     public function getPermissionsAttribute($value)
     {
-        return json_decode($value);
+        return json_decode($value, true) ?: [];
     }
 
     // relations

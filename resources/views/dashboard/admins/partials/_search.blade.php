@@ -1,7 +1,3 @@
-@push('style')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="{!! asset('assets/dashbaord/css/filter.css') !!}">
-@endpush
 
 <div class="query-bar-container">
     <div class="query-bar js-query-bar">
@@ -28,7 +24,7 @@
                     </div>
                     <div class="popover-actions">
                         <button type="button" class="btn btn-primary btn-sm text-white js-apply-filter">
-                            {!! __('general.submit') !!}
+                            {!! __('general.apply') !!}
                         </button>
                     </div>
                 </div>

@@ -39,9 +39,9 @@
                 <!-- begin: content header right -->
                 <div class="content-header-right col-md-6 col-12">
                     <div class="float-md-right mb-1">
-                        <a href="javascript:void(0)" class="btn btn-info btn-glow px-2" data-toggle="modal"
+                        <a href="javascript:void(0)" class="btn btn-premium-add" data-toggle="modal"
                             data-target="#createMonthlyReportModal">
-                            <span class="la la-pencil"></span>
+                            <i class="la la-plus"></i>
                             {!! __('monthlyReports.create_new_monthly_report') !!}
                         </a>
                     </div>

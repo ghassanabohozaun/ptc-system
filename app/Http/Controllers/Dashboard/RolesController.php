@@ -40,10 +40,12 @@ class RolesController extends Controller
         $role = $this->roleService->storeRole($request);
 
         if (!$role) {
-            return response()->json(['status' => false], 500);
+            flash()->error(__('general.add_error_message'));
+            return redirect()->back();
         }
 
-        return response()->json(['status' => true, 'data' => $role], 200);
+        flash()->success(__('general.add_success_message'));
+        return redirect()->back();
     }
 
     // role store

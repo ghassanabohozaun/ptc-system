@@ -48,11 +48,10 @@
                     <!-- begin: content header right-->
                     <div class="content-header-right col-md-6 col-12">
                         <div class="float-md-right mb-2">
-                            <button class="btn btn-info btn-glow px-2" type="submit">
+                            <button class="btn btn-premium-save" type="submit">
                                 <i class="la la-save"></i>
                                 {!! __('general.save') !!}
-                                <i class="la la-refresh spinner spinner_loading d-none">
-                                </i>
+                                <i class="la la-refresh spinner spinner_loading d-none"></i>
                             </button>
                         </div>
                     </div>

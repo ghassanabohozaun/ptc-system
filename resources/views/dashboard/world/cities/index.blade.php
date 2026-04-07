@@ -39,8 +39,9 @@
                 <!-- begin: content header right-->
                 <div class="content-header-right col-md-6 col-12">
                     <div class="float-md-right mb-1">
-                        <button type="button" class="btn btn-info  btn-glow px-2" data-toggle="modal"
+                        <button type="button" class="btn btn-premium-add" data-toggle="modal"
                             data-target="#createCityModal">
+                            <i class="la la-plus"></i>
                             {!! __('world.create_new_city') !!}
                         </button>
                     </div>

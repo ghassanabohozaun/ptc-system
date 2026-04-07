@@ -41,9 +41,10 @@
                     <!-- begin: content header right-->
                     <div class="content-header-right col-md-6 col-12">
                         <div class="float-md-right mb-1">
-                            <button class="btn btn-info  btn-glow px-2" type="submit">
+                            <button class="btn btn-premium-save" type="submit">
                                 <i class="la la-save"></i>
                                 {!! __('general.save') !!}
+                                <i class="la la-refresh spinner_loading d-none"></i>
                             </button>
 
                         </div>
@@ -124,28 +125,83 @@
 
 
                                                 <!-- begin: row -->
-                                                <div class="row mt-2">
-                                                    <!-- begin: input -->
-
-                                                    @foreach (Config('global.permissions') as $key => $value)
-                                                        <div class="col-md-3 mt-1">
-                                                            <fieldset class="checkboxsas">
-                                                                <label>
-                                                                    <input type="checkbox" value="{!! $key !!}"
-                                                                        name="permissions[]" class="checkbox pt-2">
-                                                                    {{ __(config('global.permissions.', $value)) }}
-                                                                </label>
-                                                            </fieldset>
+                                                <div class="row mt-4">
+                                                    <!-- Group 1: System & Access Management -->
+                                                    <div class="col-md-4">
+                                                        <div class="permission-group-card card">
+                                                            <div class="permission-group-header">
+                                                                <i class="la la-cog"></i>
+                                                                <h5>{!! __('roles.system_management') !!}</h5>
+                                                            </div>
+                                                            <div class="card-body p-0">
+                                                                @foreach (['settings', 'roles', 'admins', 'world'] as $key)
+                                                                    @if(isset(Config('global.permissions')[$key]))
+                                                                        <div class="premium-switch-item">
+                                                                            <span class="switch-label">{{ __(Config('global.permissions.' . $key)) }}</span>
+                                                                            <label class="modern-switch">
+                                                                                <input type="checkbox" name="permissions[]" value="{{ $key }}">
+                                                                                <span class="modern-slider"></span>
+                                                                            </label>
+                                                                        </div>
+                                                                    @endif
+                                                                @endforeach
+                                                            </div>
                                                         </div>
-                                                    @endforeach
+                                                    </div>
+
+                                                    <!-- Group 2: HR & Organization -->
+                                                    <div class="col-md-4">
+                                                        <div class="permission-group-card card">
+                                                            <div class="permission-group-header">
+                                                                <i class="la la-users"></i>
+                                                                <h5>{!! __('roles.hr_management') !!}</h5>
+                                                            </div>
+                                                            <div class="card-body p-0">
+                                                                @foreach (['employees', 'employeeStatuses', 'departments'] as $key)
+                                                                    @if(isset(Config('global.permissions')[$key]))
+                                                                        <div class="premium-switch-item">
+                                                                            <span class="switch-label">{{ __(Config('global.permissions.' . $key)) }}</span>
+                                                                            <label class="modern-switch">
+                                                                                <input type="checkbox" name="permissions[]" value="{{ $key }}">
+                                                                                <span class="modern-slider"></span>
+                                                                            </label>
+                                                                        </div>
+                                                                    @endif
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Group 3: Operations & Finance -->
+                                                    <div class="col-md-4">
+                                                        <div class="permission-group-card card">
+                                                            <div class="permission-group-header">
+                                                                <i class="la la-briefcase"></i>
+                                                                <h5>{!! __('roles.operations_finance') !!}</h5>
+                                                            </div>
+                                                            <div class="card-body p-0">
+                                                                @foreach (['dailyReports', 'monthlyReports', 'salaries', 'messages'] as $key)
+                                                                    @if(isset(Config('global.permissions')[$key]))
+                                                                        <div class="premium-switch-item">
+                                                                            <span class="switch-label">{{ __(Config('global.permissions.' . $key)) }}</span>
+                                                                            <label class="modern-switch">
+                                                                                <input type="checkbox" name="permissions[]" value="{{ $key }}">
+                                                                                <span class="modern-slider"></span>
+                                                                            </label>
+                                                                        </div>
+                                                                    @endif
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                     @error('permissions')
-                                                        <div class="col-md-12">
+                                                        <div class="col-md-12 mt-2">
                                                             <span class="text text-danger">
                                                                 <strong>{!! $message !!}</strong>
                                                             </span>
                                                         </div>
                                                     @enderror
-                                                    <!-- end: input -->
                                                 </div>
                                                 <!-- end: row -->
 

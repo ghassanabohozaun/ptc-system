@@ -33,10 +33,10 @@
 
                     <!-- Save Button -->
                     <div class="content-header-right col-md-6 col-12 text-md-right">
-                        <button class="btn btn-primary btn-lg px-4 font-weight-bold shadow-sm" type="submit">
-                            <i class="la la-save mr-1"></i>
+                        <button class="btn btn-premium-save" type="submit">
+                            <i class="la la-save"></i>
                             {!! __('general.save') !!}
-                            <i class="la la-refresh spinner spinner_loading d-none ml-1"></i>
+                            <i class="la la-refresh spinner_loading d-none"></i>
                         </button>
                     </div>
                 </div>

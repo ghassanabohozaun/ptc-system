@@ -14,4 +14,7 @@ return [
     'no_roles_found' => 'No Roles Found !',
     'role_have_admins' => 'Sorry , can not be able to delete role because  have Admins',
     'role' => 'Role',
+    'system_management' => 'System & Access Management',
+    'hr_management' => 'HR & Organization',
+    'operations_finance' => 'Operations & Finance',
 ];

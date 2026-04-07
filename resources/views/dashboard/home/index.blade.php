@@ -16,7 +16,6 @@
                     <div class="d-flex justify-content-between align-items-end flex-wrap gap-4">
                         <div>
                             <h1 class="welcome-title">{!! greeting() !!}, {!! auth()->user()->name ?? 'Admin' !!}! 👋</h1>
-                            {{-- <p class="welcome-subtitle">{!! __('dashboard.welcome_subtitle') !!}</p> --}}
                         </div>
                         <div class="welcome-date mb-1">
                             <i class="icon-calendar"></i>
