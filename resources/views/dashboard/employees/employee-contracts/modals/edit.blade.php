@@ -8,10 +8,11 @@
             <div class="modal-content">
 
                 <!--begin::modal header-->
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editEmployeeContractModalLabel">{!! __('employeeContracts.update_contract') !!}
+                <div class="modal-header bg-primary white">
+                    <h5 class="modal-title white" id="editEmployeeContractModalLabel">
+                        <i class="ft-edit mr-1"></i>{!! __('employeeContracts.update_contract') !!}
                     </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close white" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
@@ -42,7 +43,7 @@
                                 <!-- begin: input -->
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="employee_id">{!! __('employeeContracts.employee_name') !!}</label>
+                                        <label class="text-bold-600" for="employee_id_edit">{!! __('employeeContracts.employee_name') !!}</label>
                                         <select class="employee_contract_employee_id_edit_select form-control" id="employee_contract_employee_id_edit"
                                             name="employee_id" style="width: 100%">
                                         </select>
@@ -56,7 +57,7 @@
                                 <!-- begin: input -->
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="contract_duration">{!! __('employeeContracts.contract_duration') !!}</label>
+                                        <label class="text-bold-600" for="contract_duration_edit">{!! __('employeeContracts.contract_duration') !!}</label>
                                         <input type="text" id="contract_duration_edit" name="contract_duration" class="form-control"
                                             autocomplete="off" placeholder="{!! __('employeeContracts.enter_contract_duration') !!}">
                                         <span class="text text-danger">
@@ -75,7 +76,7 @@
                                 <!-- begin: input -->
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="contract_start_date">{!! __('employeeContracts.contract_start_date') !!}</label>
+                                        <label class="text-bold-600" for="contract_start_date_edit">{!! __('employeeContracts.contract_start_date') !!}</label>
                                         <input type="date" id="contract_start_date_edit" name="contract_start_date" class="form-control"
                                             autocomplete="off">
                                         <span class="text text-danger">
@@ -88,7 +89,7 @@
                                 <!-- begin: input -->
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="contract_expiry_date">{!! __('employeeContracts.contract_expiry_date') !!}</label>
+                                        <label class="text-bold-600" for="contract_expiry_date_edit">{!! __('employeeContracts.contract_expiry_date') !!}</label>
                                         <input type="date" id="contract_expiry_date_edit" name="contract_expiry_date" class="form-control"
                                             autocomplete="off">
                                         <span class="text text-danger">
@@ -106,9 +107,14 @@
                                 <!-- begin: input -->
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="monthly_salary">{!! __('employeeContracts.monthly_salary') !!}</label>
-                                        <input type="number" step="0.01" id="monthly_salary_edit" name="monthly_salary" class="form-control"
-                                            autocomplete="off">
+                                        <label class="text-bold-600" for="monthly_salary_edit">{!! __('employeeContracts.monthly_salary') !!}</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="la la-dollar"></i></span>
+                                            </div>
+                                            <input type="number" step="0.01" id="monthly_salary_edit" name="monthly_salary" class="form-control"
+                                                autocomplete="off">
+                                        </div>
                                         <span class="text text-danger">
                                             <strong id="monthly_salary_error_edit"></strong>
                                         </span>
@@ -126,15 +132,14 @@
 
                 <!--begin::modal footer-->
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-info font-weight-bold ">
-                        {{ __('general.save') }}
-                        <i class="la la-refresh spinner spinner_loading d-none">
-                        </i>
+                    <button type="submit" class="btn btn-primary btn-glow font-weight-bold">
+                        <i class="ft-save mr-1"></i>{{ __('general.save') }}
+                        <i class="ft-refresh-cw spinner spinner_loading d-none ml-1"></i>
                     </button>
 
                     <button type="button" id="cancel_employee_contract_btn_edit"
-                        class="btn btn-light-dark font-weight-bold" data-dismiss="modal">
-                        {{ __('general.cancel') }}
+                        class="btn btn-outline-secondary font-weight-bold" data-dismiss="modal">
+                        <i class="ft-x mr-1"></i>{{ __('general.cancel') }}
                     </button>
                 </div>
                 <!--end::modal footer-->
@@ -146,81 +151,63 @@
 
 @push('scripts')
     <script type="text/javascript">
-        // select 2
-        var employeePath = "{{ route('dashboard.employees.autocomplete.employee') }}";
-        $(".employee_contract_employee_id_edit_select").select2({
-            dropdownParent: $('#editEmployeeContractModal'),
-            minimumInputLength: 1,
-            maximumInputLength: 20,
-            placeholder: '{!! __('employeeContracts.select_employee') !!}',
-            allowClear: true,
-            escapeMarkup: function(markup) {
-                return markup;
-            },
-            language: {
-                inputTooShort: function() {
-                    return "{!! __('general.inputTooShort') !!}";
-                },
-                inputTooLong: function() {
-                    return "{!! __('general.inputTooLong') !!}";
-                },
-                errorLoading: function() {
-                    return "{!! __('general.errorLoading') !!}";
-                },
-                noResults: function() {
-                    return "<span>{!! __('general.noResults2') !!}";
-                },
-                searching: function() {
-                    return " {!! __('general.searching') !!}";
+        $(document).ready(function() {
+            // Re-initialize Select2 when modal is shown
+            $('#editEmployeeContractModal').on('shown.bs.modal', function() {
+                var employeePath = "{{ route('dashboard.employees.autocomplete.employee') }}";
+                $(".employee_contract_employee_id_edit_select").select2({
+                    dropdownParent: $('#editEmployeeContractModal'),
+                    minimumInputLength: 1,
+                    placeholder: '{!! __('employeeContracts.select_employee') !!}',
+                    allowClear: true,
+                    ajax: {
+                        url: employeePath,
+                        dataType: 'json',
+                        delay: 250,
+                        processResults: function(data) {
+                            return {
+                                results: $.map(data, function(item) {
+                                    return {
+                                        text: '{!! Lang() !!}' === 'en' ? item.employee_en : item.employee_ar,
+                                        id: item.id
+                                    }
+                                })
+                            };
+                        },
+                        cache: true
+                    }
+                });
+
+                // Set initial value if we are coming from an edit click
+                var employee_id = $('#employee_contract_employee_id_edit').data('initial-id');
+                var employee_name = $('#employee_contract_employee_id_edit').data('initial-name');
+                
+                if (employee_id && employee_name) {
+                    var option = new Option(employee_name, employee_id, true, true);
+                    $('.employee_contract_employee_id_edit_select').append(option).trigger('change');
                 }
-            },
-            ajax: {
-                url: employeePath,
-                dataType: 'json',
-                delay: 250,
-                processResults: function(data) {
-                    return {
-                        results: $.map(data, function(item) {
-                            if ('{!! Lang() !!}' === 'en') {
-                                return { text: item.employee_en, id: item.id }
-                            } else {
-                                return { text: item.employee_ar, id: item.id }
-                            }
-                        })
-                    };
-                },
-                cache: true
-            }
-        });
+            });
 
-        // show edit modal
-        $('body').on('click', '.edit-btn', function(e) {
-            e.preventDefault();
-            var id = $(this).attr('data-id');
-            var employee_id = $(this).attr('data-employee_id');
-            // Assuming we pass employee name if we had it, but for select2 we can append if needed, or let user search again
-            var employee_name = $(this).closest('tr').find('td:nth-child(2)').text().trim();
-            var duration = $(this).attr('data-duration');
-            var start = $(this).attr('data-start');
-            var expiry = $(this).attr('data-expiry');
-            var salary = $(this).attr('data-salary');
+            // show edit modal logic
+            $('body').on('click', '.edit-btn', function(e) {
+                e.preventDefault();
+                var id = $(this).attr('data-id');
+                var employee_id = $(this).attr('data-employee_id');
+                var employee_name = $(this).closest('tr').find('.employee-name-cell').text().trim() || 
+                                    $(this).closest('tr').find('td:nth-child(2)').text().trim();
+                
+                $('#id_edit').val(id);
+                $('#contract_duration_edit').val($(this).attr('data-duration'));
+                $('#contract_start_date_edit').val($(this).attr('data-start'));
+                $('#contract_expiry_date_edit').val($(this).attr('data-expiry'));
+                $('#monthly_salary_edit').val($(this).attr('data-salary'));
 
-            $('#id_edit').val(id);
-            $('#contract_duration_edit').val(duration);
-            $('#contract_start_date_edit').val(start);
-            $('#contract_expiry_date_edit').val(expiry);
-            $('#monthly_salary_edit').val(salary);
+                // Store initial values to be picked up by shown.bs.modal
+                $('#employee_contract_employee_id_edit').data('initial-id', employee_id);
+                $('#employee_contract_employee_id_edit').data('initial-name', employee_name);
 
-            // Set Select2 value
-            if (employee_id) {
-                var option = new Option(employee_name, employee_id, true, true);
-                $('.employee_contract_employee_id_edit_select').append(option).trigger('change');
-            } else {
-                $('.employee_contract_employee_id_edit_select').val(null).trigger('change');
-            }
-
-            $('#editEmployeeContractModal').modal('show');
-        })
+                $('#editEmployeeContractModal').modal('show');
+            });
 
         // reset
         function resetEditForm() {
@@ -251,66 +238,63 @@
             resetEditForm();
         });
 
-        // update
-        $('#update_employee_contract_form').on('submit', function(e) {
-            e.preventDefault();
+            // update
+            $('#update_employee_contract_form').on('submit', function(e) {
+                e.preventDefault();
+                resetEditForm();
 
-            // reset
-            resetEditForm();
+                var id = $('#id_edit').val();
+                var data = new FormData(this);
+                var type = $(this).attr('method');
+                var url = "{!! route('dashboard.employeeContracts.update', 'id') !!}".replace('id', id);
 
-            // paramters
-            var id = $('#id_edit').val();
-            var data = new FormData(this);
-            var type = $(this).attr('method');
-            var url = "{!! route('dashboard.employeeContracts.update', 'id') !!}".replace('id', id);
-
-            // explicitly add employee_id if it's missing (put method sometimes loses inputs)
-            var empId = $('#employee_contract_employee_id_edit').val();
-            if (empId) {
-                data.append('employee_id', empId);
-            }
-
-            $.ajax({
-                url: url,
-                data: data,
-                type: type, // Some Laravel setups require 'POST' with _method='PUT' which is handled by FormData
-                dataType: 'json',
-                cache: false,
-                processData: false,
-                contentType: false,
-                beforeSend: function() {
-                    $('.spinner_loading').removeClass('d-none');
-                },
-                success: function(data) {
-                    if (data.status == true) {
-                        if (typeof fetch_data === 'function') {
-                            fetch_data();
-                        }
-                        resetEditForm();
-                        $('#editEmployeeContractModal').modal('hide');
-                        if (typeof flasher !== 'undefined') {
-                            flasher.success("{!! __('general.update_success_message') !!}");
-                        } else {
-                            toastr.success("{!! __('general.updated_successfully') !!}");
-                        }
-                    } else {
-                        if (typeof flasher !== 'undefined') {
-                            flasher.error("{!! __('general.update_error_message') !!}");
-                        } else {
-                            toastr.error('Error');
-                        }
-                    }
-                },
-                error: function(reject) {
-                    var response = $.parseJSON(reject.responseText);
-                    $.each(response.errors, function(key, value) {
-                        $('#' + key + '_error_edit').text(value[0]);
-                        $('#' + key + '_edit').css('border-color', '#F64E60');
-                    });
-                }, //end error
-                complete: function() {
-                    $('.spinner_loading').addClass('d-none');
+                var empId = $('#employee_contract_employee_id_edit').val();
+                if (empId) {
+                    data.append('employee_id', empId);
                 }
+
+                $.ajax({
+                    url: url,
+                    data: data,
+                    type: type,
+                    dataType: 'json',
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function() {
+                        $('.spinner_loading').removeClass('d-none');
+                    },
+                    success: function(data) {
+                        if (data.status == true) {
+                            if (typeof fetch_data === 'function') {
+                                fetch_data();
+                            }
+                            resetEditForm();
+                            $('#editEmployeeContractModal').modal('hide');
+                            if (typeof flasher !== 'undefined') {
+                                flasher.success("{!! __('general.update_success_message') !!}");
+                            } else {
+                                toastr.success("{!! __('general.updated_successfully') !!}");
+                            }
+                        } else {
+                            if (typeof flasher !== 'undefined') {
+                                flasher.error("{!! __('general.update_error_message') !!}");
+                            } else {
+                                toastr.error('Error');
+                            }
+                        }
+                    },
+                    error: function(reject) {
+                        var response = $.parseJSON(reject.responseText);
+                        $.each(response.errors, function(key, value) {
+                            $('#' + key + '_error_edit').text(value[0]);
+                            $('#' + key + '_edit').css('border-color', '#F64E60');
+                        });
+                    },
+                    complete: function() {
+                        $('.spinner_loading').addClass('d-none');
+                    }
+                });
             });
         });
     </script>

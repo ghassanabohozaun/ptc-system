@@ -19,4 +19,6 @@ return [
     'all_contracts' => 'All Contracts',
     'no_contracts_found' => 'No contracts found currently!',
     'contract_details' => 'Contract Details',
+    'search_placeholder_contract' => 'Search by employee name or ID...',
+    'enter_salary' => 'Enter monthly salary...',
 ];

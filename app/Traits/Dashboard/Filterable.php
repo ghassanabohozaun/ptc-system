@@ -47,7 +47,7 @@ trait Filterable
 
         // 2. Exact Matches (IDs, Status, etc.)
         foreach ($exactMatches as $field) {
-            if (!empty($filters[$field])) {
+            if (isset($filters[$field]) && $filters[$field] !== '') {
                 $query->where($field, $filters[$field]);
             }
         }

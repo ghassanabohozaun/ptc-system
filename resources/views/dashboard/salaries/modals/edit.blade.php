@@ -42,9 +42,9 @@
                                 <!-- begin: input -->
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="month">{!! __('monthlyReports.month') !!}</label>
+                                        <label for="month_edit">{!! __('salaries.month') !!}</label>
                                         <input type="month" id="month_edit" name="month" readonly
-                                            style="background-color: rgb(228, 225, 225)" class="form-control"></label>
+                                            style="background-color: rgb(228, 225, 225)" class="form-control">
                                     </div>
                                 </div>
                                 <!-- end: input -->
@@ -53,7 +53,7 @@
                                 <!-- begin: input -->
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="release_date">{!! __('salaries.release_date') !!}</label>
+                                        <label for="release_date_edit">{!! __('salaries.release_date') !!}</label>
                                         <input type="date" id="release_date_edit" name="release_date"
                                             class="form-control" autocomplete="off"
                                             placeholder="{!! __('salaries.enter_release_date') !!}">
@@ -72,7 +72,7 @@
                                 <!-- begin: input -->
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="details">{!! __('salaries.details') !!}</label>
+                                        <label for="details_edit">{!! __('salaries.details') !!}</label>
                                         <textarea rows="5" id="details_edit" name="details" class="form-control" autocomplete="off"
                                             placeholder="{!! __('salaries.enter_details') !!}"></textarea>
                                         <span class="text text-danger">
@@ -90,7 +90,7 @@
                                 <!-- begin: input -->
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="notes">{!! __('salaries.notes') !!}</label>
+                                        <label for="notes_edit">{!! __('salaries.notes') !!}</label>
                                         <textarea rows="5" id="notes_edit" name="notes" class="form-control notes_summernote_edit" autocomplete="off"
                                             placeholder="{!! __('salaries.enter_notes') !!}"></textarea>
                                         <span class="text text-danger">
@@ -113,7 +113,7 @@
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-info font-weight-bold ">
                         {{ __('general.save') }}
-                        <i class="la la-refresh spinner spinner_loading d-none">
+                        <i class="ft-refresh-cw spinner spinner_loading d-none">
                         </i>
                     </button>
 
@@ -134,13 +134,17 @@
         // show edit modal
         $('body').on('click', '.edit_salary_button', function(e) {
             e.preventDefault();
-            var salary_id = $(this).attr('salary-id');
-            var salary_month = $(this).attr('salary-month');
-            var salary_year = $(this).attr('salary-year');
-            var formattedMonth = salary_year + '-' + salary_month;
-            var salary_release_date = $(this).attr('salary-release-date');
-            var salary_details = $(this).attr('salary-details');
-            var salary_notes = $(this).attr('salary-notes');
+            var salary_id = $(this).attr('data-id');
+            var salary_month = $(this).attr('data-month');
+            var salary_year = $(this).attr('data-year');
+            
+            // Format month for <input type="month"> (expects YYYY-MM)
+            var monthVal = parseInt(salary_month);
+            var formattedMonth = salary_year + '-' + (monthVal < 10 ? '0' + monthVal : monthVal);
+            
+            var salary_release_date = $(this).attr('data-release-date');
+            var salary_details = $(this).attr('data-details');
+            var salary_notes = $(this).attr('data-notes');
 
             $('#id_edit').val(salary_id);
             $('#month_edit').val(formattedMonth);
@@ -172,8 +176,9 @@
         // reset
         function resetEditForm() {
             $('#release_date_edit').css('border-color', '');
-
             $('#release_date_error_edit').text('');
+            $('#details_error_edit').text('');
+            $('#notes_error_edit').text('');
         }
 
         // cancel

@@ -1,52 +1,94 @@
-<div class="card">
-    <!-- begin: card header -->
-    <div class="card-header">
-        <h4 class="card-title" id="basic-layout-colored-form-control">
-            {!! __('general.filters') !!}
-        </h4>
-        <a class="heading-elements" data-action="collapse"><i class="ft-minus"></i></a>
-    </div>
-    <!-- end: card header -->
+@push('style')
+    <link rel="stylesheet" href="{!! asset('assets/dashbaord/css/filter.css') !!}">
+@endpush
 
-    <!-- begin: card content  show-->
-    <div class="card-content collapse ">
-        <div class="card-body">
-            <form class="form">
-                <div class="form-body">
-                    <div class="row">
+<div class="query-bar-container mt-1">
+    <div class="query-bar js-query-bar">
+        <span class="query-bar-label">
+            <i class="la la-filter"></i> {!! __('general.filters') !!}:
+        </span>
 
-                        <!-- begin: input -->
-                        <div class="form-group col-md-3">
-                            <label class="sr-only" for="month">{!! __('salaries.month') !!}</label>
-                            <input type="text" class="form-control" placeholder="{!! __('salaries.enter_month') !!}"
-                                id="month">
-                        </div>
-                        <!-- end: input -->
+        <form class="js-filter-form d-flex align-items-center gap-2" action="{{ route('dashboard.salaries.index') }}"
+            method="GET" data-container="#table_data" data-loader="#tableLoader">
 
-                        <!-- begin: input -->
-                        <div class="form-group col-md-3">
-                            <label class="sr-only" for="year">{!! __('salaries.year') !!}</label>
-                            <input type="text" class="form-control" placeholder="{!! __('salaries.enter_year') !!}"
-                                id="year">
-                        </div>
-                        <!-- end: input -->
+            <!-- Month Filter -->
+            <div class="filter-item">
+                <div class="filter-chip js-filter-chip" data-filter-target="month_popover">
+                    <i class="la la-calendar"></i>
+                    <span class="chip-text">{!! __('salaries.month') !!}</span>
+                </div>
+                <div class="ptc-query-panel" id="month_popover">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold mb-2">{!! __('salaries.enter_month') !!}</label>
+                        <select name="month" class="form-control js-select2"
+                            data-placeholder="{!! __('salaries.enter_month') !!}">
+                            <option value="">{!! __('general.show_all') !!}</option>
+                            @for ($i = 1; $i <= 12; $i++)
+                                @php $val = sprintf('%02d', $i); @endphp
+                                <option value="{{ $val }}" {{ request('month') == $val ? 'selected' : '' }}>
+                                    {{ $val }} - {{ __('salaries.' . $i) }}
+                                </option>
+                            @endfor
+                        </select>
                     </div>
-
+                    <div class="popover-actions">
+                        <button type="button" class="btn btn-primary btn-sm text-white js-apply-filter">
+                            {!! __('general.apply') !!}
+                        </button>
+                    </div>
                 </div>
+            </div>
 
-                <div class="form-actions" style="margin-top: -8px">
-                    <button type="button" class="btn btn-sm btn-secondary mr-1" id="salaries_search_btn">
-                        <i class="la la-search"></i> {!! __('general.search') !!}
-                    </button>
-                    <button type="submit" class="btn btn-sm btn-light-dark mr-1" id="salaries_reset_btn">
-                        <i class="la la-close"></i> {!! __('general.reset') !!}
-                    </button>
+            <!-- Year Filter -->
+            <div class="filter-item">
+                <div class="filter-chip js-filter-chip" data-filter-target="year_popover">
+                    <i class="la la-hashtag"></i>
+                    <span class="chip-text">{!! __('salaries.year') !!}</span>
                 </div>
+                <div class="ptc-query-panel" id="year_popover">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold mb-2">{!! __('salaries.enter_year') !!}</label>
+                        <input type="number" name="year" class="form-control" value="{{ request('year') }}"
+                            placeholder="2026" autocomplete="off">
+                    </div>
+                    <div class="popover-actions">
+                        <button type="button" class="btn btn-primary btn-sm text-white js-apply-filter">
+                            {!! __('general.apply') !!}
+                        </button>
+                    </div>
+                </div>
+            </div>
 
-            </form>
+            <!-- Status Filter -->
+            <div class="filter-item">
+                <div class="filter-chip js-filter-chip" data-filter-target="status_popover">
+                    <i class="la la-check-circle"></i>
+                    <span class="chip-text">{!! __('general.status') !!}</span>
+                </div>
+                <div class="ptc-query-panel" id="status_popover">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold mb-2">{!! __('general.select_status') !!}</label>
+                        <select name="status" class="form-control">
+                            <option value="">{!! __('general.show_all') !!}</option>
+                            <option value="1" {{ request('status') == '1' ? 'selected' : '' }}>
+                                {!! __('general.enable') !!}</option>
+                            <option value="0" {{ request('status') == '0' ? 'selected' : '' }}>
+                                {!! __('general.disabled') !!}</option>
+                        </select>
+                    </div>
+                    <div class="popover-actions">
+                        <button type="button" class="btn btn-primary btn-sm text-white js-apply-filter">
+                            {!! __('general.apply') !!}
+                        </button>
+                    </div>
+                </div>
+            </div>
 
-        </div>
+            <!-- Reset Button -->
+            <div class="filter-chip reset-chip js-reset-btn">
+                <i class="la la-refresh"></i>
+                <span>{!! __('general.reset') !!}</span>
+            </div>
+        </form>
     </div>
-    <!-- end: card content -->
-
-</div> <!-- end: card  -->
+</div>

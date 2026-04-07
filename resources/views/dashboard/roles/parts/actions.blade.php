@@ -1,33 +1,21 @@
-<div class="form-group">
-    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-
-        <a href="{!! route('dashboard.roles.edit', $role->id) !!}" class="btn btn-sm btn-outline-primary">
-            <i class="la la-edit"></i>
-        </a>
+<div class="form-group mb-0">
+    <div class="btn-group" role="group">
 
         {{-- edit --}}
-        {{-- <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary edit_role_button" title="{!! __('general.edit') !!}"
-            role-id="{!! $role->id !!}" role-ar="{!! $role->getTranslation('role', 'ar') !!}" role-en="{!! $role->getTranslation('role', 'en') !!}"
-            permissions="{!! implode(' ', $role->permissions) !!}">
-            <i class="la la-edit"></i>
-        </a> --}}
-
-
-        {{-- <a href="javascript:void(0)"
-            onclick="if(confirm('Are you want to delete recors')) {document.getElementById('delete_form_{{ $role->id }}').submit();} return false"
-            class="btn btn-social-icon btn-sm mr-1 btn-outline-danger btn-round ">
-            <i class="la la-trash"></i>
-        </a> --}}
-
-        {{-- delete --}}
-        <a href="javascript:void(0)" class="btn btn-sm delete-confirm btn-outline-danger !!} "
-            data-id="{!! $role->id !!}" data-route="{!! route('dashboard.roles.destroy') !!}" data-title="{!! __('general.ask_delete_record') !!}"
-            data-text="{!! __('general.delete_warning_text') !!}" data-confirm-btn="{!! __('general.yes') !!}"
-            data-cancel-btn="{!! __('general.no') !!}" data-success-title="{!! __('general.deleted') !!}"
-            data-success-text="{!! __('general.delete_success_message') !!}">
-            <i class="la la-trash"></i>
+        <a href="{!! route('dashboard.roles.edit', $role->id) !!}" class="btn btn-sm btn-outline-primary"
+            title="{!! __('general.edit') !!}">
+            <i class="ft-edit-2"></i>
         </a>
 
+        {{-- delete --}}
+        <a href="javascript:void(0)" class="btn btn-sm btn-outline-danger delete-confirm"
+            data-id="{!! $role->id !!}" data-route="{!! route('dashboard.roles.destroy') !!}"
+            data-title="{!! __('general.ask_delete_record') !!}" data-text="{!! __('general.delete_warning_text') !!}"
+            data-confirm-btn="{!! __('general.yes') !!}" data-cancel-btn="{!! __('general.no') !!}"
+            data-success-title="{!! __('general.deleted') !!}" data-success-text="{!! __('general.delete_success_message') !!}"
+            title="{!! __('general.delete') !!}">
+            <i class="ft-trash-2"></i>
+        </a>
 
     </div>
 </div>

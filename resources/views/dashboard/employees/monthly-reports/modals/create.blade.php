@@ -103,15 +103,14 @@
 
                 <!--begin::modal footer-->
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-info font-weight-bold ">
-                        {{ __('general.save') }}
-                        <i class="la la-refresh spinner spinner_loading d-none">
-                        </i>
+                    <button type="submit" class="btn btn-info px-2">
+                        <i class="ft-save mr-1"></i> {{ __('general.save') }}
+                        <i class="ft-refresh-cw spinner spinner_loading d-none ml-1"></i>
                     </button>
 
-                    <button type="button" id="cancel_monthly_report_btn" class="btn btn-light-dark font-weight-bold"
+                    <button type="button" id="cancel_monthly_report_btn" class="btn btn-outline-secondary px-2"
                         data-dismiss="modal">
-                        {{ __('general.cancel') }}
+                        <i class="ft-x mr-1"></i> {{ __('general.cancel') }}
                     </button>
                 </div>
                 <!--end::modal footer-->
@@ -123,60 +122,62 @@
 
 @push('scripts')
     <script type="text/javascript">
-        // select 2
-        var employeePath = "{{ route('dashboard.employees.autocomplete.employee') }}";
-
-        $(".monthly_report_employee_id_select").select2({
-            minimumInputLength: 1,
-            maximumInputLength: 20,
-            placeholder: '{!! __('general.select_from_list') !!}',
-            allowClear: true,
-            escapeMarkup: function(markup) {
-                return markup;
-            },
-            language: {
-                inputTooShort: function() {
-                    return "{!! __('general.inputTooShort') !!}";
+        // Initialize Select2 when modal is shown to avoid focus/parent issues
+        $('#createMonthlyReportModal').on('shown.bs.modal', function () {
+            var employeePath = "{{ route('dashboard.employees.autocomplete.employee') }}";
+            
+            $(".monthly_report_employee_id_select").select2({
+                dropdownParent: $('#createMonthlyReportModal'),
+                minimumInputLength: 1,
+                maximumInputLength: 20,
+                placeholder: '{!! __('general.select_from_list') !!}',
+                allowClear: true,
+                escapeMarkup: function(markup) {
+                    return markup;
                 },
-                inputTooLong: function() {
-                    return "{!! __('general.inputTooLong') !!}";
+                language: {
+                    inputTooShort: function() {
+                        return "{!! __('general.inputTooShort') !!}";
+                    },
+                    inputTooLong: function() {
+                        return "{!! __('general.inputTooLong') !!}";
+                    },
+                    errorLoading: function() {
+                        return "{!! __('general.errorLoading') !!}";
+                    },
+                    noResults: function() {
+                        return "<span>{!! __('general.noResults2') !!}";
+                    },
+                    searching: function() {
+                        return " {!! __('general.searching') !!}";
+                    }
                 },
-                errorLoading: function() {
-                    return "{!! __('general.errorLoading') !!}";
-                },
-                noResults: function() {
-                    return "<span>{!! __('general.noResults2') !!}";
-                },
-                searching: function() {
-                    return " {!! __('general.searching') !!}";
+                ajax: {
+                    url: employeePath,
+                    dataType: 'json',
+                    delay: 250,
+                    processResults: function(data) {
+                        return {
+                            results: $.map(data, function(item) {
+                                if ('{!! Lang() !!}' === 'en') {
+                                    return {
+                                        text: item.employee_en,
+                                        id: item.id
+                                    }
+                                } else {
+                                    return {
+                                        text: item.employee_ar,
+                                        id: item.id
+                                    }
+                                }
+                            })
+                        };
+                    },
+                    cache: true
                 }
-            },
-
-            ajax: {
-                url: employeePath,
-                dataType: 'json',
-                delay: 250,
-                processResults: function(data) {
-                    console.log(data);
-                    return {
-                        results: $.map(data, function(item) {
-                            if ('{!! Lang() !!}' === 'en') {
-                                return {
-                                    text: item.employee_en,
-                                    id: item.id
-                                }
-                            } else {
-                                return {
-                                    text: item.employee_ar,
-                                    id: item.id
-                                }
-                            }
-                        })
-                    };
-                },
-                cache: true
-            }
+            });
         });
+
 
         // reset
         function resetCreateForm() {

@@ -39,7 +39,8 @@
                 <!-- begin: content header right -->
                 <div class="content-header-right col-md-6 col-12">
                     <div class="float-md-right mb-1">
-                        <a href="{!! route('dashboard.monthlyReports.create') !!}" class="btn btn-info btn-glow px-2">
+                        <a href="javascript:void(0)" class="btn btn-info btn-glow px-2" data-toggle="modal"
+                            data-target="#createMonthlyReportModal">
                             <span class="la la-pencil"></span>
                             {!! __('monthlyReports.create_new_monthly_report') !!}
                         </a>
@@ -90,6 +91,13 @@
                     loader: ".table-loader-overlay"
                 });
             }
+
+            // Compatibility shim for modals that call fetch_data(1)
+            window.fetch_data = function(page = null) {
+                const urlParams = new URLSearchParams(window.location.search);
+                const currentPage = page || urlParams.get('page') || 1;
+                $('.js-filter-form').trigger('submit', { page: currentPage });
+            };
         });
     </script>
 @endpush

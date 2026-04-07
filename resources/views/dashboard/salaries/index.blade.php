@@ -1,4 +1,7 @@
 @extends('layouts.dashboard.app')
+@section('title')
+    {!! $title !!}
+@endsection
 @push('style')
     <link rel="stylesheet" href="{{ asset('assets/dashbaord/css/ajax-table.css') }}">
 @endpush
@@ -78,6 +81,8 @@
 @endsection
 @push('scripts')
     <script src="{{ asset('assets/dashbaord/js/ajax-table.js') }}"></script>
+    <script src="{!! asset('assets/dashbaord/js/filter-system.js') !!}"></script>
+
     <script type="text/javascript">
         $(document).ready(function() {
             // Initialize Standard AJAX Table
@@ -88,53 +93,28 @@
                 });
             }
 
-            // Specific Fetch for Search/Refresh
-            window.fetch_data = function(page = 1) {
-                $.ajax({
-                    url: "{{ route('dashboard.salaries.index') }}?page=" + page,
-                    data: {
-                        month: $('#month').val(),
-                        year: $('#year').val(),
-                    },
-                    beforeSend: function() {
-                        $('#tableLoader').fadeIn(200);
-                    },
-                    success: function(data) {
-                        $('#table_data').html(data);
-                    },
-                    complete: function() {
-                        $('#tableLoader').fadeOut(200);
-                    },
-                });
+            // Initialize Filter System
+            if (typeof initFilterSystem === "function") {
+                initFilterSystem();
             }
 
-            // search
-            $('body').on('click', '#salaries_search_btn', function(e) {
-                e.preventDefault();
-                fetch_data(1);
-            })
-
-            // reset
-            $('body').on('click', '#salaries_reset_btn', function(e) {
-                e.preventDefault();
-                $('#month').val('');
-                $('#year').val('');
-                fetch_data(1);
-            });
+            // Compatibility Shim for Modal CRUD Refreshes
+            window.fetch_data = function() {
+                if (typeof $ !== 'undefined' && $('.js-filter-form').length > 0) {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const page = urlParams.get('page') || 1;
+                    $('.js-filter-form').trigger('submit', {
+                        page: page
+                    });
+                }
+            };
         });
 
 
         // change status
         $(document).on('change', '.change_status', function(e) {
-            // e.preventDefault();
             var id = $(this).data('id');
-
-            if ($(this).is(':checked')) {
-                statusSwitch = 1;
-            } else {
-                statusSwitch = 0;
-            }
-
+            var statusSwitch = $(this).is(':checked') ? 1 : 0;
 
             $.ajax({
                 url: "{{ route('dashboard.salaries.change.status') }}",
@@ -145,31 +125,17 @@
                 type: 'post',
                 dataType: 'JSON',
                 success: function(data) {
-
-                    $('.salary_status_' + data.data.id).empty();
-                    $('.salary_status_' + data.data.id).removeClass('border-danger').removeClass(
-                        'danger');
-                    $('.salary_status_' + data.data.id).removeClass('border-success').removeClass(
-                        'success');
-
-                    if (data.data.status == 1) {
-                        $('.salary_status_' + data.data.id).addClass('border-success').addClass(
-                            'success');
-                        $('.salary_status_' + data.data.id).text("{!! __('general.enable') !!}");
-                    } else if (data.data.status == '') {
-                        $('.salary_status_' + data.data.id).addClass('border-danger').addClass(
-                            'danger');
-                        $('.salary_status_' + data.data.id).text("{!! __('general.disabled') !!}");
-                    }
-
                     if (data.status === true) {
+                        // Refresh the table partial to update statuses and badges correctly
+                        if (typeof fetch_data === 'function') {
+                            fetch_data();
+                        }
                         flasher.success("{!! __('general.change_status_success_message') !!}");
                     } else {
                         flasher.error("{!! __('general.change_status_error_message') !!}");
                     }
                 }
             });
-
         });
     </script>
 @endpush

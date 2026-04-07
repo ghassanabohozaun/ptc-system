@@ -78,6 +78,13 @@
                     loader: ".table-loader-overlay"
                 });
             }
+
+            // Compatibility shim for AJAX refreshes that preserve page/filters
+            window.fetch_data = function(page = null) {
+                const urlParams = new URLSearchParams(window.location.search);
+                const currentPage = page || urlParams.get('page') || 1;
+                $('.js-filter-form').trigger('submit', { page: currentPage });
+            };
         });
 
         // change status

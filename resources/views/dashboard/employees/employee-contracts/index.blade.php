@@ -73,41 +73,16 @@
             if (typeof initIndexTable === "function") {
                 initIndexTable({
                     container: "#table_data",
-                    loader: "#tableLoader"
+                    loader: ".table-loader-overlay"
                 });
             }
 
-            // Specific Fetch for Search/Refresh
-            window.fetch_data = function(page = 1) {
-                $.ajax({
-                    url: "{{ route('dashboard.employeeContracts.index') }}?page=" + page,
-                    data: {
-                        employee_id: $('#employee_id').val(),
-                    },
-                    beforeSend: function() {
-                        $('#tableLoader').fadeIn(200);
-                    },
-                    success: function(data) {
-                        $('#table_data').html(data);
-                    },
-                    complete: function() {
-                        $('#tableLoader').fadeOut(200);
-                    },
-                });
-            }
-
-            // search
-            $('body').on('click', '#employee_contract_search_btn', function(e) {
-                e.preventDefault();
-                fetch_data(1);
-            });
-
-            // reset
-            $('body').on('click', '#employee_contract_reset_btn', function(e) {
-                e.preventDefault();
-                $("#employee_id").val('').trigger('change');
-                fetch_data(1);
-            });
+            // Compatibility shim for AJAX refreshes that preserve page/filters
+            window.fetch_data = function(page = null) {
+                const urlParams = new URLSearchParams(window.location.search);
+                const currentPage = page || urlParams.get('page') || 1;
+                $('.js-filter-form').trigger('submit', { page: currentPage });
+            };
         });
     </script>
 @endpush

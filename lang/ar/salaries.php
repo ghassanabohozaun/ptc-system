@@ -30,8 +30,8 @@ return [
     'release_date' => 'تاريخ  الاصدار',
     'status' => 'حالة',
     'manage_status' => 'إدارة الحالة',
-    'salareis_count' => 'عدد الرواتب',
-    'salareis_sum' => 'مجموع الرواتب',
+    'salaries_count' => 'عدد الرواتب',
+    'salaries_sum' => 'مجموع الرواتب',
     'approved_status' => 'مصدق عليه',
 
     'enter_month' => 'ادخل الشهر',

@@ -105,7 +105,7 @@
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-info font-weight-bold ">
                         {{ __('general.save') }}
-                        <i class="la la-refresh spinner spinner_loading d-none">
+                        <i class="ft-refresh-cw spinner spinner_loading d-none">
                         </i>
                     </button>
 
@@ -144,8 +144,10 @@
             $('#month').css('border-color', '');
             $('#release_date').css('border-color', '');
 
-            $('#name_ar_error').text('');
+            $('#month_error').text('');
             $('#release_date_error').text('');
+            $('#details_error').text('');
+            $('#notes_error').text('');
         }
 
         // cancel

@@ -17,14 +17,14 @@ class SalaryRepository
     {
         return Salary::with(['admin', 'employees'])
             ->withCount('employees')
-            ->when(!empty(request()->month), function ($query) {
-                $query->where('month', request()->month);
-            })
-            ->when(!empty(request()->year), function ($query) {
-                $query->where('year', request()->year);
-            })
+            ->filter($request->all(), [], [
+                'month',
+                'year',
+                'status'
+            ])
             ->latest()
-            ->paginate(12);
+            ->paginate(12)
+            ->withQueryString();
     }
 
     // get active all

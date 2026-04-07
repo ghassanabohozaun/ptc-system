@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
-
+use App\Traits\Dashboard\Filterable;
 class Salary extends Model
 {
-    use SoftDeletes, HasTranslations;
+    use SoftDeletes, HasTranslations, Filterable;
     protected $table = 'salaries';
     protected $fillable = ['month', 'year', 'details', 'notes', 'status','admin_id','release_date'];
 

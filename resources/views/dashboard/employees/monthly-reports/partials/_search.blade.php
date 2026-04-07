@@ -1,6 +1,6 @@
 @push('style')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="{!! asset('assets/dashbaord/vendors/select2/select2.min.css') !!}">
+    <link rel="stylesheet" href="{!! asset('assets/dashbaord/vendors/css/forms/selects/select2.min.css') !!}">
     <link rel="stylesheet" href="{!! asset('assets/dashbaord/css/filter.css') !!}">
 @endpush
 
@@ -107,6 +107,6 @@
 </div>
 
 @push('scripts')
-    <script src="{!! asset('assets/dashbaord/vendors/select2/select2.min.js') !!}"></script>
+    <script src="{!! asset('assets/dashbaord/vendors/js/forms/select/select2.full.min.js') !!}"></script>
     <script src="{!! asset('assets/dashbaord/js/filter-system.js') !!}"></script>
 @endpush

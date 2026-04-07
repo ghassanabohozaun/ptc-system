@@ -202,4 +202,7 @@ return [
     'details' => 'Details',
     'system_id' => 'System ID',
     'usd' => 'USD',
+    'select_status' => 'Select Status',
+    'apply' => 'Apply',
+    'reset_all' => 'Reset All',
 ];

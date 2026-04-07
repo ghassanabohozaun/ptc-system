@@ -9,12 +9,23 @@ class EmployeeContractRepository
     // get all
     public function getAll($request)
     {
-        return EmployeeContract::with('employee')
-            ->when($request->employee_id, function ($query) use ($request) {
-                $query->where('employee_id', $request->employee_id);
-            })
+        return EmployeeContract::with('employee.employeeJobDetails')
+            ->filter($request->all(), [
+                'employee.first_name',
+                'employee.father_name',
+                'employee.grand_father_name',
+                'employee.family_name',
+                'employee.email',
+                'employee.personal_id'
+            ], [
+                'employee_id',
+                'monthly_salary',
+                'contract_start_date',
+                'contract_expiry_date'
+            ])
             ->latest()
-            ->paginate(config('app.pagination'));
+            ->paginate(config('app.pagination'))
+            ->withQueryString();
     }
 
     // get one

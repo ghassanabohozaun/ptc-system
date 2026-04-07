@@ -26,7 +26,7 @@ class GovernorateRepository
         $governorates = Governorate::withCount(['cities'])
             ->filter(request()->only(['keyword']), ['name'])
             ->orderByDesc('id')
-            ->paginate(2)
+            ->paginate(10)
             ->withQueryString();
 
         return $governorates;

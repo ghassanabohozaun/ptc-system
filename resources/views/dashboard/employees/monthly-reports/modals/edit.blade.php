@@ -119,15 +119,14 @@
 
                 <!--begin::modal footer-->
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-info font-weight-bold ">
-                        {{ __('general.save') }}
-                        <i class="la la-refresh spinner spinner_loading d-none">
-                        </i>
+                    <button type="submit" class="btn btn-info px-2">
+                        <i class="ft-save mr-1"></i> {{ __('general.save') }}
+                        <i class="ft-refresh-cw spinner spinner_loading d-none ml-1"></i>
                     </button>
 
-                    <button type="button" id="cancel_monthly_report_btn_edit"
-                        class="btn btn-light-dark font-weight-bold" data-dismiss="modal">
-                        {{ __('general.cancel') }}
+                    <button type="button" id="cancel_monthly_report_btn_edit" class="btn btn-outline-secondary px-2"
+                        data-dismiss="modal">
+                        <i class="ft-x mr-1"></i> {{ __('general.cancel') }}
                     </button>
                 </div>
                 <!--end::modal footer-->

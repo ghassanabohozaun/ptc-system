@@ -6,10 +6,10 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
-
+use App\Traits\Dashboard\Filterable;
 class DailyReport extends Model
 {
-    use SoftDeletes, HasTranslations, \App\Traits\Dashboard\Filterable;
+    use SoftDeletes, HasTranslations, Filterable;
 
     protected $table = 'daily_reports';
     protected $fillable = ['date', 'details', 'employee_id', 'status', 'file'];

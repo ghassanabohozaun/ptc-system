@@ -19,4 +19,6 @@ return [
     'all_contracts' => 'كافة العقود',
     'no_contracts_found' => 'لا يوجد عقود حالياً!',
     'contract_details' => 'تفاصيل العقد',
+    'search_placeholder_contract' => 'ابحث باسم الموظف أو رقم الهوية...',
+    'enter_salary' => 'أدخل الراتب الشهري...',
 ];

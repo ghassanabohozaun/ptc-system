@@ -168,15 +168,24 @@ $(document).ready(function() {
 
     initFilterSystem();
 
-    $(document).on('submit', '.js-filter-form', function(e) {
+    $(document).on('submit', '.js-filter-form', function(e, extraData) {
         e.preventDefault();
         const $form = $(this);
         const actionUrl = $form.attr('action') || window.location.pathname;
         const targetContainer = $form.data('container') || '#table_data';
         const targetLoader = $form.data('loader') || '.table-loader-overlay';
-        const formData = $form.serializeArray().filter(item => item.value !== "").map(item => encodeURIComponent(item.name) + '=' + encodeURIComponent(item.value)).join('&');
         
-        // Construct visual URL for pushState (completely clean if no data)
+        // Serialize form and filter empty values
+        let formDataArr = $form.serializeArray().filter(item => item.value !== "");
+        
+        // If extraData contains a page (from a refresh/fetch_data call), add it
+        if (extraData && extraData.page) {
+            formDataArr.push({ name: 'page', value: extraData.page });
+        }
+
+        const formData = formDataArr.map(item => encodeURIComponent(item.name) + '=' + encodeURIComponent(item.value)).join('&');
+        
+        // Construct visual URL for pushState
         const fullUrl = formData ? (actionUrl + (actionUrl.includes('?') ? '&' : '?') + formData) : actionUrl;
 
         $.ajax({

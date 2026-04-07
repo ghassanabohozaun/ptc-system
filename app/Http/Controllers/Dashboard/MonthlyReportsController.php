@@ -32,7 +32,10 @@ class MonthlyReportsController extends Controller
     }
 
     // create
-    public function create() {}
+    public function create()
+    {
+        return redirect()->route('dashboard.monthlyReports.index');
+    }
 
     // store
     public function store(monthlyReportRequest $request)
