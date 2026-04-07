@@ -35,7 +35,7 @@
         <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord') !!}/css/pages/login-register.css">
     @endif
 
-    <link rel="stylesheet" type="text/css" href="{!! asset(path: 'assets/dashbaord/css/my-style.css') !!}">
+    <link rel="stylesheet" type="text/css" href="{!! asset(path: 'assets/dashbaord/css/my-style.css') . '?v=1.0.1' !!}">
 
     @stack('style')
 </head>
