@@ -10,10 +10,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Translatable\HasTranslations;
-
+use App\Traits\Dashboard\Filterable;
 class Admin extends Authenticatable
 {
-    use HasFactory, Notifiable, SoftDeletes, HasTranslations, HasApiTokens;
+    use HasFactory, Notifiable, SoftDeletes, HasTranslations, HasApiTokens, Filterable;
     protected $table = 'admins';
 
     // fillable

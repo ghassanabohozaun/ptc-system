@@ -29,6 +29,7 @@
                             <th class="d-none d-lg-table-cell">{!! __('employees.personal_id') !!}</th>
                             <th class="d-none d-md-table-cell">{!! __('employees.title') !!}</th>
                             <th>{!! __('employees.department_id') !!}</th>
+                            <th>{!! __('world.governorate') !!} / {!! __('world.city') !!}</th>
                             <th class="d-none d-lg-table-cell">{!! __('employees.gender') !!}</th>
                             <th class="d-none d-lg-table-cell">{!! __('employees.basic_salary') !!}</th>
                             <th class="text-center">{!! __('general.actions') !!}</th>
@@ -125,6 +126,12 @@
                                     <span class="text-muted">
                                         {!! $employee->employeeJobDetails->department->name ?? '' !!}
                                     </span>
+                                </td>
+                                <td>
+                                    <div class="d-flex flex-column">
+                                        <span class="font-weight-bold text-dark">{{ $employee->governorate->name ?? '-' }}</span>
+                                        <small class="text-muted">{{ $employee->city->name ?? '-' }}</small>
+                                    </div>
                                 </td>
                                 <td class="d-none d-lg-table-cell">{!! $employee->EmployeeGender() !!}</td>
                                 <td class="d-none d-lg-table-cell">

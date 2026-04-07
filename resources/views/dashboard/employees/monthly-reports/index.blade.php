@@ -81,51 +81,15 @@
 
 @push('scripts')
     <script src="{{ asset('assets/dashbaord/js/ajax-table.js') }}"></script>
-    <script type="text/javascript">
+    <script>
         $(document).ready(function() {
-            // Initialize Standard AJAX Table
+            // Unify table loading
             if (typeof initIndexTable === "function") {
                 initIndexTable({
                     container: "#table_data",
-                    loader: "#tableLoader"
+                    loader: ".table-loader-overlay"
                 });
             }
-
-            // Specific Fetch for Search/Refresh
-            window.fetch_data = function(page = 1) {
-                $.ajax({
-                    url: "{{ route('dashboard.monthlyReports.index') }}?page=" + page,
-                    data: {
-                        employee_id: $('#employee_id').val(),
-                        month: $('#month').val(),
-                        year: $('#year').val(),
-                    },
-                    beforeSend: function() {
-                        $('#tableLoader').fadeIn(200);
-                    },
-                    success: function(data) {
-                        $('#table_data').html(data);
-                    },
-                    complete: function() {
-                        $('#tableLoader').fadeOut(200);
-                    },
-                });
-            }
-
-            // search
-            $('body').on('click', '#monthly_report_search_btn', function(e) {
-                e.preventDefault();
-                fetch_data(1);
-            });
-
-            // reset
-            $('body').on('click', '#monthly_report_reset_btn', function(e) {
-                e.preventDefault();
-                $("#employee_id").val('').trigger('change');
-                $('#month').val('');
-                $('#year').val('');
-                fetch_data(1);
-            });
         });
     </script>
 @endpush

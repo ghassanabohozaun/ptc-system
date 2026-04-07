@@ -9,7 +9,7 @@ use Spatie\Translatable\HasTranslations;
 
 class DailyReport extends Model
 {
-    use SoftDeletes, HasTranslations;
+    use SoftDeletes, HasTranslations, \App\Traits\Dashboard\Filterable;
 
     protected $table = 'daily_reports';
     protected $fillable = ['date', 'details', 'employee_id', 'status', 'file'];

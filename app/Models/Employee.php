@@ -10,10 +10,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Carbon\Carbon;
+use App\Traits\Dashboard\Filterable;
 
 class Employee extends Authenticatable
 {
-    use HasFactory, Notifiable, SoftDeletes, HasTranslations, HasApiTokens;
+    use HasFactory, Notifiable, SoftDeletes, HasTranslations, HasApiTokens, Filterable;
 
     protected $table = 'employees';
     protected $fillable = ['first_name', 'father_name', 'grand_father_name', 'family_name', 'password', 'personal_id', 'gender', 'birthday', 'marital_status', 'mobile_no',

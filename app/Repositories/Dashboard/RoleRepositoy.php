@@ -24,14 +24,12 @@ class RoleRepositoy
     // get roles
     public function getRoles()
     {
-        $roles = Role::when(request()->keyword, function ($query) {
-            $term = "%" . request()->keyword . "%";
-            $query->whereRaw("JSON_VALUE(role, '$.en') LIKE ?", [$term])
-                  ->orWhereRaw("JSON_VALUE(role, '$.ar') LIKE ?", [$term]);
-        })
-        ->orderByDesc('created_at')
-        ->select('id', 'role', 'permissions')
-        ->paginate(config('app.pagination'));
+        $roles = Role::filter(request()->only(['keyword']), ['role'])
+            ->orderByDesc('created_at')
+            ->select('id', 'role', 'permissions')
+            ->paginate(10)
+            ->withQueryString();
+            
         return $roles;
     }
 

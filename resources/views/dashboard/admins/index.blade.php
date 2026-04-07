@@ -5,6 +5,7 @@
 
 @push('style')
     <link rel="stylesheet" href="{{ asset('assets/dashbaord/css/ajax-table.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dashbaord/css/filter.css') }}">
 @endpush
 
 @section('content')
@@ -104,11 +105,18 @@
         $(document).ready(function() {
             console.log('Admin Index Table Initializing...');
             // Initialize AJAX Table
-            window.initIndexTable({
-                container: '#table_data',
-                loader: '.table-loader-overlay',
-                detailsControl: '.details-control'
-            });
+            if (typeof initIndexTable === "function") {
+                initIndexTable({
+                    container: '#table_data',
+                    loader: '.table-loader-overlay',
+                    detailsControl: '.details-control'
+                });
+            }
+
+            // Initialize Modern Filter System
+            if (typeof initFilterSystem === "function") {
+                initFilterSystem();
+            }
 
             // Status Change Handler (preserving existing logic)
             $('body').on('change', '.change_status', function(e) {

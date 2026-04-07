@@ -137,7 +137,35 @@
 
 .ptc-query-panel .form-control:focus {
     border-color: #4b49ac;
-    box-shadow: 0 0 0 3px rgba(75, 73, 172, 0.1);
+    box-shadow: 0 0 0 3px rgba(75, 73, 172, 0.1);/* Cascading Filter Loader */
+.ptc-select-loader {
+    position: relative;
+    pointer-events: none;
+}
+
+.ptc-select-loader::after {
+    content: "";
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    margin-top: -8px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-top-color: var(--primary-color, #1F3BB3);
+    border-radius: 50%;
+    animation: ptc-spinner 0.6s linear infinite;
+    z-index: 10;
+}
+
+[dir="rtl"] .ptc-select-loader::after {
+    right: auto;
+    left: 30px;
+}
+
+@keyframes ptc-spinner {
+    to { transform: rotate(360deg); }
+}
 }
 
 .reset-chip {

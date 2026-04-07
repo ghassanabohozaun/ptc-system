@@ -9,17 +9,21 @@
             <i class="mdi mdi-filter-variant"></i> {!! __('general.filters') !!}:
         </span>
 
-        <form class="js-filter-form d-flex align-items-center gap-2">
-            <!-- Role Search Chip -->
-            <div class="filter-chip js-filter-chip" data-target="role_search_popover">
-                <i class="mdi mdi-shield-account-outline"></i>
-                <span class="chip-text">{!! __('roles.role') !!}</span>
-                <div class="filter-popover" id="role_search_popover">
+        <form class="js-filter-form d-flex align-items-center gap-2" data-container="#table_data" data-loader=".table-loader-overlay">
+            <!-- Role Search -->
+            <div class="filter-item">
+                <div class="filter-chip js-filter-chip" data-filter-target="role_search_popover">
+                    <i class="la la-shield"></i>
+                    <span class="chip-text">{!! __('roles.role') !!}</span>
+                </div>
+
+                <!-- Role Search Popover -->
+                <div class="ptc-query-panel" id="role_search_popover">
                     <div class="mb-3">
                         <label class="form-label fw-bold mb-2">{!! __('roles.role') !!}</label>
                         <div class="input-group">
                             <input type="text" class="form-control" name="keyword"
-                                placeholder="{!! __('general.search') !!}...">
+                                placeholder="{!! __('general.search') !!}..." autocomplete="off">
                         </div>
                     </div>
                     <div class="popover-actions">
@@ -32,7 +36,7 @@
 
             <!-- Reset Button -->
             <div class="filter-chip reset-chip js-reset-btn">
-                <i class="mdi mdi-refresh"></i>
+                <i class="la la-refresh"></i>
                 <span>{!! __('general.reset') !!}</span>
             </div>
         </form>

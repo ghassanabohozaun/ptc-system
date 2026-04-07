@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
-
+use App\Traits\Dashboard\Filterable;
 class Role extends Model
 {
-    use SoftDeletes, HasTranslations , HasFactory;
+    use SoftDeletes, HasTranslations , HasFactory, Filterable;
 
     protected $table = 'roles';
     protected $fillable = ['role', 'permissions'];

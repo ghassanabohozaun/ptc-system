@@ -16,18 +16,24 @@ class DailyReportRepository
     public function getAll($request)
     {
         return DailyReport::with('employee')
-            ->when(!empty(request()->employee_id), function ($query) {
-                $query->where('employee_id', request()->employee_id);
+            ->filter(request()->all(), [
+                'details',
+                'employee.first_name',
+                'employee.father_name',
+                'employee.grand_father_name',
+                'employee.family_name',
+                'employee.email',
+                'employee.personal_id'
+            ], [])
+            ->when(!empty(request()->date), function ($q) {
+                $q->whereDate('date', request()->date);
             })
-            ->when(!empty(request()->date), function ($query) {
-                $query->where('date', request()->date);
+            ->when(!empty(request()->from_date) && !empty(request()->to_date), function ($q) {
+                $q->whereBetween('date', [request()->from_date, request()->to_date]);
             })
-            ->when(!empty(request()->to_date), function ($query) {
-                $query->where('date', '>=', request()->from_date)->where('date', '<=', request()->to_date);
-            })
-
             ->latest()
-            ->paginate(config('app.pagination'));
+            ->paginate(config('app.pagination') ?: 10)
+            ->withQueryString();
     }
 
     // daily reports exists

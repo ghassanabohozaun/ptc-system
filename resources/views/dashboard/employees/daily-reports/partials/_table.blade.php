@@ -24,7 +24,6 @@
                             <th class="text-center d-none d-lg-table-cell">{!! __('dailyReports.details') !!}</th>
                             <th class="text-center d-none d-lg-table-cell">{!! __('dailyReports.file') !!}</th>
                             <th class="text-center d-none d-lg-table-cell">{!! __('dailyReports.created_at') !!}</th>
-                            <th class="text-center">{!! __('dailyReports.status') !!}</th>
                             <th class="text-center">{!! __('general.actions') !!}</th>
                         </tr>
                     </thead>
@@ -96,9 +95,6 @@
                                     @include('dashboard.employees.daily-reports.parts.file')
                                 </td>
                                 <td class="text-center d-none d-lg-table-cell text-muted small">{!! $dailyReport->created_at !!}</td>
-                                <td class="text-center">
-                                    @include('dashboard.employees.daily-reports.parts.status')
-                                </td>
                                 <td class="text-center">
                                     @include('dashboard.employees.daily-reports.parts.actions')
                                 </td>

@@ -160,6 +160,7 @@ return [
     'appointment_date' => 'Appointment Date',
     'contact_expire_date' => 'Contact Expire Date',
     'employment_type' => 'Employee Type',
+    'status_id' => 'Employee Status',
     'department_id' => 'Department',
     'supervisor' => 'Supervisor',
     'employee_status' => 'Employee Status',

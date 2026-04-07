@@ -107,9 +107,13 @@ class GovernoratiesController extends Controller
     //  get all cities by governorate
     public function getAllCitiesByGovernorate(Request $request)
     {
-        if ($request->json()) {
+        if ($request->ajax() || $request->filled('id')) {
             $cities = $this->governorateService->getAllCitiesbyGovernorate($request->id);
-            return response()->json(['data' => $cities]);
+            return response()->json([
+                'status' => true,
+                'data' => $cities
+            ]);
         }
+        return response()->json(['status' => false], 400);
     }
 }

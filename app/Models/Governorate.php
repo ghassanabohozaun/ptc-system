@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
-
+use App\Traits\Dashboard\Filterable;
 class Governorate extends Model
 {
-    use SoftDeletes, HasTranslations, \App\Traits\Dashboard\Filterable;
+    use SoftDeletes, HasTranslations, Filterable;
 
     protected $table = 'governorates';
     protected $fillable = ['name', 'status'];

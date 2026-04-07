@@ -60,6 +60,7 @@ return [
     'send' => 'Send',
     'write_here' => 'Write Here ...',
     'filters' => 'Filters',
+    'status' => 'Status',
 
     'not_found' => 'Not Found',
     'example' => 'Example',

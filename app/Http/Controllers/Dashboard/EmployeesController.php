@@ -30,12 +30,14 @@ class EmployeesController extends Controller
         $employees = $this->employeeService->getAll($request);
         $departments = $this->departmentService->getActiveAll();
         $employeeStatuses = $this->employeeStatusService->getActiveAll();
+        $governorates = $this->governorateService->getAllGovernoratesWithoutRelations();
+        $cities = $this->cityService->getAllCitiesWithoutRelation();
 
         if ($request->ajax()) {
             return view('dashboard.employees.employees.partials._table', compact('employees'))->render();
         }
 
-        return view('dashboard.employees.employees.index', compact('title', 'employees', 'departments', 'employeeStatuses'));
+        return view('dashboard.employees.employees.index', compact('title', 'employees', 'departments', 'employeeStatuses', 'governorates', 'cities'));
     }
 
     // create

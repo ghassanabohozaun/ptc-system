@@ -14,9 +14,60 @@ $(document).ready(function() {
         };
     }
 
+    function initGeographicCascade() {
+        // Listen for both variations of governorate field names (with and without 'r')
+        $('body').on('change', 'select[name="governoate_id"], select[name="governorate_id"]', function() {
+            const $govSelect = $(this);
+            const $form = $govSelect.closest('form');
+            const $citySelect = $form.find('select[name="city_id"]');
+            const govId = $govSelect.val();
+
+            if (!$citySelect.length) return;
+
+            // Clear cities if no governorate is selected
+            if (!govId) {
+                $citySelect.html('<option value="">' + ($citySelect.find('option:first').text() || 'Show All') + '</option>').trigger('change');
+                return;
+            }
+
+            // Show loading state
+            const $cityWrapper = $citySelect.closest('.mb-3');
+            $cityWrapper.addClass('ptc-select-loader');
+
+            $.ajax({
+                url: '/dashboard/governorates/get/all/cities',
+                type: 'GET',
+                data: { id: govId },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status && response.data) {
+                        let options = '<option value="">' + ($citySelect.find('option:first').text() || 'Show All') + '</option>';
+                        
+                        response.data.forEach(function(city) {
+                            // Support for Spatie Translatable (if name is object or string)
+                            let cityName = city.name;
+                            if (typeof cityName === 'object') {
+                                const locale = $('html').attr('lang') || 'ar';
+                                cityName = cityName[locale] || cityName['ar'] || cityName['en'];
+                            }
+                            options += `<option value="${city.id}">${cityName}</option>`;
+                        });
+
+                        $citySelect.html(options).trigger('change');
+                    }
+                },
+                complete: function() {
+                    $cityWrapper.removeClass('ptc-select-loader');
+                }
+            });
+        });
+    }
+
     function initFilterSystem() {
         const $chips = $('.js-filter-chip');
         const $panels = $('.ptc-query-panel');
+
+        initGeographicCascade();
 
         const closeAll = () => {
             $panels.removeClass('ptc-show').attr('data-is-open', 'false');

@@ -9,7 +9,7 @@ use Spatie\Translatable\HasTranslations;
 
 class MonthlyReport extends Model
 {
-    use SoftDeletes, HasTranslations;
+    use SoftDeletes, HasTranslations, \App\Traits\Dashboard\Filterable;
 
     protected $table = 'monthly_reports';
     protected $fillable = ['month', 'year', 'details', 'employee_id', 'status', 'file','refuse_reason'];

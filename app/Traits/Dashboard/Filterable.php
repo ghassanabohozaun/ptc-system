@@ -17,16 +17,29 @@ trait Filterable
      */
     public function scopeFilter(Builder $query, array $filters, array $searchColumns = ['name'], array $exactMatches = [])
     {
-        // 1. Keyword Search (Support for standard or translatable columns)
+        // 1. Keyword Search (Support for standard, translatable, and related columns)
         if (!empty($filters['keyword'])) {
             $keyword = $filters['keyword'];
             $query->where(function ($q) use ($keyword, $searchColumns) {
                 foreach ($searchColumns as $column) {
-                    // Check if the model has the HasTranslations trait and if the column is translatable
-                    if (method_exists($this, 'isTranslatableAttribute') && $this->isTranslatableAttribute($column)) {
-                        $q->orWhere($column . '->' . app()->getLocale(), 'like', '%' . $keyword . '%');
+                    // Check if it's a relationship search (e.g., 'employee.name')
+                    if (str_contains($column, '.')) {
+                        [$relation, $subColumn] = explode('.', $column);
+                        $q->orWhereHas($relation, function ($rq) use ($keyword, $subColumn) {
+                            $relatedModel = $rq->getModel();
+                            if (method_exists($relatedModel, 'isTranslatableAttribute') && $relatedModel->isTranslatableAttribute($subColumn)) {
+                                $rq->where($subColumn . '->' . app()->getLocale(), 'like', '%' . $keyword . '%');
+                            } else {
+                                $rq->where($subColumn, 'like', '%' . $keyword . '%');
+                            }
+                        });
                     } else {
-                        $q->orWhere($column, 'like', '%' . $keyword . '%');
+                        // Standard or Translatable on the current model
+                        if (method_exists($this, 'isTranslatableAttribute') && $this->isTranslatableAttribute($column)) {
+                            $q->orWhere($column . '->' . app()->getLocale(), 'like', '%' . $keyword . '%');
+                        } else {
+                            $q->orWhere($column, 'like', '%' . $keyword . '%');
+                        }
                     }
                 }
             });

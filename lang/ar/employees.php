@@ -159,6 +159,7 @@ return [
     'appointment_date' => 'تاريخ التوظيف',
     'contact_expire_date' => 'تاريخ انتهاء العقد',
     'employment_type' => 'نوع التوظيف',
+    'status_id' => 'حالة الموظف',
     'department_id' => 'الإدارة',
     'supervisor' => 'المشرف',
     'employee_status' => 'حالة الموظف',

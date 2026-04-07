@@ -25,16 +25,7 @@ class EmployeeRepository
             'governorate',
             'city'
         ])
-            ->when(!empty(request()->keyword), function ($query) {
-                $term = "%" . request()->keyword . "%";
-                $query->where(function($q) use ($term) {
-                    $q->whereRaw("JSON_VALUE(first_name, '$.en') LIKE ?", [$term])
-                      ->orWhereRaw("JSON_VALUE(first_name, '$.ar') LIKE ?", [$term])
-                      ->orWhereRaw("JSON_VALUE(family_name, '$.en') LIKE ?", [$term])
-                      ->orWhereRaw("JSON_VALUE(family_name, '$.ar') LIKE ?", [$term])
-                      ->orWhere('personal_id', 'LIKE', $term);
-                });
-            })
+            ->filter(request()->all(), ['first_name', 'father_name', 'grand_father_name', 'family_name', 'email', 'personal_id'], ['governoate_id', 'city_id'])
             ->when(!empty(request()->department_id), function ($query) {
                 $query->whereHas('employeeJobDetails', function($q) {
                     $q->where('department_id', request()->department_id);
@@ -45,14 +36,12 @@ class EmployeeRepository
                     $q->where('employee_status_id', request()->employee_status_id);
                 });
             })
-            ->when(!empty(request()->personal_id), function ($query) {
-                $query->where('personal_id', request()->personal_id);
-            })
             ->when(!empty(request()->employee_id), function ($query) {
                 $query->where('id', request()->employee_id);
             })
             ->latest()
-            ->paginate(config('app.pagination'));
+            ->paginate(config('app.pagination') ?: 10)
+            ->withQueryString();
     }
 
     // get employees
@@ -106,10 +95,6 @@ class EmployeeRepository
     // autocomplete employee
     public function autocompleteEmployee($searchValue)
     {
-        // return Employee::select('first_name->en as employee_en', 'first_name->ar as employee_ar', 'id')
-        //     ->where('first_name->en', 'LIKE', '%' . $searchValue . '%')
-        //     ->orWhere('first_name->ar', 'LIKE', '%' . $searchValue . '%')
-        //     ->get();
 
         return Employee::selectRaw(
             "

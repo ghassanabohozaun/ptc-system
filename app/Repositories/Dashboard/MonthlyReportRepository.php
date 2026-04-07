@@ -16,15 +16,18 @@ class MonthlyReportRepository
     public function getAll($request)
     {
         return MonthlyReport::with('employee')
-            ->when(!empty(request()->employee_id), function ($query) {
-                $query->where('employee_id', request()->employee_id);
-            })
-            ->when(!empty(request()->month), function ($query) use ($request) {
-                $query->where('month', request()->month)->where('year', request()->year);
-            })
-
+            ->filter(request()->all(), [
+                'details',
+                'employee.first_name',
+                'employee.father_name',
+                'employee.grand_father_name',
+                'employee.family_name',
+                'employee.email',
+                'employee.personal_id'
+            ], ['month', 'year', 'employee_id', 'status'])
             ->latest()
-            ->paginate(config('app.pagination'));
+            ->paginate(config('app.pagination') ?: 10)
+            ->withQueryString();
     }
 
     // monthly reports exists
