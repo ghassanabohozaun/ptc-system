@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
 
 @push('style')
-    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/ajax-table.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dashbaord/css/ajax-table.css') }}">
 @endpush
 
 @section('title')
@@ -80,7 +80,7 @@
 
 
 @push('scripts')
-    <script src="{{ asset('assets/dashboard/js/ajax-table.js') }}"></script>
+    <script src="{{ asset('assets/dashbaord/js/ajax-table.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             // Initialize Standard AJAX Table
@@ -100,9 +100,15 @@
                         month: $('#month').val(),
                         year: $('#year').val(),
                     },
-                    beforeSend: function() { $('#tableLoader').fadeIn(200); },
-                    success: function(data) { $('#table_data').html(data); },
-                    complete: function() { $('#tableLoader').fadeOut(200); },
+                    beforeSend: function() {
+                        $('#tableLoader').fadeIn(200);
+                    },
+                    success: function(data) {
+                        $('#table_data').html(data);
+                    },
+                    complete: function() {
+                        $('#tableLoader').fadeOut(200);
+                    },
                 });
             }
 

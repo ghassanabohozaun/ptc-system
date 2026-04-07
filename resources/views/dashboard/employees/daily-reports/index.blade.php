@@ -4,7 +4,7 @@
 @endsection
 
 @push('style')
-    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/ajax-table.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dashbaord/css/ajax-table.css') }}">
 @endpush
 
 @section('content')
@@ -82,7 +82,7 @@
 
 
 @push('scripts')
-    <script src="{{ asset('assets/dashboard/js/ajax-table.js') }}"></script>
+    <script src="{{ asset('assets/dashbaord/js/ajax-table.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             // Initialize Standard AJAX Table
@@ -103,9 +103,15 @@
                         from_date: $('#from_date').val(),
                         to_date: $('#to_date').val(),
                     },
-                    beforeSend: function() { $('#tableLoader').fadeIn(200); },
-                    success: function(data) { $('#table_data').html(data); },
-                    complete: function() { $('#tableLoader').fadeOut(200); },
+                    beforeSend: function() {
+                        $('#tableLoader').fadeIn(200);
+                    },
+                    success: function(data) {
+                        $('#table_data').html(data);
+                    },
+                    complete: function() {
+                        $('#tableLoader').fadeOut(200);
+                    },
                 });
             }
 
@@ -134,7 +140,10 @@
 
             $.ajax({
                 url: "{{ route('dashboard.daliy.reports.change.status') }}",
-                data: { statusSwitch: statusSwitch, id: id },
+                data: {
+                    statusSwitch: statusSwitch,
+                    id: id
+                },
                 type: 'post',
                 dataType: 'JSON',
                 success: function(data) {

@@ -25,6 +25,26 @@ class EmployeeRepository
             'governorate',
             'city'
         ])
+            ->when(!empty(request()->keyword), function ($query) {
+                $term = "%" . request()->keyword . "%";
+                $query->where(function($q) use ($term) {
+                    $q->whereRaw("JSON_VALUE(first_name, '$.en') LIKE ?", [$term])
+                      ->orWhereRaw("JSON_VALUE(first_name, '$.ar') LIKE ?", [$term])
+                      ->orWhereRaw("JSON_VALUE(family_name, '$.en') LIKE ?", [$term])
+                      ->orWhereRaw("JSON_VALUE(family_name, '$.ar') LIKE ?", [$term])
+                      ->orWhere('personal_id', 'LIKE', $term);
+                });
+            })
+            ->when(!empty(request()->department_id), function ($query) {
+                $query->whereHas('employeeJobDetails', function($q) {
+                    $q->where('department_id', request()->department_id);
+                });
+            })
+            ->when(!empty(request()->employee_status_id), function ($query) {
+                $query->whereHas('employeeJobDetails', function($q) {
+                    $q->where('employee_status_id', request()->employee_status_id);
+                });
+            })
             ->when(!empty(request()->personal_id), function ($query) {
                 $query->where('personal_id', request()->personal_id);
             })

@@ -6,7 +6,6 @@
                 <th class="text-center d-none d-lg-table-cell">#</th>
                 <th class="text-center">{!! __('world.governorate_name') !!}</th>
                 <th class="text-center d-none d-lg-table-cell">{!! __('world.cities_count') !!}</th>
-                <th class="text-center">{!! __('world.status') !!}</th>
                 <th class="text-center">{!! __('general.actions') !!}</th>
             </tr>
         </thead>
@@ -18,7 +17,7 @@
                         <span class="details-control">
                             <i class="ft-plus-circle"></i>
                         </span>
-                        
+
                         <!-- Hidden Row Details for AJAX Modal -->
                         <div class="row-details d-none">
                             <div class="modal-details-card">
@@ -42,7 +41,7 @@
                                             <span class="detail-info-value text-muted"># {!! $governorate->id !!}</span>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="detail-item-modern">
                                         <div class="icon-circle"><i class="ft-layers"></i></div>
                                         <div class="detail-info-box">
@@ -51,19 +50,6 @@
                                         </div>
                                     </div>
 
-                                    <div class="detail-item-modern">
-                                        <div class="icon-circle"><i class="ft-activity"></i></div>
-                                        <div class="detail-info-box">
-                                            <span class="detail-info-label">{!! __('world.status') !!}</span>
-                                            <div class="detail-info-value">
-                                                @if($governorate->status == 'on'  ||  $governorate->status ==  1)
-                                                    <span class="badge badge-success badge-glow">{!! __('general.enable') !!}</span>
-                                                @else
-                                                    <span class="badge badge-danger badge-glow">{!! __('general.disabled') !!}</span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -71,15 +57,8 @@
 
                     <td class="col-lg-1 text-center d-none d-lg-table-cell">{!! $loop->iteration !!} </td>
                     <td class="col-lg-4 text-center font-weight-bold">{!! $governorate->name !!}</td>
-                    <td class="col-lg-2 text-center d-none d-lg-table-cell">{!! $governorate->cities_count !!}</td>
+                    <td class="col-lg-3 text-center d-none d-lg-table-cell">{!! $governorate->cities_count !!}</td>
                     <td class="col-lg-2 text-center">
-                        @if($governorate->status == 'on'  ||  $governorate->status ==  1)
-                            <span class="badge badge-success badge-glow">{!! __('general.enable') !!}</span>
-                        @else
-                            <span class="badge badge-danger badge-glow">{!! __('general.disabled') !!}</span>
-                        @endif
-                    </td>
-                    <td class="col-lg-3 text-center">
                         @include('dashboard.world.governorates.parts.actions')
                     </td>
                 </tr>

@@ -1,119 +1,90 @@
 @push('style')
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/vendors/css/forms/selects/select2.min.css') !!}">
-    @if (Lang() == 'ar')
-        <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css-rtl/my-select2-style.css') !!}">
-    @endif
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="{!! asset('assets/dashbaord/vendors/select2/select2.min.css') !!}">
+    <link rel="stylesheet" href="{!! asset('assets/dashbaord/css/filter.css') !!}">
 @endpush
 
-<div class="card">
-    <!-- begin: card header -->
-    <div class="card-header">
-        <h4 class="card-title" id="basic-layout-colored-form-control">
-            {!! __('general.filters') !!}
-        </h4>
-        <a class="heading-elements" data-action="collapse"><i class="ft-minus"></i></a>
-    </div>
-    <!-- end: card header -->
+<div class="query-bar-container">
+    <div class="query-bar js-query-bar">
+        <span class="query-bar-label">
+            <i class="mdi mdi-filter-variant"></i> {!! __('general.filters') !!}:
+        </span>
 
-    <!-- begin: card content  show-->
-    <div class="card-content collapse  hide">
-        <div class="card-body">
-            <form class="form">
-                <div class="form-body">
-
-                    <div class="row">
-
-                        <!-- begin: input -->
-                        <div class="form-group col-md-3">
-                            <label for="employee_id">{!! __('dailyReports.employee_id') !!}</label>
-                            <select class="employee_id_select form-control" id="employee_id" name="employee_id"
-                                style="width: 100%">
-                            </select>
+        <form class="js-filter-form d-flex align-items-center gap-2">
+            <!-- Keyword Search Chip -->
+            <div class="filter-chip js-filter-chip" data-target="emp_search_popover">
+                <i class="mdi mdi-account-search-outline"></i>
+                <span class="chip-text">{!! __('employees.employees') !!}</span>
+                <div class="filter-popover" id="emp_search_popover">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold mb-2">{!! __('employees.employees') !!}</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="keyword"
+                                placeholder="{!! __('general.search') !!}...">
                         </div>
-                        <!-- end: input -->
-
-                        <!-- begin: input -->
-                        <div class="form-group col-md-3">
-                            <label for="personal_id">{!! __('employees.personal_id') !!}</label>
-                            <input type="text" class="form-control" placeholder="{!! __('employees.personal_id') !!}"
-                                id="personal_id">
-                        </div>
-                        <!-- end: input -->
-
                     </div>
-                    <div class="form-actions" style="margin-top: -8px">
-                        <button type="button" class="btn btn-sm btn-secondary mr-1" id="employee_search_btn">
-                            <i class="la la-search"></i> {!! __('general.search') !!}
-                        </button>
-                        <button type="submit" class="btn btn-sm btn-light-dark mr-1" id="employee_reset_btn">
-                            <i class="la la-close"></i> {!! __('general.reset') !!}
+                    <div class="popover-actions">
+                        <button type="button" class="btn btn-primary btn-sm text-white js-apply-filter">
+                            {!! __('general.submit') !!}
                         </button>
                     </div>
                 </div>
+            </div>
 
-            </form>
-        </div>
+            <!-- Department Filter Chip -->
+            <div class="filter-chip js-filter-chip" data-target="dept_popover">
+                <i class="mdi mdi-office-building-outline"></i>
+                <span class="chip-text">{!! __('employees.department_id') !!}</span>
+                <div class="filter-popover" id="dept_popover">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold mb-2">{!! __('employees.department_id') !!}</label>
+                        <select class="form-control js-select2" name="department_id" style="width: 100%">
+                            <option value="">{!! __('general.show_all') !!}</option>
+                            @foreach ($departments as $department)
+                                <option value="{{ $department->id }}">{{ $department->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="popover-actions">
+                        <button type="button" class="btn btn-primary btn-sm text-white js-apply-filter">
+                            {!! __('general.submit') !!}
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status Filter Chip -->
+            <div class="filter-chip js-filter-chip" data-target="status_popover">
+                <i class="mdi mdi-shield-check-outline"></i>
+                <span class="chip-text">{!! __('employees.status_id') !!}</span>
+                <div class="filter-popover" id="status_popover">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold mb-2">{!! __('employees.status_id') !!}</label>
+                        <select class="form-control js-select2" name="employee_status_id" style="width: 100%">
+                            <option value="">{!! __('general.show_all') !!}</option>
+                            @foreach ($employeeStatuses as $status)
+                                <option value="{{ $status->id }}">{{ $status->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="popover-actions">
+                        <button type="button" class="btn btn-primary btn-sm text-white js-apply-filter">
+                            {!! __('general.submit') !!}
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reset Button -->
+            <div class="filter-chip reset-chip js-reset-btn">
+                <i class="mdi mdi-refresh"></i>
+                <span>{!! __('general.reset') !!}</span>
+            </div>
+        </form>
     </div>
-    <!-- end: card content -->
-
-
-</div> <!-- end: card  -->
+</div>
 
 @push('scripts')
-    <script src="{!! asset('assets/dashbaord') !!}/vendors/js/forms/select/select2.full.min.js" type="text/javascript"></script>
-    <script src="{!! asset('assets/dashbaord') !!}/js/scripts/forms/select/form-select2.js" type="text/javascript"></script>
-
-    <script type="text/javascript">
-        // select 2
-        var employeePath = "{{ route('dashboard.employees.autocomplete.employee') }}";
-
-        $(".employee_id_select").select2({
-            minimumInputLength: 1,
-            maximumInputLength: 20,
-            placeholder: '{!! __('general.select_from_list') !!}',
-            allowClear: true,
-            escapeMarkup: function(markup) {
-                return markup;
-            },
-            language: {
-                inputTooShort: function() {
-                    return "{!! __('general.inputTooShort') !!}";
-                },
-                inputTooLong: function() {
-                    return "{!! __('general.inputTooLong') !!}";
-                },
-                errorLoading: function() {
-                    return "{!! __('general.errorLoading') !!}";
-                },
-                noResults: function() {
-                    return "<span>{!! __('general.noResults2') !!}";
-                },
-                searching: function() {
-                    return " {!! __('general.searching') !!}";
-                }
-            },
-
-            ajax: {
-                url: employeePath,
-                dataType: 'json',
-                delay: 250,
-                processResults: function(data) {
-                    console.log(data);
-                    return {
-                        results: $.map(data, function(item) {
-
-                            return {
-                                text: "{{ app()->getLocale() }}" === 'en' ? item.employee_en : item
-                                    .employee_ar,
-
-                                id: item.id,
-                            }
-
-                        })
-                    };
-                },
-                cache: true
-            }
-        });
-    </script>
+    <script src="{!! asset('assets/dashbaord/vendors/select2/select2.min.js') !!}"></script>
+    <script src="{!! asset('assets/dashbaord/js/filter-system.js') !!}"></script>
 @endpush

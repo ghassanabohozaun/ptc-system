@@ -4,7 +4,7 @@
 @endsection
 
 @push('style')
-    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/ajax-table.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dashbaord/css/ajax-table.css') }}">
 @endpush
 
 @section('content')
@@ -51,6 +51,7 @@
 
             <!-- begin: content body -->
             <div class="content-body">
+                @include('dashboard.world.governorates.partials._search')
 
                 <section id="basic-form-layouts">
                     <div class="row match-height">
@@ -101,7 +102,7 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('assets/dashboard/js/ajax-table.js') }}"></script>
+    <script src="{{ asset('assets/dashbaord/js/ajax-table.js') }}"></script>
     <script>
         $(document).ready(function() {
             if (typeof initIndexTable === "function") {

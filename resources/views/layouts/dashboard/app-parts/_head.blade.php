@@ -24,8 +24,6 @@
 <link rel="stylesheet" href="{!! asset(path: 'vendor/fileInput/css/fileinput.min.css') !!}">
 <link rel="stylesheet" href="{!! asset('assets/dashbaord/vendors/fontawesome/css/all.min.css') !!}">
 
-
-
 @if (Lang() == 'ar')
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css-rtl/vendors.css') !!}">
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css-rtl/app.css') !!}">

@@ -45,6 +45,20 @@ class CityService
         return $city;
     }
 
+    // update city
+    public function updateCity($request, $id)
+    {
+        $city = self::getCity($id);
+        if (!$city) {
+            return false;
+        }
+        $city = $this->cityRepository->updateCity($request, $id);
+        if (!$city) {
+            return false;
+        }
+        return $city;
+    }
+
     // destroy city
     public function destroyCity($id)
     {
@@ -55,20 +69,6 @@ class CityService
         }
 
         $city = $this->cityRepository->destroyCity($city);
-        if (!$city) {
-            return false;
-        }
-        return $city;
-    }
-
-    // update city
-    public function updateCity($request, $id)
-    {
-        $city = self::getCity($id);
-        if (!$city) {
-            return false;
-        }
-        $city = $this->cityRepository->updateCity($request, $id);
         if (!$city) {
             return false;
         }

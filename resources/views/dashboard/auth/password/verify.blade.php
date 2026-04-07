@@ -5,7 +5,7 @@
 @endsection
 
 @push('style')
-    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/login-modern.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dashbaord/css/login-modern.css') }}">
 @endpush
 
 @section('content')
@@ -19,8 +19,8 @@
                 $targetLocale = $currentLocale == 'ar' ? 'en' : 'ar';
                 $targetNative = LaravelLocalization::getSupportedLocales()[$targetLocale]['native'];
             @endphp
-            <a href="{{ LaravelLocalization::getLocalizedURL($targetLocale, null, [], true) }}"
-                class="enterprise-lang-toggle" id="login-rtl-toggle">
+            <a href="{{ LaravelLocalization::getLocalizedURL($targetLocale, null, [], true) }}" class="enterprise-lang-toggle"
+                id="login-rtl-toggle">
                 <i class="la la-language" style="font-size: 1.2rem;"></i>
                 <span>{{ $targetNative }}</span>
             </a>
@@ -86,4 +86,3 @@
         </div>
     </div>
 @endsection
-

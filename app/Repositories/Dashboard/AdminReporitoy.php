@@ -24,7 +24,11 @@ class AdminReporitoy
     // get admins
     public function getAdmins()
     {
-        $admins = Admin::orderByDesc('created_at')
+        $admins = Admin::when(request()->keyword, function ($query) {
+            $query->where('name', 'LIKE', '%' . request()->keyword . '%')
+                ->orWhere('email', 'LIKE', '%' . request()->keyword . '%');
+        })
+        ->orderByDesc('created_at')
         ->select('id', 'name', 'email', 'password', 'status', 'role_id', 'photo', 'created_at')
         ->paginate(10);
         return $admins;

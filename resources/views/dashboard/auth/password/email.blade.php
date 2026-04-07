@@ -5,7 +5,7 @@
 @endsection
 
 @push('style')
-    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/login-modern.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dashbaord/css/login-modern.css') }}">
 @endpush
 
 @section('content')
@@ -19,8 +19,8 @@
                 $targetLocale = $currentLocale == 'ar' ? 'en' : 'ar';
                 $targetNative = LaravelLocalization::getSupportedLocales()[$targetLocale]['native'];
             @endphp
-            <a href="{{ LaravelLocalization::getLocalizedURL($targetLocale, null, [], true) }}"
-                class="enterprise-lang-toggle" id="login-rtl-toggle">
+            <a href="{{ LaravelLocalization::getLocalizedURL($targetLocale, null, [], true) }}" class="enterprise-lang-toggle"
+                id="login-rtl-toggle">
                 <i class="la la-language" style="font-size: 1.2rem;"></i>
                 <span>{{ $targetNative }}</span>
             </a>
@@ -54,8 +54,8 @@
                         <label class="form-label">{!! __('auth.you_email_address') !!}</label>
                         <div class="input-wrapper">
                             <input type="email" class="form-control-modern @error('email') is-invalid @enderror"
-                                id="email" name="email" placeholder="email@example.com"
-                                required autofocus autocomplete="off">
+                                id="email" name="email" placeholder="email@example.com" required autofocus
+                                autocomplete="off">
                             <i class="la la-envelope input-icon"></i>
                         </div>
                         @error('email')
@@ -78,4 +78,3 @@
         </div>
     </div>
 @endsection
-

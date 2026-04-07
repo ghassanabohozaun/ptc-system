@@ -4,7 +4,7 @@
 @endsection
 
 @push('style')
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/permissions.css') !!}">
+    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashboard/css/permissions.css') !!}">
     <link rel="stylesheet" href="{{ asset('assets/dashboard/css/ajax-table.css') }}">
 @endpush
 
@@ -40,11 +40,9 @@
                 <!-- begin: content header right-->
                 <div class="content-header-right col-md-6 col-12">
                     <div class="float-md-right mb-1">
-                        <button type="button" class="btn btn-info  btn-glow px-2" data-toggle="modal"
-                            data-target="#createRoleModal">
+                        <a href="{!! route('dashboard.roles.create') !!}" class="btn btn-info  btn-glow px-2">
                             {!! __('roles.create_new_role') !!}
-                        </button>
-
+                        </a>
                     </div>
                 </div>
                 <!-- end: content header right-->
@@ -53,6 +51,7 @@
 
             <!-- begin: content body -->
             <div class="content-body">
+                @include('dashboard.roles.partials._search')
 
                 <section id="basic-form-layouts">
                     <div class="row match-height">
@@ -103,7 +102,7 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('assets/dashboard/js/ajax-table.js') }}"></script>
+    <script src="{{ asset('assets/dashbaord/js/ajax-table.js') }}"></script>
     <script>
         $(document).ready(function() {
             if (typeof initIndexTable === "function") {

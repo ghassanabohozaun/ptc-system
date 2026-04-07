@@ -23,12 +23,12 @@ class CityRepository
     // get cities
     public function getCities()
     {
-        $cities = City::when(!empty(request()->keyword), function ($query) {
-            $query->where('name', 'like', '%' . request()->keyword . '%');
-        })
+        $cities = City::with('governorate')
+            ->filter(request()->only(['keyword', 'governorate_id']), ['name'], ['governorate_id'])
             ->orderByDesc('id')
-            ->select('id', 'name', 'governorate_id')
-            ->paginate(10);
+            ->paginate(10)
+            ->withQueryString();
+
         return $cities;
     }
 

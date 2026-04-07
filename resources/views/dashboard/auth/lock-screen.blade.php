@@ -5,7 +5,7 @@
 @endsection
 
 @push('style')
-    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/login-modern.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dashbaord/css/login-modern.css') }}">
     <style>
         .lock-avatar-wrapper {
             margin: 0 auto 1.5rem;
@@ -13,9 +13,10 @@
             padding: 6px;
             background: #fff;
             border-radius: 50%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            border: 1px solid rgba(0,0,0,0.04);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.04);
         }
+
         .lock-avatar {
             width: 100%;
             height: 100%;
@@ -23,6 +24,7 @@
             object-fit: cover;
             display: block;
         }
+
         .lock-user-name {
             font-size: 1.5rem;
             font-weight: 800;
@@ -31,6 +33,7 @@
             text-align: center;
             letter-spacing: -0.5px;
         }
+
         .lock-status {
             font-size: 0.875rem;
             color: var(--text-muted);
@@ -41,6 +44,7 @@
             justify-content: center;
             gap: 6px;
         }
+
         .status-indicator {
             width: 8px;
             height: 8px;
@@ -79,8 +83,9 @@
                         $charIndex = abs(crc32($user->name)) % count($colors);
                         $bgColor = $colors[$charIndex];
                     @endphp
-                    
-                    <div class="lock-avatar-wrapper" style="width: 85px; height: 85px; padding: 4px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); margin-bottom: 1.2rem;">
+
+                    <div class="lock-avatar-wrapper"
+                        style="width: 85px; height: 85px; padding: 4px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); margin-bottom: 1.2rem;">
                         @if ($photoUrl)
                             <img src="{!! $photoUrl !!}" alt="User Avatar" class="lock-avatar">
                         @else
@@ -90,15 +95,17 @@
                             </div>
                         @endif
                     </div>
-                    
-                    <h2 class="login-title" style="font-size: 22px; margin-bottom: 4px;">{{ $user ? $user->getTranslation('name', Lang()) : 'Admin' }}</h2>
+
+                    <h2 class="login-title" style="font-size: 22px; margin-bottom: 4px;">
+                        {{ $user ? $user->getTranslation('name', Lang()) : 'Admin' }}</h2>
                     <div class="lock-status" style="margin-bottom: 1.5rem;">
                         <span class="status-indicator"></span>
                         <span style="font-size: 13px; color: var(--text-muted);">{!! __('dashboard.active_session') ?? 'Secured Session' !!}</span>
                     </div>
                 </div>
 
-                <form id="lock-form" action="{{ route('dashboard.unlock.screen') }}" method="POST" novalidate autocomplete="off" class="modern-form">
+                <form id="lock-form" action="{{ route('dashboard.unlock.screen') }}" method="POST" novalidate
+                    autocomplete="off" class="modern-form">
                     @csrf
                     <div class="form-group">
                         <label class="form-label">{!! __('auth.enter_you_password') !!}</label>
@@ -144,5 +151,5 @@
             }
         };
     </script>
-    <script src="{{ asset('assets/dashboard/js/lock-screen-modern.js') }}"></script>
+    <script src="{{ asset('assets/dashbaord/js/lock-screen-modern.js') }}"></script>
 @endpush

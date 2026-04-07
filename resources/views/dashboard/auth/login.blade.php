@@ -5,7 +5,7 @@
 @endsection
 
 @push('style')
-    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/login-modern.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dashbaord/css/login-modern.css') }}">
 @endpush
 
 @section('content')

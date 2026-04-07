@@ -8,7 +8,7 @@ use Spatie\Translatable\HasTranslations;
 
 class City extends Model
 {
-    use SoftDeletes, HasTranslations;
+    use SoftDeletes, HasTranslations, \App\Traits\Dashboard\Filterable;
     protected $table = 'cities';
     protected $fillable = ['name', 'governorate_id'];
     public $timestamps = false;

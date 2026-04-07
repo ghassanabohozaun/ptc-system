@@ -4,24 +4,25 @@
 @endsection
 
 @push('style')
-    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/employee-profile.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dashbaord/css/employee-profile.css') }}">
 @endpush
 
 @section('content')
     <div class="app-content content profile-container">
         <div class="content-wrapper">
-            
+
             <!-- Ultra Premium Floating Header -->
             <div class="elite-header-card">
                 <div class="elite-header-bg-accent"></div>
-                
+
                 <div class="elite-profile-main">
                     <div class="elite-avatar-wrapper">
-                        <img src="{!! $employee->photo ? asset('uploads/employeesPhotos/' . $employee->photo) : asset('assets/dashboard/images/portrait/small/avatar-s-19.png') !!}" 
-                             class="elite-avatar-img" alt="avatar">
+                        <img src="{!! $employee->photo
+                            ? asset('uploads/employeesPhotos/' . $employee->photo)
+                            : asset('assets/dashbaord/images/portrait/small/avatar-s-19.png') !!}" class="elite-avatar-img" alt="avatar">
                         <span class="elite-status-indicator"></span>
                     </div>
-                    
+
                     <div class="elite-info-details">
                         <h2 class="elite-employee-name">
                             {!! $employee->EmployeeFullName() !!}
@@ -30,7 +31,7 @@
                             <i class="la la-diamond"></i>
                             {!! $employee->employeeJobDetails?->title ?? '--' !!}
                         </p>
-                        
+
                         <!-- Floating Action Button -->
                         <div class="mt-15px">
                             <a href="{!! route('dashboard.employees.edit', $employee->id) !!}" class="btn btn-update-elite round px-4 py-2">
@@ -61,7 +62,7 @@
                             <p class="elite-stat-value">{!! $employee->employeeJobDetails?->supervisor ?? '--' !!}</p>
                         </div>
                     </div>
-                    
+
                     <div class="elite-stat-glass">
                         <div class="elite-stat-icon stat-icon-orange">
                             <i class="la la-calendar-check-o"></i>
@@ -84,5 +85,3 @@
         </div>
     </div>
 @endsection
-
-

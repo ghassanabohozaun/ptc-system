@@ -8,7 +8,7 @@ use Spatie\Translatable\HasTranslations;
 
 class Governorate extends Model
 {
-    use SoftDeletes, HasTranslations;
+    use SoftDeletes, HasTranslations, \App\Traits\Dashboard\Filterable;
 
     protected $table = 'governorates';
     protected $fillable = ['name', 'status'];

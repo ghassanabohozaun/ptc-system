@@ -4,7 +4,7 @@
 @endsection
 
 @push('style')
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashboard/css/dashboard-home.css') !!}">
+    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/dashboard-home.css') !!}">
 @endpush
 
 @section('content')

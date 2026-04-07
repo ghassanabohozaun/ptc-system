@@ -28,11 +28,14 @@ class EmployeesController extends Controller
     {
         $title = __('employees.employees');
         $employees = $this->employeeService->getAll($request);
+        $departments = $this->departmentService->getActiveAll();
+        $employeeStatuses = $this->employeeStatusService->getActiveAll();
+
         if ($request->ajax()) {
             return view('dashboard.employees.employees.partials._table', compact('employees'))->render();
         }
 
-        return view('dashboard.employees.employees.index', compact('title', 'employees'));
+        return view('dashboard.employees.employees.index', compact('title', 'employees', 'departments', 'employeeStatuses'));
     }
 
     // create

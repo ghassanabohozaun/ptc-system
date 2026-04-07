@@ -46,7 +46,7 @@ return [
     'update_city' => 'تعديل المدينة',
     'cities' => 'المدن',
     'show_all_cities' => 'عرض جميع المدن',
-    'cites_count' => 'عدد المدن',
+    'cities_count' => 'عدد المدن',
 
     'city_name' => 'اسم المدينة',
     'city_name_ar' => 'اسم المدينة بالعربي',

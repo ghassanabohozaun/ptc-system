@@ -24,11 +24,10 @@ class GovernorateRepository
     public function getgovernoraties()
     {
         $governorates = Governorate::withCount(['cities'])
-            ->when(!empty(request()->keyword), function ($q) {
-                $q->where('name', 'like', '%' . request()->keyword . '%');
-            })
+            ->filter(request()->only(['keyword']), ['name'])
             ->orderByDesc('id')
-            ->paginate(config('app.pagination'));
+            ->paginate(2)
+            ->withQueryString();
 
         return $governorates;
     }

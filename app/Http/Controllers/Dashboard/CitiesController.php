@@ -69,8 +69,6 @@ class CitiesController extends Controller
     // update
     public function update(CityRequest $request, string $id)
     {
-        $city = $this->cityService->getCity($id);
-
         $city = $this->cityService->updateCity($request, $id);
         if (!$city) {
             return response()->json(['status' => false], 500);

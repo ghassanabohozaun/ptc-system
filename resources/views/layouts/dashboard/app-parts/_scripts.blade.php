@@ -33,7 +33,7 @@
         <script src="{!! asset('vendor/fileInput/js/locales/LANG.js') !!}" type="text/javascript"></script>
         <script src="{!! asset('vendor/fileInput/js/locales/ar.js') !!}" type="text/javascript"></script>
     @endif
-    <script src="{!! asset('assets/dashboard/js/ajax-table.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('assets/dashbaord/js/ajax-table.js') !!}" type="text/javascript"></script>
     {{-- end dataTables --}}
     <script type="text/javascript">
         $.ajaxSetup({

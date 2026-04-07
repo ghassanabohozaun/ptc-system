@@ -46,7 +46,7 @@ return [
     'update_city' => 'Update City',
     'cities' => 'Cities',
     'show_all_cities' => 'Show All Cities',
-    'cites_count' => 'Cities Count',
+    'cities_count' => 'Cities Count',
 
     'city_name' => 'City Name',
     'city_name_ar' => 'Arabic City Name',

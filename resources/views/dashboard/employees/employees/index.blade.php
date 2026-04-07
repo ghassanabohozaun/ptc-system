@@ -4,7 +4,7 @@
 @endsection
 
 @push('style')
-    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/ajax-table.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dashbaord/css/ajax-table.css') }}">
 @endpush
 
 @section('content')
@@ -38,9 +38,8 @@
 
                 <!-- begin: content header right-->
                 <div class="content-header-right col-md-6 col-12">
-                    <div class="float-md-right mb-2">
-                        <a href="{{ route('dashboard.employees.create') }}" class="btn btn-info btn-glow px-2">
-                            <i class="la la-plus"></i>
+                    <div class="float-md-right mb-1">
+                        <a href="{!! route('dashboard.employees.create') !!}" class="btn btn-info btn-glow px-2">
                             {!! __('employees.create_new_employee') !!}
                         </a>
                     </div>
@@ -50,13 +49,6 @@
             </div> <!-- end :content header -->
 
             <!-- begin: content body -->
-            <div class="row" style="display: flex ; justify-content: center;">
-                <div class="col-md-12">
-                    <div class="content-body">
-
-                        <section id="basic-form-layouts">
-                            <div class="row match-height">
-                                <div class="col-md-12">
 
                                     @include('dashboard.employees.employees.partials._search')
 
@@ -88,7 +80,7 @@
 
 
 @push('scripts')
-    <script src="{{ asset('assets/dashboard/js/ajax-table.js') }}"></script>
+    <script src="{{ asset('assets/dashbaord/js/ajax-table.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             // Initialize the Premium AJAX Table

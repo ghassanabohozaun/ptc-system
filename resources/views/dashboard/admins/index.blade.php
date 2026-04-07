@@ -4,7 +4,7 @@
 @endsection
 
 @push('style')
-    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/ajax-table.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dashbaord/css/ajax-table.css') }}">
 @endpush
 
 @section('content')
@@ -12,7 +12,6 @@
         <div class="content-wrapper">
             <!-- begin: content header -->
             <div class="content-header row">
-
                 <!-- begin: content header left-->
                 <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
                     <h3 class="content-header-title mb-0 d-inline-block">{!! __('admins.admins') !!}</h3>
@@ -29,7 +28,6 @@
                                         {!! __('admins.admins') !!}
                                     </a>
                                 </li>
-
                             </ol>
                         </div>
                     </div>
@@ -43,15 +41,14 @@
                             data-target="#createAdminModal">
                             {!! __('admins.create_new_admin') !!}
                         </button>
-
                     </div>
                 </div>
                 <!-- end: content header right-->
-
             </div> <!-- end :content header -->
 
             <!-- begin: content body -->
             <div class="content-body">
+                @include('dashboard.admins.partials._search')
 
                 <section id="basic-form-layouts">
                     <div class="row match-height">
@@ -102,7 +99,7 @@
     @include('dashboard.admins.modals.details')
 @endsection
 @push('scripts')
-    <script src="{{ asset('assets/dashboard/js/ajax-table.js') }}"></script>
+    <script src="{{ asset('assets/dashbaord/js/ajax-table.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             console.log('Admin Index Table Initializing...');

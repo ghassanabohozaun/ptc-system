@@ -5,7 +5,7 @@
 @endsection
 
 @push('style')
-    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/login-modern.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dashbaord/css/login-modern.css') }}">
 @endpush
 
 @section('content')
@@ -19,8 +19,8 @@
                 $targetLocale = $currentLocale == 'ar' ? 'en' : 'ar';
                 $targetNative = LaravelLocalization::getSupportedLocales()[$targetLocale]['native'];
             @endphp
-            <a href="{{ LaravelLocalization::getLocalizedURL($targetLocale, null, [], true) }}"
-                class="enterprise-lang-toggle" id="login-rtl-toggle">
+            <a href="{{ LaravelLocalization::getLocalizedURL($targetLocale, null, [], true) }}" class="enterprise-lang-toggle"
+                id="login-rtl-toggle">
                 <i class="la la-language" style="font-size: 1.2rem;"></i>
                 <span>{{ $targetNative }}</span>
             </a>
@@ -77,8 +77,10 @@
                     <div class="form-group">
                         <label class="form-label">{!! __('auth.enter_confirm_password') !!}</label>
                         <div class="input-wrapper">
-                            <input type="password" class="form-control-modern @error('confirm_password') is-invalid @enderror"
-                                id="confirm_password" name="confirm_password" placeholder="••••••••" required autocomplete="new-password">
+                            <input type="password"
+                                class="form-control-modern @error('confirm_password') is-invalid @enderror"
+                                id="confirm_password" name="confirm_password" placeholder="••••••••" required
+                                autocomplete="new-password">
                             <i class="la la-check-double input-icon"></i>
                         </div>
                         @error('confirm_password')
@@ -93,7 +95,7 @@
 
                     <div style="text-align: center; margin-top: 24px;">
                         <a href="{!! route('dashboard.get.login') !!}" class="forgot-password">
-                             {!! __('auth.login') !!}
+                            {!! __('auth.login') !!}
                         </a>
                     </div>
                 </form>
@@ -101,4 +103,3 @@
         </div>
     </div>
 @endsection
-

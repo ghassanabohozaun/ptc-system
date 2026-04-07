@@ -31,7 +31,7 @@
             idle_limit: 300 // 5 minutes
         };
     </script>
-    <script src="{{ asset('assets/dashboard/js/lock-screen-modern.js') }}"></script>
+    <script src="{{ asset('assets/dashbaord/js/lock-screen-modern.js') }}"></script>
     @stack('scripts')
     @livewireScripts
 </body>
