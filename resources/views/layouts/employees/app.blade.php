@@ -32,15 +32,15 @@
 
     <!-- End plugin css for this page -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="{!! asset('assets/employees/css/style.css') !!}">
+    <link rel="stylesheet" href="{!! asset('assets/employees/css/style.css') !!}?v={{ file_exists(public_path('assets/employees/css/style.css')) ? filemtime(public_path('assets/employees/css/style.css')) : time() }}">
     <!-- endinject -->
 
     @if (Lang() == 'ar')
-        <link rel="stylesheet" href="{!! asset('assets/employees/css/vertical-layout-light/style-rtl.css') !!}">
+        <link rel="stylesheet" href="{!! asset('assets/employees/css/vertical-layout-light/style-rtl.css') !!}?v={{ file_exists(public_path('assets/employees/css/vertical-layout-light/style-rtl.css')) ? filemtime(public_path('assets/employees/css/vertical-layout-light/style-rtl.css')) : time() }}">
     @endif
 
     <!-- Premium Employee Styles -->
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/employees/css/employee-premium.css') !!}">
+    <link rel="stylesheet" type="text/css" href="{!! asset('assets/employees/css/employee-premium.css') !!}?v={{ file_exists(public_path('assets/employees/css/employee-premium.css')) ? filemtime(public_path('assets/employees/css/employee-premium.css')) : time() }}">
 
 
     <style>

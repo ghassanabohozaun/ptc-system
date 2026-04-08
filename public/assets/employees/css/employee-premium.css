@@ -1142,6 +1142,9 @@ p, span, div, li, a { font-size: 0.95rem !important; }
 .navbar.default-layout {
     height: 70px !important;
     background: #fff !important;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,0.05) !important;
+    border-bottom: 1px solid rgba(0,0,0,0.05) !important;
+    transition: all 0.3s ease;
 }
 
 .navbar .navbar-brand-wrapper {
