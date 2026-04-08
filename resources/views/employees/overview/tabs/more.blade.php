@@ -27,15 +27,15 @@
                         <span
                             class="profile-badge @if ($employee->employeeJobDetails->employee_status_id == 1) bg-label-success @else bg-label-danger @endif"
                             style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
-                            {!! $employee->employeeJobDetails->employeeStatus->name ?? 'Active' !!}
+                            {!! $employee->employeeJobDetails->employeeStatus->name ?? __('general.active') !!}
                         </span>
                     </div>
                     <p class="text-muted mb-3 d-flex align-items-center gap-2">
                         <i class="mdi mdi-briefcase-variant-outline"></i>
-                        {!! $employee->employeeJobDetails->title ?? 'Employee' !!}
+                        {!! $employee->employeeJobDetails->title ?? __('dashboard.employee') !!}
                         <span class="mx-2 text-silver opacity-50">|</span>
                         <i class="mdi mdi-office-building-outline"></i>
-                        {!! $employee->employeeJobDetails->department->name ?? 'No Department' !!}
+                        {!! $employee->employeeJobDetails->department->name ?? __('dashboard.no_department_found') !!}
                     </p>
                     <div class="d-flex flex-wrap gap-4">
                         <div class="d-flex align-items-center gap-2">
@@ -100,7 +100,7 @@
                         <span class="info-value">{!! $employee->employeeJobDetails->appointment_date ?? '---' !!}</span>
                     </div>
                     <div class="info-item">
-                        <span class="info-label">{!! __('employees.contact_expire_date') !!}</span>
+                        <span class="info-label">{!! __('employees.contract_expiry_date') !!}</span>
                         <span class="info-value text-danger">{!! $employee->employeeJobDetails->contact_expire_date ?? '---' !!}</span>
                     </div>
                     <div class="info-item">

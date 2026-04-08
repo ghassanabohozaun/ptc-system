@@ -57,4 +57,6 @@ return [
     'pending_tasks' => 'Pending Tasks',
     'unread_messages' => 'Unread Messages',
     'completed_tasks' => 'Completed Tasks',
+    'what_do_you_need_to_do_today' => 'What do you need to do today?',
+    'no_department_found' => 'No Department assigned yet',
 ];

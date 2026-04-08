@@ -27,7 +27,7 @@
         <form wire:submit.prevent="addTask">
             <div class="add-items d-flex mb-0 gap-2">
                 <input type="text" class="form-control rounded-pill px-3"
-                    placeholder="{{ __('What do you need to do today?') }}" wire:model="newTaskTitle">
+                    placeholder="{{ __('dashboard.what_do_you_need_to_do_today') }}" wire:model="newTaskTitle">
                 <button class="btn btn-primary btn-icon rounded-circle shadow-sm" id="add-task" type="submit"
                     wire:loading.attr="disabled">
                     <i class="mdi mdi-plus"></i>

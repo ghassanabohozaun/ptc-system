@@ -234,4 +234,5 @@ return [
     'details_missing_desc' => 'Basic contract data has been added, but detailed info (duties and terms) is not yet available.',
     'no_contract_info_yet' => 'No contract information has been added for this employee yet.',
     'currently_active' => 'Currently Active',
+    'bank_details' => 'Bank Details',
 ];

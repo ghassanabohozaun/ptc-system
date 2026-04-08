@@ -204,4 +204,6 @@ return [
     'select_status' => 'اختر الحالة',
     'apply' => 'تطبيق',
     'reset_all' => 'إعادة ضبط الكل',
+    'location' => 'الموقع',
+    'recent_activity_summary' => 'ملخص النشاط الأخير',
 ];
