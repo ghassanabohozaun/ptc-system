@@ -24,6 +24,7 @@
     <!-- endinject -->
     <link rel="apple-touch-icon" href="{!! asset('uploads/settings/' . setting()->favicon) !!}">
     <link rel="shortcut icon" type="image/x-icon" href="{!! asset('uploads/settings/' . setting()->favicon) !!}">
+    @stack('style')
 </head>
 
 <body class="{!! Lang() == 'en' ? 'with-welcome-text' : 'rtl' !!}">
@@ -42,6 +43,7 @@
     <script src="{!! asset('assets/employees/') !!}/js/hoverable-collapse.js"></script>
     <script src="{!! asset('assets/employees/') !!}/js/todolist.js"></script>
     <!-- endinject -->
+    @stack('script')
 </body>
 
 </html>

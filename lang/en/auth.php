@@ -62,4 +62,5 @@ return [
     'unlocking' => 'Unlocking...',
     'unlock_success' => 'Session unlocked successfully.',
     'sign_in_different_account' => 'Sign in with a different account',
+    'personal_id' => 'Personal ID',
 ];

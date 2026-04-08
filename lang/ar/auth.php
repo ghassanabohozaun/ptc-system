@@ -62,4 +62,5 @@ return [
     'unlocking' => 'جاري فتح القفل...',
     'unlock_success' => 'تم فتح الجلسة بنجاح.',
     'sign_in_different_account' => 'تسجيل الدخول بحساب آخر',
+    'personal_id' => 'رقم هوية الموظف',
 ];

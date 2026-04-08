@@ -1,56 +1,105 @@
 @extends('layouts.employees.auth')
+
 @section('title')
     {!! __('auth.login') !!}
 @endsection
-@section('content')
-    <div class="container-scroller">
-        <div class="container-fluid page-body-wrapper full-page-wrapper">
-            <div class="content-wrapper d-flex align-items-center auth px-0">
-                <div class="row w-100 mx-0">
-                    <div class="col-lg-4 mx-auto">
-                        <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-                            @if (setting()->logo)
-                                <div class="brand-logo">
-                                    <img src="{!! asset('uploads/settings/' . setting()->logo) !!}" alt="logo">
-                                </div>
-                            @else
-                                <div class="brand-logo">
-                                    <h2 class="brand-text">{!! setting()->site_name !!}</h2>
-                                </div>
-                            @endif
 
-                            <br /><br />
-                            <h6 class="fw-light">{!! __('auth.sign_in_to_continue') !!}</h6>
-                            <form action="{!! route('employees.post.login') !!}" method="post" class="form-horizontal"
-                                enctype="multipart/form-data" role="form">
-                                @csrf
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" name="personal_id"
-                                        id='personal_id' placeholder="Username">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" name="password"
-                                        id='password' placeholder="Password">
-                                </div>
-                                <div class="mt-3 d-grid gap-2">
-                                    <button type="submit" class="btn btn-block btn-primary btn-lg fw-medium auth-form-btn">
-                                        {!! __('auth.login') !!}
-                                    </button>
-                                </div>
-                                <div class="my-2 d-flex justify-content-between align-items-center">
-                                    <div class="form-check">
-                                        <label class="form-check-label text-muted">
-                                            <input type="checkbox" class="form-check-input"> {!! __('auth.remmber_me') !!}</label>
-                                    </div>
-                                    <a href="javascript:void(0)" class="auth-link text-black">{!! __('auth.forget_password') !!}</a>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- content-wrapper ends -->
+@push('style')
+    <link rel="stylesheet" href="{{ asset('assets/employees/css/login-modern.css') }}">
+@endpush
+
+@section('content')
+    <div class="login-main-wrapper" dir="{{ Config::get('app.locale') == 'ar' ? 'rtl' : 'ltr' }}"
+        data-textdirection="{{ Config::get('app.locale') == 'ar' ? 'rtl' : 'ltr' }}">
+
+        <!-- 1. Visual/Welcome Side (Hidden on Mobile) -->
+        <div class="welcome-side">
+            <!-- Welcome text removed per user request -->
         </div>
-        <!-- page-body-wrapper ends -->
+
+        <!-- 2. Form Side / Side Pane -->
+        <div class="form-side">
+            <!-- Language Toggle -->
+            <div class="lang-toggle-container">
+                @php
+                    $currentLocale = Lang();
+                    $targetLocale = $currentLocale == 'ar' ? 'en' : 'ar';
+                    $targetNative = LaravelLocalization::getSupportedLocales()[$targetLocale]['native'];
+                @endphp
+                <a href="{{ LaravelLocalization::getLocalizedURL($targetLocale, null, [], true) }}" class="btn-lang-toggle">
+                    <i class="fa fa-language"></i>
+                    <span>{{ $targetNative }}</span>
+                </a>
+            </div>
+
+            <div class="login-form-box">
+                <!-- Brand logo -->
+                <div class="brand-logo-modern">
+                    @if (setting()->logo)
+                        <img src="{!! asset('uploads/settings/' . setting()->logo) !!}" alt="{{ setting()->site_name }}">
+                    @else
+                        <h2 style="color: var(--primary); font-weight: 900;">{!! setting()->site_name !!}</h2>
+                    @endif
+                </div>
+
+                <div class="form-header-modern">
+                    <h2>{!! __('auth.login') !!}</h2>
+                    <p>{!! __('auth.sign_in_to_continue') !!}</p>
+                </div>
+
+                @if (session('error'))
+                    <div class="alert alert-danger mb-4 py-3"
+                        style="font-size: 0.82rem; border-radius: 12px; border: none; background: #fff1f2; color: #be123c;">
+                        <i class="fa fa-exclamation-triangle me-2"></i> {{ session('error') }}
+                    </div>
+                @endif
+
+                <form action="{!! route('employees.post.login') !!}" method="post" class="modern-form" autocomplete="off">
+                    @csrf
+
+                    <!-- Username -->
+                    <div class="form-group-modern">
+                        <label class="form-label-modern">{!! __('auth.personal_id') !!}</label>
+                        <div class="input-container-modern">
+                            <input type="text" class="form-control-modern @error('personal_id') is-invalid @enderror"
+                                name="personal_id" id="personal_id" placeholder="{!! __('auth.personal_id') !!}" required autofocus
+                                autocomplete="off">
+                            <i class="fa fa-user-o input-icon-modern"></i>
+                        </div>
+                        @error('personal_id')
+                            <span
+                                style="color: #e11d48; font-size: 0.75rem; margin-top: 5px; display: block;">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group-modern">
+                        <label class="form-label-modern">{!! __('auth.password') !!}</label>
+                        <div class="input-container-modern">
+                            <input type="password" class="form-control-modern @error('password') is-invalid @enderror"
+                                name="password" id="password" placeholder="••••••••" required autocomplete="new-password">
+                            <i class="fa fa-lock input-icon-modern"></i>
+                        </div>
+                        @error('password')
+                            <span
+                                style="color: #e11d48; font-size: 0.75rem; margin-top: 5px; display: block;">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="login-options-modern">
+                        <label class="remember-modern">
+                            <input type="checkbox" name="remember">
+                            <span>{!! __('auth.remmber_me') !!}</span>
+                        </label>
+                        {{-- <a href="javascript:void(0)" class="forgot-modern">{!! __('auth.forget_password') !!}</a> --}}
+                    </div>
+
+                    <button type="submit" class="btn-login-modern">
+                        <span>{!! __('auth.login') !!}</span>
+                        <i class="fa fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
 @endsection
