@@ -37,7 +37,7 @@ class TodoList extends Component
         ]);
 
         $this->newTaskTitle = '';
-        flash()->success(__('Task added successfully.'));
+        flash()->success(__('general.add_success_message'));
     }
 
     public function toggleTask($taskId)
@@ -48,7 +48,7 @@ class TodoList extends Component
     public function deleteTask($taskId)
     {
         $this->taskService->deleteTask($taskId);
-        flash()->success(__('Task deleted successfully.'));
+        flash()->success(__('general.delete_success_message'));
     }
 
     public function render()

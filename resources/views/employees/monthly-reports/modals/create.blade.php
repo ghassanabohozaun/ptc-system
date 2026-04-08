@@ -1,5 +1,5 @@
-<div class="modal modal-pop fade" id="createMonthlyReportModal" tabindex="-1" aria-labelledby="createMonthlyReportModalLabel"
-    aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+<div class="modal modal-pop fade" id="addMonthlyReportModal" tabindex="-1" role="dialog"
+    aria-labelledby="addMonthlyReportModalLabel" data-bs-backdrop="static" data-bs-keyboard="false">
 
     <div class="modal-dialog modal-md" role="document">
         <form class="form" action="{!! route('employees.monthlyReports.store') !!}" method="POST" enctype="multipart/form-data"
@@ -121,7 +121,7 @@
 
             // open create modal
             $('body').on('click', '#create_monthly_report_btn', function(e) {
-                $('#createMonthlyReportModal').modal('show');
+                $('#addMonthlyReportModal').modal('show');
             });
 
 
@@ -136,14 +136,14 @@
 
             // cancel
             $('body').on('click', '#cancel_monthly_report_btn', function(e) {
-                $('#createMonthlyReportModal').modal('hide');
+                $('#addMonthlyReportModal').modal('hide');
                 $('#create_monthly_report_form')[0].reset();
                 resetCreateForm();
             });
 
             // hide
-            $('#createMonthlyReportModal').on('hidden.bs.modal', function(e) {
-                $('#createMonthlyReportModal').modal('hide');
+            $('#addMonthlyReportModal').on('hidden.bs.modal', function(e) {
+                $('#addMonthlyReportModal').modal('hide');
                 $('#create_monthly_report_form')[0].reset();
                 resetCreateForm();
             });
@@ -170,14 +170,19 @@
                     contentType: false,
                     beforeSend: function() {
                         $('.spinner_loading').removeClass('d-none');
+                        $('#loading-indicator').show();
                     },
                     success: function(data) {
-                        console.log(data);
                         if (data.status == 'added') {
-                            $('#myTable').load(location.href + (' #myTable'));
+                            if (typeof window.fetch_data === 'function') {
+                                window.fetch_data(1);
+                            } else {
+                                $('#myTable').load(location.href + (' #myTable'));
+                            }
                             $('#create_monthly_report_form')[0].reset();
                             resetCreateForm();
-                            $('#createMonthlyReportModal').modal('hide');
+                            if (document.activeElement) { document.activeElement.blur(); }
+                            $('#addMonthlyReportModal').modal('hide');
                             flasher.success("{!! __('general.add_success_message') !!}");
                         } else if (data.status == 'error') {
                             flasher.error("{!! __('general.add_error_message') !!}");

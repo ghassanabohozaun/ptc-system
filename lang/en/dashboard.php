@@ -59,4 +59,5 @@ return [
     'completed_tasks' => 'Completed Tasks',
     'what_do_you_need_to_do_today' => 'What do you need to do today?',
     'no_department_found' => 'No Department assigned yet',
+    'no_tasks_found' => 'No tasks found',
 ];

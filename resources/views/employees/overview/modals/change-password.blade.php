@@ -1,5 +1,5 @@
 <div class="modal modal-pop fade" id="employeeChangePasswordModal" tabindex="-1" aria-labelledby="employeeChangePasswordModalLabel"
-    aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    data-bs-backdrop="static" data-bs-keyboard="false">
 
     <div class="modal-dialog modal-dialog-centered modal-md" role="document">
         <form class="form w-100" action="{!! route('employees.overview.change.password') !!}" method="POST" enctype="multipart/form-data"
@@ -110,15 +110,10 @@
         $(document).ready(function() {
 
 
-
-
-
             // open create modal
             $('body').on('click', '#employee_change_password_btn', function(e) {
                 $('#employeeChangePasswordModal').modal('show');
             });
-
-
 
             // reset
             function resetCreateForm() {
@@ -170,6 +165,7 @@
                         if (data.status == true) {
                             $('#employee_change_password_form')[0].reset();
                             resetCreateForm();
+                            if (document.activeElement) { document.activeElement.blur(); }
                             $('#employeeChangePasswordModal').modal('hide');
                             flasher.success("{!! __('general.change_password_success_message') !!}");
                         } else {

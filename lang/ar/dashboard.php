@@ -58,4 +58,5 @@ return [
     'completed_tasks' => 'المهام المكتملة',
     'what_do_you_need_to_do_today' => 'ماذا تريد أن تفعل اليوم؟',
     'no_department_found' => 'لم يتم تحديد إدارة بعد',
+    'no_tasks_found' => 'لم يتم العثور على مهام',
 ];

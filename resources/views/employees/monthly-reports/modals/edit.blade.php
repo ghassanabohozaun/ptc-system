@@ -1,5 +1,5 @@
 <div class="modal modal-pop fade" id="updateMonthlyReportModal" tabindex="-1" role="dialog"
-    aria-labelledby="updateMonthlyReportModalLabel" aria-hidden="true">
+    aria-labelledby="updateMonthlyReportModalLabel">
 
     <div class="modal-dialog modal-md" role="document">
         <form class="form" action="" method="POST" enctype="multipart/form-data" id='update_monthly_report_form'>
@@ -176,7 +176,6 @@
         $('#update_monthly_report_form').on('submit', function(e) {
             e.preventDefault();
 
-
             // reset
             resetEditForm();
 
@@ -196,12 +195,17 @@
                 contentType: false,
                 beforeSend: function() {
                     $('.spinner_loading').removeClass('d-none');
+                    $('#loading-indicator').show();
                 },
                 success: function(data) {
                     if (data.status == true) {
-                        console.log(data);
-                        $('#myTable').load(location.href + (' #myTable'));
+                        if (typeof window.fetch_data === 'function') {
+                            window.fetch_data(window.currentPage || 1);
+                        } else {
+                            $('#myTable').load(location.href + (' #myTable'));
+                        }
                         resetEditForm();
+                        if (document.activeElement) { document.activeElement.blur(); }
                         $('#updateMonthlyReportModal').modal('hide');
                         flasher.success("{!! __('general.update_success_message') !!}");
                     } else {
@@ -222,7 +226,3 @@
         });
     </script>
 @endpush
-
-
-
-

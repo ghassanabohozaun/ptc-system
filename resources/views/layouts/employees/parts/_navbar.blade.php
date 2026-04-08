@@ -27,11 +27,10 @@
         </ul>
 
 
-        <ul class="navbar-nav ms-auto">
-
+        <ul class="navbar-nav mx-auto">
             <!-- begin  calendar -->
             <li class="nav-item d-none d-lg-block">
-                <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
+                <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker" style="width: 280px;">
                     <span class="input-group-addon input-group-prepend border-right">
                         <span class="icon-calendar input-group-text calendar-icon"></span>
                     </span>
@@ -39,6 +38,9 @@
                 </div>
             </li>
             <!-- end  calendar -->
+        </ul>
+
+        <ul class="navbar-nav ms-auto">
 
             <!-- begin user -->
             <li class="nav-item dropdown user-dropdown">

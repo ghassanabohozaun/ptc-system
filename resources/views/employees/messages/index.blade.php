@@ -1,8 +1,6 @@
 @extends('layouts.employees.app')
 
-@section('title')
-    {!! __('dashboard.dashboard') !!}
-@endsection
+@section('title', __('dashboard.messages'))
 
 @push('style')
     <style>
@@ -162,8 +160,8 @@
         </div>
 
         <!-- Compose Modal -->
-        <div class="modal modal-pop fade" id="composeModal" tabindex="-1" role="dialog" aria-labelledby="composeModalLabel"
-            aria-hidden="true" wire:ignore.self>
+        <div class="modal modal-pop fade" id="composeModal" tabindex="-1" role="dialog"
+            aria-labelledby="composeModalLabel" aria-hidden="true" wire:ignore.self>
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -227,7 +225,3 @@
         });
     </script>
 @endpush
-
-
-
-

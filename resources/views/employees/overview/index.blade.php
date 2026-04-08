@@ -1,8 +1,6 @@
 @extends('layouts.employees.app')
 
-@section('title')
-    {!! __('dashboard.dashboard') !!}
-@endsection
+@section('title', __('dashboard.dashboard'))
 
 @section('content')
     <div class="content-wrapper">
@@ -39,7 +37,8 @@
                         <div class="header-actions">
                             <div class="btn-wrapper">
 
-                                <a href="javascript:void(0)" class="btn btn-outline-primary btn-sm rounded-pill px-4" id="employee_change_password_btn">
+                                <a href="javascript:void(0)" class="btn btn-outline-primary btn-sm rounded-pill px-4"
+                                    id="employee_change_password_btn">
                                     <i class="fa fa-key me-1"></i>
                                     {!! __('employees.change_password') !!}
                                 </a>
@@ -47,7 +46,8 @@
                                 @include('employees.overview.modals.change-password')
 
 
-                                <a href="javascript:void(0)" class="btn btn-primary text-white btn-sm rounded-pill px-4 ms-2">
+                                <a href="javascript:void(0)"
+                                    class="btn btn-primary text-white btn-sm rounded-pill px-4 ms-2">
                                     <i class="mdi mdi-gesture-tap me-1"></i>
                                     {!! __('general.actions') !!}
                                 </a>

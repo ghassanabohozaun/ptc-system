@@ -46,8 +46,13 @@ $(document).ready(function () {
                     type: "POST",
                     data: {
                         id: id,
-                        _method: "POST", // or DELETE if your route expects it, but the controller examined uses POST and checks request->id
+                        _method: "POST",
                         _token: $('meta[name="csrf-token"]').attr("content"),
+                    },
+                    beforeSend: function() {
+                        if ($('#loading-indicator').length) {
+                            $('#loading-indicator').show();
+                        }
                     },
                     success: function (data) {
                         if (data.status === true) {
@@ -59,23 +64,34 @@ $(document).ready(function () {
                                 buttons: false,
                             });
                             // Reload table div or datatable gracefully
-                            if (typeof fetch_data === 'function') {
-                                fetch_data(window.currentPage || 1);
+                            if (typeof window.fetch_data === 'function') {
+                                window.fetch_data(window.currentPage || 1);
                             } else {
                                 var targetTable = "#myTable";
                                 if ($(targetTable).length) {
                                     $(targetTable).load(
                                         location.href + " " + targetTable,
+                                        function() {
+                                            if ($('#loading-indicator').length) {
+                                                $('#loading-indicator').hide();
+                                            }
+                                        }
                                     );
                                 } else {
                                     location.reload();
                                 }
                             }
                         } else {
+                            if ($('#loading-indicator').length) {
+                                $('#loading-indicator').hide();
+                            }
                             swal("Error!", "Something went wrong.", "error");
                         }
                     },
                     error: function (xhr) {
+                        if ($('#loading-indicator').length) {
+                            $('#loading-indicator').hide();
+                        }
                         swal("Error!", "Something went wrong.", "error");
                     },
                 });
