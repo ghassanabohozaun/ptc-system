@@ -630,6 +630,40 @@ p, span, div, li, a { font-size: 0.95rem !important; }
     transition: all 0.3s;
 }
 
+/* Premium Input Group Merge */
+.input-group-merge {
+    border: 1.5px solid var(--border-color);
+    border-radius: 12px !important;
+    background: #fff;
+    transition: all 0.2s;
+    overflow: hidden;
+    width: 100%;
+}
+
+.input-group-merge:focus-within {
+    border-color: var(--premium-indigo);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+.input-group-merge .form-control {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 12px 15px !important;
+}
+
+.input-group-merge .btn {
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    padding: 0 15px !important;
+    color: var(--text-muted) !important;
+}
+
+.input-group-merge .btn:hover {
+    color: var(--premium-indigo) !important;
+}
+
 /* Global button modernization */
 .btn {
     border-radius: 12px !important;
@@ -1172,6 +1206,12 @@ p, span, div, li, a { font-size: 0.95rem !important; }
 
 /* Responsive Spacing & Visibility */
 @media (max-width: 991px) {
+    .navbar .navbar-brand-wrapper {
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
+    
     .navbar .brand-logo {
         display: none !important;
     }
@@ -1212,12 +1252,39 @@ p, span, div, li, a { font-size: 0.95rem !important; }
         width: 35px !important;
         height: 35px !important;
     }
+
+    .premium-tabs {
+        margin-top: 10px !important;
+    }
+
+    /* Fix gap between navbar and sidebar on mobile */
+    .sidebar-offcanvas {
+        top: 70px !important;
+        max-height: calc(100vh - 70px) !important;
+    }
 }
 
 /* General spacing fix for items inside navbar-nav-right */
 .navbar-nav-right {
     display: flex !important;
     align-items: center !important;
+}
+
+/* Sidebar RTL Border Radius Fix */
+[data-textdirection="rtl"] .sidebar .nav .nav-item .nav-link {
+    border-radius: 20px 0 0 20px !important;
+    margin-right: 5px;
+    padding-right: 25px !important;
+}
+
+[data-textdirection="rtl"] .sidebar .nav .nav-item.active > .nav-link,
+[data-textdirection="rtl"] .sidebar .nav .nav-item:hover > .nav-link {
+    border-radius: 20px 0 0 20px !important;
+}
+
+[data-textdirection="ltr"] .sidebar .nav .nav-item .nav-link {
+    border-radius: 0 20px 20px 0 !important;
+    margin-left: 5px;
 }
 
 

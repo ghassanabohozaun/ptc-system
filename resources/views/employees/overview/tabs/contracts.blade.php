@@ -35,11 +35,14 @@
                                     </span>
                                 @endif
                             </div>
-                            <p class="text-muted mb-0">
+                            <p class="text-muted mb-0 lh-base">
                                 @if($currentContract)
-                                    {!! __('employees.contract_start_date') !!}: <span class="fw-bold text-dark">{!! $currentContract->contract_start_date ?? '---' !!}</span>
-                                    <span class="mx-2">|</span>
-                                    {!! __('employees.contract_duration') !!}: <span class="fw-bold text-dark">{!! $currentContract->contract_duration ?? '---' !!}</span>
+                                    <span class="d-block mb-1">
+                                        {!! __('employees.contract_start_date') !!}: <span class="fw-bold text-dark">{!! $currentContract->contract_start_date ?? '---' !!}</span>
+                                    </span>
+                                    <span class="d-block">
+                                        {!! __('employees.contract_duration') !!}: <span class="fw-bold text-dark">{!! $currentContract->contract_duration ?? '---' !!}</span>
+                                    </span>
                                 @else
                                     <span class="text-danger opacity-75">{!! __('employees.no_active_contract') !!}</span>
                                 @endif
@@ -164,47 +167,11 @@
                     <div class="info-card-header bg-label-info d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center gap-2">
                             <i class="mdi mdi-history"></i>
-                            <h5>{!! __('employees.contracts') !!} ({!! count($allContracts) !!})</h5>
+                            <h5>{!! __('employees.contracts') !!}</h5>
                         </div>
                     </div>
-                    <div class="info-card-body p-0">
-                        <div class="table-responsive">
-                            <table class="table table-hover mb-0">
-                                <thead class="bg-light">
-                                    <tr>
-                                        <th class="ps-4">{!! __('employees.contract_duration') !!}</th>
-                                        <th>{!! __('employees.contract_start_date') !!}</th>
-                                        <th>{!! __('employees.contract_expire_date') !!}</th>
-                                        <th>{!! __('employees.monthly_salary') !!}</th>
-                                        <th class="text-center">{!! __('employees.status') !!}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($allContracts as $index => $contract)
-                                    <tr>
-                                        <td class="ps-4">
-                                            <div class="d-flex align-items-center gap-2">
-                                                <div class="btn-icon btn-sm bg-label-primary rounded-pill">
-                                                    <i class="mdi mdi-file-document-outline"></i>
-                                                </div>
-                                                <span class="fw-bold">{!! $contract->contract_duration ?? '---' !!}</span>
-                                            </div>
-                                        </td>
-                                        <td>{!! $contract->contract_start_date ?? '---' !!}</td>
-                                        <td>{!! $contract->contract_expiry_date ?? '---' !!}</td>
-                                        <td class="fw-bold text-primary">{!! $contract->monthly_salary ?? '0' !!} {!! $employee->currency !!}</td>
-                                        <td class="text-center">
-                                            @if($index == 0)
-                                                <span class="badge bg-label-success rounded-pill px-3">{!! __('employees.active') !!}</span>
-                                            @else
-                                                <span class="badge bg-label-secondary rounded-pill px-3">{!! __('employees.expired') !!}</span>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                    <div class="info-card-body p-0" id="contracts_table_wrapper">
+                        @include('employees.overview.tabs.partials._contracts_table', ['contracts' => $allContracts])
                     </div>
                 </div>
             </div>
@@ -212,6 +179,43 @@
         @endif
     @endif
 </div>
+
+@include('employees.overview.modals.contract-details')
+
+@push('scripts')
+<script>
+$(document).ready(function() {
+    // Simple AJAX fetch for contracts (like monthly reports)
+    window.fetch_contracts = function() {
+        $.ajax({
+            url: "{{ route('employees.overview.contracts.data') }}",
+            type: 'GET',
+            beforeSend: function() {
+                // Optional loader
+            },
+            success: function(data) {
+                $('#contracts_table_wrapper').html(data);
+            }
+        });
+    }
+
+    // Handle Details Modal manually (simple & direct)
+    $(document).on('click', '.view-contract-details-btn', function() {
+        var btn = $(this);
+        
+        $('#det_duration').text(btn.data('duration'));
+        $('#det_salary').text(btn.data('salary'));
+        $('#det_start_date').text(btn.data('start'));
+        $('#det_expiry_date').text(btn.data('expiry'));
+        $('#det_status').text(btn.data('status'))
+            .removeClass('text-success text-secondary')
+            .addClass(btn.data('status-color'));
+        
+        $('#contractDetailsModal').modal('show');
+    });
+});
+</script>
+@endpush
 
 <style>
     .bg-light-soft { background-color: #f8fafc; }

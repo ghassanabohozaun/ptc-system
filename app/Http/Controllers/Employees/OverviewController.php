@@ -50,4 +50,16 @@ class OverviewController extends Controller
         }
         return response()->json(['status' => true, 'data' => $changePassword], 200);
     }
+
+    public function getContractsData()
+    {
+        $employee = employee()->user();
+        $contracts = $employee->employeeContracts()->orderBy('contract_start_date', 'desc')->get();
+
+        if (request()->ajax()) {
+            return view('employees.overview.tabs.partials._contracts_table', compact('contracts'))->render();
+        }
+
+        return response()->json(['data' => $contracts]);
+    }
 }

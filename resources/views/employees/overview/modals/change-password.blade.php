@@ -34,9 +34,9 @@
                                 </label>
                                 <div class="input-group input-group-merge">
                                     <input type="password" id="password" name="password" class="form-control"
-                                        autocomplete="off" placeholder="{!! __('employees.enter_password') !!}">
-                                    <button class="btn btn-outline-light border text-dark px-3" type="button" onclick="showPassword();">
-                                        <i class="mdi mdi-eye-outline text-muted"></i>
+                                        autocomplete="new-password" placeholder="{!! __('employees.enter_password') !!}">
+                                    <button class="btn btn-merge-toggle" type="button" onclick="showPassword();">
+                                        <i class="mdi mdi-eye-outline"></i>
                                     </button>
                                 </div>
                                 <span class="text-danger small mt-1" id="password_error"></span>
@@ -50,10 +50,10 @@
                                 </label>
                                 <div class="input-group input-group-merge">
                                     <input type="password" id="password_confirm" name="password_confirm"
-                                        class="form-control" autocomplete="off"
+                                        class="form-control" autocomplete="new-password"
                                         placeholder="{!! __('employees.enter_password_confirm') !!}">
-                                    <button class="btn btn-outline-light border text-dark px-3" type="button" onclick="showPasswordConfirm();">
-                                        <i class="mdi mdi-eye-outline text-muted"></i>
+                                    <button class="btn btn-merge-toggle" type="button" onclick="showPasswordConfirm();">
+                                        <i class="mdi mdi-eye-outline"></i>
                                     </button>
                                 </div>
                                 <span class="text-danger small mt-1" id="password_confirm_error"></span>

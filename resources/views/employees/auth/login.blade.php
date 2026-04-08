@@ -38,7 +38,7 @@
                     @if (setting()->logo)
                         <img src="{!! asset('uploads/settings/' . setting()->logo) !!}" alt="{{ setting()->site_name }}">
                     @else
-                        <h2 class="brand-text-fallback">{!! setting()->site_name !!}</h2>
+                        <h2 style="color: var(--primary); font-weight: 900;">{!! setting()->site_name !!}</h2>
                     @endif
                 </div>
 
@@ -48,7 +48,8 @@
                 </div>
 
                 @if (session('error'))
-                    <div class="alert alert-danger login-alert-modern mb-4 py-3">
+                    <div class="alert alert-danger mb-4 py-3"
+                        style="font-size: 0.82rem; border-radius: 12px; border: none; background: #fff1f2; color: #be123c;">
                         <i class="fa fa-exclamation-triangle me-2"></i> {{ session('error') }}
                     </div>
                 @endif
@@ -66,7 +67,8 @@
                             <i class="fa fa-user-o input-icon-modern"></i>
                         </div>
                         @error('personal_id')
-                            <span class="error-message-modern">{{ $message }}</span>
+                            <span
+                                style="color: #e11d48; font-size: 0.75rem; margin-top: 5px; display: block;">{{ $message }}</span>
                         @enderror
                     </div>
 
@@ -79,7 +81,8 @@
                             <i class="fa fa-lock input-icon-modern"></i>
                         </div>
                         @error('password')
-                            <span class="error-message-modern">{{ $message }}</span>
+                            <span
+                                style="color: #e11d48; font-size: 0.75rem; margin-top: 5px; display: block;">{{ $message }}</span>
                         @enderror
                     </div>
 

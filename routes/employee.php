@@ -34,6 +34,7 @@ Route::group(
             ########################################### overview routes  ######################################################################
             Route::get('/overview', [OverviewController::class, 'index'])->name('overview');
             Route::post('/overview/change/password', [OverviewController::class, 'changeEmployeePassword'])->name('overview.change.password');
+            Route::get('/overview/contracts/data', [OverviewController::class, 'getContractsData'])->name('overview.contracts.data');
 
             ########################################### employees routes  ######################################################################
             Route::resource('employees', EmployeesController::class);

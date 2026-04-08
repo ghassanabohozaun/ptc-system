@@ -9,7 +9,9 @@
 
                 <!--begin::modal header-->
                 <div class="modal-header">
-                    <h5 class="modal-title" id="updateMonthlyReportModalLabel">{!! __('monthlyReports.update_monthly_report') !!}
+                    <h5 class="modal-title" id="updateMonthlyReportModalLabel">
+                        <i class="mdi mdi-file-edit-outline text-info fs-4"></i>
+                        {!! __('monthlyReports.update_monthly_report') !!}
                     </h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>

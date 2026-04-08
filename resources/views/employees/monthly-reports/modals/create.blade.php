@@ -9,7 +9,9 @@
 
                 <!--begin::modal header-->
                 <div class="modal-header">
-                    <h5 class="modal-title" id="createMonthlyReportModalLabel">{!! __('monthlyReports.create_new_monthly_report') !!}
+                    <h5 class="modal-title" id="createMonthlyReportModalLabel">
+                        <i class="mdi mdi-file-plus-outline text-primary fs-4"></i>
+                        {!! __('monthlyReports.create_new_monthly_report') !!}
                     </h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>

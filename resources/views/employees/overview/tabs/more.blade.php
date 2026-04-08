@@ -23,7 +23,10 @@
                 </div>
                 <div class="hero-content mt-3 mt-sm-0 flex-grow-1">
                     <div class="d-flex align-items-center gap-3 mb-2">
-                        <h2 class="fw-bold text-dark mb-0">{!! $employee->EmployeeFullName() !!}</h2>
+                        <h2 class="fw-bold text-dark mb-0" style="line-height: 1.2;">
+                            <span class="d-block">{!! $employee->first_name !!} {!! $employee->father_name !!}</span>
+                            <span class="d-block fs-3 opacity-75">{!! $employee->family_name !!}</span>
+                        </h2>
                         <span
                             class="profile-badge @if ($employee->employeeJobDetails->employee_status_id == 1) bg-label-success @else bg-label-danger @endif"
                             style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
