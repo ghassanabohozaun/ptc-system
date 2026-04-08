@@ -1,4 +1,4 @@
-<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
+<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-center flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
         <div class="me-3">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
@@ -16,33 +16,48 @@
             @endif
         </div>
     </div>
-    <div class="navbar-menu-wrapper d-flex align-items-top">
-        <ul class="navbar-nav">
-            <li class="nav-item fw-semibold d-none d-lg-block ms-0">
-                <h5 class="welcome-text">{!! greeting() !!}, <span
+    <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between">
+        <!-- Leading items: Greeting and Datepicker -->
+        <ul class="navbar-nav d-none d-lg-flex align-items-center">
+            <li class="nav-item fw-semibold">
+                <h5 class="welcome-text mb-0">{!! greeting() !!}, <span
                         class="text-black fw-bold">{!! employee()->user()->EmployeeShortName() !!}</span>
                 </h5>
-                {{-- <h3 class="welcome-sub-text">{!! __('general.your_performance_summary_this_week') !!} </h3> --}}
             </li>
         </ul>
 
+        <!-- Trailing items: Language, Notifications, Messages, Profile (Consolidated Group) -->
+        <ul class="navbar-nav navbar-nav-right align-items-center">
 
-        <ul class="navbar-nav mx-auto">
-            <!-- begin  calendar -->
-            <li class="nav-item d-none d-lg-block">
-                <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker" style="width: 280px;">
-                    <span class="input-group-addon input-group-prepend border-right">
-                        <span class="icon-calendar input-group-text calendar-icon"></span>
-                    </span>
-                    <input type="text" class="form-control">
-                </div>
+            {{-- Language Switcher --}}
+            @php
+                $currentLocale = Lang();
+                $targetLocale = $currentLocale == 'ar' ? 'en' : 'ar';
+                $targetNative = LaravelLocalization::getSupportedLocales()[$targetLocale]['native'];
+                $flagPath =
+                    $targetLocale == 'ar'
+                        ? asset('assets/dashbaord/media/svg/flags/العربية.svg')
+                        : asset('assets/dashbaord/media/svg/flags/English.svg');
+            @endphp
+            <li class="nav-item">
+                <a href="{{ LaravelLocalization::getLocalizedURL($targetLocale, null, [], true) }}"
+                    class="nav-link p-0 d-flex align-items-center">
+                    <div class="language-switcher-premium">
+                        <img src="{!! $flagPath !!}" class="flag-icon" alt="{!! $targetNative !!}">
+                        <span class="lang-name d-none d-md-block">{{ $targetNative }}</span>
+                    </div>
+                </a>
             </li>
-            <!-- end  calendar -->
-        </ul>
 
-        <ul class="navbar-nav ms-auto">
+            {{-- Notifications & Messages --}}
+            <li class="nav-item d-flex align-items-center">
+                <livewire:dashboard.notification />
+            </li>
+            <li class="nav-item d-flex align-items-center">
+                <livewire:message-notification guard="employee" iconClass="icon-mail icon-lg" />
+            </li>
 
-            <!-- begin user -->
+            {{-- User Profile Pill --}}
             <li class="nav-item dropdown user-dropdown">
                 <a class="nav-link p-0" id="UserDropdown" href="javascript:void(0)" data-bs-toggle="dropdown"
                     aria-expanded="false">
@@ -90,39 +105,9 @@
                     </a>
                 </div>
             </li>
-            <!-- begin user -->
-
-            {{-- Premium Language Switcher Toggle --}}
-            @php
-                $currentLocale = Lang();
-                $targetLocale = $currentLocale == 'ar' ? 'en' : 'ar';
-                $targetNative = LaravelLocalization::getSupportedLocales()[$targetLocale]['native'];
-                $flagPath =
-                    $targetLocale == 'ar'
-                        ? asset('assets/dashbaord/media/svg/flags/العربية.svg')
-                        : asset('assets/dashbaord/media/svg/flags/English.svg');
-            @endphp
-            <li class="nav-item">
-                <a href="{{ LaravelLocalization::getLocalizedURL($targetLocale, null, [], true) }}"
-                    class="nav-link p-0 d-flex align-items-center h-100">
-                    <div class="language-switcher-premium">
-                        <img src="{!! $flagPath !!}" class="flag-icon" alt="{!! $targetNative !!}">
-                        <span class="lang-name">{{ $targetNative }}</span>
-                    </div>
-                </a>
-            </li>
-
-            <!-- begin notifications -->
-            <livewire:dashboard.notification />
-            <!-- end notifications -->
-
-            <!-- begin message -->
-            <livewire:message-notification guard="employee" iconClass="icon-mail icon-lg" />
-            <!-- begin message -->
-
         </ul>
 
-        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+        <button class="navbar-toggler toggler-premium navbar-toggler-right d-lg-none" type="button"
             data-bs-toggle="offcanvas">
             <span class="mdi mdi-menu"></span>
         </button>

@@ -345,3 +345,23 @@ html, body {
         backdrop-filter: blur(5px);
     }
 }
+
+.brand-text-fallback {
+    color: var(--primary);
+    font-weight: 900;
+}
+
+.login-alert-modern {
+    font-size: 0.82rem;
+    border-radius: 12px;
+    border: none !important;
+    background: #fff1f2 !important;
+    color: #be123c !important;
+}
+
+.error-message-modern {
+    color: #e11d48;
+    font-size: 0.75rem;
+    margin-top: 5px;
+    display: block;
+}

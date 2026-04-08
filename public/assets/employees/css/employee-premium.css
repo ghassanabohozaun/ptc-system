@@ -1104,4 +1104,120 @@ p, span, div, li, a { font-size: 0.95rem !important; }
     color: #4f46e5 !important;
 }
 
+/* 8. Navbar Modernization (Unified Alignment & Mobile Fixes) */
+.navbar.default-layout {
+    height: 70px !important;
+    background: #fff !important;
+}
+
+.navbar .navbar-brand-wrapper {
+    height: 70px !important;
+}
+
+.navbar .navbar-menu-wrapper {
+    height: 70px !important;
+}
+
+/* Vertical Centering for all navbar items */
+.navbar .navbar-nav .nav-item {
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+    margin: 0 !important; /* Removed horizontal margin for tightest grouping */
+}
+
+/* Fix for icons/links being too low */
+.navbar .navbar-nav .nav-item .nav-link {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Mobile Toggler Visibility Fix */
+.toggler-premium {
+    background: transparent !important;
+    color: var(--text-dark) !important;
+    border: none !important;
+    padding: 10px !important;
+    transition: color 0.2s ease !important;
+}
+
+.toggler-premium:hover {
+    color: var(--premium-indigo) !important;
+}
+
+.toggler-premium i, .toggler-premium span {
+    font-size: 1.6rem !important;
+    line-height: 1 !important;
+}
+
+/* Icon Aesthetics (Notifications & Messages) */
+.navbar .navbar-nav .nav-item .nav-link i[class^="icon-"], 
+.navbar .navbar-nav .nav-item .nav-link i.mdi-bell-outline,
+.navbar .navbar-nav .nav-item .nav-link i.mdi-email-outline {
+    font-size: 1.35rem !important;
+    color: var(--text-dark) !important;
+    transition: color 0.2s;
+}
+
+.navbar .navbar-nav .nav-item .nav-link:hover i {
+    color: var(--premium-indigo) !important;
+}
+
+/* Remove extra top margin from user pill */
+.premium-user-pill {
+    margin-top: 0 !important;
+}
+
+/* Responsive Spacing & Visibility */
+@media (max-width: 991px) {
+    .navbar .brand-logo {
+        display: none !important;
+    }
+    
+    .navbar .brand-logo-mini {
+        display: block !important;
+    }
+
+    .navbar .navbar-menu-wrapper {
+        padding: 0 10px !important;
+        width: calc(100% - 70px) !important;
+    }
+
+    /* Compact User Pill on Mobile */
+    .premium-user-pill {
+        padding: 4px !important;
+        margin-top: 0 !important;
+    }
+
+    /* Hide less essential items on mobile */
+    .premium-user-pill .user-info-text,
+    .premium-user-pill .chevron-icon,
+    .welcome-text {
+        display: none !important;
+    }
+
+    .language-switcher-premium .lang-name {
+        display: none !important;
+    }
+    
+    .language-switcher-premium {
+        padding: 6px !important;
+        margin: 0 5px !important;
+        border-radius: 10px !important;
+    }
+    
+    .avatar-img-premium, .avatar-initials-premium {
+        width: 35px !important;
+        height: 35px !important;
+    }
+}
+
+/* General spacing fix for items inside navbar-nav-right */
+.navbar-nav-right {
+    display: flex !important;
+    align-items: center !important;
+}
+
 
