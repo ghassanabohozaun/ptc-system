@@ -1267,6 +1267,64 @@ p, span, div, li, a { font-size: 0.95rem !important; }
     }
 }
 
+/* 9. Dashboard Header & Tabs Refinement (Transparent Header) */
+.home-tab, 
+.home-tab .d-sm-flex,
+.main-panel .content-wrapper .home-tab,
+.main-panel .content-wrapper .home-tab .d-sm-flex {
+    background: transparent !important;
+    border-bottom: none !important;
+}
+
+.content-wrapper {
+    background: #f4f5f7 !important; /* Standard Light Gray Background */
+    padding-top: 20px !important;
+}
+
+/* Hard fix for the white gap below navbar */
+.page-body-wrapper {
+    padding-top: 70px !important;
+}
+
+.home-tab .d-sm-flex.align-items-center.justify-content-between {
+    background: transparent !important;
+    padding-bottom: 15px !important;
+}
+
+.premium-tabs {
+    border: none !important;
+    gap: 8px;
+}
+
+.premium-tabs .nav-item .nav-link {
+    background: rgba(255, 255, 255, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-radius: 12px !important;
+    color: var(--text-muted) !important;
+    padding: 10px 20px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(5px);
+}
+
+.premium-tabs .nav-item .nav-link.active {
+    background: var(--clean-white) !important;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.12) !important;
+    color: var(--premium-indigo) !important;
+    border-color: var(--premium-indigo) !important;
+    transform: translateY(-2px);
+}
+
+.premium-tabs .nav-item .nav-link:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.7) !important;
+    color: var(--text-dark) !important;
+}
+
+/* Adjusting the content wrapper padding for better breathing room */
+.content-wrapper {
+    padding-top: 25px !important;
+}
+
 /* General spacing fix for items inside navbar-nav-right */
 .navbar-nav-right {
     display: flex !important;
