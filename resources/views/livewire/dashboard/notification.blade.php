@@ -5,66 +5,66 @@
             aria-expanded="false">
             <i class="icon-bell"></i>
             @if ($unreadCount > 0)
-                <span class="count">{{ $unreadCount }}</span>
+                <span class="count">{{ $unreadCount > 99 ? '99+' : $unreadCount }}</span>
             @endif
         </a>
-        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
             aria-labelledby="notificationDropdown">
-            <a class="dropdown-item py-3 border-bottom">
-                <p class="mb-0 fw-medium float-start">{!! __('general.notifications') !!}</p>
+            <div class="dropdown-header-main">
+                <h6 class="header-title">{!! __('general.notifications') !!}</h6>
                 @if ($unreadCount > 0)
-                    <span class="badge badge-pill badge-primary float-end">{{ $unreadCount }}
-                        {{ __('general.new') }}</span>
+                    <span class="premium-badge-count">{{ $unreadCount }} {{ __('general.new') }}</span>
                 @endif
-            </a>
-            <div class="scrollable-container media-list w-100" style="max-height: 300px; overflow-y: auto;">
+            </div>
+
+            <div class="scrollable-container media-list w-100 custom-scrollbar"
+                style="max-height: 350px; overflow-y: auto;">
                 @forelse($notifications as $notification)
-                    <a class="dropdown-item preview-item py-3" href="javascript:void(0)"
+                    @php
+                        $bgClass =
+                            isset($notification->data['type']) && $notification->data['type'] == 'monthly_report_status'
+                                ? 'bg-success'
+                                : 'bg-info';
+                        $icon =
+                            isset($notification->data['type']) && $notification->data['type'] == 'monthly_report_status'
+                                ? 'mdi-file-check-outline'
+                                : 'mdi-file-send-outline';
+                    @endphp
+                    <a class="preview-item-premium" href="javascript:void(0)"
                         wire:click="markAsRead('{{ $notification->id }}')">
-                        <div class="preview-thumbnail">
-                            <div class="preview-icon bg-info">
-                                <i class="mdi mdi-file-document text-white"></i>
-                            </div>
+                        <div class="preview-thumbnail-premium {{ $bgClass }}">
+                            <i class="mdi {{ $icon }}"></i>
                         </div>
-                        <div class="preview-item-content">
-                            @if (isset($notification->data['type']) && $notification->data['type'] == 'monthly_report_status')
-                                <h6 class="preview-subject fw-normal text-dark mb-1">
-                                    {{ __('general.report_status_updated') }}</h6>
-                                <p class="fw-light small-text mb-0">
-                                    {{ isset($notification->data['month']) ? $notification->data['month'] . '/' . $notification->data['year'] : '' }}
+                        <div class="preview-item-content-premium">
+                            <span class="subject">
+                                {{ isset($notification->data['type']) && $notification->data['type'] == 'monthly_report_status' ? __('general.report_status_updated') : __('general.report_sent_waiting_admin') }}
+                            </span>
+                            <span class="message-text">
+                                {{ isset($notification->data['month']) ? $notification->data['month'] . '/' . $notification->data['year'] : '' }}
+                                @if (isset($notification->data['status']))
                                     : <span
                                         class="badge badge-info">{{ __('monthlyReports.' . $notification->data['status'] ?? '') }}</span>
-                                </p>
-                            @else
-                                <h6 class="preview-subject fw-normal text-dark mb-1">
-                                    {{ __('general.report_sent_waiting_admin') }}</h6>
-                                <p class="fw-light small-text mb-0">
-                                    {{ isset($notification->data['month']) ? $notification->data['month'] . '/' . $notification->data['year'] : '' }}
-                                </p>
-                            @endif
-
-                            <small class="text-muted">
+                                @endif
+                            </span>
+                            <span class="time">
                                 {{ \Carbon\Carbon::parse($notification->created_at)->diffForHumans() }}
-                            </small>
+                            </span>
                         </div>
                     </a>
                 @empty
-                    <a class="dropdown-item preview-item py-3">
-                        <div class="preview-item-content">
-                            <p class="fw-light small-text mb-0 text-center">{{ __('general.no_new_notifications') }}
-                            </p>
-                        </div>
-                    </a>
-                @endforelse
-                @if ($unreadCount > 0)
-                    <div class="dropdown-footer text-center py-2 border-top">
-                        <a href="javascript:void(0)" wire:click.prevent="markAllAsRead"
-                            class="small text-primary fw-bold text-decoration-none">
-                            {{ __('general.mark_all_as_read') }}
-                        </a>
+                    <div class="p-4 text-center">
+                        <p class="fw-light small-text mb-0 text-muted">{{ __('general.no_new_notifications') }}</p>
                     </div>
-                @endif
+                @endforelse
             </div>
+
+            @if ($unreadCount > 0)
+                <div class="dropdown-footer-premium">
+                    <a href="javascript:void(0)" wire:click.prevent="markAllAsRead">
+                        {{ __('general.mark_all_as_read') }}
+                    </a>
+                </div>
+            @endif
         </div>
     </li>
 @else

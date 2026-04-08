@@ -72,20 +72,20 @@
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                    <div class="dropdown-header text-center">
-                        <p class="mb-1 mt-3 fw-semibold">{!! employee()->user()->EmployeeShortName() !!}</p>
-                        <p class="fw-light text-muted mb-0">{!! employee()->user()->email !!}</p>
+                    <div class="dropdown-header-premium">
+                        <span class="user-name">{!! employee()->user()->EmployeeShortName() !!}</span>
+                        <span class="user-email">{!! employee()->user()->email !!}</span>
                     </div>
-                    <a class="dropdown-item">
-                        <i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i>
+                    <a class="dropdown-item premium-dropdown-item">
+                        <i class="mdi mdi-account-outline"></i>
                         {!! __('general.profile') !!}
                     </a>
-                    <a class="dropdown-item">
-                        <i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i>
+                    <a class="dropdown-item premium-dropdown-item">
+                        <i class="mdi mdi-message-text-outline"></i>
                         {!! __('general.messages') !!}
                     </a>
-                    <a href="{!! route('employees.logout') !!}" class="dropdown-item">
-                        <i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>
+                    <a href="{!! route('employees.logout') !!}" class="dropdown-item premium-dropdown-item logout-item">
+                        <i class="mdi mdi-power"></i>
                         {!! __('auth.logout') !!}
                     </a>
                 </div>

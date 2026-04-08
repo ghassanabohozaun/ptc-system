@@ -5,7 +5,7 @@
 
 @if ($isAdmin)
     {{-- Admin Dashboard Layout (Bootstrap 4 - Robust) --}}
-    <li class="dropdown dropdown-notification nav-item" wire:poll.5s wire:key="admin-msg-notification">
+    <li class="dropdown dropdown-notification nav-item" wire:poll.30s wire:key="admin-msg-notification">
         <a class="nav-link nav-link-label" href="javascript:void(0)" data-toggle="dropdown">
             <i class="{{ $iconClass }}"></i>
             @if ($unreadCount > 0)
@@ -58,52 +58,45 @@
     </li>
 @else
     {{-- Employee Dashboard Layout (Bootstrap 5 - StarAdmin) --}}
-    <li class="nav-item dropdown" wire:poll.5s wire:key="employee-msg-notification">
+    <li class="nav-item dropdown" wire:poll.30s wire:key="employee-msg-notification">
         <a class="nav-link count-indicator" id="messageDropdown" href="javascript:void(0)" data-bs-toggle="dropdown"
             aria-expanded="false">
             <i class="{{ $iconClass }}"></i>
             @if ($unreadCount > 0)
-                <span class="count" style="{!! Lang() == 'ar' ? 'margin-left: -10px' : 'margin-left: 10px' !!}"></span>
+                <span class="count">{{ $unreadCount > 99 ? '99+' : $unreadCount }}</span>
             @endif
 
         </a>
-        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-            aria-labelledby="messageDropdown">
-            <a class="dropdown-item py-3 border-bottom">
-                <p class="mb-0 fw-medium float-start">{!! __('messages.messages') !!}</p>
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+            <div class="dropdown-header-main">
+                <h6 class="header-title">{!! __('messages.messages') !!}</h6>
                 @if ($unreadCount > 0)
-                    <span class="badge badge-pill badge-primary float-end">
-                        {{ $unreadCount }} {!! __('messages.new') !!}
-                    </span>
+                    <span class="premium-badge-count">{{ $unreadCount }} {!! __('messages.new') !!}</span>
                 @endif
-            </a>
-            <div class="scrollable-container media-list w-100" style="max-height: 300px; overflow-y: auto;">
+            </div>
+
+            <div class="scrollable-container media-list w-100 custom-scrollbar"
+                style="max-height: 350px; overflow-y: auto;">
                 @forelse($latestMessages as $msg)
-                    <a href="{{ route($route) }}" class="dropdown-item preview-item py-3">
-                        <div class="preview-thumbnail">
-                            <div class="preview-icon bg-info">
-                                <i class="mdi mdi-email-outline text-white"></i>
-                            </div>
+                    <a href="{{ route($route) }}" class="preview-item-premium">
+                        <div class="preview-thumbnail-premium bg-primary">
+                            <i class="mdi mdi-email-open-outline"></i>
                         </div>
-                        <div class="preview-item-content">
-                            <h6 class="preview-subject fw-normal text-dark mb-1">{{ $msg->sender->name ?? 'Unknown' }}
-                            </h6>
-                            <p class="fw-light small-text mb-0">
-                                {{ Str::limit($msg->subject, 40) }}
-                            </p>
-                            <small class="text-muted">{{ $msg->created_at->diffForHumans() }}</small>
+                        <div class="preview-item-content-premium">
+                            <span class="subject">{{ $msg->sender->name ?? 'Unknown' }}</span>
+                            <span class="message-text">{{ Str::limit($msg->subject, 40) }}</span>
+                            <span class="time">{{ $msg->created_at->diffForHumans() }}</span>
                         </div>
                     </a>
                 @empty
-                    <div class="dropdown-item preview-item py-3">
-                        <div class="preview-item-content flex-grow text-center">
-                            <p class="fw-light small-text mb-0">{!! __('messages.no_new_messages') !!}</p>
-                        </div>
+                    <div class="p-4 text-center">
+                        <p class="fw-light small-text mb-0 text-muted">{!! __('messages.no_new_messages') !!}</p>
                     </div>
                 @endforelse
             </div>
-            <div class="dropdown-footer text-center py-2 border-top">
-                <a href="{{ route($route) }}" class="small text-primary fw-bold text-decoration-none">
+
+            <div class="dropdown-footer-premium">
+                <a href="{{ route($route) }}">
                     {!! __('messages.show_all_messages') !!}
                 </a>
             </div>
