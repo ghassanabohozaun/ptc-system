@@ -1,110 +1,83 @@
 <div class="modal modal-pop fade" id="employeeChangePasswordModal" tabindex="-1" aria-labelledby="employeeChangePasswordModalLabel"
     aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
 
-    <div class="modal-dialog modal-md" role="document">
-        <form class="form" action="{!! route('employees.overview.change.password') !!}" method="POST" enctype="multipart/form-data"
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <form class="form w-100" action="{!! route('employees.overview.change.password') !!}" method="POST" enctype="multipart/form-data"
             id='employee_change_password_form'>
             @csrf
-            <div class="modal-content">
+            <div class="modal-content shadow-lg border-0">
 
                 <!--begin::modal header-->
-                <div class="modal-header">
-                    <h5 class="modal-title" id="employeeChangePasswordModalLabel">{!! __('employees.change_password') !!}
+                <div class="modal-header px-4 py-3">
+                    <h5 class="modal-title" id="employeeChangePasswordModalLabel">
+                        <i class="mdi mdi-lock-reset text-primary fs-4"></i>
+                        {!! __('employees.change_password') !!}
                     </h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <i class="mdi mdi-close"></i>
                     </button>
                 </div>
                 <!--end::modal header-->
 
                 <!--begin::modal body-->
-                <div class="modal-body">
+                <div class="modal-body p-4">
+                    <div class="row g-3">
+                        <div class="col-12 d-none">
+                            <input type="text" name="employee_id" id="employee_id" class="form-control"
+                                value="{!! employee()->user()->id !!}">
+                        </div>
 
-                    <div class="row">
-                        <div class="col-lg-12">
-
-                            <!-- begin: row -->
-                            <div class="row d-none">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <input type="text" name="employee_id" id="employee_id" class="form-control"
-                                            value="{!! employee()->user()->id !!}">
-                                    </div>
+                        <div class="col-12">
+                            <div class="form-group mb-3">
+                                <label class="form-label fw-bold small text-uppercase text-muted mb-2">
+                                    {!! __('employees.password') !!}
+                                </label>
+                                <div class="input-group input-group-merge">
+                                    <input type="password" id="password" name="password" class="form-control"
+                                        autocomplete="off" placeholder="{!! __('employees.enter_password') !!}">
+                                    <button class="btn btn-outline-light border text-dark px-3" type="button" onclick="showPassword();">
+                                        <i class="mdi mdi-eye-outline text-muted"></i>
+                                    </button>
                                 </div>
+                                <span class="text-danger small mt-1" id="password_error"></span>
                             </div>
+                        </div>
 
-                            <!-- begin: row -->
-                            <div class="row">
-
-
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="password">{!! __('employees.password') !!}</label>
-                                        <div class="input-group">
-                                            <input type="password" id="password" name="password" class="form-control"
-                                                autocomplete="off" placeholder="{!! __('employees.enter_password') !!}"
-                                                aria-describedby="basic-addon3">
-                                            <div class="input-group-append" onclick="showPassword();">
-                                                <span class="input-group-text" id="basic-addon3"
-                                                    style="color: black;font-size: 15px;cursor: pointer;">
-                                                    <i class="icon-eye"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <span class="text text-danger">
-                                            <strong id="password_error"></strong>
-                                        </span>
-                                    </div>
+                        <div class="col-12">
+                            <div class="form-group mb-0">
+                                <label class="form-label fw-bold small text-uppercase text-muted mb-2">
+                                    {!! __('employees.password_confirm') !!}
+                                </label>
+                                <div class="input-group input-group-merge">
+                                    <input type="password" id="password_confirm" name="password_confirm"
+                                        class="form-control" autocomplete="off"
+                                        placeholder="{!! __('employees.enter_password_confirm') !!}">
+                                    <button class="btn btn-outline-light border text-dark px-3" type="button" onclick="showPasswordConfirm();">
+                                        <i class="mdi mdi-eye-outline text-muted"></i>
+                                    </button>
                                 </div>
-
-
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="password_confirm">{!! __('employees.password_confirm') !!}</label>
-                                        <div class="input-group">
-                                            <input type="password" id="password_confirm" name="password_confirm"
-                                                class="form-control" autocomplete="off"
-                                                placeholder="{!! __('employees.enter_password_confirm') !!}" aria-describedby="basic-addon3">
-                                            <div class="input-group-append" onclick="showPasswordConfirm();">
-                                                <span class="input-group-text" id="basic-addon3"
-                                                    style="color: black;font-size: 15px;cursor: pointer;">
-                                                    <i class="icon-eye"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <span class="text text-danger">
-                                            <strong id="password_confirm_error"></strong>
-                                        </span>
-                                    </div>
-                                </div>
-
-
-
+                                <span class="text-danger small mt-1" id="password_confirm_error"></span>
                             </div>
-                            <!-- end: row -->
                         </div>
                     </div>
-
                 </div>
                 <!--end::modal body-->
 
                 <!--begin::modal footer-->
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-info font-weight-bold ">
+                <div class="modal-footer border-0 px-4 py-3">
+                    <button type="button" id="cancel_employee_change_password_btn"
+                        class="btn btn-light px-4 py-2 me-2">
+                        {{ __('general.cancel') }}
+                    </button>
+                    <button type="submit" class="btn btn-info px-4 py-2 d-flex align-items-center gap-2">
+                        <i class="mdi mdi-check-circle-outline"></i>
                         {{ __('general.save') }}
-                        <div class="spinner-border spinner-border-sm spinner_loading d-none" role="status">
+                        <div class="spinner-border spinner-border-sm spinner_loading d-none ms-1" role="status">
                             <span class="visually-hidden">Loading...</span>
                         </div>
                     </button>
-
-                    <button type="button" id="cancel_employee_change_password_btn"
-                        class="btn btn-light-dark font-weight-bold">
-                        {{ __('general.cancel') }}
-                    </button>
                 </div>
                 <!--end::modal footer-->
-
-
             </div>
         </form>
     </div>

@@ -24,10 +24,19 @@ class OverviewController extends Controller
     // index
     public function index()
     {
-        $monthlyReports = $this->monthlyReportService->getMonthlyReportsForOneEmplpoyee(employee()->user()->id)->take(5);
-        $dailyReports = $this->dailyReportService->getDailyReportsForOneEmplpoyee(employee()->user()->id)->take(5);
         $employee = $this->employeeService->getOne(employee()->user()->id);
-        return view('employees.overview.index', compact('monthlyReports','dailyReports', 'employee'));
+        $monthlyReports = $this->monthlyReportService->getMonthlyReportsForOneEmplpoyee($employee->id)->take(5);
+        $dailyReports = $this->dailyReportService->getDailyReportsForOneEmplpoyee($employee->id)->take(5);
+        
+        // Statistics
+        $stats = [
+            'pending_tasks' => $employee->tasks()->where('is_completed', false)->count(),
+            'completed_tasks' => $employee->tasks()->where('is_completed', true)->count(),
+            'unread_messages' => $employee->unreadMessagesCount(),
+            'reports_count' => $employee->monthlyReports()->count(),
+        ];
+
+        return view('employees.overview.index', compact('monthlyReports', 'dailyReports', 'employee', 'stats'));
     }
 
     public function changeEmployeePassword(ChangePasswordRequest $request)

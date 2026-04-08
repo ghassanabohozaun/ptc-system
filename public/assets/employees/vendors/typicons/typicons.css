@@ -7,6 +7,7 @@ url("typicons.woff2?b99ba6e7256a27d29176cef7fc322738") format("woff2"),
 url("typicons.woff?b99ba6e7256a27d29176cef7fc322738") format("woff"),
 url("typicons.ttf?b99ba6e7256a27d29176cef7fc322738") format("truetype"),
 url("typicons.svg?b99ba6e7256a27d29176cef7fc322738#typicons") format("svg");
+  font-display: swap;
 }
 
 .typcn:before {

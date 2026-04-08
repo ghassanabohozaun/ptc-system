@@ -34,18 +34,13 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="{!! asset('assets/employees/css/style.css') !!}">
     <!-- endinject -->
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/my-style.css') !!}">
-
-    {{-- <link rel="stylesheet" href="{!! asset('assets/dashbaord/css/bootstrap.css') !!}"> --}}
-    {{-- <link rel="stylesheet" href="{!! asset('assets/employees/css/bootstrap.min.css') !!}"> --}}
-
 
     @if (Lang() == 'ar')
-        <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{!! asset('assets/employees/css/vertical-layout-light/style-rtl.css') !!}">
     @endif
 
-
+    <!-- Premium Employee Styles -->
+    <link rel="stylesheet" type="text/css" href="{!! asset('assets/employees/css/employee-premium.css') !!}">
 
 
     <style>

@@ -158,7 +158,7 @@ return [
     'title' => 'Title',
     'basic_salary' => 'Basic Salary',
     'appointment_date' => 'Appointment Date',
-    'contact_expire_date' => 'Contact Expire Date',
+    'contract_expire_date' => 'Contract Expire Date',
     'employment_type' => 'Employee Type',
     'status_id' => 'Employee Status',
     'department_id' => 'Department',
@@ -173,7 +173,7 @@ return [
     'enter_title' => 'Enter Title',
     'enter_basic_salary' => 'Enter Basic Salary',
     'enter_appointment_date' => 'Enter Appointment Date',
-    'enter_contact_expire_date' => 'Enter Contact Expire Date',
+    'enter_contract_expire_date' => 'Enter Contract Expire Date',
     'enter_employment_type' => 'Enter Employee Type',
     'enter_department_id' => 'Enter Department',
     'enter_supervisor' => 'Enter Supervisor',
@@ -205,7 +205,7 @@ return [
 
     // export
     'employees_reports' => 'Employees Reports',
-    'employees_export'=>'Employees Export',
+    'employees_export' => 'Employees Export',
 
     // contract details
     'contract_details' => 'Contract Details',
@@ -224,4 +224,14 @@ return [
     'enter_education_contract' => 'Enter Education (Contract)',
     'enter_experiences_contract' => 'Enter Experiences (Contract)',
     'enter_other_requirements' => 'Enter Other Requirements',
+
+    'active' => 'Active',
+    'expired' => 'Expired',
+    'no_active_contract' => 'No active contract currently',
+    'no_duties_added' => 'No job duties have been added yet.',
+    'no_terms_added' => 'No special contract terms have been added.',
+    'details_missing' => 'Additional details incomplete',
+    'details_missing_desc' => 'Basic contract data has been added, but detailed info (duties and terms) is not yet available.',
+    'no_contract_info_yet' => 'No contract information has been added for this employee yet.',
+    'currently_active' => 'Currently Active',
 ];

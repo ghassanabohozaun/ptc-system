@@ -31,6 +31,11 @@ class Employee extends Authenticatable
         return $this->first_name . ' ' . $this->family_name;
     }
 
+    public function getInitialsAttribute()
+    {
+        return mb_substr($this->first_name, 0, 1) . mb_substr($this->family_name, 0, 1);
+    }
+
     // Get the attributes that should be cast.
     protected function casts(): array
     {
@@ -161,5 +166,10 @@ class Employee extends Authenticatable
                     ->where('is_read', false)
                     ->where('receiver_deleted', false)
                     ->count();
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany(EmployeeTask::class, 'employee_id');
     }
 }

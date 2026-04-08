@@ -1,43 +1,42 @@
-<div class="row">
-    <div class="col-md-12 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">{{ __('dashboard.tasks') }}</h4>
-                <div class="list-wrapper">
-                    <ul class="todo-list">
-                        @foreach ($tasks as $task)
-                            <li class="{{ $task->is_completed ? 'completed' : '' }}" wire:key="task-{{ $task->id }}">
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="checkbox" type="checkbox"
-                                            wire:click="toggleTask({{ $task->id }})"
-                                            {{ $task->is_completed ? 'checked' : '' }}>
-                                        {{ $task->title }}
-                                        <i class="input-helper"></i>
-                                    </label>
-                                </div>
-                                <i class="remove mdi mdi-close-circle-outline"
-                                    wire:click="deleteTask({{ $task->id }})"></i>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-
-            <div class="card-footer bg-white border-top-0">
-                <form wire:submit.prevent="addTask">
-                    <div class="add-items d-flex mb-0">
-                        <input type="text" class="form-control"
-                            placeholder="{{ __('What do you need to do today?') }}" wire:model="newTaskTitle">
-                        <button class="add btn btn-primary font-weight-bold" id="add-task" type="submit"
-                            wire:loading.attr="disabled"><i class="ti-location-arrow"></i></button>
+<div class="p-4">
+    <h4 class="card-title fw-bold mb-3">
+        <i class="mdi mdi-checkbox-marked-circle-outline me-1 text-primary"></i>
+        {{ __('dashboard.tasks') }}
+    </h4>
+    <div class="list-wrapper">
+        <ul class="todo-list">
+            @foreach ($tasks as $task)
+                <li class="{{ $task->is_completed ? 'completed' : '' }} border-bottom py-2" wire:key="task-{{ $task->id }}">
+                    <div class="form-check">
+                        <label class="form-check-label fw-medium">
+                            <input class="checkbox" type="checkbox"
+                                wire:click="toggleTask({{ $task->id }})"
+                                {{ $task->is_completed ? 'checked' : '' }}>
+                            {{ $task->title }}
+                            <i class="input-helper"></i>
+                        </label>
                     </div>
-                    @error('newTaskTitle')
-                        <span class="text-danger small">{{ $message }}</span>
-                    @enderror
-                </form>
+                    <i class="remove mdi mdi-close-circle-outline text-muted"
+                        wire:click="deleteTask({{ $task->id }})" style="cursor: pointer;"></i>
+                </li>
+            @endforeach
+        </ul>
+    </div>
+
+    <div class="mt-4">
+        <form wire:submit.prevent="addTask">
+            <div class="add-items d-flex mb-0 gap-2">
+                <input type="text" class="form-control rounded-pill px-3"
+                    placeholder="{{ __('What do you need to do today?') }}" wire:model="newTaskTitle">
+                <button class="btn btn-primary btn-icon rounded-circle shadow-sm" id="add-task" type="submit"
+                    wire:loading.attr="disabled">
+                    <i class="mdi mdi-plus"></i>
+                </button>
             </div>
-        </div>
+            @error('newTaskTitle')
+                <span class="text-danger small ms-2">{{ $message }}</span>
+            @enderror
+        </form>
     </div>
 </div>
 

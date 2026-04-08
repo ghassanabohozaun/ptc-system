@@ -29,47 +29,6 @@
 
         <ul class="navbar-nav ms-auto">
 
-            {{-- <!-- begin  Category -->
-            <li class="nav-item dropdown d-none d-lg-block">
-                <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown"
-                   href="javascript:void(0)" data-bs-toggle="dropdown" aria-expanded="false"> Select Category </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-                    aria-labelledby="messageDropdown">
-                    <a class="dropdown-item py-3">
-                        <p class="mb-0 fw-medium float-start">Select category</p>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item preview-item">
-                        <div class="preview-item-content flex-grow py-2">
-                            <p class="preview-subject ellipsis fw-medium text-dark">Bootstrap Bundle </p>
-                            <p class="fw-light small-text mb-0">This is a Bundle featuring 16 unique dashboards
-                            </p>
-                        </div>
-                    </a>
-                    <a class="dropdown-item preview-item">
-                        <div class="preview-item-content flex-grow py-2">
-                            <p class="preview-subject ellipsis fw-medium text-dark">Angular Bundle</p>
-                            <p class="fw-light small-text mb-0">Everything you’ll ever need for your Angular
-                                projects</p>
-                        </div>
-                    </a>
-                    <a class="dropdown-item preview-item">
-                        <div class="preview-item-content flex-grow py-2">
-                            <p class="preview-subject ellipsis fw-medium text-dark">VUE Bundle</p>
-                            <p class="fw-light small-text mb-0">Bundle of 6 Premium Vue Admin Dashboard</p>
-                        </div>
-                    </a>
-                    <a class="dropdown-item preview-item">
-                        <div class="preview-item-content flex-grow py-2">
-                            <p class="preview-subject ellipsis fw-medium text-dark">React Bundle</p>
-                            <p class="fw-light small-text mb-0">Bundle of 8 Premium React Admin Dashboard</p>
-                        </div>
-                    </a>
-                </div>
-            </li>
-            <!-- end  Category --> --}}
-
-
             <!-- begin  calendar -->
             <li class="nav-item d-none d-lg-block">
                 <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
@@ -81,86 +40,83 @@
             </li>
             <!-- end  calendar -->
 
-            {{-- <!-- begin search -->
-            <li class="nav-item">
-                <form class="search-form" action="#">
-                    <i class="icon-search"></i>
-                    <input type="search" class="form-control" placeholder="{!! __('general.search') !!}"
-                        title="Search here">
-                </form>
-            </li>
-            <!-- end search --> --}}
-
-
-            <!-- begin notifications -->
-            <li class="nav-item dropdown">
-                <a class="nav-link count-indicator" id="notificationDropdown"href="javascript:void(0)"
-                    data-bs-toggle="dropdown">
-                    <i class="fa fa-flag text-warning"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-                    aria-labelledby="notificationDropdown">
-                    @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                        <a class="dropdown-item preview-item py-3" rel="alternate" hreflang="{{ $localeCode }}"
-                            href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                            <div class="preview-item-content">
-                                <h6 class="preview-subject fw-normal text-dark mb-1">{{ $properties['native'] }}</h6>
-                            </div>
-                        </a>
-                    @endforeach
-                </div>
-            </li>
-            <!-- end notifications -->
-
-
-
-            <!-- begin notifications -->
-            <livewire:dashboard.notification />
-            <!-- end notifications -->
-
-
-            <!-- begin message -->
-            <livewire:message-notification guard="employee" iconClass="icon-mail icon-lg" />
-            <!-- begin message -->
-
-
             <!-- begin user -->
-            <li class="nav-item dropdown     user-dropdown">
-                <a class="nav-link" id="UserDropdown"href="javascript:void(0)" data-bs-toggle="dropdown"
+            <li class="nav-item dropdown user-dropdown">
+                <a class="nav-link p-0" id="UserDropdown" href="javascript:void(0)" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                    <img class="img-xs rounded-circle" src="{!! asset('uploads/employeesPhotos/' . employee()->user()->photo) !!} " alt="Profile image"> </a>
+                    <div class="premium-user-pill">
+                        <div class="user-info-text d-none d-lg-flex">
+                            <span class="greeting-text">{!! __('dashboard.hello') !!}</span>
+                            <span class="user-name-text">{!! employee()->user()->first_name !!}</span>
+                        </div>
+                        @php
+                            $user = employee()->user();
+                            $photoUrl = $user->photo ? asset('uploads/employeesPhotos/' . $user->photo) : null;
+                            $colors = ['#5A8DEE', '#FDAC41', '#FF5B5C', '#39DA8A', '#00CFDD', '#7117EA', '#272727'];
+                            $charIndex = abs(crc32($user->first_name)) % count($colors);
+                            $bgColor = $colors[$charIndex];
+                        @endphp
+                        <div class="avatar-wrapper-premium">
+                            @if ($photoUrl)
+                                <img src="{!! $photoUrl !!}" alt="avatar" class="avatar-img-premium shadow-sm">
+                            @else
+                                <span class="avatar-initials-premium shadow-sm"
+                                    style="background: linear-gradient(135deg, {!! $bgColor !!}, {!! $bgColor !!}dd);">
+                                    {!! $user->initials !!}
+                                </span>
+                            @endif
+                        </div>
+                        <i class="mdi mdi-chevron-down ml-1 chevron-icon d-none d-lg-block"></i>
+                    </div>
+                </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                     <div class="dropdown-header text-center">
-                        <img class="img-md rounded-circle" src="{!! asset('uploads/employeesPhotos/' . employee()->user()->photo) !!}" alt="Profile image"
-                            width="70">
                         <p class="mb-1 mt-3 fw-semibold">{!! employee()->user()->EmployeeShortName() !!}</p>
                         <p class="fw-light text-muted mb-0">{!! employee()->user()->email !!}</p>
                     </div>
                     <a class="dropdown-item">
                         <i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i>
                         {!! __('general.profile') !!}
-                        <span class="badge badge-pill badge-danger">1</span>
                     </a>
                     <a class="dropdown-item">
                         <i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i>
                         {!! __('general.messages') !!}
-                        {{--   </a>
-                    <a class="dropdown-item">
-                        <i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i>
-                        Activity
                     </a>
-                    <a class="dropdown-item">
-                        <i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i>
-                        FAQ
-                    </a> --}}
-                        <a href="{!! route('employees.logout') !!}" class="dropdown-item">
-                            <i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>
-                            {!! __('auth.logout') !!}
-                        </a>
+                    <a href="{!! route('employees.logout') !!}" class="dropdown-item">
+                        <i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>
+                        {!! __('auth.logout') !!}
+                    </a>
                 </div>
             </li>
             <!-- begin user -->
 
+            {{-- Premium Language Switcher Toggle --}}
+            @php
+                $currentLocale = Lang();
+                $targetLocale = $currentLocale == 'ar' ? 'en' : 'ar';
+                $targetNative = LaravelLocalization::getSupportedLocales()[$targetLocale]['native'];
+                $flagPath =
+                    $targetLocale == 'ar'
+                        ? asset('assets/dashbaord/media/svg/flags/العربية.svg')
+                        : asset('assets/dashbaord/media/svg/flags/English.svg');
+            @endphp
+            <li class="nav-item">
+                <a href="{{ LaravelLocalization::getLocalizedURL($targetLocale, null, [], true) }}"
+                    class="nav-link p-0 d-flex align-items-center h-100">
+                    <div class="language-switcher-premium">
+                        <img src="{!! $flagPath !!}" class="flag-icon" alt="{!! $targetNative !!}">
+                        <span class="lang-name">{{ $targetNative }}</span>
+                    </div>
+                </a>
+            </li>
+
+            <!-- begin notifications -->
+            <livewire:dashboard.notification />
+            <!-- end notifications -->
+
+            <!-- begin message -->
+            <livewire:message-notification guard="employee" iconClass="icon-mail icon-lg" />
+            <!-- begin message -->
 
         </ul>
 

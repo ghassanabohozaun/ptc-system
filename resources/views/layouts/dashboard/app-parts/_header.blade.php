@@ -40,7 +40,15 @@
                                 @php
                                     $user = admin()->user();
                                     $photoUrl = $user->adminPhoto();
-                                    $colors = ['#5A8DEE', '#FDAC41', '#FF5B5C', '#39DA8A', '#00CFDD', '#7117EA', '#272727'];
+                                    $colors = [
+                                        '#5A8DEE',
+                                        '#FDAC41',
+                                        '#FF5B5C',
+                                        '#39DA8A',
+                                        '#00CFDD',
+                                        '#7117EA',
+                                        '#272727',
+                                    ];
                                     $charIndex = abs(crc32($user->name)) % count($colors);
                                     $bgColor = $colors[$charIndex];
                                 @endphp
@@ -54,7 +62,6 @@
                                             {!! $user->initials !!}
                                         </span>
                                     @endif
-                                    <span class="avatar-status-online"></span>
                                 </div>
                                 <i class="la la-angle-down ml-1 chevron-icon d-none d-lg-block"></i>
                             </div>

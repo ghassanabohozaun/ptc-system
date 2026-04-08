@@ -11,7 +11,7 @@ return [
     'share' => 'مشاركة',
     'print' => 'طباعة',
     'show_all' => 'عرض الكل',
-    'overview' => 'لمحة عن ',
+    'overview' => 'نظرة عامة',
     'profile' => 'الملف الشخصي',
     'messages' => 'الرسائل',
     'notifications' => 'الاشعارات',

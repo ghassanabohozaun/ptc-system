@@ -54,4 +54,7 @@ return [
     'todays_updates' => "Today's Updates",
     'processed' => 'Processed',
     'paid_this_month' => 'Paid this month',
+    'pending_tasks' => 'Pending Tasks',
+    'unread_messages' => 'Unread Messages',
+    'completed_tasks' => 'Completed Tasks',
 ];

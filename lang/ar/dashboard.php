@@ -53,4 +53,7 @@ return [
     'todays_updates' => 'تحديثات اليوم',
     'processed' => 'تمت المعالجة',
     'paid_this_month' => 'تم الدفع هذا الشهر',
+    'pending_tasks' => 'المهام المعلقة',
+    'unread_messages' => 'رسائل غير مقروءة',
+    'completed_tasks' => 'المهام المكتملة',
 ];

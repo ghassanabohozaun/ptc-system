@@ -3,7 +3,7 @@
 
 
         <li class="nav-item">
-            <a class="nav-link" href="{!! route('employees.overview') !!}">
+            <a class="nav-link @if (Request::routeIs('employees.overview')) active @endif" href="{!! route('employees.overview') !!}">
                 <i class="mdi mdi-grid-large menu-icon"></i>
                 <span class="menu-title">{!! __('dashboard.dashboard') !!}</span>
             </a>
