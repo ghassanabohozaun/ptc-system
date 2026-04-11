@@ -1,131 +1,103 @@
-<div class="modal modal-pop fade text-left" id="createEmployeeContractModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel35" aria-hidden="true">
+<div class="modal modal-pop fade" id="createEmployeeContractModal" tabindex="-1" role="dialog" aria-labelledby="createEmployeeContractModalLabel" aria-hidden="true">
 
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <form class="form" action="{!! route('dashboard.employeeContracts.store') !!}" method="POST" enctype="multipart/form-data"
             id='create_employee_contract_form'>
             @csrf
-            <div class="modal-content">
+            <div class="modal-content shadow-lg border-0 premium-modal-content-styled">
 
                 <!--begin::modal header-->
-                <div class="modal-header bg-info white">
-                    <h5 class="modal-title white" id="createEmployeeContractModalLabel">
-                        <i class="ft-plus mr-1"></i>{!! __('employeeContracts.create_new_contract') !!}
+                <div class="modal-header border-0 pb-0 pt-2 px-2 d-flex justify-content-between align-items-center">
+                    <h5 class="modal-title font-weight-bold text-dark ml-1 mt-1" id="createEmployeeContractModalLabel">
+                        <i class="la la-plus-circle text-indigo mr-1"></i> {!! __('employeeContracts.create_new_contract') !!}
                     </h5>
-                    <button type="button" class="close white" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close premium-close premium-close-button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <!--end::modal header-->
 
                 <!--begin::modal body-->
-                <div class="modal-body">
-
+                <div class="modal-body pt-3">
                     <div class="row">
-                        <div class="col-lg-12">
-
-                            <!-- begin: row -->
-                            <div class="row">
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="text-bold-600" for="employee_id">{!! __('employeeContracts.employee_name') !!}</label>
-                                        <select class="employee_contract_employee_id_select form-control" id="employee_contract_employee_id"
-                                            name="employee_id" style="width: 100%">
-                                        </select>
-                                        <span class="text text-danger">
-                                            <strong id="employee_id_error"></strong>
-                                        </span>
-                                    </div>
+                        <!-- Employee Select -->
+                        <div class="col-md-6 mb-3">
+                            <div class="premium-form-group">
+                                <label class="premium-label font-weight-bold text-dark" for="employee_id">{!! __('employeeContracts.employee_name') !!}</label>
+                                <div class="premium-input-wrapper">
+                                    <select class="employee_contract_employee_id_select form-control premium-input shadow-none" id="employee_contract_employee_id"
+                                        name="employee_id" style="width: 100%">
+                                    </select>
+                                    <i class="la la-user-tie"></i>
                                 </div>
-                                <!-- end: input -->
-
-                                <!-- begin: input -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="text-bold-600" for="contract_duration">{!! __('employeeContracts.contract_duration') !!}</label>
-                                        <input type="text" id="contract_duration" name="contract_duration" class="form-control"
-                                            autocomplete="off" placeholder="{!! __('employeeContracts.enter_contract_duration') !!}">
-                                        <span class="text text-danger">
-                                            <strong id="contract_duration_error"></strong>
-                                        </span>
-                                    </div>
-                                </div>
-                                <!-- end: input -->
-
+                                <span class="text text-danger small"><strong id="employee_id_error"></strong></span>
                             </div>
-                            <!-- end: row -->
+                        </div>
 
-                            <!-- begin: row -->
-                            <div class="row">
-
-                                <!-- begin: input -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="text-bold-600" for="contract_start_date">{!! __('employeeContracts.contract_start_date') !!}</label>
-                                        <input type="date" id="contract_start_date" name="contract_start_date" class="form-control"
-                                            autocomplete="off">
-                                        <span class="text text-danger">
-                                            <strong id="contract_start_date_error"></strong>
-                                        </span>
-                                    </div>
+                        <!-- Contract Duration -->
+                        <div class="col-md-6 mb-3">
+                            <div class="premium-form-group">
+                                <label class="premium-label font-weight-bold text-dark" for="contract_duration">{!! __('employeeContracts.contract_duration') !!}</label>
+                                <div class="premium-input-wrapper">
+                                    <input type="text" id="contract_duration" name="contract_duration" class="form-control premium-input shadow-none"
+                                        autocomplete="off" placeholder="{!! __('employeeContracts.enter_contract_duration') !!}">
+                                    <i class="la la-clock"></i>
                                 </div>
-                                <!-- end: input -->
-
-                                <!-- begin: input -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="text-bold-600" for="contract_expiry_date">{!! __('employeeContracts.contract_expiry_date') !!}</label>
-                                        <input type="date" id="contract_expiry_date" name="contract_expiry_date" class="form-control"
-                                            autocomplete="off">
-                                        <span class="text text-danger">
-                                            <strong id="contract_expiry_date_error"></strong>
-                                        </span>
-                                    </div>
-                                </div>
-                                <!-- end: input -->
-
+                                <span class="text text-danger small"><strong id="contract_duration_error"></strong></span>
                             </div>
-                            <!-- end: row -->
+                        </div>
 
-                            <!-- begin: row -->
-                            <div class="row">
-
-                                <!-- begin: input -->
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="text-bold-600" for="monthly_salary">{!! __('employeeContracts.monthly_salary') !!}</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="la la-dollar"></i></span>
-                                            </div>
-                                            <input type="number" step="0.01" id="monthly_salary" name="monthly_salary" class="form-control"
-                                                autocomplete="off" placeholder="{!! __('employeeContracts.enter_monthly_salary') !!}">
-                                        </div>
-                                        <span class="text text-danger">
-                                            <strong id="monthly_salary_error"></strong>
-                                        </span>
-                                    </div>
+                        <!-- Start Date -->
+                        <div class="col-md-6 mb-3">
+                            <div class="premium-form-group">
+                                <label class="premium-label font-weight-bold text-dark" for="contract_start_date">{!! __('employeeContracts.contract_start_date') !!}</label>
+                                <div class="premium-input-wrapper">
+                                    <input type="date" id="contract_start_date" name="contract_start_date" class="form-control premium-input shadow-none"
+                                        autocomplete="off">
+                                    <i class="la la-calendar"></i>
                                 </div>
-                                <!-- end: input -->
-
+                                <span class="text text-danger small"><strong id="contract_start_date_error"></strong></span>
                             </div>
-                            <!-- end: row -->
+                        </div>
 
+                        <!-- Expiry Date -->
+                        <div class="col-md-6 mb-3">
+                            <div class="premium-form-group">
+                                <label class="premium-label font-weight-bold text-dark" for="contract_expiry_date">{!! __('employeeContracts.contract_expiry_date') !!}</label>
+                                <div class="premium-input-wrapper">
+                                    <input type="date" id="contract_expiry_date" name="contract_expiry_date" class="form-control premium-input shadow-none"
+                                        autocomplete="off">
+                                    <i class="la la-calendar-times"></i>
+                                </div>
+                                <span class="text text-danger small"><strong id="contract_expiry_date_error"></strong></span>
+                            </div>
+                        </div>
+
+                        <!-- Monthly Salary -->
+                        <div class="col-md-12 mb-3">
+                            <div class="premium-form-group">
+                                <label class="premium-label font-weight-bold text-dark" for="monthly_salary">{!! __('employeeContracts.monthly_salary') !!}</label>
+                                <div class="premium-input-wrapper">
+                                    <input type="number" step="0.01" id="monthly_salary" name="monthly_salary" class="form-control premium-input shadow-none"
+                                        autocomplete="off" placeholder="{!! __('employeeContracts.enter_monthly_salary') !!}">
+                                    <i class="la la-dollar"></i>
+                                </div>
+                                <span class="text text-danger small"><strong id="monthly_salary_error"></strong></span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!--end::modal body-->
 
                 <!--begin::modal footer-->
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-info btn-glow font-weight-bold">
-                        <i class="ft-save mr-1"></i>{{ __('general.save') }}
-                        <i class="ft-refresh-cw spinner spinner_loading d-none ml-1"></i>
+                <div class="modal-footer border-0 pt-0">
+                    <button type="submit" class="btn btn-premium-add px-4 font-weight-bold">
+                        <i class="la la-save mr-1"></i> {{ __('general.save') }}
+                        <i class="la la-refresh la-spin spinner_loading d-none ml-1"></i>
                     </button>
 
-                    <button type="button" id="cancel_employee_contract_btn" class="btn btn-outline-secondary font-weight-bold"
-                        data-dismiss="modal">
-                        <i class="ft-x mr-1"></i>{{ __('general.cancel') }}
+                    <button type="button" class="btn btn-light-dark font-weight-bold" data-dismiss="modal">
+                        <i class="la la-times mr-1"></i> {{ __('general.cancel') }}
                     </button>
                 </div>
                 <!--end::modal footer-->
@@ -165,14 +137,8 @@
                 });
             });
 
-            // reset
             function resetCreateForm() {
-                $('#employee_contract_employee_id').css('border-color', '');
-                $('#contract_duration').css('border-color', '');
-                $('#contract_start_date').css('border-color', '');
-                $('#contract_expiry_date').css('border-color', '');
-                $('#monthly_salary').css('border-color', '');
-
+                $('.premium-input-wrapper').css('border-color', '');
                 $('#employee_id_error').text('');
                 $('#contract_duration_error').text('');
                 $('#contract_start_date_error').text('');
@@ -180,22 +146,12 @@
                 $('#monthly_salary_error').text('');
             }
 
-            // cancel
-            $('body').on('click', '#cancel_employee_contract_btn', function(e) {
-                $('#createEmployeeContractModal').modal('hide');
-                $('#create_employee_contract_form')[0].reset();
-                $(".employee_contract_employee_id_select").val('').trigger('change');
-                resetCreateForm();
-            });
-
-            // hide
             $('#createEmployeeContractModal').on('hidden.bs.modal', function(e) {
                 $('#create_employee_contract_form')[0].reset();
                 $(".employee_contract_employee_id_select").val('').trigger('change');
                 resetCreateForm();
             });
 
-            // create
             $('#create_employee_contract_form').on('submit', function(e) {
                 e.preventDefault();
                 resetCreateForm();
@@ -216,24 +172,18 @@
                         $('.spinner_loading').removeClass('d-none');
                     },
                     success: function(data) {
-                        if (typeof fetch_data === 'function') {
-                            fetch_data();
-                        }
+                        if (typeof fetch_data === 'function') { fetch_data(); }
                         $('#create_employee_contract_form')[0].reset();
                         $(".employee_contract_employee_id_select").val('').trigger('change');
                         resetCreateForm();
                         $('#createEmployeeContractModal').modal('hide');
-                        if (typeof flasher !== 'undefined') {
-                            flasher.success("{!! __('general.add_success_message') !!}");
-                        } else {
-                            toastr.success("{!! __('general.added_successfully') !!}");
-                        }
+                        flasher.success("{!! __('general.add_success_message') !!}");
                     },
                     error: function(reject) {
                         var response = $.parseJSON(reject.responseText);
                         $.each(response.errors, function(key, value) {
                             $('#' + key + '_error').text(value[0]);
-                            $('#' + key).css('border-color', '#F64E60');
+                            $('#' + key).closest('.premium-input-wrapper').css('border-color', '#F64E60');
                         });
                     },
                     complete: function() {

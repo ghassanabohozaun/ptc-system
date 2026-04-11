@@ -22,7 +22,7 @@ class EmployeeStatusesController extends Controller
     public function index(Request $request)
     {
         $title = __('employees.employee_statuses');
-        $employeeStatuses = $this->employeeStatusService->getAll();
+        $employeeStatuses = $this->employeeStatusService->getAll($request->keyword);
 
         if ($request->ajax()) {
             return view('dashboard.employees.statuses.partials._table', compact('employeeStatuses'))->render();

@@ -1,222 +1,182 @@
 <form>
-    <!-- begin: title,basic_salary , appointment_date ,contact_expire_date -->
     <div class="row">
-
-        <!-- begin: input -->
+        <!-- Job Title AR -->
         <div class="col-md-3">
-            <div class="form-group">
+            <div class="premium-form-group">
                 <label for="title_ar">{!! __('employees.title_ar') !!}</label>
-                <input type="text" wire:model.live="title_ar" class="form-control" autocomplete="off"
-                    placeholder="{!! __('employees.enter_title_ar') !!}"
-                    @error('title_ar')  style="border-color: rgb(246, 78, 96)"  @enderror>
+                <input type="text" wire:model.live="title_ar" 
+                    class="form-control premium-input @error('title_ar') is-invalid-premium @enderror" 
+                    autocomplete="off" placeholder="{!! __('employees.enter_title_ar') !!}">
                 @error('title_ar')
-                    <span class="text text-danger">
-                        <strong>{!! $message !!}</strong>
+                    <span class="error-message-premium">
+                        <i class="la la-info-circle"></i> {!! $message !!}
                     </span>
                 @enderror
             </div>
         </div>
-        <!-- end: input -->
 
-        <!-- begin: input -->
+        <!-- Job Title EN -->
         <div class="col-md-3">
-            <div class="form-group">
+            <div class="premium-form-group">
                 <label for="title_en">{!! __('employees.title_en') !!}</label>
-                <input type="text" wire:model.live="title_en" class="form-control" autocomplete="off"
-                    placeholder="{!! __('employees.enter_title_en') !!}"
-                    @error('title_en')  style="border-color: rgb(246, 78, 96)"  @enderror>
+                <input type="text" wire:model.live="title_en" 
+                    class="form-control premium-input @error('title_en') is-invalid-premium @enderror" 
+                    autocomplete="off" placeholder="{!! __('employees.enter_title_en') !!}">
                 @error('title_en')
-                    <span class="text text-danger">
-                        <strong>{!! $message !!}</strong>
+                    <span class="error-message-premium">
+                        <i class="la la-info-circle"></i> {!! $message !!}
                     </span>
                 @enderror
             </div>
         </div>
-        <!-- end: input -->
 
-
-        <!-- begin: input -->
+        <!-- Appointment Date -->
         <div class="col-md-2">
-            <div class="form-group">
+            <div class="premium-form-group">
                 <label for="appointment_date">{!! __('employees.appointment_date') !!}</label>
-                <input type="date" wire:model.live="appointment_date" class="form-control" autocomplete="off"
-                    placeholder="{!! __('employees.enter_appointment_date') !!}"
-                    @error('appointment_date')  style="border-color: rgb(246, 78, 96)"  @enderror>
+                <input type="date" wire:model.live="appointment_date" 
+                    class="form-control premium-input @error('appointment_date') is-invalid-premium @enderror">
                 @error('appointment_date')
-                    <span class="text text-danger">
-                        <strong>{!! $message !!}</strong>
+                    <span class="error-message-premium">
+                        <i class="la la-info-circle"></i> {!! $message !!}
                     </span>
                 @enderror
             </div>
         </div>
-        <!-- end: input -->
 
-        <!-- begin: input -->
+        <!-- Contact Expire Date -->
         <div class="col-md-2">
-            <div class="form-group">
+            <div class="premium-form-group">
                 <label for="contact_expire_date">{!! __('employees.contact_expire_date') !!}</label>
-                <input type="date" wire:model.live="contact_expire_date" class="form-control" autocomplete="off"
-                    placeholder="{!! __('employees.enter_contact_expire_date') !!}"
-                    @error('contact_expire_date')  style="border-color: rgb(246, 78, 96)"  @enderror>
+                <input type="date" wire:model.live="contact_expire_date" 
+                    class="form-control premium-input @error('contact_expire_date') is-invalid-premium @enderror">
                 @error('contact_expire_date')
-                    <span class="text text-danger">
-                        <strong>{!! $message !!}</strong>
+                    <span class="error-message-premium">
+                        <i class="la la-info-circle"></i> {!! $message !!}
                     </span>
                 @enderror
             </div>
         </div>
-        <!-- end: input -->
 
-
-        <!-- begin: input -->
+        <!-- Employment Type -->
         <div class="col-md-2">
-            <div class="form-group">
+            <div class="premium-form-group">
                 <label for="employment_type">{!! __('employees.employment_type') !!}</label>
-                <select wire:model.live="employment_type" class="form-control"
-                    @error('employment_type')  style="border-color: rgb(246, 78, 96)"  @enderror>
+                <select wire:model.live="employment_type" 
+                    class="form-control premium-input @error('employment_type') is-invalid-premium @enderror">
                     <option value="" selected>{!! __('employees.select_from_list') !!}</option>
                     <option value="full_time">{!! __('employees.full_time') !!}</option>
                     <option value="part_time">{!! __('employees.part_time') !!}</option>
                     <option value="contract">{!! __('employees.contract') !!}</option>
                 </select>
                 @error('employment_type')
-                    <span class="text text-danger">
-                        <strong>{!! $message !!}</strong>
+                    <span class="error-message-premium">
+                        <i class="la la-info-circle"></i> {!! $message !!}
                     </span>
                 @enderror
             </div>
         </div>
-        <!-- end: input -->
-
-
     </div>
-    <!-- end:  title,basic_salary , appointment_date ,contact_expire_date -->
 
-
-    <!-- begin: employment_type , employee_status_id , department_id , supervisor -->
     <div class="row">
-
-
-
-
-        <!-- begin: input -->
+        <!-- Employee Status -->
         <div class="col-md-3">
-            <div class="form-group">
+            <div class="premium-form-group">
                 <label for="employee_status_id">{!! __('employees.employee_status_id') !!}</label>
-                <select class="form-control custom_select" wire:model="employee_status_id" id="employee_status_id"
-                    name="employee_status_id"
-                    @error('employee_status_id')  style="border-color: rgb(246, 78, 96)"  @enderror>
-                    <option value="0" selected='selected'>
-                        {!! __('general.select_from_list') !!}
-                    </option>
+                <select id="employee_status_id" name="employee_status_id" wire:model="employee_status_id"
+                    class="form-control premium-input @error('employee_status_id') is-invalid-premium @enderror">
+                    <option value="0" selected='selected'>{!! __('general.select_from_list') !!}</option>
                     @foreach ($employeeStatuses as $status)
-                        <option value="{!! $status->id !!}">
-                            {!! $status->name !!}
-                        </option>
+                        <option value="{!! $status->id !!}">{!! $status->name !!}</option>
                     @endforeach
                 </select>
                 @error('employee_status_id')
-                    <span class="text text-danger">
-                        <strong>{!! $message !!}</strong>
+                    <span class="error-message-premium">
+                        <i class="la la-info-circle"></i> {!! $message !!}
                     </span>
                 @enderror
             </div>
         </div>
-        <!-- end: input -->
 
-        <!-- begin: input -->
+        <!-- Department -->
         <div class="col-md-3">
-            <div class="form-group">
+            <div class="premium-form-group">
                 <label for="department_id">{!! __('employees.department_id') !!}</label>
-                <select class="form-control custom_select" wire:model="department_id" id="department_id"
-                    name="department_id" @error('department_id')  style="border-color: rgb(246, 78, 96)"  @enderror>
-                    <option value="0" selected='selected'>
-                        {!! __('general.select_from_list') !!}
-                    </option>
+                <select id="department_id" name="department_id" wire:model="department_id"
+                    class="form-control premium-input @error('department_id') is-invalid-premium @enderror">
+                    <option value="0" selected='selected'>{!! __('general.select_from_list') !!}</option>
                     @foreach ($departments as $department)
-                        <option value="{!! $department->id !!}">
-                            {!! $department->name !!}
-                        </option>
+                        <option value="{!! $department->id !!}">{!! $department->name !!}</option>
                     @endforeach
                 </select>
                 @error('department_id')
-                    <span class="text text-danger">
-                        <strong>{!! $message !!}</strong>
+                    <span class="error-message-premium">
+                        <i class="la la-info-circle"></i> {!! $message !!}
                     </span>
                 @enderror
             </div>
         </div>
-        <!-- end: input -->
 
-
-        <!-- begin: input -->
+        <!-- Supervisor AR -->
         <div class="col-md-2">
-            <div class="form-group">
+            <div class="premium-form-group">
                 <label for="supervisor_ar">{!! __('employees.supervisor_ar') !!}</label>
-                <input type="text" wire:model.live="supervisor_ar" class="form-control" autocomplete="off"
-                    placeholder="{!! __('employees.enter_supervisor_ar') !!}"
-                    @error('supervisor_ar')  style="border-color: rgb(246, 78, 96)"  @enderror>
+                <input type="text" wire:model.live="supervisor_ar" 
+                    class="form-control premium-input @error('supervisor_ar') is-invalid-premium @enderror" 
+                    autocomplete="off" placeholder="{!! __('employees.enter_supervisor_ar') !!}">
                 @error('supervisor_ar')
-                    <span class="text text-danger">
-                        <strong>{!! $message !!}</strong>
+                    <span class="error-message-premium">
+                        <i class="la la-info-circle"></i> {!! $message !!}
                     </span>
                 @enderror
             </div>
         </div>
-        <!-- end: input -->
 
-        <!-- begin: input -->
+        <!-- Supervisor EN -->
         <div class="col-md-2">
-            <div class="form-group">
+            <div class="premium-form-group">
                 <label for="supervisor_en">{!! __('employees.supervisor_en') !!}</label>
-                <input type="text" wire:model.live="supervisor_en" class="form-control" autocomplete="off"
-                    placeholder="{!! __('employees.enter_supervisor_en') !!}"
-                    @error('supervisor_en')  style="border-color: rgb(246, 78, 96)"  @enderror>
+                <input type="text" wire:model.live="supervisor_en" 
+                    class="form-control premium-input @error('supervisor_en') is-invalid-premium @enderror" 
+                    autocomplete="off" placeholder="{!! __('employees.enter_supervisor_en') !!}">
                 @error('supervisor_en')
-                    <span class="text text-danger">
-                        <strong>{!! $message !!}</strong>
+                    <span class="error-message-premium">
+                        <i class="la la-info-circle"></i> {!! $message !!}
                     </span>
                 @enderror
             </div>
         </div>
-        <!-- end: input -->
 
-        <!-- begin: input -->
+        <!-- Submit Monthly Report -->
         <div class="col-md-2">
-            <div class="form-group">
+            <div class="premium-form-group">
                 <label for="submit_monthly_report">{!! __('employees.submit_monthly_report') !!}</label>
-                <select wire:model.live="submit_monthly_report" class="form-control"
-                    @error('submit_monthly_report')  style="border-color: rgb(246, 78, 96)"  @enderror>
+                <select wire:model.live="submit_monthly_report" 
+                    class="form-control premium-input @error('submit_monthly_report') is-invalid-premium @enderror">
                     <option value="" selected>{!! __('employees.select_from_list') !!}</option>
                     <option value="0">{!! __('employees.no') !!}</option>
                     <option value="1">{!! __('employees.yes') !!}</option>
                 </select>
                 @error('submit_monthly_report')
-                    <span class="text text-danger">
-                        <strong>{!! $message !!}</strong>
+                    <span class="error-message-premium">
+                        <i class="la la-info-circle"></i> {!! $message !!}
                     </span>
                 @enderror
             </div>
         </div>
-        <!-- end: input -->
-
-
     </div>
-    <!-- end:  employment_type, employee_status_id , department_id , supervisor-->
 
-
-    <!-- begin: button -->
-    <div class="row {!! Lang() == 'ar' ? 'pull-left' : 'pull-right' !!} mt-3">
-        <div class="col-md-12">
-            <button type="button" wire:click ="submitJobDetailsFrom" class="btn btn-primary  btn-glow">
+    <!-- Final Save Button -->
+    <div class="row mt-3">
+        <div class="col-md-12 text-right">
+            <button type="button" wire:click="submitJobDetailsFrom" class="btn btn-premium-add px-4">
+                <i class="la la-save mr-1"></i>
                 {!! __('employees.save') !!}
                 <span wire:loading wire:target="submitJobDetailsFrom">
-                    <i class="la la-refresh spinner">
-                    </i>
+                    <i class="la la-refresh la-spin ml-1"></i>
                 </span>
             </button>
         </div>
     </div>
     <div class="clearfix"></div>
-    <!-- end: button -->
 </form>

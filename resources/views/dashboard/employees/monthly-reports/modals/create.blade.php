@@ -1,116 +1,88 @@
 <div class="modal modal-pop fade" id="createMonthlyReportModal" role="dialog" aria-labelledby="createMonthlyReportModalLabel"
     aria-hidden="true">
 
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <form class="form" action="{!! route('dashboard.monthlyReports.store') !!}" method="POST" enctype="multipart/form-data"
             id='create_monthly_report_form'>
             @csrf
-            <div class="modal-content">
+            <div class="modal-content shadow-lg border-0 premium-modal-content-styled">
 
                 <!--begin::modal header-->
-                <div class="modal-header">
-                    <h5 class="modal-title" id="createMonthlyReportModalLabel">{!! __('monthlyReports.create_new_monthly_report') !!}
+                <div class="modal-header border-0 pb-0 pt-2 px-2 d-flex justify-content-between align-items-center">
+                    <h5 class="modal-title font-weight-bold text-dark ml-1 mt-1" id="createMonthlyReportModalLabel">
+                        <i class="la la-plus-circle text-indigo mr-1"></i> {!! __('monthlyReports.create_new_monthly_report') !!}
                     </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close premium-close premium-close-button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <!--end::modal header-->
 
                 <!--begin::modal body-->
-                <div class="modal-body">
-
+                <div class="modal-body pt-3">
                     <div class="row">
-                        <div class="col-lg-12">
-
-
-                            <!-- begin: row -->
-                            <div class="row">
-
-                                <!-- begin: input -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="employee_id">{!! __('monthlyReports.employee_id') !!}</label>
-                                        <select class="monthly_report_employee_id_select form-control" id="employee_id"
-                                            name="employee_id" style="width: 100%">
-                                        </select>
-                                        <span class="text text-danger">
-                                            <strong id="employee_id_error"></strong>
-                                        </span>
-
-                                    </div>
+                        <!-- Employee Input -->
+                        <div class="col-md-6 mb-3">
+                            <div class="premium-form-group">
+                                <label class="premium-label font-weight-bold text-dark">{!! __('monthlyReports.employee_id') !!}</label>
+                                <div class="premium-input-wrapper">
+                                    <select class="monthly_report_employee_id_select form-control premium-input shadow-none w-100" id="employee_id"
+                                        name="employee_id">
+                                    </select>
+                                    <i class="la la-user-tie"></i>
                                 </div>
-                                <!-- end: input -->
-
-                                <!-- begin: input -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="month">{!! __('monthlyReports.month') !!}</label>
-                                        <input type="month" id="month" name="month" class="form-control"
-                                            autocomplete="off" placeholder="{!! __('monthlyReports.enter_month') !!}">
-                                        <span class="text text-danger">
-                                            <strong id="month_error"></strong>
-                                        </span>
-                                    </div>
-                                </div>
-                                <!-- end: input -->
-
-
+                                <span class="text text-danger small"><strong id="employee_id_error"></strong></span>
                             </div>
+                        </div>
 
-
-                            <!-- begin: row -->
-                            <div class="row">
-                                <!-- begin: input -->
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="details">{!! __('monthlyReports.details') !!}</label>
-                                        <textarea rows="5" id="details" name="details" class="form-control" autocomplete="off"
-                                            placeholder="{!! __('monthlyReports.enter_details') !!}"></textarea>
-                                        <span class="text text-danger">
-                                            <strong id="details_error"></strong>
-                                        </span>
-                                    </div>
+                        <!-- Month Input -->
+                        <div class="col-md-6 mb-3">
+                            <div class="premium-form-group">
+                                <label class="premium-label font-weight-bold text-dark">{!! __('monthlyReports.month') !!}</label>
+                                <div class="premium-input-wrapper">
+                                    <input type="month" id="month" name="month" class="form-control premium-input shadow-none"
+                                        autocomplete="off" placeholder="{!! __('monthlyReports.enter_month') !!}">
+                                    <i class="la la-calendar"></i>
                                 </div>
-                                <!-- end: input -->
-
+                                <span class="text text-danger small"><strong id="month_error"></strong></span>
                             </div>
-                            <!-- end: row -->
+                        </div>
 
-                            <!-- begin: row -->
-                            <div class="row">
-                                <!-- begin: input -->
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="file">{!! __('monthlyReports.file') !!}</label>
-                                        <input type="file" id="file" name="file" class="form-control"
-                                            placeholder="{!! __('monthlyReports.enter_file') !!}"></input>
-                                        <span class="text text-danger">
-                                            <strong id="file_error"></strong>
-                                        </span>
-                                    </div>
+                        <!-- Details Input (Summernote targeted) -->
+                        <div class="col-md-12 mb-3">
+                            <div class="premium-form-group">
+                                <label class="premium-label font-weight-bold text-dark">{!! __('monthlyReports.details') !!}</label>
+                                <textarea id="details" name="details" class="form-control premium-input shadow-none premium-textarea-md" autocomplete="off"
+                                    placeholder="{!! __('monthlyReports.enter_details') !!}"></textarea>
+                                <span class="text text-danger small"><strong id="details_error"></strong></span>
+                            </div>
+                        </div>
+
+                        <!-- File Input -->
+                        <div class="col-md-12">
+                            <div class="premium-form-group">
+                                <label class="premium-label font-weight-bold text-dark">{!! __('monthlyReports.file') !!}</label>
+                                <div class="premium-input-wrapper">
+                                    <input type="file" id="file" name="file" class="form-control premium-input shadow-none"
+                                        placeholder="{!! __('monthlyReports.enter_file') !!}">
+                                    <i class="la la-cloud-upload"></i>
                                 </div>
-                                <!-- end: input -->
-
+                                <span class="text text-danger small"><strong id="file_error"></strong></span>
                             </div>
-                            <!-- end: row -->
-
                         </div>
                     </div>
-                    <!--end: form-->
                 </div>
                 <!--end::modal body-->
 
                 <!--begin::modal footer-->
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-info px-2">
-                        <i class="ft-save mr-1"></i> {{ __('general.save') }}
-                        <i class="ft-refresh-cw spinner spinner_loading d-none ml-1"></i>
+                <div class="modal-footer border-0 pt-0">
+                    <button type="submit" class="btn btn-premium-add px-4 font-weight-bold">
+                        <i class="la la-save mr-1"></i> {{ __('general.save') }}
+                        <i class="la la-refresh la-spin spinner_loading d-none ml-1"></i>
                     </button>
 
-                    <button type="button" id="cancel_monthly_report_btn" class="btn btn-outline-secondary px-2"
-                        data-dismiss="modal">
-                        <i class="ft-x mr-1"></i> {{ __('general.cancel') }}
+                    <button type="button" class="btn btn-light-dark font-weight-bold" data-dismiss="modal">
+                        <i class="la la-times mr-1"></i> {{ __('general.cancel') }}
                     </button>
                 </div>
                 <!--end::modal footer-->
@@ -129,29 +101,8 @@
             $(".monthly_report_employee_id_select").select2({
                 dropdownParent: $('#createMonthlyReportModal'),
                 minimumInputLength: 1,
-                maximumInputLength: 20,
                 placeholder: '{!! __('general.select_from_list') !!}',
                 allowClear: true,
-                escapeMarkup: function(markup) {
-                    return markup;
-                },
-                language: {
-                    inputTooShort: function() {
-                        return "{!! __('general.inputTooShort') !!}";
-                    },
-                    inputTooLong: function() {
-                        return "{!! __('general.inputTooLong') !!}";
-                    },
-                    errorLoading: function() {
-                        return "{!! __('general.errorLoading') !!}";
-                    },
-                    noResults: function() {
-                        return "<span>{!! __('general.noResults2') !!}";
-                    },
-                    searching: function() {
-                        return " {!! __('general.searching') !!}";
-                    }
-                },
                 ajax: {
                     url: employeePath,
                     dataType: 'json',
@@ -159,16 +110,9 @@
                     processResults: function(data) {
                         return {
                             results: $.map(data, function(item) {
-                                if ('{!! Lang() !!}' === 'en') {
-                                    return {
-                                        text: item.employee_en,
-                                        id: item.id
-                                    }
-                                } else {
-                                    return {
-                                        text: item.employee_ar,
-                                        id: item.id
-                                    }
+                                return {
+                                    text: '{!! Lang() !!}' === 'en' ? item.employee_en : item.employee_ar,
+                                    id: item.id
                                 }
                             })
                         };
@@ -178,42 +122,31 @@
             });
         });
 
-
         // reset
         function resetCreateForm() {
-            $('#employee_id').css('border-color', '');
-            $('#month').css('border-color', '');
-            $('#file').css('border-color', '');
+            $('#employee_id').closest('.premium-input-wrapper').css('border-color', '');
+            $('#month').closest('.premium-input-wrapper').css('border-color', '');
+            $('#file').closest('.premium-input-wrapper').css('border-color', '');
+            $('#details').css('border-color', '');
 
             $('#employee_id_error').text('');
             $('#month_error').text('');
             $('#file_error').text('');
+            $('#details_error').text('');
         }
 
-        // cancel
-        $('body').on('click', '#cancel_monthly_report_btn', function(e) {
-            $('#createMonthlyReportModal').modal('hide');
-            $('#create_monthly_report_form')[0].reset();
-            $(".monthly_report_employee_id_select").val('').trigger('change');
-            resetCreateForm();
-        });
-
-        // hide
+        // cancel & hide cleanup
         $('#createMonthlyReportModal').on('hidden.bs.modal', function(e) {
-            $('#createMonthlyReportModal').modal('hide');
             $('#create_monthly_report_form')[0].reset();
             $(".monthly_report_employee_id_select").val('').trigger('change');
             resetCreateForm();
         });
-
 
         // create
         $('#create_monthly_report_form').on('submit', function(e) {
             e.preventDefault();
-            // reset
             resetCreateForm();
 
-            // paramters
             var data = new FormData(this);
             var type = $(this).attr('method');
             var url = $(this).attr('action');
@@ -230,15 +163,8 @@
                     $('.spinner_loading').removeClass('d-none');
                 },
                 success: function(data) {
-                    console.log(data);
                     if (data.status == 'added') {
-                        // Refresh table with current filters, returning to page 1 to see the new entry
-                        if (typeof fetch_data === 'function') {
-                            fetch_data(1);
-                        }
-                        $('#create_monthly_report_form')[0].reset();
-                        $(".monthly_report_employee_id_select").val('').trigger('change');
-                        resetCreateForm();
+                        if (typeof fetch_data === 'function') { fetch_data(1); }
                         $('#createMonthlyReportModal').modal('hide');
                         flasher.success("{!! __('general.add_success_message') !!}");
                     } else if (data.status == 'error') {
@@ -251,18 +177,16 @@
                     var response = $.parseJSON(reject.responseText);
                     $.each(response.errors, function(key, value) {
                         $('#' + key + '_error').text(value[0]);
-                        $('#' + key).css('border-color', '#F64E60');
+                        // Apply red border to premium-input-wrapper
+                        $('#' + key).closest('.premium-input-wrapper').css('border-color', '#F64E60');
+                        // Special check for details if it's summernote (it won't have the wrapper)
+                        if(key === 'details') { $('#details').css('border-color', '#F64E60'); }
                     });
-                }, //end error
+                },
                 complete: function() {
                     $('.spinner_loading').addClass('d-none');
                 }
             });
-
         });
     </script>
 @endpush
-
-
-
-

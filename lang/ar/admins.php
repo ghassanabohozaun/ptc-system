@@ -3,7 +3,7 @@ return [
     'create_new_admin' => 'انشاء مدير جديد',
     'update_admin' => 'تعديل المدير',
     'admins' => 'المديرين',
-    'show_all_admins' => 'عرض جميع الصلاحيات',
+    'show_all_admins' => 'عرض جميع المديرين',
 
     'name' => 'اسم المدير',
     'name_ar' => 'اسم المدير بالعربي',

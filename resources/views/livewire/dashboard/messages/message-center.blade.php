@@ -1,43 +1,55 @@
-<div class="content-body">
-    <div class="row">
+<div class="content-body h-100">
+    <div class="row align-items-stretch h-100">
         <!-- Sidebar -->
-        <div class="col-md-2 mb-3 {{ app()->getLocale() == 'ar' ? 'float_right' : '' }}">
-            <div class="card msg-sidebar-card shadow-sm sticky-top" style="top: 20px; z-index: 1;">
-                <div class="card-body p-0">
-                    <div class="p-1 border-bottom text-center">
-                        <button type="button" class="btn btn-primary w-100 msg-sidebar-btn" data-toggle="modal"
+        <div class="col-xl-2 col-lg-3 col-md-4 mb-4 h-100">
+            <div class="msg-sidebar-card shadow-sm border-0 h-100">
+                <div class="card-body p-0 d-flex flex-column h-100">
+                    <div class="p-3 border-bottom text-center">
+                        <button type="button" class="btn msg-sidebar-btn w-100" data-toggle="modal"
                             data-target="#composeModal">
-                            <i class="icon-pencil mr-2"></i> {!! __('messages.compose_message') !!}
+                            <i class="la la-edit mr-2"></i> {!! __('messages.compose_message') !!}
                         </button>
                     </div>
-                    <div class="list-group list-group-flush py-2">
+                    <div class="nav flex-column py-3 flex-grow-1">
                         <a href="javascript:void(0)" wire:click.prevent="setView('inbox')"
-                            class="list-group-item list-group-item-action msg-nav-link {{ $currentView === 'inbox' ? 'active' : '' }}">
-                            <div class="d-flex align-items-center">
-                                <i class="icon-envelope mr-3 fa-fw"></i>
+                            class="nav-link msg-nav-link d-flex justify-content-between align-items-center {{ $currentView === 'inbox' ? 'active' : '' }}">
+                            <div>
+                                <i class="la la-inbox mr-2"></i>
                                 <span>{!! __('messages.inbox') !!}</span>
                             </div>
+                            @if($counts['inbox'] > 0)
+                                <span class="msg-count-badge">{{ $counts['inbox'] }}</span>
+                            @endif
                         </a>
                         <a href="javascript:void(0)" wire:click.prevent="setView('sent')"
-                            class="list-group-item list-group-item-action msg-nav-link {{ $currentView === 'sent' ? 'active' : '' }}">
-                            <div class="d-flex align-items-center">
-                                <i class="icon-paper-plane mr-3 fa-fw"></i>
+                            class="nav-link msg-nav-link d-flex justify-content-between align-items-center {{ $currentView === 'sent' ? 'active' : '' }}">
+                            <div>
+                                <i class="la la-paper-plane mr-2"></i>
                                 <span>{!! __('messages.sent') !!}</span>
                             </div>
+                            @if($counts['sent'] > 0)
+                                <span class="msg-count-badge">{{ $counts['sent'] }}</span>
+                            @endif
                         </a>
                         <a href="javascript:void(0)" wire:click.prevent="setView('starred')"
-                            class="list-group-item list-group-item-action msg-nav-link {{ $currentView === 'starred' ? 'active' : '' }}">
-                            <div class="d-flex align-items-center">
-                                <i class="icon-star mr-3 fa-fw"></i>
+                            class="nav-link msg-nav-link d-flex justify-content-between align-items-center {{ $currentView === 'starred' ? 'active' : '' }}">
+                            <div>
+                                <i class="la la-star mr-2"></i>
                                 <span>{!! __('messages.starred') !!}</span>
                             </div>
+                            @if($counts['starred'] > 0)
+                                <span class="msg-count-badge">{{ $counts['starred'] }}</span>
+                            @endif
                         </a>
                         <a href="javascript:void(0)" wire:click.prevent="setView('trash')"
-                            class="list-group-item list-group-item-action msg-nav-link {{ $currentView === 'trash' ? 'active' : '' }}">
-                            <div class="d-flex align-items-center">
-                                <i class="icon-trash mr-3 fa-fw"></i>
+                            class="nav-link msg-nav-link d-flex justify-content-between align-items-center {{ $currentView === 'trash' ? 'active' : '' }}">
+                            <div>
+                                <i class="la la-trash mr-2"></i>
                                 <span>{!! __('messages.trash') !!}</span>
                             </div>
+                            @if($counts['trash'] > 0)
+                                <span class="msg-count-badge">{{ $counts['trash'] }}</span>
+                            @endif
                         </a>
                     </div>
                 </div>
@@ -45,8 +57,8 @@
         </div>
 
         <!-- Main Content -->
-        <div class="col-md-10 {{ app()->getLocale() == 'ar' ? 'float_left' : '' }}">
-            <div class="container-fluid p-0">
+        <div class="col-xl-10 col-lg-9 col-md-8 mb-4 h-100">
+            <div class="h-100 content-body-container">
                 @if ($currentView === 'inbox')
                     <livewire:dashboard.messages.inbox wire:key="view-inbox-{{ $currentView }}" />
                 @elseif($currentView === 'sent')

@@ -66,18 +66,19 @@
                                 <i class="la la-angle-down ml-1 chevron-icon d-none d-lg-block"></i>
                             </div>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <div class="dropdown-header text-center pb-2 border-bottom mb-1 d-md-none">
-                                <h6 class="text-bold-700 mb-0">{!! admin()->user()->name !!}</h6>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown">
+                            <div class="dropdown-header-premium">
+                                <span class="user-name">{!! admin()->user()->name !!}</span>
+                                <span class="user-email">{!! admin()->user()->email !!}</span>
                             </div>
-                            <a class="dropdown-item" href="javascript:void(0)">
+                            <a class="dropdown-item premium-dropdown-item" href="javascript:void(0)">
                                 <i class="ft-user"></i> {!! __('dashboard.profile') !!}
                             </a>
-                            <a class="dropdown-item" href="{!! route('dashboard.lock.screen') !!}">
+                            <a class="dropdown-item premium-dropdown-item" href="{!! route('dashboard.lock.screen') !!}">
                                 <i class="la la-lock"></i> {!! __('dashboard.lock_screen') !!}
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-danger" href="{!! route('dashboard.logout') !!}">
+                            <a class="dropdown-item premium-dropdown-item logout-item" href="{!! route('dashboard.logout') !!}">
                                 <i class="ft-power"></i> {!! __('auth.logout') !!}
                             </a>
                         </div>

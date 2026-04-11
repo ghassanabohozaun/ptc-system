@@ -8,8 +8,9 @@
             <div class="modal-content">
 
                 <!--begin::modal header-->
-                <div class="modal-header">
-                    <h5 class="modal-title" id="updateDepartmentModalLabel">{!! __('departments.update_department') !!}
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title font-weight-bold text-dark" id="updateStatusteModalLabel">
+                        <i class="la la-edit mr-1 text-primary"></i> {!! __('departments.update_department') !!}
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
@@ -41,11 +42,11 @@
                             <div class="row">
                                 <!-- begin: input -->
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="name_ar">{!! __('departments.name_ar') !!}</label>
-                                        <input type="text" id="name_ar_edit" name="name[ar]" class="form-control"
+                                    <div class="premium-form-group">
+                                        <label for="name_ar_edit">{!! __('departments.name_ar') !!}</label>
+                                        <input type="text" id="name_ar_edit" name="name[ar]" class="form-control premium-input shadow-none"
                                             autocomplete="off" placeholder="{!! __('departments.enter_name_ar') !!}">
-                                        <span class="text text-danger">
+                                        <span class="error-message-premium">
                                             <strong id="name_ar_error_edit"></strong>
                                         </span>
                                     </div>
@@ -58,11 +59,11 @@
                             <div class="row">
                                 <!-- begin: input -->
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="name_en">{!! __('departments.name_en') !!}</label>
-                                        <input type="text" id="name_en_edit" name="name[en]" class="form-control"
+                                    <div class="premium-form-group">
+                                        <label for="name_en_edit">{!! __('departments.name_en') !!}</label>
+                                        <input type="text" id="name_en_edit" name="name[en]" class="form-control premium-input shadow-none"
                                             autocomplete="off" placeholder="{!! __('departments.enter_name_en') !!}">
-                                        <span class="text text-danger">
+                                        <span class="error-message-premium">
                                             <strong id="name_en_error_edit"></strong>
                                         </span>
                                     </div>
@@ -79,16 +80,15 @@
                 <!--end::modal body-->
 
                 <!--begin::modal footer-->
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-info font-weight-bold ">
-                        {{ __('general.save') }}
-                        <i class="la la-refresh spinner spinner_loading d-none">
-                        </i>
+                <div class="modal-footer border-0 pt-0">
+                    <button type="submit" class="btn btn-premium-add px-4 font-weight-bold" style="height: 42px; border-radius: 10px;">
+                        <i class="la la-save mr-1"></i> {{ __('general.save') }}
+                        <i class="la la-refresh la-spin spinner_loading d-none ml-1"></i>
                     </button>
 
                     <button type="button" id="cancel_department_btn_edit" class="btn btn-light-dark font-weight-bold"
-                        data-dismiss="modal">
-                        {{ __('general.cancel') }}
+                        style="height: 42px; border-radius: 10px;" data-dismiss="modal">
+                        <i class="la la-times mr-1"></i> {{ __('general.cancel') }}
                     </button>
                 </div>
                 <!--end::modal footer-->

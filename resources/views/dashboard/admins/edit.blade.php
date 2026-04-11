@@ -42,8 +42,8 @@
                     <!-- begin: content header right-->
                     <div class="content-header-right col-md-6 col-12">
                         <div class="float-md-right mb-1">
-                            <button class="btn btn-info  btn-glow px-2" type="submit">
-                                <i class="la la-save"></i>
+                            <button class="btn btn-premium-blue px-4 font-weight-bold" type="submit">
+                                <i class="la la-save mr-1"></i>
                                 {!! __('general.update') !!}
                             </button>
                         </div>
@@ -90,13 +90,13 @@
                                                 <div class="row">
                                                     <!-- begin: input -->
                                                     <div class="col-md-6">
-                                                        <div class="form-group">
+                                                        <div class="premium-form-group">
                                                             <label for="name_ar">{!! __('admins.name_ar') !!}</label>
                                                             <input type="text" id="name_ar" name="name[ar]"
-                                                                value="{!! old('name.ar', $admin->getTranslation('name', 'ar')) !!}" class="form-control"
+                                                                value="{!! old('name.ar', $admin->getTranslation('name', 'ar')) !!}" class="form-control premium-input"
                                                                 autocomplete="off" placeholder="{!! __('admins.enter_name_ar') !!}">
                                                             @error('name.ar')
-                                                                <span class="text text-danger">
+                                                                <span class="error-message-premium">
                                                                     <strong>{!! $message !!}</strong>
                                                                 </span>
                                                             @enderror
@@ -104,15 +104,15 @@
                                                         <!-- end: input -->
                                                     </div>
 
-                                                    <!-- begin: input -->
+                                                     <!-- begin: input -->
                                                     <div class="col-md-6">
-                                                        <div class="form-group">
+                                                        <div class="premium-form-group">
                                                             <label for="name">{!! __('admins.name_en') !!}</label>
                                                             <input type="text" id="name" name="name[en]"
-                                                                value="{!! old('name.en', $admin->getTranslation('name', 'en')) !!}" class="form-control"
+                                                                value="{!! old('name.en', $admin->getTranslation('name', 'en')) !!}" class="form-control premium-input"
                                                                 autocomplete="off" placeholder="{!! __('admins.enter_name_en') !!}">
                                                             @error('name.en')
-                                                                <span class="text text-danger">
+                                                                <span class="error-message-premium">
                                                                     <strong>{!! $message !!}</strong>
                                                                 </span>
                                                             @enderror
@@ -124,16 +124,16 @@
                                                 <!-- end: row -->
 
                                                 <!-- begin: row -->
-                                                <div class="row">
+                                                 <div class="row">
                                                     <!-- begin: input -->
                                                     <div class="col-md-12">
-                                                        <div class="form-group">
+                                                        <div class="premium-form-group">
                                                             <label for="email">{!! __('admins.email') !!}</label>
                                                             <input type="email" id="email" name="email"
-                                                                value="{!! old('email', $admin->email) !!}" class="form-control"
+                                                                value="{!! old('email', $admin->email) !!}" class="form-control premium-input"
                                                                 autocomplete="off" placeholder="{!! __('admins.enter_email') !!}">
                                                             @error('email')
-                                                                <span class="text text-danger">
+                                                                <span class="error-message-premium">
                                                                     <strong>{!! $message !!}</strong>
                                                                 </span>
                                                             @enderror
@@ -144,16 +144,18 @@
                                                 <!-- end: row -->
 
                                                 <!-- begin: row -->
-                                                <div class="row">
+                                                 <div class="row">
                                                     <!-- begin: input -->
                                                     <div class="col-md-12">
-                                                        <div class="form-group">
+                                                        <div class="premium-form-group">
                                                             <label for="password">{!! __('admins.password') !!}</label>
-                                                            <input type="password" id="password" name="password"
-                                                                value="{!! old('password') !!}" class="form-control"
-                                                                autocomplete="off" placeholder="{!! __('admins.enter_password') !!}">
+                                                            <div class="premium-input-wrapper">
+                                                                <input type="password" id="password" name="password"
+                                                                    value="{!! old('password') !!}" class="form-control premium-input"
+                                                                    autocomplete="off" placeholder="{!! __('admins.enter_password') !!}">
+                                                            </div>
                                                             @error('password')
-                                                                <span class="text text-danger">
+                                                                <span class="error-message-premium">
                                                                     <strong>{!! $message !!}</strong>
                                                                 </span>
                                                             @enderror
@@ -164,17 +166,19 @@
                                                 <!-- end: row -->
 
                                                 <!-- begin: row -->
-                                                <div class="row">
+                                                 <div class="row">
                                                     <!-- begin: input -->
                                                     <div class="col-md-12">
-                                                        <div class="form-group">
+                                                        <div class="premium-form-group">
                                                             <label for="password_confirm">{!! __('admins.password_confirm') !!}</label>
-                                                            <input type="password" id="password_confirm"
-                                                                name="password_confirm" value="{!! old('password_confirm') !!}"
-                                                                class="form-control" autocomplete="off"
-                                                                placeholder="{!! __('admins.enter_password_confirm') !!}">
+                                                            <div class="premium-input-wrapper">
+                                                                <input type="password" id="password_confirm"
+                                                                    name="password_confirm" value="{!! old('password_confirm') !!}"
+                                                                    class="form-control premium-input" autocomplete="off"
+                                                                    placeholder="{!! __('admins.enter_password_confirm') !!}">
+                                                            </div>
                                                             @error('password_confirm')
-                                                                <span class="text text-danger">
+                                                                <span class="error-message-premium">
                                                                     <strong>{!! $message !!}</strong>
                                                                 </span>
                                                             @enderror
@@ -185,13 +189,12 @@
                                                 <!-- end: row -->
 
                                                 <!-- begin: row -->
-                                                <div class="row">
+                                                 <div class="row">
                                                     <!-- begin: input -->
                                                     <div class="col-md-12">
-                                                        <div class="form-group">
+                                                        <div class="premium-form-group">
                                                             <label for="role_id">{!! __('admins.role_id') !!}</label>
-                                                            <select class="form-control" id="DefaultSelect"
-                                                                id='role_id' name="role_id">
+                                                            <select class="form-control premium-input" id='role_id' name="role_id">
                                                                 <option value="" selected="">
                                                                     {!! __('general.select_from_list') !!}</option>
                                                                 @foreach ($roles as $role)
@@ -202,7 +205,7 @@
                                                                 @endforeach
                                                             </select>
                                                             @error('role_id')
-                                                                <span class="text text-danger">
+                                                                <span class="error-message-premium">
                                                                     <strong>{!! $message !!}</strong>
                                                                 </span>
                                                             @enderror
@@ -213,35 +216,35 @@
                                                 <!-- end: input -->
 
                                                 <!-- begin: row  status-->
-                                                <div class="row">
+                                                 <div class="row mb-0">
                                                     <!-- begin: input -->
                                                     <div class="col-md-4">
-                                                        <div class="form-group">
+                                                        <div class="premium-form-group mb-0">
                                                             <label for="status">{!! __('admins.status') !!}</label>
                                                             <div class="input-group">
                                                                 <div
-                                                                    class="d-inline-block custom-control custom-radio mr-1">
+                                                                    class="d-inline-block custom-control custom-radio mr-2">
                                                                     <input type="radio"
-                                                                        class="custom-control-input bg-success"
+                                                                        class="custom-control-input"
                                                                         name="status" id="activeStatusRadio"
                                                                         value="1" @checked(old('status', $admin->status) == 1)>
-                                                                    <label class="custom-control-label"
+                                                                    <label class="custom-control-label font-weight-bold text-success"
                                                                         for="activeStatusRadio">{!! __('general.active') !!}
                                                                     </label>
                                                                 </div>
                                                                 <div
-                                                                    class="d-inline-block custom-control custom-radio mr-1">
+                                                                    class="d-inline-block custom-control custom-radio mr-2">
                                                                     <input type="radio"
-                                                                        class="custom-control-input bg-danger"
+                                                                        class="custom-control-input"
                                                                         name="status" id="inActiveStatusRadio"
                                                                         value="0" @checked(old('status', $admin->status) == 0)>
-                                                                    <label class="custom-control-label"
+                                                                    <label class="custom-control-label font-weight-bold text-danger"
                                                                         for="inActiveStatusRadio">{!! __('general.inactive') !!}
                                                                     </label>
                                                                 </div>
                                                             </div>
                                                             @error('status')
-                                                                <span class="text text-danger">
+                                                                <span class="error-message-premium">
                                                                     <strong>{!! $message !!}</strong>
                                                                 </span>
                                                             @enderror

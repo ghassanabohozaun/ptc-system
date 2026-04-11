@@ -12,42 +12,33 @@
     <div class="app-content content">
         <div class="content-wrapper">
             <!-- begin: content header -->
-            <div class="content-header row">
-
-                <!-- begin: content header left -->
-                <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
-                    <h3 class="content-header-title mb-0 d-inline-block">{!! $title !!}</h3>
-                    <div class="row breadcrumbs-top d-inline-block">
+            <div class="content-header row align-items-center mb-2">
+                <div class="content-header-left col-md-6 col-12 mb-2 mb-md-0">
+                    <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
-                            <ol class="breadcrumb">
+                            <ol class="breadcrumb premium-breadcrumb shadow-sm">
                                 <li class="breadcrumb-item">
                                     <a href="{!! route('dashboard.index') !!}">
-                                        {!! __('dashboard.home') !!}
+                                        <i class="la la-home mr-1"></i> {!! __('dashboard.home') !!}
                                     </a>
                                 </li>
-                                <li class="breadcrumb-item">
-                                    <a href="{!! route('dashboard.monthlyReports.index') !!}">
-                                        {!! __('monthlyReports.monthly_reports') !!}
-                                    </a>
+                                <li class="breadcrumb-item active">
+                                    {!! __('monthlyReports.monthly_reports') !!}
                                 </li>
                             </ol>
                         </div>
                     </div>
                 </div>
-                <!-- end: content header left -->
 
-                <!-- begin: content header right -->
                 <div class="content-header-right col-md-6 col-12">
                     <div class="float-md-right mb-1">
-                        <a href="javascript:void(0)" class="btn btn-premium-add" data-toggle="modal"
+                        <a href="javascript:void(0)" class="btn btn-premium-add shadow-pulse premium-btn-standard" data-toggle="modal"
                             data-target="#createMonthlyReportModal">
-                            <i class="la la-plus"></i>
+                            <i class="la la-plus-circle mr-1"></i>
                             {!! __('monthlyReports.create_new_monthly_report') !!}
                         </a>
                     </div>
                 </div>
-                <!-- end: content header right -->
-
             </div>
             <!-- end: content header -->
 

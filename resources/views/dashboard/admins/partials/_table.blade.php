@@ -6,10 +6,10 @@
                 <th class="text-center d-none d-lg-table-cell">{!! __('admins.photo') !!}</th>
                 <th class="text-center">{!! __('admins.name') !!}</th>
                 <th class="text-center d-none d-lg-table-cell">{!! __('admins.email') !!}</th>
-                <th class="text-center">{!! __('admins.role_id') !!}</th>
+                <th class="text-center  d-none d-lg-table-cell">{!! __('admins.role_id') !!}</th>
                 <th class="text-center">{!! __('admins.status') !!}</th>
-                <th class="text-center">{!! __('admins.manage_status') !!}</th>
-                <th class="text-center">{!! __('general.actions') !!}</th>
+                <th class="text-center" style="min-width: 120px;">{!! __('admins.manage_status') !!}</th>
+                <th class="text-center" style="min-width: 150px;">{!! __('general.actions') !!}</th>
             </tr>
         </thead>
         <tbody>
@@ -87,20 +87,28 @@
                             </div>
                         </div>
                     </td>
-                    <td class="col-lg-1 text-center d-none d-lg-table-cell">
-                        @include('dashboard.admins.parts.photo')
+                    <td class="text-center d-none d-lg-table-cell align-middle">
+                        <div class="d-flex justify-content-center">
+                            @include('dashboard.admins.parts.photo')
+                        </div>
                     </td>
-                    <td class="col-lg-1 text-center">{!! $admin->name !!}</td>
-                    <td class="col-lg-2 text-center d-none d-lg-table-cell">{!! $admin->email !!}</td>
-                    <td class="col-lg-2 text-center">{!! $admin->role->role !!}</td>
-                    <td class="col-lg-1 text-center">
+                    <td class="text-center align-middle font-weight-bold text-dark">{!! $admin->name !!}</td>
+                    <td class="text-center align-middle d-none d-lg-table-cell">{!! $admin->email !!}</td>
+                    <td class="text-center align-middle d-none d-lg-table-cell">
+                        <span class=" font-weight-bold px-3 py-2" style="border-radius: 8px;">
+                            {!! $admin->role->role !!}
+                        </span>
+                    </td>
+                    <td class="text-center align-middle">
                         @include('dashboard.admins.parts.status')
                     </td>
-                    <td class="col-lg-1 text-center">
+                    <td class="text-center align-middle">
                         @include('dashboard.admins.parts.manage_status')
                     </td>
-                    <td class="col-lg-1 text-center">
-                        @include('dashboard.admins.parts.actions')
+                    <td class="text-center align-middle">
+                        <div class="d-flex justify-content-center align-items-center">
+                            @include('dashboard.admins.parts.actions')
+                        </div>
                     </td>
                 </tr>
             @empty

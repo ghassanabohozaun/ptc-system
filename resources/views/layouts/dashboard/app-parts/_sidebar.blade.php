@@ -10,9 +10,9 @@
                         {{-- <span class="badge badge badge-info badge-pill float-right mr-2">3</span> --}}
                     </a>
                 </li>
-            <!-- end: Dashboard -->
+                <!-- end: Dashboard -->
 
-            <!-- begin: settings -->
+                <!-- begin: settings -->
                 <li class=" nav-item">
                     <a href="javascript:void(0)">
                         <i class="icon-settings"></i>
@@ -32,10 +32,10 @@
                     </ul>
                     <!-- end: settings -->
                 </li>
-            <!-- end: settings -->
+                <!-- end: settings -->
 
-            <!-- begin: roles -->
-            @can('roles')
+                <!-- begin: roles -->
+                @can('roles')
                     <li class=" nav-item">
                         <a href="javascript:void(0)">
                             <i class="icon-lock"></i>
@@ -53,11 +53,11 @@
                         </ul>
                         <!-- end: roles -->
                     </li>
-            @endcan
-            <!-- end: roles -->
+                @endcan
+                <!-- end: roles -->
 
-            <!-- begin: admins -->
-            @can('admins')
+                <!-- begin: admins -->
+                @can('admins')
                     <li class=" nav-item">
                         <a href="javascript:void(0)">
                             <i class="icon-user"></i>
@@ -75,11 +75,11 @@
                         </ul>
                         <!-- end: admins -->
                     </li>
-            @endcan
-            <!-- end: admins -->
+                @endcan
+                <!-- end: admins -->
 
-            <!-- begin: world -->
-            @can('world')
+                <!-- begin: world -->
+                @can('world')
                     <li class=" nav-item">
                         <a href="javascript:void(0)">
                             <i class="icon-flag"></i>
@@ -106,45 +106,11 @@
                         </ul>
 
                     </li>
-            @endcan
-            <!-- end: world -->
+                @endcan
+                <!-- end: world -->
 
-            <!-- begin: employee settings -->
-                <li class=" nav-item">
-                    <a href="javascript:void(0)">
-                        <i class="icon-settings"></i>
-                        <span class="menu-title" data-i18n="nav.dash.brand">{!! __('dashboard.employees_settings') !!}</span>
-                        {{-- <span class="badge badge badge-info badge-pill float-right mr-2">3</span> --}}
-                    </a>
 
-                    <ul class="menu-content">
-
-                        <!-- begin: employeeStatues -->
-                        @can('employeeStatuses')
-                            <li class="@if (Request::routeIs('dashboard.employeeStatuses.*')) active @endif">
-                                <a class="menu-item" href="{!! route('dashboard.employeeStatuses.index') !!}" data-i18n="nav.dash.employeeStatuses">
-                                    {!! __('employees.employee_statuses') !!}
-                                </a>
-                            </li>
-                        @endcan
-                        <!-- end: employeeStatues -->
-
-                        <!-- begin: departments -->
-                        @can('departments')
-                            <li class="@if (Request::routeIs('dashboard.departments.*')) active @endif">
-                                <a class="menu-item" href="{!! route('dashboard.departments.index') !!}" data-i18n="nav.dash.departments">
-                                    {!! __('departments.departments') !!}
-                                </a>
-                            </li>
-                        @endcan
-                        <!-- end: departments -->
-
-                    </ul>
-
-                </li>
-            <!-- end: employee settings -->
-
-            <!-- begin: employees -->
+                <!-- begin: employees -->
                 <li class=" nav-item">
                     <a href="javascript:void(0)">
                         <i class="icon-users"></i>
@@ -201,9 +167,45 @@
 
 
                 </li>
-            <!-- end: employees -->
+                <!-- end: employees -->
 
-            <!-- begin: salaries -->
+                <!-- begin: employee settings -->
+                <li class=" nav-item">
+                    <a href="javascript:void(0)">
+                        <i class="icon-settings"></i>
+                        <span class="menu-title" data-i18n="nav.dash.brand">{!! __('dashboard.employees_settings') !!}</span>
+                        {{-- <span class="badge badge badge-info badge-pill float-right mr-2">3</span> --}}
+                    </a>
+
+                    <ul class="menu-content">
+
+                        <!-- begin: employeeStatues -->
+                        @can('employeeStatuses')
+                            <li class="@if (Request::routeIs('dashboard.employeeStatuses.*')) active @endif">
+                                <a class="menu-item" href="{!! route('dashboard.employeeStatuses.index') !!}" data-i18n="nav.dash.employeeStatuses">
+                                    {!! __('employees.employee_statuses') !!}
+                                </a>
+                            </li>
+                        @endcan
+                        <!-- end: employeeStatues -->
+
+                        <!-- begin: departments -->
+                        @can('departments')
+                            <li class="@if (Request::routeIs('dashboard.departments.*')) active @endif">
+                                <a class="menu-item" href="{!! route('dashboard.departments.index') !!}" data-i18n="nav.dash.departments">
+                                    {!! __('departments.departments') !!}
+                                </a>
+                            </li>
+                        @endcan
+                        <!-- end: departments -->
+
+                    </ul>
+
+                </li>
+                <!-- end: employee settings -->
+
+
+                <!-- begin: salaries -->
                 <li class=" nav-item">
                     <a href="javascript:void(0)">
                         <i class="icon-wallet"></i>
@@ -225,18 +227,18 @@
                     </ul>
 
                 </li>
-            <!-- end: salaries -->
+                <!-- end: salaries -->
 
-            <!-- begin: messages -->
-            @can('messages')
+                <!-- begin: messages -->
+                @can('messages')
                     <li class="nav-item @if (Request::routeIs('dashboard.messages.*')) active @endif">
                         <a href="{!! route('dashboard.messages.index') !!}">
                             <i class="icon-envelope"></i>
                             <span class="menu-title" data-i18n="nav.dash.messages">{!! __('messages.messages') !!}</span>
                         </a>
                     </li>
-            @endcan
-            <!-- end: messages -->
+                @endcan
+                <!-- end: messages -->
             </ul>
         </div>
     </div>

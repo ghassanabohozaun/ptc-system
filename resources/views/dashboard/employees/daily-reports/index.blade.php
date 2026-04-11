@@ -11,33 +11,34 @@
 @section('content')
     <div class="app-content content">
         <div class="content-wrapper">
-            <!-- begin: content header -->
-            <div class="content-header row">
-                <!-- begin: content header left-->
-                <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
-                    <h3 class="content-header-title mb-0 d-inline-block">{!! __('dailyReports.daily_reports') !!}</h3>
-                    <div class="row breadcrumbs-top d-inline-block">
+            <div class="content-header row align-items-center mb-2">
+                <div class="content-header-left col-md-6 col-12 mb-2 mb-md-0">
+                    <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{!! route('dashboard.index') !!}">{!! __('dashboard.home') !!}</a></li>
-                                <li class="breadcrumb-item"><a href="{!! route('dashboard.dailyReports.index') !!}">{!! __('dailyReports.daily_reports') !!}</a></li>
+                            <ol class="breadcrumb premium-breadcrumb shadow-sm">
+                                <li class="breadcrumb-item">
+                                    <a href="{!! route('dashboard.index') !!}">
+                                        <i class="la la-home mr-1"></i> {!! __('dashboard.home') !!}
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item active">
+                                    <i class="la la-file-alt mr-1 pointer-events-none"></i> {!! __('dailyReports.daily_reports') !!}
+                                </li>
                             </ol>
                         </div>
                     </div>
                 </div>
-                <!-- end: content header left-->
 
-                <!-- begin: content header right-->
-                <div class="content-header-right col-md-6 col-12">
-                    <div class="float-md-right mb-2">
-                        <a href="{{ route('dashboard.dailyReports.create') }}" class="btn btn-premium-add">
-                            <i class="la la-plus"></i>
+                <div class="content-header-right col-md-6 col-12 text-md-right">
+                    <div class="mb-1">
+                        <a href="{{ route('dashboard.dailyReports.create') }}" class="btn btn-premium-add shadow-pulse"
+                            style="height: 42px; border-radius: 10px; display: inline-flex; align-items: center;">
+                            <i class="la la-plus-circle mr-1"></i>
                             {!! __('dailyReports.create_new_daily_report') !!}
                         </a>
                     </div>
                 </div>
-                <!-- end: content header right-->
-            </div> 
+            </div>
 
             <!-- begin: content body -->
             <div class="row justify-content-center">

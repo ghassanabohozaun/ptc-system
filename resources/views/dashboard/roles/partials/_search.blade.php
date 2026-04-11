@@ -10,20 +10,22 @@
                 <div class="filter-chip js-filter-chip" data-filter-target="role_search_popover">
                     <i class="la la-shield"></i>
                     <span class="chip-text">{!! __('roles.role') !!}</span>
+                    <span class="badge badge-primary badge-pill badge-glow ml-1 d-inline-flex align-items-center justify-content-center" style="font-size: 11px; width: 35px; height: 18px; padding: 0;">{!! $roles->total() !!}</span>
                 </div>
 
                 <!-- Role Search Popover -->
-                <div class="ptc-query-panel" id="role_search_popover">
+                <div class="ptc-query-panel shadow-lg border-0" id="role_search_popover" style="border-radius: 16px;">
                     <div class="mb-3">
-                        <label class="form-label fw-bold mb-2">{!! __('roles.role') !!}</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="keyword"
+                        <label class="premium-label mb-2">{!! __('roles.role') !!}</label>
+                        <div class="premium-input-wrapper">
+                            <input type="text" class="form-control premium-input shadow-none" name="keyword"
                                 placeholder="{!! __('general.search') !!}..." autocomplete="off">
+                            <i class="la la-search text-primary"></i>
                         </div>
                     </div>
-                    <div class="popover-actions">
-                        <button type="button" class="btn btn-primary btn-sm text-white js-apply-filter">
-                            {!! __('general.apply') !!}
+                    <div class="popover-actions mt-4 text-right">
+                        <button type="button" class="btn btn-premium-blue btn-sm js-apply-filter px-4">
+                            <i class="la la-check-circle mr-1"></i> {!! __('general.apply') !!}
                         </button>
                     </div>
                 </div>

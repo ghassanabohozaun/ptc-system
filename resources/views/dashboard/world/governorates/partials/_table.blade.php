@@ -3,10 +3,10 @@
         <thead>
             <tr>
                 <th class="text-center d-lg-none">#</th> <!-- For Details Control -->
-                <th class="text-center d-none d-lg-table-cell">#</th>
+                <th class="text-center d-none d-lg-table-cell" style="width: 80px;">#</th>
                 <th class="text-center">{!! __('world.governorate_name') !!}</th>
                 <th class="text-center d-none d-lg-table-cell">{!! __('world.cities_count') !!}</th>
-                <th class="text-center">{!! __('general.actions') !!}</th>
+                <th class="text-center" style="min-width: 150px;">{!! __('general.actions') !!}</th>
             </tr>
         </thead>
         <tbody>
@@ -26,7 +26,7 @@
                                     <div class="modal-profile-wrapper">
                                         <div class="avatar-circle avatar-size-100 d-inline-flex align-items-center justify-content-center text-white text-uppercase shadow-sm"
                                             style="background-color: #1F3BB3;">
-                                            <i class="ft-map" style="font-size: 40px;"></i>
+                                            <i class="la la-map-marked-alt" style="font-size: 40px;"></i>
                                         </div>
                                     </div>
                                     <h4 class="modal-name-title">{!! $governorate->name !!}</h4>
@@ -55,11 +55,21 @@
                         </div>
                     </td>
 
-                    <td class="col-lg-1 text-center d-none d-lg-table-cell">{!! $loop->iteration !!} </td>
-                    <td class="col-lg-4 text-center font-weight-bold">{!! $governorate->name !!}</td>
-                    <td class="col-lg-3 text-center d-none d-lg-table-cell">{!! $governorate->cities_count !!}</td>
-                    <td class="col-lg-2 text-center">
-                        @include('dashboard.world.governorates.parts.actions')
+                    <td class="text-center d-none d-lg-table-cell align-middle">
+                        <span class="badge badge-pill badge-glow badge-info d-inline-flex align-items-center justify-content-center" style="font-size: 11px; width: 35px; height: 22px; padding: 0;">
+                            {!! $loop->iteration !!}
+                        </span>
+                    </td>
+                    <td class="text-center align-middle font-weight-bold text-dark">{!! $governorate->name !!}</td>
+                    <td class="text-center align-middle d-none d-lg-table-cell">
+                        <span class="badge badge-pill badge-glow badge-primary d-inline-flex align-items-center justify-content-center" style="font-size: 11px; width: 50px; height: 22px; padding: 0;">
+                            {!! $governorate->cities_count !!}
+                        </span>
+                    </td>
+                    <td class="text-center align-middle">
+                        <div class="d-flex justify-content-center align-items-center">
+                            @include('dashboard.world.governorates.parts.actions')
+                        </div>
                     </td>
                 </tr>
             @empty

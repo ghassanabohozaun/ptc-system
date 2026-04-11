@@ -1,30 +1,32 @@
-<div class="card">
-    <div class="card-header">
-        <h4 class="card-title">{!! __('dailyReports.show_all_daily_reports') !!}</h4>
-        <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+<div class="card premium-card">
+    <div class="card-header border-0 pb-0">
+        <h4 class="card-title text-dark font-weight-bold d-flex align-items-center">
+            <i class="la la-file-alt text-primary mr-2" style="font-size: 24px;"></i>
+            {!! __('dailyReports.daily_reports') !!}
+            <span class="badge badge-primary badge-pill badge-glow ml-2"
+                style="font-size: 11px;">{!! $dailyReports->total() !!}</span>
+        </h4>
         <div class="heading-elements">
             <ul class="list-inline mb-0">
-                <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                <li><a data-action="close"><i class="ft-x"></i></a></li>
+                <li><a data-action="collapse"><i class="la la-minus"></i></a></li>
+                <li><a data-action="reload"><i class="la la-refresh"></i></a></li>
+                <li><a data-action="expand"><i class="la la-expand"></i></a></li>
             </ul>
         </div>
     </div>
     <div class="card-content collapse show">
-        <div class="card-body">
+        <div class="card-body pt-0">
             <div class="table-responsive">
-                <table class="table" id="myTable">
-                    <thead>
+                <table class="table table-hover mb-0" id="myTable">
+                    <thead class="bg-white">
                         <tr>
-                            <th class="text-center d-lg-none">#</th>
-                            <th class="text-center d-none d-lg-table-cell">#</th>
-                            <th class="text-center">{!! __('dailyReports.employee_id') !!}</th>
-                            <th class="text-center">{!! __('dailyReports.date') !!}</th>
-                            <th class="text-center d-none d-lg-table-cell">{!! __('dailyReports.details') !!}</th>
-                            <th class="text-center d-none d-lg-table-cell">{!! __('dailyReports.file') !!}</th>
-                            <th class="text-center d-none d-lg-table-cell">{!! __('dailyReports.created_at') !!}</th>
-                            <th class="text-center">{!! __('general.actions') !!}</th>
+                            <th class="text-center d-lg-none border-0" style="width: 40px;">#</th>
+                            <th class="text-center d-none d-lg-table-cell align-middle py-3 border-top-0">#</th>
+                            <th class="text-center align-middle py-3 border-top-0">{!! __('dailyReports.employee_id') !!}</th>
+                            <th class="text-center align-middle py-3 border-top-0">{!! __('dailyReports.date') !!}</th>
+                            <th class="text-center d-none d-lg-table-cell align-middle py-3 border-top-0">{!! __('dailyReports.file') !!}</th>
+                            <th class="text-center d-none d-lg-table-cell align-middle py-3 border-top-0">{!! __('dailyReports.created_at') !!}</th>
+                            <th class="text-center align-middle py-3 border-top-0" style="min-width: 140px;">{!! __('general.actions') !!}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,19 +85,19 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="text-center d-none d-lg-table-cell">{!! $loop->iteration !!}</td>
-                                <td class="text-center">{!! $dailyReport->employee->EmployeeShortName() !!}</td>
-                                <td class="text-center text-nowrap font-weight-bold">{!! $dailyReport->date !!}</td>
-                                <td class="text-center d-none d-lg-table-cell">
-                                    <button type="button" class="btn btn-sm btn-outline-info details-control" title="{!! __('dailyReports.show_details') !!}">
-                                        <i class="ft-eye font-medium-3"></i>
-                                    </button>
+                                <td class="text-center align-middle d-none d-lg-table-cell">
+                                    <div class="d-inline-flex align-items-center justify-content-center">
+                                        <span class="badge badge-pill badge-glow badge-info d-inline-flex align-items-center justify-content-center"
+                                            style="width: 35px; height: 22px; font-size: 11px; padding: 0;">{!! $loop->iteration !!}</span>
+                                    </div>
                                 </td>
-                                <td class="text-center d-none d-lg-table-cell">
+                                <td class="text-center align-middle">{!! $dailyReport->employee->EmployeeShortName() !!}</td>
+                                <td class="text-center align-middle text-nowrap font-weight-bold text-dark">{!! $dailyReport->date !!}</td>
+                                <td class="text-center align-middle d-none d-lg-table-cell">
                                     @include('dashboard.employees.daily-reports.parts.file')
                                 </td>
-                                <td class="text-center d-none d-lg-table-cell text-muted small">{!! $dailyReport->created_at !!}</td>
-                                <td class="text-center">
+                                <td class="text-center align-middle d-none d-lg-table-cell text-muted small">{!! $dailyReport->created_at !!}</td>
+                                <td class="text-center align-middle">
                                     @include('dashboard.employees.daily-reports.parts.actions')
                                 </td>
                             </tr>

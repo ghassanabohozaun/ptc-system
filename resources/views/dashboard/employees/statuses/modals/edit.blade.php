@@ -8,16 +8,15 @@
             <div class="modal-content">
 
                 <!--begin::modal header-->
-                <div class="modal-header">
-                    <h5 class="modal-title" id="updateStatusteModalLabel">{!! __('employees.update_employee_status') !!}
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title font-weight-bold text-dark" id="updateStatusteModalLabel">
+                        <i class="la la-edit mr-1 text-primary"></i> {!! __('employees.update_employee_status') !!}
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <!--end::modal header-->
-
-                <!--begin::modal body-->
                 <div class="modal-body">
 
                     <div class="row">
@@ -41,11 +40,11 @@
                             <div class="row">
                                 <!-- begin: input -->
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="employee_status_name_ar">{!! __('employees.employee_status_name_ar') !!}</label>
-                                        <input type="text" id="name_ar_edit" name="name[ar]" class="form-control"
+                                    <div class="premium-form-group">
+                                        <label for="name_ar_edit">{!! __('employees.employee_status_name_ar') !!}</label>
+                                        <input type="text" id="name_ar_edit" name="name[ar]" class="form-control premium-input shadow-none"
                                             autocomplete="off" placeholder="{!! __('employees.enter_employee_status_name_ar') !!}">
-                                        <span class="text text-danger">
+                                        <span class="error-message-premium">
                                             <strong id="name_ar_error_edit"></strong>
                                         </span>
                                     </div>
@@ -58,11 +57,11 @@
                             <div class="row">
                                 <!-- begin: input -->
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="employee_status_name_en">{!! __('employees.employee_status_name_en') !!}</label>
-                                        <input type="text" id="name_en_edit" name="name[en]" class="form-control"
+                                    <div class="premium-form-group">
+                                        <label for="name_en_edit">{!! __('employees.employee_status_name_en') !!}</label>
+                                        <input type="text" id="name_en_edit" name="name[en]" class="form-control premium-input shadow-none"
                                             autocomplete="off" placeholder="{!! __('employees.enter_employee_status_name_en') !!}">
-                                        <span class="text text-danger">
+                                        <span class="error-message-premium">
                                             <strong id="name_en_error_edit"></strong>
                                         </span>
                                     </div>
@@ -79,16 +78,15 @@
                 <!--end::modal body-->
 
                 <!--begin::modal footer-->
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-info font-weight-bold ">
-                        {{ __('general.save') }}
-                        <i class="la la-refresh spinner spinner_loading d-none">
-                        </i>
+                <div class="modal-footer border-0 pt-0">
+                    <button type="submit" class="btn btn-premium-add px-4 font-weight-bold" style="height: 42px; border-radius: 10px;">
+                        <i class="la la-save mr-1"></i> {{ __('general.save') }}
+                        <i class="la la-refresh la-spin spinner_loading d-none ml-1"></i>
                     </button>
 
                     <button type="button" id="cancel_status_btn_edit" class="btn btn-light-dark font-weight-bold"
-                        data-dismiss="modal">
-                        {{ __('general.cancel') }}
+                        style="height: 42px; border-radius: 10px;" data-dismiss="modal">
+                        <i class="la la-times mr-1"></i> {{ __('general.cancel') }}
                     </button>
                 </div>
                 <!--end::modal footer-->
@@ -116,11 +114,8 @@
 
         // reset
         function resetEditForm() {
-            $('#name_ar_edit').css('border-color', '');
-            $('#name_en_edit').css('border-color', '');
-
-            $('#name_ar_error_edit').text('');
-            $('#name_en_error_edit').text('');
+            $('.premium-input').removeClass('is-invalid-premium');
+            $('.error-message-premium strong').text('');
         }
 
         // cancel
@@ -183,8 +178,8 @@
                         } else if (key == 'name.ar') {
                             key = 'name_ar';
                         }
+                        $('#' + key + '_edit').addClass('is-invalid-premium');
                         $('#' + key + '_error_edit').text(value[0]);
-                        $('#' + key + '_edit').css('border-color', '#F64E60');
                     });
                 }, //end error
                 complete: function() {

@@ -9,17 +9,17 @@
         <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css-rtl/my-select2-style.css') !!}">
     @endif
     <style>
-        .is-invalid-summernote-editor {
-            border: 1px solid #F64E60 !important;
-        }
+        .is-invalid-summernote-editor { border: 1px solid #F64E60 !important; }
     </style>
 @endpush
 
 @section('content')
     <div class="app-content content">
-        <form class="form" action="{!! route('dashboard.dailyReports.store') !!}" method="post" enctype="multipart/form-data"
-            id="storeSDailyReportFrom">
+        <form class="form" action="{!! route('dashboard.dailyReports.update', $dailyReport->id) !!}" method="post" enctype="multipart/form-data" id="updateDailyReportForm">
             @csrf
+            @method('PUT')
+            <input type="hidden" name="id" value="{!! $dailyReport->id !!}">
+            
             <div class="content-wrapper">
                 <!-- Page Header (Roles Style) -->
                 <div class="content-header row align-items-center mb-2">
@@ -34,11 +34,11 @@
                                     </li>
                                     <li class="breadcrumb-item">
                                         <a href="{!! route('dashboard.dailyReports.index') !!}">
-                                            {!! __('dailyReports.daily_reports') !!}
+                                             {!! __('dailyReports.daily_reports') !!}
                                         </a>
                                     </li>
                                     <li class="breadcrumb-item active">
-                                        {!! __('dailyReports.create_new_daily_report') !!}
+                                        {!! __('dailyReports.update_daily_report') !!}
                                     </li>
                                 </ol>
                             </div>
@@ -49,7 +49,7 @@
                         <div class="float-md-right mb-1">
                             <button class="btn btn-premium-save shadow-pulse" type="submit">
                                 <i class="la la-save mr-1"></i>
-                                {!! __('general.save') !!}
+                                {!! __('general.update') !!}
                                 <i class="la la-refresh spinner spinner_loading d-none ml-1"></i>
                             </button>
                         </div>
@@ -64,8 +64,8 @@
                                 <div class="card premium-card shadow-lg border-0">
                                     <div class="card-header border-0 pb-0">
                                         <h4 class="card-title text-primary font-weight-bold">
-                                            <i class="la la-plus-circle mr-1"></i>
-                                            {!! __('dailyReports.create_new_daily_report') !!}
+                                            <i class="la la-edit mr-1"></i>
+                                            {!! __('dailyReports.update_daily_report') !!}
                                         </h4>
                                         <div class="heading-elements">
                                             <ul class="list-inline mb-0">
@@ -87,14 +87,15 @@
                                                                 {!! __('dailyReports.employee_id') !!}
                                                             </label>
                                                             <div class="premium-input-wrapper">
-                                                                <select
-                                                                    class="employee_id_select form-control premium-input shadow-none"
+                                                                <select class="employee_id_select form-control premium-input shadow-none"
                                                                     id="employee_id" name="employee_id" style="width: 100%">
+                                                                    <option value="{!! $dailyReport->employee_id !!}" selected>
+                                                                        {!! $dailyReport->employee->EmployeeShortName() !!}
+                                                                    </option>
                                                                 </select>
                                                                 <i class="la la-user-tie text-primary"></i>
                                                             </div>
-                                                            <span class="text-danger small mt-1 d-block font-weight-bold"
-                                                                id="employee_id_error"></span>
+                                                            <span class="text-danger small mt-1 d-block font-weight-bold" id="employee_id_error"></span>
                                                         </div>
                                                     </div>
 
@@ -105,14 +106,11 @@
                                                                 {!! __('dailyReports.date') !!}
                                                             </label>
                                                             <div class="premium-input-wrapper">
-                                                                <input type="date" id="date" name="date"
-                                                                    value="{!! old('date') !!}"
-                                                                    class="form-control premium-input shadow-none"
-                                                                    autocomplete="off">
+                                                                <input type="date" id="date" name="date" value="{!! $dailyReport->date !!}" 
+                                                                    class="form-control premium-input shadow-none" autocomplete="off">
                                                                 <i class="la la-calendar text-primary"></i>
                                                             </div>
-                                                            <span class="text-danger small mt-1 d-block font-weight-bold"
-                                                                id="date_error"></span>
+                                                            <span class="text-danger small mt-1 d-block font-weight-bold" id="date_error"></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -124,9 +122,8 @@
                                                             <label class="premium-label mb-1" for="details">
                                                                 {!! __('dailyReports.details') !!}
                                                             </label>
-                                                            <textarea id="details" name="details" class="form-control details_summernote"></textarea>
-                                                            <span class="text-danger small mt-1 d-block font-weight-bold"
-                                                                id="details_error"></span>
+                                                            <textarea id="details" name="details" class="form-control details_summernote">{!! $dailyReport->details !!}</textarea>
+                                                            <span class="text-danger small mt-1 d-block font-weight-bold" id="details_error"></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -138,20 +135,24 @@
                                                             <label class="premium-label" for="file">
                                                                 {!! __('dailyReports.file') !!}
                                                             </label>
-                                                            <div class="custom-file shadow-sm">
-                                                                <input type="file" id="file" name="file"
-                                                                    class="custom-file-input">
-                                                                <label class="custom-file-label text-left"
-                                                                    for="file">{!! __('dailyReports.enter_file') !!}</label>
+                                                            <div class="custom-file shadow-sm mb-2">
+                                                                <input type="file" id="file" name="file" class="custom-file-input">
+                                                                <label class="custom-file-label text-left" for="file">{!! $dailyReport->file ?? __('dailyReports.enter_file') !!}</label>
                                                             </div>
-                                                            <span class="text-danger small mt-1 d-block font-weight-bold"
-                                                                id="file_error"></span>
+                                                            <span class="text-danger small mt-1 d-block font-weight-bold" id="file_error"></span>
+                                                            
+                                                            @if($dailyReport->file)
+                                                            <div class="mt-2 text-left">
+                                                                <span class="text-muted small d-inline-block mr-2">{!! __('dailyReports.current_file') !!}:</span>
+                                                                @include('dashboard.employees.daily-reports.parts.file')
+                                                            </div>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -184,8 +185,7 @@
                     return {
                         results: $.map(data, function(item) {
                             return {
-                                text: '{!! Lang() !!}' === 'en' ? item.employee_en : item
-                                    .employee_ar,
+                                text: '{!! Lang() !!}' === 'en' ? item.employee_en : item.employee_ar,
                                 id: item.id
                             }
                         })
@@ -211,23 +211,21 @@
             ]
         });
 
-        function resetCreateDailyReportFrom() {
+        function resetUpdateDailyReportFrom() {
             $('.premium-input').css('border-color', '');
             $('.select2-selection').css('border-color', '');
             $('.details_summernote').next('.note-editor').removeClass('is-invalid-summernote-editor');
             $('[id$="_error"]').text('');
         }
 
-        $("#storeSDailyReportFrom").on('submit', function(e) {
+        $("#updateDailyReportForm").on('submit', function(e) {
             e.preventDefault();
-            resetCreateDailyReportFrom();
+            resetUpdateDailyReportFrom();
             var data = new FormData(this);
-            var type = $(this).attr('method');
-            var url = $(this).attr('action');
 
             $.ajax({
-                url: url,
-                type: type,
+                url: $(this).attr('action'),
+                type: 'POST', // Use POST with _method PUT for file uploads
                 data: data,
                 dataType: 'json',
                 contentType: false,
@@ -237,28 +235,24 @@
                     $('.spinner_loading').removeClass('d-none');
                 },
                 success: function(data) {
-                    if (data.status == 'added') {
-                        $('#storeSDailyReportFrom')[0].reset();
-                        $(".employee_id_select").val('').trigger('change');
-                        $('.details_summernote').summernote('code', '');
-                        flasher.success("{!! __('general.add_success_message') !!}");
-                    } else if (data.status == 'error') {
-                        flasher.error("{!! __('general.add_error_message') !!}");
-                    } else if (data.status == 'exists') {
-                        flasher.error("{!! __('general.recored_exists') !!}");
+                    if (data.status == true) {
+                        flasher.success("{!! __('general.update_success_message') !!}");
+                        setTimeout(function(){
+                            window.location.href = "{!! route('dashboard.dailyReports.index') !!}";
+                        }, 1000);
+                    } else {
+                        flasher.error("{!! __('general.update_error_message') !!}");
                     }
                 },
                 error: function(reject) {
                     var response = $.parseJSON(reject.responseText);
                     $.each(response.errors, function(key, value) {
                         if (key == 'details') {
-                            $('.details_summernote').next('.note-editor').addClass(
-                                'is-invalid-summernote-editor');
+                            $('.details_summernote').next('.note-editor').addClass('is-invalid-summernote-editor');
                         } else if (key == 'employee_id') {
-                            $('.employee_id_select').next('.select2-container').find(
-                                '.select2-selection').css('border-color', '#F64E60');
+                             $('.employee_id_select').next('.select2-container').find('.select2-selection').css('border-color', '#F64E60');
                         }
-
+                        
                         $('#' + key + '_error').text(value[0]);
                         $('#' + key).css('border-color', '#F64E60');
                     });

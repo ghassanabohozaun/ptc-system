@@ -1,21 +1,28 @@
-<!-- Standard Details Modal for Daily Reports -->
+<!-- Standard Details Modal for Daily Reports (Premium V2.0 Style) -->
 <div class="modal modal-pop fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content shadow-lg border-0" style="border-radius: 15px;">
-            <div class="modal-header bg-primary white" style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
-                <h5 class="modal-title white" id="detailsModalLabel"><i class="ft-info mr-1"></i> {!! __('general.details') !!}</h5>
-                <button type="button" class="close white" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content shadow-premium border-0" style="border-radius: 15px; overflow: hidden;">
+            <div class="modal-header border-0 bg-white pb-0">
+                <h5 class="modal-title text-primary font-weight-bold" id="detailsModalLabel">
+                    <i class="la la-info-circle mr-1" style="font-size: 20px; vertical-align: middle;"></i> 
+                    {!! __('general.details') !!}
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="font-size: 24px;">&times;</span>
                 </button>
             </div>
-            <div class="modal-body" id="modalBody">
+            <div class="modal-body p-0" id="modalBody">
                 <!-- Content loaded from row-details via AJAX JS -->
                 <div class="text-center p-5">
                     <span class="premium-loader"></span>
                 </div>
             </div>
-            <div class="modal-footer bg-light p-1">
-                <button type="button" class="btn btn-secondary btn-glow" data-dismiss="modal">{!! __('general.close') !!}</button>
+            <div class="modal-footer border-0 p-2 justify-content-center">
+                <button type="button" class="btn btn-premium-secondary" 
+                        data-dismiss="modal" 
+                        style="height: 42px; border-radius: 10px; min-width: 120px;">
+                    {!! __('general.close') !!}
+                </button>
             </div>
         </div>
     </div>

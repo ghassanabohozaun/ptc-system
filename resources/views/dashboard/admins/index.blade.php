@@ -12,22 +12,19 @@
     <div class="app-content content">
         <div class="content-wrapper">
             <!-- begin: content header -->
-            <div class="content-header row">
+            <div class="content-header row align-items-center mb-2">
                 <!-- begin: content header left-->
-                <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
-                    <h3 class="content-header-title mb-0 d-inline-block">{!! __('admins.admins') !!}</h3>
-                    <div class="row breadcrumbs-top d-inline-block">
+                <div class="content-header-left col-md-6 col-12 mb-2 mb-md-0">
+                    <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
-                            <ol class="breadcrumb">
+                            <ol class="breadcrumb premium-breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="{!! route('dashboard.index') !!}">
-                                        {!! __('dashboard.home') !!}
+                                    <a href="{!! route('dashboard.index') !!}" class="text-muted">
+                                        <i class="la la-home"></i> {!! __('dashboard.home') !!}
                                     </a>
                                 </li>
-                                <li class="breadcrumb-item">
-                                    <a href="{!! route('dashboard.admins.index') !!}">
-                                        {!! __('admins.admins') !!}
-                                    </a>
+                                <li class="breadcrumb-item active font-weight-bold">
+                                    {!! __('admins.admins') !!}
                                 </li>
                             </ol>
                         </div>
@@ -36,11 +33,11 @@
                 <!-- end: content header left-->
 
                 <!-- begin: content header right-->
-                <div class="content-header-right col-md-6 col-12">
-                    <div class="float-md-right mb-1">
-                        <button type="button" class="btn btn-premium-add" data-toggle="modal"
+                <div class="content-header-right col-md-6 col-12 text-md-right">
+                    <div class="mb-1">
+                        <button type="button" class="btn btn-premium-add shadow-pulse" data-toggle="modal"
                             data-target="#createAdminModal">
-                            <i class="la la-plus"></i>
+                            <i class="la la-plus-circle"></i>
                             {!! __('admins.create_new_admin') !!}
                         </button>
                     </div>
@@ -55,11 +52,11 @@
                 <section id="basic-form-layouts">
                     <div class="row match-height">
                         <div class="col-md-12">
-                            <div class="card">
+                            <div class="card premium-card">
                                 <!-- begin: card header -->
                                 <div class="card-header">
                                     <h4 class="card-title" id="basic-layout-colored-form-control">
-                                        {!! __('admins.show_all_admins') !!}
+                                        <i class="la la-users text-primary mr-1"></i> {!! __('admins.show_all_admins') !!}
                                     </h4>
                                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -138,11 +135,21 @@
                         $('.admin_status_' + data.data.id).removeClass(
                             'badge-danger badge-success');
                         if (data.data.status == 1) {
-                            $('.admin_status_' + data.data.id).addClass('badge-success').text(
-                                "{!! __('general.enable') !!}");
+                            $('.admin_status_' + data.data.id)
+                                .addClass('badge-pill badge-glow badge-success')
+                                .css({
+                                    'font-size': '11px',
+                                    'padding': '4px 10px'
+                                })
+                                .text("{!! __('general.enable') !!}");
                         } else {
-                            $('.admin_status_' + data.data.id).addClass('badge-danger').text(
-                                "{!! __('general.disabled') !!}");
+                            $('.admin_status_' + data.data.id)
+                                .addClass('badge-pill badge-glow badge-danger')
+                                .css({
+                                    'font-size': '11px',
+                                    'padding': '4px 10px'
+                                })
+                                .text("{!! __('general.disabled') !!}");
                         }
                         if (data.status === true) {
                             flasher.success("{!! __('general.change_status_success_message') !!}");

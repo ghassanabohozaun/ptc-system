@@ -22,7 +22,7 @@ class DepartmentsController extends Controller
     public function index(Request $request)
     {
         $title = __('departments.departments');
-        $departments = $this->departmentService->getAll();
+        $departments = $this->departmentService->getAll($request->keyword);
 
         if ($request->ajax()) {
             return view('dashboard.employees.departments.partials._table', compact('departments'))->render();
@@ -60,7 +60,7 @@ class DepartmentsController extends Controller
         //
     }
 
-    // update
+    // get active all
     public function update(DepartmentRequest $request, string $id)
     {
         $data = $request->only(['id','name']);

@@ -1,35 +1,29 @@
-<div class="card">
-    <div class="card-header">
-        <h4 class="card-title">{!! __('monthlyReports.show_all_monthly_reports') !!}</h4>
-        <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-        <div class="heading-elements">
-            <ul class="list-inline mb-0">
-                <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                <li><a data-action="close"><i class="ft-x"></i></a></li>
-            </ul>
-        </div>
+<div class="card premium-card shadow-lg border-0">
+    <div class="card-header border-0 bg-transparent py-3">
+        <h4 class="card-title font-weight-bold">
+            <i class="la la-list-alt mr-1 text-primary"></i> {!! __('monthlyReports.show_all_monthly_reports') !!}
+        </h4>
     </div>
     <div class="card-content collapse show">
-        <div class="card-body">
+        <div class="card-body pt-0">
             <div class="table-responsive">
                 <table class="table" id="myTable">
                     <thead>
                         <tr>
-                            <th class="text-center d-none d-lg-table-cell">#</th>
+                            <th class="text-center d-none d-lg-table-cell col-w-45">#</th>
                             <th>{!! __('monthlyReports.employee_id') !!}</th>
                             <th class="text-center">{!! __('monthlyReports.month') !!} / {!! __('monthlyReports.year') !!}</th>
-                            <th class="text-center d-none d-lg-table-cell">{!! __('general.details') !!}</th>
                             <th class="text-center">{!! __('monthlyReports.status') !!}</th>
                             <th class="text-center d-none d-lg-table-cell">{!! __('monthlyReports.created_at') !!}</th>
-                            <th class="text-center">{!! __('general.actions') !!}</th>
+                            <th class="text-center col-w-150">{!! __('general.actions') !!}</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($monthlyReports as $monthlyReport)
                             <tr id="row{{ $monthlyReport->id }}">
-                                <td class="text-center d-none d-lg-table-cell">{!! $loop->iteration !!}</td>
+                                <td class="text-center d-none d-lg-table-cell">
+                                    <span class="badge badge-info badge-pill badge-glow premium-badge-circle">{!! $loop->iteration !!}</span>
+                                </td>
                                 <td class="font-weight-bold text-primary">
                                     {!! $monthlyReport->employee->EmployeeShortName() !!}
                                 </td>
@@ -37,18 +31,6 @@
                                     <span class="badge badge-pill bg-light-info text-info px-1 font-weight-bold">
                                         {!! $monthlyReport->month !!} / {!! $monthlyReport->year !!}
                                     </span>
-                                </td>
-                                <td class="text-center d-none d-lg-table-cell">
-                                    <button type="button" class="btn btn-sm btn-outline-info details-control" title="{!! __('general.details') !!}" data-id="{{ $monthlyReport->id }}">
-                                        <i class="ft-eye"></i>
-                                    </button>
-                                    <!-- Hidden Details for AJAX / Popover -->
-                                    <div class="row-details d-none">
-                                        <div class="p-2">
-                                            <h6 class="font-weight-bold text-primary mb-1">{!! __('general.details') !!}:</h6>
-                                            <p class="text-muted small">{!! $monthlyReport->details !!}</p>
-                                        </div>
-                                    </div>
                                 </td>
                                 <td class="text-center">
                                     @include('dashboard.employees.monthly-reports.parts.status')

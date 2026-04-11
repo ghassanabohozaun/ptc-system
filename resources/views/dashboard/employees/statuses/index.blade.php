@@ -5,31 +5,27 @@
 
 @push('style')
     <link rel="stylesheet" href="{{ asset('assets/dashbaord/css/ajax-table.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dashbaord/css/filter.css') }}">
 @endpush
 
 @section('content')
     <div class="app-content content">
         <div class="content-wrapper">
             <!-- begin: content header -->
-            <div class="content-header row">
-
+            <div class="content-header row align-items-center mb-2">
                 <!-- begin: content header left-->
-                <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
-                    <h3 class="content-header-title mb-0 d-inline-block">{!! __('employees.employee_statuses') !!}</h3>
-                    <div class="row breadcrumbs-top d-inline-block">
+                <div class="content-header-left col-md-6 col-12 mb-2 mb-md-0">
+                    <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
-                            <ol class="breadcrumb">
+                            <ol class="breadcrumb premium-breadcrumb">
                                 <li class="breadcrumb-item">
                                     <a href="{!! route('dashboard.index') !!}">
-                                        {!! __('dashboard.home') !!}
+                                        <i class="la la-home"></i> {!! __('dashboard.home') !!}
                                     </a>
                                 </li>
-                                <li class="breadcrumb-item">
-                                    <a href="{!! route('dashboard.employeeStatuses.index') !!}">
-                                        {!! __('employees.employee_statuses') !!}
-                                    </a>
+                                <li class="breadcrumb-item active">
+                                    {!! __('employees.employee_statuses') !!}
                                 </li>
-
                             </ol>
                         </div>
                     </div>
@@ -37,38 +33,39 @@
                 <!-- end: content header left-->
 
                 <!-- begin: content header right-->
-                <div class="content-header-right col-md-6 col-12">
-                    <div class="float-md-right mb-1">
-                        <button type="button" class="btn btn-premium-add" data-toggle="modal"
-                            data-target="#createStatusModal">
-                            <i class="la la-plus"></i>
+                <div class="content-header-right col-md-6 col-12 text-md-right">
+                    <div class="mb-1">
+                        <button type="button" class="btn btn-premium-add shadow-pulse" data-toggle="modal"
+                            data-target="#createStatusModal" style="height: 42px; border-radius: 10px;">
+                            <i class="la la-plus-circle"></i>
                             {!! __('employees.create_new_employee_status') !!}
                         </button>
                     </div>
                 </div>
                 <!-- end: content header right-->
-
             </div> <!-- end :content header -->
 
             <!-- begin: content body -->
             <div class="content-body">
+                @include('dashboard.employees.statuses.partials._search')
 
                 <section id="basic-form-layouts">
                     <div class="row match-height">
                         <div class="col-md-12">
-                            <div class="card">
+                            <div class="card premium-card">
                                 <!-- begin: card header -->
-                                <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-colored-form-control">
+                                <div class="card-header border-0 pb-0">
+                                    <h4 class="card-title text-dark font-weight-bold d-flex align-items-center">
+                                        <i class="la la-user-tag text-primary mr-2" style="font-size: 24px;"></i>
                                         {!! __('employees.show_all_employee_statuses') !!}
+                                        <span class="badge badge-primary badge-pill badge-glow ml-2"
+                                            style="font-size: 11px;">{!! $employeeStatuses->total() !!}</span>
                                     </h4>
-                                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
-                                            <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                                            <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                                            <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                                            <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                            <li><a data-action="collapse"><i class="la la-minus"></i></a></li>
+                                            <li><a data-action="reload"><i class="la la-refresh"></i></a></li>
+                                            <li><a data-action="expand"><i class="la la-expand"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>

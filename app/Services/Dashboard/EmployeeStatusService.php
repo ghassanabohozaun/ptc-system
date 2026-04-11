@@ -20,9 +20,9 @@ class EmployeeStatusService
     }
 
     // get all
-    public function getAll()
+    public function getAll($keyword = null)
     {
-        return $this->employeeStatusRepository->getAll();
+        return $this->employeeStatusRepository->getAll($keyword);
     }
 
     // get active all

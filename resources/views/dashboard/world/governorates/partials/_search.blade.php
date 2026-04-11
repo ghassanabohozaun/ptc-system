@@ -12,22 +12,24 @@
             <!-- Governorate Search -->
             <div class="filter-item">
                 <div class="filter-chip js-filter-chip" data-filter-target="gov_search_panel">
-                    <i class="la la-search"></i>
+                    <i class="la la-map-pin"></i>
                     <span class="chip-text">{!! __('world.governorate_name') !!}</span>
+                    <span class="badge badge-primary badge-pill badge-glow ml-1 d-inline-flex align-items-center justify-content-center" style="font-size: 11px; width: 30px; height: 18px; padding: 0;">{!! $governorates->total() !!}</span>
                 </div>
 
                 <!-- Governorate Search Panel -->
-                <div class="ptc-query-panel" id="gov_search_panel">
+                <div class="ptc-query-panel shadow-lg border-0" id="gov_search_panel" style="border-radius: 16px;">
                     <div class="mb-3">
-                        <label class="form-label fw-bold mb-2">{!! __('world.governorate_name') !!}</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="keyword"
+                        <label class="premium-label mb-2">{!! __('world.governorate_name') !!}</label>
+                        <div class="premium-input-wrapper">
+                            <input type="text" class="form-control premium-input shadow-none" name="keyword"
                                 placeholder="{!! __('general.search') !!}..." autocomplete="off">
+                            <i class="la la-search text-primary"></i>
                         </div>
                     </div>
-                    <div class="popover-actions">
-                        <button type="button" class="btn btn-primary btn-sm text-white js-apply-filter">
-                            {!! __('general.submit') !!}
+                    <div class="popover-actions mt-4 text-right">
+                        <button type="button" class="btn btn-premium-blue btn-sm js-apply-filter px-4">
+                            <i class="la la-check-circle mr-1"></i> {!! __('general.apply') !!}
                         </button>
                     </div>
                 </div>

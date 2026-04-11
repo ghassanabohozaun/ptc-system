@@ -8,6 +8,6 @@
 @else
     <div class="avatar-circle avatar-size-{!! $size !!} d-inline-flex align-items-center justify-content-center text-white text-uppercase"
         style="background-color: {!! $admin->getAvatarColor() !!};">
-        {!! $admin->initials !!}
+        <i class="la la-user" style="font-size: {!! $size * 0.4 !!}px;"></i>
     </div>
 @endif

@@ -9,22 +9,23 @@
             <!-- Admin Search -->
             <div class="filter-item">
                 <div class="filter-chip js-filter-chip" data-filter-target="admin_search_popover">
-                    <i class="la la-user"></i>
+                    <i class="la la-user-tie"></i>
                     <span class="chip-text">{!! __('admins.admins') !!}</span>
                 </div>
 
                 <!-- Admin Search Popover -->
-                <div class="ptc-query-panel" id="admin_search_popover">
+                <div class="ptc-query-panel shadow-lg border-0" id="admin_search_popover" style="border-radius: 16px;">
                     <div class="mb-3">
-                        <label class="form-label fw-bold mb-2">{!! __('admins.admins') !!}</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="keyword"
+                        <label class="premium-label mb-2">{!! __('admins.admins') !!}</label>
+                        <div class="premium-input-wrapper">
+                            <input type="text" class="form-control premium-input shadow-none" name="keyword"
                                 placeholder="{!! __('general.search') !!}..." autocomplete="off">
+                            <i class="la la-search text-primary"></i>
                         </div>
                     </div>
-                    <div class="popover-actions">
-                        <button type="button" class="btn btn-primary btn-sm text-white js-apply-filter">
-                            {!! __('general.apply') !!}
+                    <div class="popover-actions mt-4 text-right">
+                        <button type="button" class="btn btn-premium-blue btn-sm js-apply-filter px-4">
+                            <i class="la la-check-circle mr-1"></i> {!! __('general.apply') !!}
                         </button>
                     </div>
                 </div>

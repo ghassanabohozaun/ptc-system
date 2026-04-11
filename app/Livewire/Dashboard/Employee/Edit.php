@@ -29,6 +29,7 @@ class Edit extends Component
     public $photo, $new_photo;
     public $title_ar, $title_en, $appointment_date, $contact_expire_date, $employment_type, $department_id, $employee_status_id, $supervisor_ar, $supervisor_en, $submit_monthly_report;
     public $weekly_working_hours_and_days, $holidays_and_festivals, $job_duties, $contract_terms, $education_contract, $experiences_contract, $other_requirements;
+    public $showPassword = false;
 
     public $governorates, $cities;
     public $employeeStatuses;

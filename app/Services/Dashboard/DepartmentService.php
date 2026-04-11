@@ -20,9 +20,9 @@ class DepartmentService
     }
 
     // get all
-    public function getAll()
+    public function getAll($keyword = null)
     {
-        return $this->departmentRepository->getAll();
+        return $this->departmentRepository->getAll($keyword);
     }
 
     // get active all

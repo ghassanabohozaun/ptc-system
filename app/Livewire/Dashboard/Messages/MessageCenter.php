@@ -23,6 +23,14 @@ class MessageCenter extends Component
 
     public function render()
     {
-        return view('livewire.dashboard.messages.message-center');
+        $user = auth()->user();
+        $counts = [
+            'inbox' => \App\Models\Message::inbox($user)->count(),
+            'sent' => \App\Models\Message::sent($user)->count(),
+            'starred' => \App\Models\Message::starred($user)->count(),
+            'trash' => \App\Models\Message::trash($user)->count(),
+        ];
+
+        return view('livewire.dashboard.messages.message-center', compact('counts'));
     }
 }

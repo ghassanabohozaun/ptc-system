@@ -14,22 +14,18 @@
             <div class="content-header row">
 
                 <!-- begin: content header left-->
-                <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
-                    <h3 class="content-header-title mb-0 d-inline-block">{!! __('world.governorates') !!}</h3>
-                    <div class="row breadcrumbs-top d-inline-block">
+                <div class="content-header-left col-md-6 col-12 mb-2 mb-md-0">
+                    <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
-                            <ol class="breadcrumb">
+                            <ol class="breadcrumb premium-breadcrumb">
                                 <li class="breadcrumb-item">
                                     <a href="{!! route('dashboard.index') !!}">
-                                        {!! __('dashboard.home') !!}
+                                        <i class="la la-home"></i> {!! __('dashboard.home') !!}
                                     </a>
                                 </li>
-                                <li class="breadcrumb-item">
-                                    <a href="{!! route('dashboard.governorates.index') !!}">
-                                        {!! __('world.governorates') !!}
-                                    </a>
+                                <li class="breadcrumb-item active">
+                                    {!! __('world.governorates') !!}
                                 </li>
-
                             </ol>
                         </div>
                     </div>
@@ -39,9 +35,9 @@
                 <!-- begin: content header right-->
                 <div class="content-header-right col-md-6 col-12">
                     <div class="float-md-right mb-1">
-                        <button type="button" class="btn btn-premium-add" data-toggle="modal"
+                        <button type="button" class="btn btn-premium-add shadow-pulse" data-toggle="modal"
                             data-target="#createGovernorateModal">
-                            <i class="la la-plus"></i>
+                            <i class="la la-plus-circle"></i>
                             {!! __('world.create_new_governorate') !!}
                         </button>
                     </div>
@@ -57,19 +53,18 @@
                 <section id="basic-form-layouts">
                     <div class="row match-height">
                         <div class="col-md-12">
-                            <div class="card">
+                            <div class="card premium-card">
                                 <!-- begin: card header -->
                                 <div class="card-header">
                                     <h4 class="card-title" id="basic-layout-colored-form-control">
-                                        {!! __('world.show_all_governorates') !!}
+                                        <i class="la la-map-marker text-primary mr-1"></i> {!! __('world.show_all_governorates') !!}
+                                        <span class="badge badge-primary badge-pill badge-glow ml-1 d-inline-flex align-items-center justify-content-center" style="font-size: 11px; width: 35px; height: 22px; padding: 0; vertical-align: middle;">{!! $governorates->total() !!}</span>
                                     </h4>
-                                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
                                             <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                                            <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                            <li><a data-action="reload" onclick="initIndexTable()"><i class="ft-rotate-cw"></i></a></li>
                                             <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                                            <li><a data-action="close"><i class="ft-x"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>

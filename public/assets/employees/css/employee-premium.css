@@ -918,26 +918,29 @@ p, span, div, li, a { font-size: 0.95rem !important; }
     color: #484848 !important; /* Professional Dark Gray */
 }
 
-/* 9. Premium User Dropdown */
+/* 9. Premium User Dropdown (Centered & Modern) */
 .navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .navbar-dropdown {
     border: none !important;
     border-radius: 16px !important;
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15) !important;
     padding: 10px !important;
     min-width: 240px !important;
     margin-top: 15px !important;
     background: #fff !important;
-    animation: dropdownPopFade 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%);
+    animation: dropdownPopFade 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
 }
 
 @keyframes dropdownPopFade {
     0% {
         opacity: 0;
-        transform: translateY(10px) scale(0.95);
+        transform: translateX(-50%) translateY(10px) scale(0.95);
     }
     100% {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateX(-50%) translateY(0) scale(1);
     }
 }
 
@@ -1190,7 +1193,7 @@ p, span, div, li, a { font-size: 0.95rem !important; }
 }
 
 /* Icon Aesthetics (Notifications & Messages) */
-.navbar .navbar-nav .nav-item .nav-link i[class^="icon-"], 
+.navbar .navbar-nav .nav-item .nav-link i[class^="icon-"],
 .navbar .navbar-nav .nav-item .nav-link i.mdi-bell-outline,
 .navbar .navbar-nav .nav-item .nav-link i.mdi-email-outline {
     font-size: 1.35rem !important;
@@ -1214,11 +1217,11 @@ p, span, div, li, a { font-size: 0.95rem !important; }
         box-shadow: none !important;
         border: none !important;
     }
-    
+
     .navbar .brand-logo {
         display: none !important;
     }
-    
+
     .navbar .brand-logo-mini {
         display: block !important;
     }
@@ -1244,13 +1247,13 @@ p, span, div, li, a { font-size: 0.95rem !important; }
     .language-switcher-premium .lang-name {
         display: none !important;
     }
-    
+
     .language-switcher-premium {
         padding: 6px !important;
         margin: 0 5px !important;
         border-radius: 10px !important;
     }
-    
+
     .avatar-img-premium, .avatar-initials-premium {
         width: 35px !important;
         height: 35px !important;
@@ -1268,7 +1271,7 @@ p, span, div, li, a { font-size: 0.95rem !important; }
 }
 
 /* 9. Dashboard Header & Tabs Refinement (Transparent Header) */
-.home-tab, 
+.home-tab,
 .home-tab .d-sm-flex,
 .main-panel .content-wrapper .home-tab,
 .main-panel .content-wrapper .home-tab .d-sm-flex {
@@ -1346,6 +1349,220 @@ p, span, div, li, a { font-size: 0.95rem !important; }
 [data-textdirection="ltr"] .sidebar .nav .nav-item .nav-link {
     border-radius: 0 20px 20px 0 !important;
     margin-left: 5px;
+}
+
+/* 10. Messages Module Styles (Premium Overhaul) */
+.msg-sidebar-card {
+    border: none !important;
+    border-radius: 16px !important;
+    background: var(--clean-white) !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05) !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.msg-sidebar-btn {
+    width: 100% !important;
+    border-radius: 12px !important;
+    background: linear-gradient(135deg, var(--premium-indigo), var(--premium-blue)) !important;
+    border: none !important;
+    padding: 12px !important;
+    color: white !important;
+    font-size: 1.15rem !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.msg-sidebar-btn i {
+    margin-right: 6px !important;
+}
+
+[data-textdirection="rtl"] .msg-sidebar-btn i {
+    margin-right: 0 !important;
+    margin-left: 6px !important;
+}
+
+.msg-sidebar-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3) !important;
+    color: white !important;
+}
+
+.msg-nav-link {
+    border-radius: 12px !important;
+    margin: 5px 0 !important;
+    border: none !important;
+    color: var(--text-muted) !important;
+    font-weight: 600 !important;
+    font-size: 1.15rem !important;
+    transition: all 0.2s ease !important;
+    padding: 12px 15px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.msg-nav-link i {
+    font-size: 1.2rem !important;
+    margin-right: 6px !important;
+}
+
+[data-textdirection="rtl"] .msg-nav-link i {
+    margin-right: 0 !important;
+    margin-left: 6px !important;
+}
+
+.msg-nav-link:hover:not(.active) {
+    background: rgba(99, 102, 241, 0.05) !important;
+    color: var(--premium-indigo) !important;
+}
+
+.msg-nav-link.active {
+    background: rgba(99, 102, 241, 0.1) !important;
+    color: var(--premium-indigo) !important;
+    box-shadow: none !important;
+}
+
+.msg-nav-link.active i {
+    color: var(--premium-indigo) !important;
+    opacity: 1 !important;
+}
+
+.msg-main-card {
+    border: none !important;
+    border-radius: 16px !important;
+    background: var(--clean-white) !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05) !important;
+    overflow: hidden;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.msg-main-card .card-body {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 !important;
+}
+
+.msg-star {
+    font-size: 1.2rem !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.msg-star.starred {
+    color: #ffc107 !important;
+}
+
+.msg-badge-new {
+    background: var(--premium-indigo) !important;
+    color: white !important;
+    padding: 4px 10px !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    border-radius: 50px !important;
+    vertical-align: middle;
+}
+
+/* Redesigning the Message Selection / Hover */
+.table-hover tbody tr:hover {
+    background-color: rgba(99, 102, 241, 0.02) !important;
+}
+
+/* Premium Details Modal for Messages */
+#messageDetailsModal .modal-content {
+    border-radius: 20px !important;
+    border: none !important;
+}
+
+#messageDetailsModal .modal-header {
+    background: transparent !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    padding: 20px 25px !important;
+}
+
+#messageDetailsModal .modal-title {
+    color: var(--text-dark) !important;
+    font-weight: 800 !important;
+    font-size: 1.25rem !important;
+}
+
+#messageDetailsModal .modal-body {
+    padding: 25px !important;
+}
+
+.message-meta-box {
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.message-body-content {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    min-height: 200px;
+    font-size: 1rem !important;
+    line-height: 1.7 !important;
+}
+
+/* Premium Header Spacing for Messages */
+.msg-card-header-premium {
+    padding-top: 15px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    margin-bottom: 25px !important;
+}
+
+.msg-count-badge {
+    background: #f1f5f9;
+    color: var(--text-muted);
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 0.85rem !important;
+    font-weight: 700;
+}
+
+/* Merged Input Groups (Premium Style) */
+.input-group-merge {
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+    background: #ffffff !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02) !important;
+}
+
+.input-group-merge:focus-within {
+    border-color: var(--premium-indigo) !important;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1) !important;
+}
+
+.input-group-merge .input-group-text {
+    background: transparent !important;
+    border: none !important;
+    padding-left: 15px !important;
+    padding-right: 5px !important;
+    color: var(--text-muted) !important;
+}
+
+.input-group-merge .form-control, 
+.input-group-merge .form-select {
+    border: none !important;
+    padding: 12px 15px !important;
+    font-size: 0.9rem !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+.input-group-merge .form-select {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
 }
 
 

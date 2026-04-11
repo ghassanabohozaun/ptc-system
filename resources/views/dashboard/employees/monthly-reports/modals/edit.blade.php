@@ -1,132 +1,96 @@
 <div class="modal modal-pop fade" id="updateMonthlyReportModal" tabindex="-1" role="dialog"
     aria-labelledby="updateMonthlyReportModalLabel" aria-hidden="true">
 
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <form class="form" action="" method="POST" enctype="multipart/form-data" id='update_monthly_report_form'>
             @csrf
             @method('PUT')
-            <div class="modal-content">
+            <div class="modal-content shadow-lg border-0 premium-modal-content-styled">
 
                 <!--begin::modal header-->
-                <div class="modal-header">
-                    <h5 class="modal-title" id="updateMonthlyReportModalLabel">{!! __('monthlyReports.update_monthly_report') !!}
+                <div class="modal-header border-0 pb-0 pt-2 px-2 d-flex justify-content-between align-items-center">
+                    <h5 class="modal-title font-weight-bold text-dark ml-1 mt-1" id="updateMonthlyReportModalLabel">
+                        <i class="la la-edit text-indigo mr-1"></i> {!! __('monthlyReports.update_monthly_report') !!}
                     </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close premium-close premium-close-button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <!--end::modal header-->
 
                 <!--begin::modal body-->
-                <div class="modal-body">
+                <div class="modal-body pt-3">
+                    <input type="hidden" id="id_edit" name="id">
 
                     <div class="row">
-                        <div class="col-lg-12">
-
-                            <!-- begin: row -->
-                            <div class="row d-none">
-                                <!-- begin: input -->
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <input type="hidden" id="id_edit" name="id" class="form-control">
-                                    </div>
+                        <!-- Employee (ReadOnly Style) -->
+                        <div class="col-md-6 mb-3">
+                            <div class="premium-form-group">
+                                <label class="premium-label font-weight-bold text-dark">{!! __('monthlyReports.employee_id') !!}</label>
+                                <div class="premium-input-wrapper shadow-none premium-readonly-wrapper">
+                                    <div id="employee_name_edit" class="py-1 px-3 premium-readonly-text"></div>
+                                    <i class="la la-user-tie"></i>
                                 </div>
-                                <!-- end: input -->
                             </div>
-                            <!-- end: row -->
+                        </div>
 
-
-                            <!-- begin: row -->
-                            <div class="row">
-
-                                <!-- begin: input -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="month">{!! __('monthlyReports.employee_id') !!}</label>
-                                        <label id="employee_name_edit" name="employee_name_edit"
-                                            style="background-color: #e9e9e9" class="form-control"></label>
-                                    </div>
+                        <!-- Month (ReadOnly Style) -->
+                        <div class="col-md-6 mb-3">
+                            <div class="premium-form-group">
+                                <label class="premium-label font-weight-bold text-dark">{!! __('monthlyReports.month') !!}</label>
+                                <div class="premium-input-wrapper shadow-none premium-readonly-wrapper">
+                                    <div id="month_edit" class="py-1 px-3 premium-readonly-text"></div>
+                                    <i class="la la-calendar"></i>
                                 </div>
-                                <!-- end: input -->
-
-                                <!-- begin: input -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="month">{!! __('monthlyReports.month') !!}</label>
-                                        <label id="month_edit" name="month" style="background-color: #e9e9e9"
-                                            class="form-control"></label>
-                                    </div>
-                                </div>
-                                <!-- end: input -->
-
                             </div>
-                            <!-- end: row -->
+                        </div>
 
-
-                            <!-- begin: row -->
-                            <div class="row">
-                                <!-- begin: input -->
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="currency">{!! __('monthlyReports.status') !!}</label>
-                                        <select id="status_edit" name="status" class="form-control">
-                                            <option value="" selected>{!! __('employees.select_from_list') !!}</option>
-                                            {{-- <option value="new">{!! __('monthlyReports.new') !!}</option> --}}
-                                            @if (admin()->user()->role->getTranslation('role', 'en') == 'SEO')
-                                                <option value="initial_review">{!! __('monthlyReports.initial_review') !!}</option>
-                                                <option value="initial_refuse">{!! __('monthlyReports.initial_refuse') !!}</option>
-                                                <option value="intital_approved">{!! __('monthlyReports.intital_approved') !!}</option>
-                                            @endif
-                                            @if (admin()->user()->role->getTranslation('role', 'en') == 'Manger')
-                                                <option value="final_review">{!! __('monthlyReports.final_review') !!}</option>
-                                                <option value="final_refuse">{!! __('monthlyReports.final_refuse') !!}</option>
-                                                <option value="approved">{!! __('monthlyReports.approved') !!}</option>
-                                            @endif
-                                        </select>
-                                        <span class="text text-danger">
-                                            <strong id="status_error_edit"></strong>
-                                        </span>
-                                    </div>
-
+                        <!-- Status Select -->
+                        <div class="col-md-12 mb-3">
+                            <div class="premium-form-group">
+                                <label class="premium-label font-weight-bold text-dark">{!! __('monthlyReports.status') !!}</label>
+                                <div class="premium-input-wrapper">
+                                    <select id="status_edit" name="status" class="form-control premium-input shadow-none">
+                                        <option value="" selected>{!! __('employees.select_from_list') !!}</option>
+                                        @if (admin()->user()->role->getTranslation('role', 'en') == 'SEO')
+                                            <option value="initial_review">{!! __('monthlyReports.initial_review') !!}</option>
+                                            <option value="initial_refuse">{!! __('monthlyReports.initial_refuse') !!}</option>
+                                            <option value="intital_approved">{!! __('monthlyReports.intital_approved') !!}</option>
+                                        @endif
+                                        @if (admin()->user()->role->getTranslation('role', 'en') == 'Manger')
+                                            <option value="final_review">{!! __('monthlyReports.final_review') !!}</option>
+                                            <option value="final_refuse">{!! __('monthlyReports.final_refuse') !!}</option>
+                                            <option value="approved">{!! __('monthlyReports.approved') !!}</option>
+                                        @endif
+                                    </select>
+                                    <i class="la la-toggle-on"></i>
                                 </div>
-                                <!-- end: input -->
+                                <span class="text text-danger small"><strong id="status_error_edit"></strong></span>
                             </div>
-                            <!-- end: row -->
+                        </div>
 
-                            <!-- begin: row -->
-                            <div class="row" id="refuse_reason_section">
-                                <!-- begin: input -->
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="refuse_reason">{!! __('monthlyReports.refuse_reason') !!}</label>
-                                        <textarea rows="6" id="refuse_reason_edit" name="refuse_reason" class="form-control"
-                                            placeholder="{!! __('monthlyReports.enter_refuse_reason') !!}"></textarea>
-                                        <span class="text text-danger">
-                                            <strong id="refuse_reason_error_edit"></strong>
-                                        </span>
-                                    </div>
-
-                                </div>
-                                <!-- end: input -->
+                        <!-- Refuse Reason -->
+                        <div class="col-md-12 mb-3" id="refuse_reason_section">
+                            <div class="premium-form-group">
+                                <label class="premium-label font-weight-bold text-dark">{!! __('monthlyReports.refuse_reason') !!}</label>
+                                <textarea id="refuse_reason_edit" name="refuse_reason" class="form-control premium-input shadow-none premium-textarea-md"
+                                    placeholder="{!! __('monthlyReports.enter_refuse_reason') !!}"></textarea>
+                                <span class="text text-danger small"><strong id="refuse_reason_error_edit"></strong></span>
                             </div>
-                            <!-- end: row -->
-
                         </div>
                     </div>
-                    <!--end: form-->
                 </div>
                 <!--end::modal body-->
 
                 <!--begin::modal footer-->
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-info px-2">
-                        <i class="ft-save mr-1"></i> {{ __('general.save') }}
-                        <i class="ft-refresh-cw spinner spinner_loading d-none ml-1"></i>
+                <div class="modal-footer border-0 pt-0">
+                    <button type="submit" class="btn btn-premium-add px-4 font-weight-bold">
+                        <i class="la la-save mr-1"></i> {{ __('general.save') }}
+                        <i class="la la-refresh la-spin spinner_loading d-none ml-1"></i>
                     </button>
 
-                    <button type="button" id="cancel_monthly_report_btn_edit" class="btn btn-outline-secondary px-2"
-                        data-dismiss="modal">
-                        <i class="ft-x mr-1"></i> {{ __('general.cancel') }}
+                    <button type="button" class="btn btn-light-dark font-weight-bold" data-dismiss="modal">
+                        <i class="la la-times mr-1"></i> {{ __('general.cancel') }}
                     </button>
                 </div>
                 <!--end::modal footer-->
@@ -139,24 +103,22 @@
 @push('scripts')
     <script type="text/javascript">
         $("#refuse_reason_section").hide();
-        $('#status_edit').on('change', function() {
-            var selectedValue = $(this).val(); // Get the selected value
-            console.log(selectedValue);
 
+        $('#status_edit').on('change', function() {
+            var selectedValue = $(this).val();
             if (selectedValue == 'initial_refuse' || selectedValue == 'final_refuse') {
-                $("#refuse_reason_section").show();
+                $("#refuse_reason_section").slideDown();
             } else {
-                $("#refuse_reason_section").hide();
+                $("#refuse_reason_section").slideUp();
             }
-            $('#refuse_reason_edit').css('border-color', '');
+            $('#refuse_reason_edit').closest('.premium-input-wrapper').css('border-color', '');
             $('#refuse_reason_error_edit').text('');
         });
 
-
-        // show edit modal
         $('body').on('click', '.monthly_report_change_status_button', function(e) {
-
             e.preventDefault();
+            resetEditForm();
+
             var monthly_report_id = $(this).attr('monthly-report-id');
             var emplyee_name = $(this).attr('monthly-report-employee');
             var month = $(this).attr('monthly-report-month');
@@ -164,14 +126,11 @@
             var status = $(this).attr('monthly-report-status');
             var refuse_reason = $(this).attr('monthly-report-refuse-reason');
 
-            let monthYear = month + ' / ' + year;
-
             $('#id_edit').val(monthly_report_id);
             $('#employee_name_edit').text(emplyee_name);
-            $('#month_edit').text(monthYear);
+            $('#month_edit').text(month + ' / ' + year);
             $('#status_edit').val(status);
             $('#refuse_reason_edit').val(refuse_reason);
-
 
             if (status == 'initial_refuse' || status == 'final_refuse') {
                 $("#refuse_reason_section").show();
@@ -180,40 +139,23 @@
             }
 
             $('#updateMonthlyReportModal').modal('show');
-        })
+        });
 
-
-        // reset
         function resetEditForm() {
-            $('#status_edit').css('border-color', '');
-            $('#refuse_reason_edit').css('border-color', '');
-
+            $('#status_edit').closest('.premium-input-wrapper').css('border-color', '');
+            $('#refuse_reason_edit').closest('.premium-input-wrapper').css('border-color', '');
             $('#status_error_edit').text('');
             $('#refuse_reason_error_edit').text('');
         }
 
-        // cancel
-        $('body').on('click', '#cancel_monthly_report_btn_edit', function(e) {
-            $('#updateMonthlyReportModal').modal('hide');
-            $('#update_monthly_report_form')[0].reset();
-            resetEditForm();
-        });
-
-        // hide
         $('#updateMonthlyReportModal').on('hidden.bs.modal', function(e) {
-            $('#updateMonthlyReportModal').modal('hide');
-            $('#update_monthly_report_form')[0].reset();
             resetEditForm();
         });
 
-        // update
         $('#update_monthly_report_form').on('submit', function(e) {
             e.preventDefault();
-
-            // reset
             resetEditForm();
 
-            // paramters
             var id = $('#id_edit').val();
             var data = new FormData(this);
             var type = $(this).attr('method');
@@ -232,12 +174,7 @@
                 },
                 success: function(data) {
                     if (data.status == true) {
-                        console.log(data);
-                        // Refresh table with current filters and page
-                        if (typeof fetch_data === 'function') {
-                            fetch_data();
-                        }
-                        resetEditForm();
+                        if (typeof fetch_data === 'function') { fetch_data(); }
                         $('#updateMonthlyReportModal').modal('hide');
                         flasher.success("{!! __('general.update_success_message') !!}");
                     } else {
@@ -248,9 +185,9 @@
                     var response = $.parseJSON(reject.responseText);
                     $.each(response.errors, function(key, value) {
                         $('#' + key + '_error_edit').text(value[0]);
-                        $('#' + key + '_edit').css('border-color', '#F64E60');
+                        $('#' + key + '_edit').closest('.premium-input-wrapper').css('border-color', '#F64E60');
                     });
-                }, //end error
+                },
                 complete: function() {
                     $('.spinner_loading').addClass('d-none');
                 }
@@ -258,7 +195,3 @@
         });
     </script>
 @endpush
-
-
-
-

@@ -13,9 +13,15 @@ class DepartmentRepository
     }
 
     // get all
-    public function getAll()
+    public function getAll($keyword = null)
     {
-        return Department::orderByDesc('id')->select('id', 'name', 'status')->paginate(config('app.pagination'));
+        return Department::query()
+            ->when($keyword, function ($query) use ($keyword) {
+                return $query->where('name', 'like', '%' . $keyword . '%');
+            })
+            ->orderByDesc('id')
+            ->select('id', 'name', 'status')
+            ->paginate(config('app.pagination'));
     }
 
     // get active all

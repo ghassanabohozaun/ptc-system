@@ -8,8 +8,9 @@
             <div class="modal-content">
 
                 <!--begin::modal header-->
-                <div class="modal-header">
-                    <h5 class="modal-title" id="updateCityModalLabel">{!! __('world.update_city') !!}
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title" id="updateCityModalLabel">
+                        <i class="la la-edit text-primary mr-1"></i> {!! __('world.update_city') !!}
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
@@ -39,10 +40,13 @@
                             <div class="row">
                                 <!-- begin: input -->
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="name">{!! __('world.city_name_ar') !!}</label>
-                                        <input type="text" id="name_ar_edit" name="name[ar]" class="form-control"
-                                            autocomplete="off" placeholder="{!! __('world.enter_city_name_ar') !!}">
+                                    <div class="premium-form-group">
+                                        <label class="premium-label">{!! __('world.city_name_ar') !!}</label>
+                                        <div class="premium-input-wrapper">
+                                            <input type="text" id="name_ar_edit" name="name[ar]" class="form-control premium-input"
+                                                autocomplete="off" placeholder="{!! __('world.enter_city_name_ar') !!}">
+                                            <i class="la la-map-marker text-primary"></i>
+                                        </div>
                                         <span class="text text-danger">
                                             <strong id="name_ar_error_edit"></strong>
                                         </span>
@@ -56,10 +60,13 @@
                             <div class="row">
                                 <!-- begin: input -->
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="name">{!! __('world.city_name_en') !!}</label>
-                                        <input type="text" id="name_en_edit" name="name[en]" class="form-control"
-                                            autocomplete="off" placeholder="{!! __('world.enter_city_name_en') !!}">
+                                    <div class="premium-form-group">
+                                        <label class="premium-label">{!! __('world.city_name_en') !!}</label>
+                                        <div class="premium-input-wrapper">
+                                            <input type="text" id="name_en_edit" name="name[en]" class="form-control premium-input"
+                                                autocomplete="off" placeholder="{!! __('world.enter_city_name_en') !!}">
+                                            <i class="la la-map-pin text-primary"></i>
+                                        </div>
                                         <span class="text text-danger">
                                             <strong id="name_en_error_edit"></strong>
                                         </span>
@@ -74,17 +81,20 @@
                             <div class="row">
                                 <!-- begin: input -->
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="governorate_id">{!! __('world.governorate_id') !!}</label>
-                                        <select class="form-control" id='governorate_id_edit' name="governorate_id">
-                                            <option value="" selected="">
-                                                {!! __('general.select_from_list') !!}</option>
-                                            @foreach ($governorates as $governorate)
-                                                <option value="{!! $governorate->id !!}">
-                                                    {!! $governorate->name !!}
-                                                </option>
-                                            @endforeach
-                                        </select>
+                                    <div class="premium-form-group">
+                                        <label class="premium-label">{!! __('world.governorate_id') !!}</label>
+                                        <div class="premium-input-wrapper">
+                                            <select class="form-control premium-input" id='governorate_id_edit' name="governorate_id">
+                                                <option value="" selected="">
+                                                    {!! __('general.select_from_list') !!}</option>
+                                                @foreach ($governorates as $governorate)
+                                                    <option value="{!! $governorate->id !!}">
+                                                        {!! $governorate->name !!}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            <i class="la la-map text-primary"></i>
+                                        </div>
                                         <span class="text text-danger">
                                             <strong id="governorate_id_error_edit"></strong>
                                         </span>
@@ -101,16 +111,15 @@
                 <!--end::modal body-->
 
                 <!--begin::modal footer-->
-                <div class="modal-footer">
-                    <button type="submit" id="create_city_btn" class="btn btn-info font-weight-bold ">
-                        {{ __('general.save') }}
-                        <i class="la la-refresh spinner spinner_loading d-none">
-                        </i>
+                <div class="modal-footer border-0 pt-0">
+                    <button type="submit" id="create_city_btn" class="btn btn-premium-blue font-weight-bold" style="height: 42px; border-radius: 10px;">
+                        <i class="la la-save mr-1"></i> {{ __('general.save') }}
+                        <i class="la la-refresh spinner spinner_loading d-none"></i>
                     </button>
 
                     <button type="button" id="cancel_city_btn" class="btn btn-light-dark font-weight-bold"
-                        data-dismiss="modal">
-                        {{ __('general.cancel') }}
+                        style="height: 42px; border-radius: 10px;" data-dismiss="modal">
+                        <i class="la la-times mr-1"></i> {{ __('general.cancel') }}
                     </button>
                 </div>
                 <!--end::modal footer-->

@@ -8,8 +8,9 @@
             <div class="modal-content">
 
                 <!--begin::modal header-->
-                <div class="modal-header">
-                    <h5 class="modal-title" id="createGovernorateModalLabel">{!! __('world.create_new_governorate') !!}
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title" id="createGovernorateModalLabel">
+                        <i class="la la-plus-circle text-primary mr-1"></i> {!! __('world.create_new_governorate') !!}
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
@@ -27,10 +28,13 @@
                             <div class="row">
                                 <!-- begin: input -->
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="name">{!! __('world.governorate_name_ar') !!}</label>
-                                        <input type="text" id="name_ar" name="name[ar]" class="form-control"
-                                            autocomplete="off" placeholder="{!! __('world.enter_governorate_name_ar') !!}">
+                                    <div class="premium-form-group">
+                                        <label class="premium-label">{!! __('world.governorate_name_ar') !!}</label>
+                                        <div class="premium-input-wrapper">
+                                            <input type="text" id="name_ar" name="name[ar]" class="form-control premium-input"
+                                                autocomplete="off" placeholder="{!! __('world.enter_governorate_name_ar') !!}">
+                                            <i class="la la-map-marker text-primary"></i>
+                                        </div>
                                         <span class="text text-danger">
                                             <strong id="name_ar_error"></strong>
                                         </span>
@@ -44,10 +48,13 @@
                             <div class="row">
                                 <!-- begin: input -->
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="name">{!! __('world.governorate_name_en') !!}</label>
-                                        <input type="text" id="name_en" name="name[en]" class="form-control"
-                                            autocomplete="off" placeholder="{!! __('world.enter_governorate_name_en') !!}">
+                                    <div class="premium-form-group">
+                                        <label class="premium-label">{!! __('world.governorate_name_en') !!}</label>
+                                        <div class="premium-input-wrapper">
+                                            <input type="text" id="name_en" name="name[en]" class="form-control premium-input"
+                                                autocomplete="off" placeholder="{!! __('world.enter_governorate_name_en') !!}">
+                                            <i class="la la-map-pin text-primary"></i>
+                                        </div>
                                         <span class="text text-danger">
                                             <strong id="name_en_error"></strong>
                                         </span>
@@ -64,16 +71,15 @@
                 <!--end::modal body-->
 
                 <!--begin::modal footer-->
-                <div class="modal-footer">
-                    <button type="submit" id="create_governorate_btn" class="btn btn-info font-weight-bold ">
-                        {{ __('general.save') }}
-                        <i class="la la-refresh spinner spinner_loading d-none">
-                        </i>
+                <div class="modal-footer border-0 pt-0">
+                    <button type="submit" id="create_governorate_btn" class="btn btn-premium-blue font-weight-bold" style="height: 42px; border-radius: 10px;">
+                        <i class="la la-save mr-1"></i> {{ __('general.save') }}
+                        <i class="la la-refresh spinner spinner_loading d-none"></i>
                     </button>
 
                     <button type="button" id="cancel_governorate_btn" class="btn btn-light-dark font-weight-bold"
-                        data-dismiss="modal">
-                        {{ __('general.cancel') }}
+                        style="height: 42px; border-radius: 10px;" data-dismiss="modal">
+                        <i class="la la-times mr-1"></i> {{ __('general.cancel') }}
                     </button>
                 </div>
                 <!--end::modal footer-->
