@@ -22,7 +22,7 @@
                             <input type="text" class="form-control premium-input shadow-none" name="keyword"
                                 placeholder="{!! __('employeeContracts.search_placeholder_contract') !!}..." 
                                 value="{{ request('keyword') }}" autocomplete="off">
-                            <i class="la la-search"></i>
+                            <i class="la la-search text-indigo"></i>
                         </div>
                     </div>
                     <div class="popover-actions mt-4 text-right">
@@ -46,7 +46,7 @@
                             <input type="number" name="monthly_salary" class="form-control premium-input shadow-none" 
                                    placeholder="{!! __('employeeContracts.enter_salary') !!}..." 
                                    value="{{ request('monthly_salary') }}">
-                            <i class="la la-dollar"></i>
+                            <i class="la la-dollar text-indigo"></i>
                         </div>
                     </div>
                     <div class="popover-actions mt-4 text-right">
@@ -69,7 +69,7 @@
                         <div class="premium-input-wrapper">
                             <input type="date" name="contract_start_date" class="form-control premium-input shadow-none" 
                                    value="{{ request('contract_start_date') }}">
-                            <i class="la la-calendar"></i>
+                            <i class="la la-calendar text-indigo"></i>
                         </div>
                     </div>
                     <div class="popover-actions mt-3 text-right">

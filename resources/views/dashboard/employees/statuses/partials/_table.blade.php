@@ -2,7 +2,7 @@
     <table class="table table-hover mb-0" id='myTable'>
         <thead class="bg-white">
             <tr>
-                <th class="text-center d-lg-none border-0" style="width: 40px;">#</th>
+                <th class="text-center d-lg-none align-middle py-3 border-top-0">#</th>
                 <th class="text-center d-none d-lg-table-cell align-middle py-3 border-top-0">#</th>
                 <th class="text-center align-middle py-3 border-top-0">{!! __('employees.employee_status_name') !!}</th>
                 <th class="text-center align-middle py-3 border-top-0">{!! __('employees.status') !!}</th>
@@ -12,10 +12,11 @@
         </thead>
         <tbody>
             @forelse ($employeeStatuses as $key=>$status)
+                <tr id="row{{ $status->id }}">
                     <!-- Mobile Details Control -->
-                    <td class="text-center d-lg-none border-0 align-middle">
-                        <span class="details-control">
-                            <i class="ft-plus-circle text-primary" style="font-size: 1.2rem;"></i>
+                    <td class="text-center d-lg-none align-middle">
+                        <span class="details-control pointer">
+                            <i class="ft-plus-circle text-primary font-medium-3"></i>
                         </span>
 
                         <!-- Hidden Row Details for AJAX Modal -->
@@ -31,7 +32,7 @@
                                             <i class="la la-user-cog" style="font-size: 40px;"></i>
                                         </div>
                                     </div>
-                                    <h4 class="modal-name-title">{!! $status->name !!}</h4>
+                                    <h4 class="modal-name-title font-weight-bold">{!! $status->name !!}</h4>
                                     <span class="modal-role-badge">{!! __('employees.employee_status') !!}</span>
                                 </div>
 
@@ -39,7 +40,7 @@
                                 <div class="modal-info-list mt-2">
                                     <div class="detail-item-modern">
                                         <div class="icon-circle"><i class="ft-hash"></i></div>
-                                        <div class="detail-info-box">
+                                        <div class="detail-info-box text-left">
                                             <span class="detail-info-label">{!! __('general.system_id') !!}</span>
                                             <span class="detail-info-value text-muted"># {!! $status->id !!}</span>
                                         </div>
@@ -47,13 +48,13 @@
 
                                     <div class="detail-item-modern">
                                         <div class="icon-circle"><i class="ft-activity"></i></div>
-                                        <div class="detail-info-box">
+                                        <div class="detail-info-box text-left">
                                             <span class="detail-info-label">{!! __('employees.status') !!}</span>
-                                            <div class="detail-info-value">
+                                            <div class="detail-info-value mt-1">
                                                 @if ($status->status == 1)
-                                                    <span class="badge badge-success badge-glow">{!! __('general.enable') !!}</span>
+                                                    <span class="badge badge-success badge-glow badge-pill px-2">{!! __('general.enable') !!}</span>
                                                 @else
-                                                    <span class="badge badge-danger badge-glow">{!! __('general.disabled') !!}</span>
+                                                    <span class="badge badge-danger badge-glow badge-pill px-2">{!! __('general.disabled') !!}</span>
                                                 @endif
                                             </div>
                                         </div>
@@ -66,13 +67,13 @@
 
                     <!-- Desktop ID -->
                     <td class="text-center d-none d-lg-table-cell align-middle">
-                        <span class="badge badge-pill badge-glow badge-info d-inline-flex align-items-center justify-content-center" style="font-size: 11px; width: 35px; height: 22px; padding: 0;">
+                        <span class="badge badge-info badge-pill badge-glow premium-badge-circle">
                             {!! $loop->iteration !!}
                         </span>
                     </td>
 
                     <!-- Name -->
-                    <td class="text-center align-middle font-weight-bold text-dark">{!! $status->name !!}</td>
+                    <td class="text-center align-middle font-weight-bold text-primary">{!! $status->name !!}</td>
 
                     <!-- Status -->
                     <td class="text-center align-middle">
@@ -86,22 +87,20 @@
 
                     <!-- Actions -->
                     <td class="text-center align-middle">
-                        <div class="d-flex justify-content-center align-items-center">
-                            @include('dashboard.employees.statuses.parts.actions')
-                        </div>
+                        @include('dashboard.employees.statuses.parts.actions')
                     </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="6" class="text-center">
-                        {!! __('employees.no_statuses_found') !!}
+                    <td colspan="9" class="text-center p-3 text-muted">
+                        <i class="ft-info mr-1"></i> {!! __('employees.no_statuses_found') !!}
                     </td>
                 </tr>
             @endforelse
         </tbody>
 
     </table>
-    <div class="float-right">
+    <div class="float-right mt-2">
         {!! $employeeStatuses->links() !!}
     </div>
 </div>

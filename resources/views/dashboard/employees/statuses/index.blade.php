@@ -57,7 +57,7 @@
                                 <div class="card-header border-0 pb-0">
                                     <h4 class="card-title text-dark font-weight-bold d-flex align-items-center">
                                         <i class="la la-user-tag text-primary mr-2" style="font-size: 24px;"></i>
-                                        {!! __('employees.show_all_employee_statuses') !!}
+                                        {!! __('employees.employee_statuses') !!}
                                         <span class="badge badge-primary badge-pill badge-glow ml-2"
                                             style="font-size: 11px;">{!! $employeeStatuses->total() !!}</span>
                                     </h4>

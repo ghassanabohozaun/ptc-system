@@ -56,6 +56,13 @@
                                         <span class="badge badge-primary badge-pill badge-glow ml-2"
                                             style="font-size: 11px;">{!! $departments->total() !!}</span>
                                     </h4>
+                                    <div class="heading-elements">
+                                        <ul class="list-inline mb-0">
+                                            <li><a data-action="collapse"><i class="la la-minus"></i></a></li>
+                                            <li><a data-action="reload"><i class="la la-refresh"></i></a></li>
+                                            <li><a data-action="expand"><i class="la la-expand"></i></a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <!-- end: card header -->
                                 <div class="card-content collapse show">

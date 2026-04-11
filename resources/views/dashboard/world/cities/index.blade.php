@@ -54,16 +54,18 @@
                         <div class="col-md-12">
                             <div class="card premium-card">
                                 <!-- begin: card header -->
-                                <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-colored-form-control">
-                                        <i class="la la-city text-primary mr-1"></i> {!! __('world.show_all_cities') !!}
-                                        <span class="badge badge-primary badge-pill badge-glow ml-1 d-inline-flex align-items-center justify-content-center" style="font-size: 11px; width: 40px; height: 22px; padding: 0; vertical-align: middle;">{!! $cities->total() !!}</span>
+                                <div class="card-header border-0 pb-0">
+                                    <h4 class="card-title text-dark font-weight-bold d-flex align-items-center">
+                                        <i class="la la-city text-primary mr-2" style="font-size: 24px;"></i> 
+                                        {!! __('world.cities') !!}
+                                        <span class="badge badge-primary badge-pill badge-glow ml-2"
+                                            style="font-size: 11px;">{!! $cities->total() !!}</span>
                                     </h4>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
-                                            <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                                            <li><a data-action="reload" onclick="initIndexTable()"><i class="ft-rotate-cw"></i></a></li>
-                                            <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                            <li><a data-action="collapse"><i class="la la-minus"></i></a></li>
+                                            <li><a data-action="reload"><i class="la la-refresh"></i></a></li>
+                                            <li><a data-action="expand"><i class="la la-expand"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>

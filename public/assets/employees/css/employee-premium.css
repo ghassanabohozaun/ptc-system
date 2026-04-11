@@ -924,23 +924,33 @@ p, span, div, li, a { font-size: 0.95rem !important; }
     border-radius: 16px !important;
     box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15) !important;
     padding: 10px !important;
-    min-width: 240px !important;
-    margin-top: 15px !important;
+    min-width: 250px !important;
+    top: 100% !important;
+    margin-top: 25px !important;
     background: #fff !important;
-    left: 50% !important;
+    /* Default LTR: Align to right edge of trigger */
+    left: auto !important;
+    right: 0 !important;
+    transform: none !important;
+    animation: dropdownPopFade 0.2s ease-out forwards;
+    overflow: hidden !important;
+}
+
+[data-textdirection="rtl"] .navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .navbar-dropdown {
+    /* RTL: Align to left edge of trigger to prevent screen clipping */
     right: auto !important;
-    transform: translateX(-50%);
-    animation: dropdownPopFade 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    left: 0 !important;
+    transform: none !important;
 }
 
 @keyframes dropdownPopFade {
     0% {
         opacity: 0;
-        transform: translateX(-50%) translateY(10px) scale(0.95);
+        transform: translateY(10px);
     }
     100% {
         opacity: 1;
-        transform: translateX(-50%) translateY(0) scale(1);
+        transform: translateY(0);
     }
 }
 
@@ -950,6 +960,7 @@ p, span, div, li, a { font-size: 0.95rem !important; }
     background: linear-gradient(135deg, #f8faff 0%, #f1f4ff 100%) !important;
     margin-bottom: 10px !important;
     text-align: center;
+    width: 100% !important;
 }
 
 .dropdown-header-premium .user-name {
@@ -1013,9 +1024,19 @@ p, span, div, li, a { font-size: 0.95rem !important; }
 
 /* 10. Premium Preview List (Notifications & Messages) */
 .navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .navbar-dropdown.preview-list {
-    min-width: 320px !important;
-    padding: 0 !important;
+    min-width: 350px !important;
+    padding: 0 0 10px 0 !important;
     overflow: hidden !important;
+}
+
+/* Fix Scrollable Clipping: Ensures vertical scroll doesn't clip content edges */
+.scrollable-container {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    padding: 0 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    scrollbar-gutter: stable;
 }
 
 .dropdown-header-main {
@@ -1044,13 +1065,15 @@ p, span, div, li, a { font-size: 0.95rem !important; }
 }
 
 .preview-item-premium {
-    padding: 15px 20px !important;
+    padding: 15px !important; /* Reduced slightly to fit better horizontally */
     display: flex !important;
     align-items: flex-start !important;
     border-bottom: 1px solid #f1f4f9 !important;
     transition: all 0.2s ease !important;
     text-decoration: none !important;
     background: #fff !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
 }
 
 .preview-item-premium:hover {
@@ -1551,7 +1574,7 @@ p, span, div, li, a { font-size: 0.95rem !important; }
     color: var(--text-muted) !important;
 }
 
-.input-group-merge .form-control, 
+.input-group-merge .form-control,
 .input-group-merge .form-select {
     border: none !important;
     padding: 12px 15px !important;

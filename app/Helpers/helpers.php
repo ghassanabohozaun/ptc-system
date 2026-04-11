@@ -190,3 +190,27 @@ if (!function_exists('greeting')) {
         }
     }
 }
+
+/**
+ * Handle Arabic grammatical nuances for month counts
+ */
+if (!function_exists('contract_duration_arabic')) {
+    function contract_duration_arabic($months)
+    {
+        if (Lang() === 'en') {
+            return $months . ' ' . ($months == 1 ? __('employeeContracts.month') : __('employeeContracts.months_3_10'));
+        }
+
+        $months = (int)$months;
+        if ($months == 1) {
+            return __('employeeContracts.month');
+        }
+        if ($months == 2) {
+            return __('employeeContracts.two_months');
+        }
+        if ($months >= 3 && $months <= 10) {
+            return $months . ' ' . __('employeeContracts.months_3_10');
+        }
+        return $months . ' ' . __('employeeContracts.months_11');
+    }
+}

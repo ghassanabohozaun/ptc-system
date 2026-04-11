@@ -1,21 +1,21 @@
 <div class="table-responsive">
-    <table class="table" id='myTable'>
-        <thead>
+    <table class="table table-hover mb-0" id='myTable'>
+        <thead class="bg-white">
             <tr>
-                <th class="text-center d-lg-none border-0" style="width: 40px;">#</th> <!-- For Details Control -->
-                <th class="text-center d-none d-lg-table-cell align-middle py-3">#</th>
-                <th class="text-center align-middle py-3">{!! __('roles.role_name') !!}</th>
-                <th class="text-center d-none d-lg-table-cell align-middle py-3">{!! __('roles.permissions') !!}</th>
-                <th class="text-center align-middle py-3" style="min-width: 140px;">{!! __('general.actions') !!}</th>
+                <th class="text-center d-lg-none align-middle py-3 border-top-0">#</th> <!-- For Details Control -->
+                <th class="text-center d-none d-lg-table-cell align-middle py-3 border-top-0">#</th>
+                <th class="text-center align-middle py-3 border-top-0">{!! __('roles.role_name') !!}</th>
+                <th class="text-center d-none d-lg-table-cell align-middle py-3 border-top-0">{!! __('roles.permissions') !!}</th>
+                <th class="text-center align-middle py-3 border-top-0" style="min-width: 140px;">{!! __('general.actions') !!}</th>
             </tr>
         </thead>
         <tbody>
             @forelse ($roles as $key=>$role)
                 <tr id="row{{ $role->id }}">
                     <!-- Mobile Details Control -->
-                    <td class="text-center d-lg-none border-0 align-middle">
-                        <span class="details-control">
-                            <i class="ft-plus-circle text-primary" style="font-size: 1.2rem;"></i>
+                    <td class="text-center d-lg-none align-middle">
+                        <span class="details-control pointer">
+                            <i class="ft-plus-circle text-primary font-medium-3"></i>
                         </span>
                         
                         <!-- Hidden Row Details for AJAX Modal -->
@@ -31,7 +31,7 @@
                                             <i class="la la-shield-alt" style="font-size: 40px;"></i>
                                         </div>
                                     </div>
-                                    <h4 class="modal-name-title">{!! $role->role !!}</h4>
+                                    <h4 class="modal-name-title font-weight-bold">{!! $role->role !!}</h4>
                                     <span class="modal-role-badge">{!! __('roles.role') !!}</span>
                                 </div>
 
@@ -39,7 +39,7 @@
                                 <div class="modal-info-list mt-2">
                                     <div class="detail-item-modern">
                                         <div class="icon-circle"><i class="ft-hash"></i></div>
-                                        <div class="detail-info-box">
+                                        <div class="detail-info-box text-left">
                                             <span class="detail-info-label">{!! __('general.system_id') !!}</span>
                                             <span class="detail-info-value text-muted"># {!! $role->id !!}</span>
                                         </div>
@@ -47,7 +47,7 @@
 
                                     <div class="detail-item-modern align-items-start">
                                         <div class="icon-circle"><i class="ft-lock"></i></div>
-                                        <div class="detail-info-box">
+                                        <div class="detail-info-box text-left w-100">
                                             <span class="detail-info-label">{!! __('roles.permissions') !!}</span>
                                             <div class="permissions-container mt-1">
                                                 @foreach (config('global.permissions') as $name => $translationKey)
@@ -75,16 +75,16 @@
 
                     <!-- Desktop ID -->
                     <td class="text-center d-none d-lg-table-cell align-middle">
-                        <span class="badge badge-pill badge-glow badge-info d-inline-flex align-items-center justify-content-center" style="font-size: 11px; width: 35px; height: 22px; padding: 0;">
+                        <span class="badge badge-info badge-pill badge-glow premium-badge-circle">
                             {!! $loop->iteration !!}
                         </span>
                     </td>
                     
                     <!-- Role Name -->
-                    <td class="text-center align-middle font-weight-bold text-dark">{!! $role->role !!}</td>
+                    <td class="text-center align-middle font-weight-bold text-primary">{!! $role->role !!}</td>
                     
                     <!-- Permissions (Desktop Only) -->
-                    <td class="col-lg-7 d-none d-lg-table-cell">
+                    <td class="col-lg-7 d-none d-lg-table-cell align-middle">
                         <div class="permissions-container text-center">
                             @foreach (config('global.permissions') as $name => $translationKey)
                                 @if (in_array($name, $role->permissions))
@@ -105,21 +105,19 @@
                     
                     <!-- Actions -->
                     <td class="text-center align-middle">
-                        <div class="d-flex justify-content-center align-items-center">
-                            @include('dashboard.roles.parts.actions')
-                        </div>
+                        @include('dashboard.roles.parts.actions')
                     </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="5" class="text-center">
-                        {!! __('roles.no_roles_found') !!}
+                    <td colspan="5" class="text-center p-3 text-muted">
+                        <i class="ft-info mr-1"></i> {!! __('roles.no_roles_found') !!}
                     </td>
                 </tr>
             @endforelse
         </tbody>
-
     </table>
+</div>
     <div class="float-right">
         {!! $roles->links() !!}
     </div>

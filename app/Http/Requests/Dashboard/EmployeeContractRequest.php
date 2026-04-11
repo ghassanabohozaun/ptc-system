@@ -23,7 +23,7 @@ class EmployeeContractRequest extends FormRequest
     {
         return [
             'employee_id' => 'required|exists:employees,id',
-            'contract_duration' => 'required|string|max:255',
+            'contract_duration' => 'required|numeric|min:1',
             'contract_start_date' => 'required|date',
             'contract_expiry_date' => 'required|date|after:contract_start_date',
             'monthly_salary' => 'required|numeric|min:0',

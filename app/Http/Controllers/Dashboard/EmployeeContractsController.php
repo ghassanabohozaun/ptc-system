@@ -108,7 +108,7 @@ class EmployeeContractsController extends Controller
         $template->setValue('employee_name', $contract->employee->EmployeeFullName());
         $template->setValue('personal_id', $contract->employee->personal_id);
         $template->setValue('employee_job_title', $contract->employee->employeeJobDetails->title ?? '');
-        $template->setValue('contract_duration', $contract->contract_duration);
+        $template->setValue('contract_duration', contract_duration_arabic($contract->contract_duration));
         $template->setValue('contract_start_date', $contract->contract_start_date);
         $template->setValue('contract_expiry_date', $contract->contract_expiry_date);
         $template->setValue('monthly_salary', intval($contract->monthly_salary));

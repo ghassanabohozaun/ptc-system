@@ -21,4 +21,9 @@ return [
     'contract_details' => 'تفاصيل العقد',
     'search_placeholder_contract' => 'ابحث باسم الموظف أو رقم الهوية...',
     'enter_salary' => 'أدخل الراتب الشهري...',
+    
+    'month' => 'شهر',
+    'two_months' => 'شهرين',
+    'months_3_10' => 'شهور',
+    'months_11' => 'شهراً',
 ];

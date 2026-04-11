@@ -1,7 +1,7 @@
-<div class="d-flex justify-content-center align-items-center mb-0">
+<div class="d-flex align-items-center justify-content-center">
     <div class="btn-group" role="group">
         <!-- Show Details (Modal) -->
-        <a href="javascript:void(0)" class="btn-premium-action btn-premium-action-success mr-1 details-control"
+        <a href="javascript:void(0)" class="btn-premium-action btn-premium-action-info mr-1 details-control"
             title="{!! __('dailyReports.show_details') !!}">
             <i class="la la-info-circle"></i>
         </a>

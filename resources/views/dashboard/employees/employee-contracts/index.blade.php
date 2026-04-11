@@ -16,10 +16,14 @@
                 <div class="content-header-left col-md-6 col-12 mb-2 mb-md-0">
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
-                            <ol class="breadcrumb premium-breadcrumb">
-                                <li class="breadcrumb-item"><a href="{!! route('dashboard.index') !!}">{!! __('dashboard.home') !!}</a>
+                            <ol class="breadcrumb premium-breadcrumb shadow-sm">
+                                <li class="breadcrumb-item">
+                                    <a href="{!! route('dashboard.index') !!}">
+                                        <i class="la la-home mr-1"></i> {!! __('dashboard.home') !!}
+                                    </a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{!! route('dashboard.employeeContracts.index') !!}">{!! __('employeeContracts.employee_contracts') !!}</a>
+                                <li class="breadcrumb-item active">
+                                    {!! __('employeeContracts.employee_contracts') !!}
                                 </li>
                             </ol>
                         </div>
@@ -27,10 +31,10 @@
                 </div>
                 <!-- begin: content header right-->
                 <div class="content-header-right col-md-6 col-12">
-                    <div class="text-right">
-                        <button type="button" class="btn btn-premium-add shadow-sm" data-toggle="modal"
+                    <div class="float-md-right mb-1">
+                        <button type="button" class="btn btn-premium-add shadow-pulse premium-btn-standard" data-toggle="modal"
                             data-target="#createEmployeeContractModal">
-                            <i class="la la-plus"></i>
+                            <i class="la la-plus-circle mr-1"></i>
                             {!! __('employeeContracts.create_new_contract') !!}
                         </button>
                     </div>
@@ -39,20 +43,46 @@
 
             <!-- begin: content body -->
             <div class="content-body">
+                @include('dashboard.employees.employee-contracts.partials._search')
+                
                 <section id="basic-form-layouts">
                     <div class="row match-height">
                         <div class="col-md-12">
-                            @include('dashboard.employees.employee-contracts.partials._search')
-                            
-                            <div class="table-loader-container mt-2">
-                                <div class="table-loader-overlay" id="tableLoader">
-                                    <span class="premium-loader"></span>
+                            <div class="card premium-card">
+                                <!-- begin: card header -->
+                                <div class="card-header border-0 pb-0">
+                                    <h4 class="card-title text-dark font-weight-bold d-flex align-items-center">
+                                        <i class="la la-file-text text-primary mr-2" style="font-size: 24px;"></i> 
+                                        {!! __('employeeContracts.employee_contracts') !!}
+                                        <span class="badge badge-primary badge-pill badge-glow ml-2"
+                                            style="font-size: 11px;">{!! $employeeContracts->total() !!}</span>
+                                    </h4>
+                                    <div class="heading-elements">
+                                        <ul class="list-inline mb-0">
+                                            <li><a data-action="collapse"><i class="la la-minus"></i></a></li>
+                                            <li><a data-action="reload"><i class="la la-refresh"></i></a></li>
+                                            <li><a data-action="expand"><i class="la la-expand"></i></a></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div id="table_data">
-                                    @include('dashboard.employees.employee-contracts.partials._table', [
-                                        'employeeContracts' => $employeeContracts,
-                                    ])
+                                <!-- end: card header -->
+
+                                <!-- begin: card content -->
+                                <div class="card-content collapse show">
+                                    <div class="card-body pt-0">
+                                        <div class="table-loader-container">
+                                            <div class="table-loader-overlay" id="tableLoader">
+                                                <span class="premium-loader"></span>
+                                            </div>
+                                            <div id="table_data">
+                                                @include('dashboard.employees.employee-contracts.partials._table', [
+                                                    'employeeContracts' => $employeeContracts,
+                                                ])
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                <!-- end: card content -->
                             </div>
                         </div>
                     </div>

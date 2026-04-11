@@ -21,4 +21,9 @@ return [
     'contract_details' => 'Contract Details',
     'search_placeholder_contract' => 'Search',
     'enter_salary' => 'Enter monthly salary...',
+    
+    'month' => 'Month',
+    'two_months' => 'Months',
+    'months_3_10' => 'Months',
+    'months_11' => 'Months',
 ];

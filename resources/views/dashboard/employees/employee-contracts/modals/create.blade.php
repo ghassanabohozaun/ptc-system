@@ -28,7 +28,7 @@
                                     <select class="employee_contract_employee_id_select form-control premium-input shadow-none" id="employee_contract_employee_id"
                                         name="employee_id" style="width: 100%">
                                     </select>
-                                    <i class="la la-user-tie"></i>
+                                    <i class="la la-user-tie text-indigo"></i>
                                 </div>
                                 <span class="text text-danger small"><strong id="employee_id_error"></strong></span>
                             </div>
@@ -39,9 +39,9 @@
                             <div class="premium-form-group">
                                 <label class="premium-label font-weight-bold text-dark" for="contract_duration">{!! __('employeeContracts.contract_duration') !!}</label>
                                 <div class="premium-input-wrapper">
-                                    <input type="text" id="contract_duration" name="contract_duration" class="form-control premium-input shadow-none"
+                                    <input type="number" min="1" id="contract_duration" name="contract_duration" class="form-control premium-input shadow-none"
                                         autocomplete="off" placeholder="{!! __('employeeContracts.enter_contract_duration') !!}">
-                                    <i class="la la-clock"></i>
+                                    <i class="la la-clock text-indigo"></i>
                                 </div>
                                 <span class="text text-danger small"><strong id="contract_duration_error"></strong></span>
                             </div>
@@ -54,7 +54,7 @@
                                 <div class="premium-input-wrapper">
                                     <input type="date" id="contract_start_date" name="contract_start_date" class="form-control premium-input shadow-none"
                                         autocomplete="off">
-                                    <i class="la la-calendar"></i>
+                                    <i class="la la-calendar text-indigo"></i>
                                 </div>
                                 <span class="text text-danger small"><strong id="contract_start_date_error"></strong></span>
                             </div>
@@ -67,7 +67,7 @@
                                 <div class="premium-input-wrapper">
                                     <input type="date" id="contract_expiry_date" name="contract_expiry_date" class="form-control premium-input shadow-none"
                                         autocomplete="off">
-                                    <i class="la la-calendar-times"></i>
+                                    <i class="la la-calendar-times text-indigo"></i>
                                 </div>
                                 <span class="text text-danger small"><strong id="contract_expiry_date_error"></strong></span>
                             </div>
@@ -80,7 +80,7 @@
                                 <div class="premium-input-wrapper">
                                     <input type="number" step="0.01" id="monthly_salary" name="monthly_salary" class="form-control premium-input shadow-none"
                                         autocomplete="off" placeholder="{!! __('employeeContracts.enter_monthly_salary') !!}">
-                                    <i class="la la-dollar"></i>
+                                    <i class="la la-dollar text-indigo"></i>
                                 </div>
                                 <span class="text text-danger small"><strong id="monthly_salary_error"></strong></span>
                             </div>
