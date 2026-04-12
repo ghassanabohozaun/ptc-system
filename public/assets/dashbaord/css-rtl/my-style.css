@@ -3047,3 +3047,130 @@ select.premium-input option {
 
 
 #admin-messages-module .text-right-custom { text-align: right !important; }
+
+
+/* --- Admin Message Center Cleanup & Modernization --- */
+
+#admin-messages-module .compose-modern-form-wrapper {
+    border-radius: 20px !important;
+}
+
+#admin-messages-module .premium-input-search {
+    font-size: 1.1rem !important;
+}
+
+#admin-messages-module .broadcast-icon-orb-lg {
+    background: linear-gradient(135deg, #6366f1, #3b82f6);
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#admin-messages-module .recipient-clickable-row {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#admin-messages-module .employee-primary-name {
+    font-size: calc(0.95rem + 2px) !important;
+    line-height: 1.2;
+}
+
+#admin-messages-module .validation-alert-text {
+    font-size: 0.8rem !important;
+}
+
+#admin-messages-module .selection-count-number {
+    font-size: 1.25rem !important;
+}
+
+#admin-messages-module .selection-count-label {
+    font-size: 0.85rem !important;
+}
+
+#admin-messages-module .btn-clear-selection {
+    font-size: 0.85rem !important;
+}
+
+#admin-messages-module .broadcast-title-premium {
+    font-size: calc(1rem + 1px) !important;
+}
+
+#admin-messages-module .broadcast-desc-premium {
+    font-size: calc(0.85rem + 3px) !important;
+}
+
+#admin-messages-module .premium-label-header {
+    font-size: calc(0.75rem + 7px) !important;
+}
+
+#admin-messages-module .premium-form-input-lg {
+    font-size: calc(1rem + 1px) !important;
+}
+
+#admin-messages-module .premium-textarea-input-lg {
+    min-height: 180px !important;
+    font-size: calc(1rem + 1px) !important;
+}
+
+/* Premium Validation Styles */
+#admin-messages-module .premium-input-wrapper.border-danger,
+#admin-messages-module .premium-textarea-wrapper.border-danger {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.1) !important;
+    background-color: rgba(220, 53, 69, 0.02) !important;
+}
+
+/* Lightened Premium Save Button */
+#admin-messages-module .btn-premium-save {
+    background: linear-gradient(135deg, #7c83fd, #6366f1) !important;
+    opacity: 0.95;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15) !important;
+}
+
+#admin-messages-module .btn-premium-save:hover {
+    background: linear-gradient(135deg, #6366f1, #4f46e5) !important;
+    opacity: 1;
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.25) !important;
+}
+
+.mt-minus-5 {
+    margin-top: -5px !important;
+}
+
+#admin-messages-module .border-top {
+    border-top-color: #f1f3f5 !important;
+}
+
+#admin-messages-module .border-bottom {
+    border-bottom-color: #f1f3f5 !important;
+}
+
+/* Sidebar Typography Enhancements (+3px) */
+#admin-messages-module .msg-sidebar-btn {
+    font-size: calc(1rem + 1px) !important;
+}
+
+#admin-messages-module .msg-nav-link {
+    font-size: calc(1rem + 1px) !important;
+}
+
+#admin-messages-module .msg-count-badge {
+    font-size: calc(0.75rem + 1px) !important;
+}
+
+/* Main Content Typography Enhancements (+2px) */
+#admin-messages-module .table thead th {
+    font-size: calc(0.75rem + 2px) !important;
+}
+
+#admin-messages-module .table tbody td {
+    font-size: calc(1rem + 2px) !important;
+}
+
+#admin-messages-module .msg-badge-new {
+    font-size: calc(0.65rem + 2px) !important;
+}
