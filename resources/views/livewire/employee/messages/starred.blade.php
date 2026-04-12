@@ -82,7 +82,7 @@
     <!-- Message Details Modal (Redesigned & Premium) -->
     <div class="modal modal-pop fade" id="messageDetailsModal" tabindex="-1" role="dialog"
         aria-labelledby="messageDetailsModalLabel" aria-hidden="true" wire:ignore.self>
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog modal-md" role="document">
             <div class="modal-content overflow-hidden border-0 shadow-lg">
                 <div class="modal-header d-flex align-items-center">
                     <h5 class="modal-title" id="messageDetailsModalLabel">

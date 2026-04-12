@@ -31,8 +31,7 @@
             <span class="input-group-text">
                 <i class="mdi mdi-tag-outline text-primary fs-5"></i>
             </span>
-            <input type="text" wire:model="subject" class="form-control"
-                placeholder="{!! __('messages.what_is_this_about') !!}">
+            <input type="text" wire:model="subject" class="form-control" placeholder="{!! __('messages.what_is_this_about') !!}">
         </div>
         @error('subject')
             <div class="text-danger small mt-2 fw-semibold">{{ $message }}</div>
@@ -44,9 +43,8 @@
         <label class="form-label fw-bold small text-uppercase text-muted mb-2">
             {!! __('messages.message') !!} <span class="text-danger">*</span>
         </label>
-        <textarea wire:model="body" rows="6" class="form-control shadow-sm border-0 rounded-4" 
-            style="padding: 15px; background: white;"
-            placeholder="{!! __('messages.type_your_message_here') !!}"></textarea>
+        <textarea wire:model="body" rows="12" class="form-control shadow-sm border-0 rounded-4"
+            style="padding: 15px; background: white;" placeholder="{!! __('messages.type_your_message_here') !!}"></textarea>
         @error('body')
             <div class="text-danger small mt-2 fw-semibold">{{ $message }}</div>
         @enderror
@@ -54,7 +52,8 @@
 
     <!-- Actions -->
     <div class="d-flex align-items-center justify-content-end gap-3 pt-3 border-top mt-4">
-        <button type="button" class="btn btn-light px-4 py-2 fw-semibold text-muted" data-bs-dismiss="modal" style="border-radius: 12px;">
+        <button type="button" class="btn btn-light px-4 py-2 fw-semibold text-muted" data-bs-dismiss="modal"
+            style="border-radius: 12px;">
             {!! __('messages.cancel') !!}
         </button>
         <button type="submit" class="btn btn-primary px-4 py-2 text-white fw-bold btn-premium-send">

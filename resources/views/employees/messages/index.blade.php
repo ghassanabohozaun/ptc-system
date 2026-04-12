@@ -17,7 +17,7 @@
         <!-- Compose Modal (Unified Premium Animation) -->
         <div class="modal modal-pop fade" id="composeModal" tabindex="-1" role="dialog"
             aria-labelledby="composeModalLabel" aria-hidden="true" wire:ignore.self>
-            <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-dialog modal-md" role="document">
                 <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
                     <div class="modal-header border-bottom-0 pb-0 shadow-none">
                         <h5 class="modal-title fw-bold fs-4" id="composeModalLabel">

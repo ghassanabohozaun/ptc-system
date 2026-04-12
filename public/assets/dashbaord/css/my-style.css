@@ -2775,3 +2775,12 @@ select.premium-input option {
 #admin-messages-module .msg-badge-new {
     font-size: calc(0.65rem + 2px) !important;
 }
+
+/* Employee Message Center - Modal Scaling */
+#employee-messages-module .modal-xl-custom {
+    max-width: 95% !important;
+}
+
+#employee-messages-module .modal-md-custom {
+    max-width: 600px !important;
+}
