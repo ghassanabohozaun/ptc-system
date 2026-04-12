@@ -88,8 +88,8 @@
                                                             </label>
                                                             <div class="premium-input-wrapper">
                                                                 <select
-                                                                    class="employee_id_select form-control premium-input shadow-none"
-                                                                    id="employee_id" name="employee_id" style="width: 100%">
+                                                                    class="employee_id_select form-control premium-input shadow-none w-100"
+                                                                    id="employee_id" name="employee_id">
                                                                 </select>
                                                                 <i class="la la-user-tie text-primary"></i>
                                                             </div>

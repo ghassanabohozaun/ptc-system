@@ -1,7 +1,7 @@
 <!-- Details Modal for Departments -->
 <div class="modal modal-pop fade" id="detailsDepartmentModal" tabindex="-1" role="dialog" aria-labelledby="detailsDepartmentModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content shadow-lg border-0" style="border-radius: 20px;">
+        <div class="modal-content shadow-lg border-0 radius-20">
             <div class="modal-header border-0 pb-0">
                 <h5 class="modal-title font-weight-bold text-primary" id="detailsDepartmentModalLabel">
                     <i class="la la-info-circle mr-1"></i> {!! __('general.details') !!}
@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="modal-footer border-0 pt-0">
-                <button type="button" class="btn btn-light-dark font-weight-bold" style="height: 42px; border-radius: 10px;" data-dismiss="modal">
+                <button type="button" class="btn btn-light-dark font-weight-bold h-42 radius-10" data-dismiss="modal">
                     <i class="la la-times mr-1"></i> {!! __('general.close') !!}
                 </button>
             </div>

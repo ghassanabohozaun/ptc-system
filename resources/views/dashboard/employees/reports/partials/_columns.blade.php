@@ -1,5 +1,5 @@
 <div class="card">
-    <div class="card-header" style="background-color: #fcfcfc; border-bottom: 1px solid #f0f2f5;">
+    <div class="card-header premium-card-header-alt">
         <h4 class="card-title">
             <i class="la la-columns text-info"></i> {!! __('general.select_columns') !!}
         </h4>
@@ -18,10 +18,10 @@
             <!-- Control Buttons -->
             <div class="row mb-3">
                 <div class="col-md-12">
-                    <button type="button" class="btn btn-sm btn-outline-info mr-1" id="select_all_columns" style="border-radius: 6px;">
+                    <button type="button" class="btn btn-info btn-glow btn-bulk-select mr-1 radius-12" id="select_all_columns">
                         <i class="la la-check-square"></i> {!! __('general.select_all') !!}
                     </button>
-                    <button type="button" class="btn btn-sm btn-outline-warning" id="deselect_all_columns" style="border-radius: 6px;">
+                    <button type="button" class="btn btn-outline-danger btn-bulk-select radius-12" id="deselect_all_columns">
                         <i class="la la-square-o"></i> {!! __('general.deselect_all') !!}
                     </button>
                 </div>
@@ -30,17 +30,18 @@
             <!-- Employee Columns -->
             <div class="row">
                 <div class="col-md-12">
-                    <h5 class="mb-2 p-1" style="background-color: #f8f9fa; border-right: 4px solid #1e9ff2; padding-right: 15px !important;">
+                    <h5 class="premium-section-title premium-section-title-blue">
                         <i class="la la-user text-primary"></i> {!! __('employees.basic') !!}
                     </h5>
                 </div>
                 @foreach ($employeeColumnNames as $column)
                     <div class="col-md-3 mb-1">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" name="columns[]" value="{{ $column }}"
-                                id="column_{{ $column }}">
-                            <label class="custom-control-label" for="column_{{ $column }}" style="cursor: pointer;">
-                                {!! __('employees.' . $column) !!}
+                        <div class="premium-switch-box">
+                            <span class="premium-switch-label">{!! __('employees.' . $column) !!}</span>
+                            <label class="modern-switch">
+                                <input type="checkbox" name="columns[]" value="{{ $column }}"
+                                    id="column_{{ $column }}">
+                                <span class="modern-slider"></span>
                             </label>
                         </div>
                     </div>
@@ -52,17 +53,18 @@
             <!-- Job Details Columns -->
             <div class="row">
                 <div class="col-md-12">
-                    <h5 class="mb-2 p-1" style="background-color: #f8f9fa; border-right: 4px solid #28d094; padding-right: 15px !important;">
+                    <h5 class="premium-section-title premium-section-title-green">
                         <i class="la la-briefcase text-success"></i> {!! __('employees.job_details') !!}
                     </h5>
                 </div>
                 @foreach ($jobDetailsColumnNames as $column)
                     <div class="col-md-3 mb-1">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" name="columns[]" value="{{ $column }}"
-                                id="column_{{ $column }}">
-                            <label class="custom-control-label" for="column_{{ $column }}" style="cursor: pointer;">
-                                {!! __('employees.' . $column) !!}
+                        <div class="premium-switch-box">
+                            <span class="premium-switch-label">{!! __('employees.' . $column) !!}</span>
+                            <label class="modern-switch">
+                                <input type="checkbox" name="columns[]" value="{{ $column }}"
+                                    id="column_{{ $column }}">
+                                <span class="modern-slider"></span>
                             </label>
                         </div>
                     </div>

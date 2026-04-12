@@ -1,5 +1,5 @@
 <div class="card">
-    <div class="card-header" style="background-color: #fcfcfc; border-bottom: 1px solid #f0f2f5;">
+    <div class="card-header premium-card-header-alt">
         <h4 class="card-title">
             <i class="la la-filter text-primary"></i> {!! __('general.filters') !!}
         </h4>
@@ -15,6 +15,32 @@
     <div class="card-content collapse show">
         <div class="card-body">
             <div class="row">
+
+                <!-- Select Employee (Single/Multi) -->
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="employee_ids" class="premium-label">
+                            <i class="la la-users"></i> {!! __('employees.employee_select') !!} 
+                            <span class="badge badge-light-primary badge-pill ml-1 font-10 font-weight-500">{!! __('general.optional') !!}</span>
+                        </label>
+                        <select class="form-control select2" id="employee_ids" name="employee_ids[]" multiple="multiple">
+                            @foreach ($employees as $employee)
+                                <option value="{{ $employee->id }}">{{ $employee->name }}</option>
+                            @endforeach
+                        </select>
+                        <div class="bulk-select-actions">
+                            <button type="button" class="btn btn-primary btn-glow btn-bulk-select" id="select_all_employees">
+                                <i class="la la-check-square"></i> {!! __('general.select_all') !!}
+                            </button>
+                            <button type="button" class="btn btn-outline-danger btn-bulk-select" id="deselect_all_employees">
+                                <i class="la la-times-circle"></i> {!! __('general.deselect_all') !!}
+                            </button>
+                        </div>
+                        <small class="text-muted mt-2 d-block">
+                            <i class="la la-info-circle"></i> {!! __('employees.select_multiple_hint') !!}
+                        </small>
+                    </div>
+                </div>
 
                 <!-- Gender -->
                 <div class="col-md-3">

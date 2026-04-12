@@ -21,8 +21,8 @@
 
 <div class="tab-content px-1 pt-1">
     <!--------------------------------------- basic info ------------------------>
-    <div role="tabpanel" class="tab-pane active" id="tabVerticalLeft11" aria-expanded="true"
-        aria-labelledby="baseVerticalLeft1-tab1" style="padding-left: 20px ;padding-right:20px">
+    <div role="tabpanel" class="tab-pane active p-inline-20" id="tabVerticalLeft11" aria-expanded="true"
+        aria-labelledby="baseVerticalLeft1-tab1">
         <p>
             <li class="la la-circle text-primary"></li>
             <span>{!! __('employees.personal_id') !!} : </span>
@@ -141,12 +141,10 @@
                                 <div class="position-relative d-inline-block mt-1 mb-2">
                                     @if ($item->certification)
                                         <img src="{!! asset('uploads/employeesCertifications/' . $item->certification) !!}" alt="{!! __('employees.photo') !!}"
-                                            class="shadow-sm img-fluid img-thumbnail round-md "
-                                            style="width: 80px ;height: 80px ;" />
+                                            class="shadow-sm img-fluid img-thumbnail round-md avatar-size-80" />
                                     @else
                                         <img src="{!! asset('assets\dashbaord\images\no_image.jpg') !!}" alt="{!! __('employees.photo') !!}"
-                                            class="shadow-sm img-fluid img-thumbnail round-md "
-                                            style="width: 80px ;height: 80px ;" />
+                                            class="shadow-sm img-fluid img-thumbnail round-md avatar-size-80" />
                                     @endif
                                 </div>
                             </td>

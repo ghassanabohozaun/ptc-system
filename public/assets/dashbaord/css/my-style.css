@@ -131,6 +131,122 @@ line-height: 1.1;
 font-size: 0.7rem;
 }
 
+.badge-premium-lg {
+    font-size: 1.1rem !important;
+}
+
+.bg-indigo-alt { background-color: #1F3BB3 !important; }
+.min-w-140 { min-width: 140px !important; }
+.min-w-300 { min-width: 300px !important; }
+.w-100 { width: 100% !important; }
+.w-150 { width: 150px !important; }
+.p-inline-20 { padding-inline: 20px !important; }
+.avatar-size-80 { width: 80px !important; height: 80px !important; }
+.radius-15 { border-radius: 15px !important; }
+.radius-top-15 { border-top-left-radius: 15px !important; border-top-right-radius: 15px !important; }
+.overflow-hidden { overflow: hidden !important; }
+.v-align-middle { vertical-align: middle !important; }
+.min-w-120 { min-width: 120px !important; }
+.min-w-250 { min-width: 250px !important; }
+.max-h-250 { max-height: 250px !important; }
+.overflow-y-auto { overflow-y: auto !important; }
+
+/* Positioning & Layering */
+.z-index-10001 { z-index: 10001 !important; }
+.pos-top-5 { top: 5px !important; }
+.pos-inset-start-02 { inset-inline-start: 2px !important; }
+
+.premium-status-badge {
+    font-size: 12px !important;
+    font-weight: bold !important;
+    padding: 5px 12px !important;
+}
+
+.premium-badge-pill-md {
+    font-size: 11px !important;
+    width: 35px !important;
+    height: 18px !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Premium Button Variations */
+.btn-premium-reset {
+    border-radius: 8px !important;
+    padding: 8px 15px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+}
+
+.btn-premium-excel {
+    border-radius: 8px !important;
+    padding: 8px 15px !important;
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+}
+
+/* Premium Layout Utilities */
+.h-42 { height: 42px !important; }
+.radius-8 { border-radius: 8px !important; }
+.radius-10 { border-radius: 10px !important; }
+.radius-12 { border-radius: 12px !important; }
+.radius-16 { border-radius: 16px !important; }
+.radius-20 { border-radius: 20px !important; }
+
+/* Font Utilities */
+.font-10 { font-size: 10px !important; }
+.font-11 { font-size: 11px !important; }
+.font-12 { font-size: 12px !important; }
+.font-24 { font-size: 24px !important; }
+.font-40 { font-size: 40px !important; }
+
+/* Premium Semantic Components */
+.premium-card-header-alt {
+    background-color: #fcfcfc !important;
+    border-bottom: 1px solid #f0f2f5 !important;
+}
+
+.premium-popover-panel {
+    min-width: 280px;
+    border-radius: 16px !important;
+}
+
+.premium-section-title {
+    background-color: #f8f9fa;
+    padding-inline-end: 15px !important;
+    margin-bottom: 0.5rem !important;
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+}
+
+.premium-section-title-blue { 
+    border-inline-end: 4px solid #1e9ff2; 
+}
+
+.premium-section-title-green { 
+    border-inline-end: 4px solid #28d094; 
+}
+
+.premium-switch-box {
+    border-radius: 12px;
+    border: 1px solid #f0f2f5;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.premium-switch-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #404e67;
+}
+
 /* form controller Style */
 
 .form-control {
@@ -180,6 +296,28 @@ html body .la {
 font-size: 1.0rem;
 }
 
+
+/* Avatar Utilities */
+.avatar-gray-bg { background-color: #f8fafc !important; }
+.avatar-gradient-bg { background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%) !important; }
+.avatar-img-fit { object-fit: cover !important; width: 100% !important; height: 100% !important; transition: transform 0.3s ease; }
+.avatar-circle { border-radius: 50% !important; overflow: hidden !important; }
+.avatar-size-40 { width: 40px !important; height: 40px !important; }
+.avatar-size-50 { width: 50px !important; height: 50px !important; }
+.avatar-size-60 { width: 60px !important; height: 60px !important; }
+.avatar-size-100 { width: 100px !important; height: 100px !important; }
+
+.avatar-initials {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    background-color: #6366f1 !important;
+}
+
+.font-45 { font-size: 45px !important; }
 
 .nav.nav-tabs.nav-underline {
     background: transparent;
@@ -322,6 +460,100 @@ font-size: 1.0rem;
     background-color: #ffffff !important;
 }
 
+/* Global Navbar Alignment Fix - Safer Vertical Centering */
+.header-navbar,
+.header-navbar .navbar-wrapper,
+.header-navbar .navbar-header,
+.header-navbar .navbar-header.expanded,
+.header-navbar .navbar-container {
+    background-color: #ffffff !important;
+    box-shadow: none !important;
+    border: none !important;
+    outline: none !important;
+}
+
+.header-navbar .navbar-header {
+    border-right: none !important;
+    border-left: none !important;
+}
+
+.navbar-container.content {
+    border-left: none !important;
+    border-right: none !important;
+}
+
+.navbar-container .navbar-nav.float-right {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important; /* Reduced gap for better mobile fit */
+    height: 60px !important; /* Force standard navbar height */
+    overflow: visible !important; /* Ensure dropdowns aren't clipped */
+}
+
+.navbar-container .navbar-nav .nav-item {
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+    height: 100% !important; /* Align children perfectly */
+    overflow: visible !important;
+}
+
+/* RTL Support for Navbar Dropdowns Container Direction */
+[dir="rtl"] .navbar-container .navbar-nav.float-left {
+    float: right !important;
+}
+
+[dir="rtl"] .navbar-container .navbar-nav.float-right {
+    float: left !important;
+    flex-direction: row-reverse !important;
+}
+
+/* Removed custom dropdown-menu-right positioning hacks to prevent right-clipping. 
+   Native Bootstrap positioning will handle the screen bounds. */
+
+/* Robust Navbar Badge Positioning Fix (Mobile & Desktop) */
+.dropdown-notification.nav-item {
+    position: relative !important;
+}
+
+.dropdown-notification .nav-link-label {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.8rem 1rem !important;
+    min-width: 44px !important;
+}
+
+.badge-up {
+    position: absolute !important;
+    top: 1px !important; /* Moved up 5 pixels as requested */
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 20px !important;
+    height: 20px !important;
+    padding: 0 4px !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    border: 2px solid #fff !important;
+    border-radius: 50px !important; /* Forces perfect circle for small numbers, pill for large */
+    line-height: 1 !important;
+    z-index: 10 !important;
+    
+    /* LTR Hardcoded Positioning */
+    right: 8px !important; /* Pushed precisely to the top-right of the icon considering padding */
+    left: auto !important;
+}
+
+/* Specific adjustment for very small screens if needed */
+@media (max-width: 576px) {
+    .badge-up {
+        top: 4px !important;
+        right: 2px !important;
+    }
+}
+
 /* Premium Language Switcher - Glassmorphism Style */
 .language-switcher-premium {
     display: flex;
@@ -330,10 +562,11 @@ font-size: 1.0rem;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1.5px solid rgba(255, 255, 255, 0.82); /* Sharper and more visible */
-    padding: 6px 14px;
+    padding: 4px 14px; /* Slightly reduced padding to match system height */
     border-radius: 50px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    height: 40px !important; /* Standard height for navbar capsules */
     margin: 0 10px;
 }
 
@@ -366,21 +599,20 @@ font-size: 1.0rem;
 .premium-user-pill {
     display: flex;
     align-items: center;
-    background: #ffffff; /* Solid high-quality background */
-    border: 1px solid #e2e8f0; /* Sharp professional border */
-    padding: 6px 16px 6px 6px;
+    background: transparent; /* Transparent background for a cleaner look */
+    border: none; /* Removed border as requested */
+    padding: 2px 10px; /* Reduced vertical padding to match other items */
     border-radius: 12px; /* Less rounded for more corporate feel */
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-    margin-top: 2px; /* 2px margin from top as requested */
+    height: 44px !important; /* Fixed height to match other navbar items */
 }
 
 .premium-user-pill:hover {
-    background: #fdfdfd;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06), 0 5px 10px rgba(0, 0, 0, 0.02);
-    transform: translateY(-2px);
-    border-color: #cbd5e1;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transform: translateY(-1px);
 }
 
 .user-info-text {
@@ -663,7 +895,7 @@ input:checked + .modern-slider:before {
 }
 
 .btn-premium-save i, .btn-premium-add i, .btn-premium-blue i {
-    font-size: 1.15rem !important;
+    font-size: 1.25rem !important;
     line-height: 1;
 }
 
@@ -725,7 +957,7 @@ input:checked + .modern-slider:before {
     display: block;
     font-weight: 800 !important;
     color: #1a1f26 !important;
-    font-size: 0.95rem !important;
+    font-size: 1.1rem !important;
     margin-bottom: 2px;
 }
 
@@ -777,6 +1009,22 @@ input:checked + .modern-slider:before {
     overflow: hidden !important;
 }
 
+/* Universal Dropdown Clipping Fix (Anchors perfectly to the icon in Mobile & Tablet) */
+@media (max-width: 991.98px) {
+    body .header-navbar .navbar-container .nav-item.dropdown .dropdown-menu.navbar-dropdown.preview-list {
+        position: absolute !important;
+        top: 100% !important;
+        right: -10px !important; /* LTR: Anchor to the right edge! */
+        left: auto !important;
+        - [x] Sidebar and Navigation Modernization
+        - [x] Redesign `.msg-sidebar-card` and buttons
+        - [x] Update nav-links with MDI icons and premium hover effects
+        margin: 10px 0 0 0 !important;
+        transform: none !important;
+    }
+}
+
+
 .dropdown-header-main {
     padding: 15px 20px !important;
     display: flex !important;
@@ -787,7 +1035,7 @@ input:checked + .modern-slider:before {
 }
 
 .dropdown-header-main .header-title {
-    font-size: 0.95rem !important;
+    font-size: 1.1rem !important;
     font-weight: 800 !important;
     color: #1a1f26 !important;
     margin: 0 !important;
@@ -967,7 +1215,7 @@ input:checked + .modern-slider:before {
     border-radius: 12px !important;
     color: #475569 !important;
     font-weight: 600 !important;
-    font-size: 0.95rem !important;
+    font-size: 1.1rem !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     display: flex !important;
     align-items: center !important;
@@ -1314,7 +1562,7 @@ input:checked + .modern-slider:before {
 }
 [dir="ltr"] .premium-search-bar input,
 [data-textdirection="ltr"] .premium-search-bar input {
-    font-size: 1rem !important;
+    font-size: 1.15rem !important;
 }
 [dir="ltr"] .recipient-card span,
 [data-textdirection="ltr"] .recipient-card span {
@@ -1332,7 +1580,7 @@ input:checked + .modern-slider:before {
 [data-textdirection="ltr"] .premium-input,
 [dir="ltr"] .premium-textarea,
 [data-textdirection="ltr"] .premium-textarea {
-    font-size: 1.15rem !important;
+    font-size: 1.25rem !important;
 }
 
 /* Premium Tabs System (Employees Module) */
@@ -1422,7 +1670,7 @@ input:checked + .modern-slider:before {
     border-radius: 12px !important;
     background: #ffffff !important;
     transition: all 0.3s ease !important;
-    font-size: 1rem !important;
+    font-size: 1.15rem !important;
     font-weight: 500 !important;
     color: #1e293b !important;
 }
@@ -1441,7 +1689,7 @@ select.form-control.premium-input {
     border: 1.5px solid #e2e8f0 !important;
     border-radius: 12px !important;
     height: 3rem !important;
-    font-size: 1rem !important;
+    font-size: 1.15rem !important;
     font-weight: 500 !important;
     color: #1e293b !important;
 }
@@ -1603,7 +1851,16 @@ select.premium-input option {
     border: none !important;
     margin: 0 4px;
 }
-.btn-premium-action i { font-size: 1.1rem !important; margin: 0 !important; }
+.btn-premium-action i { 
+    font-size: 1.25rem !important; 
+    margin: 0 !important; 
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+    height: auto !important;
+    line-height: 1 !important;
+}
 
 .btn-premium-action-edit {
     background: rgba(99, 102, 241, 0.08) !important;
@@ -1855,7 +2112,7 @@ select.premium-input option {
 }
 
 .premium-badge-total {
-    font-size: 11px !important;
+    font-size: 1.1rem !important;
     width: 35px !important;
     height: 18px !important;
     padding: 0 !important;
@@ -2017,3 +2274,377 @@ select.premium-input option {
     background-position: center !important;
     background-repeat: no-repeat !important;
 }
+
+
+/* ==========================================================================
+   Modern Select2 & Multi-select Enhancements (Bidirectional Support)
+   ========================================================================== */
+.select2-container--default .select2-selection--multiple {
+    border: 1.5px solid #e9ecef !important;
+    border-radius: 12px !important;
+    padding: 5px 12px !important;
+    min-height: 50px !important;
+    height: auto !important;
+    transition: all 0.3s ease;
+    background-color: #fbfbfb !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    border-color: #666ee8 !important;
+    background-color: #fff !important;
+    box-shadow: 0 4px 12px rgba(102, 110, 232, 0.08) !important;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #666ee8 !important;
+    border: none !important;
+    color: #fff !important;
+    border-radius: 20px !important;
+    padding: 3px 12px !important;
+    margin-top: 6px !important;
+    margin-inline-end: 8px !important; /* Bidirectional Support */
+    font-weight: 500 !important;
+    font-size: 13px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    max-width: calc(100% - 20px) !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: #fff !important;
+    margin-inline-start: 5px !important;
+    margin-inline-end: 0 !important;
+    float: none !important;
+    font-weight: bold !important;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    order: 2 !important;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+    opacity: 1;
+    background: transparent !important;
+}
+.premium-label {
+    font-weight: 700 !important;
+    color: #4b49ac !important;
+    margin-bottom: 12px !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.075rem !important; /* Unified with standard labels */
+    letter-spacing: 0.3px;
+}
+.premium-label i {
+    font-size: 1.4rem;
+}
+.select2-results__option[aria-selected=true] {
+    background-color: #f1f4ff !important;
+    color: #666ee8 !important;
+    font-weight: 600 !important;
+}
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #666ee8 !important;
+    color: #fff !important;
+}
+.bulk-select-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+.btn-bulk-select {
+    font-size: 1.1rem !important;
+    padding: 4px 10px !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s ease;
+}
+
+
+/* Final Big & Respected Polishing */
+.badge-light-primary.badge-pill {
+    padding: 6px 12px !important;
+    font-size: 0.75rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+.custom-control-label {
+    font-size: 1.15rem !important;
+    font-weight: 510 !important;
+    color: #404e67 !important;
+    padding-top: 2px !important;
+}
+#exportEmployeesForm small.text-muted {
+    font-size: 1.1rem !important;
+    color: #828690 !important;
+    font-weight: 500 !important;
+    margin-top: 10px !important;
+}
+
+
+/* Admin Message Center Premium Styles */
+#admin-messages-module {
+    --msg-indigo: #6366f1;
+    --msg-blue: #3b82f6;
+    --msg-bg-light: #f8fafc;
+    --msg-border: rgba(99, 102, 241, 0.1);
+    --msg-glass: rgba(255, 255, 255, 0.8);
+}
+
+#admin-messages-module .content-wrapper {
+    font-size: 1.15rem !important;
+    background-color: transparent !important;
+}
+
+#admin-messages-module .msg-main-card {
+    background: var(--msg-glass);
+    backdrop-filter: blur(10px);
+    border-radius: 20px !important;
+    border: 1px solid var(--msg-border) !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05) !important;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+#admin-messages-module .msg-card-header-premium {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--msg-border);
+    background: rgba(255, 255, 255, 0.4);
+}
+
+#admin-messages-module .msg-sidebar-card {
+    background: var(--msg-glass);
+    backdrop-filter: blur(10px);
+    border-radius: 20px !important;
+    border: 1px solid var(--msg-border) !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05) !important;
+    overflow: hidden;
+}
+
+#admin-messages-module .msg-sidebar-btn-container {
+    padding: 0.75rem 13px !important;
+}
+
+#admin-messages-module .msg-sidebar-btn {
+    background: linear-gradient(135deg, #1e9ff2, #111d5e) !important;
+    color: #fff !important;
+    font-weight: 700 !important;
+    border-radius: 12px !important;
+    padding: 12px !important;
+    box-shadow: 0 4px 15px rgba(30, 159, 242, 0.3) !important;
+    transition: all 0.3s ease;
+}
+
+#admin-messages-module .msg-sidebar-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(30, 159, 242, 0.4) !important;
+}
+
+/* Modal Header Alignment */
+#admin-messages-module .modal-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+#admin-messages-module .msg-nav-link {
+    padding: 12px 20px !important;
+    color: #64748b !important;
+    font-weight: 600 !important;
+    border-radius: 12px !important;
+    margin: 4px 12px;
+    transition: all 0.3s ease;
+}
+
+#admin-messages-module .msg-nav-link:hover {
+    background: rgba(99, 102, 241, 0.05) !important;
+    color: var(--msg-indigo) !important;
+    transform: translateX(5px);
+}
+
+#admin-messages-module [data-textdirection="rtl"] .msg-nav-link:hover {
+    transform: translateX(-5px);
+}
+
+#admin-messages-module .msg-nav-link.active {
+    background: linear-gradient(to right, rgba(99, 102, 241, 0.1), transparent) !important;
+    color: var(--msg-indigo) !important;
+    border-left: 4px solid var(--msg-indigo);
+}
+
+#admin-messages-module [data-textdirection="rtl"] .msg-nav-link.active {
+    background: linear-gradient(to left, rgba(99, 102, 241, 0.1), transparent) !important;
+    border-left: none;
+    border-right: 4px solid var(--msg-indigo);
+}
+
+#admin-messages-module .msg-count-badge {
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+#admin-messages-module .msg-nav-link.active .msg-count-badge {
+    background: var(--msg-indigo);
+    color: #fff;
+}
+
+/* Message List & Table Styles */
+#admin-messages-module .table thead th {
+    background: #f8fafc !important;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: #64748b;
+    border: none !important;
+    padding: 15px 12px;
+}
+
+#admin-messages-module .table tbody tr {
+    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(0,0,0,0.02) !important;
+}
+
+#admin-messages-module .table tbody tr:hover {
+    background-color: rgba(99, 102, 241, 0.02) !important;
+    transform: scale(0.998);
+}
+
+#admin-messages-module .msg-star {
+    cursor: pointer;
+    color: #cbd5e1;
+    transition: all 0.2s ease;
+    font-size: 1.1rem;
+}
+
+#admin-messages-module .msg-star.starred {
+    color: #f59e0b;
+}
+
+#admin-messages-module .msg-star:hover {
+    transform: scale(1.2);
+}
+
+#admin-messages-module .msg-badge-new {
+    background: var(--msg-indigo);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+#admin-messages-module .bg-primary-subtle {
+    background-color: rgba(99, 102, 241, 0.05) !important;
+}
+
+/* Compose Form Premium Styles */
+#admin-messages-module .compose-modern-form {
+    height: 700px;
+}
+
+#admin-messages-module .bg-premium-sidebar {
+    background: #fcfdfe !important;
+}
+
+#admin-messages-module .glass-header {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 10;
+}
+
+#admin-messages-module .premium-search-bar {
+    border-radius: 12px;
+    background: #fff;
+    border: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+#admin-messages-module .recipient-card {
+    border: 1px solid transparent !important;
+    transition: all 0.3s ease;
+    margin-bottom: 4px;
+}
+
+#admin-messages-module .recipient-card:hover {
+    background: rgba(99, 102, 241, 0.02) !important;
+    border-color: rgba(99, 102, 241, 0.1) !important;
+}
+
+#admin-messages-module .recipient-card.card-selected {
+    background: rgba(99, 102, 241, 0.05) !important;
+    border-color: var(--msg-indigo) !important;
+}
+
+#admin-messages-module .avatar-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--avatar-bg);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#admin-messages-module .premium-broadcast-box {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(59, 130, 246, 0.05));
+    border-radius: 16px;
+    padding: 15px !important;
+    border: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+#admin-messages-module .icon-orb {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+#admin-messages-module .premium-input-wrapper,
+#admin-messages-module .premium-textarea-wrapper {
+    background: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+#admin-messages-module .premium-input-wrapper:focus-within,
+#admin-messages-module .premium-textarea-wrapper:focus-within {
+    background: #fff;
+    border-color: var(--msg-indigo);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+#admin-messages-module .btn-premium-send {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: #fff !important;
+    border-radius: 12px;
+    padding: 12px 40px;
+    font-weight: 700;
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+    transition: all 0.3s ease;
+}
+
+#admin-messages-module .btn-premium-send:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(99, 102, 241, 0.3);
+}
+
+#admin-messages-module .text-right-custom { text-align: left !important; }

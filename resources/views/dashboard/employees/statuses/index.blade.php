@@ -35,8 +35,8 @@
                 <!-- begin: content header right-->
                 <div class="content-header-right col-md-6 col-12 text-md-right">
                     <div class="mb-1">
-                        <button type="button" class="btn btn-premium-add shadow-pulse" data-toggle="modal"
-                            data-target="#createStatusModal" style="height: 42px; border-radius: 10px;">
+                        <button type="button" class="btn btn-premium-add shadow-pulse h-42 radius-10" data-toggle="modal"
+                            data-target="#createStatusModal">
                             <i class="la la-plus-circle"></i>
                             {!! __('employees.create_new_employee_status') !!}
                         </button>
@@ -56,10 +56,9 @@
                                 <!-- begin: card header -->
                                 <div class="card-header border-0 pb-0">
                                     <h4 class="card-title text-dark font-weight-bold d-flex align-items-center">
-                                        <i class="la la-user-tag text-primary mr-2" style="font-size: 24px;"></i>
+                                        <i class="la la-user-tag text-primary mr-2 font-24"></i>
                                         {!! __('employees.employee_statuses') !!}
-                                        <span class="badge badge-primary badge-pill badge-glow ml-2"
-                                            style="font-size: 11px;">{!! $employeeStatuses->total() !!}</span>
+                                        <span class="badge badge-primary badge-pill badge-glow ml-2 font-11">{!! $employeeStatuses->total() !!}</span>
                                     </h4>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">

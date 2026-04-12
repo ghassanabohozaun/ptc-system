@@ -68,14 +68,13 @@
 
                 <!--begin::modal footer-->
                 <div class="modal-footer border-0 pt-0">
-                    <button type="submit" class="btn btn-premium-add px-4 font-weight-bold"
-                        style="height: 42px; border-radius: 10px;">
+                    <button type="submit" class="btn btn-premium-add px-4 font-weight-bold h-42 radius-10">
                         <i class="la la-save mr-1"></i> {{ __('general.save') }}
                         <i class="la la-refresh la-spin spinner_loading d-none ml-1"></i>
                     </button>
 
-                    <button type="button" id="cancel_department_btn" class="btn btn-light-dark font-weight-bold"
-                        style="height: 42px; border-radius: 10px;" data-dismiss="modal">
+                    <button type="button" id="cancel_department_btn" class="btn btn-light-dark font-weight-bold h-42 radius-10"
+                        data-dismiss="modal">
                         <i class="la la-times mr-1"></i> {{ __('general.cancel') }}
                     </button>
                 </div>

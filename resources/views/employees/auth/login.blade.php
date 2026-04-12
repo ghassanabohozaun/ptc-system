@@ -14,7 +14,22 @@
 
         <!-- 1. Visual/Welcome Side (Hidden on Mobile) -->
         <div class="welcome-side">
-            <!-- Welcome text removed per user request -->
+            <div class="welcome-content-premium">
+                <span class="badge-welcome">Employee Portal</span>
+                <h1 class="welcome-title">
+                    {!! Lang() == 'ar' ? 'تمكين رسالتنا' : 'Empowering Our Mission' !!}
+                </h1>
+                <p class="welcome-text">
+                    {!! Lang() == 'ar' 
+                        ? 'كل خطوة تقوم بها تقربنا من مستقبل أفضل. نحن فخورون بعضويتك في فريقنا المتميز.' 
+                        : 'Every step you take brings us closer to a better future. We are proud to have you in our distinguished team.' !!}
+                </p>
+                <div class="welcome-footer">
+                    <div class="footer-stats">
+                        <span class="stat-item"><i class="fa fa-users"></i> PTC Community</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- 2. Form Side / Side Pane -->

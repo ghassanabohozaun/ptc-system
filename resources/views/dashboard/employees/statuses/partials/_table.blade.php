@@ -7,7 +7,7 @@
                 <th class="text-center align-middle py-3 border-top-0">{!! __('employees.employee_status_name') !!}</th>
                 <th class="text-center align-middle py-3 border-top-0">{!! __('employees.status') !!}</th>
                 <th class="text-center align-middle py-3 border-top-0">{!! __('employees.manage_status') !!}</th>
-                <th class="text-center align-middle py-3 border-top-0" style="min-width: 140px;">{!! __('general.actions') !!}</th>
+                <th class="text-center align-middle py-3 border-top-0 min-w-140">{!! __('general.actions') !!}</th>
             </tr>
         </thead>
         <tbody>
@@ -27,9 +27,8 @@
 
                                 <div class="text-center">
                                     <div class="modal-profile-wrapper">
-                                        <div class="avatar-circle avatar-size-100 d-inline-flex align-items-center justify-content-center text-white text-uppercase shadow-sm"
-                                            style="background-color: #1F3BB3;">
-                                            <i class="la la-user-cog" style="font-size: 40px;"></i>
+                                        <div class="avatar-circle avatar-size-100 d-inline-flex align-items-center justify-content-center text-white text-uppercase shadow-sm bg-indigo-alt">
+                                            <i class="la la-user-cog font-40"></i>
                                         </div>
                                     </div>
                                     <h4 class="modal-name-title font-weight-bold">{!! $status->name !!}</h4>

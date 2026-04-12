@@ -3,6 +3,10 @@
     {!! $title !!}
 @endsection
 
+@push('style')
+    <link rel="stylesheet" href="{{ asset('assets/dashbaord/vendors/css/forms/selects/select2.min.css') }}">
+@endpush
+
 @section('content')
     <div class="app-content content">
 
@@ -43,11 +47,11 @@
                     <div class="content-header-right col-md-6 col-12">
                         <div class="float-md-right mb-2">
 
-                            <a href="" class="btn btn-sm btn-outline-danger mr-1" id="employees_reset_btn" style="border-radius: 8px; padding: 8px 15px;">
+                            <a href="" class="btn btn-sm btn-outline-danger mr-1 btn-premium-reset" id="employees_reset_btn">
                                 <i class="la la-refresh"></i> {!! __('general.reset') !!}
                             </a>
 
-                            <button class="btn btn-success btn-glow px-2" type="submit" style="border-radius: 8px; padding: 8px 15px; box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2);">
+                            <button class="btn btn-success btn-glow px-2 btn-premium-excel" type="submit">
                                 <i class="la la-file-excel-o"></i> {!! __('general.excel') !!}
                             </button>
                         </div>
@@ -78,47 +82,109 @@
 @endsection
 
 @push('scripts')
+    <script src="{{ asset('assets/dashbaord/vendors/js/forms/select/select2.full.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            // Initialize Select2 for all select elements
-            $('select').select2({
+            // Initialize Select2 for normal selects
+            $('select:not([multiple])').select2({
                 width: '100%',
                 placeholder: "{!! __('general.select') !!}"
+            });
+
+            // Initialize Multi-select with Tags style
+            var $employeeSelect = $('#employee_ids');
+            $employeeSelect.select2({
+                width: '100%',
+                placeholder: "{!! __('general.all_employees') !!}",
+                allowClear: true,
+                closeOnSelect: false,
+                scrollAfterSelect: false,
+                dir: $('html').attr('data-textdirection') == 'rtl' ? 'rtl' : 'ltr',
+                language: {
+                    noResults: function() {
+                        return "{!! __('general.noResults2') !!}";
+                    }
+                }
+            });
+
+            // Handle the closeOnSelect: false bug in some versions
+            $employeeSelect.on('select2:select', function(e) {
+                // This helps ensure it stays open in all environments
+                if (e.params.originalEvent) {
+                    e.params.originalEvent.stopPropagation();
+                }
+            });
+
+            // Select All Employees
+            $('#select_all_employees').on('click', function() {
+                $('#employee_ids option').prop('selected', true);
+                $('#employee_ids').trigger('change');
+            });
+
+            // Deselect All Employees
+            $('#deselect_all_employees').on('click', function() {
+                $('#employee_ids').val(null).trigger('change');
             });
 
             // address dependency
             $('#governoate_id').on('change', function() {
                 var id = $(this).val();
+                var $citySelect = $('#city_id');
+
                 if (id) {
                     $.ajax({
-                        url: '{!! route('dashboard.governorates.get.cities.by.governorate.id', ':id') !!}'.replace(':id', id),
+                        url: '{!! route('dashboard.governorates.get.all.cities') !!}',
                         type: 'GET',
+                        data: {
+                            id: id
+                        },
                         dataType: 'json',
-                        success: function(data) {
-                            $('#city_id').empty().append(
+                        success: function(response) {
+                            $citySelect.empty().append(
                                 '<option value=""> {!! __('employees.select') !!} {!! __('employees.city_id') !!}</option>'
                             );
-                            $.each(data, function(key, value) {
-                                $('#city_id').append('<option value="' + key +
-                                    '">' + value + '</option>');
-                            });
-                            $('#city_id').prop('disabled', false).trigger('change');
+
+                            if (response.status && response.data) {
+                                $.each(response.data, function(index, city) {
+                                    // Handle translated city name
+                                    var cityName = typeof city.name === 'object' ? 
+                                                   ( $('html').attr('data-textdirection') == 'rtl' ? city.name.ar : city.name.en ) : 
+                                                   city.name;
+                                                   
+                                    $citySelect.append('<option value="' + city.id + '">' + cityName + '</option>');
+                                });
+                                // Enable and refresh select2
+                                $citySelect.prop('disabled', false).trigger('change');
+                            }
+                        },
+                        error: function() {
+                            $citySelect.prop('disabled', true).trigger('change');
                         }
                     });
                 } else {
-                    $('#city_id').empty().append(
-                        '<option value=""> {!! __('employees.select') !!} {!! __('employees.city_id') !!}</option>').prop(
-                        'disabled', true).trigger('change');
+                    $citySelect.empty().append(
+                        '<option value=""> {!! __('employees.select') !!} {!! __('employees.city_id') !!}</option>'
+                    ).prop('disabled', true).trigger('change');
                 }
             });
 
             // Reset button
             $('#employees_reset_btn').on('click', function(e) {
                 e.preventDefault();
-                $('#exportEmployeesForm')[0].reset();
-                $('#city_id').prop('disabled', true).trigger('change');
-                $('select').val(null).trigger('change');
-                $('input[type="checkbox"]').prop('checked', false);
+                var $form = $('#exportEmployeesForm');
+                $form[0].reset();
+
+                // Properly reset all Select2 elements
+                $form.find('select').val(null).trigger('change');
+
+                // Specifically ensure city is disabled again
+                var $citySelect = $('#city_id');
+                $citySelect.empty().append(
+                        '<option value=""> {!! __('employees.select') !!} {!! __('employees.city_id') !!}</option>')
+                    .prop('disabled', true).trigger('change');
+
+                // Clear all checkboxes/switches
+                $form.find('input[type="checkbox"]').prop('checked', false);
             });
         });
     </script>

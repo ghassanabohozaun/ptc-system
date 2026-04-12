@@ -53,11 +53,11 @@
     </div>
 
     <!-- Actions -->
-    <div class="d-flex align-items-center justify-content-between pt-3 border-top mt-4">
-        <button type="button" class="btn btn-outline-dark px-4 py-2" data-bs-dismiss="modal">
+    <div class="d-flex align-items-center justify-content-end gap-3 pt-3 border-top mt-4">
+        <button type="button" class="btn btn-light px-4 py-2 fw-semibold text-muted" data-bs-dismiss="modal" style="border-radius: 12px;">
             {!! __('messages.cancel') !!}
         </button>
-        <button type="submit" class="btn btn-primary px-4 py-2 text-white fw-bold msg-sidebar-btn">
+        <button type="submit" class="btn btn-primary px-4 py-2 text-white fw-bold btn-premium-send">
             <i class="mdi mdi-send me-1"></i> {!! __('messages.send_message') !!}
         </button>
     </div>

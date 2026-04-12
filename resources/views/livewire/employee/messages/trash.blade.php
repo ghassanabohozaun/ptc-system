@@ -54,13 +54,13 @@
                                 </td>
                                  <td class="text-end px-3">
                                     <button wire:click="restore({{ $message->id }})"
-                                        class="btn btn-inverse-success btn-icon"
+                                        class="btn btn-sm btn-icon btn-outline-success shadow-none"
                                         title="{!! __('messages.restore') !!}">
-                                        <i class="mdi mdi-restore"></i>
+                                        <i class="fa fa-undo"></i>
                                     </button>
                                     <button wire:click="confirmPermanentDelete({{ $message->id }})"
-                                        class="btn btn-inverse-danger btn-icon" title="{!! __('messages.delete_forever') !!}">
-                                        <i class="mdi mdi-delete-outline"></i>
+                                        class="btn btn-sm btn-icon btn-outline-danger shadow-none" title="{!! __('messages.delete_forever') !!}">
+                                        <i class="fa fa-trash"></i>
                                     </button>
                                 </td>
                             </tr>

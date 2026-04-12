@@ -37,7 +37,7 @@
     {{-- Local Tajawal already in font.css --}}
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/vendors/css/forms/selects/select2.min.css') !!}">
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/filter.css') !!}">
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css-rtl/my-style.css') . '?v=1.0.1' !!}">
+    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css-rtl/my-style.css') . '?v=1.0.2' !!}">
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css-rtl/sidebar-navy-rtl.css') !!}">
 @else
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/vendors.css') !!}">
@@ -51,6 +51,6 @@
     <link rel="stylesheet" href="{!! asset('assets/dashbaord/css/child-wizard.css') !!}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/vendors/css/forms/selects/select2.min.css') !!}">
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/filter.css') !!}">
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/my-style.css') . '?v=1.0.1' !!}">
+    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/my-style.css') . '?v=1.0.2' !!}">
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/sidebar-navy.css') !!}">
 @endif

@@ -87,8 +87,8 @@
                                                                 {!! __('dailyReports.employee_id') !!}
                                                             </label>
                                                             <div class="premium-input-wrapper">
-                                                                <select class="employee_id_select form-control premium-input shadow-none"
-                                                                    id="employee_id" name="employee_id" style="width: 100%">
+                                                                <select class="employee_id_select form-control premium-input shadow-none w-100"
+                                                                    id="employee_id" name="employee_id">
                                                                     <option value="{!! $dailyReport->employee_id !!}" selected>
                                                                         {!! $dailyReport->employee->EmployeeShortName() !!}
                                                                     </option>

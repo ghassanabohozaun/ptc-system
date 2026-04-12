@@ -11,7 +11,63 @@ class Trash extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
+    public $selectedMessages = [];
+    public $selectAll = false;
     public $selectedMessage = null;
+
+    public function updatedSelectAll($value)
+    {
+        if ($value) {
+            $this->selectedMessages = Message::trash(auth()->guard('admin')->user())
+                ->pluck('id')
+                ->toArray();
+        } else {
+            $this->selectedMessages = [];
+        }
+    }
+
+    public function confirmBulkDelete()
+    {
+        if (empty($this->selectedMessages)) {
+            return;
+        }
+        $this->dispatch('confirm-delete', type: 'bulk');
+    }
+
+    #[On('doBulkDelete')]
+    public function doBulkDelete()
+    {
+        Message::whereIn('id', $this->selectedMessages)->each(function ($message) {
+            $message->forceDelete();
+        });
+
+        $this->selectedMessages = [];
+        session()->flash('success', 'Selected messages permanently deleted');
+    }
+
+    public function confirmBulkRestore()
+    {
+        if (empty($this->selectedMessages)) {
+            return;
+        }
+        $this->dispatch('confirm-restore-bulk');
+    }
+
+    #[On('doBulkRestore')]
+    public function doBulkRestore()
+    {
+        $user = auth()->guard('admin')->user();
+        Message::whereIn('id', $this->selectedMessages)->each(function ($message) use ($user) {
+            if ($message->sender_id === $user->id && $message->sender_type === get_class($user)) {
+                $message->restoreFromTrash('sender');
+            } else {
+                $message->restoreFromTrash('receiver');
+            }
+        });
+
+        $this->selectedMessages = [];
+        session()->flash('success', 'Selected messages restored');
+    }
 
     public function showMessage($messageId)
     {

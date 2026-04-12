@@ -11,7 +11,39 @@ class Sent extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
+    public $selectedMessages = [];
+    public $selectAll = false;
     public $selectedMessage = null;
+
+    public function updatedSelectAll($value)
+    {
+        if ($value) {
+            $this->selectedMessages = Message::sent(auth()->guard('admin')->user())
+                ->pluck('id')
+                ->toArray();
+        } else {
+            $this->selectedMessages = [];
+        }
+    }
+
+    public function confirmBulkDelete()
+    {
+        if (empty($this->selectedMessages)) {
+            return;
+        }
+        $this->dispatch('confirm-delete', type: 'bulk');
+    }
+
+    #[On('doBulkDelete')]
+    public function doBulkDelete()
+    {
+        Message::whereIn('id', $this->selectedMessages)->each(function ($message) {
+            $message->moveToTrash('sender');
+        });
+
+        $this->selectedMessages = [];
+        session()->flash('success', 'Selected messages moved to trash');
+    }
 
     public function showMessage($messageId)
     {

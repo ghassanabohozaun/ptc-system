@@ -10,18 +10,18 @@
                     <div class="d-sm-flex align-items-center justify-content-between border-bottom pb-2">
                         <ul class="nav nav-tabs premium-tabs" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link ps-2 active border-0" id="more-tab" data-bs-toggle="tab" href="#more"
+                                <a class="nav-link ps-2 active border-0" id="home-tab" data-bs-toggle="tab" href="#overview"
                                     role="tab" aria-selected="true">
-                                    <i class="mdi mdi-account-circle-outline me-1"></i>
-                                    {!! __('general.profile') !!}
+                                    <i class="mdi mdi-view-dashboard-outline me-1"></i>
+                                    {!! __('general.overview') !!}
                                 </a>
                             </li>
 
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link border-0" id="home-tab" data-bs-toggle="tab" href="#overview"
+                                <a class="nav-link border-0" id="more-tab" data-bs-toggle="tab" href="#more"
                                     role="tab" aria-selected="false" tabindex="-1">
-                                    <i class="mdi mdi-view-dashboard-outline me-1"></i>
-                                    {!! __('general.overview') !!}
+                                    <i class="mdi mdi-account-circle-outline me-1"></i>
+                                    {!! __('general.profile') !!}
                                 </a>
                             </li>
 

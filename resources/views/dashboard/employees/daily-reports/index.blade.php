@@ -31,8 +31,7 @@
 
                 <div class="content-header-right col-md-6 col-12 text-md-right">
                     <div class="mb-1">
-                        <a href="{{ route('dashboard.dailyReports.create') }}" class="btn btn-premium-add shadow-pulse"
-                            style="height: 42px; border-radius: 10px; display: inline-flex; align-items: center;">
+                        <a href="{{ route('dashboard.dailyReports.create') }}" class="btn btn-premium-add shadow-pulse h-42 radius-10 d-inline-flex align-items-center">
                             <i class="la la-plus-circle mr-1"></i>
                             {!! __('dailyReports.create_new_daily_report') !!}
                         </a>

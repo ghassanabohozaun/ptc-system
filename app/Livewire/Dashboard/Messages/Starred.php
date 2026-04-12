@@ -5,12 +5,45 @@ namespace App\Livewire\Dashboard\Messages;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Message;
+use Livewire\Attributes\On;
 
 class Starred extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
+    public $selectedMessages = [];
+    public $selectAll = false;
     public $selectedMessage = null;
+
+    public function updatedSelectAll($value)
+    {
+        if ($value) {
+            $this->selectedMessages = Message::starred(auth()->guard('admin')->user())
+                ->pluck('id')
+                ->toArray();
+        } else {
+            $this->selectedMessages = [];
+        }
+    }
+
+    public function confirmBulkDelete()
+    {
+        if (empty($this->selectedMessages)) {
+            return;
+        }
+        $this->dispatch('confirm-delete', type: 'bulk');
+    }
+
+    #[On('doBulkDelete')]
+    public function doBulkDelete()
+    {
+        Message::whereIn('id', $this->selectedMessages)->each(function ($message) {
+            $message->moveToTrash('receiver');
+        });
+
+        $this->selectedMessages = [];
+        session()->flash('success', 'Selected messages moved to trash');
+    }
 
     public function showMessage($messageId)
     {

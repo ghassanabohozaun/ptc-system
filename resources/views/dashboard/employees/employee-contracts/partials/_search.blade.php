@@ -12,10 +12,9 @@
                 <div class="filter-chip js-filter-chip" data-filter-target="emp_search_popover">
                     <i class="la la-user text-indigo"></i>
                     <span class="chip-text">{!! __('employeeContracts.employee_name') !!}</span>
-                    <span class="badge badge-primary badge-pill badge-glow ml-1 d-inline-flex align-items-center justify-content-center"
-                        style="font-size: 11px; width: 35px; height: 18px; padding: 0;">{!! $employeeContracts->total() !!}</span>
+                    <span class="badge badge-primary badge-pill badge-glow ml-1 premium-badge-pill-md">{!! $employeeContracts->total() !!}</span>
                 </div>
-                <div class="ptc-query-panel shadow-lg border-0 premium-popover-panel" id="emp_search_popover" style="min-width: 280px;">
+                <div class="ptc-query-panel shadow-lg border-0 premium-popover-panel" id="emp_search_popover">
                     <div class="mb-3 text-left">
                         <label class="premium-label mb-2 font-weight-bold text-dark">{!! __('employeeContracts.employee_name') !!}</label>
                         <div class="premium-input-wrapper">
@@ -39,7 +38,7 @@
                     <i class="la la-dollar text-indigo"></i>
                     <span class="chip-text">{!! __('employeeContracts.monthly_salary') !!}</span>
                 </div>
-                <div class="ptc-query-panel shadow-lg border-0 premium-popover-panel" id="salary_popover" style="min-width: 250px;">
+                <div class="ptc-query-panel shadow-lg border-0 premium-popover-panel min-w-250" id="salary_popover">
                     <div class="mb-3 text-left">
                         <label class="premium-label mb-2 font-weight-bold text-dark">{!! __('employeeContracts.monthly_salary') !!}</label>
                         <div class="premium-input-wrapper">
@@ -63,7 +62,7 @@
                     <i class="la la-calendar text-indigo"></i>
                     <span class="chip-text">{!! __('employeeContracts.contract_start_date') !!}</span>
                 </div>
-                <div class="ptc-query-panel shadow-lg border-0 premium-popover-panel" id="date_popover" style="min-width: 280px;">
+                <div class="ptc-query-panel shadow-lg border-0 premium-popover-panel" id="date_popover">
                     <div class="mb-3 text-left">
                         <label class="premium-label mb-2 font-weight-bold text-dark">{!! __('employeeContracts.contract_start_date') !!}</label>
                         <div class="premium-input-wrapper">

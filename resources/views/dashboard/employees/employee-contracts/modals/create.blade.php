@@ -25,8 +25,8 @@
                             <div class="premium-form-group">
                                 <label class="premium-label font-weight-bold text-dark" for="employee_id">{!! __('employeeContracts.employee_name') !!}</label>
                                 <div class="premium-input-wrapper">
-                                    <select class="employee_contract_employee_id_select form-control premium-input shadow-none" id="employee_contract_employee_id"
-                                        name="employee_id" style="width: 100%">
+                                    <select class="employee_contract_employee_id_select form-control premium-input shadow-none w-100" id="employee_contract_employee_id"
+                                        name="employee_id">
                                     </select>
                                     <i class="la la-user-tie text-indigo"></i>
                                 </div>

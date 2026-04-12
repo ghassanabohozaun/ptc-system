@@ -66,7 +66,10 @@
             </tr>
             @empty
             <tr>
-                <td colspan="6" class="text-center py-4 text-muted">{!! __('employees.no_data_found') !!}</td>
+                <td colspan="7" class="text-center py-4 text-muted">
+                    <i class="mdi mdi-information-outline me-1"></i>
+                    {!! __('employees.no_contract_info_yet') !!}
+                </td>
             </tr>
             @endforelse
         </tbody>

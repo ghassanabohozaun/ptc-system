@@ -3,17 +3,17 @@
         <div class="msg-card-header-premium d-flex justify-content-between align-items-center">
             <div>
                 <h4 class="text-dark font-weight-bold mb-0">
-                    <i class="ft-inbox mr-2 text-primary"></i>
+                    <i class="la la-inbox mr-2 text-primary"></i>
                     {!! __('messages.inbox') !!}
                 </h4>
             </div>
             <div class="d-flex align-items-center">
                 @if (count($selectedMessages) > 0)
-                    <button wire:click="confirmBulkDelete" class="btn btn-danger btn-sm mr-3 text-white">
-                        <i class="ft-trash-2 mr-1"></i>{!! __('messages.delete_selected') !!} ({{ count($selectedMessages) }})
+                    <button wire:click="confirmBulkDelete" class="btn btn-danger btn-sm text-white shadow-pulse rounded-pill px-3">
+                        <i class="la la-trash-alt mr-1"></i>{!! __('messages.delete_selected') !!} ({{ count($selectedMessages) }})
                     </button>
                 @endif
-                <div class="msg-count-badge">{{ $messages->total() }} {!! __('messages.messages') !!}</div>
+                <div class="msg-count-badge shadow-xs">{{ $messages->total() }} {!! __('messages.messages') !!}</div>
             </div>
         </div>
 
@@ -21,26 +21,26 @@
             <div class="table-responsive">
                 <table class="table table-hover mb-0">
                     <thead>
-                        <tr class="bg-light">
-                            <th class="border-0 px-3 col-w-45">
-                                <div class="custom-control custom-checkbox">
+                        <tr>
+                            <th class="px-3 col-w-45">
+                                <div class="custom-control custom-checkbox custom-control-indigo">
                                     <input type="checkbox" wire:model.live="selectAll" class="custom-control-input"
                                         id="selectAll">
                                     <label class="custom-control-label" for="selectAll"></label>
                                 </div>
                             </th>
-                            <th class="border-0 text-center col-w-45"><i class="ft-star text-muted"></i></th>
-                            <th class="border-0 col-w-200">{!! __('messages.sender') !!}</th>
-                            <th class="border-0">{!! __('messages.subject') !!}</th>
-                            <th class="border-0 text-center col-w-150">{!! __('messages.date') !!}</th>
-                            <th class="border-0 text-right px-3 col-w-80">{!! __('messages.actions') !!}</th>
+                            <th class="text-center col-w-45"><i class="la la-star-o text-muted"></i></th>
+                            <th class="col-w-200">{!! __('messages.sender') !!}</th>
+                            <th>{!! __('messages.subject') !!}</th>
+                            <th class="text-center col-w-150">{!! __('messages.date') !!}</th>
+                            <th class="text-right px-3 col-w-80">{!! __('messages.actions') !!}</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse($messages as $message)
                             <tr wire:key="msg-{{ $message->id }}" class="{{ !$message->is_read ? 'bg-primary-subtle' : '' }}">
                                 <td class="px-3">
-                                    <div class="custom-control custom-checkbox">
+                                    <div class="custom-control custom-checkbox custom-control-indigo">
                                         <input type="checkbox" wire:model.live="selectedMessages"
                                             value="{{ $message->id }}" class="custom-control-input"
                                             id="msg-{{ $message->id }}">
@@ -50,11 +50,11 @@
                                 <td class="text-center">
                                     <span wire:click="toggleStar({{ $message->id }})"
                                         class="msg-star {{ $message->is_starred ? 'starred' : '' }}">
-                                        <i class="{{ $message->is_starred ? 'fas' : 'far' }} fa-star"></i>
+                                        <i class="{{ $message->is_starred ? 'la la-star text-warning' : 'la la-star-o text-muted' }}"></i>
                                     </span>
                                 </td>
                                 <td class="text-truncate col-max-200">
-                                    <span class="{{ !$message->is_read ? 'font-weight-bold text-dark' : 'text-muted' }}">
+                                    <span class="{{ !$message->is_read ? 'font-weight-black text-dark' : 'text-muted font-weight-bold' }}">
                                         {{ $message->sender->name ?? 'Unknown' }}
                                     </span>
                                     @if (!$message->is_read)
@@ -65,19 +65,19 @@
                                     <a href="javascript:void(0)" wire:click.prevent="showMessage({{ $message->id }})"
                                         class="text-decoration-none d-block text-truncate">
                                         <span
-                                            class="{{ !$message->is_read ? 'font-weight-bold text-dark' : 'text-primary' }}">{{ $message->subject }}</span>
+                                            class="{{ !$message->is_read ? 'font-weight-bold text-dark' : 'text-indigo font-weight-600' }}">{{ $message->subject }}</span>
                                         <span class="text-muted font-weight-normal small ml-2 d-none d-md-inline">
                                             - {{ Str::limit(strip_tags($message->body), 80) }}
                                         </span>
                                     </a>
                                 </td>
-                                <td class="small text-muted text-center">
+                                <td class="small text-muted text-center font-weight-600">
                                     {{ $message->created_at->diffForHumans() }}
                                 </td>
                                 <td class="text-right px-3">
                                     <button wire:click="confirmDelete({{ $message->id }})"
-                                        class="btn btn-sm btn-outline-danger border-0" title="{!! __('messages.move_to_trash') !!}">
-                                        <i class="ft-trash-2"></i>
+                                        class="btn-premium-action btn-premium-action-danger shadow-none" title="{!! __('messages.move_to_trash') !!}">
+                                        <i class="la la-trash"></i>
                                     </button>
                                 </td>
                             </tr>
@@ -85,7 +85,7 @@
                             <tr>
                                 <td colspan="6" class="text-center py-5">
                                     <div class="py-5">
-                                        <i class="ft-inbox text-muted opacity-25 empty-state-icon-lg"></i>
+                                        <i class="la la-inbox text-muted opacity-25" style="font-size: 5rem;"></i>
                                         <p class="mt-4 text-muted font-weight-bold h5">{!! __('messages.your_inbox_is_empty') !!}</p>
                                     </div>
                                 </td>
@@ -95,7 +95,7 @@
                 </table>
             </div>
             @if ($messages->total() > $messages->perPage())
-                <div class="pagination-container p-3">
+                <div class="pagination-container p-3 border-top bg-light/30">
                     {{ $messages->links() }}
                 </div>
             @endif
@@ -106,21 +106,21 @@
     <div class="modal modal-pop fade" id="messageDetailsModal" tabindex="-1" role="dialog"
         aria-labelledby="messageDetailsModalLabel" aria-hidden="true" wire:ignore.self>
         <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content overflow-hidden border-0 shadow-lg">
-                <div class="modal-header d-flex align-items-center">
-                    <h5 class="modal-title" id="messageDetailsModalLabel">
-                        <i class="ft-mail mr-2 text-primary"></i> {!! __('messages.messages_details') !!}
+            <div class="modal-content overflow-hidden border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="modal-header d-flex align-items-center bg-white border-bottom">
+                    <h5 class="modal-title font-weight-bold" id="messageDetailsModalLabel">
+                        <i class="la la-envelope-open mr-2 text-primary"></i> {!! __('messages.messages_details') !!}
                     </h5>
                     <button type="button" class="close shadow-none" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true" class="font-large-1">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body p-4">
+                <div class="modal-body p-4 bg-white">
                     @if ($selectedMessage)
-                        <div class="message-meta-box d-flex justify-content-between align-items-center mb-4">
+                        <div class="message-meta-box d-flex justify-content-between align-items-center mb-4 p-3 bg-light/50 rounded-xl">
                             <div class="d-flex align-items-center">
-                                <div class="bg-primary-subtle rounded-circle p-2 mr-3 d-flex align-items-center justify-content-center shadow-sm avatar-icon-box-md">
-                                    <i class="ft-user text-primary font-medium-3"></i>
+                                <div class="bg-primary-subtle rounded-circle p-2 mr-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 50px; height: 50px;">
+                                    <i class="la la-user text-primary font-large-1"></i>
                                 </div>
                                 <div>
                                     <h6 class="mb-0 font-weight-bold text-dark">
@@ -140,9 +140,9 @@
                             </div>
                         </div>
 
-                        <div class="mb-2">
-                            <h4 class="font-weight-bold text-dark mb-4">{{ $selectedMessage->subject }}</h4>
-                            <div class="message-body-content shadow-sm">
+                        <div class="px-2">
+                            <h4 class="font-weight-black text-dark mb-4">{{ $selectedMessage->subject }}</h4>
+                            <div class="message-body-content p-4 rounded-xl bg-light/20 border" style="min-height: 200px; line-height: 1.6; font-size: 1.1rem; color: #334155;">
                                 {!! nl2br(e($selectedMessage->body)) !!}
                             </div>
                         </div>
@@ -154,13 +154,17 @@
                         </div>
                     @endif
                 </div>
-                <div class="modal-footer border-0 p-3 bg-light-subtle">
-                    <button type="button" class="btn btn-outline-secondary px-4 font-weight-bold"
-                        data-dismiss="modal">{!! __('general.close') !!}</button>
-                    <button type="button" class="btn btn-primary text-white px-4 font-weight-bold shadow-sm"
-                        wire:click="reply">
-                        <i class="la la-reply mr-2"></i>{!! __('general.replay') !!}
+                <div class="modal-footer border-0 p-3 bg-light/30 d-flex justify-content-end">
+                    <button type="button" class="btn btn-light-dark px-4 py-1 rounded-pill font-weight-black transition-all-300 shadow-none border-0 mr-2"
+                        data-dismiss="modal" style="font-size: 0.9rem;">
+                        <i class="la la-times mr-2"></i> {!! __('general.close') !!}
                     </button>
+                    @if($selectedMessage)
+                        <button type="button" class="btn btn-primary text-white px-4 py-1 rounded-pill font-weight-black transition-all-300 shadow-none border-0"
+                            wire:click="reply" style="font-size: 0.9rem;">
+                            <i class="la la-reply mr-2"></i>{!! __('general.replay') !!}
+                        </button>
+                    @endif
                 </div>
             </div>
         </div>

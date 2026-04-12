@@ -1,4 +1,4 @@
-<div class="tab-pane fade active show" id="more" role="tabpanel" aria-labelledby="more">
+<div class="tab-pane fade" id="more" role="tabpanel" aria-labelledby="more">
 
     <!-- Hero Profile Section -->
     <div class="row mb-4">

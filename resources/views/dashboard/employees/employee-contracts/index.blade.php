@@ -52,10 +52,9 @@
                                 <!-- begin: card header -->
                                 <div class="card-header border-0 pb-0">
                                     <h4 class="card-title text-dark font-weight-bold d-flex align-items-center">
-                                        <i class="la la-file-text text-primary mr-2" style="font-size: 24px;"></i> 
+                                        <i class="la la-file-text text-primary mr-2 font-24"></i> 
                                         {!! __('employeeContracts.employee_contracts') !!}
-                                        <span class="badge badge-primary badge-pill badge-glow ml-2"
-                                            style="font-size: 11px;">{!! $employeeContracts->total() !!}</span>
+                                        <span class="badge badge-primary badge-pill badge-glow ml-2 font-11">{!! $employeeContracts->total() !!}</span>
                                     </h4>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">

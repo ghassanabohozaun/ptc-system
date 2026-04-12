@@ -6,6 +6,8 @@ return [
 
     'employees' => 'الموظفين',
     'show_all_employees' => 'عرض جميع الصلاحيات',
+    'employee_select' => 'اختيار موظف',
+    'select_multiple_hint' => 'يمكنك اختيار أكثر من موظف بالبحث عنهم واختيارهم',
     'profile' => 'الملف الشخصي',
     'overview' => 'ملخص',
     'financial' => 'مالي',

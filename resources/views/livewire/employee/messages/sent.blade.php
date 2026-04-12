@@ -50,8 +50,8 @@
                                 </td>
                                 <td class="text-end px-3">
                                     <button wire:click="confirmDelete({{ $message->id }})"
-                                        class="btn btn-inverse-danger btn-icon" title="{!! __('messages.move_to_trash') !!}">
-                                        <i class="mdi mdi-delete-outline"></i>
+                                        class="btn btn-sm btn-icon btn-outline-danger shadow-none" title="{!! __('messages.move_to_trash') !!}">
+                                        <i class="fa fa-trash"></i>
                                     </button>
                                 </td>
                             </tr>

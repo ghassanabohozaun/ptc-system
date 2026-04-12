@@ -1,26 +1,26 @@
-<div class="form-group mb-0">
+<div class="d-flex justify-content-center align-items-center mb-0">
     <div class="btn-group" role="group">
 
-        {{-- edit --}}
-        <a href="{!! route('dashboard.employees.edit', $employee->id) !!}" class="btn btn-sm btn-outline-primary"
-            title="{!! __('general.edit') !!}">
-            <i class="ft-edit-2"></i>
+        {{-- show --}}
+        <a href="{!! route('dashboard.employees.show', $employee->id) !!}" class="btn-premium-action btn-premium-action-info"
+            title="{!! __('general.show') !!}">
+            <i class="la la-eye"></i>
         </a>
 
-        {{-- show --}}
-        <a href="{!! route('dashboard.employees.show', $employee->id) !!}" class="btn btn-sm btn-outline-info"
-            title="{!! __('general.show') !!}">
-            <i class="ft-eye"></i>
+        {{-- edit --}}
+        <a href="{!! route('dashboard.employees.edit', $employee->id) !!}" class="btn-premium-action btn-premium-action-edit"
+            title="{!! __('general.edit') !!}">
+            <i class="la la-edit"></i>
         </a>
 
         {{-- delete --}}
-        <a href="javascript:void(0)" class="btn btn-sm btn-outline-danger delete-confirm"
+        <a href="javascript:void(0)" class="btn-premium-action btn-premium-action-danger delete-confirm"
             data-id="{!! $employee->id !!}" data-route="{!! route('dashboard.employees.destroy') !!}"
             data-title="{!! __('general.ask_delete_record') !!}" data-text="{!! __('general.delete_warning_text') !!}"
             data-confirm-btn="{!! __('general.yes') !!}" data-cancel-btn="{!! __('general.no') !!}"
             data-success-title="{!! __('general.deleted') !!}" data-success-text="{!! __('general.delete_success_message') !!}"
             title="{!! __('general.delete') !!}">
-            <i class="ft-trash-2"></i>
+            <i class="la la-trash"></i>
         </a>
 
     </div>

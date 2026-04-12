@@ -1,10 +1,9 @@
 <div class="card premium-card shadow-lg border-0">
     <div class="card-header border-0 pb-0">
         <h4 class="card-title text-dark font-weight-bold d-flex align-items-center">
-            <i class="la la-file-alt text-primary mr-2" style="font-size: 24px;"></i>
+            <i class="la la-file-alt text-primary mr-2 font-24"></i>
             {!! __('dailyReports.daily_reports') !!}
-            <span class="badge badge-primary badge-pill badge-glow ml-2"
-                style="font-size: 11px;">{!! $dailyReports->total() !!}</span>
+            <span class="badge badge-primary badge-pill badge-glow ml-2 font-11">{!! $dailyReports->total() !!}</span>
         </h4>
         <div class="heading-elements">
             <ul class="list-inline mb-0">
@@ -27,7 +26,7 @@
                                 {!! __('dailyReports.file') !!}</th>
                             <th class="text-center d-none d-lg-table-cell align-middle py-3 border-top-0">
                                 {!! __('dailyReports.created_at') !!}</th>
-                            <th class="text-center align-middle py-3 border-top-0" style="min-width: 140px;">
+                            <th class="text-center align-middle py-3 border-top-0 min-w-140">
                                 {!! __('general.actions') !!}</th>
                         </tr>
                     </thead>
@@ -46,9 +45,9 @@
 
                                             <div class="text-center">
                                                 <div class="modal-profile-wrapper">
-                                                    <div class="avatar-circle avatar-size-100 d-inline-flex align-items-center justify-content-center text-white text-uppercase shadow-sm"
-                                                        style="background-color: #1F3BB3;">
-                                                        <i class="ft-file-text" style="font-size: 40px;"></i>
+                                                    <div
+                                                        class="avatar-circle avatar-size-100 d-inline-flex align-items-center justify-content-center text-white text-uppercase shadow-sm bg-indigo-alt">
+                                                        <i class="ft-file-text font-40"></i>
                                                     </div>
                                                 </div>
                                                 <h4 class="modal-name-title font-weight-bold">{!! $dailyReport->employee->EmployeeShortName() !!}
@@ -71,8 +70,7 @@
                                                     <div class="icon-circle"><i class="ft-info"></i></div>
                                                     <div class="detail-info-box text-left w-100">
                                                         <span class="detail-info-label">{!! __('dailyReports.details') !!}</span>
-                                                        <div class="detail-info-value mt-1 p-2 bg-light border rounded"
-                                                            style="max-height: 250px; overflow-y: auto;">
+                                                        <div class="detail-info-value mt-1 p-2 bg-light border rounded">
                                                             {!! $dailyReport->details !!}
                                                         </div>
                                                     </div>
@@ -95,7 +93,8 @@
                                     <span
                                         class="badge badge-info badge-pill badge-glow premium-badge-circle">{!! $loop->iteration !!}</span>
                                 </td>
-                                <td class="text-center align-middle font-weight-bold text-primary">{!! $dailyReport->employee->EmployeeShortName() !!}</td>
+                                <td class="text-center align-middle font-weight-bold text-primary">
+                                    {!! $dailyReport->employee->EmployeeShortName() !!}</td>
                                 <td class="text-center align-middle text-nowrap font-weight-bold text-dark">
                                     {!! $dailyReport->date !!}</td>
                                 <td class="text-center align-middle d-none d-lg-table-cell">

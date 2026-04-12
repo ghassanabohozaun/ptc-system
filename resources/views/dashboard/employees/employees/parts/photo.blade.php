@@ -1,10 +1,10 @@
-<div class="text-center" style="width: 150px;">
+<div class="text-center w-150">
 
     <div class="position-relative d-inline-block">
         @if (!empty($ticket->photo))
             <img src='{!! asset('/uploads/tickets/' . $ticket->photo) !!}' width="100" height="100" class="img-fluid img-responsive">
             <a href="javascript:void(0)" data-target="#fullScreenModal_{!! $ticket->id !!}" data-toggle="modal"
-                class="badge badge-sm bg-info  position-absolute" style="top: 5px; left: 2px;">
+                class="badge badge-sm bg-info position-absolute pos-top-5 pos-inset-start-02">
                 <i class="la la-arrows"></i>
             </a>
         @else
@@ -15,8 +15,8 @@
 </div>
 
 <!-- begin: modal-->
-<div class="modal modal-pop fade" id="fullScreenModal_{!! $ticket->id !!}" tabindex="-1" role="dialog"
-    aria-labelledby="fullScreenModalLabel" aria-hidden="true" style="z-index: 10001">
+<div class="modal modal-pop fade z-index-10001" id="fullScreenModal_{!! $ticket->id !!}" tabindex="-1" role="dialog"
+    aria-labelledby="fullScreenModalLabel" aria-hidden="true">
 
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -33,8 +33,8 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-12">
-                        <div id="carouselExampleControlsModal_{!! $ticket->id !!}" class="carousel slide"
-                            data-ride="carousel" style="width: 100%">
+                        <div id="carouselExampleControlsModal_{!! $ticket->id !!}" class="carousel slide w-100"
+                            data-ride="carousel">
                             <div class="carousel-inner">
                                 <div>
                                     <img src="{!! asset('uploads/tickets/' . $ticket->photo) !!}" class="d-block w-100" alt="...">

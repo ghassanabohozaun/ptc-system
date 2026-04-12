@@ -43,7 +43,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <span class="text text-danger">
-                                    <strong id="columns_error" style="font-size: 20px">
+                                    <strong id="columns_error" class="font-20">
                                     </strong>
                                 </span>
                             </div>

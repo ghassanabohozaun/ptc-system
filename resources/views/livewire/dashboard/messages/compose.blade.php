@@ -1,17 +1,17 @@
-<form wire:submit.prevent="sendMessage" class="compose-modern-form">
-    <div class="row no-gutters compose-row-container">
+<form wire:submit.prevent="sendMessage" class="compose-modern-form overflow-hidden" style="border-radius: 20px;">
+    <div class="row no-gutters compose-row-container h-100">
         <!-- Left Sidebar: Recipients -->
-        <div class="col-md-5 d-flex flex-column border-msg-sidebar bg-premium-sidebar">
+        <div class="col-md-3 d-flex flex-column border-msg-sidebar bg-premium-sidebar h-100">
             <!-- Search Header (Glass Effect) -->
-            <div class="p-3 border-bottom glass-header sticky-top pt-11px">
+            <div class="px-2 py-1 border-bottom glass-header sticky-top">
                 <div class="input-group input-group-merge premium-search-bar transition-all shadow-sm">
                     <div class="input-group-prepend">
                         <span class="input-group-text bg-transparent border-0 px-2">
-                            <i class="la la-search text-primary font-medium-3"></i>
+                            <i class="la la-search text-primary font-large-1"></i>
                         </span>
                     </div>
-                    <input type="text" wire:model.live="search" class="form-control border-0 bg-transparent py-2 px-2"
-                        placeholder="{!! __('messages.search_by_name_or_email') !!}">
+                    <input type="text" wire:model.live="search" class="form-control border-0 bg-transparent py-1 px-2 font-weight-bold"
+                        placeholder="{!! __('messages.search') !!}" style="font-size: 1rem !important;">
                 </div>
             </div>
 
@@ -19,14 +19,14 @@
             <div class="flex-grow-1 overflow-auto custom-scrollbar recipients-list-container">
                 @if ($sendToAll)
                     <div class="d-flex flex-column align-items-center justify-content-center h-100 p-5 text-center fade-in">
-                        <div class="broadcast-icon-box shadow-pulse mb-4">
+                        <div class="broadcast-icon-box shadow-pulse mb-4" style="background: linear-gradient(135deg, #6366f1, #3b82f6); width: 80px; height: 80px; border-radius: 20px; display: flex; align-items: center; justify-content: center;">
                             <i class="la la-bullhorn text-white font-large-3"></i>
                         </div>
-                        <h5 class="font-weight-bold text-dark mb-2">{!! __('messages.broadcast_active') !!}</h5>
-                        <p class="text-muted small px-3">{!! __('messages.sending_to_all_active_employees_desc') !!}</p>
+                        <h5 class="font-weight-black text-dark mb-2">{!! __('messages.broadcast_active') !!}</h5>
+                        <p class="text-muted small px-3 font-weight-bold">{!! __('messages.sending_to_all_active_employees_desc') !!}</p>
                     </div>
                 @else
-                    <div class="p-2">
+                    <div>
                         <ul class="list-group list-group-flush">
                             @forelse($employees as $employee)
                                 @php
@@ -34,28 +34,25 @@
                                     $colors = ['#6366f1', '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
                                     $bgColor = $colors[$employee->id % count($colors)];
                                 @endphp
-                                <li class="list-group-item list-group-item-action border-0 mb-2 rounded-xl transition-all-300 recipient-card {{ in_array($employee->id, $recipients) ? 'card-selected' : '' }}">
-                                    <div class="custom-control custom-checkbox custom-control-indigo d-flex align-items-center w-100 py-1">
-                                        <input class="custom-control-input" type="checkbox" wire:model.live="recipients"
-                                            value="{{ $employee->id }}" id="emp_{{ $employee->id }}">
-                                        <label class="custom-control-label w-100 cursor-pointer d-flex align-items-center" for="emp_{{ $employee->id }}">
-                                            <!-- Avatar Circle -->
-                                            <div class="avatar-circle mr-3 shadow-xs" style="--avatar-bg: {{ $bgColor }}">
-                                                {{ $initials }}
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <span class="text-dark font-weight-bold d-block">
-                                                    {{ $employee->first_name }} {{ $employee->family_name }}
-                                                </span>
-                                                <small class="text-muted d-block mt-1 font-weight-500">{{ $employee->email }}</small>
-                                            </div>
-                                        </label>
+                                <li class="list-group-item list-group-item-action border-0 mb-0 py-2 px-1 bg-transparent recipient-row {{ in_array($employee->id, $recipients) ? 'row-selected' : '' }}" 
+                                    wire:click="toggleRecipient({{ $employee->id }})" style="cursor: pointer; transition: all 0.2s;">
+                                    <div class="d-flex align-items-center w-100 overflow-hidden">
+                                        <div class="custom-control custom-checkbox custom-control-indigo no-events">
+                                            <input class="custom-control-input" type="checkbox" wire:model.live="recipients"
+                                                value="{{ $employee->id }}" id="emp_{{ $employee->id }}">
+                                            <label class="custom-control-label" for="emp_{{ $employee->id }}"></label>
+                                        </div>
+                                        <div class="ml-1 flex-grow-1">
+                                            <span class="text-indigo font-weight-black d-block mb-0" style="font-size: calc(0.95rem + 2px) !important; line-height: 1.2;">
+                                                {{ $employee->first_name }} {{ $employee->family_name }}
+                                            </span>
+                                        </div>
                                     </div>
                                 </li>
                             @empty
                                 <li class="list-group-item text-center text-muted py-5 border-0 bg-transparent">
                                     <div class="empty-state-icon mb-3">
-                                        <i class="la la-users-slash font-large-3 opacity-20"></i>
+                                        <i class="la la-user-slash font-large-3 opacity-20"></i>
                                     </div>
                                     <p class="mb-0 font-weight-bold small text-muted-2">{!! __('messages.no_employees_found') !!}</p>
                                 </li>
@@ -67,96 +64,88 @@
 
             <!-- Selection Sticky Footer (Stacked & Premium) -->
             @if (!$sendToAll)
-                <div class="p-4 border-top bg-white/95 glass-footer d-flex flex-column align-items-center">
-                    <div class="selection-counter-premium shadow-xs d-flex align-items-center py-2 px-4 w-100 justify-content-center mb-3">
-                         <span class="text-indigo-dark font-weight-black mr-2">{{ count($recipients) }}</span>
-                         <span class="text-muted-2 font-weight-bold">{!! __('messages.selected_employees') !!}</span>
+                <div class="p-2 border-top bg-white glass-footer d-flex flex-column align-items-center">
+                    @error('recipients')
+                        <div class="text-danger mb-2 px-1 d-flex align-items-center fade-in w-100" style="font-size: 0.8rem;">
+                            <i class="la la-exclamation-circle mr-1 font-medium-3"></i> 
+                            <span class="font-weight-black text-uppercase">{{ $message }}</span>
+                        </div>
+                    @enderror
+                    <div class="selection-counter-premium shadow-xs d-flex align-items-center py-2 px-2 w-100 justify-content-center mb-2 bg-light-indigo rounded-pill">
+                         <span class="text-indigo font-weight-black mr-2" style="font-size: 1.25rem;">{{ count($recipients) }}</span>
+                         <span class="text-dark font-weight-bold small uppercase letter-spacing-1" style="font-size: 0.85rem;">{!! __('messages.selected_employees') !!}</span>
                     </div>
                     @if (count($recipients) > 0)
                         <button type="button" wire:click="$set('recipients', [])"
-                            class="btn btn-premium-danger-soft btn-sm rounded-pill w-100 py-2 font-weight-bold transition-all-300">
-                            <i class="la la-trash-alt mr-1"></i> {!! __('messages.clear') !!}
+                            class="btn btn-danger btn-sm rounded-pill w-100 py-1 font-weight-black transition-all-300 shadow-none border-0" style="font-size: 0.85rem;">
+                            <i class="la la-times mr-1"></i> {!! __('messages.clear') !!}
                         </button>
                     @endif
                 </div>
             @endif
         </div>
 
-        <!-- Right Content: Message Form -->
-        <div class="col-md-7 d-flex flex-column bg-white main-form-area">
-            <div class="p-5 flex-grow-1 overflow-auto custom-scrollbar pt-11px">
+        <!-- Right Content Area -->
+        <div class="col-md-9 d-flex flex-column h-100 bg-white shadow-lg-soft">
+            <div class="p-4 flex-grow-1 overflow-auto custom-scrollbar">
                 <!-- Send to All: Premium Switch -->
-                <div class="mb-5 premium-broadcast-box shadow-sm transition-all-300">
+                <div class="mb-3 premium-broadcast-box shadow-sm transition-all-300">
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center">
                             <div class="icon-orb mr-3 shadow-xs">
-                                <i class="la la-bullhorn text-indigo"></i>
+                                <i class="la la-bullhorn text-indigo font-large-1"></i>
                             </div>
                             <div>
-                                <h6 class="mb-0 font-weight-bold text-dark-blue">{!! __('messages.sent_to_all_employees') !!}</h6>
-                                <p class="text-muted small mb-0">{!! __('messages.broadcast_mode_hint') !!}</p>
+                                <h6 class="mb-0 font-weight-black text-dark-blue" style="font-size: calc(1rem + 3px) !important;">{!! __('messages.sent_to_all_employees') !!}</h6>
+                                <p class="text-muted small mb-0 font-weight-bold" style="font-size: calc(0.85rem + 3px) !important;">{!! __('messages.broadcast_mode_hint') !!}</p>
                             </div>
                         </div>
-                        <div class="custom-control custom-checkbox custom-control-indigo custom-control-lg scale-125">
+                        <div class="custom-control custom-checkbox custom-control-indigo custom-control-lg scale-150">
                             <input type="checkbox" wire:model.live="sendToAll" class="custom-control-input" id="sendToAllSwitch">
                             <label class="custom-control-label cursor-pointer" for="sendToAllSwitch"></label>
                         </div>
                     </div>
                 </div>
 
-                @if (!$sendToAll)
-                    @error('recipients')
-                        <div class="alert alert-soft-danger py-3 px-4 mb-5 border-0 rounded-2xl flex align-items-center shadow-xs fade-in">
-                            <i class="la la-info-circle mr-3 font-medium-4"></i> 
-                            <span class="font-weight-600">{{ $message }}</span>
-                        </div>
-                    @enderror
-                @endif
 
                 <!-- Form Fields -->
-                <div class="space-y-5">
+                <div class="space-y-4">
                     <!-- Subject -->
-                    <div class="form-group-premium focus-within-glow">
-                        <label class="form-label font-weight-bold text-indigo-dark mb-2 small text-uppercase letter-spacing-2">
-                           <i class="la la-tag mr-1"></i> {!! __('messages.subject') !!}
+                    <div class="form-group-premium focus-within-glow mb-3">
+                        <label class="form-label font-weight-black text-indigo mb-2 small text-uppercase letter-spacing-2" style="font-size: calc(0.75rem + 7px) !important;">
+                           {!! __('messages.subject') !!}
                         </label>
-                        <div class="input-group input-group-merge premium-input-wrapper shadow-xs">
-                            <input type="text" wire:model="subject" class="form-control premium-input border-0 bg-transparent pl-4"
-                                placeholder="{!! __('messages.enter_message_subject') !!}">
+                        <div class="premium-input-wrapper shadow-xs @error('subject') border-danger @enderror position-relative d-flex align-items-center">
+                            <input type="text" wire:model="subject" class="form-control border-0 bg-transparent py-3 font-weight-bold w-100 {{ app()->getLocale() == 'ar' ? 'pl-5' : 'pr-5' }}"
+                                placeholder="{!! __('messages.enter_message_subject') !!}" style="font-size: calc(1rem + 3px) !important;">
+                            @error('subject')
+                                <i class="la la-exclamation-circle text-danger position-absolute" style="top: 50%; transform: translateY(-50%); {{ app()->getLocale() == 'ar' ? 'left: 15px;' : 'right: 15px;' }} font-size: 1.4rem; z-index: 10;"></i>
+                            @enderror
                         </div>
-                        @error('subject')
-                            <span class="text-danger mt-1 d-block font-weight-bold small ml-2 fade-in">
-                                <i class="la la-exclamation-triangle mr-1"></i> {{ $message }}
-                            </span>
-                        @enderror
                     </div>
 
                     <!-- Message Body -->
-                    <div class="form-group-premium mt-4">
-                        <label class="form-label font-weight-bold text-indigo-dark mb-2 small text-uppercase letter-spacing-2">
-                           <i class="la la-paragraph mr-1"></i> {!! __('messages.message_body') !!}
+                    <div class="form-group-premium mt-3">
+                        <label class="form-label font-weight-black text-indigo mb-2 small text-uppercase letter-spacing-2" style="font-size: calc(0.75rem + 7px) !important;">
+                           {!! __('messages.message_body') !!}
                         </label>
-                        <div class="premium-textarea-wrapper shadow-xs">
-                            <textarea wire:model="body" rows="10" class="form-control premium-textarea border-0 bg-transparent p-4 no-resize"
-                                placeholder="{!! __('messages.write_your_message_here') !!}"></textarea>
+                        <div class="premium-textarea-wrapper shadow-xs @error('body') border-danger @enderror position-relative d-flex">
+                            <textarea wire:model="body" rows="6" class="form-control border-0 bg-transparent p-3 no-resize font-weight-bold flex-grow-1"
+                                placeholder="{!! __('messages.write_your_message_here') !!}" style="min-height: 180px; font-size: calc(1rem + 3px) !important;"></textarea>
+                            @error('body')
+                                <i class="la la-exclamation-circle text-danger position-absolute" style="top: 15px; {{ app()->getLocale() == 'ar' ? 'left: 15px;' : 'right: 15px;' }} font-size: 1.4rem; z-index: 10;"></i>
+                            @enderror
                         </div>
-                        @error('body')
-                            <span class="text-danger mt-1 d-block font-weight-bold small ml-2 fade-in">
-                                <i class="la la-exclamation-triangle mr-1"></i> {{ $message }}
-                            </span>
-                        @enderror
                     </div>
                 </div>
             </div>
 
             <!-- Footer Actions: Simplified -->
-            <div class="px-5 py-4 border-top bg-white d-flex justify-content-end align-items-center">
-                <button type="submit" class="btn btn-premium-send px-5 shadow-indigo-lg font-weight-bold transition-3d-hover">
-                    <span>{!! __('messages.send_message') !!}</span>
-                    <i class="la la-paper-plane ml-2 font-medium-2"></i>
+            <div class="px-5 py-2 border-top bg-white d-flex justify-content-end align-items-center">
+                <button type="submit" class="btn btn-premium-save px-5 shadow-pulse font-weight-black transition-3d-hover uppercase letter-spacing-1">
+                    <i class="la la-send mr-2"></i> {!! __('messages.send_message') !!}
                 </button>
             </div>
         </div>
     </div>
-
 </form>

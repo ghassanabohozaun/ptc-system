@@ -12,13 +12,11 @@
                     <i class="la la-briefcase text-primary"></i>
                     <span class="chip-text">{!! __('departments.departments') !!}</span>
                     <span
-                        class="badge badge-primary badge-pill badge-glow ml-1 d-inline-flex align-items-center justify-content-center"
-                        style="font-size: 11px; width: 35px; height: 18px; padding: 0;">{!! $departments->total() !!}</span>
+                        class="badge badge-primary badge-pill badge-glow ml-1 premium-badge-pill-md">{!! $departments->total() !!}</span>
                 </div>
 
                 <!-- Keyword Search Popover -->
-                <div class="ptc-query-panel shadow-lg border-0" id="department_search_popover"
-                    style="border-radius: 16px;">
+                <div class="ptc-query-panel shadow-lg border-0 radius-16" id="department_search_popover">
                     <div class="mb-3">
                         <label class="premium-label mb-2">{!! __('departments.departments') !!}</label>
                         <div class="premium-input-wrapper">

@@ -33,6 +33,8 @@ class OverviewController extends Controller
             'pending_tasks' => $employee->tasks()->where('is_completed', false)->count(),
             'completed_tasks' => $employee->tasks()->where('is_completed', true)->count(),
             'unread_messages' => $employee->unreadMessagesCount(),
+            'sent_messages' => $employee->sentMessages()->count(),
+            'notifications_count' => $employee->unreadNotifications->count(),
             'reports_count' => $employee->monthlyReports()->count(),
         ];
 

@@ -9,6 +9,7 @@ use App\Services\Dashboard\GovernorateService;
 use Illuminate\Http\Request;
 use App\Exports\EmployeesExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\Employee;
 use Illuminate\Support\Facades\DB;
 
 class EmployeesReportsController extends Controller
@@ -37,6 +38,7 @@ class EmployeesReportsController extends Controller
         $governorates = $this->governorateService->getAllGovernoratesWithoutRelations();
         $departments = $this->departmentService->getAll();
         $employeeStatuses = $this->employeeStatusService->getAll();
+        $employees = Employee::select('id', 'first_name', 'father_name', 'grand_father_name', 'family_name')->get();
 
         return view('dashboard.employees.reports.report', compact(
             'title',
@@ -44,7 +46,8 @@ class EmployeesReportsController extends Controller
             'jobDetailsColumnNames',
             'governorates',
             'departments',
-            'employeeStatuses'
+            'employeeStatuses',
+            'employees'
         ));
     }
 

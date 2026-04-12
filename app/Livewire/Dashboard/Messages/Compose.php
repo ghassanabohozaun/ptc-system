@@ -23,6 +23,17 @@ class Compose extends Component
         $this->sendToAll = false;
     }
 
+    public function toggleRecipient($id)
+    {
+        if ($this->sendToAll) return;
+        
+        if (in_array($id, $this->recipients)) {
+            $this->recipients = array_diff($this->recipients, [$id]);
+        } else {
+            $this->recipients[] = $id;
+        }
+    }
+
     protected $rules = [
         'subject' => 'required|min:3|max:255',
         'body' => 'required|min:10',

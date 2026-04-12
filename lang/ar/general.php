@@ -206,4 +206,6 @@ return [
     'reset_all' => 'إعادة ضبط الكل',
     'location' => 'الموقع',
     'recent_activity_summary' => 'ملخص النشاط الأخير',
+    'all_employees' => 'جميع الموظفين',
+    'optional' => 'اختياري',
 ];

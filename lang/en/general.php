@@ -205,4 +205,7 @@ return [
     'select_status' => 'Select Status',
     'apply' => 'Apply',
     'reset_all' => 'Reset All',
+    'all_employees' => 'All Employees',
+    'optional' => 'Optional',
+    'recent_activity_summary' => 'Recent Activity Summary',
 ];

@@ -6,6 +6,8 @@ return [
 
     'employees' => 'Employees',
     'show_all_employees' => 'Show All Employees',
+    'employee_select' => 'Select Employee',
+    'select_multiple_hint' => 'You can select multiple employees by searching and picking them',
     'profile' => 'Profile',
     'overview' => 'Overview',
     'financial' => 'Financial',
@@ -27,6 +29,9 @@ return [
     'divorced' => 'Divorced',
     'widowed' => 'Widowed',
     'select' => 'Select',
+    'all_employees' => 'All Employees',
+    'optional' => 'Optional',
+    'excel' => 'Excel',
     'ILS' => 'ILS',
     'USD' => 'USD',
     'GBP' => 'GBP',

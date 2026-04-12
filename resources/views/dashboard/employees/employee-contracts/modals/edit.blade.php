@@ -32,8 +32,8 @@
                                     for="employee_contract_employee_id_edit">{!! __('employeeContracts.employee_name') !!}</label>
                                 <div class="premium-input-wrapper">
                                     <select
-                                        class="employee_contract_employee_id_edit_select form-control premium-input shadow-none"
-                                        id="employee_contract_employee_id_edit" name="employee_id" style="width: 100%">
+                                        class="employee_contract_employee_id_edit_select form-control premium-input shadow-none w-100"
+                                        id="employee_contract_employee_id_edit" name="employee_id">
                                     </select>
                                     <i class="la la-user-tie text-indigo"></i>
                                 </div>

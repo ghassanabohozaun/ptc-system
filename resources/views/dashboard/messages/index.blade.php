@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-    <div class="app-content content">
+    <div class="app-content content" id="admin-messages-module">
         <div class="content-wrapper">
             {{-- Content header removed as requested --}}
 

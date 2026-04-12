@@ -5,19 +5,10 @@
         $currentContract = $allContracts->first();
     @endphp
 
-    @if(!$contractDetails && $allContracts->isEmpty())
-        <div class="row">
-            <div class="col-12">
-                <div class="info-card py-5 text-center">
-                    <div class="info-card-body">
-                        <i class="mdi mdi-file-question-outline fs-1 text-muted opacity-50 mb-3 d-block"></i>
-                        <h4 class="fw-bold text-dark mb-2">{!! __('employees.no_data_found') !!}</h4>
-                        <p class="text-muted">{!! __('employees.no_contract_info_yet') !!}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @else
+    @php
+        // Section check: if everything is empty, we still want to show the layout but with tables
+        $hasAnyInfo = $contractDetails || !$allContracts->isEmpty();
+    @endphp
         <!-- Contract Status & Summary -->
         <div class="row mb-4">
             <div class="col-12">
@@ -159,7 +150,6 @@
             </div>
         @endif
 
-        @if(!$allContracts->isEmpty())
         <!-- Contracts History -->
         <div class="row">
             <div class="col-12">
@@ -176,8 +166,6 @@
                 </div>
             </div>
         </div>
-        @endif
-    @endif
 </div>
 
 @include('employees.overview.modals.contract-details')

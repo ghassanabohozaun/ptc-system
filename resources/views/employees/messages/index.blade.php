@@ -51,17 +51,18 @@
             Livewire.on('confirm-delete', function(data) {
                 swal({
                     title: "{{ __('general.ask_delete_record') }}",
+                    text: "{{ __('general.delete_warning_text') }}",
                     icon: "warning",
                     buttons: {
                         cancel: {
-                            text: "{{ __('general.no') }}",
+                            text: "{{ __('general.cancel') }}",
                             value: null,
                             visible: true,
                             className: "btn-danger",
                             closeModal: true,
                         },
                         confirm: {
-                            text: "{{ __('general.yes') }}",
+                            text: "{{ __('general.yes_delete_it') }}",
                             value: true,
                             visible: true,
                             className: "btn-info",

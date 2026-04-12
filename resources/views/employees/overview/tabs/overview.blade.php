@@ -1,41 +1,48 @@
-<div class="tab-pane fade" id="overview" role="tabpanel" aria-labelledby="overview">
+<div class="tab-pane fade active show" id="overview" role="tabpanel" aria-labelledby="overview">
 
     <!-- begin: Statistics Cards -->
     <div class="row mb-4">
+        <!-- Monthly Reports Card -->
         <div class="col-md-3 mb-3">
-            <div class="stat-card">
-                <div class="stat-icon" style="background: rgba(99, 102, 241, 0.1); color: var(--premium-indigo);">
-                    <i class="mdi mdi-clipboard-text-outline"></i>
+            <div class="stat-card shadow-sm border-0">
+                <div class="stat-icon stat-indigo">
+                    <i class="mdi mdi-file-document-outline"></i>
                 </div>
-                <h6 class="text-muted mb-1">{!! __('dashboard.pending_tasks') !!}</h6>
-                <h3 class="mb-0 fw-bold">{!! $stats['pending_tasks'] !!}</h3>
+                <h6 class="text-muted mb-1 fw-bold">{!! __('dashboard.monthly_reports') !!}</h6>
+                <h3 class="mb-0 fw-bolder text-dark">{!! $stats['reports_count'] !!}</h3>
             </div>
         </div>
+
+        <!-- Unread Messages Card -->
         <div class="col-md-3 mb-3">
-            <div class="stat-card">
-                <div class="stat-icon" style="background: rgba(59, 130, 246, 0.1); color: var(--premium-blue);">
-                    <i class="mdi mdi-email-outline"></i>
+            <div class="stat-card shadow-sm border-0">
+                <div class="stat-icon stat-blue">
+                    <i class="mdi mdi-email-open"></i>
                 </div>
-                <h6 class="text-muted mb-1">{!! __('dashboard.unread_messages') !!}</h6>
-                <h3 class="mb-0 fw-bold">{!! $stats['unread_messages'] !!}</h3>
+                <h6 class="text-muted mb-1 fw-bold">{!! __('dashboard.unread_messages') !!}</h6>
+                <h3 class="mb-0 fw-bolder text-dark">{!! $stats['unread_messages'] !!}</h3>
             </div>
         </div>
+
+        <!-- Sent Messages Card -->
         <div class="col-md-3 mb-3">
-            <div class="stat-card">
-                <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
-                    <i class="mdi mdi-file-check-outline"></i>
+            <div class="stat-card shadow-sm border-0">
+                <div class="stat-icon stat-success">
+                    <i class="mdi mdi-send"></i>
                 </div>
-                <h6 class="text-muted mb-1">{!! __('dashboard.monthly_reports') !!}</h6>
-                <h3 class="mb-0 fw-bold">{!! $stats['reports_count'] !!}</h3>
+                <h6 class="text-muted mb-1 fw-bold">{!! __('dashboard.sent_messages') !!}</h6>
+                <h3 class="mb-0 fw-bolder text-dark">{!! $stats['sent_messages'] !!}</h3>
             </div>
         </div>
+
+        <!-- Notifications Card -->
         <div class="col-md-3 mb-3">
-            <div class="stat-card">
-                <div class="stat-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
-                    <i class="mdi mdi-check-underline"></i>
+            <div class="stat-card shadow-sm border-0">
+                <div class="stat-icon stat-warning">
+                    <i class="mdi mdi-bell-outline"></i>
                 </div>
-                <h6 class="text-muted mb-1">{!! __('dashboard.completed_tasks') !!}</h6>
-                <h3 class="mb-0 fw-bold">{!! $stats['completed_tasks'] !!}</h3>
+                <h6 class="text-muted mb-1 fw-bold">{!! __('dashboard.notifications') !!}</h6>
+                <h3 class="mb-0 fw-bolder text-dark">{!! $stats['notifications_count'] !!}</h3>
             </div>
         </div>
     </div>
