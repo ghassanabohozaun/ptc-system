@@ -62,4 +62,5 @@ return [
     'no_tasks_found' => 'No tasks found',
     'sent_messages' => 'Sent Messages',
     'notifications' => 'Notifications',
+    'overview' => 'Overview',
 ];

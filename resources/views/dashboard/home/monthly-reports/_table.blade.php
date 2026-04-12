@@ -10,7 +10,12 @@
             </tr>
         </thead>
         <tbody id="records_table">
-            <td colspan="5">{!! __('employees.no_data_found') !!}</td>
+            <tr>
+                <td colspan="5" class="text-center py-4 text-muted">
+                    <i class="la la-inbox d-block" style="font-size:2.5rem;opacity:.4;"></i>
+                    {!! __('employees.no_data_found') !!}
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

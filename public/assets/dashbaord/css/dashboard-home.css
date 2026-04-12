@@ -9,7 +9,11 @@
 
 /* --- Welcome Header Styling --- */
 .welcome-section {
-    padding: 1.5rem 0.5rem 2.5rem;
+    padding: 1rem 0.5rem 1rem;
+}
+
+.welcome-section > div {
+    margin-top: -15px;
 }
 
 .welcome-title {
@@ -37,6 +41,11 @@
     font-weight: 600;
     color: #475569;
     font-size: 0.9rem;
+}
+
+/* Reduce gap between stat cards and charts */
+.elite-stat-card-col {
+    margin-bottom: 0.75rem !important;
 }
 
 /* --- Elite Stats Cards --- */
@@ -132,21 +141,94 @@
 .trend-up { color: #10b981; }
 .trend-stable { color: #64748b; }
 
-/* Entrance Animations */
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+
+
+/* --- Premium Dashboard Tabs --- */
+.custom-home-tabs {
+    background: #ffffff;
+    padding: 8px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    margin-bottom: 25px;
+    display: flex;
+    gap: 10px;
+    border: none !important;
 }
 
-.animate-up {
-    animation: fadeInUp 0.6s ease-out forwards;
+.custom-home-tabs .nav-item {
+    flex: none;
 }
 
-.delay-1 { animation-delay: 0.1s; }
-.delay-2 { animation-delay: 0.2s; }
-.delay-3 { animation-delay: 0.3s; }
-.delay-4 { animation-delay: 0.4s; }
+.custom-home-tabs .nav-link {
+    border-radius: 12px !important;
+    padding: 12px 20px;
+    font-weight: 700;
+    color: #64748b;
+    transition: all 0.3s ease;
+    border: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    font-size: 1rem;
+}
+
+.custom-home-tabs .nav-link i {
+    font-size: 1.2rem;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.custom-home-tabs .nav-link:hover {
+    background: rgba(30, 159, 242, 0.05);
+    color: #1e9ff2;
+}
+
+.custom-home-tabs .nav-link:hover i {
+    transform: scale(1.1);
+}
+
+.custom-home-tabs .nav-link.active {
+    background: linear-gradient(135deg, #1e9ff2 0%, #3b82f6 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 20px rgba(30, 159, 242, 0.2);
+    border: none !important;
+    outline: none !important;
+}
+
+.custom-home-tabs .nav-link:focus,
+.custom-home-tabs .nav-link:active {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.custom-home-tabs .nav-link.active:focus {
+    box-shadow: 0 10px 20px rgba(30, 159, 242, 0.2) !important;
+}
+
+.custom-home-tabs .nav-link.active i {
+    color: #ffffff;
+}
+
+
 
 
 /* Global Overrides */
 .btn-line-height-small { line-height: 0.8rem !important; }
+
+/* Empty Table State Icon */
+.empty-table-icon {
+    font-size: 2.5rem;
+    opacity: 0.4;
+}
+
+/* Modal Specific Adjustments */
+#monthlyReportsEmployeesModal .modal-header {
+    padding-top: 18.5px;
+    padding-bottom: 18.5px;
+}
+
+#monthlyReportsEmployeesModal .modal-title > .la-users {
+    font-size: 1.6rem;
+}

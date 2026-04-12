@@ -61,4 +61,5 @@ return [
     'no_tasks_found' => 'لم يتم العثور على مهام',
     'sent_messages' => 'الرسائل المرسلة',
     'notifications' => 'الإشعارات',
+    'overview' => 'نظرة عامة',
 ];

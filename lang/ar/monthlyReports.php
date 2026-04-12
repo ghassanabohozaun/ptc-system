@@ -36,4 +36,6 @@ return [
     'enter_refuse_reason' => 'ادخل سبب الرفض',
 
     'no_monthly_reports_found' => 'لا يوجد تقارير شهرية حالياً !',
+    'submitted' => 'مُسلم',
+    'not_submitted' => 'غير مُسلم',
 ];

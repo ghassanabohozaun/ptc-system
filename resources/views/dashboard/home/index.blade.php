@@ -5,6 +5,7 @@
 
 @push('style')
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/dashboard-home.css') !!}">
+    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/ajax-table.css') !!}">
 @endpush
 
 @section('content')
@@ -25,251 +26,55 @@
                 </div>
             </div> <!-- end :content header -->
 
-
-            <!-- begin :statistics -->
+            <!-- begin: Custom Dashboard Tabs -->
             <div class="row">
-                <!-- Employees Card -->
-                <div class="col-xl-3 col-lg-6 col-md-6 mb-4 animate-up delay-1">
-                    <div class="elite-stat-card">
-                        <div class="stat-icon-glow glow-blue">
-                            <i class="icon-users"></i>
-                        </div>
-                        <div class="stat-content">
-                            <span class="stat-label">{!! __('dashboard.employees_count') !!}</span>
-                            <div class="d-flex align-items-baseline gap-2">
-                                <span class="stat-value">{!! employeesCount() !!}</span>
-                            </div>
-                            <div class="stat-trend trend-up">
-                                <i class="icon-arrow-up"></i> {!! __('dashboard.active_personnel') !!}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Daily Reports Card -->
-                <div class="col-xl-3 col-lg-6 col-md-6 mb-4 animate-up delay-2">
-                    <div class="elite-stat-card">
-                        <div class="stat-icon-glow glow-orange">
-                            <i class="icon-pencil"></i>
-                        </div>
-                        <div class="stat-content">
-                            <span class="stat-label">{!! __('dashboard.daily_reports_count') !!}</span>
-                            <div class="d-flex align-items-baseline gap-2">
-                                <span class="stat-value">{!! dailyReportsCount() !!}</span>
-                            </div>
-                            <div class="stat-trend trend-stable">
-                                <i class="icon-check"></i> {!! __('dashboard.todays_updates') !!}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Monthly Reports Card -->
-                <div class="col-xl-3 col-lg-6 col-md-6 mb-4 animate-up delay-3">
-                    <div class="elite-stat-card">
-                        <div class="stat-icon-glow glow-purple">
-                            <i class="icon-docs"></i>
-                        </div>
-                        <div class="stat-content">
-                            <span class="stat-label">{!! __('dashboard.monthly_reports_count') !!}</span>
-                            <div class="d-flex align-items-baseline gap-2">
-                                <span class="stat-value">{!! monthlyReportsCount() !!}</span>
-                            </div>
-                            <div class="stat-trend trend-up">
-                                <i class="icon-graph"></i> {!! __('dashboard.processed') !!}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Salaries Card -->
-                <div class="col-xl-3 col-lg-6 col-md-6 mb-4 animate-up delay-4">
-                    <div class="elite-stat-card">
-                        <div class="stat-icon-glow glow-green">
-                            <i class="icon-wallet"></i>
-                        </div>
-                        <div class="stat-content">
-                            <span class="stat-label">{!! __('dashboard.salaries_count') !!}</span>
-                            <div class="d-flex align-items-baseline gap-2">
-                                <span class="stat-value">{!! salariesCount() !!}</span>
-                            </div>
-                            <div class="stat-trend trend-up">
-                                <i class="icon-energy"></i> {!! __('dashboard.paid_this_month') !!}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end :statistics -->
-
-            <!-- begin :analytics insights -->
-            <div class="row">
-                <div class="col-xl-8 col-lg-12">
-                    <div class="card h-100">
-                        <div class="card-header">
-                            <h4 class="card-title">{!! __('dashboard.monthly_reports_analytics') !!}</h4>
-                        </div>
-                        <div class="card-content">
-                            <div class="card-body">
-                                <div id="reports-trends-chart"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-12">
-                    <div class="card h-100">
-                        <div class="card-header">
-                            <h4 class="card-title">{!! __('dashboard.department_distribution') !!}</h4>
-                        </div>
-                        <div class="card-content">
-                            <div class="card-body">
-                                <div id="dept-distribution-chart"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mt-3">
                 <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">{!! __('dashboard.salary_analytics') !!}</h4>
-                        </div>
-                        <div class="card-content">
-                            <div class="card-body">
-                                <div id="salary-history-chart"></div>
-                            </div>
-                        </div>
-                    </div>
+                    <ul class="nav nav-pills custom-home-tabs" id="dashboardTabs" role="tablist">
+                        <li class="nav-item">
+                            <button class="nav-link active" id="overview-tab" data-toggle="pill" data-target="#overview"
+                                type="button" role="tab" aria-controls="overview" aria-selected="true">
+                                <i class="icon-grid"></i> {!! __('dashboard.overview') !!}
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" id="salary-analytics-tab" data-toggle="pill"
+                                data-target="#salary-analytics" type="button" role="tab"
+                                aria-controls="salary-analytics" aria-selected="false">
+                                <i class="icon-wallet"></i> {!! __('dashboard.salary_analytics') !!}
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" id="monthly-reports-tab" data-toggle="pill"
+                                data-target="#monthly-reports" type="button" role="tab" aria-controls="monthly-reports"
+                                aria-selected="false">
+                                <i class="icon-docs"></i> {!! __('dashboard.monthly_reports') !!}
+                            </button>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <!-- end :analytics insights -->
 
-            <div class="row mt-2">
-                <!-- begin :monthly reports -->
-                <div id="recent-transactions" class="col-lg-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">{!! __('monthlyReports.show_latest_monthly_reports') !!}</h4>
-                            <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                            <div class="heading-elements">
-                                <ul class="list-inline mb-0">
-                                    <li>
-                                        <button type="button"
-                                            class="btn btn-outline-primary btn-min-width mr-1 mr-1 mb-1  pull-right btn-line-height-small"
-                                            data-toggle="modal" data-target="#monthlyReportsEmployeesModal">
-                                            {!! __('monthlyReports.show_employees') !!}
-                                        </button>
-                                    </li>
-
-                                    <li>
-                                        <a class="btn btn-outline-secondary btn-min-width mr-1 mb-1  pull-right"
-                                            href="{!! route('dashboard.monthlyReports.index') !!}">
-                                            <i class="fa fa-link"></i>
-                                            {!! __('general.show_all') !!}
-                                        </a>
-                                    </li>
-                                </ul>
-
-                            </div>
-                        </div>
-                        <div class="card-content mt-2">
-                            <div class="table-responsive">
-                                <table class="table table-hover table-xl mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th>{!! __('monthlyReports.employee_id') !!}</th>
-                                            <th>{!! __('monthlyReports.date') !!}</th>
-                                            <th>{!! __('monthlyReports.file') !!}</th>
-                                            <th>{!! __('monthlyReports.status') !!}</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @forelse ($monthlyReports as $monthlyReport)
-                                            <tr>
-                                                <td> {!! $monthlyReport->employee->EmployeeShortName() !!}</td>
-                                                <td> {!! $monthlyReport->month !!} / {!! $monthlyReport->year !!} </td>
-                                                <td> @include('dashboard.employees.monthly-reports.parts.file') </td>
-                                                <td> @include('dashboard.employees.monthly-reports.parts.status') </td>
-                                            </tr>
-                                        @empty
-                                            <tr>
-                                                <td colspan="5" class="text-center">
-                                                    {!! __('monthlyReports.no_monthly_reports_found') !!}
-                                                </td>
-                                            </tr>
-                                        @endforelse
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+            <div class="tab-content" id="dashboardTabsContent">
+                <!-- Tab 1: Overview (Cards + Charts) -->
+                <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+                    @include('dashboard.home.tabs.overview')
                 </div>
-                <!-- end :monthly reports -->
 
+                <!-- Tab 2: Salary Analytics -->
+                <div class="tab-pane fade" id="salary-analytics" role="tabpanel" aria-labelledby="salary-analytics-tab">
+                    @include('dashboard.home.tabs.salary_analytics')
+                </div>
 
-
-                <!-- begin :daily reports -->
-                {{-- <div id="recent-transactions" class="col-lg-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">{!! __('dailyReports.show_latest_daily_reports') !!}</h4>
-                            <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                            <div class="heading-elements">
-                                <ul class="list-inline mb-0">
-                                    <li>
-                                        <a class="btn btn-outline-secondary btn-min-width mr-1 mb-1  pull-right"
-                                            href="{!! route('dashboard.dailyReports.index') !!}">
-                                            <i class="fa fa-link"></i>
-                                            {!! __('general.show_all') !!}
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card-content mt-2">
-                            <div class="table-responsive">
-                                <table class="table table-hover table-xl mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th>{!! __('dailyReports.employee_id') !!}</th>
-                                            <th>{!! __('dailyReports.date') !!}</th>
-                                            <th>{!! __('dailyReports.details') !!}</th>
-                                            <th>{!! __('dailyReports.file') !!}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @forelse ($dailyReports as $dailyReport)
-                                            <tr>
-                                                <td> {!! $dailyReport->employee->EmployeeShortName() !!}</td>
-                                                <td> {!! $dailyReport->date !!}</td>
-                                                <td> @include('dashboard.employees.daily-reports.parts.details')</td>
-                                                <td> @include('dashboard.employees.daily-reports.parts.file') </td>
-                                            </tr>
-                                        @empty
-                                            <tr>
-                                                <td colspan="5" class="text-center">
-                                                    {!! __('dailyReports.no_daily_reports_found') !!}
-                                                </td>
-                                            </tr>
-                                        @endforelse
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
-                <!-- end :daily reports -->
+                <!-- Tab 3: Monthly Reports -->
+                <div class="tab-pane fade" id="monthly-reports" role="tabpanel" aria-labelledby="monthly-reports-tab">
+                    @include('dashboard.home.tabs.monthly_reports')
+                </div>
             </div>
-
-
+            <!-- end: Custom Dashboard Tabs -->
 
         </div> <!-- end: content wrapper  -->
     </div><!-- end: content app  -->
+    >
 
     @include('dashboard.home.monthly-reports.modal')
 

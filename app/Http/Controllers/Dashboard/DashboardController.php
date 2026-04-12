@@ -141,16 +141,17 @@ class DashboardController extends Controller
                 $monthlyReport = $item->monthlyReports()->where('month', $month)->where('year', $year);
                 $item['full_name'] = $item->EmployeeFullName();
                 $item['month'] = $month . ' / ' . $year;
-                $item['report_status'] = $monthlyReport->exists() ? '<i class="la la-check text-success font-boder"><i>' : '<i class="la la-close text-danger font-boder"></i>';
+                $item['report_status'] = $monthlyReport->exists() 
+                    ? '<div class="badge badge-pill badge-glow d-inline-flex align-items-center bg-light-success text-success premium-status-badge"><i class="la la-check-circle mr-1 premium-status-icon"></i><span>' . __('monthlyReports.submitted') . '</span></div>' 
+                    : '<div class="badge badge-pill badge-glow d-inline-flex align-items-center bg-light-danger text-danger premium-status-badge"><i class="la la-times-circle mr-1 premium-status-icon"></i><span>' . __('monthlyReports.not_submitted') . '</span></div>';
 
                 if ($monthlyReport->first()) {
                     $output =
-                        '<a class="btn btn-outline-info"
-                         target="_blank" href="' .
+                        '<a class="btn btn-sm btn-icon text-primary border-0 shadow-none" target="_blank" href="' .
                         asset('uploads/monthlyReports/' . $monthlyReport->first()->file) .
-                        '"><i class="ft-download font-boder"></i></a>';
+                        '" title="' . __('general.download') . '"><i class="ft-download-cloud font-medium-3"></i></a>';
                 } else {
-                    $output = '<a href="#" class="btn btn-outline-danger"><i class="ft-x"></i></a>';
+                    $output = '<span class="btn btn-sm btn-icon text-muted border-0 shadow-none" title="' . __('general.no_file_found') . '"><i class="ft-slash font-medium-3"></i></span>';
                 }
 
                 $item['file'] = $output;

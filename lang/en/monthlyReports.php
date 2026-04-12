@@ -37,4 +37,6 @@ return [
 
 
     'no_monthly_reports_found' => 'No Monthly Reports Found !',
+    'submitted' => 'Submitted',
+    'not_submitted' => 'Not Submitted',
 ];
