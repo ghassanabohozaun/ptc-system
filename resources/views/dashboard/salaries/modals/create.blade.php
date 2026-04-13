@@ -31,11 +31,14 @@
 
                                 <!-- begin: input -->
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="month">{!! __('salaries.month') !!}</label>
-                                        <input type="month" id="month" name="month" class="form-control"
-                                            autocomplete="off" placeholder="{!! __('salaries.enter_month') !!}">
-                                        <span class="text text-danger">
+                                    <div class="form-group pb-1">
+                                        <label for="month" class="font-weight-bold text-dark">{!! __('salaries.month') !!}</label>
+                                        <div class="premium-input-wrapper">
+                                            <input type="text" id="month" name="month" class="form-control premium-input shadow-none ptc-monthpicker"
+                                                autocomplete="off" placeholder="{!! __('salaries.enter_month') !!}">
+                                            <i class="la la-calendar text-indigo"></i>
+                                        </div>
+                                        <span class="text text-danger small">
                                             <strong id="month_error"></strong>
                                         </span>
                                     </div>
@@ -44,11 +47,14 @@
 
                                 <!-- begin: input -->
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="release_date">{!! __('salaries.release_date') !!}</label>
-                                        <input type="date" id="release_date" name="release_date" class="form-control"
-                                            autocomplete="off" placeholder="{!! __('salaries.enter_release_date') !!}">
-                                        <span class="text text-danger">
+                                    <div class="form-group pb-1">
+                                        <label for="release_date" class="font-weight-bold text-dark">{!! __('salaries.release_date') !!}</label>
+                                        <div class="premium-input-wrapper">
+                                            <input type="text" id="release_date" name="release_date" class="form-control premium-input shadow-none ptc-datepicker"
+                                                autocomplete="off" placeholder="{!! __('salaries.enter_release_date') !!}">
+                                            <i class="la la-calendar-check text-indigo"></i>
+                                        </div>
+                                        <span class="text text-danger small">
                                             <strong id="release_date_error"></strong>
                                         </span>
                                     </div>
@@ -123,6 +129,9 @@
 
 @push('scripts')
     <script type="text/javascript">
+        // Initialization of date and month pickers is now handled globally via datepicker-initializer.js.
+        // No local initialization required here as standardized classes are auto-detected.
+
         // notes  summernote
         $('.notes_summernote').summernote({
             placeholder: '{!! __('general.write_here') !!}',

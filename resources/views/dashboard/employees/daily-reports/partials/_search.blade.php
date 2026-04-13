@@ -43,7 +43,7 @@
                     <div class="mb-3 text-left">
                         <label class="premium-label mb-2 font-weight-bold text-dark">{!! __('dailyReports.date') !!}</label>
                         <div class="premium-input-wrapper">
-                            <input type="date" name="date" class="form-control premium-input shadow-none">
+                            <input type="text" name="date" class="form-control premium-input shadow-none ptc-datepicker bg-white" placeholder="{!! __('general.select_from_list') !!}...">
                             <i class="la la-calendar"></i>
                         </div>
                     </div>
@@ -51,14 +51,14 @@
                     <div class="mb-3 text-left">
                         <label class="premium-label mb-1 font-weight-bold text-dark">{!! __('dailyReports.from_date') !!}</label>
                         <div class="premium-input-wrapper">
-                            <input type="date" name="from_date" class="form-control premium-input shadow-none">
+                            <input type="text" name="from_date" class="form-control premium-input shadow-none ptc-datepicker bg-white" placeholder="{!! __('general.select_from_list') !!}...">
                             <i class="la la-calendar"></i>
                         </div>
                     </div>
                     <div class="mb-3 text-left">
                         <label class="premium-label mb-1 font-weight-bold text-dark">{!! __('dailyReports.to_date') !!}</label>
                         <div class="premium-input-wrapper">
-                            <input type="date" name="to_date" class="form-control premium-input shadow-none">
+                            <input type="text" name="to_date" class="form-control premium-input shadow-none ptc-datepicker bg-white" placeholder="{!! __('general.select_from_list') !!}...">
                             <i class="la la-calendar"></i>
                         </div>
                     </div>

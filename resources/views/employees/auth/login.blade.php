@@ -5,7 +5,7 @@
 @endsection
 
 @push('style')
-    <link rel="stylesheet" href="{{ asset('assets/employees/css/login-modern.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/employees/css/login-modern.css') }}?v=branded">
 @endpush
 
 @section('content')

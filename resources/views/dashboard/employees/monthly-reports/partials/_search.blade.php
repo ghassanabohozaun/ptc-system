@@ -32,7 +32,7 @@
                 </div>
             </div>
 
-            <!-- Combined Month & Year Filter Popover -->
+            <!-- Unified Month & Year Filter Popover -->
             <div class="filter-item">
                 <div class="filter-chip js-filter-chip" data-filter-target="month_year_popover">
                     <i class="la la-calendar text-indigo"></i>
@@ -41,28 +41,16 @@
                 
                 <div class="ptc-query-panel shadow-lg border-0 premium-popover-panel min-w-300" id="month_year_popover">
                     <div class="mb-3 text-left">
-                        <label class="premium-label mb-2 font-weight-bold text-dark">{!! __('monthlyReports.month') !!}</label>
+                        <label class="premium-label mb-2 font-weight-bold text-dark">{!! __('monthlyReports.month') !!} / {!! __('monthlyReports.year') !!}</label>
                         <div class="premium-input-wrapper">
-                            <select name="month" class="form-control premium-input shadow-none">
-                                <option value="">{!! __('general.show_all') !!}</option>
-                                @for($m=1; $m<=12; $m++)
-                                    <option value="{{ sprintf('%02d', $m) }}">{{ sprintf('%02d', $m) }}</option>
-                                @endfor
-                            </select>
+                            {{-- Standardized PTC Month Picker --}}
+                            <input type="text" id="month_year_picker" class="form-control premium-input shadow-none ptc-monthpicker js-month-year-filter" 
+                                placeholder="{!! __('general.select_from_list') !!}..." autocomplete="off">
                             <i class="la la-calendar-check text-indigo"></i>
-                        </div>
-                    </div>
-                    <hr class="my-3">
-                    <div class="mb-3 text-left">
-                        <label class="premium-label mb-2 font-weight-bold text-dark">{!! __('monthlyReports.year') !!}</label>
-                        <div class="premium-input-wrapper">
-                            <select name="year" class="form-control premium-input shadow-none">
-                                <option value="">{!! __('general.show_all') !!}</option>
-                                @for($y=date('Y'); $y>=date('Y')-10; $y--)
-                                    <option value="{{ $y }}">{{ $y }}</option>
-                                @endfor
-                            </select>
-                            <i class="la la-calendar"></i>
+                            
+                            {{-- Hidden inputs for backend compatibility --}}
+                            <input type="hidden" name="month" id="filter_month" value="{{ request('month') }}">
+                            <input type="hidden" name="year" id="filter_year" value="{{ request('year') }}">
                         </div>
                     </div>
                     <div class="popover-actions mt-4 text-right">

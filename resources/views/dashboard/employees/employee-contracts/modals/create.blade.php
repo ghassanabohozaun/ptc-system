@@ -52,8 +52,8 @@
                             <div class="premium-form-group">
                                 <label class="premium-label font-weight-bold text-dark" for="contract_start_date">{!! __('employeeContracts.contract_start_date') !!}</label>
                                 <div class="premium-input-wrapper">
-                                    <input type="date" id="contract_start_date" name="contract_start_date" class="form-control premium-input shadow-none"
-                                        autocomplete="off">
+                                    <input type="text" id="contract_start_date" name="contract_start_date" class="form-control premium-input shadow-none ptc-datepicker"
+                                        autocomplete="off" placeholder="YYYY-MM-DD">
                                     <i class="la la-calendar text-indigo"></i>
                                 </div>
                                 <span class="text text-danger small"><strong id="contract_start_date_error"></strong></span>
@@ -65,8 +65,8 @@
                             <div class="premium-form-group">
                                 <label class="premium-label font-weight-bold text-dark" for="contract_expiry_date">{!! __('employeeContracts.contract_expiry_date') !!}</label>
                                 <div class="premium-input-wrapper">
-                                    <input type="date" id="contract_expiry_date" name="contract_expiry_date" class="form-control premium-input shadow-none"
-                                        autocomplete="off">
+                                    <input type="text" id="contract_expiry_date" name="contract_expiry_date" class="form-control premium-input shadow-none ptc-datepicker"
+                                        autocomplete="off" placeholder="YYYY-MM-DD">
                                     <i class="la la-calendar-times text-indigo"></i>
                                 </div>
                                 <span class="text text-danger small"><strong id="contract_expiry_date_error"></strong></span>
@@ -112,6 +112,10 @@
         $(document).ready(function() {
             // Re-initialize Select2 when modal is shown to avoid focus/z-index issues
             $('#createEmployeeContractModal').on('shown.bs.modal', function() {
+                var isRtl = $('html').attr('dir') === 'rtl' || '{!! Lang() !!}' === 'ar';
+
+
+
                 var employeePath = "{{ route('dashboard.employees.autocomplete.employee') }}";
                 $(".employee_contract_employee_id_select").select2({
                     dropdownParent: $('#createEmployeeContractModal'),

@@ -6,51 +6,52 @@
 <meta name="author" content="PIXINVENT">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <title>{!! __('dashboard.dashboard') !!} | @yield('title')</title>
+
 <link rel="apple-touch-icon" href="{!! asset('uploads/settings/' . setting()->favicon) !!}">
 <link rel="shortcut icon" type="image/x-icon" href="{!! asset('uploads/settings/' . setting()->favicon) !!}">
 <link href="{!! asset('assets/dashbaord/fonts/google/font.css') !!}" rel="stylesheet">
 
 <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/fonts/line-awesome/css/line-awesome.min.css') !!}">
+<link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/vendors/fontawesome/css/all.min.css') !!}">
 
 <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/vendors/css/weather-icons/climacons.min.css') !!}">
 <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/fonts/meteocons/style.css') !!}">
 <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/vendors/css/charts/morris.css') !!}">
 <link rel="stylesheet" type="text/css" href="{!! asset(path: 'assets/dashbaord/fonts/simple-line-icons/style.css') !!}">
-<link rel="stylesheet" href="{!! asset('vendor/flasher/flasher.min.css') !!}" rel="stylesheet">
+<link rel="stylesheet" href="{!! asset('vendor/flasher/flasher.min.css') !!}">
 <link href="{!! asset('vendor/summernote/summernote-bs4.css') !!}" rel="stylesheet">
 
-
-{{-- file input --}}
-<link rel="stylesheet" href="{!! asset(path: 'vendor/fileInput/css/fileinput.min.css') !!}">
-<link rel="stylesheet" href="{!! asset('assets/dashbaord/vendors/fontawesome/css/all.min.css') !!}">
+<!-- BEGIN: Dashboard Core CSS -->
+<!-- Vendor Assets (Load first to allow overrides) -->
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/dashbaord/css/select2.min.css') }}">
+<link rel="stylesheet"
+    href="{{ asset('assets/dashbaord/vendors/css/pickers/bootstrap-datepicker/bootstrap-datepicker.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/dashbaord/css/filter.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/dashbaord/css/ajax-table.css') }}">
+<link rel="stylesheet" href="{!! asset('vendor/fileInput/css/fileinput.min.css') !!}">
 
 @if (Config::get('app.locale') == 'ar')
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css-rtl/vendors.css') !!}">
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css-rtl/app.css') !!}">
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css-rtl/custom-rtl.css') !!}">
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css-rtl/core/menu/menu-types/vertical-menu-modern.css') !!}">
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css-rtl/core/colors/palette-gradient.css') !!}">
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css-rtl/core/colors/palette-gradient.css') !!}">
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css-rtl/pages/timeline.css') !!}">
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css-rtl/pages/dashboard-ecommerce.css') !!}">
-    <link rel="stylesheet" href="{!! asset('assets/dashbaord/css-rtl/child-wizard.css') !!}" rel="stylesheet">
-    {{-- Local Tajawal already in font.css --}}
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/vendors/css/forms/selects/select2.min.css') !!}">
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/filter.css') !!}">
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css-rtl/my-style.css') . '?v=1.1.1' !!}">
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css-rtl/sidebar-navy-rtl.css') !!}">
-@else
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/vendors.css') !!}">
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/app.css') !!}">
+    <link rel="stylesheet" href="{!! asset('vendor/fileInput/css/fileinput-rtl.min.css') !!}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashbaord/css-rtl/vendors.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashbaord/css-rtl/app.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashbaord/css-rtl/custom-rtl.css') }}">
     <link rel="stylesheet" type="text/css"
-        href="{!! asset('assets/dashbaord') !!}/css/core/menu/menu-types/vertical-menu-modern.css">
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/core/colors/palette-gradient.css') !!}">
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/core/colors/palette-gradient.css') !!}">
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/pages/timeline.css') !!}">
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/pages/dashboard-ecommerce.css') !!}">
-    <link rel="stylesheet" href="{!! asset('assets/dashbaord/css/child-wizard.css') !!}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/vendors/css/forms/selects/select2.min.css') !!}">
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/filter.css') !!}">
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/my-style.css') . '?v=1.1.1' !!}">
-    <link rel="stylesheet" type="text/css" href="{!! asset('assets/dashbaord/css/sidebar-navy.css') !!}">
+        href="{{ asset('assets/dashbaord/css-rtl/core/menu/menu-types/vertical-menu-modern.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('assets/dashbaord/css-rtl/core/colors/palette-gradient.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('assets/dashbaord/css-rtl/sidebar-navy-rtl.css') }}?v={{ time() }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('assets/dashbaord/css-rtl/my-style.css') }}?v={{ time() }}">
+@else
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashbaord/css/vendors.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashbaord/css/app.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('assets/dashbaord/css/core/menu/menu-types/vertical-menu-modern.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashbaord/css/core/colors/palette-gradient.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('assets/dashbaord/css/sidebar-navy.css') }}?v={{ time() }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('assets/dashbaord/css/my-style.css') }}?v={{ time() }}">
 @endif
+<!-- END: Core CSS -->

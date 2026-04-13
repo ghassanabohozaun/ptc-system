@@ -1,5 +1,18 @@
-// Global Delete Handler using SweetAlert
+// Global Select2 and UI Initializers
 $(document).ready(function () {
+    // 1. Select2 Global Defaults (Integrated from datepicker-initializer)
+    if (typeof $.fn.select2 !== 'undefined') {
+        const isRtl = $('html').attr('dir') === 'rtl' || $('html').attr('data-textdirection') === 'rtl';
+        $.fn.select2.defaults.set("dir", isRtl ? "rtl" : "ltr");
+        $.fn.select2.defaults.set("width", "100%");
+        
+        // Apply Arabic translations if available via the bridge
+        if (isRtl && typeof window.PTC_I18N !== 'undefined' && window.PTC_I18N.select2) {
+            $.fn.select2.defaults.set("language", window.PTC_I18N.select2);
+        }
+    }
+
+    // 2. General Delete Button Click Handler (Existing Logic)
     // General Delete Button Click Handler
     $("body").on("click", ".delete-confirm", function (e) {
         e.preventDefault();

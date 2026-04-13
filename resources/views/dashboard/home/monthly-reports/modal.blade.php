@@ -22,8 +22,11 @@
                 {{-- Search Filter Bar --}}
                 <div class="row align-items-center mb-3">
                     <div class="col-md-8 col-12 mb-2 mb-md-0">
-                        <input type="month" id="month" name="month" class="form-control"
-                            placeholder="{!! __('monthlyReports.enter_month') !!}">
+                        <div class="premium-input-wrapper">
+                            <input type="text" id="month" name="month" class="form-control premium-input shadow-none ptc-monthpicker"
+                                placeholder="{!! __('monthlyReports.enter_month') !!}" autocomplete="off">
+                            <i class="la la-calendar text-indigo"></i>
+                        </div>
                     </div>
                     <div class="col-md-4 col-12 text-md-right">
                         <button type="button" class="btn btn-outline-primary mr-1"
@@ -54,6 +57,10 @@
 @push('scripts')
     <script type="text/javascript">
         $(document).ready(function() {
+            var isRtl = $('html').attr('dir') === 'rtl' || '{!! Lang() !!}' === 'ar';
+
+            // Initialization of the month picker is now handled globally via datepicker-initializer.js.
+            // No local initialization required here.
 
             function fetch_data() {
                 var month = $('#month').val();

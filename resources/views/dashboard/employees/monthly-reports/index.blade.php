@@ -1,8 +1,6 @@
 @extends('layouts.dashboard.app')
 
-@push('style')
     <link rel="stylesheet" href="{{ asset('assets/dashbaord/css/ajax-table.css') }}">
-@endpush
 
 @section('title')
     {!! $title !!}
@@ -72,6 +70,10 @@
 
 
 @push('scripts')
+    <!-- Select2 -->
+    <script src="{{ asset('assets/dashbaord/vendors/js/forms/select/select2.full.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/dashbaord/js/scripts/forms/select/form-select2.js') }}" type="text/javascript"></script>
+
     <script src="{{ asset('assets/dashbaord/js/ajax-table.js') }}"></script>
     <script>
         $(document).ready(function() {

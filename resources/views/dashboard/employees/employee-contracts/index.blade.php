@@ -32,8 +32,8 @@
                 <!-- begin: content header right-->
                 <div class="content-header-right col-md-6 col-12">
                     <div class="float-md-right mb-1">
-                        <button type="button" class="btn btn-premium-add shadow-pulse premium-btn-standard" data-toggle="modal"
-                            data-target="#createEmployeeContractModal">
+                        <button type="button" class="btn btn-premium-add shadow-pulse premium-btn-standard"
+                            data-toggle="modal" data-target="#createEmployeeContractModal">
                             <i class="la la-plus-circle mr-1"></i>
                             {!! __('employeeContracts.create_new_contract') !!}
                         </button>
@@ -44,7 +44,7 @@
             <!-- begin: content body -->
             <div class="content-body">
                 @include('dashboard.employees.employee-contracts.partials._search')
-                
+
                 <section id="basic-form-layouts">
                     <div class="row match-height">
                         <div class="col-md-12">
@@ -52,9 +52,10 @@
                                 <!-- begin: card header -->
                                 <div class="card-header border-0 pb-0">
                                     <h4 class="card-title text-dark font-weight-bold d-flex align-items-center">
-                                        <i class="la la-file-text text-primary mr-2 font-24"></i> 
+                                        <i class="la la-file-text text-primary mr-2 font-24"></i>
                                         {!! __('employeeContracts.employee_contracts') !!}
-                                        <span class="badge badge-primary badge-pill badge-glow ml-2 font-11">{!! $employeeContracts->total() !!}</span>
+                                        <span
+                                            class="badge badge-primary badge-pill badge-glow ml-2 font-11">{!! $employeeContracts->total() !!}</span>
                                     </h4>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
@@ -74,9 +75,12 @@
                                                 <span class="premium-loader"></span>
                                             </div>
                                             <div id="table_data">
-                                                @include('dashboard.employees.employee-contracts.partials._table', [
-                                                    'employeeContracts' => $employeeContracts,
-                                                ])
+                                                @include(
+                                                    'dashboard.employees.employee-contracts.partials._table',
+                                                    [
+                                                        'employeeContracts' => $employeeContracts,
+                                                    ]
+                                                )
                                             </div>
                                         </div>
                                     </div>
@@ -100,6 +104,7 @@
     <script src="{{ asset('assets/dashbaord/js/ajax-table.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
+
             // Initialize Standard AJAX Table
             if (typeof initIndexTable === "function") {
                 initIndexTable({
@@ -112,7 +117,9 @@
             window.fetch_data = function(page = null) {
                 const urlParams = new URLSearchParams(window.location.search);
                 const currentPage = page || urlParams.get('page') || 1;
-                $('.js-filter-form').trigger('submit', { page: currentPage });
+                $('.js-filter-form').trigger('submit', {
+                    page: currentPage
+                });
             };
         });
     </script>

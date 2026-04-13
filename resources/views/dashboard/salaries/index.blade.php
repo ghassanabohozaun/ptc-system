@@ -93,6 +93,7 @@
     @include('dashboard.salaries.modals.edit')
     @include('dashboard.salaries.modals.details')
 @endsection
+
 @push('scripts')
     <script src="{{ asset('assets/dashbaord/js/ajax-table.js') }}"></script>
     <script src="{!! asset('assets/dashbaord/js/filter-system.js') !!}"></script>

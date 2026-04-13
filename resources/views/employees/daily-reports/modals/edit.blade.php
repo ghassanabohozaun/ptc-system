@@ -47,17 +47,20 @@
 
                             <!-- begin: row -->
                             <div class="row">
-
                                 <!-- begin: input -->
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="date">{!! __('dailyReports.date') !!}</label>
-                                        <input type="date" id="date_edit" name="date" readonly
-                                            style="background-color: rgb(228, 225, 225)" value="{!! old('date') !!}"
-                                            class="form-control" autocomplete="off"
-                                            placeholder="{!! __('dailyReports.enter_date') !!}">
-                                        <span class="text text-danger" id="date_error_edit">
-                                        </span>
+                                <div class="col-md-12 mb-3">
+                                    <div class="premium-form-group">
+                                        <label
+                                            class="premium-label font-weight-bold text-dark">{!! __('dailyReports.date') !!}</label>
+                                        <div class="premium-input-wrapper">
+                                            <input type="date" id="date_edit" name="date" readonly
+                                                style="background-color: #f8fafc" value="{!! old('date') !!}"
+                                                class="form-control premium-input shadow-none" autocomplete="off"
+                                                placeholder="{!! __('dailyReports.enter_date') !!}">
+                                            <i class="la la-calendar text-indigo"></i>
+                                        </div>
+                                        <span class="text text-danger small"><strong
+                                                id="date_error_edit"></strong></span>
                                     </div>
                                 </div>
                                 <!-- end: input -->
@@ -68,13 +71,14 @@
                             <!-- begin: row  -->
                             <div class="row">
                                 <!-- begin: input details-->
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="details">{!! __('dailyReports.details') !!}</label>
-                                        <textarea type="text" rows="12" id="details_edit" name="details" class="form-control details_summernote_edit"
+                                <div class="col-md-12 mb-3">
+                                    <div class="premium-form-group">
+                                        <label
+                                            class="premium-label font-weight-bold text-dark">{!! __('dailyReports.details') !!}</label>
+                                        <textarea id="details_edit" name="details" class="form-control premium-input shadow-none details_summernote_edit"
                                             placeholder="{!! __('dailyReports.enter_details') !!}"></textarea>
-                                        <span class="text text-danger" id="details_error_edit">
-                                        </span>
+                                        <span class="text text-danger small"><strong
+                                                id="details_error_edit"></strong></span>
                                     </div>
                                 </div>
                                 <!-- end: input -->
@@ -85,12 +89,17 @@
                             <div class="row">
                                 <!-- begin: input -->
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="file">{!! __('dailyReports.file') !!}</label>
-                                        <input type="file" id="file_edit" name="file" class="form-control"
-                                            autocomplete="off" placeholder="{!! __('dailyReports.enter_file') !!}">
-                                        <span class="text text-danger" id="file_error_edit">
-                                        </span>
+                                    <div class="premium-form-group">
+                                        <label
+                                            class="premium-label font-weight-bold text-dark">{!! __('dailyReports.file') !!}</label>
+                                        <div class="premium-input-wrapper">
+                                            <input type="file" id="file_edit" name="file"
+                                                class="form-control premium-input shadow-none" autocomplete="off"
+                                                placeholder="{!! __('dailyReports.enter_file') !!}">
+                                            <i class="la la-cloud-upload text-indigo"></i>
+                                        </div>
+                                        <span class="text text-danger small"><strong
+                                                id="file_error_edit"></strong></span>
                                     </div>
                                 </div>
                                 <!-- end: input -->
@@ -246,6 +255,3 @@
         });
     </script>
 @endpush
-
-
-

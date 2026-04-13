@@ -94,7 +94,7 @@ html, body {
 
 /* 1. Visual Content (Visible only on Desktop) */
 .welcome-side {
-    background: url('../images/login-premium.png') no-repeat center center;
+    background: url('../images/login-premium.png?v=branded') no-repeat center center;
     background-size: cover;
     flex: 1;
     display: none; /* Hidden on mobile */
@@ -402,7 +402,7 @@ html, body {
 
 @media (max-width: 991px) {
     .login-main-wrapper {
-        background: url('../images/login-premium.png') no-repeat center center;
+        background: url('../images/login-premium.png?v=branded') no-repeat center center;
         background-size: cover;
     }
 

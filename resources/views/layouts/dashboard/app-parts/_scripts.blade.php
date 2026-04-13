@@ -1,5 +1,16 @@
-    <!-- BEGIN VENDOR JS-->
     <script src="{!! asset('assets/dashbaord') !!}/vendors/js/vendors.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        // PTC Select2 I18N Bridge - Defined early for global access
+        window.PTC_I18N = {
+            select2: {
+                searching: function() { return "{{ __('general.searching') }}"; },
+                noResults: function() { return "{{ __('general.noResults2') }}"; },
+                errorLoading: function() { return "{{ __('general.errorLoading') }}"; },
+                inputTooShort: function(args) { return "{{ __('general.inputTooShort') }}"; },
+                inputTooLong: function(args) { return "{{ __('general.inputTooLong') }}"; }
+            }
+        };
+    </script>
     <script src="{!! asset('assets/dashbaord') !!}/vendors/js/extensions/sweetalert.min.js" type="text/javascript"></script>
 
     <!-- BEGIN PAGE VENDOR JS-->
@@ -13,16 +24,19 @@
     <script src="{!! asset('assets/dashbaord') !!}/js/core/app.js" type="text/javascript"></script>
     <script src="{!! asset('assets/dashbaord') !!}/js/scripts/customizer.js" type="text/javascript"></script>
     <!-- END MODERN JS-->
-    <!-- BEGIN PAGE LEVEL JS-->
-    {{-- <script src="{!! asset('assets/dashbaord/js/scripts/pages/dashboard-ecommerce.js') !!}" type="text/javascript"></script> --}}
-    {{-- <script src="{!! asset('assets/dashbaord') !!}/js/scripts/sweetalert2@11.js" type="text/javascript"></script> --}}
 
     <!-- BEGIN PAGE LEVEL JS-->
     <script src="{!! asset('assets/dashbaord') !!}/js/scripts/extensions/sweet-alerts.js" type="text/javascript"></script>
     <script src="{!! asset('assets/dashbaord') !!}/js/scripts/my-scripts.js" type="text/javascript"></script>
     <script src="{!! asset('vendor/flasher/flasher.min.js') !!}" type="text/javascript"></script>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
     <script src="{!! asset('vendor/summernote/summernote.js') !!}"></script>
+
+    <!-- Bootstrap Datepicker JS [NEW SYSTEM STANDARD] -->
+    <script src="{{ asset('assets/dashbaord/vendors/js/pickers/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+    @if (Lang() == 'ar')
+    <script src="{{ asset('assets/dashbaord/vendors/js/pickers/bootstrap-datepicker/locales/bootstrap-datepicker.ar.min.js') }}"></script>
+    @endif
+    <script src="{{ asset('assets/dashbaord/js/datepicker-initializer.js') }}?v={{ time() }}"></script>
 
 
     {{--  file input --}}
@@ -42,3 +56,4 @@
             }
         });
     </script>
+

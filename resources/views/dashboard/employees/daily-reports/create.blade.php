@@ -105,9 +105,9 @@
                                                                 {!! __('dailyReports.date') !!}
                                                             </label>
                                                             <div class="premium-input-wrapper">
-                                                                <input type="date" id="date" name="date"
+                                                                <input type="text" id="date" name="date"
                                                                     value="{!! old('date') !!}"
-                                                                    class="form-control premium-input shadow-none"
+                                                                    class="form-control premium-input shadow-none ptc-datepicker bg-white"
                                                                     autocomplete="off">
                                                                 <i class="la la-calendar text-primary"></i>
                                                             </div>
@@ -135,14 +135,14 @@
                                                 <div class="row mt-2">
                                                     <div class="col-md-12">
                                                         <div class="premium-form-group">
-                                                            <label class="premium-label" for="file">
+                                                            <label class="premium-label font-weight-bold text-dark" for="file">
                                                                 {!! __('dailyReports.file') !!}
                                                             </label>
-                                                            <div class="custom-file shadow-sm">
+                                                            <div class="premium-input-wrapper">
                                                                 <input type="file" id="file" name="file"
-                                                                    class="custom-file-input">
-                                                                <label class="custom-file-label text-left"
-                                                                    for="file">{!! __('dailyReports.enter_file') !!}</label>
+                                                                    class="form-control premium-input shadow-none"
+                                                                    placeholder="{!! __('dailyReports.enter_file') !!}">
+                                                                <i class="la la-cloud-upload text-indigo"></i>
                                                             </div>
                                                             <span class="text-danger small mt-1 d-block font-weight-bold"
                                                                 id="file_error"></span>
