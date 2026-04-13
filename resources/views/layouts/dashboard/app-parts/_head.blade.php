@@ -28,17 +28,17 @@
     href="{{ asset('assets/dashbaord/vendors/css/pickers/bootstrap-datepicker/bootstrap-datepicker.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashbaord/css/filter.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashbaord/css/ajax-table.css') }}">
-<link rel="stylesheet" href="{!! asset('vendor/fileInput/css/fileinput.min.css') !!}">
+<link rel="stylesheet" href="{!! asset('vendor/fileInput/css/fileinput.min.css') !!}?v={{ time() }}">
 
 @if (Config::get('app.locale') == 'ar')
-    <link rel="stylesheet" href="{!! asset('vendor/fileInput/css/fileinput-rtl.min.css') !!}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashbaord/css-rtl/vendors.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashbaord/css-rtl/app.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashbaord/css-rtl/custom-rtl.css') }}">
+    <link rel="stylesheet" href="{!! asset('vendor/fileInput/css/fileinput-rtl.min.css') !!}?v={{ time() }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashbaord/css-rtl/vendors.css') }}?v={{ time() }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashbaord/css-rtl/app.css') }}?v={{ time() }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashbaord/css-rtl/custom-rtl.css') }}?v={{ time() }}">
     <link rel="stylesheet" type="text/css"
-        href="{{ asset('assets/dashbaord/css-rtl/core/menu/menu-types/vertical-menu-modern.css') }}">
+        href="{{ asset('assets/dashbaord/css-rtl/core/menu/menu-types/vertical-menu-modern.css') }}?v={{ time() }}">
     <link rel="stylesheet" type="text/css"
-        href="{{ asset('assets/dashbaord/css-rtl/core/colors/palette-gradient.css') }}">
+        href="{{ asset('assets/dashbaord/css-rtl/core/colors/palette-gradient.css') }}?v={{ time() }}">
     <link rel="stylesheet" type="text/css"
         href="{{ asset('assets/dashbaord/css-rtl/sidebar-navy-rtl.css') }}?v={{ time() }}">
     <link rel="stylesheet" type="text/css"
@@ -47,8 +47,11 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashbaord/css/vendors.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashbaord/css/app.css') }}">
     <link rel="stylesheet" type="text/css"
-        href="{{ asset('assets/dashbaord/css/core/menu/menu-types/vertical-menu-modern.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashbaord/css/core/colors/palette-gradient.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashbaord/css/vendors.css') }}?v={{ time() }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashbaord/css/app.css') }}?v={{ time() }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('assets/dashbaord/css/core/menu/menu-types/vertical-menu-modern.css') }}?v={{ time() }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashbaord/css/core/colors/palette-gradient.css') }}?v={{ time() }}">
     <link rel="stylesheet" type="text/css"
         href="{{ asset('assets/dashbaord/css/sidebar-navy.css') }}?v={{ time() }}">
     <link rel="stylesheet" type="text/css"
