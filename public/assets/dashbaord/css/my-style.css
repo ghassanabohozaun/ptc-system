@@ -1873,6 +1873,64 @@ input.premium-input[type="file"]:hover::file-selector-button {
     width: 100% !important;
 }
 
+/* ==========================================================================
+   PREMIUM SELECT FIX (STABLE - LTR)
+   ========================================================================== */
+select.premium-input {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236366f1' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 1.2rem center !important;
+    background-size: 1.1rem !important;
+    padding-right: 3rem !important;
+    padding-left: 1.25rem !important;
+    display: block !important;
+    width: 100% !important;
+}
+
+/* Readonly Styling (LTR) */
+.premium-readonly-wrapper {
+    background: #f8fafc !important;
+    border-color: #f1f5f9 !important;
+    color: #475569 !important;
+}
+
+.premium-readonly-text {
+    font-weight: 700 !important;
+    color: #1e293b !important;
+    font-size: 1rem !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.modal-footer .btn + .btn {
+    margin-left: 12px !important;
+}
+
+/* Premium Badge Pill Refinement (LTR) */
+.premium-badge-pill-md {
+    font-size: 0.85rem !important;
+    font-weight: 800 !important;
+    padding: 0.45rem 0.8rem !important;
+    background: #6366f1 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;
+    border: none !important;
+    line-height: 1 !important;
+    min-width: 28px !important;
+    text-align: center !important;
+    margin-left: 10px !important;
+}
+
+.filter-chip.active .premium-badge-pill-md {
+    background: #ffffff !important;
+    color: #6366f1 !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
 select.premium-input::-ms-expand {
     display: none !important;
 }
@@ -2990,6 +3048,14 @@ html:not([data-textdirection="rtl"]) .premium-input-wrapper .premium-input {
 .datepicker .datepicker-switch:hover, .datepicker .next:hover, .datepicker .prev:hover, .datepicker tfoot tr th:hover {
     background: #f0f1ff !important;
     color: #666ee8 !important;
+}
+.datepicker .date.premium-readonly-text {
+    font-weight: 700 !important;
+    color: #1e293b !important;
+    font-size: 1rem !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
 }
 .datepicker .datepicker-switch {
     font-weight: 700 !important;

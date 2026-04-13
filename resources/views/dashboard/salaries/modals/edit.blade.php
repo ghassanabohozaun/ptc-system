@@ -5,13 +5,13 @@
         <form class="form" action="" method="POST" enctype="multipart/form-data" id='update_salary_form'>
             @csrf
             @method('PUT')
-            <div class="modal-content">
-
+            <div class="modal-content shadow-lg border-0 premium-modal-content-styled">
                 <!--begin::modal header-->
-                <div class="modal-header">
-                    <h5 class="modal-title" id="updateSalaryModalLabel">{!! __('salaries.update_salary') !!}
+                <div class="modal-header border-0 pb-0 pt-2 px-2 d-flex justify-content-between align-items-center">
+                    <h5 class="modal-title font-weight-bold text-dark ml-1 mt-1" id="updateSalaryModalLabel">
+                        <i class="la la-money-bill-wave text-indigo mr-1"></i> {!! __('salaries.update_salary') !!}
                     </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close premium-close premium-close-button border-0 shadow-sm" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
@@ -39,67 +39,58 @@
                             <!-- begin: row -->
                             <div class="row">
 
-                                <!-- begin: input -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="month_edit">{!! __('salaries.month') !!}</label>
-                                        <input type="month" id="month_edit" name="month" readonly
-                                            style="background-color: rgb(228, 225, 225)" class="form-control">
+                                <!-- Month -->
+                                <div class="col-md-6 mb-3">
+                                    <div class="premium-form-group">
+                                        <label class="premium-label font-weight-bold text-dark">{!! __('salaries.month') !!}</label>
+                                        <div class="premium-input-wrapper shadow-none premium-readonly-wrapper">
+                                            <input type="month" id="month_edit" name="month" readonly class="premium-input bg-transparent border-0 font-weight-bold">
+                                            <i class="la la-calendar-alt"></i>
+                                        </div>
                                     </div>
                                 </div>
-                                <!-- end: input -->
 
-
-                                <!-- begin: input -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="release_date_edit">{!! __('salaries.release_date') !!}</label>
-                                        <input type="date" id="release_date_edit" name="release_date"
-                                            class="form-control" autocomplete="off"
-                                            placeholder="{!! __('salaries.enter_release_date') !!}">
-                                        <span class="text text-danger">
-                                            <strong id="release_date_error_edit"></strong>
-                                        </span>
+                                <!-- Release Date -->
+                                <div class="col-md-6 mb-3">
+                                    <div class="premium-form-group">
+                                        <label class="premium-label font-weight-bold text-dark">{!! __('salaries.release_date') !!}</label>
+                                        <div class="premium-input-wrapper">
+                                            <input type="text" id="release_date_edit" name="release_date"
+                                                class="form-control premium-input shadow-none js-datepicker" autocomplete="off"
+                                                placeholder="{!! __('salaries.enter_release_date') !!}">
+                                            <i class="la la-calendar-check"></i>
+                                        </div>
+                                        <span class="text text-danger small"><strong id="release_date_error_edit"></strong></span>
                                     </div>
                                 </div>
-                                <!-- end: input -->
                             </div>
-                            <!-- end: row -->
 
-
-                            <!-- begin: row -->
+                            <!-- Details -->
                             <div class="row">
-                                <!-- begin: input -->
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="details_edit">{!! __('salaries.details') !!}</label>
-                                        <textarea rows="5" id="details_edit" name="details" class="form-control" autocomplete="off"
-                                            placeholder="{!! __('salaries.enter_details') !!}"></textarea>
-                                        <span class="text text-danger">
-                                            <strong id="details_error_edit"></strong>
-                                        </span>
+                                <div class="col-md-12 mb-3">
+                                    <div class="premium-form-group">
+                                        <label class="premium-label font-weight-bold text-dark">{!! __('salaries.details') !!}</label>
+                                        <div class="premium-input-wrapper align-items-start pt-2">
+                                            <textarea rows="3" id="details_edit" name="details" class="form-control premium-input shadow-none premium-textarea-md border-0" 
+                                                placeholder="{!! __('salaries.enter_details') !!}"></textarea>
+                                            <i class="la la-file-alt mt-2"></i>
+                                        </div>
+                                        <span class="text text-danger small"><strong id="details_error_edit"></strong></span>
                                     </div>
                                 </div>
-                                <!-- end: input -->
-
                             </div>
-                            <!-- end: row -->
 
-                            <!-- begin: row -->
+                            <!-- Notes -->
                             <div class="row">
-                                <!-- begin: input -->
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="notes_edit">{!! __('salaries.notes') !!}</label>
-                                        <textarea rows="5" id="notes_edit" name="notes" class="form-control notes_summernote_edit" autocomplete="off"
-                                            placeholder="{!! __('salaries.enter_notes') !!}"></textarea>
-                                        <span class="text text-danger">
-                                            <strong id="notes_error_edit"></strong>
-                                        </span>
+                                <div class="col-md-12 mb-3">
+                                    <div class="premium-form-group">
+                                        <label class="premium-label font-weight-bold text-dark">{!! __('salaries.notes') !!}</label>
+                                        <div class="premium-summernote-wrapper">
+                                            <textarea id="notes_edit" name="notes" class="form-control notes_summernote_edit"></textarea>
+                                        </div>
+                                        <span class="text text-danger small"><strong id="notes_error_edit"></strong></span>
                                     </div>
                                 </div>
-                                <!-- end: input -->
-
                             </div>
                             <!-- end: row -->
 
@@ -110,16 +101,14 @@
                 <!--end::modal body-->
 
                 <!--begin::modal footer-->
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-info font-weight-bold ">
-                        {{ __('general.save') }}
-                        <i class="ft-refresh-cw spinner spinner_loading d-none">
-                        </i>
+                <div class="modal-footer border-0 pt-0 pb-2">
+                    <button type="button" id="cancel_salary_btn_edit" class="btn btn-light-dark px-3 font-weight-bold" data-dismiss="modal">
+                        <i class="la la-times mr-1"></i> {{ __('general.cancel') }}
                     </button>
 
-                    <button type="button" id="cancel_salary_btn_edit" class="btn btn-light-dark font-weight-bold"
-                        data-dismiss="modal">
-                        {{ __('general.cancel') }}
+                    <button type="submit" class="btn btn-premium-add px-4 font-weight-bold ">
+                        <i class="la la-save mr-1"></i> {{ __('general.save') }}
+                        <i class="la la-refresh la-spin spinner_loading d-none ml-1"></i>
                     </button>
                 </div>
                 <!--end::modal footer-->
@@ -151,6 +140,16 @@
             $('#release_date_edit').val(salary_release_date);
             $('#details_edit').val(salary_details);
             $('.notes_summernote_edit').summernote('code', salary_notes);
+
+            // Re-init datepicker for the dynamic field
+            if (typeof $.fn.datepicker === "function") {
+                $('.js-datepicker').datepicker({
+                    format: 'yyyy-mm-dd',
+                    autoclose: true,
+                    todayHighlight: true,
+                    rtl: $('html').attr('data-textdirection') === 'rtl'
+                });
+            }
 
             $('#updateSalaryModal').modal('show');
         })

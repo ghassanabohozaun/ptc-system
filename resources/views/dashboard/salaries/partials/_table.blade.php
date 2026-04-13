@@ -5,12 +5,16 @@
                 <th class="text-center d-lg-none align-middle py-3 border-top-0">#</th>
                 <th class="text-center d-none d-lg-table-cell align-middle py-3 border-top-0">#</th>
                 <th class="text-center align-middle py-3 border-top-0">{!! __('salaries.month') !!}</th>
-                <th class="text-center d-none d-lg-table-cell align-middle py-3 border-top-0">{!! __('salaries.admin_id') !!}</th>
+                <th class="text-center d-none d-lg-table-cell align-middle py-3 border-top-0">{!! __('salaries.admin_id') !!}
+                </th>
                 <th class="text-center align-middle py-3 border-top-0">{!! __('salaries.salaries_count') !!}</th>
                 <th class="text-center align-middle py-3 border-top-0">{!! __('salaries.salaries_sum') !!}</th>
-                <th class="text-center d-none d-lg-table-cell align-middle py-3 border-top-0">{!! __('salaries.approved_status') !!}</th>
-                <th class="text-center d-none d-lg-table-cell align-middle py-3 border-top-0">{!! __('salaries.status') !!}</th>
-                <th class="text-center d-none d-lg-table-cell align-middle py-3 border-top-0">{!! __('salaries.manage_status') !!}</th>
+                <th class="text-center d-none d-lg-table-cell align-middle py-3 border-top-0">{!! __('salaries.approved_status') !!}
+                </th>
+                <th class="text-center d-none d-lg-table-cell align-middle py-3 border-top-0">{!! __('salaries.status') !!}
+                </th>
+                <th class="text-center d-none d-lg-table-cell align-middle py-3 border-top-0">{!! __('salaries.manage_status') !!}
+                </th>
                 <th class="text-center align-middle py-3 border-top-0">{!! __('general.actions') !!}</th>
             </tr>
         </thead>
@@ -32,11 +36,11 @@
                                             <i class="la la-money-bill-wave" style="font-size: 40px;"></i>
                                         </div>
                                     </div>
-                                    <h4 class="modal-name-title font-weight-bold">{{ __('salaries.' . $salary->month) }} /
+                                    <h4 class="modal-name-title font-weight-bold">{{ __('salaries.' . $salary->month) }}
+                                        /
                                         {{ $salary->year }}
                                     </h4>
-                                    <span
-                                        class="modal-role-badge text-muted small">{!! __('salaries.salaries') !!}</span>
+                                    <span class="modal-role-badge text-muted small">{!! __('salaries.salaries') !!}</span>
                                 </div>
                                 <div class="modal-info-list mt-2">
                                     <div class="detail-item-modern">
@@ -68,8 +72,7 @@
                                         <div class="icon-circle"><i class="ft-calendar"></i></div>
                                         <div class="detail-info-box text-left">
                                             <span class="detail-info-label">{!! __('salaries.release_date') !!}</span>
-                                            <span
-                                                class="detail-info-value">{{ $salary->release_date ?? '-' }}</span>
+                                            <span class="detail-info-value">{{ $salary->release_date ?? '-' }}</span>
                                         </div>
                                     </div>
                                 </div>

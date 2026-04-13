@@ -12,7 +12,7 @@
                 <div class="filter-chip js-filter-chip" data-filter-target="employee_search_popover">
                     <i class="la la-user text-indigo"></i>
                     <span class="chip-text">{!! __('employees.employees') !!}</span>
-                    <span class="badge badge-primary badge-pill badge-glow ml-1 premium-badge-pill-md">{!! $monthlyReports->total() !!}</span>
+                    <span class="badge badge-primary badge-pill badge-glow premium-badge-pill-md">{!! $monthlyReports->total() !!}</span>
                 </div>
 
                 <div class="ptc-query-panel shadow-lg border-0 premium-popover-panel" id="employee_search_popover">
