@@ -1730,3 +1730,28 @@ p, span, div, li, a { font-size: 0.95rem !important; }
 
 
 
+@charset " UTF-8\;
+
+/* --- Migrated from app.blade.php --- */
+.note-editor.is-invalid-summernote-editor {
+ border: 1px solid #dc3545 !important;
+}
+
+.custom-close-btn {
+ color: #ff0000;
+}
+
+.custom-close-btn:hover {
+ color: #0000ff;
+}
+
+/* Global pagination fix for employee dashboard */
+.pagination-container nav > div:first-child {
+ display: none !important;
+}
+
+.pagination-container nav > div:last-child {
+ width: 100%;
+ display: flex;
+ justify-content: center;
+}

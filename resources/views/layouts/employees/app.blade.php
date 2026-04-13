@@ -27,10 +27,8 @@
     <link rel="stylesheet" type="text/css" href="{!! asset('assets/employees/js/select.dataTables.min.css') !!}">
     <link rel="stylesheet" href="{!! asset('vendor/flasher/flasher.min.css') !!}" rel="stylesheet">
     <link href="{!! asset('assets/employees/css/summernote.css') !!}" rel="stylesheet">
-
-
-
     <!-- End plugin css for this page -->
+    
     <!-- inject:css -->
     <link rel="stylesheet"
         href="{!! asset('assets/employees/css/style.css') !!}?v={{ file_exists(public_path('assets/employees/css/style.css')) ? filemtime(public_path('assets/employees/css/style.css')) : time() }}">
@@ -46,37 +44,6 @@
         href="{!! asset('assets/employees/css/employee-premium.css') !!}?v={{ file_exists(public_path('assets/employees/css/employee-premium.css')) ? filemtime(public_path('assets/employees/css/employee-premium.css')) : time() }}">
 
 
-    <style>
-        .note-editor.is-invalid-summernote-editor {
-            border: 1px solid #dc3545 !important;
-        }
-
-        .note-editor.is-invalid-summernote-editor {
-            border: 1px solid #dc3545 !important;
-        }
-
-        .custom-close-btn {
-            color: #ff0000;
-            /* Change to your desired color */
-            /* other styles like background-color, etc. */
-        }
-
-        /* Change color on hover */
-        .custom-close-btn:hover {
-            color: #0000ff;
-        }
-
-        /* Global pagination fix for employee dashboard */
-        .pagination-container nav>div:first-child {
-            display: none !important;
-        }
-
-        .pagination-container nav>div:last-child {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-    </style>
 
     @stack('style')
     @livewireStyles

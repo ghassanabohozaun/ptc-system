@@ -32,6 +32,14 @@
         };
     </script>
     <script src="{{ asset('assets/dashbaord/js/lock-screen-modern.js') }}"></script>
+    <script>
+        // Fix for "Blocked aria-hidden on an element because its descendant retained focus" globally
+        $(document).on('hide.bs.modal', '.modal', function() {
+            if (document.activeElement && $(this).has(document.activeElement).length) {
+                document.activeElement.blur();
+            }
+        });
+    </script>
     @stack('scripts')
     @livewireScripts
 </body>

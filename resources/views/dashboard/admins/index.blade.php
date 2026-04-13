@@ -102,7 +102,6 @@
     <script src="{{ asset('assets/dashbaord/js/ajax-table.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            console.log('Admin Index Table Initializing...');
             // Initialize AJAX Table
             if (typeof initIndexTable === "function") {
                 initIndexTable({
