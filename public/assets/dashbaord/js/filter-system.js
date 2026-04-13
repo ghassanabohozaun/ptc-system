@@ -115,7 +115,10 @@ $(document).ready(function() {
                 }
                 
                 setTimeout(() => {
-                    $panel.find('input, select').filter(':visible').first().focus();
+                    const $firstInput = $panel.find('input, select').filter(':visible').first();
+                    if ($firstInput.length && !$firstInput.hasClass('ptc-datepicker') && !$firstInput.hasClass('ptc-monthpicker')) {
+                        $firstInput.focus();
+                    }
                 }, 100);
             } else {
                 closeAll();

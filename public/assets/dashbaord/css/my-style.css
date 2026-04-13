@@ -1990,8 +1990,8 @@ select.premium-input option {
 [data-textdirection="ltr"] .premium-input-wrapper i,
 html:not([data-textdirection="rtl"]) .premium-input-wrapper i {
     position: absolute !important;
-    right: 1.15rem !important;
-    left: auto !important;
+    left: 1.15rem !important;
+    right: auto !important;
     font-size: 1.25rem !important; /* Synced size */
     z-index: 10 !important;
     color: #6366f1 !important; /* Synced Premium Indigo */
@@ -2008,8 +2008,8 @@ html:not([data-textdirection="rtl"]) .premium-input-wrapper i {
 
 [data-textdirection="ltr"] .premium-input-wrapper .premium-input,
 html:not([data-textdirection="rtl"]) .premium-input-wrapper .premium-input {
-    padding-right: 3.2rem !important; /* Padding moved to right for icon */
-    padding-left: 1.25rem !important;
+    padding-left: 3.2rem !important; /* Padding moved to left for icon */
+    padding-right: 1.25rem !important;
     height: 3rem !important; /* Unified 48px height */
     border-radius: 12px !important;
 }

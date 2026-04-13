@@ -16,17 +16,17 @@
                 </div>
 
                 <div class="ptc-query-panel shadow-lg border-0 premium-popover-panel" id="employee_search_popover">
-                    <div class="mb-3 text-left">
+                    <div class="mb-3">
                         <label class="premium-label mb-2 font-weight-bold text-dark">{!! __('employees.employees') !!}</label>
                         <div class="premium-input-wrapper">
                             <input type="text" class="form-control premium-input shadow-none" 
                                 name="keyword" placeholder="{!! __('general.search') !!}..." autocomplete="off">
-                            <i class="la la-search"></i>
+                            <i class="la la-search text-indigo"></i>
                         </div>
                     </div>
-                    <div class="popover-actions mt-4 text-right">
+                    <div class="popover-actions mt-4">
                         <button type="button" class="btn btn-premium-blue btn-sm js-apply-filter px-4">
-                            <i class="la la-check-circle mr-1"></i> {!! __('general.apply') !!}
+                            <i class="la la-check-circle"></i> {!! __('general.apply') !!}
                         </button>
                     </div>
                 </div>
@@ -40,22 +40,22 @@
                 </div>
                 
                 <div class="ptc-query-panel shadow-lg border-0 premium-popover-panel min-w-300" id="month_year_popover">
-                    <div class="mb-3 text-left">
+                    <div class="mb-3">
                         <label class="premium-label mb-2 font-weight-bold text-dark">{!! __('monthlyReports.month') !!} / {!! __('monthlyReports.year') !!}</label>
                         <div class="premium-input-wrapper">
                             {{-- Standardized PTC Month Picker --}}
                             <input type="text" id="month_year_picker" class="form-control premium-input shadow-none ptc-monthpicker js-month-year-filter" 
                                 placeholder="{!! __('general.select_from_list') !!}..." autocomplete="off">
-                            <i class="la la-calendar-check text-indigo"></i>
+                            <i class="la la-calendar text-indigo"></i>
                             
                             {{-- Hidden inputs for backend compatibility --}}
                             <input type="hidden" name="month" id="filter_month" value="{{ request('month') }}">
                             <input type="hidden" name="year" id="filter_year" value="{{ request('year') }}">
                         </div>
                     </div>
-                    <div class="popover-actions mt-4 text-right">
+                    <div class="popover-actions mt-4">
                         <button type="button" class="btn btn-premium-blue btn-sm js-apply-filter px-4">
-                            <i class="la la-check-circle mr-1"></i> {!! __('general.apply') !!}
+                            <i class="la la-check-circle"></i> {!! __('general.apply') !!}
                         </button>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                 </div>
                 
                 <div class="ptc-query-panel shadow-lg border-0 premium-popover-panel" id="status_popover">
-                    <div class="mb-3 text-left">
+                    <div class="mb-3">
                         <label class="premium-label mb-2 font-weight-bold text-dark">{!! __('general.status') !!}</label>
                         <div class="premium-input-wrapper">
                             <select class="form-control premium-input shadow-none w-100" name="status">
@@ -82,12 +82,12 @@
                                 <option value="final_refuse">{!! __('monthlyReports.final_refuse') !!}</option>
                                 <option value="approved">{!! __('monthlyReports.approved') !!}</option>
                             </select>
-                            <i class="la la-toggle-on"></i>
+                            <i class="la la-toggle-on text-indigo"></i>
                         </div>
                     </div>
-                    <div class="popover-actions mt-4 text-right">
+                    <div class="popover-actions mt-4">
                         <button type="button" class="btn btn-premium-blue btn-sm js-apply-filter px-4">
-                            <i class="la la-check-circle mr-1"></i> {!! __('general.apply') !!}
+                            <i class="la la-check-circle"></i> {!! __('general.apply') !!}
                         </button>
                     </div>
                 </div>

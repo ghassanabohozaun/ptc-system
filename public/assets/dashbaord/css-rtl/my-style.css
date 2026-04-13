@@ -3568,8 +3568,8 @@ html[dir="rtl"] .premium-input-wrapper .premium-input {
 
 /* Match project's native RTL selector */
 [data-textdirection="rtl"] .premium-input-wrapper i {
-    left: 14px !important;
-    right: auto !important;
+    right: 1.15rem !important;
+    left: auto !important;
     z-index: 100 !important;
 }
 
