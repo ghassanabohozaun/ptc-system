@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="{!! asset('vendor/flasher/flasher.min.css') !!}" rel="stylesheet">
     <link href="{!! asset('assets/employees/css/summernote.css') !!}" rel="stylesheet">
     <!-- End plugin css for this page -->
-    
+
     <!-- inject:css -->
     <link rel="stylesheet"
         href="{!! asset('assets/employees/css/style.css') !!}?v={{ file_exists(public_path('assets/employees/css/style.css')) ? filemtime(public_path('assets/employees/css/style.css')) : time() }}">

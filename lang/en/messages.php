@@ -54,4 +54,6 @@ return [
     'write_your_message_here' => 'Write your message here...',
     'discard' => 'Discard',
     'close' => 'Close',
+    'no_messages_found' => 'No messages found',
+    'your_trash_is_empty' => 'Your trash is empty',
 ];

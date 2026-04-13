@@ -1,5 +1,5 @@
-<div class="h-100">
-    <div class="msg-main-card border-0">
+<div class="h-100 d-flex flex-column flex-grow-1">
+    <div class="msg-main-card border-0 flex-grow-1">
         <div class="card-body">
             <div class="d-sm-flex justify-content-between align-items-center msg-card-header-premium">
                 <div>

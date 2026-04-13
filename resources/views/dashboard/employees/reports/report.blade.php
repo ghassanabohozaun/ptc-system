@@ -5,6 +5,7 @@
 
 @push('style')
     <link rel="stylesheet" href="{{ asset('assets/dashbaord/vendors/css/forms/selects/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dashbaord/css/export-premium.css') }}">
 @endpush
 
 @section('content')
@@ -45,13 +46,12 @@
 
                     <!-- begin: content header right-->
                     <div class="content-header-right col-md-6 col-12">
-                        <div class="float-md-right mb-2">
-
-                            <a href="" class="btn btn-sm btn-outline-danger mr-1 btn-premium-reset" id="employees_reset_btn">
+                        <div class="d-flex align-items-center justify-content-md-end justify-content-center gap-2 mb-2">
+                            <a href="" class="btn btn-outline-danger btn-premium-reset shadow-sm" id="employees_reset_btn">
                                 <i class="la la-refresh"></i> {!! __('general.reset') !!}
                             </a>
 
-                            <button class="btn btn-success btn-glow px-2 btn-premium-excel" type="submit">
+                            <button class="btn btn-premium-excel shadow-sm" type="submit">
                                 <i class="la la-file-excel-o"></i> {!! __('general.excel') !!}
                             </button>
                         </div>
@@ -147,11 +147,13 @@
                             if (response.status && response.data) {
                                 $.each(response.data, function(index, city) {
                                     // Handle translated city name
-                                    var cityName = typeof city.name === 'object' ? 
-                                                   ( $('html').attr('data-textdirection') == 'rtl' ? city.name.ar : city.name.en ) : 
-                                                   city.name;
-                                                   
-                                    $citySelect.append('<option value="' + city.id + '">' + cityName + '</option>');
+                                    var cityName = typeof city.name === 'object' ?
+                                        ($('html').attr('data-textdirection') == 'rtl' ?
+                                            city.name.ar : city.name.en) :
+                                        city.name;
+
+                                    $citySelect.append('<option value="' + city.id +
+                                        '">' + cityName + '</option>');
                                 });
                                 // Enable and refresh select2
                                 $citySelect.prop('disabled', false).trigger('change');

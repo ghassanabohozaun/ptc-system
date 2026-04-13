@@ -6,7 +6,8 @@
 
             <!--begin::modal header-->
             <div class="modal-header">
-                <h5 class="modal-title font-weight-bold d-flex align-items-center" id="monthlyReportsEmployeesModalLabel"> 
+                <h5 class="modal-title font-weight-bold d-flex align-items-center"
+                    id="monthlyReportsEmployeesModalLabel">
                     <i class="la la-users text-primary mr-2"></i>
                     {!! __('monthlyReports.show_employees') !!}
                 </h5>

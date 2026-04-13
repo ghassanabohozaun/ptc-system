@@ -17,11 +17,11 @@
 
             <!-- Control Buttons -->
             <div class="row mb-3">
-                <div class="col-md-12">
-                    <button type="button" class="btn btn-info btn-glow btn-bulk-select mr-1 radius-12" id="select_all_columns">
+                <div class="col-md-12 d-flex gap-2">
+                    <button type="button" class="btn btn-info btn-glow btn-premium-blue radius-12 shadow-sm" id="select_all_columns">
                         <i class="la la-check-square"></i> {!! __('general.select_all') !!}
                     </button>
-                    <button type="button" class="btn btn-outline-danger btn-bulk-select radius-12" id="deselect_all_columns">
+                    <button type="button" class="btn btn-outline-danger btn-premium-reset radius-12 shadow-sm" id="deselect_all_columns">
                         <i class="la la-square-o"></i> {!! __('general.deselect_all') !!}
                     </button>
                 </div>
@@ -31,12 +31,12 @@
             <div class="row">
                 <div class="col-md-12">
                     <h5 class="premium-section-title premium-section-title-blue">
-                        <i class="la la-user text-primary"></i> {!! __('employees.basic') !!}
+                        <i class="la la-user"></i> {!! __('employees.basic') !!}
                     </h5>
                 </div>
                 @foreach ($employeeColumnNames as $column)
-                    <div class="col-md-3 mb-1">
-                        <div class="premium-switch-box">
+                    <div class="col-md-3 mb-2">
+                        <div class="premium-switch-box shadow-sm">
                             <span class="premium-switch-label">{!! __('employees.' . $column) !!}</span>
                             <label class="modern-switch">
                                 <input type="checkbox" name="columns[]" value="{{ $column }}"
@@ -48,7 +48,7 @@
                 @endforeach
             </div>
 
-            <hr class="my-3">
+            <hr class="my-3 opacity-20">
 
             <!-- Job Details Columns -->
             <div class="row">
@@ -58,8 +58,8 @@
                     </h5>
                 </div>
                 @foreach ($jobDetailsColumnNames as $column)
-                    <div class="col-md-3 mb-1">
-                        <div class="premium-switch-box">
+                    <div class="col-md-3 mb-2">
+                        <div class="premium-switch-box shadow-sm">
                             <span class="premium-switch-label">{!! __('employees.' . $column) !!}</span>
                             <label class="modern-switch">
                                 <input type="checkbox" name="columns[]" value="{{ $column }}"

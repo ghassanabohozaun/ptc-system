@@ -28,11 +28,11 @@
                                 <option value="{{ $employee->id }}">{{ $employee->name }}</option>
                             @endforeach
                         </select>
-                        <div class="bulk-select-actions">
-                            <button type="button" class="btn btn-primary btn-glow btn-bulk-select" id="select_all_employees">
+                        <div class="bulk-select-actions d-flex gap-2 mt-2">
+                            <button type="button" class="btn btn-primary btn-glow btn-premium-add radius-10" id="select_all_employees">
                                 <i class="la la-check-square"></i> {!! __('general.select_all') !!}
                             </button>
-                            <button type="button" class="btn btn-outline-danger btn-bulk-select" id="deselect_all_employees">
+                            <button type="button" class="btn btn-outline-danger btn-premium-reset radius-10" id="deselect_all_employees">
                                 <i class="la la-times-circle"></i> {!! __('general.deselect_all') !!}
                             </button>
                         </div>

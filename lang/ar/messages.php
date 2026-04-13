@@ -54,4 +54,6 @@ return [
     'write_your_message_here' => 'اكتب محتوى رسالتك هنا...',
     'discard' => 'تجاهل التغييرات',
     'close' => 'إغلاق',
+    'no_messages_found' => 'لم يتم العثور على رسائل',
+    'your_trash_is_empty' => 'سلة المهملات فارغة',
 ];
