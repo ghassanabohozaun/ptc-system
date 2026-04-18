@@ -55,7 +55,7 @@
                 });
             });">
                 <label for="job_duties" class="mb-2 d-block">{!! __('employees.job_duties') !!}</label>
-                <textarea id="job_duties_summernote" rows="12" class="form-control premium-input shadow-none">{!! $job_duties !!}</textarea>
+                <textarea id="job_duties_summernote" rows="12" style="display: none" class="form-control shadow-none">{!! $job_duties !!}</textarea>
             </div>
             @error('job_duties')
                 <span class="error-message-premium mt-n2 mb-3 d-block">
@@ -90,7 +90,7 @@
                 });
             });">
                 <label for="contract_terms" class="mb-2 d-block">{!! __('employees.contract_terms') !!}</label>
-                <textarea id="contract_terms_summernote" rows="12" class="form-control premium-input shadow-none">{!! $contract_terms !!}</textarea>
+                <textarea id="contract_terms_summernote" rows="12" style="display: none" class="form-control shadow-none">{!! $contract_terms !!}</textarea>
             </div>
             @error('contract_terms')
                 <span class="error-message-premium mt-n2 mb-3 d-block">
@@ -155,7 +155,7 @@
                 });
             });">
                 <label for="other_requirements" class="mb-2 d-block">{!! __('employees.other_requirements') !!}</label>
-                <textarea id="other_requirements_summernote" rows="2" class="form-control premium-input shadow-none">{!! $other_requirements !!}</textarea>
+                <textarea id="other_requirements_summernote" rows="2" style="display: none" class="form-control shadow-none">{!! $other_requirements !!}</textarea>
             </div>
             @error('other_requirements')
                 <span class="error-message-premium mt-n2 d-block">
@@ -180,12 +180,12 @@
     <div class="clearfix"></div>
 </form>
 
+@script
 <script>
-    document.addEventListener('livewire:init', () => {
-        Livewire.on('reinit-summernote', (event) => {
-            $('#job_duties_summernote').summernote('code', $wire.get('job_duties'));
-            $('#contract_terms_summernote').summernote('code', $wire.get('contract_terms'));
-            $('#other_requirements_summernote').summernote('code', $wire.get('other_requirements'));
-        });
+    Livewire.on('reinit-summernote', (event) => {
+        $('#job_duties_summernote').summernote('code', $wire.job_duties);
+        $('#contract_terms_summernote').summernote('code', $wire.contract_terms);
+        $('#other_requirements_summernote').summernote('code', $wire.other_requirements);
     });
 </script>
+@endscript
