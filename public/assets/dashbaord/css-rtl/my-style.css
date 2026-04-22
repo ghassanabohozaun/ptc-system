@@ -3614,7 +3614,25 @@ html[dir="rtl"] .premium-input-wrapper .premium-input {
 
 
 
-/* Fix Action Button Icon Alignment in RTL */
+/* Fix Action Button Icon Alignment in RTL - FINAL FIX */
+/* Override the global `td i` margin rule that breaks icon centering in circular buttons */
+[data-textdirection="rtl"] .btn-premium-action i,
+[data-textdirection="rtl"] td .btn-premium-action i {
+    margin: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    position: static !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    transform: none !important;
+}
+
 .btn-premium-action {
     display: inline-flex !important;
     align-items: center !important;
