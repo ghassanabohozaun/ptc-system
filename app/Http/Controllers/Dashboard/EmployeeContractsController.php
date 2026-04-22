@@ -108,7 +108,19 @@ class EmployeeContractsController extends Controller
         $template->setValue('employee_name', $contract->employee->EmployeeFullName());
         $template->setValue('personal_id', $contract->employee->personal_id);
         $template->setValue('employee_job_title', $contract->employee->employeeJobDetails->title ?? '');
-        $template->setValue('contract_duration', contract_duration_arabic($contract->contract_duration));
+        // Build contract_duration as a bidi-aware complex value to fix RTL ordering in Word
+        $durationText = contract_duration_arabic($contract->contract_duration);
+        $durationRun = new \PhpOffice\PhpWord\Element\TextRun();
+        $durationRun->getParagraphStyle()->setBidi(true);
+        $durationRun->getParagraphStyle()->setAlignment(\PhpOffice\PhpWord\SimpleType\Jc::END);
+        $durationRun->addText($durationText, [
+            'rtl'   => true,
+            'bidi'  => true,
+            'name'  => 'Calibri',
+            'size'  => 11,
+        ]);
+        $template->setComplexValue('contract_duration', $durationRun);
+
         $template->setValue('contract_start_date', $contract->contract_start_date);
         $template->setValue('contract_expiry_date', $contract->contract_expiry_date);
         $template->setValue('monthly_salary', intval($contract->monthly_salary));

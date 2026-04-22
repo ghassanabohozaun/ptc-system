@@ -193,10 +193,15 @@ if (!function_exists('greeting')) {
 
 /**
  * Handle Arabic grammatical nuances for month counts
+ * RLM (\u200F) is a Unicode Right-to-Left Mark that forces correct RTL ordering
+ * in Word documents when mixing Arabic text with numbers.
  */
 if (!function_exists('contract_duration_arabic')) {
     function contract_duration_arabic($months)
     {
+        // Unicode Right-to-Left Mark — forces correct word order in RTL Word docs
+        $rlm = "\u{200F}";
+
         if (Lang() === 'en') {
             return $months . ' ' . ($months == 1 ? __('employeeContracts.month') : __('employeeContracts.months_3_10'));
         }
@@ -209,8 +214,8 @@ if (!function_exists('contract_duration_arabic')) {
             return __('employeeContracts.two_months');
         }
         if ($months >= 3 && $months <= 10) {
-            return $months . ' ' . __('employeeContracts.months_3_10');
+            return $rlm . $months . ' ' . __('employeeContracts.months_3_10');
         }
-        return $months . ' ' . __('employeeContracts.months_11');
+        return $rlm . $months . ' ' . __('employeeContracts.months_11');
     }
 }
