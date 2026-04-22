@@ -16,8 +16,15 @@ window.initIndexTable = function (options = {}) {
         const href = $(this).attr("href");
         if (!href || href === "#") return;
 
+        let ajaxUrl = href;
+        if (ajaxUrl.indexOf('?') === -1) {
+            ajaxUrl += '?_ajax=1';
+        } else {
+            ajaxUrl += '&_ajax=1';
+        }
+
         $.ajax({
-            url: href,
+            url: ajaxUrl,
             beforeSend: function () {
                 $loader.addClass("active");
                 $(settings.container).css("opacity", "0.6");

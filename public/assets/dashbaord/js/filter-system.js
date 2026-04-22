@@ -191,8 +191,11 @@ $(document).ready(function() {
         // Construct visual URL for pushState
         const fullUrl = formData ? (actionUrl + (actionUrl.includes('?') ? '&' : '?') + formData) : actionUrl;
 
+        // Construct AJAX URL to avoid BFCache caching the AJAX response as the full page
+        const ajaxUrl = actionUrl + (actionUrl.includes('?') ? '&' : '?') + '_ajax=1';
+
         $.ajax({
-            url: actionUrl,
+            url: ajaxUrl,
             data: formData,
             type: 'GET',
             beforeSend: function() {
