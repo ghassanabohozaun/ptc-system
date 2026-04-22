@@ -3612,3 +3612,21 @@ html[dir="rtl"] .premium-input-wrapper .premium-input {
 }
 
 
+
+
+/* Fix Action Button Icon Alignment in RTL */
+.btn-premium-action {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+}
+
+.btn-premium-action i {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+}
